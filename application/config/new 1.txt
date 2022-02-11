@@ -1,0 +1,15 @@
+<rule name="Imported Rule 1" stopProcessing="true">
+                    <match url="^(.*)$" ignoreCase="false" />
+                    <conditions logicalGrouping="MatchAll">
+                        <add input="{URL}" pattern="^system.*" ignoreCase="false" />
+                    </conditions>
+                    <action type="Rewrite" url="/index.php?/{R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 2" stopProcessing="true">
+                    <match url="^(.*)$" ignoreCase="false" />
+                    <conditions logicalGrouping="MatchAll">
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" negate="true" />
+                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+                    </conditions>
+                    <action type="Rewrite" url="index.php?/{R:1}" appendQueryString="false" />
+                </rule>
