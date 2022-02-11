@@ -10,6 +10,7 @@ class dashboard extends CI_Controller {
 	public function index(){
         //$this->load->view('Welcome');
         //Esto es una prueba Git
+        //Comnetyario Ronald
         $this->load->view('dashboard');
 	}
 }
