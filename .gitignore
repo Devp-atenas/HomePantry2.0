@@ -1,4 +1,12 @@
 .DS_Store
+application/config/config.php
+application/config/config.php
+application/config/constants.php
+application/config/config.php
+application/config/config.php
+application/config/constants.php
+application/cache/*
+application/config/*
 !application/cache/index.html
 application/logs/*
 !application/logs/index.html
@@ -22,3 +30,10 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/tests/
 /tests/results/
 db
+application/views/Validacion/php_errors.log
+application/config/constants.php
+application/config/config.php
+application/config/constants.php
+assets/constantes/url.js
+application/config/constants.php
+application/config/config.php

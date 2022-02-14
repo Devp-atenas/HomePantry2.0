@@ -46,7 +46,6 @@
 
 <?php $this->load->view('Plantillas/Footer');?>
 
-<script src="<?php echo base_url('jsHP/jsGeneral.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsReporteHogarRegistroXConsumo.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

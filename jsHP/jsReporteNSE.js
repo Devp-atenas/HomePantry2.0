@@ -1,7 +1,470 @@
 $(document).ready(function() {
     //alert(9999)
-    cargarTablaReporteNSE();
+    cargarTablaReporteNSE2();
 });
+
+
+
+function cargarTablaReporteNSE2(){
+    var urlApi = localStorage.getItem("urlApi");
+    
+    $('#TablaReporteNSE').dataTable({
+        "lengthMenu": [
+            [ -1],
+            ["All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": true,
+        searching: false,
+        "bPaginate": false,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": false,
+        "buttons": ['excel'],
+        "fixedHeader": true,
+        "scrollX": true,
+        "scrollY":        400,
+        "deferRender":    true,
+        "scroller":       true,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+            "decimal": ",",
+            "thousands": "."
+        },
+        
+        "ajax": {
+            //"url": '<?php echo urlApi; ?>getDatosReporteNSE',
+            "url": urlApi+'getDatosReporteNSE/',
+            "type": "GET",
+            "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/HomePantry20/Principal/logout';
+                }
+            }
+        },
+        
+        "aoColumns": [{
+                mData: 'idHogar',
+                className: "text-center"
+            },
+            {
+                mData: 'CodigoHogar',
+                className: "text-center"
+            },
+            {
+                mData: 'Estado',
+                className: "text-center"
+            },
+            {
+                mData: 'Ciudad',
+                className: "text-center"
+            },
+            {
+                mData: 'Municipio',
+                className: "text-center"
+            },
+            {
+                mData: 'Parroquia',
+                className: "text-center"
+            },
+            {
+                mData: 'TipoVivienda',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoTipoVivienda',
+                className: "text-center"
+            },
+            {
+                mData: 'MetrosVivienda',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoMetrosVivienda',
+                className: "text-center"
+            },
+            {
+                mData: 'NumeroAmbientes',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoNumAmbientes',
+                className: "text-center"
+            },
+            {
+                mData: 'TotalPersonas',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoTotalPersonas',
+                className: "text-center"
+            },
+            {
+                mData: 'NumeroBanos',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoNumBanos',
+                className: "text-center"
+            },
+            {
+                mData: 'OcupacionVivienda',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoOcupacionVivienda',
+                className: "text-center"
+            },
+            {
+                mData: 'MontoVivienda',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoMontoVivienda',
+                className: "text-center"
+            },
+            {
+                mData: 'PuntosLuz',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoPuntoLuz',
+                className: "text-center"
+            },
+            {
+                mData: 'AguasBlancas',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoAguasBlancas',
+                className: "text-center"
+            },
+            {
+                mData: 'AguasNegras',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoAguasNegras',
+                className: "text-center"
+            },
+            {
+                mData: 'AseoUrbano',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoAseoUrbano',
+                className: "text-center"
+            },
+            {
+                mData: 'Id_ServicioElectricidad',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoServicioElectricidad',
+                className: "text-center"
+            },
+            {
+                mData: 'Id_DomesticaFija',
+                className: "text-center"
+            },
+            {
+                mData: 'Id_PersonalLabores',
+                className: "text-center"
+            },
+            {
+                mData: 'Id_DomesticaDia',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoPeronalAseo',
+                className: "text-center"
+            },
+            {
+                mData: 'BandaAncha',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoBandaAncha',
+                className: "text-center"
+            },
+            {
+                mData: 'Movil',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoMovil',
+                className: "text-center"
+            },
+            {
+                mData: 'DialUp',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoDialUp',
+                className: "text-center"
+            },
+            {
+                mData: 'CelularJefe',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoCelularJefe',
+                className: "text-center"
+            },
+            {
+                mData: 'AireAcondicionado',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoAireAcondicionado',
+                className: "text-center"
+            },
+            {
+                mData: 'CalentadorElectrico',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoCalentadorElectrico',
+                className: "text-center"
+            },
+            {
+                mData: 'CalectadorGas',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoCalentadorGas',
+                className: "text-center"
+            },
+            {
+                mData: 'PC',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoPC',
+                className: "text-center"
+            },
+            {
+                mData: 'Laptop',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoLaptop',
+                className: "text-center"
+            },
+            {
+                mData: 'DVD',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoDVD',
+                className: "text-center"
+            },
+            {
+                mData: 'HomeTheater',
+                className: "text-center"
+            },
+            {
+                mData: 'VideoJuego',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoVideoJuego',
+                className: "text-center"
+            },
+            {
+                mData: 'HornoMicro',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoHornoMicro',
+                className: "text-center"
+            },
+            {
+                mData: 'LavadoraAuto',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoLavadoraAuto',
+                className: "text-center"
+            },
+            {
+                mData: 'LavadoraSemi',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoLavadoraSemi',
+                className: "text-center"
+            },
+            {
+                mData: 'LavadoraRodillo',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoLavadoraRodillo',
+                className: "text-center"
+            },
+            {
+                mData: 'Secadora',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoSecadora',
+                className: "text-center"
+            },
+            {
+                mData: 'Nevera',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoNevera',
+                className: "text-center"
+            },
+            {
+                mData: 'Freezer',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoFreezer',
+                className: "text-center"
+            },
+            {
+                mData: 'CocinaElectrica',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoCocinaElectrica',
+                className: "text-center"
+            },
+            {
+                mData: 'CocinaBombona',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoCocinaBombona',
+                className: "text-center"
+            },
+            {
+                mData: 'ConinaGasDirecto',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoCocinaGasDirecto',
+                className: "text-center"
+            },
+            {
+                mData: 'CocinaKerosene',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoCocinaKerosene',
+                className: "text-center"
+            },
+            {
+                mData: 'Lavaplatos',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoLavaplatos',
+                className: "text-center"
+            },
+            {
+                mData: 'Vehiculos',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoVehiculo',
+                className: "text-center"
+            },
+            {
+                mData: 'Televisores',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoTelevisores',
+                className: "text-center"
+            },
+            {
+                mData: 'SeguroParticular',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoSeguroParticular',
+                className: "text-center"
+            },
+            {
+                mData: 'SeguroColectivo',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoSeguroColectivo',
+                className: "text-center"
+            },
+            {
+                mData: 'SeguroSocial',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoSeguroSocial',
+                className: "text-center"
+            },
+            {
+                mData: 'SeguroVehiculo',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoSeguroVehiculo',
+                className: "text-center"
+            },
+            {
+                mData: 'educacion',
+                className: "text-center"
+            },
+            {
+                mData: 'pesoEducacion',
+                className: "text-center"
+            },
+            {
+                mData: 'TipoIngreso',
+                className: "text-center"
+            },
+            {
+                mData: 'pesoIngreso',
+                className: "text-center"
+            },
+            {
+                mData: 'PesoTotal',
+                className: "text-center"
+            },
+        ],
+        "columnDefs": [{
+            "width": "100%",
+            "targets": 98,
+            "orderable": true,
+            "data": 'idHogar',
+            "className": "text-center",
+            
+        }],
+    });
+    
+}
+
 
 
 function cargarTablaReporteNSE(){
