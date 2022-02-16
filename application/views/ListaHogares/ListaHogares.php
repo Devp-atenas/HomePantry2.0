@@ -130,12 +130,9 @@ $(document).ready(function() {
             "data": 'Id_Hogar',
             "className": "text-center",
             "render": function(data, type, row, meta) {
-                return '<a title="Eliminar" href="#"><img id="EliminarImg" src=<?php echo base_url('assets/iconos/delete.png') ?> width="30" height="30"  onclick="deleteAction(' +
+                return '<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
                     data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
-                    data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Visualizar" href="#"><img src=<?php echo base_url('assets/iconos/ver.png') ?> width="25" height="25" onclick="VisualizarAction(' +
-                    data + '); return false;"></a>';
+                    '); return false;"></a>';
             }
         }],
     });
@@ -143,6 +140,7 @@ $(document).ready(function() {
 
 function EditAction(data) {
     localStorage.setItem("idHogarEditar",data);
+    //HogarEditar();
     window.location.href = "Hogares/HogaresNuevos"
 }
 

@@ -149,7 +149,7 @@
                                         <label class="form-check-label">Carrera</label>
                                     </div>
                                     <div class="inputText font-weight-bold">Nombre:</div>
-                                    <input type="text" class="form-control input-sm" id="nombreCalle" name="nombreCasa" placeholder="Nombre de la quinta ...">
+                                    <input type="text" class="form-control input-sm" id="nombreCalle" name="nombreCalle" placeholder="Nombre de la quinta ...">
                                 </div>
                             </div>
                         </div>
@@ -536,157 +536,177 @@
                 </form>
             </div>
             <div id="step-3">
-                <form id="formJefeHogar" action="" method="post">
-                    <h2 class="text-center">Jefe del Hogar</h2>
-                    <div class="row">
-                        <div class="col-md-3">
+                <h2 class="text-center">Jefe del Hogar</h2>
+                        
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="inputText font-weight-bold">¿Jefe de Familia es igual al responsable?</div>
+                        <div class="card">
                             <div class="form-group">
-                                <div class="inputText font-weight-bold">Primer nombre:</div>
-                                <input type="text" class="form-control input-sm" id="primerNombreJefe" name="primerNombreJefe" placeholder="Ingrese Primer nombre ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Segundo nombre:</div>
-                                <input type="text" class="form-control input-sm" id="segundoNombreJefe" name="segundoNombreJefe" placeholder="Ingrese Segundo nombre ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Primer apellido:</div>
-                                <input type="text" class="form-control input-sm" id="primerApellidoJefe" name="primerApellidoJefe" placeholder="Ingrese Primer apellido ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Segundo apellido:</div>
-                                <input type="text" class="form-control input-sm" id="segundoApellidoJefe" name="segundoApellidoJefe" placeholder="Ingrese Segundo apellido ...">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Nacionalidad</div>
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="nacionalidadJefe" value="1">
-                                        <label class="form-check-label">Venezolano</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="nacionalidadJefe" value="2">
-                                        <label class="form-check-label">Extranjero</label>
-                                    </div>
+                                <div class="form-check d-inline">
+                                    <input class="form-check-input" type="radio" class="responsableJefeSN" id="responsableJefeNO" name="jefeResponsableIO" value="0">
+                                    <label class="form-check-label">No</label>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Cedula:</div>
-                                <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaJefe" placeholder="Ingrese Cedula ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Sexo:</div>
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="sexoJefe" name="sexoJefe" value="1">
-                                        <label class="form-check-label">Femenino</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="sexoJefe" name="sexoJefe" value="2">
-                                        <label class="form-check-label">Masculino</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Estado civil:</div>
-                                <select class="custom-select form-control-border" id="estadoCivilJefe">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
-                                <select class="custom-select form-control-border" id="parentescoJefeJefe">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Educacion:</div>
-                                <select class="custom-select form-control-border" id="educacionJefe">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                <input type="date" class="form-control input-sm" id="fechaNacimientoJefe" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Edad:</div>
-                                <input type="number" class="form-control input-sm" id="edadJefe" placeholder="(Valor Calculado) ..." readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Celular:</div>
-                                <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularJefe" name="celularJefe" placeholder="Ingrese Celular...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Celular adicional:</div>
-                                <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalJefe" name="celularAdicionalJefe" placeholder="Ingrese Celular adicional ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Correo:</div>
-                                <input type="email" class="form-control input-sm" id="correoJefe" name="correoJefe" placeholder="Ingrese correo ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Tipo de ingreso:</div>
-                                <select class="custom-select form-control-border" id="tipoIngresoJefe">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="2">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
+                                <div class="form-check d-inline">
+                                    <input class="form-check-input" type="radio" class="responsableJefeSN" id="responsableJefeSi" name="jefeResponsableIO" value="1">
+                                    <label class="form-check-label">Si</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                </div>
+                <div id="divResponsableJefe" style="visibility:hidden;">
+                    <form id="formJefeHogar" action="" method="post">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Primer nombre:</div>
+                                    <input type="text" class="form-control input-sm" id="primerNombreJefe" name="primerNombreJefe" placeholder="Ingrese Primer nombre ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                    <input type="text" class="form-control input-sm" id="segundoNombreJefe" name="segundoNombreJefe" placeholder="Ingrese Segundo nombre ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Primer apellido:</div>
+                                    <input type="text" class="form-control input-sm" id="primerApellidoJefe" name="primerApellidoJefe" placeholder="Ingrese Primer apellido ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                    <input type="text" class="form-control input-sm" id="segundoApellidoJefe" name="segundoApellidoJefe" placeholder="Ingrese Segundo apellido ...">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="inputText font-weight-bold">Nacionalidad</div>
+                                <div class="card">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="nacionalidadJefe" value="1">
+                                            <label class="form-check-label">Venezolano</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="nacionalidadJefe" value="2">
+                                            <label class="form-check-label">Extranjero</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Cedula:</div>
+                                    <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaJefe" placeholder="Ingrese Cedula ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="inputText font-weight-bold">Sexo:</div>
+                                <div class="card">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="sexoJefe" name="sexoJefe" value="1">
+                                            <label class="form-check-label">Femenino</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="sexoJefe" name="sexoJefe" value="2">
+                                            <label class="form-check-label">Masculino</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Estado civil:</div>
+                                    <select class="custom-select form-control-border" id="estadoCivilJefe">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                    <select class="custom-select form-control-border" id="parentescoJefeJefe">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Educacion:</div>
+                                    <select class="custom-select form-control-border" id="educacionJefe">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                    <input type="date" class="form-control input-sm" id="fechaNacimientoJefe" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Edad:</div>
+                                    <input type="number" class="form-control input-sm" id="edadJefe" placeholder="(Valor Calculado) ..." readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Celular:</div>
+                                    <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularJefe" name="celularJefe" placeholder="Ingrese Celular...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Celular adicional:</div>
+                                    <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalJefe" name="celularAdicionalJefe" placeholder="Ingrese Celular adicional ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Correo:</div>
+                                    <input type="email" class="form-control input-sm" id="correoJefe" name="correoJefe" placeholder="Ingrese correo ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                    <select class="custom-select form-control-border" id="tipoIngresoJefe">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
+                                <div class="card">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="2">
+                                            <label class="form-check-label">No</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="1">
+                                            <label class="form-check-label">Si</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                                <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div id="step-4">
                 <div class="row">
@@ -1711,7 +1731,7 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal vvvvvvvvvvvvv-->
 
 <div class="modal fade" id="modal-PanelistaEditar">
     <div class="modal-dialog modal-lg">
@@ -1733,50 +1753,179 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="FormAtributoEdit">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="inputText font-weight-bold">Categoria:</div>
-                                            <select id="inputCategoriaEdit" name="inputCategoriaEdit" class="form-control">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo:</div>
-                                            <input type="text" name="inputAtributoEdit" id="inputAtributoEdit" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                    <div class="inputText font-weight-bold">Activo:</div>
-                                        <div class="card">
-                                            <div class="form-group">
-                                            <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
-                                                    <label class="form-check-label">No</label>
+                            <form id="FormPanelistaEdit">
+                            <div class="row">t
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Primer nombre:</div>
+                                                        <input type="text" class="form-control input-sm" id="primerNombreComposicionEdit" name="primerNombreComposicionEdit" placeholder="Ingrese Primer nombre ...">
+                                                    </div>
                                                 </div>
-                                                <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
-                                                    <label class="form-check-label">Si</label>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                                        <input type="text" class="form-control input-sm" id="segundoNombreComposicionEdit" name="segundoNombreComposicionEdit" placeholder="Ingrese Segundo nombre ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Primer apellido:</div>
+                                                        <input type="text" class="form-control input-sm" id="primerApellidoComposicionEdit" name="primerApellidoComposicionEdit" placeholder="Ingrese Primer apellido ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                                        <input type="text" class="form-control input-sm" id="segundoApellidoComposicionEdit" name="segundoApellidoComposicionEdit" placeholder="Ingrese Segundo apellido ...">
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Nacionalidad</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionEdit" name="nacionalidadComposicionEdit" value="1">
+                                                                <label class="form-check-label">Venezolano</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionEdit" name="nacionalidadComposicionEdit" value="2">
+                                                                <label class="form-check-label">Extranjero</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Cedula:</div>
+                                                        <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaComposicionEdit" name="cedulaComposicionEdit" placeholder="Ingrese Cedula ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Sexo:</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="sexoComposicionEdit" name="sexoComposicionEdit" value="1">
+                                                                <label class="form-check-label">Femenino</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="sexoComposicionEdit" name="sexoComposicionEdit" value="2">
+                                                                <label class="form-check-label">Masculino</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Estado civil:</div>
+                                                        <select class="custom-select form-control-border" id="estadoCivilComposicionEdit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                                        <select class="custom-select form-control-border" id="parentescoJefeComposicionEdit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Educacion:</div>
+                                                        <select class="custom-select form-control-border" id="educacionComposicionEdit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                                        <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionEdit" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Edad:</div>
+                                                        <input type="number" class="form-control input-sm" id="edadComposicionEdit" placeholder="(Valor Calculado) ..." readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Celular:</div>
+                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularComposicionEdit" name="celularComposicion" placeholder="Ingrese Celular...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Celular adicional:</div>
+                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalComposicionEdit" name="celularAdicionalComposicionEdit" placeholder="Ingrese Celular adicional ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Correo:</div>
+                                                        <input type="email" class="form-control input-sm" id="correoComposicionEdit" name="correoComposicionEdit" placeholder="Ingrese correo ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                                        <select class="custom-select form-control-border" id="tipoIngresoComposicionEdit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicionEdit" value="2">
+                                                                <label class="form-check-label">No</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicionEdit" value="1">
+                                                                <label class="form-check-label">Si</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Activo:</div>
+                                                        <div class="card">
+                                                            <div class="form-group">
+                                                            <div class="form-check d-inline">
+                                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                                    <label class="form-check-label">No</label>
+                                                                </div>
+                                                                <div class="form-check d-inline">
+                                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                                    <label class="form-check-label">Si</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="row" style="visibility:hidden;">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="inputIdEditComposicion">id:</label>
+                                                        <input type="text" name="inputIdEditComposicion" id="inputIdEditComposicion"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row" style="visibility:hidden;">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="inputIdEditAtributo">id:</label>
-                                            <input type="text" name="inputIdEditAtributo" id="inputIdEditAtributo"
-                                                class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
                                     <div class="row">
                                         <div class="col-12">
-                                            <input type="button" onclick="ActualizarRegistro()" id="editUsuario"
+                                            <input type="button" onclick="ActualizarRegistro()" id="editComposicion"
                                                 value="Guardar" class="btn btn-success float-right">
                                         </div>
                                     </div>
@@ -2108,50 +2257,52 @@
     
     if (localStorage.getItem("idHogarEditar") !== null) {
         HogarEditar();
+        var idHogar = localStorage.getItem("idHogarEditar");
+        editPanelista(idHogar,1,0);
+        editPanelista(idHogar,0,1);
+        localStorage.removeItem('idHogar');// ****
     }else{
-        cargarEstado('#estadoHogar');
+        cargarEstado('#estadoHogar',0);
         // Responsable del Hogar
-        cargarEstadoCivil('#estadoCivilResponsable');
-        cargarParentesco('#parentescoJefeResponsable');
-        cargarEducacion('#educacionResponsable');
-        cargarTipoIngreso('#tipoIngresoResponsable');
-        cargarBanco('#bancoTransferenciaResponsable');
+        cargarEstadoCivil('#estadoCivilResponsable',0);
+        cargarParentesco('#parentescoJefeResponsable',0);
+        cargarEducacion('#educacionResponsable',0);
+        cargarTipoIngreso('#tipoIngresoResponsable',0);
+        cargarBanco('#bancoTransferenciaResponsable',0);
         // Jefe del Hogar
-        cargarEstadoCivil('#estadoCivilJefe');
-        cargarParentesco('#parentescoJefeJefe');
-        cargarEducacion('#educacionJefe');
-        cargarTipoIngreso('#tipoIngresoJefe');
+        cargarEstadoCivil('#estadoCivilJefe',0);
+        cargarParentesco('#parentescoJefeJefe',0);
+        cargarEducacion('#educacionJefe',0);
+        cargarTipoIngreso('#tipoIngresoJefe',0);
         // Composicion del Hogar
-        cargarEstadoCivil('#estadoCivilComposicion');
-        cargarParentesco('#parentescoJefeComposicion');
-        cargarEducacion('#educacionComposicion');
-        cargarTipoIngreso('#tipoIngresoComposicion');
+        cargarEstadoCivil('#estadoCivilComposicion',0);
+        cargarParentesco('#parentescoJefeComposicion',0);
+        cargarEducacion('#educacionComposicion',0);
+        cargarTipoIngreso('#tipoIngresoComposicion',0);
         // Características y tenencia de la vivienda
-        cargarTipoVivienda('#tipoVivienda');
-        cargarMetrosVivienda('#metrosVivienda');
-        cargarOcupacionVivienda('#ocupacionVivienda');
-        cargarPuntosLuz('#puntosLuz');
-        cargarMontoVivienda('#montoVivienda');
+        cargarTipoVivienda('#tipoVivienda',0);
+        cargarMetrosVivienda('#metrosVivienda',0);
+        cargarOcupacionVivienda('#ocupacionVivienda',0);
+        cargarPuntosLuz('#puntosLuz',0);
+        cargarMontoVivienda('#montoVivienda',0);
         // Servicios Públicos
-        cargarAguasBlancas('#aguasBlancas');
-        cargarAguasNegras('#aguasNegras');
-        cargarAseoUrbano('#aseoUrbano');
+        cargarAguasBlancas('#aguasBlancas',0);
+        cargarAguasNegras('#aguasNegras',0);
+        cargarAseoUrbano('#aseoUrbano',0);
         // TV
-        cargarCantidadTV('#cantidadTV')
-        cargarTipoTV('#tipoTV')
-        cargarSenal('#Senal')
+        cargarCantidadTV('#cantidadTV',0);
+        cargarTipoTV('#tipoTV',0);
+        cargarSenal('#Senal',0);
         // Medios
-        cargarCablera('#cablera1');
-        cargarCablera('#cablera2');
-        cargarTvOnline('#tvOnline1')
-        cargarTvOnline('#tvOnline2')
+        cargarCablera('#cablera1',0);
+        cargarCablera('#cablera2',0);
+        cargarTvOnline('#tvOnline1',0);
+        cargarTvOnline('#tvOnline2',0);
         // Vehiculos
-        cargarAutos('#totalAutos');
+        cargarAutos('#totalAutos',0);
     }
     
-    editPanelista(1,0);
-    editPanelista(0,1);
-    localStorage.removeItem('idHogar');// ****
+    
     // 11111
     $("#guardar-step-1").click(function() {
         var camposVacios = "";
@@ -2224,8 +2375,9 @@
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
-                "data": {
+                "data": { // ****
                     "identificacion1Hogar": $("#identificacion1Hogar").val(),
+                    "Id_Hogar": $("#identificacion2Hogar").val(),
                     "Id_estadoHogar": $("#estadoHogar").val(),
                     "Id_ciudadHogar": $("#ciudadHogar").val(),
                     "Id_municipioHogar": $("#municipioHogar").val(),
@@ -2730,7 +2882,7 @@
                 })
                 localStorage.setItem('idHogar',$("#identificacion2Hogar").val());
                 cargarTablaComposicion($("#identificacion2Hogar").val());
-                var form = document.querySelector('#formComposicion');
+                ///var form = document.querySelector('#formComposicion');
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 4",$("#identificacion2Hogar").val(),"U");
                 
             }).fail(function(jqXHR, textStatus) {
@@ -3615,6 +3767,16 @@
         }
     }
     $(function() {
+        $("input[name='jefeResponsableIO']").click(function() {
+            alert(999999);
+            if ($("#responsableJefeNo").is(":checked")) {
+                $('#divResponsableJefe').css("visibility","visible");
+            } else {
+                $('#divResponsableJefe').css("visibility","hidden");
+            }
+        });
+    });
+    $(function() {
         $("input[name='escucharRadio']").click(function() {
             if ($("#emisoraSi").is(":checked")) {
                 $("#divEmisora").show();
@@ -3643,7 +3805,8 @@
             }
         });
     });
-    function cargarEstado(identificador) {
+    // zzzzzzzzzzzzzzzzz
+    function cargarEstado(identificador,idS) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllEstado/',
             "method": "get",
@@ -3655,11 +3818,17 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (idS == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
-                    .data[i]
-                    .Estado + "</option>");
+                if (response.data[i].id === idS){
+                    selected.append("<option value=" + response.data[i].id + " selected>" + response
+                    .data[i].Estado + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i].Estado + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3682,7 +3851,7 @@
             }
         })
     }
-    function cargarAutos(identificador) {
+    function cargarAutos(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllAutos/',
             "method": "get",
@@ -3694,11 +3863,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .Autos + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Autos + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3721,7 +3898,7 @@
             }
         })
     }
-    function cargarCantidadTV(identificador) {
+    function cargarCantidadTV(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getCantidadTV/',
             "method": "get",
@@ -3733,11 +3910,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .Televisores + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Televisores + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3760,7 +3945,7 @@
             }
         })
     }
-    function cargarTipoTV(identificador) {
+    function cargarTipoTV(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getTipoTV/',
             "method": "get",
@@ -3772,11 +3957,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .TipoTelevisores + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .TipoTelevisores + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3799,7 +3992,7 @@
             }
         })
     }
-    function cargarSenal(identificador) {
+    function cargarSenal(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getSenal/',
             "method": "get",
@@ -3811,11 +4004,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .Senal + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Senal + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3838,7 +4039,7 @@
             }
         })
     }
-    function cargarAguasBlancas(identificador) {
+    function cargarAguasBlancas(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllAguasBlancas/',
             "method": "get",
@@ -3850,11 +4051,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .AguasBlancas + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .AguasBlancas + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3877,7 +4086,7 @@
             }
         })
     }
-    function cargarAguasNegras(identificador) {
+    function cargarAguasNegras(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllAguasNegras/',
             "method": "get",
@@ -3889,11 +4098,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .AguasNegras + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .AguasNegras + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3916,7 +4133,7 @@
             }
         })
     }
-    function cargarAseoUrbano(identificador) {
+    function cargarAseoUrbano(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllAseoUrbano/',
             "method": "get",
@@ -3928,11 +4145,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .AseoUrbano + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .AseoUrbano + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3955,7 +4180,7 @@
             }
         })
     }
-    function cargarMontoVivienda(identificador) {
+    function cargarMontoVivienda(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllMontoVivienda/',
             "method": "get",
@@ -3967,11 +4192,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .MontoVivienda + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .MontoVivienda + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3994,7 +4227,7 @@
             }
         })
     }
-    function cargarPuntosLuz(identificador) {
+    function cargarPuntosLuz(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllPuntosLuz/',
             "method": "get",
@@ -4006,11 +4239,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .PuntosLuz + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .PuntosLuz + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4033,7 +4274,7 @@
             }
         })
     }
-    function cargarOcupacionVivienda(identificador) {
+    function cargarOcupacionVivienda(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllOcupacionVivienda/',
             "method": "get",
@@ -4045,11 +4286,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .Ocupacion + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Ocupacion + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4072,7 +4321,7 @@
             }
         })
     }
-    function cargarMetrosVivienda(identificador) {
+    function cargarMetrosVivienda(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllMetrosVivienda/',
             "method": "get",
@@ -4084,11 +4333,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .MetrosVivienda + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .MetrosVivienda + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4111,7 +4368,7 @@
             }
         })
     }
-    function cargarTipoVivienda(identificador) {
+    function cargarTipoVivienda(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllTipoVivienda/',
             "method": "get",
@@ -4123,11 +4380,20 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .TipoVivienda + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .TipoVivienda + "</option>");
+                }
+                
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4168,7 +4434,9 @@
         var parametro3 = $("#municipioHogar").val();
         cargarParroquia(parametro3,0);
     });
-    function cargarTvOnline(identificador) {
+    
+    
+    function cargarTvOnline(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllTvOnline/',
             "method": "get",
@@ -4180,11 +4448,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .TvOnline + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .TvOnline + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4207,7 +4483,7 @@
             }
         })
     }
-    function cargarCablera(identificador) {
+    function cargarCablera(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getCablera/',
             "method": "get",
@@ -4219,11 +4495,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .OperadoraCable + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .OperadoraCable + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4246,7 +4530,7 @@
             }
         })
     }
-    function cargarBanco(identificador) {
+    function cargarBanco(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllBanco/',
             "method": "get",
@@ -4258,11 +4542,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .banco + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .banco + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4285,7 +4577,7 @@
             }
         })
     }
-    function cargarEducacion(identificador) {
+    function cargarEducacion(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllEducacion/',
             "method": "get",
@@ -4297,11 +4589,20 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + " Seleted>" + response
                     .data[i]
                     .Educacion + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Educacion + "</option>");
+                }
+                
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4324,7 +4625,7 @@
             }
         })
     }
-    function cargarTipoIngreso(identificador) {
+    function cargarTipoIngreso(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllTipoIngreso/',
             "method": "get",
@@ -4336,11 +4637,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + " Seleted>" + response
                     .data[i]
                     .TipoIngreso + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .TipoIngreso + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4363,7 +4672,7 @@
             }
         })
     }
-    function cargarParentesco(identificador) {
+    function cargarParentesco(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllParentesco/',
             "method": "get",
@@ -4375,11 +4684,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + " Seleted>" + response
                     .data[i]
                     .parentesco + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .parentesco + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4402,7 +4719,7 @@
             }
         })
     }
-    function cargarEstadoCivil(identificador) {
+    function cargarEstadoCivil(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllEstadoCivil/',
             "method": "get",
@@ -4412,13 +4729,21 @@
                 }
         }
         $.ajax(settings).done(function(response) {
-            let selectestadoCivil = $(identificador);
-            selectestadoCivil.find("option").remove();
-            selectestadoCivil.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            let selected = $(identificador);
+            selected.find("option").remove();
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selectestadoCivil.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + " Seleted>" + response
                     .data[i]
                     .EstadoCivil + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .EstadoCivil + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4444,11 +4769,10 @@
     function pad (str, max) {
         str = str.toString(); return str.length < max ? pad("0" + str, max) : str;
     }
-    function editPanelista(responsable,parentesco){
-        if (localStorage.getItem("idHogar") !== null) {
-            var idHogar = localStorage.getItem("idHogar");
+    function editPanelista(idHogar,responsable,parentesco){
+        if (localStorage.getItem("idHogarEditar") !== null) {
             var settings = {
-                "url": '<?php echo urlApi; ?>getPanelistaIdHogar/' + idHogar+'/'+ responsable+'/'+ parentesco+'/',
+                "url": '<?php echo urlApi; ?>getPanelistaIdHogar/' + idHogar+'/'+ responsable+'/'+ parentesco,
                 "method": "get",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -4466,14 +4790,19 @@
                     $("#cedulaResponsable").val(response.data[0].Cedula);
                     var oblig = $("input:radio[name='sexoResponsable']");
                     oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
-                    $("#estadoCivilResponsable option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
-                    $("#parentescoJefeResponsable option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
-                    $("#educacionResponsable option[value='"+ response.data[0].Id_Educacion +"']").attr("selected",true);
+                    //$("#estadoCivilResponsable option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
+                    //$("#parentescoJefeResponsable option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
                     $("#fechaNacimientoResponsable").val(response.data[0].Fec_Nacimiento);
                     $("#correoResponsable").val(response.data[0].Correo);
                     $("#correoAlternoResponsable").val(response.data[0].CorreoAlterno);
-                    $("#tipoIngresoResponsable option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
+                    //$("#tipoIngresoResponsable option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
                     $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
+
+                    cargarEducacion('#educacionResponsable',response.data[0].Id_Educacion);
+                    cargarEstadoCivil('#estadoCivilResponsable',response.data[0].Id_EstadoCivil);
+                    cargarParentesco('#parentescoJefeResponsable',response.data[0].Id_Parentesco);
+                    cargarTipoIngreso('#tipoIngresoResponsable',response.data[0].Id_TipoIngreso);
+                    
                     var oblig = $("input:radio[name='frecuenciaCompraResponsable']");
                     oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
                     if(response.data[0].id_Lunes == 1){
@@ -4506,7 +4835,7 @@
                     var oblig = $("input:radio[name='nacionalidadTransferenciaResponsable']");
                     oblig.filter("[value='"+response.data[0].id_NacionalidadTitular+"']").attr('checked', true);
                     $("#cedulaTransferenciaResponsable").val(response.data[0].CedulaTitular);
-                    $("#bancoTransferenciaResponsable option[value='"+ response.data[0].Id_Banco +"']").attr("selected",true);
+                    cargarBanco('#bancoTransferenciaResponsable',response.data[0].Id_Banco);
                     $("#numeroCuentaResponsable").val(response.data[0].NumeroCuenta);
                     var oblig = $("input:radio[name='pagoRapidoTrasferencia']");
                     oblig.filter("[value='"+response.data[0].Id_PagoRapido+"']").attr('checked', true);
@@ -4521,13 +4850,10 @@
                     $("#cedulaJefe").val(response.data[0].Cedula);
                     var oblig = $("input:radio[name='sexoJefe']");
                     oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
-                    $("#estadoCivilJefe option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
                     $("#parentescoJefeJefe option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
-                    $("#educacionJefe option[value='"+ response.data[0].Id_Educacion +"']").attr("selected",true);
                     $("#fechaNacimientoJefe").val(response.data[0].Fec_Nacimiento);
                     $("#correoJefe").val(response.data[0].Correo);
                     $("#correoAlternoJefe").val(response.data[0].CorreoAlterno);
-                    $("#tipoIngresoJefe option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
                     $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
                     var oblig = $("input:radio[name='frecuenciaCompraJefe']");
                     oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
@@ -4535,6 +4861,13 @@
                     oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
                     $("#celularJefe").val(response.data[0].Celular);
                     $("#celularAdicionalJefe").val(response.data[0].CelularAdicional);
+                    
+                    
+                    cargarEducacion('#educacionJefe',response.data[0].Id_Educacion);
+                    cargarEstadoCivil('#estadoCivilJefe',response.data[0].Id_EstadoCivil);
+                    cargarParentesco('#parentescoJefeJefe',response.data[0].Id_Parentesco);
+                    cargarTipoIngreso('#tipoIngresoJefe',response.data[0].Id_TipoIngreso);
+        
                 }
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
@@ -4558,11 +4891,11 @@
             })
         }
     }
-    // 22222
+    // vvvvvvvvvvvvvv
 function EditAction(data) {
-    document.getElementById('FormAtributoEdit').reset();
+    document.getElementById('FormPanelistaEdit').reset();
     var settings = {
-        "url": '<?php echo urlApi; ?>getAtributo6Id/' + data,
+        "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -4570,14 +4903,30 @@ function EditAction(data) {
         }
     }
     $.ajax(settings).done(function(response) {
-        $('#inputIdEditAtributo').val(response.data[0].Id_Atributo);
-        cargarCategoriaEdit(response.data[0].id_Categoria);
-        $('#inputAtributoEdit').val(response.data[0].Atributo);
-        //$('#inputAtributoEdit').val(response.data[0].Tamano);
-        //Number.parseFloat(response.data[0].Tamano).toFixed(3);
+        $('#primerNombreComposicionEdit').val(response.data[0].Nombre1);
+        $('#segundoNombreComposicionEdit').val(response.data[0].Nombre2);
+        $('#primerApellidoComposicionEdit').val(response.data[0].Apellido1);
+        $('#segundoApellidoComposicionEdit').val(response.data[0].Apellido2);
+        var oblig = $("input:radio[name='nacionalidadComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
+        $('#cedulaComposicionEdit').val(response.data[0].Cedula);
+        var oblig = $("input:radio[name='sexoComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
+        cargarEstadoCivil('#estadoCivilComposicionEdit',response.data[0].Id_EstadoCivil);
+        cargarParentesco('#parentescoJefeComposicionEdit',response.data[0].Id_Parentesco);
+        cargarEducacion('#educacionComposicionEdit',response.data[0].Id_Educacion);
+        $('#celularComposicionEdit').val(response.data[0].Celular);
+        $('#celularAdicionalComposicionEdit').val(response.data[0].CelularAdicional);
+        $('#correoComposicionEdit').val(response.data[0].Correo);
+        cargarTipoIngreso('#tipoIngresoComposicionEdit',response.data[0].Id_TipoIngreso);
+        $('#inputIdEditComposicion').val(response.data[0].Id_Panelista);
+        var oblig = $("input:radio[name='beneficioSocialistaComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
         var oblig = $("input:radio[name='activoEdit']");
         oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        $('#modal-AtributoEditar').modal('show');
+        
+        
+        $('#modal-PanelistaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -4600,6 +4949,150 @@ function EditAction(data) {
     })
 }
 
+function deleteAction(data) {
+    Swal.fire({
+        title: '¿Estas seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Sí, bórralo!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var settings = {
+                "url": '<?php echo urlApi; ?>deletePanelista/' + data,
+                "method": "get",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+            }
+            $.ajax(settings).done(function(response) {
+                var DatosJson = JSON.parse(JSON.stringify(response));
+                Swal.fire({
+                    title: DatosJson.message,
+                    width: '350px',
+                    height: '45px'
+                }).then(function() {
+                    let xtable = $('#TableAtributo').DataTable();
+                    xtable.ajax.reload(null, false);
+                });
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+    })
+}
+
+
+
+function ActualizarRegistro() {
+    //if ($("#FormAtributoEdit").valid()) {
+    if (true) {
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": '<?php echo urlApi; ?>updatePanelista',
+            "method": "post",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "idPanelista": $("#inputIdEditComposicion").val(),
+                "primerNombreComposicionEdit": $("#primerNombreComposicionEdit").val(),
+                "segundoNombreComposicionEdit": $("#segundoNombreComposicionEdit").val(),
+                "primerApellidoComposicionEdit": $("#primerApellidoComposicionEdit").val(),
+                "segundoApellidoComposicionEdit": $("#segundoApellidoComposicionEdit").val(),
+                "cedulaComposicionEdit": $("#cedulaComposicionEdit").val(),
+                "celularComposicionEdit": $("#celularComposicionEdit").val(),
+                "celularAdicionalComposicionEdit": $("#celularAdicionalComposicionEdit").val(),
+                "correoComposicionEdit": $("#correoComposicionEdit").val(),
+
+                "estadoCivilComposicionEdit": $("#estadoCivilComposicionEdit").val(),
+                "parentescoJefeComposicionEdit": $("#parentescoJefeComposicionEdit").val(),
+                "educacionComposicionEdit": $("#educacionComposicionEdit").val(),
+                "tipoIngresoComposicionEdit": $("#tipoIngresoComposicionEdit").val(),
+                "fechaNacimientoComposicionEdit": $("#fechaNacimientoComposicionEdit").val(),
+
+                "nacionalidadComposicionEdit": $('input:radio[name=nacionalidadComposicionEdit]:checked').val(),
+                "sexoComposicionEdit": $('input:radio[name=sexoComposicionEdit]:checked').val(),
+                "beneficioSocialistaComposicionEdit": $('input:radio[name=beneficioSocialistaComposicionEdit]:checked').val(),
+
+
+                "activo": $('input:radio[name=activoEdit]:checked').val(),
+
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            ///let xtable = $('#TableAtributo').DataTable();
+            //xtable.ajax.reload(null, false);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.message,
+                confirmButtonText: `Ok`,
+            })
+            cargarTablaComposicion($("#identificacion2Hogar").val());
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Actualizacion Panelista",$("#inputIdEditComposicion").val(),"U");
+            var form = document.querySelector('#FormPanelistaEdit');
+            form.reset();
+            $('#modal-PanelistaEditar').modal('hide');
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'info',
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                var form = document.querySelector('#FormUsuariosEdit');
+                form.reset();
+                window.location = '/homepantry20/index.php';
+            }
+        })
+    }
+}
+
     
     function HogarEditar() {
         
@@ -4619,17 +5112,37 @@ function EditAction(data) {
             // Paso 1
             $("#estadoHogar option[value='"+ response.data[0].Id_Estado +"']").attr("selected",true);
             var Estado = $("#estadoHogar").val();
-            cargarCiudad(Estado,response.data[0].Id_Ciudad);
-            cargarMunicipio(Estado,response.data[0].Id_Municipio);
-            var Municipio = localStorage.getItem("idMunicipio");
-            cargarParroquia(Municipio,response.data[0].Id_Parroquia);
+            cargarEstado("#estadoHogar",response.data[0].Id_Estado);
+            cargarCiudad(response.data[0].Id_Estado,response.data[0].Id_Ciudad);
+            cargarMunicipio(response.data[0].Id_Estado,response.data[0].Id_Municipio);
+            ///var Municipio = localStorage.getItem("idMunicipio");
+            cargarParroquia(response.data[0].Id_Municipio,response.data[0].Id_Parroquia);
             // aaa
-            $('#calle').val(response.data[0].calle);
+            var oblig = $("input:radio[name='calle']");
+            oblig.filter("[value='"+response.data[0].Ind_CalleAvenidad+"']").attr('checked', true);
+            $('#nombreCalle').val(response.data[0].calle);
+            
+            if (response.data[0].Piso == ''){
+                var oblig = $("input:radio[name='vivienda']");
+                oblig.filter("[value='vivienda']").attr('checked', true);
+                $("#divVivienda").show();
+            oblig.filter("[value='vivienda']").attr('checked', true);
+            }else{
+                var oblig = $("input:radio[name='vivienda']");
+                oblig.filter("[value='edificio']").attr('checked', true);
+                $("#divEdificio").show();
+            }
+            
             $('#nombreEdificio').val(response.data[0].Edificio);
             $('#nombreCasa').val(response.data[0].Casa);
             $('#escaleraCasa').val(response.data[0].Escalera);
             $('#pisoHogar').val(response.data[0].Piso);
             $('#apartamentoEdificio').val(response.data[0].Apto);
+            
+            var oblig = $("input:radio[name='tipoZona']");
+            oblig.filter("[value='"+response.data[0].Ind_BarrioUrbanizacion+"']").attr('checked', true);
+            $('#nombreCalle').val(response.data[0].calle);
+            
             $('#nombreTipoZona').val(response.data[0].barrio);
             $('#referenciaHogar').val(response.data[0].Referencia);
             $('#telefonoHogar').val(response.data[0].TelefonoLocal);
@@ -4638,19 +5151,34 @@ function EditAction(data) {
             // Composición del Hogar
             cargarTablaComposicion(idHogar); // ****
             // Características y tenencia de la vivienda
-            $("#tipoVivienda option[value='"+ response.data[0].Id_TipoVivienda +"']").attr("selected",true);
+            
+            cargarTipoVivienda('#tipoVivienda',response.data[0].Id_TipoVivienda);
+            cargarMetrosVivienda('#metrosVivienda',response.data[0].id_Metros);
+            cargarOcupacionVivienda('#ocupacionVivienda',response.data[0].Id_OcupacionVivienda);
+            cargarPuntosLuz('#puntosLuz',response.data[0].id_PuntosLuz);
+            cargarMontoVivienda('#montoVivienda',response.data[0].Id_MontoVivienda);
+            // Servicios Públicos
+            cargarAguasBlancas('#aguasBlancas',response.data[0].Id_AguasBlancas);
+            cargarAguasNegras('#aguasNegras',response.data[0].Id_AguasNegras);
+            cargarAseoUrbano('#aseoUrbano',response.data[0].Id_AseoUrbano);
+            // TV
+            cargarCantidadTV('#cantidadTV',response.data[0].Id_Televisores)
+            cargarTipoTV('#tipoTV',response.data[0].Id_TipoTelevisores)
+            cargarSenal('#Senal',response.data[0].Id_Senal)
+            // Medios
+            cargarCablera('#cablera1',response.data[0].Id_Cablera1);
+            cargarCablera('#cablera2',response.data[0].Id_Cablera2);
+            cargarTvOnline('#tvOnline1',response.data[0].Id_TelevisionOnline1)
+            cargarTvOnline('#tvOnline2',response.data[0].Id_TelevisionOnline2)
+            // Vehiculos
+            cargarAutos('#totalAutos',response.data[0].Id_Autos);
+            
             $('#especifiqueTipoVivienda').val(response.data[0].OtroTipoVivienda);
-            $("#metrosVivienda option[value='"+ response.data[0].id_Metros +"']").attr("selected",true);
             $('#numeroAmbientes').val(response.data[0].NumeroAmbientes);
             $('#numeroBanos').val(response.data[0].NumeroBanos);
-            $("#puntosLuz option[value='"+ response.data[0].id_PuntosLuz +"']").attr("selected",true);
             $("#ocupacionVivienda option[value='"+ response.data[0].Id_OcupacionVivienda +"']").attr("selected",true);
             $('#especifiqueOcupacionVivienda').val(response.data[0].OtroOcupacionVivienda);
-            $("#montoVivienda option[value='"+ response.data[0].Id_MontoVivienda +"']").attr("selected",true);
             // Servicios Públicos
-            $("#aguasBlancas option[value='"+ response.data[0].Id_AguasBlancas +"']").attr("selected",true);
-            $('#aguasNegras').val(response.data[0].Id_AguasNegras);
-            $("#aseoUrbano option[value='"+ response.data[0].Id_AseoUrbano +"']").attr("selected",true);
             var oblig = $("input:radio[name='servicioElectricidad']");
             oblig.filter("[value='"+response.data[0].Id_ServicioElectricidad+"']").attr('checked', true);
             var oblig = $("input:radio[name='servicioTelefonico']");
@@ -4665,6 +5193,7 @@ function EditAction(data) {
             var oblig = $("input:radio[name='domesticaXDia']");
             oblig.filter("[value='"+response.data[0].Id_DomesticaDia+"']").attr('checked', true);
             var oblig = $("input:radio[name='conexionInternetTlf']");
+            
             oblig.filter("[value='"+response.data[0].id_ConexionInternet1+"']").attr('checked', true);
             var oblig = $("input:radio[name='conexionInternetMovil']");
             oblig.filter("[value='"+response.data[0].id_ConexionInternet2+"']").attr('checked', true);
@@ -4735,9 +5264,11 @@ function EditAction(data) {
             $("#cablera2 option[value='"+ response.data[0].Id_Cablera2 +"']").attr("selected",true);
             $("#tvOnline1 option[value='"+ response.data[0].Id_TelevisionOnline1 +"']").attr("selected",true);
             $("#tvOnline2 option[value='"+ response.data[0].Id_TelevisionOnline2 +"']").attr("selected",true);
-            var oblig = $("input:radio[name='escucharRadio']");
+            
             if(response.data[0].id_FM == 1 || response.data[0].id_AM == 1){
+                var oblig = $("input:radio[name='escucharRadio']");
                 oblig.filter("[value='1']").attr('checked', true);
+                $("#divEmisora").show();
                 if(response.data[0].id_FM == 1){
                     $("#FM").prop("checked", true);
                 }
@@ -4747,6 +5278,9 @@ function EditAction(data) {
             }else{
                 oblig.filter("[value='2']").attr('checked', true);
             }
+            
+            
+            
             // Vehículos
             $("#totalAutos option[value='"+ response.data[0].Id_Autos +"']").attr("selected",true);
             var oblig = $("input:radio[name='moto']");
@@ -4847,6 +5381,7 @@ function EditAction(data) {
             }
         })
     }
+    // zzzzzzzzzzzzzzzzzzz
     function cargarCiudad(parametro,idS) {
         var settings = {
             "url": '<?php echo urlApi; ?>getCiudadId/' + parametro,
@@ -5026,14 +5561,7 @@ function EditAction(data) {
         });
     }
 </script>
-// ****
-<script type="text/javascript">
-    $(document).ready(function() {
-        //var id_Hogar = $("#identificacion2Hogar").val();
-        //var id_Hogar = localStorage.getItem('idHogar');
-        //localStorage.removeItem('idHogar')
-    });
-</script>
+
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js')?>"></script>

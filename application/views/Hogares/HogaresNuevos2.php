@@ -149,7 +149,7 @@
                                         <label class="form-check-label">Carrera</label>
                                     </div>
                                     <div class="inputText font-weight-bold">Nombre:</div>
-                                    <input type="text" class="form-control input-sm" id="nombreCalle" name="nombreCasa" placeholder="Nombre de la quinta ...">
+                                    <input type="text" class="form-control input-sm" id="nombreCalle" name="nombreCalle" placeholder="Nombre de la quinta ...">
                                 </div>
                             </div>
                         </div>
@@ -536,157 +536,177 @@
                 </form>
             </div>
             <div id="step-3">
-                <form id="formJefeHogar" action="" method="post">
-                    <h2 class="text-center">Jefe del Hogar</h2>
-                    <div class="row">
-                        <div class="col-md-3">
+                <h2 class="text-center">Jefe del Hogar</h2>
+                        
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="inputText font-weight-bold">¿Jefe de Familia es igual al responsable?</div>
+                        <div class="card">
                             <div class="form-group">
-                                <div class="inputText font-weight-bold">Primer nombre:</div>
-                                <input type="text" class="form-control input-sm" id="primerNombreJefe" name="primerNombreJefe" placeholder="Ingrese Primer nombre ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Segundo nombre:</div>
-                                <input type="text" class="form-control input-sm" id="segundoNombreJefe" name="segundoNombreJefe" placeholder="Ingrese Segundo nombre ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Primer apellido:</div>
-                                <input type="text" class="form-control input-sm" id="primerApellidoJefe" name="primerApellidoJefe" placeholder="Ingrese Primer apellido ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Segundo apellido:</div>
-                                <input type="text" class="form-control input-sm" id="segundoApellidoJefe" name="segundoApellidoJefe" placeholder="Ingrese Segundo apellido ...">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Nacionalidad</div>
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="nacionalidadJefe" value="1">
-                                        <label class="form-check-label">Venezolano</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="nacionalidadJefe" value="2">
-                                        <label class="form-check-label">Extranjero</label>
-                                    </div>
+                                <div class="form-check d-inline">
+                                    <input class="form-check-input" type="radio" class="responsableJefeSN" id="responsableJefeNO" name="jefeResponsableIO" value="0">
+                                    <label class="form-check-label">No</label>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Cedula:</div>
-                                <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaJefe" placeholder="Ingrese Cedula ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Sexo:</div>
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="sexoJefe" name="sexoJefe" value="1">
-                                        <label class="form-check-label">Femenino</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="sexoJefe" name="sexoJefe" value="2">
-                                        <label class="form-check-label">Masculino</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Estado civil:</div>
-                                <select class="custom-select form-control-border" id="estadoCivilJefe">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
-                                <select class="custom-select form-control-border" id="parentescoJefeJefe">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Educacion:</div>
-                                <select class="custom-select form-control-border" id="educacionJefe">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                <input type="date" class="form-control input-sm" id="fechaNacimientoJefe" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Edad:</div>
-                                <input type="number" class="form-control input-sm" id="edadJefe" placeholder="(Valor Calculado) ..." readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Celular:</div>
-                                <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularJefe" name="celularJefe" placeholder="Ingrese Celular...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Celular adicional:</div>
-                                <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalJefe" name="celularAdicionalJefe" placeholder="Ingrese Celular adicional ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Correo:</div>
-                                <input type="email" class="form-control input-sm" id="correoJefe" name="correoJefe" placeholder="Ingrese correo ...">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Tipo de ingreso:</div>
-                                <select class="custom-select form-control-border" id="tipoIngresoJefe">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="2">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
+                                <div class="form-check d-inline">
+                                    <input class="form-check-input" type="radio" class="responsableJefeSN" id="responsableJefeSi" name="jefeResponsableIO" value="1">
+                                    <label class="form-check-label">Si</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                </div>
+                <div id="divResponsableJefe" style="visibility:hidden;">
+                    <form id="formJefeHogar" action="" method="post">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Primer nombre:</div>
+                                    <input type="text" class="form-control input-sm" id="primerNombreJefe" name="primerNombreJefe" placeholder="Ingrese Primer nombre ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                    <input type="text" class="form-control input-sm" id="segundoNombreJefe" name="segundoNombreJefe" placeholder="Ingrese Segundo nombre ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Primer apellido:</div>
+                                    <input type="text" class="form-control input-sm" id="primerApellidoJefe" name="primerApellidoJefe" placeholder="Ingrese Primer apellido ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                    <input type="text" class="form-control input-sm" id="segundoApellidoJefe" name="segundoApellidoJefe" placeholder="Ingrese Segundo apellido ...">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="inputText font-weight-bold">Nacionalidad</div>
+                                <div class="card">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="nacionalidadJefe" value="1">
+                                            <label class="form-check-label">Venezolano</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="nacionalidadJefe" value="2">
+                                            <label class="form-check-label">Extranjero</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Cedula:</div>
+                                    <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaJefe" placeholder="Ingrese Cedula ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="inputText font-weight-bold">Sexo:</div>
+                                <div class="card">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="sexoJefe" name="sexoJefe" value="1">
+                                            <label class="form-check-label">Femenino</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="sexoJefe" name="sexoJefe" value="2">
+                                            <label class="form-check-label">Masculino</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Estado civil:</div>
+                                    <select class="custom-select form-control-border" id="estadoCivilJefe">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                    <select class="custom-select form-control-border" id="parentescoJefeJefe">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Educacion:</div>
+                                    <select class="custom-select form-control-border" id="educacionJefe">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                    <input type="date" class="form-control input-sm" id="fechaNacimientoJefe" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Edad:</div>
+                                    <input type="number" class="form-control input-sm" id="edadJefe" placeholder="(Valor Calculado) ..." readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Celular:</div>
+                                    <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularJefe" name="celularJefe" placeholder="Ingrese Celular...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Celular adicional:</div>
+                                    <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalJefe" name="celularAdicionalJefe" placeholder="Ingrese Celular adicional ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Correo:</div>
+                                    <input type="email" class="form-control input-sm" id="correoJefe" name="correoJefe" placeholder="Ingrese correo ...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                    <select class="custom-select form-control-border" id="tipoIngresoJefe">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
+                                <div class="card">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="2">
+                                            <label class="form-check-label">No</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="1">
+                                            <label class="form-check-label">Si</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                                <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div id="step-4">
                 <div class="row">
@@ -884,7 +904,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <table id="TableHogar" class="table table-bordered table-striped table-md">
+                                        <table id="TablePanelistas" class="table table-bordered table-striped table-md">
                                             <thead>
                                                 <tr>
                                                     <th>Nombres</th>
@@ -1711,7 +1731,219 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal vvvvvvvvvvvvv-->
+
+<div class="modal fade" id="modal-PanelistaEditar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Atributo</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormPanelistaEdit">
+                            <div class="row">t
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Primer nombre:</div>
+                                                        <input type="text" class="form-control input-sm" id="primerNombreComposicionEdit" name="primerNombreComposicionEdit" placeholder="Ingrese Primer nombre ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                                        <input type="text" class="form-control input-sm" id="segundoNombreComposicionEdit" name="segundoNombreComposicionEdit" placeholder="Ingrese Segundo nombre ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Primer apellido:</div>
+                                                        <input type="text" class="form-control input-sm" id="primerApellidoComposicionEdit" name="primerApellidoComposicionEdit" placeholder="Ingrese Primer apellido ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                                        <input type="text" class="form-control input-sm" id="segundoApellidoComposicionEdit" name="segundoApellidoComposicionEdit" placeholder="Ingrese Segundo apellido ...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Nacionalidad</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionEdit" name="nacionalidadComposicionEdit" value="1">
+                                                                <label class="form-check-label">Venezolano</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionEdit" name="nacionalidadComposicionEdit" value="2">
+                                                                <label class="form-check-label">Extranjero</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Cedula:</div>
+                                                        <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaComposicionEdit" name="cedulaComposicionEdit" placeholder="Ingrese Cedula ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Sexo:</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="sexoComposicionEdit" name="sexoComposicionEdit" value="1">
+                                                                <label class="form-check-label">Femenino</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="sexoComposicionEdit" name="sexoComposicionEdit" value="2">
+                                                                <label class="form-check-label">Masculino</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Estado civil:</div>
+                                                        <select class="custom-select form-control-border" id="estadoCivilComposicionEdit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                                        <select class="custom-select form-control-border" id="parentescoJefeComposicionEdit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Educacion:</div>
+                                                        <select class="custom-select form-control-border" id="educacionComposicionEdit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                                        <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionEdit" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Edad:</div>
+                                                        <input type="number" class="form-control input-sm" id="edadComposicionEdit" placeholder="(Valor Calculado) ..." readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Celular:</div>
+                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularComposicionEdit" name="celularComposicion" placeholder="Ingrese Celular...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Celular adicional:</div>
+                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalComposicionEdit" name="celularAdicionalComposicionEdit" placeholder="Ingrese Celular adicional ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Correo:</div>
+                                                        <input type="email" class="form-control input-sm" id="correoComposicionEdit" name="correoComposicionEdit" placeholder="Ingrese correo ...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                                        <select class="custom-select form-control-border" id="tipoIngresoComposicionEdit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicion" value="2">
+                                                                <label class="form-check-label">No</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicion" value="1">
+                                                                <label class="form-check-label">Si</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Activo:</div>
+                                                        <div class="card">
+                                                            <div class="form-group">
+                                                            <div class="form-check d-inline">
+                                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                                    <label class="form-check-label">No</label>
+                                                                </div>
+                                                                <div class="form-check d-inline">
+                                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                                    <label class="form-check-label">Si</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="row" style="visibility:hidden;">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="inputIdEditComposicion">id:</label>
+                                                        <input type="text" name="inputIdEditComposicion" id="inputIdEditComposicion"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="button" onclick="ActualizarRegistro()" id="editComposicion"
+                                                value="Guardar" class="btn btn-success float-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
 <script>
     fechaNacimientoResponsable.max = new Date().toISOString().split("T")[0];
     fechaNacimientoJefe.max = new Date().toISOString().split("T")[0];
@@ -2022,48 +2254,55 @@
     if (Codi_Hogar != ""){
         $("#identificacion1Hogar").val(Codi_Hogar);
     }*/
-    cargarEstado('#estadoHogar');
-    // Responsable del Hogar
-    cargarEstadoCivil('#estadoCivilResponsable');
-    cargarParentesco('#parentescoJefeResponsable');
-    cargarEducacion('#educacionResponsable');
-    cargarTipoIngreso('#tipoIngresoResponsable');
-    cargarBanco('#bancoTransferenciaResponsable');
-    // Jefe del Hogar
-    cargarEstadoCivil('#estadoCivilJefe');
-    cargarParentesco('#parentescoJefeJefe');
-    cargarEducacion('#educacionJefe');
-    cargarTipoIngreso('#tipoIngresoJefe');
-    // Composicion del Hogar
-    cargarEstadoCivil('#estadoCivilComposicion');
-    cargarParentesco('#parentescoJefeComposicion');
-    cargarEducacion('#educacionComposicion');
-    cargarTipoIngreso('#tipoIngresoComposicion');
-    // Características y tenencia de la vivienda
-    cargarTipoVivienda('#tipoVivienda');
-    cargarMetrosVivienda('#metrosVivienda');
-    cargarOcupacionVivienda('#ocupacionVivienda');
-    cargarPuntosLuz('#puntosLuz');
-    cargarMontoVivienda('#montoVivienda');
-    // Servicios Públicos
-    cargarAguasBlancas('#aguasBlancas');
-    cargarAguasNegras('#aguasNegras');
-    cargarAseoUrbano('#aseoUrbano');
-    // TV
-    cargarCantidadTV('#cantidadTV')
-    cargarTipoTV('#tipoTV')
-    cargarSenal('#Senal')
-    // Medios
-    cargarCablera('#cablera1');
-    cargarCablera('#cablera2');
-    cargarTvOnline('#tvOnline1')
-    cargarTvOnline('#tvOnline2')
-    // Vehiculos
-    cargarAutos('#totalAutos');
-    editHogar();
-    editPanelista(1,0);
-    editPanelista(0,1);
+    
+    if (localStorage.getItem("idHogarEditar") !== null) {
+        HogarEditar();
+        var idHogar = localStorage.getItem("idHogarEditar");
+        editPanelista(idHogar,1,0);
+        editPanelista(idHogar,0,1);
     localStorage.removeItem('idHogar');// ****
+    }else{
+        cargarEstado('#estadoHogar',0);
+        // Responsable del Hogar
+        cargarEstadoCivil('#estadoCivilResponsable',0);
+        cargarParentesco('#parentescoJefeResponsable',0);
+        cargarEducacion('#educacionResponsable',0);
+        cargarTipoIngreso('#tipoIngresoResponsable',0);
+        cargarBanco('#bancoTransferenciaResponsable',0);
+        // Jefe del Hogar
+        cargarEstadoCivil('#estadoCivilJefe',0);
+        cargarParentesco('#parentescoJefeJefe',0);
+        cargarEducacion('#educacionJefe',0);
+        cargarTipoIngreso('#tipoIngresoJefe',0);
+        // Composicion del Hogar
+        cargarEstadoCivil('#estadoCivilComposicion',0);
+        cargarParentesco('#parentescoJefeComposicion',0);
+        cargarEducacion('#educacionComposicion',0);
+        cargarTipoIngreso('#tipoIngresoComposicion',0);
+        // Características y tenencia de la vivienda
+        cargarTipoVivienda('#tipoVivienda',0);
+        cargarMetrosVivienda('#metrosVivienda',0);
+        cargarOcupacionVivienda('#ocupacionVivienda',0);
+        cargarPuntosLuz('#puntosLuz',0);
+        cargarMontoVivienda('#montoVivienda',0);
+        // Servicios Públicos
+        cargarAguasBlancas('#aguasBlancas',0);
+        cargarAguasNegras('#aguasNegras',0);
+        cargarAseoUrbano('#aseoUrbano',0);
+        // TV
+        cargarCantidadTV('#cantidadTV',0);
+        cargarTipoTV('#tipoTV',0);
+        cargarSenal('#Senal',0);
+        // Medios
+        cargarCablera('#cablera1',0);
+        cargarCablera('#cablera2',0);
+        cargarTvOnline('#tvOnline1',0);
+        cargarTvOnline('#tvOnline2',0);
+        // Vehiculos
+        cargarAutos('#totalAutos',0);
+    }
+    
+    
     // 11111
     $("#guardar-step-1").click(function() {
         var camposVacios = "";
@@ -2138,6 +2377,7 @@
                 },
                 "data": {
                     "identificacion1Hogar": $("#identificacion1Hogar").val(),
+                    "Id_Hogar": $("#identificacion2Hogar").val(),
                     "Id_estadoHogar": $("#estadoHogar").val(),
                     "Id_ciudadHogar": $("#ciudadHogar").val(),
                     "Id_municipioHogar": $("#municipioHogar").val(),
@@ -3341,8 +3581,130 @@
 
 
     $("#guardar-step-11").click(function() {
+        
+            var Perro = document.getElementById('Perro').checked ? 1 : 0;
+            var Gato = document.getElementById('Gato').checked ? 1 : 0;
+            var Pez = document.getElementById('Pez').checked ? 1 : 0;
+            var Ave = document.getElementById('Ave').checked ? 1 : 0;
+            var Roedor = document.getElementById('Roedor').checked ? 1 : 0;
+            var Otro = document.getElementById('Otro').checked ? 1 : 0;
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": '<?php echo urlApi; ?>calcularNSE/',
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+                "data": {
+                    "Id_Hogar": $("#identificacion2Hogar").val(),
+                    "educacionResponsable": $("#educacionResponsable").val(),
+                    "tipoIngresoResponsable": $("#tipoIngresoResponsable").val(),
+                    "beneficioSocialistaResponsable": $("#beneficioSocialistaResponsable").val(),
+                    "educacionJefe": $("#educacionJefe").val(),
+                    "tipoIngresoJefe": $("#tipoIngresoJefe").val(),
+                    "beneficioSocialistaJefe": $("#beneficioSocialistaJefe").val(),
+                    "tipoVivienda": $("#tipoVivienda").val(),
+                    "metrosVivienda": $("#metrosVivienda").val(),
+                    "puntosLuz": $("#puntosLuz").val(),
+                    "ocupacionVivienda": $("#ocupacionVivienda").val(),
+                    "montoVivienda": $("#montoVivienda").val(),
+                    "aguasBlancas": $("#aguasBlancas").val(),
+                    "aguasNegras": $("#aguasNegras").val(),
+                    "aseoUrbano": $("#aseoUrbano").val(),
+                    "servicioElectricidad": $('input:radio[name=servicioElectricidad]:checked').val(),
+                    "servicioTelefonico": $('input:radio[name=servicioTelefonico]:checked').val(),
+                    "domesticaFija": $('input:radio[name=domesticaFija]:checked').val(),
+                    "laboresFijas": $('input:radio[name=laboresFijas]:checked').val(),
+                    "domesticaXDia": $('input:radio[name=domesticaXDia]:checked').val(),
+                    "conexionInternetTlf": $('input:radio[name=conexionInternetTlf]:checked').val(),
+                    "conexionInternetMovil": $('input:radio[name=conexionInternetMovil]:checked').val(),
+                    "conexionInternetBandaAncha": $('input:radio[name=conexionInternetBandaAncha]:checked').val(),
+                    "celularJefeFamilia": $('input:radio[name=celularJefeFamilia]:checked').val(),
+                    "seguroHcmJefeFamilia": $('input:radio[name=seguroHcmJefeFamilia]:checked').val(),
+                    "seguroHcmEmpresaJefeFamilia": $('input:radio[name=seguroHcmEmpresaJefeFamilia]:checked').val(),
+                    "seguroSocialJefeFamilia": $('input:radio[name=seguroSocialJefeFamilia]:checked').val(),
+                    "aireAcondicionado": $('input:radio[name=aireAcondicionado]:checked').val(),
+                    "calentadorAguaElectrico": $('input:radio[name=calentadorAguaElectrico]:checked').val(),
+                    "calentadorAguaGas": $('input:radio[name=calentadorAguaGas]:checked').val(),
+                    "computadorPersonal": $('input:radio[name=computadorPersonal]:checked').val(),
+                    "computadorLaptop": $('input:radio[name=computadorLaptop]:checked').val(),
+                    "DVD": $('input:radio[name=DVD]:checked').val(),
+                    "homeTeatro": $('input:radio[name=homeTeatro]:checked').val(),
+                    "juegosVideo": $('input:radio[name=juegosVideo]:checked').val(),
+                    "hornoMicroOnda": $('input:radio[name=hornoMicroOnda]:checked').val(),
+                    "cocinaElectrica": $('input:radio[name=cocinaElectrica]:checked').val(),
+                    "cocinaGasBombona": $('input:radio[name=cocinaGasBombona]:checked').val(),
+                    "cocinaGasDirecto": $('input:radio[name=cocinaGasDirecto]:checked').val(),
+                    "cocinaKerosene": $('input:radio[name=cocinaKerosene]:checked').val(),
+                    "secadoraRopa": $('input:radio[name=secadoraRopa]:checked').val(),
+                    "lavadoraAutomatica": $('input:radio[name=lavadoraAutomatica]:checked').val(),
+                    "lavadoraSemiAutomatica": $('input:radio[name=lavadoraSemiAutomatica]:checked').val(),
+                    "lavadoraRodillo": $('input:radio[name=lavadoraRodillo]:checked').val(),
+                    "nevera": $('input:radio[name=nevera]:checked').val(),
+                    "freezer": $('input:radio[name=freezer]:checked').val(),
+                    "lavaplatos": $('input:radio[name=lavaplatos]:checked').val(),
+                    "cantidadTV": $("#cantidadTV").val(),
+                    "tipoTV": $("#tipoTV").val(),
+                    "Senal": $("#Senal").val(),
+                    "totalAutos": $("#totalAutos").val(),
+                    "moto": $('input:radio[name=moto]:checked').val(),
+                    "Ind_Perro": Perro,
+                    "Ind_Gato": Gato,
+                    "Ind_Pez": Pez,
+                    "Ind_Ave": Ave,
+                    "Ind_Roedor": Roedor,
+                    "Ind_Otro": Otro
+                }
+            }
+            $.ajax(settings).done(function(response) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
+                
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    var form = document.querySelector('#FormPaisEdit');
+                    form.reset();
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
 
-    });
+    );
+    
+    
     /* cccc */
     function Bitacora(idUsuario,IP,Operacion,idPrincipal,CRUD) {
     var urlApi = localStorage.getItem("urlApi");
@@ -3405,6 +3767,16 @@
         }
     }
     $(function() {
+        $("input[name='jefeResponsableIO']").click(function() {
+                
+            if ($("#responsableJefeNo").is(":checked")) {
+                $('#divResponsableJefe').css("visibility","visible");
+            } else {
+                $('#divResponsableJefe').css("visibility","hidden");
+            }
+        });
+    });
+    $(function() {
         $("input[name='escucharRadio']").click(function() {
             if ($("#emisoraSi").is(":checked")) {
                 $("#divEmisora").show();
@@ -3433,7 +3805,8 @@
             }
         });
     });
-    function cargarEstado(identificador) {
+    // zzzzzzzzzzzzzzzzz
+    function cargarEstado(identificador,idS) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllEstado/',
             "method": "get",
@@ -3445,11 +3818,17 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (idS == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
-                    .data[i]
-                    .Estado + "</option>");
+                if (response.data[i].id === idS){
+                    selected.append("<option value=" + response.data[i].id + " selected>" + response
+                    .data[i].Estado + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i].Estado + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3472,7 +3851,7 @@
             }
         })
     }
-    function cargarAutos(identificador) {
+    function cargarAutos(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllAutos/',
             "method": "get",
@@ -3484,11 +3863,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .Autos + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Autos + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3511,7 +3898,7 @@
             }
         })
     }
-    function cargarCantidadTV(identificador) {
+    function cargarCantidadTV(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getCantidadTV/',
             "method": "get",
@@ -3523,11 +3910,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .Televisores + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Televisores + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3550,7 +3945,7 @@
             }
         })
     }
-    function cargarTipoTV(identificador) {
+    function cargarTipoTV(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getTipoTV/',
             "method": "get",
@@ -3562,11 +3957,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .TipoTelevisores + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .TipoTelevisores + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3589,7 +3992,7 @@
             }
         })
     }
-    function cargarSenal(identificador) {
+    function cargarSenal(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getSenal/',
             "method": "get",
@@ -3601,11 +4004,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .Senal + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Senal + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3628,7 +4039,7 @@
             }
         })
     }
-    function cargarAguasBlancas(identificador) {
+    function cargarAguasBlancas(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllAguasBlancas/',
             "method": "get",
@@ -3640,11 +4051,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .AguasBlancas + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .AguasBlancas + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3667,7 +4086,7 @@
             }
         })
     }
-    function cargarAguasNegras(identificador) {
+    function cargarAguasNegras(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllAguasNegras/',
             "method": "get",
@@ -3679,11 +4098,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .AguasNegras + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .AguasNegras + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3706,7 +4133,7 @@
             }
         })
     }
-    function cargarAseoUrbano(identificador) {
+    function cargarAseoUrbano(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllAseoUrbano/',
             "method": "get",
@@ -3718,11 +4145,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .AseoUrbano + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .AseoUrbano + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3745,7 +4180,7 @@
             }
         })
     }
-    function cargarMontoVivienda(identificador) {
+    function cargarMontoVivienda(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllMontoVivienda/',
             "method": "get",
@@ -3757,11 +4192,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .MontoVivienda + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .MontoVivienda + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3784,7 +4227,7 @@
             }
         })
     }
-    function cargarPuntosLuz(identificador) {
+    function cargarPuntosLuz(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllPuntosLuz/',
             "method": "get",
@@ -3796,11 +4239,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .PuntosLuz + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .PuntosLuz + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3823,7 +4274,7 @@
             }
         })
     }
-    function cargarOcupacionVivienda(identificador) {
+    function cargarOcupacionVivienda(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllOcupacionVivienda/',
             "method": "get",
@@ -3835,11 +4286,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .Ocupacion + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Ocupacion + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3862,7 +4321,7 @@
             }
         })
     }
-    function cargarMetrosVivienda(identificador) {
+    function cargarMetrosVivienda(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllMetrosVivienda/',
             "method": "get",
@@ -3874,11 +4333,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .MetrosVivienda + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .MetrosVivienda + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3901,7 +4368,7 @@
             }
         })
     }
-    function cargarTipoVivienda(identificador) {
+    function cargarTipoVivienda(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllTipoVivienda/',
             "method": "get",
@@ -3913,11 +4380,20 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .TipoVivienda + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .TipoVivienda + "</option>");
+                }
+                
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3958,7 +4434,9 @@
         var parametro3 = $("#municipioHogar").val();
         cargarParroquia(parametro3,0);
     });
-    function cargarTvOnline(identificador) {
+    
+    
+    function cargarTvOnline(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllTvOnline/',
             "method": "get",
@@ -3970,11 +4448,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .TvOnline + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .TvOnline + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -3997,7 +4483,7 @@
             }
         })
     }
-    function cargarCablera(identificador) {
+    function cargarCablera(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getCablera/',
             "method": "get",
@@ -4009,11 +4495,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .OperadoraCable + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .OperadoraCable + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4036,7 +4530,7 @@
             }
         })
     }
-    function cargarBanco(identificador) {
+    function cargarBanco(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllBanco/',
             "method": "get",
@@ -4048,11 +4542,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + "Seleted>" + response
                     .data[i]
                     .banco + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .banco + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4075,7 +4577,7 @@
             }
         })
     }
-    function cargarEducacion(identificador) {
+    function cargarEducacion(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllEducacion/',
             "method": "get",
@@ -4087,11 +4589,20 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + " Seleted>" + response
                     .data[i]
                     .Educacion + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .Educacion + "</option>");
+                }
+                
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4114,7 +4625,7 @@
             }
         })
     }
-    function cargarTipoIngreso(identificador) {
+    function cargarTipoIngreso(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllTipoIngreso/',
             "method": "get",
@@ -4126,11 +4637,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + " Seleted>" + response
                     .data[i]
                     .TipoIngreso + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .TipoIngreso + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4153,7 +4672,7 @@
             }
         })
     }
-    function cargarParentesco(identificador) {
+    function cargarParentesco(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllParentesco/',
             "method": "get",
@@ -4165,11 +4684,19 @@
         $.ajax(settings).done(function(response) {
             let selected = $(identificador);
             selected.find("option").remove();
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selected.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + " Seleted>" + response
                     .data[i]
                     .parentesco + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .parentesco + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4192,7 +4719,7 @@
             }
         })
     }
-    function cargarEstadoCivil(identificador) {
+    function cargarEstadoCivil(identificador,edit) {
         var settings = {
             "url": '<?php echo urlApi; ?>getAllEstadoCivil/',
             "method": "get",
@@ -4202,13 +4729,21 @@
                 }
         }
         $.ajax(settings).done(function(response) {
-            let selectestadoCivil = $(identificador);
-            selectestadoCivil.find("option").remove();
-            selectestadoCivil.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            let selected = $(identificador);
+            selected.find("option").remove();
+            if (edit == 0){
+                selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            }
             for (var i = 0; i < response.data.length; i++) {
-                selectestadoCivil.append("<option value=" + response.data[i].id + ">" + response
+                if (response.data[i].id == edit){
+                    selected.append("<option value=" + response.data[i].id + " Seleted>" + response
                     .data[i]
                     .EstadoCivil + "</option>");
+                }else{
+                    selected.append("<option value=" + response.data[i].id + ">" + response
+                        .data[i]
+                        .EstadoCivil + "</option>");
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4234,11 +4769,10 @@
     function pad (str, max) {
         str = str.toString(); return str.length < max ? pad("0" + str, max) : str;
     }
-    function editPanelista(responsable,parentesco){
-        if (localStorage.getItem("idHogar") !== null) {
-            var idHogar = localStorage.getItem("idHogar");
+    function editPanelista(idHogar,responsable,parentesco){
+        if (localStorage.getItem("idHogarEditar") !== null) {
             var settings = {
-                "url": '<?php echo urlApi; ?>getPanelistaIdHogar/' + idHogar+'/'+ responsable+'/'+ parentesco+'/',
+                "url": '<?php echo urlApi; ?>getPanelistaIdHogar/' + idHogar+'/'+ responsable+'/'+ parentesco,
                 "method": "get",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -4256,14 +4790,19 @@
                     $("#cedulaResponsable").val(response.data[0].Cedula);
                     var oblig = $("input:radio[name='sexoResponsable']");
                     oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
-                    $("#estadoCivilResponsable option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
-                    $("#parentescoJefeResponsable option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
-                    $("#educacionResponsable option[value='"+ response.data[0].Id_Educacion +"']").attr("selected",true);
+                    //$("#estadoCivilResponsable option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
+                    //$("#parentescoJefeResponsable option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
                     $("#fechaNacimientoResponsable").val(response.data[0].Fec_Nacimiento);
                     $("#correoResponsable").val(response.data[0].Correo);
                     $("#correoAlternoResponsable").val(response.data[0].CorreoAlterno);
-                    $("#tipoIngresoResponsable option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
+                    //$("#tipoIngresoResponsable option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
                     $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
+
+                    cargarEducacion('#educacionResponsable',response.data[0].Id_Educacion);
+                    cargarEstadoCivil('#estadoCivilResponsable',response.data[0].Id_EstadoCivil);
+                    cargarParentesco('#parentescoJefeResponsable',response.data[0].Id_Parentesco);
+                    cargarTipoIngreso('#tipoIngresoResponsable',response.data[0].Id_TipoIngreso);
+                    
                     var oblig = $("input:radio[name='frecuenciaCompraResponsable']");
                     oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
                     if(response.data[0].id_Lunes == 1){
@@ -4296,7 +4835,7 @@
                     var oblig = $("input:radio[name='nacionalidadTransferenciaResponsable']");
                     oblig.filter("[value='"+response.data[0].id_NacionalidadTitular+"']").attr('checked', true);
                     $("#cedulaTransferenciaResponsable").val(response.data[0].CedulaTitular);
-                    $("#bancoTransferenciaResponsable option[value='"+ response.data[0].Id_Banco +"']").attr("selected",true);
+                    cargarBanco('#bancoTransferenciaResponsable',response.data[0].Id_Banco);
                     $("#numeroCuentaResponsable").val(response.data[0].NumeroCuenta);
                     var oblig = $("input:radio[name='pagoRapidoTrasferencia']");
                     oblig.filter("[value='"+response.data[0].Id_PagoRapido+"']").attr('checked', true);
@@ -4311,13 +4850,10 @@
                     $("#cedulaJefe").val(response.data[0].Cedula);
                     var oblig = $("input:radio[name='sexoJefe']");
                     oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
-                    $("#estadoCivilJefe option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
                     $("#parentescoJefeJefe option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
-                    $("#educacionJefe option[value='"+ response.data[0].Id_Educacion +"']").attr("selected",true);
                     $("#fechaNacimientoJefe").val(response.data[0].Fec_Nacimiento);
                     $("#correoJefe").val(response.data[0].Correo);
                     $("#correoAlternoJefe").val(response.data[0].CorreoAlterno);
-                    $("#tipoIngresoJefe option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
                     $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
                     var oblig = $("input:radio[name='frecuenciaCompraJefe']");
                     oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
@@ -4325,6 +4861,13 @@
                     oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
                     $("#celularJefe").val(response.data[0].Celular);
                     $("#celularAdicionalJefe").val(response.data[0].CelularAdicional);
+                    
+                    
+                    cargarEducacion('#educacionJefe',response.data[0].Id_Educacion);
+                    cargarEstadoCivil('#estadoCivilJefe',response.data[0].Id_EstadoCivil);
+                    cargarParentesco('#parentescoJefeJefe',response.data[0].Id_Parentesco);
+                    cargarTipoIngreso('#tipoIngresoJefe',response.data[0].Id_TipoIngreso);
+        
                 }
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
@@ -4348,201 +4891,379 @@
             })
         }
     }
-    function editHogar() {
-        if (localStorage.getItem("idHogar") !== null) {
-            var idHogar = localStorage.getItem("idHogar");
-            var settings = {
-                "url": '<?php echo urlApi; ?>getHogarId/' + idHogar,
-                "method": "get",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
-            }
-            $.ajax(settings).done(function(response) {
-                $("#identificacion1Hogar").val(response.data[0].CodigoHogar);
-                $("#identificacion2Hogar").val(response.data[0].Id_PanelHogar);
-                // Paso 1
-                $("#estadoHogar option[value='"+ response.data[0].Id_Estado +"']").attr("selected",true);
-                var Estado = $("#estadoHogar").val();
-                cargarCiudad(Estado,response.data[0].Id_Ciudad);
-                cargarMunicipio(Estado,response.data[0].Id_Municipio);
-                var Municipio = localStorage.getItem("idMunicipio");
-                cargarParroquia(Municipio,response.data[0].Id_Parroquia);
-                // aaa
-                $('#calle').val(response.data[0].calle);
-                $('#nombreEdificio').val(response.data[0].Edificio);
-                $('#nombreCasa').val(response.data[0].Casa);
-                $('#escaleraCasa').val(response.data[0].Escalera);
-                $('#pisoHogar').val(response.data[0].Piso);
-                $('#apartamentoEdificio').val(response.data[0].Apto);
-                $('#nombreTipoZona').val(response.data[0].barrio);
-                $('#referenciaHogar').val(response.data[0].Referencia);
-                $('#telefonoHogar').val(response.data[0].TelefonoLocal);
-                // Responsable del hogar
-                // Jefe del Hogar
-                // Composición del Hogar
-                cargarTablaComposicion(idHogar); // ****
-                // Características y tenencia de la vivienda
-                $("#tipoVivienda option[value='"+ response.data[0].Id_TipoVivienda +"']").attr("selected",true);
-                $('#especifiqueTipoVivienda').val(response.data[0].OtroTipoVivienda);
-                $("#metrosVivienda option[value='"+ response.data[0].id_Metros +"']").attr("selected",true);
-                $('#numeroAmbientes').val(response.data[0].NumeroAmbientes);
-                $('#numeroBanos').val(response.data[0].NumeroBanos);
-                $("#puntosLuz option[value='"+ response.data[0].id_PuntosLuz +"']").attr("selected",true);
-                $("#ocupacionVivienda option[value='"+ response.data[0].Id_OcupacionVivienda +"']").attr("selected",true);
-                $('#especifiqueOcupacionVivienda').val(response.data[0].OtroOcupacionVivienda);
-                $("#montoVivienda option[value='"+ response.data[0].Id_MontoVivienda +"']").attr("selected",true);
-                // Servicios Públicos
-                $("#aguasBlancas option[value='"+ response.data[0].Id_AguasBlancas +"']").attr("selected",true);
-                $('#aguasNegras').val(response.data[0].Id_AguasNegras);
-                $("#aseoUrbano option[value='"+ response.data[0].Id_AseoUrbano +"']").attr("selected",true);
-                var oblig = $("input:radio[name='servicioElectricidad']");
-                oblig.filter("[value='"+response.data[0].Id_ServicioElectricidad+"']").attr('checked', true);
-                var oblig = $("input:radio[name='servicioTelefonico']");
-                oblig.filter("[value='"+response.data[0].Id_ServicioTelefono+"']").attr('checked', true);
-                var oblig = $("input:radio[name='cortesElectricos']");
-                oblig.filter("[value='"+response.data[0].Id_CortesElectricos+"']").attr('checked', true);
-                // Servicios y equipamientos del hogar
-                var oblig = $("input:radio[name='domesticaFija']");
-                oblig.filter("[value='"+response.data[0].Id_DomesticaFija+"']").attr('checked', true);
-                var oblig = $("input:radio[name='laboresFijas']");
-                oblig.filter("[value='"+response.data[0].Id_PersonalLabores+"']").attr('checked', true);
-                var oblig = $("input:radio[name='domesticaXDia']");
-                oblig.filter("[value='"+response.data[0].Id_DomesticaDia+"']").attr('checked', true);
-                var oblig = $("input:radio[name='conexionInternetTlf']");
-                oblig.filter("[value='"+response.data[0].id_ConexionInternet1+"']").attr('checked', true);
-                var oblig = $("input:radio[name='conexionInternetMovil']");
-                oblig.filter("[value='"+response.data[0].id_ConexionInternet2+"']").attr('checked', true);
-                var oblig = $("input:radio[name='conexionInternetBandaAncha']");
-                oblig.filter("[value='"+response.data[0].id_ConexionInternet3+"']").attr('checked', true);
-                var oblig = $("input:radio[name='celularJefeFamilia']");
-                oblig.filter("[value='"+response.data[0].id_CelularJefe+"']").attr('checked', true);
-                var oblig = $("input:radio[name='seguroHcmJefeFamilia']");
-                oblig.filter("[value='"+response.data[0].id_SeguroHCMParticular+"']").attr('checked', true);
-                var oblig = $("input:radio[name='seguroHcmEmpresaJefeFamilia']");
-                oblig.filter("[value='"+response.data[0].id_SeguroHCMColectivo+"']").attr('checked', true);
-                var oblig = $("input:radio[name='seguroSocialJefeFamilia']");
-                oblig.filter("[value='"+response.data[0].id_SeguroHCMSS+"']").attr('checked', true);
-                var oblig = $("input:radio[name='aireAcondicionado']");
-                oblig.filter("[value='"+response.data[0].Id_AireAcondicionado+"']").attr('checked', true);
-                var oblig = $("input:radio[name='calentadorAguaElectrico']");
-                oblig.filter("[value='"+response.data[0].Id_Calentador1+"']").attr('checked', true);
-                var oblig = $("input:radio[name='calentadorAguaGas']");
-                oblig.filter("[value='"+response.data[0].Id_Calentador2+"']").attr('checked', true);
-                var oblig = $("input:radio[name='computadorPersonal']");
-                oblig.filter("[value='"+response.data[0].Id_Computador1+"']").attr('checked', true);
-                var oblig = $("input:radio[name='computadorLaptop']");
-                oblig.filter("[value='"+response.data[0].Id_Computador2+"']").attr('checked', true);
-                var oblig = $("input:radio[name='DVD']");
-                oblig.filter("[value='"+response.data[0].Id_DVD+"']").attr('checked', true);
-                var oblig = $("input:radio[name='homeTeatro']");
-                oblig.filter("[value='"+response.data[0].Id_HomeTheater+"']").attr('checked', true);
-                var oblig = $("input:radio[name='juegosVideo']");
-                oblig.filter("[value='"+response.data[0].Id_JuegosVodeo+"']").attr('checked', true);
-                var oblig = $("input:radio[name='hornoMicroOnda']");
-                oblig.filter("[value='"+response.data[0].Id_HornoMicro+"']").attr('checked', true);
-                var oblig = $("input:radio[name='cocinaElectrica']");
-                oblig.filter("[value='"+response.data[0].Id_Cocina1+"']").attr('checked', true);
-                var oblig = $("input:radio[name='cocinaGasBombona']");
-                oblig.filter("[value='"+response.data[0].Id_Cocina2+"']").attr('checked', true);
-                var oblig = $("input:radio[name='cocinaGasDirecto']");
-                oblig.filter("[value='"+response.data[0].Id_Cocina3+"']").attr('checked', true);
-                var oblig = $("input:radio[name='cocinaKerosene']");
-                oblig.filter("[value='"+response.data[0].Id_Cocina4+"']").attr('checked', true);
-                var oblig = $("input:radio[name='secadoraRopa']");
-                oblig.filter("[value='"+response.data[0].Id_Secadora+"']").attr('checked', true);
-                var oblig = $("input:radio[name='lavadoraAutomatica']");
-                oblig.filter("[value='"+response.data[0].Id_Lavadora1+"']").attr('checked', true);
-                var oblig = $("input:radio[name='lavadoraSemiAutomatica']");
-                oblig.filter("[value='"+response.data[0].Id_Lavadora2+"']").attr('checked', true);
-                var oblig = $("input:radio[name='lavadoraRodillo']");
-                oblig.filter("[value='"+response.data[0].Id_Lavadora3+"']").attr('checked', true);
-                var oblig = $("input:radio[name='nevera']");
-                oblig.filter("[value='"+response.data[0].Id_Nevera+"']").attr('checked', true);
-                var oblig = $("input:radio[name='freezer']");
-                oblig.filter("[value='"+response.data[0].Id_Freezer+"']").attr('checked', true);
-                var oblig = $("input:radio[name='lavaplatos']");
-                oblig.filter("[value='"+response.data[0].Id_LavaPlato+"']").attr('checked', true);
-                var oblig = $("input:radio[name='cantvAcometida']");
-                oblig.filter("[value='"+response.data[0].id_CantvAcometida+"']").attr('checked', true);
-                var oblig = $("input:radio[name='cantvFijo']");
-                oblig.filter("[value='"+response.data[0].id_CantvFijo+"']").attr('checked', true);
-                var oblig = $("input:radio[name='movistar']");
-                oblig.filter("[value='"+response.data[0].id_Movistar+"']").attr('checked', true);
-                var oblig = $("input:radio[name='digitel']");
-                oblig.filter("[value='"+response.data[0].id_Digitel+"']").attr('checked', true);
-                // Medios
-                $("#cantidadTV option[value='"+ response.data[0].Id_Televisores +"']").attr("selected",true);
-                $("#tipoTV option[value='"+ response.data[0].Id_TipoTelevisores +"']").attr("selected",true);
-                $("#Senal option[value='"+ response.data[0].Id_TipoTelevisores +"']").attr("selected",true);
-                $("#Senal option[value='"+ response.data[0].Id_Senal +"']").attr("selected",true);
-                $("#cablera1 option[value='"+ response.data[0].Id_Cablera1 +"']").attr("selected",true);
-                $("#cablera2 option[value='"+ response.data[0].Id_Cablera2 +"']").attr("selected",true);
-                $("#tvOnline1 option[value='"+ response.data[0].Id_TelevisionOnline1 +"']").attr("selected",true);
-                $("#tvOnline2 option[value='"+ response.data[0].Id_TelevisionOnline2 +"']").attr("selected",true);
-                var oblig = $("input:radio[name='escucharRadio']");
-                if(response.data[0].id_FM == 1 || response.data[0].id_AM == 1){
-                    oblig.filter("[value='1']").attr('checked', true);
-                    if(response.data[0].id_FM == 1){
-                        $("#FM").prop("checked", true);
-                    }
-                    if(response.data[0].id_AM == 1){
-                        $("#AM").prop("checked", true);
-                    }
-                }else{
-                    oblig.filter("[value='2']").attr('checked', true);
-                }
-                // Vehículos
-                $("#totalAutos option[value='"+ response.data[0].Id_Autos +"']").attr("selected",true);
-                var oblig = $("input:radio[name='moto']");
-                oblig.filter("[value='"+response.data[0].Id_Moto+"']").attr('checked', true);
-                var oblig = $("input:radio[name='casco']");
-                oblig.filter("[value='"+response.data[0].Id_SeguroCasco+"']").attr('checked', true);
-                //ppppp
-                // Mascotas
-                if(response.data[0].Ind_Perro == 1){
-                    $("#Perro").prop("checked", true);
-                }
-                if(response.data[0].Ind_Gato == 1){
-                    $("#Gato").prop("checked", true);
-                }
-                if(response.data[0].Ind_Pez == 1){
-                    $("#Pez").prop("checked", true);
-                }
-                if(response.data[0].Ind_Ave == 1){
-                    $("#Ave").prop("checked", true);
-                }
-                if(response.data[0].Ind_Roedor == 1){
-                    $("#Roedor").prop("checked", true);
-                }
-                if(response.data[0].Ind_Otro == 1){
-                    $("#Otro").prop("checked", true);
-                }
-                // Información General
-                $("#claseSocialInformacion").val(response.data[0].ClaseSocial);
-                $("#fechaRegistroInformacion").val(response.data[0].Fec_Registro);
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    window.location = '/homepantry20/index.php';
+    // vvvvvvvvvvvvvv
+function EditAction(data) {
+    document.getElementById('FormPanelistaEdit').reset();
+    var settings = {
+        "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        $('#primerNombreComposicionEdit').val(response.data[0].Nombre1);
+        $('#segundoNombreComposicionEdit').val(response.data[0].Nombre2);
+        $('#primerApellidoComposicionEdit').val(response.data[0].Apellido1);
+        $('#segundoApellidoComposicionEdit').val(response.data[0].Apellido2);
+        var oblig = $("input:radio[name='nacionalidadComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
+        $('#cedulaComposicionEdit').val(response.data[0].Cedula);
+        var oblig = $("input:radio[name='sexoComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
+        cargarEstadoCivil('#estadoCivilComposicionEdit',response.data[0].Id_EstadoCivil);
+        cargarParentesco('#parentescoJefeComposicionEdit',response.data[0].Id_Parentesco);
+        cargarEducacion('#educacionComposicionEdit',response.data[0].Id_Educacion);
+        $('#celularComposicionEdit').val(response.data[0].Celular);
+        $('#celularAdicionalComposicionEdit').val(response.data[0].CelularAdicional);
+        $('#correoComposicionEdit').val(response.data[0].Correo);
+        cargarTipoIngreso('#tipoIngresoComposicionEdit',response.data[0].Id_TipoIngreso);
+        $('#inputIdEditComposicion').val(response.data[0].Id_Panelista);
+        var oblig = $("input:radio[name='beneficioSocialistaComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
+        var oblig = $("input:radio[name='activoEdit']");
+        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        
+        
+        $('#modal-PanelistaEditar').modal('show');
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
             })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
         }
+    })
+}
+
+function ActualizarRegistro() {
+    if ($("#FormAtributoEdit").valid()) {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": '<?php echo urlApi; ?>updatePanelista',
+            "method": "post",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "idPanelista": $("#inputIdEditComposicion").val(),
+                "primerNombreComposicionEdit": $("#primerNombreComposicionEdit").val(),
+                "segundoNombreComposicionEdit": $("#segundoNombreComposicionEdit").val(),
+                "primerApellidoComposicionEdit": $("#primerApellidoComposicionEdit").val(),
+                "segundoApellidoComposicionEdit": $("#segundoApellidoComposicionEdit").val(),
+                "cedulaComposicionEdit": $("#cedulaComposicionEdit").val(),
+                "celularComposicionEdit": $("#celularComposicionEdit").val(),
+                "celularAdicionalComposicionEdit": $("#celularAdicionalComposicionEdit").val(),
+                "correoComposicionEdit": $("#correoComposicionEdit").val(),
+                
+                "estadoCivilComposicionEdit": $("#estadoCivilComposicionEdit").val(),
+                "parentescoJefeComposicionEdit": $("#parentescoJefeComposicionEdit").val(),
+                "educacionComposicionEdit": $("#educacionComposicionEdit").val(),
+                "tipoIngresoComposicionEdit": $("#tipoIngresoComposicionEdit").val(),
+                "fechaNacimientoComposicionEdit": $("#fechaNacimientoComposicionEdit").val(),
+                
+                "nacionalidadComposicionEdit": $('input:radio[name=nacionalidadComposicionEdit]:checked').val(),
+                "sexoComposicionEdit": $('input:radio[name=sexoComposicionEdit]:checked').val(),
+                "beneficioSocialistaComposicionEdit": $('input:radio[name=beneficioSocialistaComposicionEdit]:checked').val(),
+                
+                
+                "activo": $('input:radio[name=activoEdit]:checked').val(),
+
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let xtable = $('#TableAtributo').DataTable();
+            xtable.ajax.reload(null, false);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.message,
+                confirmButtonText: `Ok`,
+            })
+            var form = document.querySelector('#FormAtributoEdit');
+            form.reset();
+            $('#modal-AtributoEditar').modal('hide');
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'info',
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                var form = document.querySelector('#FormUsuariosEdit');
+                form.reset();
+                window.location = '/homepantry20/index.php';
+            }
+        })
+    }
+}
+
+    
+    function HogarEditar() {
+        
+        alert('ENTROOOOOO');
+        var idHogar = localStorage.getItem("idHogarEditar");
+        var settings = {
+            "url": '<?php echo urlApi; ?>getHogarId/' + idHogar,
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            $("#identificacion1Hogar").val(response.data[0].CodigoHogar);
+            $("#identificacion2Hogar").val(response.data[0].Id_PanelHogar);
+            // Paso 1
+            $("#estadoHogar option[value='"+ response.data[0].Id_Estado +"']").attr("selected",true);
+            var Estado = $("#estadoHogar").val();
+            cargarEstado("#estadoHogar",response.data[0].Id_Estado);
+            cargarCiudad(response.data[0].Id_Estado,response.data[0].Id_Ciudad);
+            cargarMunicipio(response.data[0].Id_Estado,response.data[0].Id_Municipio);
+            ///var Municipio = localStorage.getItem("idMunicipio");
+            cargarParroquia(response.data[0].Id_Municipio,response.data[0].Id_Parroquia);
+            // aaa
+            var oblig = $("input:radio[name='calle']");
+            oblig.filter("[value='"+response.data[0].Ind_CalleAvenidad+"']").attr('checked', true);
+            $('#nombreCalle').val(response.data[0].calle);
+            
+            if (response.data[0].Piso == ''){
+                var oblig = $("input:radio[name='vivienda']");
+            oblig.filter("[value='vivienda']").attr('checked', true);
+            }else{
+                var oblig = $("input:radio[name='vivienda']");
+                oblig.filter("[value='edificio']").attr('checked', true);
+            }
+            
+            $('#nombreEdificio').val(response.data[0].Edificio);
+            $('#nombreCasa').val(response.data[0].Casa);
+            $('#escaleraCasa').val(response.data[0].Escalera);
+            $('#pisoHogar').val(response.data[0].Piso);
+            $('#apartamentoEdificio').val(response.data[0].Apto);
+            
+            var oblig = $("input:radio[name='tipoZona']");
+            oblig.filter("[value='"+response.data[0].Ind_BarrioUrbanizacion+"']").attr('checked', true);
+            $('#nombreCalle').val(response.data[0].calle);
+            
+            $('#nombreTipoZona').val(response.data[0].barrio);
+            $('#referenciaHogar').val(response.data[0].Referencia);
+            $('#telefonoHogar').val(response.data[0].TelefonoLocal);
+            // Responsable del hogar
+            // Jefe del Hogar
+            // Composición del Hogar
+            cargarTablaComposicion(idHogar); // ****
+            // Características y tenencia de la vivienda
+            
+            cargarTipoVivienda('#tipoVivienda',response.data[0].Id_TipoVivienda);
+            cargarMetrosVivienda('#metrosVivienda',response.data[0].id_Metros);
+            cargarOcupacionVivienda('#ocupacionVivienda',response.data[0].Id_OcupacionVivienda);
+            cargarPuntosLuz('#puntosLuz',response.data[0].id_PuntosLuz);
+            cargarMontoVivienda('#montoVivienda',response.data[0].Id_MontoVivienda);
+            // Servicios Públicos
+            cargarAguasBlancas('#aguasBlancas',response.data[0].Id_AguasBlancas);
+            cargarAguasNegras('#aguasNegras',response.data[0].Id_AguasNegras);
+            cargarAseoUrbano('#aseoUrbano',response.data[0].Id_AseoUrbano);
+            // TV
+            cargarCantidadTV('#cantidadTV',response.data[0].Id_Televisores)
+            cargarTipoTV('#tipoTV',response.data[0].Id_TipoTelevisores)
+            cargarSenal('#Senal',response.data[0].Id_Senal)
+            // Medios
+            cargarCablera('#cablera1',response.data[0].Id_Cablera1);
+            cargarCablera('#cablera2',response.data[0].Id_Cablera2);
+            cargarTvOnline('#tvOnline1',response.data[0].Id_TelevisionOnline1)
+            cargarTvOnline('#tvOnline2',response.data[0].Id_TelevisionOnline2)
+            // Vehiculos
+            cargarAutos('#totalAutos',response.data[0].Id_Autos);
+            
+            $('#especifiqueTipoVivienda').val(response.data[0].OtroTipoVivienda);
+            $('#numeroAmbientes').val(response.data[0].NumeroAmbientes);
+            $('#numeroBanos').val(response.data[0].NumeroBanos);
+            $("#ocupacionVivienda option[value='"+ response.data[0].Id_OcupacionVivienda +"']").attr("selected",true);
+            $('#especifiqueOcupacionVivienda').val(response.data[0].OtroOcupacionVivienda);
+            // Servicios Públicos
+            var oblig = $("input:radio[name='servicioElectricidad']");
+            oblig.filter("[value='"+response.data[0].Id_ServicioElectricidad+"']").attr('checked', true);
+            var oblig = $("input:radio[name='servicioTelefonico']");
+            oblig.filter("[value='"+response.data[0].Id_ServicioTelefono+"']").attr('checked', true);
+            var oblig = $("input:radio[name='cortesElectricos']");
+            oblig.filter("[value='"+response.data[0].Id_CortesElectricos+"']").attr('checked', true);
+            // Servicios y equipamientos del hogar
+            var oblig = $("input:radio[name='domesticaFija']");
+            oblig.filter("[value='"+response.data[0].Id_DomesticaFija+"']").attr('checked', true);
+            var oblig = $("input:radio[name='laboresFijas']");
+            oblig.filter("[value='"+response.data[0].Id_PersonalLabores+"']").attr('checked', true);
+            var oblig = $("input:radio[name='domesticaXDia']");
+            oblig.filter("[value='"+response.data[0].Id_DomesticaDia+"']").attr('checked', true);
+            var oblig = $("input:radio[name='conexionInternetTlf']");
+            
+            oblig.filter("[value='"+response.data[0].id_ConexionInternet1+"']").attr('checked', true);
+            var oblig = $("input:radio[name='conexionInternetMovil']");
+            oblig.filter("[value='"+response.data[0].id_ConexionInternet2+"']").attr('checked', true);
+            var oblig = $("input:radio[name='conexionInternetBandaAncha']");
+            oblig.filter("[value='"+response.data[0].id_ConexionInternet3+"']").attr('checked', true);
+            var oblig = $("input:radio[name='celularJefeFamilia']");
+            oblig.filter("[value='"+response.data[0].id_CelularJefe+"']").attr('checked', true);
+            var oblig = $("input:radio[name='seguroHcmJefeFamilia']");
+            oblig.filter("[value='"+response.data[0].id_SeguroHCMParticular+"']").attr('checked', true);
+            var oblig = $("input:radio[name='seguroHcmEmpresaJefeFamilia']");
+            oblig.filter("[value='"+response.data[0].id_SeguroHCMColectivo+"']").attr('checked', true);
+            var oblig = $("input:radio[name='seguroSocialJefeFamilia']");
+            oblig.filter("[value='"+response.data[0].id_SeguroHCMSS+"']").attr('checked', true);
+            var oblig = $("input:radio[name='aireAcondicionado']");
+            oblig.filter("[value='"+response.data[0].Id_AireAcondicionado+"']").attr('checked', true);
+            var oblig = $("input:radio[name='calentadorAguaElectrico']");
+            oblig.filter("[value='"+response.data[0].Id_Calentador1+"']").attr('checked', true);
+            var oblig = $("input:radio[name='calentadorAguaGas']");
+            oblig.filter("[value='"+response.data[0].Id_Calentador2+"']").attr('checked', true);
+            var oblig = $("input:radio[name='computadorPersonal']");
+            oblig.filter("[value='"+response.data[0].Id_Computador1+"']").attr('checked', true);
+            var oblig = $("input:radio[name='computadorLaptop']");
+            oblig.filter("[value='"+response.data[0].Id_Computador2+"']").attr('checked', true);
+            var oblig = $("input:radio[name='DVD']");
+            oblig.filter("[value='"+response.data[0].Id_DVD+"']").attr('checked', true);
+            var oblig = $("input:radio[name='homeTeatro']");
+            oblig.filter("[value='"+response.data[0].Id_HomeTheater+"']").attr('checked', true);
+            var oblig = $("input:radio[name='juegosVideo']");
+            oblig.filter("[value='"+response.data[0].Id_JuegosVodeo+"']").attr('checked', true);
+            var oblig = $("input:radio[name='hornoMicroOnda']");
+            oblig.filter("[value='"+response.data[0].Id_HornoMicro+"']").attr('checked', true);
+            var oblig = $("input:radio[name='cocinaElectrica']");
+            oblig.filter("[value='"+response.data[0].Id_Cocina1+"']").attr('checked', true);
+            var oblig = $("input:radio[name='cocinaGasBombona']");
+            oblig.filter("[value='"+response.data[0].Id_Cocina2+"']").attr('checked', true);
+            var oblig = $("input:radio[name='cocinaGasDirecto']");
+            oblig.filter("[value='"+response.data[0].Id_Cocina3+"']").attr('checked', true);
+            var oblig = $("input:radio[name='cocinaKerosene']");
+            oblig.filter("[value='"+response.data[0].Id_Cocina4+"']").attr('checked', true);
+            var oblig = $("input:radio[name='secadoraRopa']");
+            oblig.filter("[value='"+response.data[0].Id_Secadora+"']").attr('checked', true);
+            var oblig = $("input:radio[name='lavadoraAutomatica']");
+            oblig.filter("[value='"+response.data[0].Id_Lavadora1+"']").attr('checked', true);
+            var oblig = $("input:radio[name='lavadoraSemiAutomatica']");
+            oblig.filter("[value='"+response.data[0].Id_Lavadora2+"']").attr('checked', true);
+            var oblig = $("input:radio[name='lavadoraRodillo']");
+            oblig.filter("[value='"+response.data[0].Id_Lavadora3+"']").attr('checked', true);
+            var oblig = $("input:radio[name='nevera']");
+            oblig.filter("[value='"+response.data[0].Id_Nevera+"']").attr('checked', true);
+            var oblig = $("input:radio[name='freezer']");
+            oblig.filter("[value='"+response.data[0].Id_Freezer+"']").attr('checked', true);
+            var oblig = $("input:radio[name='lavaplatos']");
+            oblig.filter("[value='"+response.data[0].Id_LavaPlato+"']").attr('checked', true);
+            var oblig = $("input:radio[name='cantvAcometida']");
+            oblig.filter("[value='"+response.data[0].id_CantvAcometida+"']").attr('checked', true);
+            var oblig = $("input:radio[name='cantvFijo']");
+            oblig.filter("[value='"+response.data[0].id_CantvFijo+"']").attr('checked', true);
+            var oblig = $("input:radio[name='movistar']");
+            oblig.filter("[value='"+response.data[0].id_Movistar+"']").attr('checked', true);
+            var oblig = $("input:radio[name='digitel']");
+            oblig.filter("[value='"+response.data[0].id_Digitel+"']").attr('checked', true);
+            // Medios
+            $("#cantidadTV option[value='"+ response.data[0].Id_Televisores +"']").attr("selected",true);
+            $("#tipoTV option[value='"+ response.data[0].Id_TipoTelevisores +"']").attr("selected",true);
+            $("#Senal option[value='"+ response.data[0].Id_TipoTelevisores +"']").attr("selected",true);
+            $("#Senal option[value='"+ response.data[0].Id_Senal +"']").attr("selected",true);
+            $("#cablera1 option[value='"+ response.data[0].Id_Cablera1 +"']").attr("selected",true);
+            $("#cablera2 option[value='"+ response.data[0].Id_Cablera2 +"']").attr("selected",true);
+            $("#tvOnline1 option[value='"+ response.data[0].Id_TelevisionOnline1 +"']").attr("selected",true);
+            $("#tvOnline2 option[value='"+ response.data[0].Id_TelevisionOnline2 +"']").attr("selected",true);
+            var oblig = $("input:radio[name='escucharRadio']");
+            if(response.data[0].id_FM == 1 || response.data[0].id_AM == 1){
+                oblig.filter("[value='1']").attr('checked', true);
+                if(response.data[0].id_FM == 1){
+                    $("#FM").prop("checked", true);
+                }
+                if(response.data[0].id_AM == 1){
+                    $("#AM").prop("checked", true);
+                }
+            }else{
+                oblig.filter("[value='2']").attr('checked', true);
+            }
+            // Vehículos
+            $("#totalAutos option[value='"+ response.data[0].Id_Autos +"']").attr("selected",true);
+            var oblig = $("input:radio[name='moto']");
+            oblig.filter("[value='"+response.data[0].Id_Moto+"']").attr('checked', true);
+            var oblig = $("input:radio[name='casco']");
+            oblig.filter("[value='"+response.data[0].Id_SeguroCasco+"']").attr('checked', true);
+            //ppppp
+            // Mascotas
+            if(response.data[0].Ind_Perro == 1){
+                $("#Perro").prop("checked", true);
+            }
+            if(response.data[0].Ind_Gato == 1){
+                $("#Gato").prop("checked", true);
+            }
+            if(response.data[0].Ind_Pez == 1){
+                $("#Pez").prop("checked", true);
+            }
+            if(response.data[0].Ind_Ave == 1){
+                $("#Ave").prop("checked", true);
+            }
+            if(response.data[0].Ind_Roedor == 1){
+                $("#Roedor").prop("checked", true);
+            }
+            if(response.data[0].Ind_Otro == 1){
+                $("#Otro").prop("checked", true);
+            }
+            // Información General
+            $("#claseSocialInformacion").val(response.data[0].ClaseSocial);
+            $("#fechaRegistroInformacion").val(response.data[0].Fec_Registro);
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/homepantry20/index.php';
+            }
+        })
+        
     }
     function cargarMunicipio(parametro,idS) {
         var settings = {
@@ -4593,6 +5314,7 @@
             }
         })
     }
+    // zzzzzzzzzzzzzzzzzzz
     function cargarCiudad(parametro,idS) {
         var settings = {
             "url": '<?php echo urlApi; ?>getCiudadId/' + parametro,
@@ -4683,9 +5405,12 @@
             }
         })
     }
+    
+    
+
     function cargarTablaComposicion(idHogar){
         //alert("function cargarbTablaComposicion(idHogar)");
-        $('#TableHogar').dataTable({
+        $('#TablePanelistas').dataTable({
             "lengthMenu": [
                 [10, 25, 50, 100, -1],
                 [10, 25, 50, 100, "All"]
@@ -4755,7 +5480,7 @@
             "columnDefs": [{
                 "targets": 6,
                 "orderable": true,
-                "data": 'Id_Hogar',
+                "data": 'Id_Panelista',
                 "className": "text-center",
                 "render": function(data, type, row, meta) {
                     return '<a title="Eliminar" href="#"><img id="EliminarImg" src=<?php echo base_url('assets/iconos/delete.png') ?> width="30" height="30"  onclick="deleteAction(' +
