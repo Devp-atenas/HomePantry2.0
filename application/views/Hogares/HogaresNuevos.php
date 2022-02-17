@@ -453,7 +453,7 @@
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="beneficioSocialistaResponsable" value="2">
+                                        <input class="form-check-input" type="radio" name="beneficioSocialistaResponsable" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check">
@@ -516,7 +516,7 @@
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" name="pagoRapidoTrasferencia" value="2">
+                                        <input class="form-check-input" type="radio" name="pagoRapidoTrasferencia" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -526,6 +526,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row" style="visibility:hidden;">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="inputIdEditResponsable">id:</label>
+                                    <input type="text" name="inputIdEditResponsable" id="inputIdEditResponsable"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                                
                     </div>
                     <br />
                     <div class="row">
@@ -548,7 +558,7 @@
                                     <label class="form-check-label">No</label>
                                 </div>
                                 <div class="form-check d-inline">
-                                    <input class="form-check-input" type="radio" class="responsableJefeSN" id="responsableJefeSi" name="jefeResponsableIO" value="1">
+                                    <input class="form-check-input" type="radio" class="responsableJefeSN" id="responsableJefeSI" name="jefeResponsableIO" value="1">
                                     <label class="form-check-label">Si</label>
                                 </div>
                             </div>
@@ -689,7 +699,7 @@
                                 <div class="card">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="2">
+                                            <input class="form-check-input" type="radio" name="beneficioSocialistaJefe" value="0">
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check">
@@ -699,13 +709,23 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center">
-                                <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                            <div class="row" style="visibility:hidden;">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="inputIdEditJefe">id:</label>
+                                        <input type="text" name="inputIdEditJefe" id="inputIdEditJefe"
+                                            class="form-control">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        
                     </form>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                    </div>
                 </div>
             </div>
             <div id="step-4">
@@ -861,7 +881,7 @@
                                                     <div class="card">
                                                         <div class="form-group">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicion" name="beneficioSocialistaComposicion" value="2">
+                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicion" name="beneficioSocialistaComposicion" value="0">
                                                                 <label class="form-check-label">No</label>
                                                             </div>
                                                             <div class="form-check">
@@ -1042,7 +1062,7 @@
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="servicioElectricidad" name="servicioElectricidad" value="2">
+                                        <input class="form-check-input" type="radio" id="servicioElectricidad" name="servicioElectricidad" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1059,7 +1079,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Servicio telefonico: </div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="servicioTelefonico" name="servicioTelefonico" value="2">
+                                        <input class="form-check-input" type="radio" id="servicioTelefonico" name="servicioTelefonico" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1114,7 +1134,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Doméstica fija</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="domesticaFija" name="domesticaFija" value="2">
+                                        <input class="form-check-input" type="radio" id="domesticaFija" name="domesticaFija" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1123,7 +1143,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Personal para labores específicas</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="laboresFijas" name="laboresFijas" value="2">
+                                        <input class="form-check-input" type="radio" id="laboresFijas" name="laboresFijas" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1132,7 +1152,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Doméstica por días</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="domesticaXDia" name="domesticaXDia" value="2">
+                                        <input class="form-check-input" type="radio" id="domesticaXDia" name="domesticaXDia" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline ">
@@ -1147,7 +1167,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Conexión a internet vía telefonía fija por discado / dial-up</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetTlf" name="conexionInternetTlf" value="2">
+                                        <input class="form-check-input" type="radio" id="conexionInternetTlf" name="conexionInternetTlf" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1156,7 +1176,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Conexión a internet vía telefonía móvil / celular</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetMovil" name="conexionInternetMovil" value="2">
+                                        <input class="form-check-input" type="radio" id="conexionInternetMovil" name="conexionInternetMovil" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1165,7 +1185,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Conexión a internet vía telefonía fija banda ancha o vía cable</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetBandaAncha" name="conexionInternetBandaAncha" value="2">
+                                        <input class="form-check-input" type="radio" id="conexionInternetBandaAncha" name="conexionInternetBandaAncha" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1180,7 +1200,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Teléfono Celular del Jefe de familia y/o pareja</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="celularJefeFamilia" name="celularJefeFamilia" value="2">
+                                        <input class="form-check-input" type="radio" id="celularJefeFamilia" name="celularJefeFamilia" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1189,7 +1209,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Seguro HCM particular del Jefe de familia y/o pareja y/o hijos</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroHcmJefeFamilia" name="seguroHcmJefeFamilia" value="2">
+                                        <input class="form-check-input" type="radio" id="seguroHcmJefeFamilia" name="seguroHcmJefeFamilia" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1198,7 +1218,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Seguro HCM colectivo de la empresa para Jefe y/o Pareja ocupados</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroHcmEmpresaJefeFamilia" name="seguroHcmEmpresaJefeFamilia" value="2">
+                                        <input class="form-check-input" type="radio" id="seguroHcmEmpresaJefeFamilia" name="seguroHcmEmpresaJefeFamilia" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1207,7 +1227,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Seguro Social Obligatorio para Jefe de Familia o Pareja</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroSocialJefeFamilia" name="seguroSocialJefeFamilia" value="2">
+                                        <input class="form-check-input" type="radio" id="seguroSocialJefeFamilia" name="seguroSocialJefeFamilia" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1224,7 +1244,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Aire acondicionado</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="aireAcondicionado" name="aireAcondicionado" value="2">
+                                        <input class="form-check-input" type="radio" id="aireAcondicionado" name="aireAcondicionado" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1233,7 +1253,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Calentador de agua eléctrico no tipo ducha corona</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="calentadorAguaElectrico" name="calentadorAguaElectrico" value="2">
+                                        <input class="form-check-input" type="radio" id="calentadorAguaElectrico" name="calentadorAguaElectrico" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1242,7 +1262,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Calentador de agua a gas</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="calentadorAguaGas" name="calentadorAguaGas" value="2">
+                                        <input class="form-check-input" type="radio" id="calentadorAguaGas" name="calentadorAguaGas" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1257,7 +1277,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Computador personal (PC)</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="computadorPersonal" name="computadorPersonal" value="2">
+                                        <input class="form-check-input" type="radio" id="computadorPersonal" name="computadorPersonal" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1266,7 +1286,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Computador Laptop</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="computadorLaptop" name="computadorLaptop" value="2">
+                                        <input class="form-check-input" type="radio" id="computadorLaptop" name="computadorLaptop" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1275,7 +1295,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">DVD y/o Blu-Ray</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="DVD" name="DVD" value="2">
+                                        <input class="form-check-input" type="radio" id="DVD" name="DVD" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1284,7 +1304,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Home Theater/Teatro en casa</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="homeTeatro" name="homeTeatro" value="2">
+                                        <input class="form-check-input" type="radio" id="homeTeatro" name="homeTeatro" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1293,7 +1313,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Juegos de video</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="juegosVideo" name="juegosVideo" value="2">
+                                        <input class="form-check-input" type="radio" id="juegosVideo" name="juegosVideo" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1308,7 +1328,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Horno microondas</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="hornoMicroOnda" name="hornoMicroOnda" value="2">
+                                        <input class="form-check-input" type="radio" id="hornoMicroOnda" name="hornoMicroOnda" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1317,7 +1337,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Cocina eléctrica</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaElectrica" name="cocinaElectrica" value="2">
+                                        <input class="form-check-input" type="radio" id="cocinaElectrica" name="cocinaElectrica" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1326,7 +1346,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Cocina a gas de bombona</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaGasBombona" name="cocinaGasBombona" value="2">
+                                        <input class="form-check-input" type="radio" id="cocinaGasBombona" name="cocinaGasBombona" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1335,7 +1355,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Cocina por gas directo</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaGasDirecto" name="cocinaGasDirecto" value="2">
+                                        <input class="form-check-input" type="radio" id="cocinaGasDirecto" name="cocinaGasDirecto" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1344,7 +1364,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Cocina a kerosene / leña,…</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaKerosene" name="cocinaKerosene" value="2">
+                                        <input class="form-check-input" type="radio" id="cocinaKerosene" name="cocinaKerosene" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1361,7 +1381,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Secadora de ropa</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="secadoraRopa" name="secadoraRopa" value="2">
+                                        <input class="form-check-input" type="radio" id="secadoraRopa" name="secadoraRopa" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1370,7 +1390,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Lavadora de ropa automática</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="lavadoraAutomatica" name="lavadoraAutomatica" value="2">
+                                        <input class="form-check-input" type="radio" id="lavadoraAutomatica" name="lavadoraAutomatica" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1379,7 +1399,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Lavadora semiautomática</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="lavadoraSemiAutomatica" name="lavadoraSemiAutomatica" value="2">
+                                        <input class="form-check-input" type="radio" id="lavadoraSemiAutomatica" name="lavadoraSemiAutomatica" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1388,7 +1408,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Lavadora de ropa de rodillo</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="lavadoraRodillo" name="lavadoraRodillo" value="2">
+                                        <input class="form-check-input" type="radio" id="lavadoraRodillo" name="lavadoraRodillo" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1403,7 +1423,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Nevera</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="nevera" name="nevera" value="2">
+                                        <input class="form-check-input" type="radio" id="nevera" name="nevera" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1412,7 +1432,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Freezer/Congelador (*)</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="freezer" name="freezer" value="2">
+                                        <input class="form-check-input" type="radio" id="freezer" name="freezer" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1421,7 +1441,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Lavaplatos eléctrico</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="lavaplatos" name="lavaplatos" value="2">
+                                        <input class="form-check-input" type="radio" id="lavaplatos" name="lavaplatos" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1436,7 +1456,7 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">CANTV Acometida</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cantvAcometida" name="cantvAcometida" value="2">
+                                        <input class="form-check-input" type="radio" id="cantvAcometida" name="cantvAcometida" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1445,7 +1465,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">CANTV Fijo</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cantvFijo" name="cantvFijo" value="2">
+                                        <input class="form-check-input" type="radio" id="cantvFijo" name="cantvFijo" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1454,7 +1474,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Movistar</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="movistar" name="movistar" value="2">
+                                        <input class="form-check-input" type="radio" id="movistar" name="movistar" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1463,7 +1483,7 @@
                                     </div>
                                     <div class="inputText font-weight-bold">Digitel</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="digitel" name="digitel" value="2">
+                                        <input class="form-check-input" type="radio" id="digitel" name="digitel" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1591,7 +1611,7 @@
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" name="moto" value="2">
+                                        <input class="form-check-input" type="radio" name="moto" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1606,7 +1626,7 @@
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" name="casco" value="2">
+                                        <input class="form-check-input" type="radio" name="casco" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1745,7 +1765,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Atributo</h3>
+                            <h3 class="card-title">Actualizar Panelista</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -1886,7 +1906,7 @@
                                                     <div class="card">
                                                         <div class="form-group">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicionEdit" value="2">
+                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicionEdit" value="0">
                                                                 <label class="form-check-label">No</label>
                                                             </div>
                                                             <div class="form-check">
@@ -1906,6 +1926,217 @@
                                                                 </div>
                                                                 <div class="form-check d-inline">
                                                                     <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                                    <label class="form-check-label">Si</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="row" style="visibility:hidden;">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="inputIdEditComposicion">id:</label>
+                                                        <input type="text" name="inputIdEditComposicion" id="inputIdEditComposicion"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="button" onclick="ActualizarRegistro()" id="editComposicion"
+                                                value="Guardar" class="btn btn-success float-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal fade" id="modal-PanelistaView">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Visualizar Panelista</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormPanelistaView">
+                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Primer nombre:</div>
+                                                        <input type="text" class="form-control input-sm" id="primerNombreComposicionView" name="primerNombreComposicionView" placeholder="Ingrese Primer nombre ..." readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                                        <input type="text" class="form-control input-sm" id="segundoNombreComposicionView" name="segundoNombreComposicionView" placeholder="Ingrese Segundo nombre ..." readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Primer apellido:</div>
+                                                        <input type="text" class="form-control input-sm" id="primerApellidoComposicionView" name="primerApellidoComposicionView" placeholder="Ingrese Primer apellido ..." readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                                        <input type="text" class="form-control input-sm" id="segundoApellidoComposicionView" name="segundoApellidoComposicionView" placeholder="Ingrese Segundo apellido ..." readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Nacionalidad</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionView" name="nacionalidadComposicionView" value="1" disabled='disabled'">
+                                                                <label class="form-check-label">Venezolano</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionView" name="nacionalidadComposicionView" value="2" disabled='disabled'">
+                                                                <label class="form-check-label">Extranjero</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Cedula:</div>
+                                                        <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaComposicionView" name="cedulaComposicionView" placeholder="Ingrese Cedula ..." readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Sexo:</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="sexoComposicionView" name="sexoComposicionView" value="1" disabled='disabled'">
+                                                                <label class="form-check-label">Femenino</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="sexoComposicionView" name="sexoComposicionView" value="2" disabled='disabled'">
+                                                                <label class="form-check-label">Masculino</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Estado civil:</div>
+                                                        <select class="custom-select form-control-border" id="estadoCivilComposicionView" disabled>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                                        <select class="custom-select form-control-border" id="parentescoJefeComposicionView" disabled>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Educacion:</div>
+                                                        <select class="custom-select form-control-border" id="educacionComposicionView" disabled>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                                        <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionView" placeholder="" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Edad:</div>
+                                                        <input type="number" class="form-control input-sm" id="edadComposicionView" placeholder="(Valor Calculado) ..." readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Celular:</div>
+                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularComposicionView" name="celularComposicion" placeholder="Ingrese Celular..." readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Celular adicional:</div>
+                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalComposicionView" name="celularAdicionalComposicionView" placeholder="Ingrese Celular adicional ..." readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Correo:</div>
+                                                        <input type="email" class="form-control input-sm" id="correoComposicionView" name="correoComposicionView" placeholder="Ingrese correo ..." readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                                        <select class="custom-select form-control-border" id="tipoIngresoComposicionView" disabled>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
+                                                    <div class="card">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionView" name="beneficioSocialistaComposicionView" value="0" disabled='disabled'">
+                                                                <label class="form-check-label">No</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionView" name="beneficioSocialistaComposicionView" value="1" disabled='disabled'">
+                                                                <label class="form-check-label">Si</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="inputText font-weight-bold">Activo:</div>
+                                                        <div class="card">
+                                                            <div class="form-group">
+                                                            <div class="form-check d-inline">
+                                                                    <input class="form-check-input" type="radio" id="activoView" name="activoView" value="0" disabled='disabled'">
+                                                                    <label class="form-check-label">No</label>
+                                                                </div>
+                                                                <div class="form-check d-inline">
+                                                                    <input class="form-check-input" type="radio" id="activoView" name="activoView" value="1" disabled='disabled'">
                                                                     <label class="form-check-label">Si</label>
                                                                 </div>
                                                             </div>
@@ -2258,9 +2489,9 @@
     if (localStorage.getItem("idHogarEditar") !== null) {
         HogarEditar();
         var idHogar = localStorage.getItem("idHogarEditar");
-        editPanelista(idHogar,1,0);
-        editPanelista(idHogar,0,1);
-        localStorage.removeItem('idHogar');// ****
+        editPanelistasResponsableJefe(idHogar,1,0);
+        editPanelistasResponsableJefe(idHogar,0,1);
+        localStorage.removeItem('idHogarEditar');// ****
     }else{
         cargarEstado('#estadoHogar',0);
         // Responsable del Hogar
@@ -2366,6 +2597,9 @@
             });
             $('#myModal').modal('show');
         } else {
+            const fecha = new Date();
+            const YYYY = fecha.getFullYear();
+            const YY = YYYY%100;
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -2378,6 +2612,8 @@
                 "data": { // ****
                     "identificacion1Hogar": $("#identificacion1Hogar").val(),
                     "Id_Hogar": $("#identificacion2Hogar").val(),
+                    "idUsuario": localStorage.getItem("IdUsuario"),
+                    "YY": YY,
                     "Id_estadoHogar": $("#estadoHogar").val(),
                     "Id_ciudadHogar": $("#ciudadHogar").val(),
                     "Id_municipioHogar": $("#municipioHogar").val(),
@@ -2647,6 +2883,12 @@
     });
     // 33333
     $("#guardar-step-3").click(function() {
+        
+        var jefeResponsableIO = $('input:radio[name=jefeResponsableIO]:checked').val();
+        
+        
+        
+        
         var camposVacios = "";
         if ($.trim($('#estadoCivilJefe').val()) === '') {
             camposVacios += "Seleccione estado civil<br>";
@@ -2697,6 +2939,11 @@
         if (!$("input[name='beneficioSocialistaJefe']:radio").is(':checked')) {
             camposVacios  += "Seleccione beneficio socialista<br>";
         }
+        
+        if (jefeResponsableIO == 1){
+            camposVacios = "";
+        }
+        
         if (camposVacios != "") {
             $(function() {
                 $('#modal-body').html(camposVacios);
@@ -2713,13 +2960,16 @@
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
                 "data": { 
+                    "IdjefeResponsableIO": $('input:radio[name=jefeResponsableIO]:checked').val(),
                     "Id_Hogar": $("#identificacion2Hogar").val(),
+                    "Id_": $("#identificacion2Hogar").val(),
                     "Nombre1": $("#primerNombreJefe").val(),
                     "Nombre2": $("#segundoNombreJefe").val(),
                     "Apellido1": $("#primerApellidoJefe").val(),
                     "Apellido2": $("#segundoApellidoJefe").val(),
                     "Id_Nacionalidad": $('input:radio[name=nacionalidadJefe]:checked').val(),
                     "Cedula": $("#cedulaJefe").val(),
+                    "CedulaResponsable": $("#cedulaResponsable").val(),
                     "Id_Parentesco": 1,
                     "Id_EstadoCivil": $("#estadoCivilJefe").val(),
                     "Fec_Nacimiento": $("#fechaNacimientoJefe").val(),
@@ -2882,8 +3132,9 @@
                 })
                 localStorage.setItem('idHogar',$("#identificacion2Hogar").val());
                 cargarTablaComposicion($("#identificacion2Hogar").val());
-                ///var form = document.querySelector('#formComposicion');
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 4",$("#identificacion2Hogar").val(),"U");
+                var form = document.querySelector('#formComposicionHogar');
+                form.reset();
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 4",$("#identificacion2Hogar").val(),"U");
                 
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
@@ -3768,11 +4019,10 @@
     }
     $(function() {
         $("input[name='jefeResponsableIO']").click(function() {
-            alert(999999);
-            if ($("#responsableJefeNo").is(":checked")) {
-                $('#divResponsableJefe').css("visibility","visible");
+            if ($("#responsableJefeSI").is(":checked")) {
+                document.getElementById("divResponsableJefe").style.visibility = "hidden";
             } else {
-                $('#divResponsableJefe').css("visibility","hidden");
+               document.getElementById("divResponsableJefe").style.visibility = "visible";
             }
         });
     });
@@ -4769,7 +5019,7 @@
     function pad (str, max) {
         str = str.toString(); return str.length < max ? pad("0" + str, max) : str;
     }
-    function editPanelista(idHogar,responsable,parentesco){
+    function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
         if (localStorage.getItem("idHogarEditar") !== null) {
             var settings = {
                 "url": '<?php echo urlApi; ?>getPanelistaIdHogar/' + idHogar+'/'+ responsable+'/'+ parentesco,
@@ -4781,6 +5031,8 @@
             }
             $.ajax(settings).done(function(response) {
                 if (responsable == 1 && parentesco == 0){
+                    
+                    $("#inputIdEditResponsable").val(response.data[0].Id_Panelista);
                     $("#primerNombreResponsable").val(response.data[0].Nombre1);
                     $("#segundoNombreResponsable").val(response.data[0].Nombre2);
                     $("#primerApellidoResponsable").val(response.data[0].Apellido1);
@@ -4841,6 +5093,22 @@
                     oblig.filter("[value='"+response.data[0].Id_PagoRapido+"']").attr('checked', true);
                 }
                 if (responsable == 0 && parentesco == 1){
+                    
+                    
+                    if (response.data[0].ResponsablePanel != response.data[0].Id_Parentesco){
+                        document.getElementById("divResponsableJefe").style.visibility = "visible";
+                        var oblig = $("input:radio[name='jefeResponsableIO']");
+                        oblig.filter("[value='0']").attr('checked', true);
+                    }else{
+                        document.getElementById("divResponsableJefe").style.visibility = "hidden";
+                        var oblig = $("input:radio[name='jefeResponsableIO']");
+                        oblig.filter("[value='1']").attr('checked', true);
+                    }
+                    document.getElementById("responsableJefeNO").disabled=true;
+                    document.getElementById("responsableJefeSI").disabled=true;
+                    
+                    
+                    $("#inputIdEditJefe").val(response.data[0].Id_Panelista);
                     $("#primerNombreJefe").val(response.data[0].Nombre1);
                     $("#segundoNombreJefe").val(response.data[0].Nombre2);
                     $("#primerApellidoJefe").val(response.data[0].Apellido1);
@@ -4927,6 +5195,63 @@ function EditAction(data) {
         
         
         $('#modal-PanelistaEditar').modal('show');
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function VisualizarAction(data) {
+    document.getElementById('FormPanelistaView').reset();
+    var settings = {
+        "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        $('#primerNombreComposicionView').val(response.data[0].Nombre1);
+        $('#segundoNombreComposicionView').val(response.data[0].Nombre2);
+        $('#primerApellidoComposicionView').val(response.data[0].Apellido1);
+        $('#segundoApellidoComposicionView').val(response.data[0].Apellido2);
+        var oblig = $("input:radio[name='nacionalidadComposicionView']");
+        oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
+        $('#cedulaComposicionView').val(response.data[0].Cedula);
+        var oblig = $("input:radio[name='sexoComposicionView']");
+        oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
+        cargarEstadoCivil('#estadoCivilComposicionView',response.data[0].Id_EstadoCivil);
+        cargarParentesco('#parentescoJefeComposicionView',response.data[0].Id_Parentesco);
+        cargarEducacion('#educacionComposicionView',response.data[0].Id_Educacion);
+        $('#celularComposicionView').val(response.data[0].Celular);
+        $('#celularAdicionalComposicionView').val(response.data[0].CelularAdicional);
+        $('#correoComposicionView').val(response.data[0].Correo);
+        cargarTipoIngreso('#tipoIngresoComposicionView',response.data[0].Id_TipoIngreso);
+        $('#inputIdEditComposicion').val(response.data[0].Id_Panelista);
+        var oblig = $("input:radio[name='beneficioSocialistaComposicionView']");
+        oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
+        var oblig = $("input:radio[name='activoView']");
+        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        
+        
+        $('#modal-PanelistaView').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -5344,13 +5669,10 @@ function ActualizarRegistro() {
         $.ajax(settings).done(function(response) {
             let selectMunicipio = $("#municipioHogar");
             selectMunicipio.find("option").remove();
-            //alert("idS Muni:"+idS);
-            //alert("parametro Muni:"+parametro);
             if (idS == 0){
                 selectMunicipio.append("<option value='' selected disabled> -- Seleccione -- </option>");
             }
             for (var i = 0; i < response.data.length; i++) {
-                //alert("id Municipìo: "+response.data[i].id);
                 if (response.data[i].id === idS){
                     localStorage.setItem("idMunicipio",idS);
                     selectMunicipio.append("<option value=" + response.data[i].id + " selected>" + response
@@ -5476,7 +5798,6 @@ function ActualizarRegistro() {
     
 
     function cargarTablaComposicion(idHogar){
-        //alert("function cargarbTablaComposicion(idHogar)");
         $('#TablePanelistas').dataTable({
             "lengthMenu": [
                 [10, 25, 50, 100, -1],
@@ -5550,9 +5871,7 @@ function ActualizarRegistro() {
                 "data": 'Id_Panelista',
                 "className": "text-center",
                 "render": function(data, type, row, meta) {
-                    return '<a title="Eliminar" href="#"><img id="EliminarImg" src=<?php echo base_url('assets/iconos/delete.png') ?> width="30" height="30"  onclick="deleteAction(' +
-                        data +
-                        '); return false;"></a>&nbsp;&nbsp;<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
+                    return '<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
                         data +
                         '); return false;"></a>&nbsp;&nbsp;<a title="Visualizar" href="#"><img src=<?php echo base_url('assets/iconos/ver.png') ?> width="25" height="25" onclick="VisualizarAction(' +
                         data + '); return false;"></a>';
