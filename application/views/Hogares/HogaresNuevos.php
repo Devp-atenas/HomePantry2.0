@@ -2939,11 +2939,9 @@
         if (!$("input[name='beneficioSocialistaJefe']:radio").is(':checked')) {
             camposVacios  += "Seleccione beneficio socialista<br>";
         }
-        
         if (jefeResponsableIO == 1){
             camposVacios = "";
         }
-        
         if (camposVacios != "") {
             $(function() {
                 $('#modal-body').html(camposVacios);
@@ -5161,6 +5159,7 @@
     }
     // vvvvvvvvvvvvvv
 function EditAction(data) {
+    //ActualizarRegistro
     document.getElementById('FormPanelistaEdit').reset();
     var settings = {
         "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,

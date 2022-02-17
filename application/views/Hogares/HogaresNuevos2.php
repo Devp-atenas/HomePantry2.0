@@ -526,6 +526,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row" style="visibility:hidden;">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="inputIdEditResponsable">id:</label>
+                                    <input type="text" name="inputIdEditResponsable" id="inputIdEditResponsable"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                                
                     </div>
                     <br />
                     <div class="row">
@@ -699,13 +709,23 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center">
-                                <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                            <div class="row" style="visibility:hidden;">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="inputIdEditJefe">id:</label>
+                                        <input type="text" name="inputIdEditJefe" id="inputIdEditJefe"
+                                            class="form-control">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        
                     </form>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                    </div>
                 </div>
             </div>
             <div id="step-4">
@@ -2469,9 +2489,9 @@
     if (localStorage.getItem("idHogarEditar") !== null) {
         HogarEditar();
         var idHogar = localStorage.getItem("idHogarEditar");
-        editPanelista(idHogar,1,0);
-        editPanelista(idHogar,0,1);
-        localStorage.removeItem('idHogar');// ****
+        editPanelistasResponsableJefe(idHogar,1,0);
+        editPanelistasResponsableJefe(idHogar,0,1);
+        localStorage.removeItem('idHogarEditar');// ****
     }else{
         cargarEstado('#estadoHogar',0);
         // Responsable del Hogar
@@ -2577,6 +2597,9 @@
             });
             $('#myModal').modal('show');
         } else {
+            const fecha = new Date();
+            const YYYY = fecha.getFullYear();
+            const YY = YYYY%100;
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -2589,6 +2612,8 @@
                 "data": { // ****
                     "identificacion1Hogar": $("#identificacion1Hogar").val(),
                     "Id_Hogar": $("#identificacion2Hogar").val(),
+                    "idUsuario": localStorage.getItem("IdUsuario"),
+                    "YY": YY,
                     "Id_estadoHogar": $("#estadoHogar").val(),
                     "Id_ciudadHogar": $("#ciudadHogar").val(),
                     "Id_municipioHogar": $("#municipioHogar").val(),
@@ -2858,6 +2883,12 @@
     });
     // 33333
     $("#guardar-step-3").click(function() {
+        
+        var jefeResponsableIO = $('input:radio[name=jefeResponsableIO]:checked').val();
+        
+        
+        
+        
         var camposVacios = "";
         if ($.trim($('#estadoCivilJefe').val()) === '') {
             camposVacios += "Seleccione estado civil<br>";
@@ -2908,6 +2939,9 @@
         if (!$("input[name='beneficioSocialistaJefe']:radio").is(':checked')) {
             camposVacios  += "Seleccione beneficio socialista<br>";
         }
+        if (jefeResponsableIO == 1){
+            camposVacios = "";
+        }
         if (camposVacios != "") {
             $(function() {
                 $('#modal-body').html(camposVacios);
@@ -2924,13 +2958,16 @@
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
                 "data": { 
+                    "IdjefeResponsableIO": $('input:radio[name=jefeResponsableIO]:checked').val(),
                     "Id_Hogar": $("#identificacion2Hogar").val(),
+                    "Id_": $("#identificacion2Hogar").val(),
                     "Nombre1": $("#primerNombreJefe").val(),
                     "Nombre2": $("#segundoNombreJefe").val(),
                     "Apellido1": $("#primerApellidoJefe").val(),
                     "Apellido2": $("#segundoApellidoJefe").val(),
                     "Id_Nacionalidad": $('input:radio[name=nacionalidadJefe]:checked').val(),
                     "Cedula": $("#cedulaJefe").val(),
+                    "CedulaResponsable": $("#cedulaResponsable").val(),
                     "Id_Parentesco": 1,
                     "Id_EstadoCivil": $("#estadoCivilJefe").val(),
                     "Fec_Nacimiento": $("#fechaNacimientoJefe").val(),
@@ -3093,8 +3130,9 @@
                 })
                 localStorage.setItem('idHogar',$("#identificacion2Hogar").val());
                 cargarTablaComposicion($("#identificacion2Hogar").val());
-                ///var form = document.querySelector('#formComposicion');
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 4",$("#identificacion2Hogar").val(),"U");
+                var form = document.querySelector('#formComposicionHogar');
+                form.reset();
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 4",$("#identificacion2Hogar").val(),"U");
                 
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
@@ -3979,19 +4017,10 @@
     }
     $(function() {
         $("input[name='jefeResponsableIO']").click(function() {
-           // alert(999999);
             if ($("#responsableJefeSI").is(":checked")) {
-                alert('SI');
                 document.getElementById("divResponsableJefe").style.visibility = "hidden";
-                //$("#divResponsableJefe").show();
-                //$('#divResponsableJefe').css("visibility","visible");
             } else {
-                alert('NO');
-                document.getElementById("divResponsableJefe").style.visibility = "visible";
-                
-                //$('#divResponsableJefe').css("visibility","hidden");
-                
-            
+               document.getElementById("divResponsableJefe").style.visibility = "visible";
             }
         });
     });
@@ -4988,7 +5017,7 @@
     function pad (str, max) {
         str = str.toString(); return str.length < max ? pad("0" + str, max) : str;
     }
-    function editPanelista(idHogar,responsable,parentesco){
+    function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
         if (localStorage.getItem("idHogarEditar") !== null) {
             var settings = {
                 "url": '<?php echo urlApi; ?>getPanelistaIdHogar/' + idHogar+'/'+ responsable+'/'+ parentesco,
@@ -5000,6 +5029,8 @@
             }
             $.ajax(settings).done(function(response) {
                 if (responsable == 1 && parentesco == 0){
+                    
+                    $("#inputIdEditResponsable").val(response.data[0].Id_Panelista);
                     $("#primerNombreResponsable").val(response.data[0].Nombre1);
                     $("#segundoNombreResponsable").val(response.data[0].Nombre2);
                     $("#primerApellidoResponsable").val(response.data[0].Apellido1);
@@ -5060,6 +5091,22 @@
                     oblig.filter("[value='"+response.data[0].Id_PagoRapido+"']").attr('checked', true);
                 }
                 if (responsable == 0 && parentesco == 1){
+                    
+                    
+                    if (response.data[0].ResponsablePanel != response.data[0].Id_Parentesco){
+                        document.getElementById("divResponsableJefe").style.visibility = "visible";
+                        var oblig = $("input:radio[name='jefeResponsableIO']");
+                        oblig.filter("[value='0']").attr('checked', true);
+                    }else{
+                        document.getElementById("divResponsableJefe").style.visibility = "hidden";
+                        var oblig = $("input:radio[name='jefeResponsableIO']");
+                        oblig.filter("[value='1']").attr('checked', true);
+                    }
+                    document.getElementById("responsableJefeNO").disabled=true;
+                    document.getElementById("responsableJefeSI").disabled=true;
+                    
+                    
+                    $("#inputIdEditJefe").val(response.data[0].Id_Panelista);
                     $("#primerNombreJefe").val(response.data[0].Nombre1);
                     $("#segundoNombreJefe").val(response.data[0].Nombre2);
                     $("#primerApellidoJefe").val(response.data[0].Apellido1);
@@ -5112,6 +5159,7 @@
     }
     // vvvvvvvvvvvvvv
 function EditAction(data) {
+    //ActualizarRegistro
     document.getElementById('FormPanelistaEdit').reset();
     var settings = {
         "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,
@@ -5620,13 +5668,10 @@ function ActualizarRegistro() {
         $.ajax(settings).done(function(response) {
             let selectMunicipio = $("#municipioHogar");
             selectMunicipio.find("option").remove();
-            //alert("idS Muni:"+idS);
-            //alert("parametro Muni:"+parametro);
             if (idS == 0){
                 selectMunicipio.append("<option value='' selected disabled> -- Seleccione -- </option>");
             }
             for (var i = 0; i < response.data.length; i++) {
-                //alert("id Municipìo: "+response.data[i].id);
                 if (response.data[i].id === idS){
                     localStorage.setItem("idMunicipio",idS);
                     selectMunicipio.append("<option value=" + response.data[i].id + " selected>" + response
@@ -5752,7 +5797,6 @@ function ActualizarRegistro() {
     
 
     function cargarTablaComposicion(idHogar){
-        //alert("function cargarbTablaComposicion(idHogar)");
         $('#TablePanelistas').dataTable({
             "lengthMenu": [
                 [10, 25, 50, 100, -1],

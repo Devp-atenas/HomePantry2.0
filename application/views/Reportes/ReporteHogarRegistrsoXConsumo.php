@@ -35,6 +35,27 @@
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
                             <div id="TableReporteHogarRegistroXConsumo"></div>
+                            <table id="TablaRegistroXConsumo" class="table table-bordered table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>idHogar</th>
+                                        <th>CodigoHogar</th>
+                                        <th>Clase Social</th>
+                                        <th># Personas</th>
+                                        <th>Area</th>
+                                        <th>Estado</th>
+                                        <th>Nombre Panelista</th>
+                                        <th>Apellido Panelista</th>
+                                        <th>detalle_1</th>
+                                        <th>detalle_2</th>
+                                        <th>detalle_3</th>
+                                        <th>detalle_4</th>
+                                        <th>detalle_5</th>
+                                        <th>idHogar</th>
+                                        
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                     
@@ -48,7 +69,8 @@
 
 <script src="<?php echo base_url('jsHP/jsReporteHogarRegistroXConsumo.js') ?>"></script>
 
-<script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
+<script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/responsive.bootstrap4.min.js') ?>"></script>
@@ -60,7 +82,6 @@
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/autoNumeric-1.9.18.js') ?>"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>

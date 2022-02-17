@@ -13,10 +13,11 @@ $("#selectPeriodo").change(function() {
 });
 
 $("#selecTipoConsumo").change(function() {
-    $("#showTableReporteHogarRegistroXConsumo").show();
     var idPeriodo = $('#selectPeriodo').val();
     var idTipoConsumo = $('#selecTipoConsumo').val();
     cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo);
+    $("#showTableReporteHogarRegistroXConsumo").show();
+    
 });
 
 
@@ -111,9 +112,202 @@ function cargarTipoConsumo(etiqueta,idSeleccionado) {
         }
     })
 }
+//55555
 
 
 function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
+   var urlApi = localStorage.getItem("urlApi");
+    
+    $('#TablaRegistroXConsumo').dataTable({
+        "lengthMenu": [
+            [ -1],
+            ["All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": true,
+        "searching": false,
+        "bPaginate": false,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": false,
+        "buttons": ['excel'],
+        "fixedHeader": true,
+        "scrollX": true,
+        "scrollY":        400,
+        "deferRender":    true,
+        "scroller":       true,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+            "decimal": ",",
+            "thousands": "."
+        },
+        
+        "ajax": {
+            "url": urlApi+'getDatosReporteHogarRegistrsoXConsumo/'+idPeriodo+'/'+idTipoConsumo,
+            "type": "GET",
+            "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/HomePantry20/Principal/logout';
+                }
+            }
+        },
+        //22222
+        "aoColumns": [{
+                mData: 'Id_PanelHogar',
+                className: "text-center"
+            },
+            {
+                mData: 'CodigoHogar',
+                className: "text-center"
+            },
+            {
+                mData: 'ClaseSocial',
+                className: "text-center"
+            },
+            {
+                mData: 'TotalPersonas',
+                className: "text-center"
+            },
+            {
+                mData: 'Area',
+                className: "text-center"
+            },
+            {
+                mData: 'Estado',
+                className: "text-center"
+            },
+            {
+                mData: 'Nombre1',
+                className: "text-center"
+            },
+            {
+                mData: 'Apellido1',
+                className: "text-center"
+            },
+            {
+                mData: 'detalle_1',
+                className: "text-center"
+            },
+            {
+                mData: 'detalle_2',
+                className: "text-center"
+            },
+            {
+                mData: 'detalle_3',
+                className: "text-center"
+            },
+            {
+                mData: 'detalle_4',
+                className: "text-center"
+            },
+            {
+                mData: 'detalle_5',
+                className: "text-center"
+            }
+        ],
+        "columnDefs": [{
+            "width": "100%",
+            "targets": 13,
+            "orderable": true,
+            "data": 'Id_PanelHogar',
+            "className": "text-center",
+        }],
+        
+        
+        
+        // // // "createdRow": function( row, data, dataIndex){
+        // // //     if (data['Precio'] < minimo || data['Precio'] > maximo){
+        // // //         $('td', row).eq(3).css('color', '#EE0012');
+        // // //     }
+        // // // }
+        
+        
+     
+        
+        "createdRow": function( row, data, dataIndex){
+            var consDet_1 = data['detalle_1'].split("-");
+            //alert(consDet_1);
+            
+            if(consDet_1[0]===consDet_1[1]){
+                if (consDet_1[0]==0){
+                    $('td', row).eq(8).css('background', '#708800');
+                    $('td', row).eq(8).css('color', '#FFFFFF');
+                }else{
+                    $('td', row).eq(8).css('background', '#770011');
+                    $('td', row).eq(8).css('color', '#FFFFFF');
+                    
+                }
+            }
+            var consDet_2 = data['detalle_2'].split("-");
+            if(consDet_2[0]==consDet_2[1]){
+                if (consDet_2[0]==0){
+                    $('td', row).eq(9).css('background', '#708800');
+                    $('td', row).eq(9).css('color', '#FFFFFF');
+                }else{
+                    $('td', row).eq(9).css('background', '#770011');
+                    $('td', row).eq(9).css('color', '#FFFFFF');
+                }
+            }
+            var consDet_3 = data['detalle_3'].split("-");
+            if(consDet_3[0]==consDet_3[1]){
+                if (consDet_3[0]==0){
+                    $('td', row).eq(10).css('background', '#708800');
+                    $('td', row).eq(10).css('color', '#FFFFFF');
+                }else{
+                    $('td', row).eq(10).css('background', '#770011');
+                    $('td', row).eq(10).css('color', '#FFFFFF');
+                }
+            }
+            var consDet_4 = data['detalle_4'].split("-");
+            if(consDet_4[0]==consDet_4[1]){
+                if (consDet_4[0]==0){
+                    $('td', row).eq(11).css('background', '#708800');
+                    $('td', row).eq(11).css('color', '#FFFFFF');
+                }else{
+                    $('td', row).eq(11).css('background', '#770011');
+                    $('td', row).eq(11).css('color', '#FFFFFF');
+                }
+            }
+            var consDet_5 = data['detalle_5'].split("-");
+            if(consDet_5[0]==consDet_5[1]){
+                if (consDet_5[0]==0){
+                    $('td', row).eq(12).css('background', '#708800');
+                    $('td', row).eq(12).css('color', '#FFFFFF');
+                }else{
+                    $('td', row).eq(12).css('background', '#770011');
+                    $('td', row).eq(12).css('color', '#FFFFFF');
+                }
+            }
+            
+        }
+    });
+}
+
+
+
+
+
+
+
+//55555
+function cargarTablaHogarRegistroxConsumo2(idPeriodo,idTipoConsumo){
     var urlApi = localStorage.getItem("urlApi");
     var cantidad = 11;
     var bottomAcciones = function(cell, formatterParams){

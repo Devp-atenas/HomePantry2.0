@@ -15,7 +15,7 @@ function cargarTablaReporteNSE2(){
         ],
         "bDestroy": true,
         "autoWidth": true,
-        searching: false,
+        "searching": false,
         "bPaginate": false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive": false,
@@ -32,7 +32,6 @@ function cargarTablaReporteNSE2(){
         },
         
         "ajax": {
-            //"url": '<?php echo urlApi; ?>getDatosReporteNSE',
             "url": urlApi+'getDatosReporteNSE/',
             "type": "GET",
             "headers": {
