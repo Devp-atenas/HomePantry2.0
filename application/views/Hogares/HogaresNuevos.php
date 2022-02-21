@@ -1686,6 +1686,13 @@
                             <button id="guardar-step-10" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
+                    <HR/>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button id="guardar-ficha" type="button" class="btn btn-block btn-success">Finalizar</button>
+                        </div>
+                    </div>
+                    
                     <!--/step 10-->
                 </form>
             </div>
@@ -1742,6 +1749,32 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="modal-body">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true"> Aceptar
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal vvvvvvvvvvvvv-->
+
+<div class="modal fade" id="myModalFinalizar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    Aviso:
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+            </div>
+            <div class="modal-bodyFinalizar">
+                Complete los siguientes pasos para poder finalizar
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="modal-bodyFinalizar">
                     </div>
                 </div>
             </div>
@@ -3952,7 +3985,115 @@
         }
 
     );
-    
+    //787878
+    $("#guardar-ficha").click(function() {
+        var camposVacios = "";
+        
+       
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": '<?php echo urlApi; ?>buscarPasos/',
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Id_Hogar": $("#identificacion2Hogar").val()
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            var camposVacios = "";
+            if ( $("#identificacion2Hogar").val() == ""){
+                camposVacios += "Falta completar Ubicacion del hogar<br>";
+            }
+            if (response.data[0].Ind_paso2 == 0){
+                camposVacios += "Falta completar responsable del hogar<br>";
+            }
+            if (response.data[0].Ind_paso3 == 0){
+                camposVacios += "Falta completar jefe del Hogar<br>";
+            }
+            if (response.data[0].Ind_paso4 == 0){
+                camposVacios += "Falta completar composición del hogar<br>";
+            }
+            if (response.data[0].Ind_paso5 == 0){
+                camposVacios += "Falta completar características y tenencia de la vivienda<br>";
+            }
+            if (response.data[0].Ind_paso6 == 0){
+                camposVacios += "Falta completar servicios Públicos<br>";
+            }
+            if (response.data[0].Ind_paso7 == 0){
+                camposVacios += "Falta completar servicios y equipamientos del hogar<br>";
+            }
+            if (response.data[0].Ind_paso8 == 0){
+                camposVacios += "Falta completar medios<br>";
+            }
+            if (response.data[0].Ind_paso9 == 0){
+                camposVacios += "Falta completar vehículos<br>";
+            }
+            if (response.data[0].Ind_paso10 == 0){
+                camposVacios += "Falta completar mascotas<br>";
+            }
+           
+            
+            if (camposVacios != "") {
+                alert(camposVacios);
+                $(function() {
+                    $('#modal-bodyFinalizar').html(camposVacios);
+                });
+                $('#myModalFinalizar').modal('show');
+            } else {
+                alert(camposVacios);
+                
+                finalizarFicha( $("#identificacion2Hogar").val());
+                const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
+                
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'info',
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                var form = document.querySelector('#FormPaisEdit');
+                form.reset();
+                window.location = '/homepantry20/index.php';
+            }
+        })
+        
+    });
+
+
     
     /* cccc */
     function Bitacora(idUsuario,IP,Operacion,idPrincipal,CRUD) {
@@ -4078,6 +4219,63 @@
                     .data[i].Estado + "</option>");
                 }
             }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/homepantry20/index.php';
+            }
+        })
+    }
+    
+    //787878
+    function finalizarFicha(idHogar) {
+        var settings = {
+            "url": '<?php echo urlApi; ?>updateNSE_idHogar/'+idHogar,
+            "method": "get",
+            "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+        }
+        $.ajax(settings).done(function(response) {
+            //787878
+            
+            
+            const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Registro de Hogar",idHogar,"U");
+
+            
+            
+            
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({

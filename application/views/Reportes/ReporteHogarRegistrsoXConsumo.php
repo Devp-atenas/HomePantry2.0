@@ -1,11 +1,53 @@
 <!-- Content Header (Page header) -->
 <?php $this->load->view('Plantillas/Header');?>
+<style>
+.table.dataTable {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10px;
+}
+
+.table.dataTable thead {
+    background: linear-gradient(to right, #D69232, #B6a232, #D69232);
+    color: white;
+    /*font-bold: weight;*/
+    /*font-weight: bold;*/
+    font-weight: 900;
+    
+}
+
+table.dataTable thead .sorting_asc,
+.sorting_desc,
+.sorting {
+    background-image: none !important;
+}
+
+#tablaValPrecios {
+    table-layout: fixed;
+    width: 100% !important;
+}
+
+#tablaValPrecios td,
+#tablaValPrecios th {
+    width: auto !important;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#tablaValPrecios select {
+    width: 50px;
+}
+
+select:focus {
+    width: auto;
+}
+</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><i class="fas fa-search-dollar"></i>&nbsp;Reporte de Hogar Registrso por Consumo</h1>
+            <div class="col-sm-12">
+                <h1 class="text-center"><i class="fas fa-search-dollar"></i>&nbsp;Reporte de Hogar Registrso por Consumo</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -28,7 +70,6 @@
                 </div>
             </div>
         </div>
-        <HR/>
         <div id="showTableReporteHogarRegistroXConsumo" style="display: none">
             <div class="row">
                 <div class="col-md-12">

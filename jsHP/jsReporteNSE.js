@@ -13,18 +13,23 @@ function cargarTablaReporteNSE2(){
             [ -1],
             ["All"]
         ],
-        "bDestroy": true,
-        "autoWidth": true,
-        "searching": false,
-        "bPaginate": false,
+        "bDestroy":     true,
+        "autoWidth":    true,
+        "searching":    false,
+        "bPaginate":    false,
         "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": false,
-        "buttons": ['excel'],
-        "fixedHeader": true,
-        "scrollX": true,
-        "scrollY":        400,
-        "deferRender":    true,
-        "scroller":       true,
+        "responsive":   false,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Reporte NSE'
+            }
+        ],
+        "fixedHeader":  true,
+        "scrollX":      true,
+        "scrollY":      400,
+        "deferRender":  true,
+        "scroller":     true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
             "decimal": ",",

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     cargarGArea('#selectGArea',0);
-    
+    cargarSemanaTop6("#selectSemana",0);
     
     
 });
@@ -8,22 +8,19 @@ $(document).ready(function() {
 $("#selectGArea").change(function() {
     $("#showTableReporteConsumoXDia").hide();
     idArea = $("#selectGArea").val();
+    idSemana = $("#selectSemana").val();
     cargarEstadoXArea("#selectEstado",0,idArea);
-    $("#selectSemana").empty();
+    cargarTablaReporteConsumoXDia_Area(idArea,idSemana);
+    $("#showTableReporteConsumoXDia").show();
+    //$("#selectSemana").empty();
 });
 
 $("#selectEstado").change(function() {
-    
-    
-    if ($("#selectSemana").val() != null){
-        idArea = $("#selectGArea").val();
-        idEstado = $("#selectEstado").val();
-        idSemana = $("#selectSemana").val();
-        $("#showTableReporteConsumoXDia").show();
-        cargarTablaReporteConsumoXDia(idArea,idEstado,idSemana);
-    }else{
-        cargarSemanaTop6("#selectSemana",0);
-    }
+    idArea = $("#selectGArea").val();
+    idEstado = $("#selectEstado").val();
+    idSemana = $("#selectSemana").val();
+    $("#showTableReporteConsumoXDia").show();
+    cargarTablaReporteConsumoXDia_AreaEstado(idArea,idEstado,idSemana);
 });
 
 
@@ -39,11 +36,11 @@ $("#selectSemana").change(function() {
 
 
 
-function cargarTablaReporteConsumoXDia(idArea,idEstado,idSemana){
+function cargarTablaReporteConsumoXDia_Area(idArea,idSemana){
     var urlApi = localStorage.getItem("urlApi");
     
     var table = new Tabulator("#TableReporteConsumoXDia", {
-        ajaxURL: urlApi+'getDatosReporteTipoConsumoXDia/'+idArea+'/'+idEstado+'/'+idSemana,
+        ajaxURL: urlApi+'getDatosReporteTipoConsumoXDia_Area/'+idArea+'/'+idSemana,
         ajaxConfig:{
             method:"GET", //set request type to Position
             headers: {
@@ -53,7 +50,34 @@ function cargarTablaReporteConsumoXDia(idArea,idEstado,idSemana){
         },
         layout:"fitDataStretch",
         height : "400px" ,
-        groupBy:"Fecha_Creacion",
+        //groupBy:"Fecha_Creacion",
+        placeholder:"Datos no encontrados",
+        selectable:false, //make rows selectable
+        columns:[
+            {title:"Dia", field:"Fecha_Creacion", sorter:"date"},
+            {title:"Area", field:"Area", sorter:"string"},
+            {title:"Estado", field:"Estado", sorter:"string"},
+            {title:"Tipo de Consumo", field:"TipoConsumo", sorter:"string"},
+            {title:"# Hogares que Reportaron", field:"cantidad", sorter:"number"},
+        ],
+    });
+}
+
+function cargarTablaReporteConsumoXDia_AreaEstado(idArea,idEstado,idSemana){
+    var urlApi = localStorage.getItem("urlApi");
+    
+    var table = new Tabulator("#TableReporteConsumoXDia", {
+        ajaxURL: urlApi+'getDatosReporteTipoConsumoXDia_AreaEstado/'+idArea+'/'+idEstado+'/'+idSemana,
+        ajaxConfig:{
+            method:"GET", //set request type to Position
+            headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+        },
+        layout:"fitDataStretch",
+        height : "400px" ,
+        //groupBy:"Fecha_Creacion",
         placeholder:"Datos no encontrados",
         selectable:false, //make rows selectable
         columns:[
@@ -82,9 +106,7 @@ function cargarSemanaTop6(etiqueta,idSeleccionado) {
     $.ajax(settings).done(function(response) {
         let selected = $(etiqueta);
         selected.find("option").remove();
-        if (idSeleccionado == 0){
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
+        
         
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id == idSeleccionado) {

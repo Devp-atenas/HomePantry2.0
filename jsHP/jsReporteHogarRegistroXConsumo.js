@@ -127,11 +127,16 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
         "autoWidth": true,
         "searching": false,
         "bPaginate": false,
-        "dom": '<"wrapper"flitp><"center"B>',
+        "dom": 'Bfrtip',
         "responsive": false,
-        "buttons": ['excel'],
-        "fixedHeader": true,
-        "scrollX": true,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Reporte de Hogar Registrso por Consumo'
+            }
+        ],
+        "fixedHeader":    true,
+        "scrollX":        true,
         "scrollY":        400,
         "deferRender":    true,
         "scroller":       true,
@@ -229,73 +234,57 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
             "data": 'Id_PanelHogar',
             "className": "text-center",
         }],
-        
-        
-        
-        // // // "createdRow": function( row, data, dataIndex){
-        // // //     if (data['Precio'] < minimo || data['Precio'] > maximo){
-        // // //         $('td', row).eq(3).css('color', '#EE0012');
-        // // //     }
-        // // // }
-        
-        
-     
-        
         "createdRow": function( row, data, dataIndex){
             var consDet_1 = data['detalle_1'].split("-");
-            //alert(consDet_1);
-            
             if(consDet_1[0]===consDet_1[1]){
                 if (consDet_1[0]==0){
-                    $('td', row).eq(8).css('background', '#708800');
+                    $('td', row).eq(8).css('background', '#77CC33');
                     $('td', row).eq(8).css('color', '#FFFFFF');
                 }else{
-                    $('td', row).eq(8).css('background', '#770011');
+                    $('td', row).eq(8).css('background', '#AA6677');
                     $('td', row).eq(8).css('color', '#FFFFFF');
-                    
                 }
             }
             var consDet_2 = data['detalle_2'].split("-");
             if(consDet_2[0]==consDet_2[1]){
                 if (consDet_2[0]==0){
-                    $('td', row).eq(9).css('background', '#708800');
+                    $('td', row).eq(9).css('background', '#77CC33');
                     $('td', row).eq(9).css('color', '#FFFFFF');
                 }else{
-                    $('td', row).eq(9).css('background', '#770011');
+                    $('td', row).eq(9).css('background', '#AA6677');
                     $('td', row).eq(9).css('color', '#FFFFFF');
                 }
             }
             var consDet_3 = data['detalle_3'].split("-");
             if(consDet_3[0]==consDet_3[1]){
                 if (consDet_3[0]==0){
-                    $('td', row).eq(10).css('background', '#708800');
+                    $('td', row).eq(10).css('background', '#77CC33');
                     $('td', row).eq(10).css('color', '#FFFFFF');
                 }else{
-                    $('td', row).eq(10).css('background', '#770011');
+                    $('td', row).eq(10).css('background', '#AA6677');
                     $('td', row).eq(10).css('color', '#FFFFFF');
                 }
             }
             var consDet_4 = data['detalle_4'].split("-");
             if(consDet_4[0]==consDet_4[1]){
                 if (consDet_4[0]==0){
-                    $('td', row).eq(11).css('background', '#708800');
+                    $('td', row).eq(11).css('background', '#77CC33');
                     $('td', row).eq(11).css('color', '#FFFFFF');
                 }else{
-                    $('td', row).eq(11).css('background', '#770011');
+                    $('td', row).eq(11).css('background', '#AA6677');
                     $('td', row).eq(11).css('color', '#FFFFFF');
                 }
             }
             var consDet_5 = data['detalle_5'].split("-");
             if(consDet_5[0]==consDet_5[1]){
                 if (consDet_5[0]==0){
-                    $('td', row).eq(12).css('background', '#708800');
+                    $('td', row).eq(12).css('background', '#77CC33');
                     $('td', row).eq(12).css('color', '#FFFFFF');
                 }else{
-                    $('td', row).eq(12).css('background', '#770011');
+                    $('td', row).eq(12).css('background', '#AA6677');
                     $('td', row).eq(12).css('color', '#FFFFFF');
                 }
             }
-            
         }
     });
 }
