@@ -2664,6 +2664,7 @@
                     "referenciaHogar": $("#referenciaHogar").val(),
                     "telefonoHogar": $("#telefonoHogar").val(),
                     "viviendaCasa": $("#viviendaCasa").val(),
+                    "Id_Usuario": localStorage.getItem("IdUsuario"),
                     "tipoCasa": $("#tipoCasa").val()
                 }
             }

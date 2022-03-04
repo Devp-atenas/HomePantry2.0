@@ -9,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="<?php echo base_url('vendor/css/custom.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('vendor/css/nprogress.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('dist/iconNew/node_modules/bootstrap-icons/font/bootstrap-icons.css') ?>">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
@@ -38,6 +39,7 @@
     
     
     <link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/select/1.3.4/css/select.dataTables.min.css" rel="stylesheet">
     
     
     <!-- <style type="text/css">
@@ -89,7 +91,7 @@
           <span>Settings</span>
           </a>
           <a class="dropdown-item" href="javascript:;">Help</a>
-          <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+          <a class="dropdown-item" href="<?php echo base_url('Principal/SessionLock')?>"><i class="fa fa-sign-out pull-right"></i>Bloquear</a>
         </div>
       </li>
         <li class="nav-item">

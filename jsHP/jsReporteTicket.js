@@ -5,18 +5,30 @@ $(document).ready(function() {
 });
 
 $("#selectSemana").change(function() {
+    $("#showTablaReporteTicket").hide();
     cargarGArea('#selectGArea',0);
-    $("#selectGArea").empty();
     $("#selectEstado").empty();
+    
     
 });
 
 $("#selectGArea").change(function() {
+    $("#showTablaReporteTicket").hide();
+    var idSemana = $("#selectSemana").val();
     var idArea = $("#selectGArea").val();
     cargarEstadoXArea('#selectEstado',0,idArea);
-    $("#selectEstado").empty();
-    //$("#showTableReporteConsumoXDia").hide();
-    //cargarTipoConsumo("#selecTipoConsumo",0);
+    cargarTablaReporteTicket(idSemana,idArea,"");
+    $("#showTablaReporteTicket").show();
+    
+});
+
+$("#selectEstado").change(function() {
+    $("#showTablaReporteTicket").hide();
+    var idSemana = $("#selectSemana").val();
+    var idArea = $("#selectGArea").val();
+    var idEstado = $("#selectEstado").val();
+    cargarTablaReporteTicket(idSemana,idArea,idEstado);
+    $("#showTablaReporteTicket").show();
     
 });
 
@@ -123,7 +135,8 @@ function cargarSemana(identificador,idEditar) {
         "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+                },
+        
     }
     $.ajax(settings).done(function(response) {
         let selected = $(identificador);
@@ -163,19 +176,41 @@ function cargarSemana(identificador,idEditar) {
 
 
 
-function cargarTablaReporteConsumo(idArea,idEstado,idSemana,cantidad){
+function cargarTablaReporteTicket(idSemana,idArea,idEstado){
     var urlApi = localStorage.getItem("urlApi");
-    var bottomAcciones = function(cell, formatterParams){
-    var id = cell.getRow().getData().Id_Estudio;
-    return  "<a id='fg003' href='#' onclick='callUpdateEstudio("+id+"); return false;' ><i class='fas fa-edit text-primary data-toggle='tooltip' data-placement='top' title='Actualizar'></i></a>"
-            +"<a id='fg003' href='#' onclick='callEliminarEstudio("+id+"); return false;' ><i class='fa fa-eraser text-danger data-toggle='tooltip' data-placement='top' title='Eliminar'></i></a>";
-    };
-
-    var table = new Tabulator("#TableReporteConsumo", {
-        ajaxURL: urlApi+'getDatosReporteConsumo/',
-        ajaxConfig:{
-            method:"GET", //set request type to Position
-            headers: {
+    
+    $('#TablaReporteTicket').dataTable({
+        "lengthMenu": [
+            [ -1],
+            ["All"]
+        ],
+        "bDestroy":     true,
+        "autoWidth":    true,
+        "searching":    false,
+        "bPaginate":    false,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive":   false,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Reporte NSE'
+            }
+        ],
+        "fixedHeader":  true,
+        "scrollX":      true,
+        "scrollY":      400,
+        "deferRender":  true,
+        "scroller":     true,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+            "decimal": ",",
+            "thousands": "."
+        },
+        
+        "ajax": {
+            "url": urlApi+'getDatosReporteTicket/',
+            "type": "POST",
+            "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
@@ -183,25 +218,118 @@ function cargarTablaReporteConsumo(idArea,idEstado,idSemana,cantidad){
                 "idArea":idArea,
                 "idEstado": idEstado,
                 "idSemana": idSemana
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/HomePantry20/Principal/logout';
+                }
             }
         },
-        layout:"fitDataStretch",
-        placeholder:"Datos no encontrados",
-        selectable:false, //make rows selectable
-        columns:[
-            {title:"Tipo de Consumo", field:"TipoConsumo", sorter:"string"},
-            {title:"Hogares_que_Reportaron", field:"Hogares_que_Reportaron", sorter:"string"},
-            {title:"Hogares_que_ReportaronAntr", field:"Hogares_que_ReportaronAnt", sorter:"string"},
-            {title:"Variacion", field:"Variacion", sorter:"string"},
-            {title:"# Hogares que Faltan", field:"Hogares_que_Reportaron", formatter:function(cell, formatterParams, onRendered){
-                //cell - the cell component
-                //formatterParams - parameters set for the column
-                //onRendered - function to call when the formatter has been rendered
-            
-                return cantidad - cell.getValue(); //return the contents of the cell;
+        
+        "aoColumns": [{
+                mData: 'IdHogar',
+                className: "text-center"
             },
+            {
+                mData: 'CodigoHogar',
+                className: "text-center"
             },
-            {formatter:bottomAcciones, hozAlign:"center"}
+            {
+                mData: 'Area',
+                className: "text-center"
+            },
+            {
+                mData: 'Estado',
+                className: "text-center"
+            },
+            {
+                mData: 'Consumo',
+                className: "text-center"
+            },
+            {
+                mData: 'Medio',
+                className: "text-center"
+            },
+            {
+                mData: 'Moneda',
+                className: "text-center"
+            },
+            {
+                mData: 'Semana',
+                className: "text-center"
+            },
+            {
+                mData: 'fecha_consumo',
+                className: "text-center"
+            },
+            {
+                mData: 'FormaPago',
+                className: "text-center"
+            },
+            {
+                mData: 'Total_items',
+                className: "text-center"
+            },
+            {
+                mData: 'Total_Compra',
+                className: "text-center"
+            },
+            {
+                mData: 'Moneda',
+                className: "text-center"
+            },
+            {
+                mData: 'Canal',
+                className: "text-center"
+            },
+            {
+                mData: 'Cadena',
+                className: "text-center"
+            },
+            {
+                mData: 'Dolar',
+                className: "text-center"
+            },
+            {
+                mData: 'Euro',
+                className: "text-center"
+            },
+            {
+                mData: 'Petro',
+                className: "text-center"
+            },
+            {
+                mData: 'Peso',
+                className: "text-center"
+            },
+            {
+                mData: 'Ind_Activo',
+                className: "text-center"
+            }
         ],
+        "columnDefs": [{
+            "width": "100%",
+            "targets": 20,
+            "orderable": true,
+            "data": 'IdHogar',
+            "className": "text-center",
+            
+        }],
     });
+    
 }
+

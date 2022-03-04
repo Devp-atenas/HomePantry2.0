@@ -118,7 +118,7 @@ function cargarTipoConsumo(etiqueta,idSeleccionado) {
 function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
    var urlApi = localStorage.getItem("urlApi");
     
-    $('#TablaRegistroXConsumo').dataTable({
+   var oTable = $('#TablaRegistroXConsumo').DataTable({
         "lengthMenu": [
             [ -1],
             ["All"]
@@ -173,6 +173,11 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
                 }
             }
         },
+        "rowCallback": function( row, data ) {
+            if ( $.inArray(data.DT_RowId, selected) !== -1 ) {
+                $(row).addClass('selected');
+            }
+        },
         //22222
         "aoColumns": [{
                 mData: 'Id_PanelHogar',
@@ -208,7 +213,21 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
             },
             {
                 mData: 'detalle_1',
-                className: "text-center"
+                className: "text-center",
+                render: function(data, type) {
+                    if (type === 'display') {
+                        link = '"Principal/ReporteHogarRegistrsoXConsumo"';
+                        
+                        //<a href="<?php echo base_url('Principal/Parentesco')?>";
+                        
+ 
+                        //return '<a href="' + link + '">' + data + '</a>';
+                        return '<a href="<?php echo base_url('+link+')?>"' + data + '</a>';
+                        
+                    }
+                     
+                    return data;
+                }
             },
             {
                 mData: 'detalle_2',
@@ -238,7 +257,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
             var consDet_1 = data['detalle_1'].split("-");
             if(consDet_1[0]===consDet_1[1]){
                 if (consDet_1[0]==0){
-                    $('td', row).eq(8).css('background', '#77CC33');
+                    $('td', row).eq(8).css('background', '#777777');
                     $('td', row).eq(8).css('color', '#FFFFFF');
                 }else{
                     $('td', row).eq(8).css('background', '#AA6677');
@@ -248,7 +267,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
             var consDet_2 = data['detalle_2'].split("-");
             if(consDet_2[0]==consDet_2[1]){
                 if (consDet_2[0]==0){
-                    $('td', row).eq(9).css('background', '#77CC33');
+                    $('td', row).eq(9).css('background', '#777777');
                     $('td', row).eq(9).css('color', '#FFFFFF');
                 }else{
                     $('td', row).eq(9).css('background', '#AA6677');
@@ -258,7 +277,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
             var consDet_3 = data['detalle_3'].split("-");
             if(consDet_3[0]==consDet_3[1]){
                 if (consDet_3[0]==0){
-                    $('td', row).eq(10).css('background', '#77CC33');
+                    $('td', row).eq(10).css('background', '#777777');
                     $('td', row).eq(10).css('color', '#FFFFFF');
                 }else{
                     $('td', row).eq(10).css('background', '#AA6677');
@@ -268,25 +287,33 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
             var consDet_4 = data['detalle_4'].split("-");
             if(consDet_4[0]==consDet_4[1]){
                 if (consDet_4[0]==0){
-                    $('td', row).eq(11).css('background', '#77CC33');
+                    $('td', row).eq(11).css('background', '#777777');
                     $('td', row).eq(11).css('color', '#FFFFFF');
                 }else{
                     $('td', row).eq(11).css('background', '#AA6677');
                     $('td', row).eq(11).css('color', '#FFFFFF');
                 }
-            }
+            }/*
             var consDet_5 = data['detalle_5'].split("-");
             if(consDet_5[0]==consDet_5[1]){
                 if (consDet_5[0]==0){
-                    $('td', row).eq(12).css('background', '#77CC33');
+                    $('td', row).eq(12).css('background', '#777777');
                     $('td', row).eq(12).css('color', '#FFFFFF');
                 }else{
                     $('td', row).eq(12).css('background', '#AA6677');
                     $('td', row).eq(12).css('color', '#FFFFFF');
                 }
-            }
+            }*/
         }
     });
+   
+    $('#TablaRegistroXConsumo tbody').on('click', 'td', function () {
+        
+        alert( oTable.cell( this ).data() );
+        alert( oTable.cell( 3 ).data() );
+        
+        //window.location = '/homepantry20/index.php';
+    } );
 }
 
 

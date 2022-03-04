@@ -1,5 +1,8 @@
+var oTable;
+var selected = [];
+    
 $(document).ready(function() {
-    //alert(9999)
+    //var editor;
     cargarTablaReporteNSE2();
 });
 
@@ -8,14 +11,17 @@ $(document).ready(function() {
 function cargarTablaReporteNSE2(){
     var urlApi = localStorage.getItem("urlApi");
     
-    $('#TablaReporteNSE').dataTable({
-        "lengthMenu": [
+    oTable = $('#TablaReporteNSE').DataTable({
+    //var oTable = jQuery('#TablaReporteNSE').DataTable({
+            "lengthMenu": [
             [ -1],
             ["All"]
         ],
         "bDestroy":     true,
         "autoWidth":    true,
         "searching":    false,
+        select: true,
+        select: 'single',
         "bPaginate":    false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive":   false,
@@ -63,7 +69,12 @@ function cargarTablaReporteNSE2(){
                 }
             }
         },
-        
+        /*
+        "rowCallback": function( row, data ) {
+            if ( $.inArray(data.DT_RowId, selected) !== -1 ) {
+                $(row).addClass('selected');
+            }
+        },*/
         "aoColumns": [{
                 mData: 'idHogar',
                 className: "text-center"
@@ -463,10 +474,37 @@ function cargarTablaReporteNSE2(){
             "orderable": true,
             "data": 'idHogar',
             "className": "text-center",
-            
         }],
     });
     
+    
+    //var table = $('#example').DataTable();
+ 
+    oTable.on( 'select', function ( e, dt, type, indexes ) {
+    if ( type === 'row' ) {
+        var data = table.rows( indexes ).data().pluck( 'id' );
+ 
+        // do something with the ID of the selected items
+    }
+} );
+    
+    
+/*
+    $('#example tbody').on('click', 'tr', function () {
+        var id = this.id;
+        var index = $.inArray(id, selected);
+
+        if ( index === -1 ) {
+            selected.push( id );
+        }else {
+            selected.splice( index, 1 );
+        }
+
+        $(this).toggleClass('selected');
+    });
+*/
+
+
 }
 
 

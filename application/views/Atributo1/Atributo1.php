@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Activo:</div>
+                                <div class="inputText font-weight-bold">Activo:</div>
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div
+                        </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12">

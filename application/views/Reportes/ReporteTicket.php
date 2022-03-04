@@ -1,5 +1,55 @@
+<?php
+if(!isset($_SESSION)){
+    session_start();
+}else{
+    session_destroy();
+    session_start();
+}
+?>
 <!-- Content Header (Page header) -->
 <?php $this->load->view('Plantillas/Header');?>
+<style>
+.table.dataTable {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10px;
+}
+
+.table.dataTable thead,tfoot {
+    background: linear-gradient(to right, #D69232, #B6a232, #D69232);
+    color: white;
+    /*font-bold: weight;*/
+    /*font-weight: bold;*/
+    font-weight: 900;
+    
+}
+
+table.dataTable thead .sorting_asc,
+.sorting_desc,
+.sorting {
+    background-image: none !important;
+}
+
+#tablaValPrecios {
+    table-layout: fixed;
+    width: 100% !important;
+}
+
+#tablaValPrecios td,
+#tablaValPrecios th {
+    width: auto !important;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#tablaValPrecios select {
+    width: 50px;
+}
+
+select:focus {
+    width: auto;
+}
+</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -17,17 +67,17 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label class="inputText font-weight-bold">Semana:</label>
                         <select id="selectSemana" name="selectSemana" class="form-control form-control-sm">
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label class="inputText font-weight-bold">Area:</label>
                         <select id="selectGArea" name="selectGArea" class="form-control form-control-sm">
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label class="inputText font-weight-bold">Estado:</label>
                         <select id="selectEstado" name="selectEstado" class="form-control form-control-sm">
                         </select>
@@ -37,12 +87,64 @@
             </div>
         </div>
         <HR/>
-        <div id="showTabla">
+        <div id="showTablaReporteTicket" style="display:none;">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
-                            <div id="TableReporteConsumo"></div>
+                            <div id="TableReporteTicket"></div>
+                            <table id="TablaReporteTicket" class="table hover table-striped table-sm">
+                            <thead>
+                                    <tr>
+                                        <th>idHogar</th>
+                                        <th>CodigoHogar</th>
+                                        <th>Area</th>
+                                        <th>Estado</th>
+                                        <th>Consumo</th>
+                                        <th>Medio</th>
+                                        <th>Moneda</th>
+                                        <th>Semana</th>
+                                        <th>fecha_consumo</th>
+                                        <th>FormaPago</th>
+                                        <th>Total_items</th>
+                                        <th>Total_Compra</th>
+                                        <th>Moneda</th>
+                                        <th>Canal</th>
+                                        <th>Cadena</th>
+                                        <th>Dolar</th>
+                                        <th>Euro</th>
+                                        <th>Petro</th>
+                                        <th>Peso</th>
+                                        <th>Ind_Activo</th>
+                                        <th>idHogar</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>idHogar</th>
+                                        <th>CodigoHogar</th>
+                                        <th>Area</th>
+                                        <th>Estado</th>
+                                        <th>Consumo</th>
+                                        <th>Medio</th>
+                                        <th>Moneda</th>
+                                        <th>Semana</th>
+                                        <th>fecha_consumo</th>
+                                        <th>FormaPago</th>
+                                        <th>Total_items</th>
+                                        <th>Total_Compra</th>
+                                        <th>Moneda</th>
+                                        <th>Canal</th>
+                                        <th>Cadena</th>
+                                        <th>Dolar</th>
+                                        <th>Euro</th>
+                                        <th>Petro</th>
+                                        <th>Peso</th>
+                                        <th>Ind_Activo</th>
+                                        <th>idHogar</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                     

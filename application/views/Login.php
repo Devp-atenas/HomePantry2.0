@@ -131,6 +131,7 @@ if(!isset($_SESSION)){
                         localStorage.setItem("user", $("#user").val());
                         localStorage.setItem("nombreUsuario",data.nombreUsuario);
                         localStorage.setItem("IdUsuario",data.IdUsuario);
+                        localStorage.setItem("Avatar",data.Avatar);
                         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar",localStorage.getItem("IdUsuario"),"R");
                         //generarMenu($("#user").val());
                         //localStorage.setItem("Nivel",data.Nivel);

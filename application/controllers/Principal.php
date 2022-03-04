@@ -268,7 +268,21 @@ class Principal extends CI_Controller {
     public function ReporteTicket(){
         $this->load->view('Reportes/ReporteTicket');
     }
-    
+    public function logout(){
+        $this->load->helper('url');
+        echo '<script>';
+        echo 'var nombreUsuario = localStorage.getItem("nombreUsuario");';
+        echo 'var user = localStorage.getItem("user");';
+        echo 'var Avatar = localStorage.getItem("Avatar");';
+        echo 'sessionStorage.clear();';
+        echo 'localStorage.clear();';
+        echo 'localStorage.setItem("nombreUsuario",nombreUsuario);';
+        echo 'localStorage.setItem("Avatar",Avatar);';
+        echo '</script>';
+        $this->session->sess_destroy();
+        $this->load->view('SessionLock');
+        redirect('/');
+	}
     
     public function user_view(){
 
@@ -310,16 +324,6 @@ class Principal extends CI_Controller {
         }
         
     }
-    public function logout(){
-        $this->load->helper('url');
-        echo '<script>';
-        echo 'sessionStorage.clear();';
-        echo 'var user = localStorage.getItem("user");';
-        echo 'localStorage.setItem("user",user);';
-        echo '</script>';
-        $this->session->sess_destroy();
-        $this->load->view('SessionLock');
-        redirect('/');
-	}
+    
     
 }
