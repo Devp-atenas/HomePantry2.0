@@ -81,8 +81,13 @@
     
       <li class="nav-item dropdown open" style="padding-left: 15px;">
         <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-        <img src="<?php echo base_url('dist/img/prueba.png')?>" class="img-circle elevation-2"
-                    alt="User Image"><span class="" id="nombreUsuario"></span>
+        
+        <div id="lockscreen-image" class="lockscreen-image">
+        <span class="" id="nombreUsuario"></span>
+        </div>
+        
+        
+        
         </a>
         <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="javascript:;"> Profile</a>
@@ -116,10 +121,21 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="<?php echo base_url('dist/img/prueba.png')?>" class="img-circle elevation-2" alt="User Image">
-                &nbsp;&nbsp;<span class="" id="nombreUsuario2"></span>
-            </div>
+            
+            
+        <div id="lockscreen-image2" class="lockscreen-image">
+        
+        
+        
+          <span class="" id="nombreUsuario2"></span>
+        </div>
+            
+            
+            
+
+
+
+
 
             <div class="info">
                 <a href="#" class="d-block"><p id="usuario"></p></a>
@@ -150,6 +166,22 @@
   $(document).ready(function() {
     $("#nombreUsuario").html(localStorage.getItem("nombreUsuario"));
     $("#nombreUsuario2").html(localStorage.getItem("nombreUsuario"));
+    
+        //var Avatar = ;
+    img = document.createElement('img');
+    //img.setAttribute("src", `./landing/images/${item.img_padre}`);
+    img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
+    img.setAttribute("alt", `User Image`);
+    img.setAttribute("class", `img-circle elevation-2`);
+    document.getElementById('lockscreen-image').appendChild(img);
+    
+    img = document.createElement('img');
+    //img.setAttribute("src", `./landing/images/${item.img_padre}`);
+    img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
+    img.setAttribute("alt", `User Image`);
+    img.setAttribute("class", `img-circle elevation-2`);
+    document.getElementById('lockscreen-image2').appendChild(img);
+        
     
 });
 </script>

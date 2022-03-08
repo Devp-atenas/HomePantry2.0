@@ -42,11 +42,12 @@ select:focus {
     width: auto;
 }
 </style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-diagram-3"></i></i>&nbsp;Perfiles</h1>
+                <h1><i class="bi bi-diagram-3"></i></i>&nbsp;Perfil - Usuario</h1>
             </div>
             
         </div>
@@ -58,7 +59,7 @@ select:focus {
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Crear Perfil</h3>
+                    <h3 class="card-title">Asociar perfil a usuario</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -69,27 +70,14 @@ select:focus {
                     <form id="FormPerfil">
                         <div class="form-group row mb-0 mt-0">
                             <div class="col-md-3">
-                                <label class="inputText font-weight-bold">Nombre del Perfil:</label>
-                                <input type="text" name="inputPerfil" id="inputPerfil" class="form-control">
-                            </div>
-                            <div class="col-md-5">
-                                <label class="inputText font-weight-bold">Descripcion:</label>
-                                <input type="text" name="inputDescripcion" id="inputDescripcion" class="form-control">
+                                <div class="inputText font-weight-bold">Usuario:</div>
+                                    <select id="selectUsuario" name="selectUsuario" class="form-control form-control-sm">
+                                    </select>
                             </div>
                             <div class="col-md-3">
-                                <div class="inputText font-weight-bold">Activo:</div>
-                                <div class="card">
-                                    <div class="form-group">
-                                    <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0">
-                                            <label class="form-check-label">No</label>
-                                        </div>
-                                        <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1">
-                                            <label class="form-check-label">Si</label>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="inputText font-weight-bold">Perfil:</div>
+                                    <select id="selectPerfil" name="selectPerfil" class="form-control form-control-sm">
+                                    </select>
                             </div>
                             <div class="col-md-1">
                                 <div class="inputText font-weight-bold">Guardar:</div>
@@ -107,7 +95,6 @@ select:focus {
     </div>
 </section>
 
-
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -121,23 +108,19 @@ select:focus {
                     </div>
                 </div>
                 <div class="card-body" style="display: none;">
-                    <table id="TablePerfil" class="table table-bordered table-striped table-sm">
+                    <table id="TablaVista" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Usuario</th>
                                 <th>Perfil</th>
-                                <th>Descripcion</th>
-                                <th>Estatus</th>
-                                <th>Opciones</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>ID</th>
+                                <th>Usuario</th>
                                 <th>Perfil</th>
-                                <th>Descripcion</th>
-                                <th>Estatus</th>
-                                <th>Opciones</th>
+                                <th></th>
                             </tr>
                         </tfoot>
                     </table>
@@ -149,60 +132,6 @@ select:focus {
     </div>
 </section>
 
-<section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Agregar Opciones al Perfil</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body" style="display: none;">
-                    <div id="showTablas">
-                        <h2 class="text-center">Funciones de Home Pantry</h2>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group row mb-0 mt-0">
-                                    <div class="col-md-4">
-                                        <div class="inputText font-weight-bold">Perfil:</div>
-                                            <select id="selectPerfil" name="selectPerfil" class="form-control form-control-sm">
-                                            </select>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <div class="inputText font-weight-bold">Guardar:</div>
-                                        <button id="idGuardarPerfilOpciones"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
-                                            <i class="fas fa-save fa-2x"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <HR/>
-                                <div class="text-center">
-                                    <div class="form-group row mb-0 mt-0">
-                                        <div class="col-md-12">
-                                            <div id="TablaFunciones"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
 
 <?php $this->load->view('Plantillas/Footer');?>
 
@@ -210,23 +139,25 @@ select:focus {
 $(document).ready(function() {
     var urlApi = '<?php echo urlApi; ?>';
     sessionStorage.setItem("urlApi",urlApi);
-    cargarTablaFunciones('#TablaFunciones');
-    cargarTabla();
+    //cargarTablaFunciones('#TablaFunciones');
+    cargarTablaUsuriosPerfil();
     //$('#showButton').hide();
 });
 
-function cargarTabla(){
-    $('#TablePerfil').DataTable({
+function cargarTablaUsuriosPerfil(){
+    $('#TablaVista').DataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
             [10, 25, 50, 100, "All"]
         ],
         "bDestroy":     true,
         "autoWidth":    true,
-        "searching":    false,
-        "bPaginate":    false,
         "dom": '<"wrapper"flitp><"center"B>',
-        "responsive":   false,
+        "responsive":   true,
+        "searching":    false,
+        "colReorder": true, //----
+        "scrollY":      300,
+        "bPaginate":    false,
         "buttons": [
             {
                 extend: 'excelHtml5',
@@ -234,14 +165,13 @@ function cargarTabla(){
             }
         ],
         "fixedHeader":  true,
-        "scrollY":      300,
         "deferRender":  true,
         "scroller":     true,
         "buttons": [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "ajax": {
-            "url": '<?php echo urlApi; ?>getAllPerfiles/2',
+            "url": '<?php echo urlApi; ?>getAllUsuariosPerfil/',
             "type": "GET",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -271,27 +201,20 @@ function cargarTabla(){
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
         "aoColumns": [{
-                mData: 'Id',
+                mData: 'nombreUsuario',
                 className: "text-center"
             },
             {
-                mData: 'Perfil',
+                mData: 'perfil',
                 className: "text-center"
             },
-            {
-                mData: 'descripcion',
-                className: "text-center"
-            },
-            {
-                mData: 'status',
-                className: "text-center"
-            },
+            
         ],
         "columnDefs": [{
             //"width": "100%",
-            "targets": 4,
+            "targets": 2,
             "orderable": true,
-            "data": 'Id',
+            "data": 'id_perfil',
             "className": "text-center",
             "render": function(data, type, row, meta) {
                 return '<a title="Eliminar" href="#"><img id="EliminarImg" src=<?php echo base_url('assets/iconos/delete.png') ?> width="30" height="30"  onclick="deleteAction(' +
@@ -308,9 +231,8 @@ function cargarTabla(){
 
 </script>
 
-<script src="<?php echo base_url('jsHP/jsGestionarPerfil.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsUsuarioPerfil.js') ?>"></script>
 
-<script src="<?php echo base_url('jsHP/jsReporteNSE.js') ?>"></script>
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

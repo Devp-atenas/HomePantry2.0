@@ -44,8 +44,6 @@
 
                         <div class="lockscreen-item">
                             <div id="lockscreen-image" class="lockscreen-image">
-                            <!--<img src="../dist/img/Usuarios/avatar5.png" class="img-circle elevation-2" alt="User Image">-->
-                            
                             </div>
 
 
@@ -72,9 +70,7 @@
                     All rights reserved
                 </div>
             </div>
-
-
-
+            
             <div>
                 <p class="mb-1">
                     <small>
@@ -87,9 +83,9 @@
 </body>
     
     <!-- jQuery -->
-    <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></scrip>
+    <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
     <!-- Bootstrap 4 -->
-    <script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')?>"></>
+    <script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url('assets/adminlte.min.js')?>"></script>
     <!-- jquery-validation -->
@@ -99,24 +95,40 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="<?php echo base_url('assets/sweetalert2/sweetalert2.all.min.js')?>"></script>
     <script>
-    
+
     $.getJSON('https://api.ipify.org?format=json', function(data){
             //alert("Hola 1: "+data.ip);
             var IP2 = data.ip;
             localStorage.setItem("IPHP20",data.ip);
     });
 
-
     $(document).ready(function() {
 
         var lockscreenName = localStorage.getItem("nombreUsuario");
         var user = localStorage.getItem("user");
         var Avatar = localStorage.getItem("Avatar");
+        //alert(Avatar);
         localStorage.clear();
         sessionStorage.clear();
         localStorage.setItem("nombreUsuario",lockscreenName);
         localStorage.setItem("user",user);
         localStorage.setItem("Avatar",Avatar);
+        /*
+        <div id="lockscreen-image" class="lockscreen-image">
+            <img src="../dist/img/Usuarios/avatar5.png" class="img-circle elevation-2" alt="User Image">
+        
+        </div>
+        */
+        //alert(Avatar);
+        console.log(Avatar);
+    
+        img = document.createElement('img');
+        img.setAttribute("src", `../dist/img/Usuarios/${Avatar}`);
+        img.setAttribute("alt", `User Image`);
+        img.setAttribute("class", `img-circle elevation-2`);
+        document.getElementById('lockscreen-image').appendChild(img);
+        
+        
         $("#lockscreenName").html(lockscreenName);
         //alert(localStorage.getItem("Avatar"));
         //var rImag = '<img src="../dist/img/Usuarios/'+localStorage.setItem("Avatar",Avatar)+'" class="img-circle elevation-2" alt="User Image">'
@@ -151,6 +163,7 @@
                         localStorage.setItem("user", data.Login);
                         localStorage.setItem("nombreUsuario",data.nombreUsuario);
                         localStorage.setItem("IdUsuario",data.IdUsuario);
+                        localStorage.setItem("Avatar",data.Avatar);
                         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar",localStorage.getItem("IdUsuario"),"R");
                         //generarMenu($("#user").val());
                         //localStorage.setItem("Nivel",data.Nivel);

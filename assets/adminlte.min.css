@@ -3268,14 +3268,17 @@ input[type="submit"].btn-block {
 	white-space: nowrap;
 }
 .dropdown-toggle::after {
-	display: inline-block;
+	/*display: inline-block;
 	margin-left: 0.255em;
-	vertical-align: 0.255em;
+	vertical-align: 0.255em;*/
 	content: "";
-	border-top: 0.3em solid;
-	border-right: 0.3em solid transparent;
-	border-bottom: 0;
-	border-left: 0.3em solid transparent;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    position: relative;
+    top: -40%;
+    left: 96%;
 }
 .dropdown-toggle:empty::after {
 	margin-left: 0;
@@ -37757,7 +37760,7 @@ a.disabled.mailbox-attachment-close {
 	position: relative;
 	width: 290px;
 }
-.lockscreen-image {
+/*.lockscreen-image {
 	border-radius: 50%;
 	background-color: #fff;
 	left: -10px;
@@ -37765,11 +37768,28 @@ a.disabled.mailbox-attachment-close {
 	position: absolute;
 	top: -25px;
 	z-index: 10;
+}*/
+.lockscreen-image {
+    /* border-radius: 50%; */
+    /* background-color: #fff; */
+    /* left: -10px; */
+    /* padding: 5px; */
+    position: relative;
+    top: -2px;
+    z-index: 10;
+    height: 65px;
+    width: 211px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+    flex-direction: row-reverse;
 }
 .lockscreen-image > img {
 	border-radius: 50%;
-	height: 70px;
-	width: 70px;
+	height: 60px;
+	width: 60px;
+	background-color: #fff;
 }
 .lockscreen-credentials {
 	margin-left: 70px;
