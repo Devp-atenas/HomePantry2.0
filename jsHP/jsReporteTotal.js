@@ -1,5 +1,8 @@
-function cargarTablaReporteGeneral(idDivTabla){
-    var urlApi = sessionStorage.getItem("urlApi");
+$(document).ready(function() {
+    cargarTablaReporte('#TablaReporte');
+});
+function cargarTablaReporte(idDivTabla){
+    var urlApi = localStorage.getItem("urlApi");
     var table = new Tabulator(idDivTabla, {
         ajaxURL: urlApi+'getReporteTotalHomePantry/',
         renderVerticalBuffer:600,
@@ -99,11 +102,7 @@ function cargarTablaReporteGeneral(idDivTabla){
     });
     
     document.getElementById("download-xlsx").addEventListener("click", function(){
-        if ($("#formReporte").valid()) {
-            var file = "";
-            var file = $('#inputNombreExcel').val() + ".xlsx";
-            table.download("xlsx", file, {sheetName:"Hogares"});
-        }
+        table.download("xlsx", "Reporte-Total.xlsx", {sheetName:"Hoja 1"});
     });
 }
 

@@ -1,6 +1,5 @@
-<!-- Content Header (Page header) -->
 <?php $this->load->view('Plantillas/Header');?>
-<!-- Content Header (Page header) -->
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -11,42 +10,31 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<!-- Main content Agregar Producto 11111-->
-<!-- /Windows datatables Producto Rango-->
-<section class="content">
+
+<section class="content-header">
     <div class="container-fluid">
-    <h2 class="text-center">Consumos</h2>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group row mb-0 mt-0">
-                <div class="col-md-2">
-                        <label class="inputText font-weight-bold">Area:</label>
-                        <select id="selectGArea" name="selectGArea" class="form-control form-control-sm">
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label class="inputText font-weight-bold">Estado:</label>
-                        <select id="selectEstado" name="selectEstado" class="form-control form-control-sm">
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label class="inputText font-weight-bold">Semana:</label>
-                        <select id="selectSemana" name="selectSemana" class="form-control form-control-sm">
-                        </select>
-                    </div>
+        <div id="showTablas">
+            <h2 class="text-center">Hogares Inactivos e Integrantes</h2>
+            <div class="row">
+                <div class="col-md-12"> <!-- bg-danger bg-gradient -->
+                    <form id="formReporte" action="" method="post">
+                        <div class="form-group row mb-0 mt-0">
+                                <div class="col-md-2">
+                                    <label class="inputText font-weight-bold">Seleccionar Archivo:</label>
+                                    <button id="download-xlsx" class="form-control">Descargar<i class="fa fa-file-excel-o" aria-hidden="true"></i></button>
+                                </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
-        <HR/>
-        <div id="showTabla">
+            <HR/>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
-                            <div id="TableReporteConsumo"></div>
+                            <div id="TablaReporte"></div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -55,9 +43,8 @@
 
 <?php $this->load->view('Plantillas/Footer');?>
 
-<script src="<?php echo base_url('jsHP/jsGeneral.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsReporteConsumo.js') ?>"></script>
-
+<script src="<?php echo base_url('jsHP/jsReporteHogaresInactivosIntegrantes.js') ?>"></script>
+<script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
@@ -70,7 +57,5 @@
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/autoNumeric-1.9.18.js') ?>"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>

@@ -46,14 +46,16 @@ select:focus {
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-12">
-                <h1 class="text-center"><i class="fas fa-search-dollar"></i>&nbsp;Reporte de Hogar Registrso por Consumo</h1>
+            <div class="col-sm-6">
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
+
 <section class="content">
     <div class="container-fluid">
+    <h2 class="text-center">Hogar Registrso por Consumo</h2>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">

@@ -47,13 +47,12 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fa fa-home"></i>&nbsp;Reporte</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<!-- Main content Agregar Producto 11111-->
-<!-- /Windows datatables Producto Rango-->
+
 <section class="content">
     <div class="container-fluid">
         <div id="showTablas">

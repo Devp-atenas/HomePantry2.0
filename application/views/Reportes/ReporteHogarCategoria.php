@@ -15,7 +15,7 @@
 <!-- /Windows datatables Producto Rango-->
 <section class="content">
     <div class="container-fluid">
-    <h2 class="text-center">Consumos</h2>
+    <h2 class="text-center">Hogar por Categoria</h2>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
@@ -55,8 +55,7 @@
 
 <?php $this->load->view('Plantillas/Footer');?>
 
-<script src="<?php echo base_url('jsHP/jsGeneral.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsReporteConsumo.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsReporteHogarCategoria.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

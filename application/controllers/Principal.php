@@ -253,8 +253,8 @@ class Principal extends CI_Controller {
     public function AsociarPerfil(){
         $this->load->view('GestionPerfil/AsociarPerfil');
     }
-    public function ReporteGeneral(){
-        $this->load->view('Reportes/ReporteGeneral');
+    public function ReporteTotal(){
+        $this->load->view('Reportes/ReporteTotal');
     }
     public function ReporteConsumos(){
         $this->load->view('Reportes/ReporteConsumos');
@@ -270,6 +270,21 @@ class Principal extends CI_Controller {
     }
     public function ReporteTicket(){
         $this->load->view('Reportes/ReporteTicket');
+    }
+    public function ReporteCablera(){
+        $this->load->view('Reportes/ReporteCablera');
+    }
+    public function ReporteHogaresInactivosIntegrantes(){
+        $this->load->view('Reportes/ReporteHogaresInactivosIntegrantes');
+    }
+    public function ReporteHogaresPanelista(){
+        $this->load->view('Reportes/ReporteHogaresPanelista');
+    }
+    public function ReporteGeneral(){
+        $this->load->view('Reportes/ReporteGeneral');
+    }
+    public function ReporteHogarCategoria(){
+        $this->load->view('Reportes/ReporteHogarCategoria');
     }
     public function logout(){
         $this->load->helper('url');

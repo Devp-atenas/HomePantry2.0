@@ -67,7 +67,7 @@ select:focus {
                     </div>
                 </div>
                 <div class="card-body" style="display: none;">
-                    <form id="FormPerfil">
+                    <form id="FormUsuarioPerfil">
                         <div class="form-group row mb-0 mt-0">
                             <div class="col-md-3">
                                 <div class="inputText font-weight-bold">Usuario:</div>
@@ -81,7 +81,7 @@ select:focus {
                             </div>
                             <div class="col-md-1">
                                 <div class="inputText font-weight-bold">Guardar:</div>
-                                <button id="idCrearPerfil"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
+                                <button id="guardarAsociarPerfilUsuario"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
                                 <i class="fas fa-save fa-2x"></i>
                                 </button>
                             </div>
@@ -132,6 +132,70 @@ select:focus {
     </div>
 </section>
 
+<!-- Windows Modal Editar Registros 222222 -->
+<div class="modal fade" id="modal-UsuarioPerfilEditar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Editar perfil a usuario</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormEdit">
+                                <div class="form-group row mb-0 mt-0">
+                                    <div class="col-md-4">
+                                        <div class="inputText font-weight-bold">Usuario:</div>
+                                        <input type="text" name="inputUsuarioEdit" id="inputUsuarioEdit" class="form-control" disabled>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inputText font-weight-bold">Perfil:</div>
+                                            <select id="selectPerfilEdit" name="selectPerfilEdit" class="form-control form-control-sm">
+                                            </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="inputText font-weight-bold">Guardar:</div>
+                                        <button id="guardarAsociarPerfilUsuarioEdit"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
+                                        <i class="fas fa-save fa-2x"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-0 mt-0" style="visibility:hidden;">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputId">id:</label>
+                                            <input type="text" name="inputIdEdit" id="inputIdEdit"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
 
 <?php $this->load->view('Plantillas/Footer');?>
 
@@ -140,7 +204,6 @@ $(document).ready(function() {
     var urlApi = '<?php echo urlApi; ?>';
     sessionStorage.setItem("urlApi",urlApi);
     //cargarTablaFunciones('#TablaFunciones');
-    cargarTablaUsuriosPerfil();
     //$('#showButton').hide();
 });
 
@@ -214,15 +277,12 @@ function cargarTablaUsuriosPerfil(){
             //"width": "100%",
             "targets": 2,
             "orderable": true,
-            "data": 'id_perfil',
+            "data": 'id_usuario',
             "className": "text-center",
             "render": function(data, type, row, meta) {
-                return '<a title="Eliminar" href="#"><img id="EliminarImg" src=<?php echo base_url('assets/iconos/delete.png') ?> width="30" height="30"  onclick="deleteAction(' +
+                return '<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
                     data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
-                    data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Visualizar" href="#"><img src=<?php echo base_url('assets/iconos/ver.png') ?> width="25" height="25" onclick="VisualizarAction(' +
-                    data + '); return false;"></a>';
+                    '); return false;"></a>';
             }
         }],
     });
@@ -231,7 +291,7 @@ function cargarTablaUsuriosPerfil(){
 
 </script>
 
-<script src="<?php echo base_url('jsHP/jsUsuarioPerfil.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsAsociarPerfil.js') ?>"></script>
 
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

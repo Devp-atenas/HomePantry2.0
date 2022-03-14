@@ -55,15 +55,15 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fas fa-search-dollar"></i>&nbsp;Reporte del Ticket</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<!-- Main content Agregar Producto 11111-->
-<!-- /Windows datatables Producto Rango-->
+
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid">ç
+    <h2 class="text-center">Ticket</h2>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
