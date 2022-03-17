@@ -164,23 +164,28 @@
                 </div>
                 <div class="form-group form-group-sm row mb-0 mt-0">
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="addProducto()"><i class='fas fa-plus'></i> Agregar Producto</button>
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="eliminarProducto()"><i class="fas fa-times"></i>Eliminar Consumo
+                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="addProducto()">
+                            <i class='fas fa-plus'></i> Agregar Producto
                         </button>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" id="idValidarMasivo" class="btn btn-outline-success btn-sm"><i class="fas fa-check-double"></i>Validar Masivo
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="eliminarProducto()">
+                            <i class="fas fa-times"></i>Eliminar Consumo
+                        </button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" id="idValidarMasivo" class="btn btn-outline-success btn-sm">
+                            <i class="fas fa-check-double"></i>Validar Masivo
                         </button>
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-outline-warning btn-sm" onclick="deshacerMasivo()"><i class="fas fa-undo"></i>Deshacer Validar
+                        <button type="button" class="btn btn-outline-warning btn-sm" onclick="deshacerMasivo()">
+                            <i class="fas fa-undo"></i>Deshacer Masivo
                         </button>
                     </div>
                     <div class="col-md-2">
                         <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#PendienteMasivoModal">
-                            <i class="fas fa-times"></i>Pendiente Masivo
+                            <i class="fas fa-times"></i>Masivo Pendientes
                         </button>
                     </div>
                     <div class="col-sm-2">
@@ -697,7 +702,7 @@ $("#selectFechaTabla").change(function() {
     $('#ocultarMostrarDetalle').show();
     $('#ocultarMostrarDetalleFactura').show();
 });
-//99999
+
 $("#selectSemanaHogar").change(function() {
     var idSemana = $("#selectSemanaHogar").val();
     var idHogar = $("#selectHogarTabla").val();
@@ -811,7 +816,7 @@ $("#selectCanalTabla").change(function() {
 //----
 /*
 $("#inputTasaCambioModal").change(function() {
-    alert(9999);
+    alert(8888);
     if ($("#inputPrecioUnitarioModal").val() != '' && $("#inputCantidadProductoModal").val() != '' ){
         var cantidad = $("#inputCantidadProductoModal").val();
         var precioUnitario = $("#inputPrecioUnitarioModal").val();
@@ -1804,13 +1809,14 @@ function cargarConsumosInvestigados(etiqueta,parametro,idS) {
         }
     })
 }
-
+//99999
 function CalcularTotalesConsumos(idSemana) {
-    TotalesValidadosPendiente(idSemana);
-    TotalesInvestigados(idSemana);
-    TotalesResueltos(idSemana);
-    buscarTotalHogaresReportados(idSemana);
-    buscarTotalHogaresInvestigados(idSemana);
+    
+    TotalesValidadosPendiente(idSemana);        // - Actualiza: totalValidados,totalPendientes
+    //TotalesInvestigados(idSemana);              // - Actualiza: totalInvestigados
+    TotalesResueltos(idSemana);                 // - Actualiza: totalResueltos
+    buscarTotalHogaresReportados(idSemana);     // - Actualiza: totalHogares
+    buscarTotalHogaresInvestigados(idSemana);   // - Actualiza: totalInvestigados
 }
 
 function TotalesValidadosPendiente(idSemana) {
@@ -2857,35 +2863,6 @@ function validarMasivo(arrayID){
                 }
             }
             $.ajax(settings).done(function(response){
-                /*
-                let select = $("#selectSemanaTabla");
-                select.find("option").remove();
-                select = $("#selectAreaTabla");
-                select.find("option").remove();
-                select = $("#selectEstadoTabla");
-                select.find("option").remove();
-                select = $("#selectHogarTabla");
-                select.find("option").remove();
-                select = $("#selectTipoConsumoTabla");
-                select.find("option").remove();
-                select = $("#selectDiaSemanaTabla");
-                select.find("option").remove();
-                select = $("#selectFechaTabla");
-                select.find("option").remove();
-                select = $("#selectConsumosInvestigadosTabla");
-                select.find("option").remove();
-                $("#totalValidados").html("");
-                $("#totalPendientes").html("");
-                $("#totalConsumos").html("");
-                $("#totalInvestigados").html("");
-                $("#responsableHogar").html("");
-                $("#celularHogar").html("");
-                $("#altaHogar").html("");
-                $("#integrantesHogar").html("");
-                $('#ocultarMostrarDetalle').hide();
-                $('#ocultarMostrarDetalleFactura').hide();
-                cargarSemana('#selectSemanaTabla',0);
-                */
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -2902,6 +2879,92 @@ function validarMasivo(arrayID){
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
+                cargarTablaConsumos(idConsumo);
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    //var form = document.querySelector('#FormUsuariosEdit');
+                    //form.reset();
+                    //window.location = '/homepantry20/index.php';
+                }
+            })
+        
+        
+    }
+        
+    })
+}
+
+function validarMasivo_V2(){
+    var idConsumo = $("#selectFechaTabla").val();
+    const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: '¿ Seguro de Validar masivamente ?',
+        text: " ... ",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: 'Si, Validar',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var idSemasna =	$("#selectSemanaTabla").val();
+            var idConsumo =	$("#selectFechaTabla").val();
+            if (idConsumo==="0" || idConsumo==null || idConsumo==undefined){
+                var idConsumo =	$("#selectConsumosInvestigadosTabla").val();
+            }
+            
+            var settings = {
+                "url": '<?php echo urlApi; ?>UpdateDetallesxProductosMasivo',
+                "method": "post",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+                "data": {
+                    "idSemasna":idSemasna,
+                    "idConsumo":idConsumo
+                }
+            }
+            $.ajax(settings).done(function(response){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                CalcularTotalesConsumos(idSemana);
                 cargarTablaConsumos(idConsumo);
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
@@ -2967,33 +3030,7 @@ function deshacerMasivo(){
                 }
             }
             $.ajax(settings).done(function(response){
-                /*let select = $("#selectSemanaTabla");
-                select.find("option").remove();
-                select = $("#selectAreaTabla");
-                select.find("option").remove();
-                select = $("#selectEstadoTabla");
-                select.find("option").remove();
-                select = $("#selectHogarTabla");
-                select.find("option").remove();
-                select = $("#selectTipoConsumoTabla");
-                select.find("option").remove();
-                select = $("#selectDiaSemanaTabla");
-                select.find("option").remove();
-                select = $("#selectFechaTabla");
-                select.find("option").remove();
-                select = $("#selectConsumosInvestigadosTabla");
-                select.find("option").remove();
-                $("#totalValidados").html("");
-                $("#totalPendientes").html("");
-                $("#totalConsumos").html("");
-                $("#totalInvestigados").html("");
-                $("#responsableHogar").html("");
-                $("#celularHogar").html("");
-                $("#altaHogar").html("");
-                $("#integrantesHogar").html("");
-                $('#ocultarMostrarDetalle').hide();
-                $('#ocultarMostrarDetalleFactura').hide();
-                cargarSemana('#selectSemanaTabla',0);*/
+                
                 const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',

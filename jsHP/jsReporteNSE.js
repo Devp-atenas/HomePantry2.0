@@ -12,6 +12,31 @@ function cargarTablaReporteNSE2(){
     var urlApi = localStorage.getItem("urlApi");
     
     oTable = $('#TablaReporteNSE').DataTable({
+        
+        
+        "initComplete": function () {
+            this.api().columns([0, 1, 9]).every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        },
+        
+        
+        
     //var oTable = jQuery('#TablaReporteNSE').DataTable({
             "lengthMenu": [
             [ -1],
@@ -467,10 +492,14 @@ function cargarTablaReporteNSE2(){
                 mData: 'PesoTotal',
                 className: "text-center"
             },
+            {
+                mData: 'ClaseSocial',
+                className: "text-center"
+            },
+            
         ],
         "columnDefs": [{
             "width": "100%",
-            "targets": 98,
             "orderable": true,
             "data": 'idHogar',
             "className": "text-center",
@@ -482,7 +511,7 @@ function cargarTablaReporteNSE2(){
  
     oTable.on( 'select', function ( e, dt, type, indexes ) {
     if ( type === 'row' ) {
-        var data = table.rows( indexes ).data().pluck( 'id' );
+        var data = oTable.rows( indexes ).data().pluck( 'id' );
  
         // do something with the ID of the selected items
     }

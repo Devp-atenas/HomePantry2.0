@@ -164,7 +164,7 @@ select:focus {
                                         <th>TipoIngreso</th>
                                         <th>pesoIngreso</th>
                                         <th>PesoTotal</th>
-                                        <th>idHogar</th>
+                                        <th>NSE</th>
                                     </tr>
                                 </thead>
                             </table>
