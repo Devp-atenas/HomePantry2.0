@@ -129,14 +129,6 @@
         
           <span class="" id="nombreUsuario2"></span>
         </div>
-            
-            
-            
-
-
-
-
-
             <div class="info">
                 <a href="#" class="d-block"><p id="usuario"></p></a>
             </div>

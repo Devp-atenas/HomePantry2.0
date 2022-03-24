@@ -1564,7 +1564,7 @@
                             <div class="card">
                                 <div class="form-group">
                                 <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" class="escucharEmisora" id="emisoraNo" name="escucharRadio" value="2">
+                                        <input class="form-check-input" type="radio" class="escucharEmisora" id="emisoraNo" name="escucharRadio" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">

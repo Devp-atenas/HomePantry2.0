@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-sm-1">
                         <div class="inputText font-weight-bold">Investigar:</div>
-                        <button type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#investigarConsumoModal">
+                        <button type="button" class="btn btn-block btn-xs btn-primary" onclick="callEnviarConsumoInvestigar();">
                             <i class="fas fa-info-circle fa-2x"></i>
                         </button>
                     </div>
@@ -162,35 +162,41 @@
                         </strong>
                     </h5>
                 </div>
+                <div class="form-group-row form-group-sm row mb-0 mt-0">
+                    <div class="col-sm-9">
+                        <p class="text-danger" id="idDetalleConsumoM"></p>
+                    </div>
+                </div>
                 <div class="form-group form-group-sm row mb-0 mt-0">
+
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-outline-primary btn-sm" onclick="addProducto()">
-                            <i class='fas fa-plus'></i> Agregar Producto
+                            <i class='fas fa-plus'></i>&nbsp;Agregar Producto
                         </button>
                     </div>
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-outline-danger btn-sm" onclick="eliminarProducto()">
-                            <i class="fas fa-times"></i>Eliminar Consumo
+                            <i class="fas fa-times"></i>&nbsp;Eliminar Consumo
                         </button>
                     </div>
                     <div class="col-sm-2">
                         <button type="button" id="idValidarMasivo" class="btn btn-outline-success btn-sm">
-                            <i class="fas fa-check-double"></i>Validar Masivo
+                            <i class="fas fa-check-double"></i>&nbsp;Validar Masivo
                         </button>
                     </div>
                     <div class="col-md-2">
                         <button type="button" class="btn btn-outline-warning btn-sm" onclick="deshacerMasivo()">
-                            <i class="fas fa-undo"></i>Deshacer Masivo
+                            <i class="fas fa-undo"></i>&nbsp;Deshacer Masivo
                         </button>
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#PendienteMasivoModal">
-                            <i class="fas fa-times"></i>Masivo Pendientes
+                        <button type="button" id="idPendienteMasivo" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#PendienteMasivoModal">
+                            <i class="fa fa-exclamation-triangle"></i>&nbsp;Pendiente Masivo
                         </button>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#CambioMonedaMasivoModal">
-                            <i class="fas fa-times"></i>Cambio Moneda Masivo
+                        <button type="button" id="idCambioMonedaMasivo" class="btn btn-outline-dark btn-sm">
+                            <i class="bi bi-currency-exchange"></i>&nbsp;Moneda Masivo
                         </button>
                     </div>
                 </div>
@@ -251,7 +257,7 @@
 </section>
 <!-- Windows Modal Editar Tipo de Moneda 222222 -->
 
-<!-- /.modal AgregarProducto  -->
+<!-- /.modal AgregarProducto  aaaaaa-->
 <div class="modal fade" id="AgregarProductoModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -308,7 +314,7 @@
                     </div>
                     <div class="form-group form-group-sm row mb-0 mt-0">
                         <div class="col-sm-4">
-                            <div class="inputText font-weight-bold">Moneda:</div>
+                            <div class="inputText font-weight-bold">Tipo de Moneda:</div>
                             <select id="selectMonedaNew" name="selectMonedaNew" class="form-control">
                             </select>
                         </div>
@@ -349,19 +355,17 @@
 <div class="modal fade" id="investigarConsumoModal">
     <div class="modal-dialog modal-dialog-centered"  role="document">
         <div class="modal-content">
-           <div class="modal-header">
+            <div class="modal-header">
                 <h5 class="modal-title"><i class='fas fa-plus'></i>&nbsp;Investigar Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
             <div class="modal-body">
                 <div class="form-group">
                     <input type="hidden" class="form-control input-sm text-right" id="txtIdConsumoInvestigar" placeholder="...." readonly />
                     <label class="text-primary">Motivo de la Investigacion:</label>
-                    <select class="form-control input-sm" name="cboInvestigar" id="cboInvestigar" onchange="enviarInvestigacion();"  required />
-                        <option value="" selected disabled >-- Seleccione -- </option>
+                    <select class="form-control input-sm" id="selectInvestigar" name="selectInvestigar" required />
                     </select>
                     <div class="error" id="txtinvestigacionErr"></div>
                 </div>
@@ -381,8 +385,6 @@
 </div>
 <!-- /.modal -->
 
-<!-- /.modal Editarconsumo Medicina-Mercado-->
-
 <div class="modal fade" id="EditarConsumoModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -395,7 +397,6 @@
             <div class="modal-body">
             
             <div class="form-group">
-                <span class="text-danger text-center" id="waiting2" style="display:none;"><img src="images/ajax_small.gif">&nbsp;Buscando, Espere....!</span>
                 <input type="hidden" class="form-control input-sm text-right" id="txtId" placeholder="...." readonly />
             </div>
             <div class="form-group">
@@ -438,7 +439,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal" title="Salir"><i class='fas fa-sign-out-alt'></i> Salir</button>
-            <button type="button" class="btn btn-primary" title="Grabar" onclick="salvarCambioProductos();" id="btn-salvar"><i class='fas fa-save'></i> Grabar</button>
+            <button type="button" class="btn btn-primary" title="Grabar" onclick="salvarCambioProductos();" id="btn-salvar"><i class='fas fa-save'></i>Grabar</button>
         </div>
     </div>
     <!-- /.modal-content -->
@@ -446,8 +447,6 @@
 <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-
-
 
 <!-- /.modal guardarCambioFacturaModal -->
 <div class="modal fade" id="guardarCambioFacturaModal">
@@ -480,13 +479,12 @@
 <div class="modal fade" id="ValidarMasivoModal">
     <div class="modal-dialog modal-dialog-centered"  role="document">
         <div class="modal-content">
-           <div class="modal-header">
+            <div class="modal-header">
                 <h5 class="modal-title"><i class='fas fa-plus'></i>&nbsp;Validar Masivo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
             <div class="modal-body">
                 <div class="form-group">
                     <h5 class="text-center">¿Seguro desea Validar Masivo?</h5>
@@ -495,7 +493,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" title="Salir"><i class='fas fa-sign-out-alt'></i> Salir</button>
                 <button type="button" class="btn btn-primary" title="Grabar" onclick="updateValidarMasivo();" id="btn-investigar"><i class='fas fa-paper-plane'></i> Guardar</button>
-                
             </div>
         </div>
         <!-- /.modal-content -->
@@ -508,13 +505,12 @@
 <div class="modal fade" id="EliminarStatusProductosModal">
     <div class="modal-dialog modal-dialog-centered"  role="document">
         <div class="modal-content">
-           <div class="modal-header">
+            <div class="modal-header">
                 <h5 class="modal-title"><i class='fas fa-plus'></i>&nbsp;Status Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
             <div class="modal-body">
                 <div class="form-group">
                     <h5 class="text-center">¿Esta Seguro deshacer el status del producto?</h5>
@@ -523,6 +519,34 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" title="Salir"><i class='fas fa-sign-out-alt'></i> Salir</button>
                 <button type="button" class="btn btn-primary" title="Grabar" onclick="updateStatusProductos__();" id="idupdateStatusProductos"><i class='fas fa-paper-plane'></i> Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- /.modal CambioMonedaMasivoModal -->
+<div class="modal fade" id="CambioMonedaMasivoModal">
+    <div class="modal-dialog modal-dialog-centered"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class='fas fa-edit'></i>&nbsp;Actualizar Moneda de Pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="text-primary">Moneda de Pago:</label>
+                    <select class="form-control input-sm" name="MonedaConsumoMasivo" id="MonedaConsumoMasivo" required />
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" title="Salir"><i class='fas fa-sign-out-alt'></i> Salir</button>
+                <button type="button" class="btn btn-primary" title="Grabar" onclick="cambioMonedaMasivo();" id="btn-investigar"><i class='fas fa-paper-plane'></i> Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -556,6 +580,11 @@ $(document).ready(function() {
             aSep: '.',
             aDec: ','
         });
+    });
+    //99999
+    $('#idCambioMonedaMasivo').click(function(){
+        cargarMoneda('#MonedaConsumoMasivo',0);
+        $('#CambioMonedaMasivoModal').modal('show');
     });
 });
 
@@ -812,6 +841,57 @@ $("#selectCanalTabla").change(function() {
     cargarCadena('#selectCadenaTabla',response.data[0].Id_Cadena,idCanal);
         
 });
+//aaaaaa
+$("#selectCategoriaOtrosProductos").change(function() {
+	//
+	var idCategoriaOtrosProductos = $("#selectCategoriaOtrosProductos").val()
+	//		
+	if(idCategoriaOtrosProductos == 5){
+		// Huevos
+		//$("#showUnidades").css("display", "block");
+		//$("#showCubitos").css("display", "none");
+		//$("#unidades").val("");	
+		//$("#cantidad").val(""); 
+		$("#nombreCantidad").html("Cantidad Empaque:");
+		$("#nombrePrecio").html("Precio Empaque:");
+		//$("#cboMarcaCubitos").prop("selectedIndex", 0);
+		//
+	} else if(idCategoriaOtrosProductos == 6){
+		// Botellones
+		//$("#showUnidades").css("display", "none");
+		//$("#showCubitos").css("display", "none");
+		//$("#unidades").val("0");
+		$("#nombreCantidad").html("Cantidad:");
+		$("#nombrePrecio").html("Precio Unitario:");
+		//$("#cboMarcaCubitos").prop("selectedIndex", 0);
+		//
+	}else if(idCategoriaOtrosProductos == 8) {
+		// Cubitos
+		//$("#showUnidades").css("display", "none");
+		//$("#showCubitos").css("display", "block");
+		//$("#unidades").val("0");
+		$("#nombreCantidad").html("Cantidad:");
+		$("#nombrePrecio").html("Precio Unitario:");
+		//$("#cboMarcaCubitos").prop("selectedIndex", 0);
+		//
+	}else if(idCategoriaOtrosProductos == 9) {
+		// Quesos
+		//$("#showUnidades").css("display", "none");
+		//$("#showCubitos").css("display", "none");
+		//$("#unidades").val("0");
+		$("#nombreCantidad").html("Cantidad en Gramos:");
+		$("#nombrePrecio").html("Precio Pagado:");
+		//$("#cboMarcaCubitos").prop("selectedIndex", 0);
+		//
+	}else{
+        $("#nombreCantidad").html("Cantidad:");
+		$("#nombrePrecio").html("Precio Unitario:");
+		//$("#showCubitos").css("display", "none");
+	}
+});
+
+
+
 
 //----
 /*
@@ -873,43 +953,197 @@ function datosGrafica(idSemana,idHogar,idTipoConsumo){
 
 function grafica(v1,v2,v3,v4,v5,t1,t2,t3,t4,t5,idGrafica){
     var ctx = document.getElementById(idGrafica).getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Semana '+t1,'Semana '+t2,'Semana '+t3,'Semana '+t4,'Semana '+t5],
-        datasets: [{
-            label: 'Valor',
-            data: [v1,v2,v3,v4,v5],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }],
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Semana '+t1,'Semana '+t2,'Semana '+t3,'Semana '+t4,'Semana '+t5],
+            datasets: [{
+                label: 'Valor',
+                data: [v1,v2,v3,v4,v5],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
         },
-    }
-});
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+            },
+        }
+    });
 }
+
+function enviarConsumoInvestigar(){
+    
+    
+    const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: "¿Seguro de Investigarlo?",
+	    text: " Esta accion no se puede reversar..! ",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: 'Si, Investigar Consumo',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var idConsumo = $("#selectFechaTabla").val();
+            var idItemInvestigar =	$("#selectInvestigar").val();
+            var idHogar = $("#selectHogarTabla").val();
+            var observacion =	$("#txtComentarios").val();
+            
+            var settings = {
+                "url": '<?php echo urlApi; ?>g_ValEnviarInvestigarConsumo/'+idConsumo+'/'+idItemInvestigar+'/'+idHogar+'/'+observacion,
+                "method": "get",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+            }
+            $.ajax(settings).done(function(response){
+                $("#investigarConsumoModal").modal("hide");
+                const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.message,
+                confirmButtonText: `Ok`,
+            })
+            cargarTablaConsumos(idConsumo);
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    //var form = document.querySelector('#FormUsuariosEdit');
+                    //form.reset();
+                    //window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+    })
+}
+
+
+
+
+
+
+function callEnviarConsumoInvestigar(){
+    cargarMotivosInvestigar("#selectInvestigar",0);
+    var fecha = new Date();
+    var hora = fecha.getHours();
+    var DTN;
+    
+    if(hora >= 0 && hora < 12){
+        DTN = "buenos días";
+    }else if(hora >= 12 && hora < 18){
+        DTN = "buenas tardes";
+    }else{
+        DTN = "buenas noches";
+    }
+
+    var prefijoMsj = "Hola "+DTN+", consulta generada por: "+localStorage.getItem("nombreUsuario");
+
+    $("#txtComentarios").val(prefijoMsj);
+    $("#investigarConsumoModal").modal("show");
+}
+
+function cargarMotivosInvestigar(etiqueta,idS) {
+    var settings = {
+        "url": '<?php echo urlApi; ?>geInvestigacionItems/',
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].Id === idS){
+                select.append("<option value=" + response.data[i].Id + " selected>" + response
+                .data[i].Nombre + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].Id + ">" + response
+                .data[i].Nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
 
 function cargarResumenSemanal(idSemana,idHogar,idTipoConsumo) {
     var valoresSemana = new Array();
@@ -1180,7 +1414,7 @@ function salvarCambioProductos() {
         }
         $.ajax(settings).done(function(response){
             var idConsumo = $("#selectFechaTabla").val();
-            cargarResumen(idConsumo);
+            cargarResumen(idConsumo);//aaaa
             cargarTablaConsumos(idConsumo);
             $("#EditarConsumoModal").modal("hide");
             const Toast = Swal.mixin({
@@ -2903,15 +3137,12 @@ function validarMasivo(arrayID){
                     //window.location = '/homepantry20/index.php';
                 }
             })
-        
-        
-    }
-        
+        }
     })
 }
 
-function validarMasivo_V2(){
-    var idConsumo = $("#selectFechaTabla").val();
+function PendienteMasivo(arrayID){
+    //var idConsumo = $("#selectFechaTabla").val();
     const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success',
@@ -2920,12 +3151,92 @@ function validarMasivo_V2(){
     buttonsStyling: false
     })
     swalWithBootstrapButtons.fire({
+        title: '¿Esta Seguro de Enviar',
+        text: " seleccionados a Pendientes? ",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: 'Si, enviar a pendientes',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var idConsumo =	$("#selectFechaTabla").val();
+            if (idConsumo==="0" || idConsumo==null || idConsumo==undefined){
+                var idConsumo =	$("#selectConsumosInvestigadosTabla").val();
+            }
+            var settings = {
+                "url": '<?php echo urlApi; ?>g_ValUpdatePendientesMasivo',
+                "method": "post",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+                "data": {
+                    "arrayID":arrayID,
+                    "idConsumo":idConsumo
+                }
+            }
+            $.ajax(settings).done(function(response){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                cargarTablaConsumos(idConsumo);
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    //var form = document.querySelector('#FormUsuariosEdit');
+                    //form.reset();
+                    //window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+    })
+}
+
+function validarMasivo_V2(){
+    var idConsumo = $("#selectFechaTabla").val();
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
         title: '¿ Seguro de Validar masivamente ?',
         text: " ... ",
         icon: 'warning',
         showCancelButton: true,
         cancelButtonText:  'No, Cancelar',
-        confirmButtonText: 'Si, Validar',
+        confirmButtonText: 'Si, Validar Masivo',
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
@@ -2934,7 +3245,7 @@ function validarMasivo_V2(){
             if (idConsumo==="0" || idConsumo==null || idConsumo==undefined){
                 var idConsumo =	$("#selectConsumosInvestigadosTabla").val();
             }
-            
+
             var settings = {
                 "url": '<?php echo urlApi; ?>UpdateDetallesxProductosMasivo',
                 "method": "post",
@@ -2989,15 +3300,10 @@ function validarMasivo_V2(){
                     //window.location = '/homepantry20/index.php';
                 }
             })
-        
-        
-    }
-        
+        }
     })
 }
-
 //-------------------------------------------------------
-
 function deshacerMasivo(){
     var idConsumo = $("#selectFechaTabla").val();
     const swalWithBootstrapButtons = Swal.mixin({
@@ -3008,12 +3314,12 @@ function deshacerMasivo(){
     buttonsStyling: false
     })
     swalWithBootstrapButtons.fire({
-        title: '¿ Seguro Deshacer Validacion ?',
+        title: '¿ Seguro Deshacer Masivamente ?',
         text: " ... ",
         icon: 'warning',
         showCancelButton: true,
         cancelButtonText:  'No, Cancelar',
-        confirmButtonText: 'Si, Deshacer Validacion',
+        confirmButtonText: 'Si, Deshacer Masivamente',
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
@@ -3030,7 +3336,6 @@ function deshacerMasivo(){
                 }
             }
             $.ajax(settings).done(function(response){
-                
                 const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -3095,6 +3400,85 @@ function PendienteDetalleCompra(idConsumoDetalle){
         if (result.isConfirmed) {
             var settings = {
                 "url": '<?php echo urlApi; ?>MarcarProductoPendiente/'+idConsumoDetalle,
+                "method": "get",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+            }
+            $.ajax(settings).done(function(response){
+                const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.message,
+                confirmButtonText: `Ok`,
+            })
+            //cargarTablaConsumos(idConsumo);
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    //var form = document.querySelector('#FormUsuariosEdit');
+                    //form.reset();
+                    //window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+    })
+}
+//9999999
+function cambioMonedaMasivo(){
+    var idConsumo = $("#selectFechaTabla").val();
+    var idMoneda = $("#MonedaConsumoMasivo").val();
+    var idSemana = $("#selectSemanaTabla").val();
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: '¿Seguro Cambiar Moneda Masivamente?',
+        text: " ... ",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: 'Si, Cambiar Moneda',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            /*var idConsumo =	$("#selectFechaTabla").val();
+            if (idConsumo==="0" || idConsumo==null || idConsumo==undefined){
+                var idConsumo =	$("#selectConsumosInvestigadosTabla").val();
+            }*/
+            var settings = {
+                "url": '<?php echo urlApi; ?>g_ValUpdateCambioMonedaMasivo/'+idConsumo+'/'+idMoneda+'/'+idSemana,
                 "method": "get",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -3323,8 +3707,20 @@ function updateStatusProductos_(idConsumoDetalle) {
         }
     })
 }
-
+//99999
 function cargarTablaConsumos(idConsumo){
+    var URL;
+
+    var idTipoConsumo = $("#selectTipoConsumoTabla").val();
+
+    if (idConsumo == 0 && idTipConsumo == 0){
+        URL = '<?php echo urlApi; ?>g_ValBuscarDetallesxProductosxFacturaResuelto/' + idConsumo;
+    }else{
+        URL = '<?php echo urlApi; ?>getBuscarDetalleFacturaxConsumo/' + idConsumo;
+    }
+    
+    $("#idDetalleConsumoM").html('<strong>Detalle Productos: ('+idConsumo+ ')</strong>');
+    
     var bottomAcciones = function(cell, formatterParams){
         var value_ = cell.getValue();
         var id = cell.getRow().getData().Id_Consumo_Detalle_Productos;
@@ -3333,6 +3729,7 @@ function cargarTablaConsumos(idConsumo){
         var tasaCambio = cell.getRow().getData().Tasa_de_cambio;
         var cantida = cell.getRow().getData().Cantidad;
         var precioProducto = cell.getRow().getData().Precio_producto;
+       
         var total = cell.getRow().getData().total;
        /*return '<div class="btn-group" style="z-index:10000;">'
                     +'<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">Accion</button>'
@@ -3347,12 +3744,12 @@ function cargarTablaConsumos(idConsumo){
                 return  "<a id='fg003' href='#' onclick='UpdateDetalleCompra("+id+","+codiBarra+","+idMoneda+","+tasaCambio+","+cantida+","+precioProducto+","+total+"); return false;' ><i class='fa fa-edit data-toggle='tooltip' data-placement='top' title='Editar'></i></a>"
                         +"<a id='fg003' href='#' onclick='ValidarDetalleCompra("+id+"); return false;' ><i class='fa fa-check text-success data-toggle='tooltip' data-placement='top' title='Validar'></i></a>"
                         +"<a id='fg003' href='#' onclick='EliminarDetalleCompra("+id+"); return false;' ><i class='fa fa-eraser text-danger data-toggle='tooltip' data-placement='top' title='Eliminar'></i></a>"
-                        +"<a id='fg003' href='#' onclick='PendienteDetalleCompra("+id+"); return false;' ><i class='fa fa-exclamation-triangle text-warning data-toggle='tooltip' data-placement='top' title='Pendiente'></i></a>"
-                        +"<a id='fg003' href='#' onclick='DeshacerDetalleCompra("+id+"); return false;' ><i class='fa fa-undo text-muted data-toggle='tooltip' data-placement='top' title='Deshacer'></i></a>";
+                        +"<a id='fg003' href='#' onclick='PendienteDetalleCompra("+id+"); return false;' ><i class='fa fa-exclamation-triangle text-info data-toggle='tooltip' data-placement='top' title='Pendiente'></i></a>"
+                        +"<a id='fg003' href='#' onclick='DeshacerDetalleCompra("+id+"); return false;' ><i class='fa fa-undo text-warning data-toggle='tooltip' data-placement='top' title='Deshacer'></i></a>";
     };
 
     var table = new Tabulator("#TablaDetalleProductos", {
-        ajaxURL: '<?php echo urlApi; ?>getBuscarDetalleFacturaxConsumo/' + idConsumo,
+        ajaxURL: URL,
         ajaxConfig:{
             method:"GET", //set request type to Position
             headers: {
@@ -3389,23 +3786,52 @@ function cargarTablaConsumos(idConsumo){
                     precision:true,}
             },
             {title:"Moneda", field:"Moneda", sorter:"string"},
-            {title:"Validado", field:"Validado", hozAlign:"center", formatter : "tickCross",  headerFilter:"tickCross",  headerFilterParams:{"tristate":true},headerFilterEmptyCheck:function(value){return value === null}},,
+
+
+            {title:"Validado", field:"Validado", hozAlign:"center", formatter : "tickCross",  headerFilter:"tickCross",  headerFilterParams:{"tristate":true},headerFilterEmptyCheck:function(value){return value === null}},
+
+
+            {title:"Status", field:"Validado", hozAlign:"center", formatter:function(cell, formatterParams){
+                
+                var Validado = cell.getRow().getData().Validado;
+                var Pendiente = cell.getRow().getData().Pendiente;
+
+                if (Validado & !Pendiente){
+                    return "<i class='fas fa-check'></i>";
+                }else if (!Validado & Pendiente){
+                    return "<i class='fas fa-crosshairs'></i>";
+                }else if (Validado & Pendiente){
+                    return "<i class='fas fa-check'></i>";
+                }else{
+                    return "<i class='fas fa-eye'></i>";
+                }
+            }},
             {formatter:bottomAcciones, hozAlign:"center"}
         ],
     });
-    
-    
+
     document.getElementById("idValidarMasivo").addEventListener("click", function(){
+        //alert(row.select());
+        /*var selectedData = table.getSelectedData();
+        var arrayID;
+        arrayID = jQuery.map(selectedData, function(value, index) {
+            return (value.Id_Consumo_Detalle_Productos);
+        });*/
+
+        //validarMasivo(arrayID);
+        validarMasivo_V2();
+    });
+
+    document.getElementById("idPendienteMasivo").addEventListener("click", function(){
         //alert(row.select());
         var selectedData = table.getSelectedData();
         var arrayID;
         arrayID = jQuery.map(selectedData, function(value, index) {
             return (value.Id_Consumo_Detalle_Productos);
         });
-        validarMasivo(arrayID);
-        
-       
-       
+        //alert(arrayID);
+
+        PendienteMasivo(arrayID);
     });
 }
 
@@ -3522,7 +3948,7 @@ function ActualizarCalculoTotales() {
 	//
 	valid = !isNaN(Cantidad) && !isNaN(Precio);
     if (!valid) {
-    	return false;
+        return false;
     }
 	//
 	var totalCompra = 0;

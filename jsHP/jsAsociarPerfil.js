@@ -33,7 +33,7 @@ $('#guardarAsociarPerfilUsuarioEdit').click(function(){
 function cargarPerfil(etiqueta,idSeleccionado) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url":urlApi+'getAllPerfil/',
+        "url":urlApi+'getAllPerfiles/1',
         "method": "get",
         "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -134,6 +134,7 @@ function buscarNombresUsuarioPerfil(idUsuario,idPerfil) {
     $.ajax(settings).done(function(response) {
 
         asociarUsuarioPerfil(idUsuario,response.nombreUsuario,idPerfil,response.Perfil);
+        $('#modal-UsuarioPerfilEditar').modal('hide ');
 
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

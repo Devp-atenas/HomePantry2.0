@@ -283,7 +283,7 @@ function cargarTabla(){
                 className: "text-center"
             },
             {
-                mData: 'status',
+                mData: 'Ind_Activo',
                 className: "text-center"
             },
         ],

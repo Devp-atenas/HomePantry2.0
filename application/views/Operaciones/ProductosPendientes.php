@@ -10,19 +10,35 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<!-- Main content Agregar Producto 11111-->
+<!-- Main content Agregar Producto aaaaaaaaaaa-->
 <!-- /Windows datatables Producto Rango-->
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
+                    <div class="col-md-2">
+                        <div class="inputText font-weight-bold">Cantidad de Productos:</div>
+                        <div class="card">
+                            <div class="form-group">
+                            <div class="form-check d-inline">
+                                    <input class="form-check-input" type="radio" id="PPTOP" name="PPTOP" value="300" checked>
+                                    <label class="form-check-label">Ultimos 300&nbsp;</label>
+                                </div>
+                                <div class="form-check d-inline">
+                                    <input class="form-check-input" type="radio" id="PPTODOS" name="PPTOP" value="0">
+                                    <label class="form-check-label">Todos</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-3">
                         <label class="inputText font-weight-bold">Código de Barra:</label>
                         <select id="selectProductosPendientes" name="selectProductosPendientes" class="form-control form-control-sm">
                         </select>
                     </div>
-                    <div id="showBotones" class="col-md-9" style="display:none;">
+                    <div  iv id="showBotones" class="col-md-6" style="display:none;">
                         <div class="col-md-4">
                             <label>Maestro de Productos:</label>
                             <button type="button" class="btn btn-block btn-sm btn-primary" data-toggle="modal" data-target="#modal-crearProducto">
@@ -515,9 +531,10 @@ $(document).ready(function() {
     
     $('#showBotones').hide();
     $('#showTabla').hide();
-    $('#DatosProductosPendiente').hide();
+    $('#DatosProductosPendiente').hide();//aaaaaaaaa
     //$('#selectProductosPendientes').select2();
-    cargarProductosPendientes('#selectProductosPendientes');
+    var PPTOP = $('input:radio[name=PPTOP]:checked').val()
+    cargarProductosPendientesTopN('#selectProductosPendientes',PPTOP);
     
     // Crear Producto
     
@@ -641,6 +658,17 @@ $(document).ready(function() {
     //cargarCategoria("#inputCategoriaTabla",0);
     /* ------------------------- */
     // Fin Crear Producto
+});
+
+//aaaaaaaa
+$("input[name='PPTOP']").click(function() {
+    var PPTOP = $('input:radio[name=PPTOP]:checked').val();
+    
+    if (PPTOP != 0){
+        cargarProductosPendientesTopN('#selectProductosPendientes',PPTOP);
+    }else{
+        cargarProductosPendientes('#selectProductosPendientes');
+    }
 });
 
 $("#selectProductosPendientes").change(function() {
@@ -1020,7 +1048,9 @@ function verificarProductoExista() {
             $('#showTabla').hide();
             $('#DatosProductosPendiente').hide();
             //$('#selectProductosPendientes').select2();
-            cargarProductosPendientes('#selectProductosPendientes');
+            jQuery("#PPTOP").attr('checked', true);
+            var PPTOP = $('input:radio[name=PPTOP]:checked').val()
+            cargarProductosPendientesTopN('#selectProductosPendientes',PPTOP);
             
             
             
@@ -1049,15 +1079,22 @@ function verificarProductoExista() {
 
 
 function CerrarProductoPendiente(CodigoBarras){
-    Swal.fire({
-        title: 'Seguro Estan Verificados',
-        text: ".. todos los Productos ?",
+    
+    const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: '¿Seguro Estan Verificados',
+        text: ".. todos los Productos?",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText:  'Cancelar',
-        confirmButtonText: 'Aceptar'
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: 'Si, Cerrar Producto',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             var settings = {
@@ -1125,9 +1162,6 @@ function cargarTotalesAll(etiqueta,titulo,idCodigoBarras) {
     }
     $.ajax(settings).done(function(response) {
         $(etiqueta).html(titulo+response.data[0].total);
-        
-        
-        
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -1149,6 +1183,8 @@ function cargarTotalesAll(etiqueta,titulo,idCodigoBarras) {
         }
     })
 }
+
+
 
 function cargarResumenProducto(idCodigoBarras) {
     var settings = {
@@ -1188,6 +1224,50 @@ function cargarResumenProducto(idCodigoBarras) {
 function cargarProductosPendientes(identificador) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllProductosPendiente/',
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(identificador);
+        selected.find("option").remove();
+        selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].TipMed){ 
+                TipoMed="Med"
+            }else{
+                TipoMed=""
+            }
+            selected.append("<option value=" + response.data[i].Numero_codigo_barras + ">" + response
+                .data[i].Numero_codigo_barras +" - ("+response.data[i].Total+") - "+response.data[i].Estatus+" - "+TipoMed+"</option>");
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarProductosPendientesTopN(identificador,N) {
+    var settings = {
+        "url": '<?php echo urlApi; ?>getAllProductosPendienteTopN/'+N,
         "method": "get",
         "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
