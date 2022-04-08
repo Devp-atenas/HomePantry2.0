@@ -1564,7 +1564,7 @@
                             <div class="card">
                                 <div class="form-group">
                                 <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" class="escucharEmisora" id="emisoraNo" name="escucharRadio" value="2">
+                                        <input class="form-check-input" type="radio" class="escucharEmisora" id="emisoraNo" name="escucharRadio" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
@@ -1680,12 +1680,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>>
+                    </div>
                     <div class="row">
                         <div class="col text-center">
                             <button id="guardar-step-10" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
+                    <HR/>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button id="guardar-ficha" type="button" class="btn btn-block btn-success">Finalizar</button>
+                        </div>
+                    </div>
+                    
                     <!--/step 10-->
                 </form>
             </div>
@@ -1753,6 +1760,32 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal vvvvvvvvvvvvv-->
 
+<div class="modal fade" id="myModalFinalizar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    Aviso:
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+            </div>
+            <div class="modal-bodyFinalizar">
+                Complete los siguientes pasos para poder finalizar
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="modal-bodyFinalizar">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true"> Aceptar
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal vvvvvvvvvvvvv-->
+
 <div class="modal fade" id="modal-PanelistaEditar">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -1774,180 +1807,177 @@
                         </div>
                         <div class="card-body">
                             <form id="FormPanelistaEdit">
-                            <div class="row">t
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Primer nombre:</div>
-                                                        <input type="text" class="form-control input-sm" id="primerNombreComposicionEdit" name="primerNombreComposicionEdit" placeholder="Ingrese Primer nombre ...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Segundo nombre:</div>
-                                                        <input type="text" class="form-control input-sm" id="segundoNombreComposicionEdit" name="segundoNombreComposicionEdit" placeholder="Ingrese Segundo nombre ...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Primer apellido:</div>
-                                                        <input type="text" class="form-control input-sm" id="primerApellidoComposicionEdit" name="primerApellidoComposicionEdit" placeholder="Ingrese Primer apellido ...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Segundo apellido:</div>
-                                                        <input type="text" class="form-control input-sm" id="segundoApellidoComposicionEdit" name="segundoApellidoComposicionEdit" placeholder="Ingrese Segundo apellido ...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">Nacionalidad</div>
-                                                    <div class="card">
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionEdit" name="nacionalidadComposicionEdit" value="1">
-                                                                <label class="form-check-label">Venezolano</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionEdit" name="nacionalidadComposicionEdit" value="2">
-                                                                <label class="form-check-label">Extranjero</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Cedula:</div>
-                                                        <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaComposicionEdit" name="cedulaComposicionEdit" placeholder="Ingrese Cedula ...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">Sexo:</div>
-                                                    <div class="card">
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="sexoComposicionEdit" name="sexoComposicionEdit" value="1">
-                                                                <label class="form-check-label">Femenino</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="sexoComposicionEdit" name="sexoComposicionEdit" value="2">
-                                                                <label class="form-check-label">Masculino</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Estado civil:</div>
-                                                        <select class="custom-select form-control-border" id="estadoCivilComposicionEdit">
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
-                                                        <select class="custom-select form-control-border" id="parentescoJefeComposicionEdit">
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Educacion:</div>
-                                                        <select class="custom-select form-control-border" id="educacionComposicionEdit">
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                                        <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionEdit" placeholder="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Edad:</div>
-                                                        <input type="number" class="form-control input-sm" id="edadComposicionEdit" placeholder="(Valor Calculado) ..." readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Celular:</div>
-                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularComposicionEdit" name="celularComposicion" placeholder="Ingrese Celular...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Celular adicional:</div>
-                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalComposicionEdit" name="celularAdicionalComposicionEdit" placeholder="Ingrese Celular adicional ...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Correo:</div>
-                                                        <input type="email" class="form-control input-sm" id="correoComposicionEdit" name="correoComposicionEdit" placeholder="Ingrese correo ...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Tipo de ingreso:</div>
-                                                        <select class="custom-select form-control-border" id="tipoIngresoComposicionEdit">
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
-                                                    <div class="card">
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicionEdit" value="0">
-                                                                <label class="form-check-label">No</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicionEdit" value="1">
-                                                                <label class="form-check-label">Si</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">Activo:</div>
-                                                        <div class="card">
-                                                            <div class="form-group">
-                                                            <div class="form-check d-inline">
-                                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
-                                                                    <label class="form-check-label">No</label>
-                                                                </div>
-                                                                <div class="form-check d-inline">
-                                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
-                                                                    <label class="form-check-label">Si</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            <div class="row" style="visibility:hidden;">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="inputIdEditComposicion">id:</label>
-                                                        <input type="text" name="inputIdEditComposicion" id="inputIdEditComposicion"
-                                                            class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                
+                                <div class="row">t
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Primer nombre:</div>
+                                            <input type="text" class="form-control input-sm" id="primerNombreComposicionEdit" name="primerNombreComposicionEdit" placeholder="Ingrese Primer nombre ...">
                                         </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <input type="button" onclick="ActualizarRegistro()" id="editComposicion"
-                                                value="Guardar" class="btn btn-success float-right">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                            <input type="text" class="form-control input-sm" id="segundoNombreComposicionEdit" name="segundoNombreComposicionEdit" placeholder="Ingrese Segundo nombre ...">
                                         </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Primer apellido:</div>
+                                            <input type="text" class="form-control input-sm" id="primerApellidoComposicionEdit" name="primerApellidoComposicionEdit" placeholder="Ingrese Primer apellido ...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                            <input type="text" class="form-control input-sm" id="segundoApellidoComposicionEdit" name="segundoApellidoComposicionEdit" placeholder="Ingrese Segundo apellido ...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Nacionalidad</div>
+                                        <div class="card">
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="nacionalidadComposicionEdit" name="nacionalidadComposicionEdit" value="1">
+                                                    <label class="form-check-label">Venezolano</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="nacionalidadComposicionEdit" name="nacionalidadComposicionEdit" value="2">
+                                                    <label class="form-check-label">Extranjero</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Cedula:</div>
+                                            <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaComposicionEdit" name="cedulaComposicionEdit" placeholder="Ingrese Cedula ...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Sexo:</div>
+                                        <div class="card">
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="sexoComposicionEdit" name="sexoComposicionEdit" value="1">
+                                                    <label class="form-check-label">Femenino</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="sexoComposicionEdit" name="sexoComposicionEdit" value="2">
+                                                    <label class="form-check-label">Masculino</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Estado civil:</div>
+                                            <select class="custom-select form-control-border" id="estadoCivilComposicionEdit">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                            <select class="custom-select form-control-border" id="parentescoJefeComposicionEdit">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Educacion:</div>
+                                            <select class="custom-select form-control-border" id="educacionComposicionEdit">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                            <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionEdit" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Edad:</div>
+                                            <input type="number" class="form-control input-sm" id="edadComposicionEdit" placeholder="(Valor Calculado) ..." readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Celular:</div>
+                                            <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularComposicionEdit" name="celularComposicion" placeholder="Ingrese Celular...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Celular adicional:</div>
+                                            <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalComposicionEdit" name="celularAdicionalComposicionEdit" placeholder="Ingrese Celular adicional ...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Correo:</div>
+                                            <input type="email" class="form-control input-sm" id="correoComposicionEdit" name="correoComposicionEdit" placeholder="Ingrese correo ...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                            <select class="custom-select form-control-border" id="tipoIngresoComposicionEdit">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
+                                        <div class="card">
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicionEdit" value="0">
+                                                    <label class="form-check-label">No</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionEdit" name="beneficioSocialistaComposicionEdit" value="1">
+                                                    <label class="form-check-label">Si</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Activo:</div>
+                                            <div class="card">
+                                                <div class="form-group">
+                                                <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                        <label class="form-check-label">No</label>
+                                                    </div>
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                        <label class="form-check-label">Si</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="row" style="visibility:hidden;">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputIdEditComposicion">id:</label>
+                                            <input type="text" name="inputIdEditComposicion" id="inputIdEditComposicion"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="button" onclick="ActualizarRegistro()" id="editComposicion"
+                                            value="Guardar" class="btn btn-success float-right">
                                     </div>
                                 </div>
                             </form>
@@ -2491,7 +2521,7 @@
         var idHogar = localStorage.getItem("idHogarEditar");
         editPanelistasResponsableJefe(idHogar,1,0);
         editPanelistasResponsableJefe(idHogar,0,1);
-        localStorage.removeItem('idHogarEditar');// ****
+        localStorage.removeItem('idHogarEditar');//
     }else{
         cargarEstado('#estadoHogar',0);
         // Responsable del Hogar
@@ -2631,6 +2661,7 @@
                     "referenciaHogar": $("#referenciaHogar").val(),
                     "telefonoHogar": $("#telefonoHogar").val(),
                     "viviendaCasa": $("#viviendaCasa").val(),
+                    "Id_Usuario": localStorage.getItem("IdUsuario"),
                     "tipoCasa": $("#tipoCasa").val()
                 }
             }
@@ -3952,7 +3983,115 @@
         }
 
     );
-    
+    //787878
+    $("#guardar-ficha").click(function() {
+        var camposVacios = "";
+        
+       
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": '<?php echo urlApi; ?>buscarPasos/',
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Id_Hogar": $("#identificacion2Hogar").val()
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            var camposVacios = "";
+            if ( $("#identificacion2Hogar").val() == ""){
+                camposVacios += "Falta completar Ubicacion del hogar<br>";
+            }
+            if (response.data[0].Ind_paso2 == 0){
+                camposVacios += "Falta completar responsable del hogar<br>";
+            }
+            if (response.data[0].Ind_paso3 == 0){
+                camposVacios += "Falta completar jefe del Hogar<br>";
+            }
+            if (response.data[0].Ind_paso4 == 0){
+                camposVacios += "Falta completar composición del hogar<br>";
+            }
+            if (response.data[0].Ind_paso5 == 0){
+                camposVacios += "Falta completar características y tenencia de la vivienda<br>";
+            }
+            if (response.data[0].Ind_paso6 == 0){
+                camposVacios += "Falta completar servicios Públicos<br>";
+            }
+            if (response.data[0].Ind_paso7 == 0){
+                camposVacios += "Falta completar servicios y equipamientos del hogar<br>";
+            }
+            if (response.data[0].Ind_paso8 == 0){
+                camposVacios += "Falta completar medios<br>";
+            }
+            if (response.data[0].Ind_paso9 == 0){
+                camposVacios += "Falta completar vehículos<br>";
+            }
+            if (response.data[0].Ind_paso10 == 0){
+                camposVacios += "Falta completar mascotas<br>";
+            }
+           
+            
+            if (camposVacios != "") {
+                alert(camposVacios);
+                $(function() {
+                    $('#modal-bodyFinalizar').html(camposVacios);
+                });
+                $('#myModalFinalizar').modal('show');
+            } else {
+                alert(camposVacios);
+                
+                finalizarFicha( $("#identificacion2Hogar").val());
+                const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
+                
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'info',
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                var form = document.querySelector('#FormPaisEdit');
+                form.reset();
+                window.location = '/homepantry20/index.php';
+            }
+        })
+        
+    });
+
+
     
     /* cccc */
     function Bitacora(idUsuario,IP,Operacion,idPrincipal,CRUD) {
@@ -4078,6 +4217,63 @@
                     .data[i].Estado + "</option>");
                 }
             }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/homepantry20/index.php';
+            }
+        })
+    }
+    
+    //787878
+    function finalizarFicha(idHogar) {
+        var settings = {
+            "url": '<?php echo urlApi; ?>updateNSE_idHogar/'+idHogar,
+            "method": "get",
+            "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+        }
+        $.ajax(settings).done(function(response) {
+            //787878
+            
+            
+            const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Registro de Hogar",idHogar,"U");
+
+            
+            
+            
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({
@@ -5029,7 +5225,6 @@
             }
             $.ajax(settings).done(function(response) {
                 if (responsable == 1 && parentesco == 0){
-                    
                     $("#inputIdEditResponsable").val(response.data[0].Id_Panelista);
                     $("#primerNombreResponsable").val(response.data[0].Nombre1);
                     $("#segundoNombreResponsable").val(response.data[0].Nombre2);
@@ -5052,7 +5247,7 @@
                     cargarEstadoCivil('#estadoCivilResponsable',response.data[0].Id_EstadoCivil);
                     cargarParentesco('#parentescoJefeResponsable',response.data[0].Id_Parentesco);
                     cargarTipoIngreso('#tipoIngresoResponsable',response.data[0].Id_TipoIngreso);
-                    
+
                     var oblig = $("input:radio[name='frecuenciaCompraResponsable']");
                     oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
                     if(response.data[0].id_Lunes == 1){
@@ -5091,8 +5286,6 @@
                     oblig.filter("[value='"+response.data[0].Id_PagoRapido+"']").attr('checked', true);
                 }
                 if (responsable == 0 && parentesco == 1){
-                    
-                    
                     if (response.data[0].ResponsablePanel != response.data[0].Id_Parentesco){
                         document.getElementById("divResponsableJefe").style.visibility = "visible";
                         var oblig = $("input:radio[name='jefeResponsableIO']");
@@ -5104,8 +5297,7 @@
                     }
                     document.getElementById("responsableJefeNO").disabled=true;
                     document.getElementById("responsableJefeSI").disabled=true;
-                    
-                    
+
                     $("#inputIdEditJefe").val(response.data[0].Id_Panelista);
                     $("#primerNombreJefe").val(response.data[0].Nombre1);
                     $("#segundoNombreJefe").val(response.data[0].Nombre2);
@@ -5127,13 +5319,12 @@
                     oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
                     $("#celularJefe").val(response.data[0].Celular);
                     $("#celularAdicionalJefe").val(response.data[0].CelularAdicional);
-                    
-                    
+
                     cargarEducacion('#educacionJefe',response.data[0].Id_Educacion);
                     cargarEstadoCivil('#estadoCivilJefe',response.data[0].Id_EstadoCivil);
                     cargarParentesco('#parentescoJefeJefe',response.data[0].Id_Parentesco);
                     cargarTipoIngreso('#tipoIngresoJefe',response.data[0].Id_TipoIngreso);
-        
+
                 }
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
@@ -5517,7 +5708,6 @@ function ActualizarRegistro() {
             var oblig = $("input:radio[name='domesticaXDia']");
             oblig.filter("[value='"+response.data[0].Id_DomesticaDia+"']").attr('checked', true);
             var oblig = $("input:radio[name='conexionInternetTlf']");
-            
             oblig.filter("[value='"+response.data[0].id_ConexionInternet1+"']").attr('checked', true);
             var oblig = $("input:radio[name='conexionInternetMovil']");
             oblig.filter("[value='"+response.data[0].id_ConexionInternet2+"']").attr('checked', true);

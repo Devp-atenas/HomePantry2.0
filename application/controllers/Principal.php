@@ -253,6 +253,9 @@ class Principal extends CI_Controller {
     public function AsociarPerfil(){
         $this->load->view('GestionPerfil/AsociarPerfil');
     }
+    public function PeriodoActualizacion(){
+        $this->load->view('PeriodoActualizacion/PeriodoActualizacion');
+    }
     public function ReporteTotal(){
         $this->load->view('Reportes/ReporteTotal');
     }
@@ -285,6 +288,9 @@ class Principal extends CI_Controller {
     }
     public function ReporteHogarCategoria(){
         $this->load->view('Reportes/ReporteHogarCategoria');
+    }
+    public function MantenimientoSemana(){
+        $this->load->view('Mantenimiento/MantenimientoSemana');
     }
     public function logout(){
         $this->load->helper('url');

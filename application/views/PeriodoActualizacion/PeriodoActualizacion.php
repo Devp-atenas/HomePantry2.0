@@ -46,7 +46,7 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-diagram-3"></i></i>&nbsp;Perfiles</h1>
+                <h1><i class="bi bi-diagram-3"></i></i>&nbsp;Periodo de Actualizacion</h1>
             </div>
             
         </div>
@@ -58,7 +58,7 @@ select:focus {
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Crear Perfil</h3>
+                    <h3 class="card-title">Crear Periodo</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -68,15 +68,17 @@ select:focus {
                 <div class="card-body" style="display: none;">
                     <form id="FormPerfil">
                         <div class="form-group row mb-0 mt-0">
-                            <div class="col-md-3">
-                                <label class="inputText font-weight-bold">Nombre del Perfil:</label>
-                                <input type="text" name="inputPerfil" id="inputPerfil" class="form-control">
+                            <div class="col-md-2">
+                                <label class="inputText font-weight-bold">Periodo:</label>
+                                    <select id="selectPeriodoActualizacion" name="selectPeriodoActualizacion" class="form-control form-control-sm">
+                                    </select>
                             </div>
+                                    
                             <div class="col-md-5">
-                                <label class="inputText font-weight-bold">Descripcion:</label>
-                                <input type="text" name="inputDescripcion" id="inputDescripcion" class="form-control">
+                                <label class="inputText font-weight-bold">Actividad:</label>
+                                <input type="text" name="inputActividad" id="inputActividad" class="form-control">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="inputText font-weight-bold">Activo:</div>
                                 <div class="card">
                                     <div class="form-group">
@@ -113,7 +115,7 @@ select:focus {
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Mantenimiento Perfil</h3>
+                    <h3 class="card-title">Mantenimiento Periodo</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -154,7 +156,7 @@ select:focus {
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Agregar Opciones al Perfil</h3>
+                    <h3 class="card-title">Agregar items al Periodo</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -163,18 +165,18 @@ select:focus {
                 </div>
                 <div class="card-body" style="display: none;">
                     <div id="showTablas">
-                        <h2 class="text-center">Funciones de Home Pantry</h2>
+                        <h2 class="text-center">Items Panel de Hogar</h2>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group row mb-0 mt-0">
-                                    <div class="col-md-4">
-                                        <div class="inputText font-weight-bold">Perfil:</div>
-                                            <select id="selectPerfil" name="selectPerfil" class="form-control form-control-sm">
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Actividad:</div>
+                                            <select id="selectActividad" name="selectActividad" class="form-control form-control-sm">
                                             </select>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="inputText font-weight-bold">Guardar:</div>
-                                        <button id="idGuardarPerfilOpciones"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
+                                        <button id="idGuardarActividadItems"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
                                             <i class="fas fa-save fa-2x"></i>
                                         </button>
                                     </div>
@@ -183,7 +185,7 @@ select:focus {
                                 <div class="text-center">
                                     <div class="form-group row mb-0 mt-0">
                                         <div class="col-md-12">
-                                            <div id="TablaFunciones"></div>
+                                            <div id="TablaItems"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -202,10 +204,10 @@ select:focus {
 
 <script>
 $(document).ready(function() {
-    var urlApi = '<?php echo urlApi; ?>';
-    sessionStorage.setItem("urlApi",urlApi);
-    cargarTablaFunciones('#TablaFunciones');
-    cargarTabla();
+    //var urlApi = '<?php echo urlApi; ?>';
+    //sessionStorage.setItem("urlApi",urlApi);
+    //
+    //cargarTabla();
     //$('#showButton').hide();
 });
 
@@ -300,8 +302,7 @@ function cargarTabla(){
 }
 </script>
 
-<script src="<?php echo base_url('jsHP/jsGestionarPerfil.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsReporteNSE.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsPeriodoActualizacion.js') ?>"></script>
 
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

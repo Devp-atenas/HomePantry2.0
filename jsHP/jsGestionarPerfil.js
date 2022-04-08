@@ -46,12 +46,7 @@ function cargarTablaFunciones(idDivTabla){
             return (value.id_opcion);
         });
         //crearPerfil(arrayID);
-        
-       
-       
     });
-    
-    
 }
 
 function crearPerfil(){

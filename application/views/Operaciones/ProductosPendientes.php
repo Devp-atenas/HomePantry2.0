@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <div id="DatosProductosPendiente">
+        <div id="DatosProductosPendiente" style="display:none;" >
             <div class="form-group row">
                 <div class="col-sm-4">
                     <div class="form-group text-center">
@@ -95,10 +95,11 @@
             </div>
         </div>
         <HR/>
-
+        
         <div id="showTabla">
             <div class="row">
                 <div class="col-md-12">
+                    <!--
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
                         <button id="seleccionarSoberanos">Seleccionar Soberanos</button>
@@ -110,7 +111,9 @@
                         Seleccionados: <span id="select-stats"></span>
                         </div>
                     </div>
-                    <HR/>
+                     <HR/>
+                    -->
+                   
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
                             <div id="TableProductosPendientes"></div>
@@ -120,6 +123,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </section>
 
@@ -1002,7 +1006,7 @@ function cargarTotales(etiqueta,titulo,idCodigoBarras,idStatus) {
                 }
     }
     $.ajax(settings).done(function(response) {
-        $(etiqueta).html(titulo+response.data[0].total);
+        $(etiqueta).html('<strong>'+titulo+'</strong>'+response.data[0].total);
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -1161,7 +1165,7 @@ function cargarTotalesAll(etiqueta,titulo,idCodigoBarras) {
                 }
     }
     $.ajax(settings).done(function(response) {
-        $(etiqueta).html(titulo+response.data[0].total);
+        $(etiqueta).html('<strong>'+titulo+'</strong>'+response.data[0].total);
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -2322,41 +2326,36 @@ function cargarTabla(CodigoBarras){
         ],
     });
 
-    table.on("rowSelectionChanged", function(data, rows){
+    /*table.on("rowSelectionChanged", function(data, rows){
         document.getElementById("select-stats").innerHTML = data.length;
     });
 
-    //select row on "select" button click
     document.getElementById("seleccionarSoberanos").addEventListener("click", function(){
         table.deselectRow();
         table.selectRow(table.getRows().filter(row => row.getData().Moneda.indexOf("Soberano") >=0 ));
     });
 
-    //deselect row on "deselect" button click
     document.getElementById("deseleccionarSoberanos").addEventListener("click", function(){
         table.deselectRow(table.getRows().filter(row => row.getData().Moneda.indexOf("Soberano") >=0 ));
     });
 
-    //select row on "select" button click
     document.getElementById("seleccionarDigital").addEventListener("click", function(){
         table.deselectRow();
         table.selectRow(table.getRows().filter(row => row.getData().Moneda.indexOf("Digital") >=0 ));
     });
 
-    //deselect row on "deselect" button click
     document.getElementById("deseleccionarDigital").addEventListener("click", function(){
         table.deselectRow(table.getRows().filter(row => row.getData().Moneda.indexOf("Digital") >=0 ));
     });
 
-    //select row on "select all" button click
     document.getElementById("select-all").addEventListener("click", function(){
         table.selectRow();
     });
 
-    //deselect row on "deselect all" button click
     document.getElementById("deselect-all").addEventListener("click", function(){
         table.deselectRow();
     });
+    */
     document.getElementById("bottonProcesar").addEventListener("click", function(){
         var datosSeleccionados = table.getSelectedData();
         const ids = datosSeleccionados.map(d => d.Id_Hogar);

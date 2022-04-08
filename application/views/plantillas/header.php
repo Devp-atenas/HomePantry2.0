@@ -158,23 +158,20 @@
   $(document).ready(function() {
     $("#nombreUsuario").html(localStorage.getItem("nombreUsuario"));
     $("#nombreUsuario2").html(localStorage.getItem("nombreUsuario"));
-    
-        //var Avatar = ;
+
     img = document.createElement('img');
-    //img.setAttribute("src", `./landing/images/${item.img_padre}`);
-    img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
+    //img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
+    img.setAttribute("src", `<?php echo base_url('dist/img/Usuarios/')?>${localStorage.getItem("Avatar")}`);
     img.setAttribute("alt", `User Image`);
     img.setAttribute("class", `img-circle elevation-2`);
     document.getElementById('lockscreen-image').appendChild(img);
-    
+
     img = document.createElement('img');
-    //img.setAttribute("src", `./landing/images/${item.img_padre}`);
-    img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
+    //img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
+    img.setAttribute("src", `<?php echo base_url('dist/img/Usuarios/')?>${localStorage.getItem("Avatar")}`);
     img.setAttribute("alt", `User Image`);
     img.setAttribute("class", `img-circle elevation-2`);
     document.getElementById('lockscreen-image2').appendChild(img);
-        
-    
 });
 </script>
 

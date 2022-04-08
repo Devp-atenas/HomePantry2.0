@@ -191,7 +191,6 @@ function asociarUsuarioPerfil(idUsuario,nombreUsuario,idPerfil,Perfil){
                 }
             }
             $.ajax(settings).done(function(response){
-                
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',

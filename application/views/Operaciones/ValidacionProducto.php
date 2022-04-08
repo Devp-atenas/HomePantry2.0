@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div id="ocultarMostrar2">
+        <div id="ocultarMostrar2" style="display:none;" >
             <HR/>
             <div class="row">
                 <div class="col-md-12"> <!--  bg-danger bg-gradient -->
@@ -71,18 +71,20 @@
                     </div>
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-3">
-                            <label>Codigo de Barra:</label> <span class="label label-info" id="codigoBarra">01234567890123456789</span>
+                            <label></label> <span class="text-danger" id="codigoBarra"></span>
                         </div>
                         <div class="col-md-9">
-                            <label>Descripcion:</label> <span class="label label-danger " id="descripcionProducto"></span>
+                            <label></label> <span class="text-danger" id="descripcionProducto"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="ocultarMostrar">
+        
+        <div id="ocultarMostrar" style="display:none;" >
             <div class="row">
                 <div class="col-md-12">
+                <!--
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
                         <button id="seleccionarSoberanos">Seleccionar Soberanos</button>
@@ -95,6 +97,7 @@
                         </div>
                     </div>
                     <HR/>
+                    -->
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
                             <div id="TableDetalleProductos"></div>
@@ -448,8 +451,10 @@ function CargarDatosProducto(idDetalle) {
                 }
     }
     $.ajax(settings).done(function(response) {
-        $('#codigoBarra').html(response.data[0].CodigoBarra);
-        $('#descripcionProducto').html(response.data[0].Producto);
+        //$('#codigoBarra').html(response.data[0].CodigoBarra);
+        $("#codigoBarra").html('<strong>Codigo de Barra: ('+response.data[0].CodigoBarra+ ')</strong>');
+        $("#descripcionProducto").html('<strong>Descripcion: ('+response.data[0].Producto+ ')</strong>');
+        //$('#descripcionProducto').html(response.data[0].Producto);
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -471,6 +476,64 @@ function CargarDatosProducto(idDetalle) {
         }
     })
 }
+
+function ValidarHogar_(data) {
+    // Abrir nuevo tab
+    
+
+}
+
+
+function ValidarHogar(idConsumoDetalleProductos) {
+    var settings = {
+        "url": '<?php echo urlApi; ?>getFiltrosToValidacionHogar/'+idConsumoDetalleProductos,
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        localStorage.setItem("idSemana", response.data[0].Id_Semana);
+        localStorage.setItem("idArea", response.data[0].Id_Area);
+        localStorage.setItem("idEstado", response.data[0].Id_Estado);
+        localStorage.setItem("idPanelHogar", response.data[0].Id_PanelHogar);
+        localStorage.setItem("idTipoConsumo", response.data[0].id_TipoConsumo);
+        localStorage.setItem("fechaCreacion", response.data[0].Fecha_Creacion);
+        localStorage.setItem("idConsumo", response.data[0].Id_Consumo);
+        localStorage.setItem("flagValProdToValHogar", 1);
+        
+        var win = window.open("<?php echo base_url('Principal/ValidacionHogar')?>", '_blank');
+        win.focus();
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
+
+
+
+
 
 function EditActionDatos(data) {
     var settings = {
@@ -817,7 +880,7 @@ function cargarTabla(id_semanaT,id_categoriaT,id_productoT,minimo,maximo){
         var value = cell.getRow().getData().Id_Consumo_Detalle_Productos;
         var Cantidad = cell.getRow().getData().Cantidad;
         return  "<a id='fg003' href='#' onclick='EditActionDatos("+value+"); return false;' ><i class='fa fa-edit' data-toggle='tooltip' data-placement='top' title='Actualizar Manual'></i></a>&nbsp;"
-                "<a id='fg003' href='#' onclick='EditActionDatos("+value+"); return false;' ><i class='fa fa-edit' data-toggle='tooltip' data-placement='top' title='Actualizar Manual'></i></a>&nbsp;";
+                +"<a id='fg003' href='#' onclick='ValidarHogar("+value+"); return false;' ><i class='bi bi-house-fill' data-toggle='tooltip' data-placement='top' title='Validar Hogar'></i></a>&nbsp;";
     };
     var mayorMenor = function(cell, formatterParams){
         var Precio = cell.getRow().getData().Precio;
@@ -970,6 +1033,9 @@ function cargarTabla_(id_semanaT,id_categoriaT,id_productoT,minimo,maximo){
             "render": function(data, type, row, meta) {
                 return '<a title="Cambiar Moneda" href="#"><i class="fa fa-marker" style="font-size:24px;color:#000" aria-hidden="true" onclick="EditActionDatos(' +
                     data +
+                    '); return false;"></i></a>'+
+                    '<a title="Cambiar Moneda" href="#"><i class="bi bi-house" style="font-size:24px;color:#000" aria-hidden="true" onclick="EditActionDatos(' +
+                    data +
                     '); return false;"></i></a>';
             }
         }],
@@ -1009,5 +1075,6 @@ function SeparadorMiles(number){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/autoNumeric-1.9.18.js') ?>"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>

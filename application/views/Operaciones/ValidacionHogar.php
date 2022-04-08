@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-sm-1">
                         <div class="inputText font-weight-bold">Investigar:</div>
-                        <button type="button" class="btn btn-block btn-xs btn-primary" onclick="callEnviarConsumoInvestigar();">
+                        <button type="button" id="buttonInvestigar" class="btn btn-block btn-xs btn-primary" onclick="callEnviarConsumoInvestigar();">
                             <i class="fas fa-info-circle fa-2x"></i>
                         </button>
                     </div>
@@ -99,7 +99,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-12" id="ocultarMostrarDetalleFactura">
+            <div class="col-md-12" id="ocultarMostrarDetalleFactura" style="display:none;" >
                 <div class="form-group row mb-0 mt-0">
                     <div class="col-md-12 text-center">
                         <h4>Detalle de la Factura</h4>
@@ -155,7 +155,7 @@
                 <div class="form-group-row alert alert-info" role="alert" id="hogarResuelto" style="display:none;" >
                     <h5>
                         <strong>
-                            <p class="text-center"><i class="fas fa-check-double"></i>&nbsp;INVESTIGACI&Oacute;N DE CONSUMO RESUELTO&nbsp;<i class="fas fa-check-double"></i></p>			
+                            <p class="text-center"><i class="fas fa-check-double"></i>&nbsp;INVESTIGACI&Oacute;N DE CONSUMO RESUELTO&nbsp;<i class="fas fa-check-double"></i></p>
                             <p id="motivoInv"></p>
                             <p id="comentarioInv"></p>
                             <p id="motivoRsp" class="text-danger"></p>
@@ -167,7 +167,7 @@
                         <p class="text-danger" id="idDetalleConsumoM"></p>
                     </div>
                 </div>
-                <div class="form-group form-group-sm row mb-0 mt-0">
+                <div id="botonera" class="form-group form-group-sm row mb-0 mt-0">
 
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-outline-primary btn-sm" onclick="addProducto()">
@@ -203,7 +203,7 @@
             </div>
         </div>
         <HR/>
-        <div id="ocultarMostrarDetalle">
+        <div id="ocultarMostrarDetalle" style="display:none;" >
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group row mb-0 mt-0">
@@ -560,9 +560,56 @@
 
 <script>
 $(document).ready(function() {
-    $('#ocultarMostrarDetalle').hide();
-    $('#ocultarMostrarDetalleFactura').hide();
-    cargarSemana('#selectSemanaTabla',0);
+    
+    if (localStorage.getItem("flagValProdToValHogar") !== null) {
+        var idSemana = localStorage.getItem("idSemana");
+        var idArea = localStorage.getItem("idArea");
+        var idEstado = localStorage.getItem("idEstado");
+        var idPanelHogar = localStorage.getItem("idPanelHogar");
+        var idTipoConsumo = localStorage.getItem("idTipoConsumo");
+        var fechaCreacion = localStorage.getItem("fechaCreacion");
+        var idConsumo = localStorage.getItem("idConsumo");
+        cargarSemana('#selectSemanaTabla',idSemana);
+        cargarArea('#selectAreaTabla',idArea,idSemana);
+        cargarEstado('#selectEstadoTabla',idEstado,idSemana,idArea);
+        cargarHogar('#selectHogarTabla',idPanelHogar,idSemana,idArea,idEstado,/*idMostrar*/2);
+        cargarTipoConsumo('#selectTipoConsumoTabla',idTipoConsumo,idSemana,idPanelHogar,/*idMostrar*/2);
+        cargarDiaSemana('#selectDiaSemanaTabla',fechaCreacion,idSemana,idPanelHogar,idTipoConsumo,2);
+        cargarFecha('#selectFechaTabla',idConsumo,idSemana,idPanelHogar,idTipoConsumo,fechaCreacion,/*idMostrar*/2);
+        ///document.getElementById('selectFechaTabla').disabled = true;
+        cargarConsumosInvestigados('#selectConsumosInvestigadosTabla',idSemana,0);
+        CalcularTotalesConsumos(idSemana);
+        DatosResponsableHogar(idPanelHogar);
+        
+        
+        cargarResumen(idConsumo);
+        cargarTablaConsumos(idConsumo);
+        datosGrafica(idSemana,idPanelHogar,idTipoConsumo);
+        cargarSemana('#selectSemanaHogar',idSemana);
+        cargarTablaResumen(idSemana,idPanelHogar,idTipoConsumo)
+        $('#ocultarMostrarDetalle').show();
+        $('#ocultarMostrarDetalleFactura').show();
+        
+        
+        
+        
+         
+        
+        localStorage.removeItem('flagValProdToValHogar');
+        
+    }else{
+        cargarSemana('#selectSemanaTabla',0);
+        $('#ocultarMostrarDetalle').hide();
+        $('#ocultarMostrarDetalleFactura').hide();
+        document.getElementById('buttonInvestigar').disabled = true;
+    }
+    
+    
+    
+    
+    
+    
+    
     
     $(function($) {
         $('#txtPrecio').autoNumeric('init', {
@@ -614,7 +661,13 @@ $("#selectSemanaTabla").change(function() {
     cargarArea('#selectAreaTabla',0,idSemana);
     cargarConsumosInvestigados('#selectConsumosInvestigadosTabla',idSemana,0);
     CalcularTotalesConsumos(idSemana);
+    $('#botonera').show();
+    document.getElementById('buttonInvestigar').disabled = true;
+    document.getElementById('selectHogarTabla').disabled = false;
+    document.getElementById('selectEstadoTabla').disabled = false;
+    document.getElementById('selectAreaTabla').disabled = false;
 });
+
 $("#selectAreaTabla").change(function() {
     var idSemana = $("#selectSemanaTabla").val();
     var idArea = $("#selectAreaTabla").val();
@@ -637,6 +690,8 @@ $("#selectAreaTabla").change(function() {
     $("#altaHogar").html("");
     $("#integrantesHogar").html("");
     cargarEstado('#selectEstadoTabla',0,idSemana,idArea);
+    document.getElementById('buttonInvestigar').disabled = true;
+    
 });/**/
 $("#selectEstadoTabla").change(function() {
     var idSemana = $("#selectSemanaTabla").val();
@@ -660,6 +715,8 @@ $("#selectEstadoTabla").change(function() {
     $("#celularHogar").html("");
     $("#altaHogar").html("");
     $("#integrantesHogar").html("");
+    document.getElementById('buttonInvestigar').disabled = true;
+    
 });/**/
 $("#selectHogarTabla").change(function() {
     var idSemana = $("#selectSemanaTabla").val();
@@ -677,6 +734,8 @@ $("#selectHogarTabla").change(function() {
     $('#ocultarMostrarDetalleFactura').hide();
     cargarTipoConsumo('#selectTipoConsumoTabla',0,idSemana,idHogar,/*idMostrar*/2);
     DatosResponsableHogar(idHogar);
+    document.getElementById('buttonInvestigar').disabled = true;
+    
 });/**/
 $("#selectTipoConsumoTabla").change(function() {
     var idSemana = $("#selectSemanaTabla").val();
@@ -690,7 +749,10 @@ $("#selectTipoConsumoTabla").change(function() {
     $('#ocultarMostrarDetalle').hide();
     $('#ocultarMostrarDetalleFactura').hide();
     cargarDiaSemana('#selectDiaSemanaTabla',0,idSemana,idHogar,idTipoConsumo,/*idMostrar*/2);
+    document.getElementById('buttonInvestigar').disabled = true;
+    
 });/**/
+
 $("#selectDiaSemanaTabla").change(function() {
     
     if ($('#selectSemanaHogar option:selected').length != 0){
@@ -698,8 +760,6 @@ $("#selectDiaSemanaTabla").change(function() {
     }else{
         var idSemana = $("#selectSemanaTabla").val();
     }
-    
-    
     //var idSemana = $("#selectSemanaTabla").val();
     var idHogar = $("#selectHogarTabla").val();
     var idTipoConsumo = $("#selectTipoConsumoTabla").val();
@@ -710,14 +770,18 @@ $("#selectDiaSemanaTabla").change(function() {
     $('#ocultarMostrarDetalle').hide();
     $('#ocultarMostrarDetalleFactura').hide();
     cargarFecha('#selectFechaTabla',0,idSemana,idHogar,idTipoConsumo,Fecha,/*idMostrar*/2);
+    document.getElementById('buttonInvestigar').disabled = true;
+    
 });
 
 /**/
 $("#selectFechaTabla").change(function() {
     if ($('#selectSemanaHogar option:selected').length != 0){
         var idSemana = $("#selectSemanaHogar").val();
+        document.getElementById('buttonInvestigar').disabled = true;
     }else{
         var idSemana = $("#selectSemanaTabla").val();
+        document.getElementById('buttonInvestigar').disabled = false;
     }
     var idHogar = $("#selectHogarTabla").val();
     var idTipoConsumo = $("#selectTipoConsumoTabla").val();
@@ -730,10 +794,17 @@ $("#selectFechaTabla").change(function() {
     cargarTablaResumen(idSemana,idHogar,idTipoConsumo)
     $('#ocultarMostrarDetalle').show();
     $('#ocultarMostrarDetalleFactura').show();
+    var idSemana = $("#selectSemanaTabla").val();
+    var idSemanaHogar = $("#selectSemanaHogar").val();
+    
+    if (idSemana === idSemanaHogar){
+        document.getElementById('buttonInvestigar').disabled = false;
+    }
 });
 
 $("#selectSemanaHogar").change(function() {
-    var idSemana = $("#selectSemanaHogar").val();
+    var idSemana = $("#selectSemanaTabla").val();
+    var idSemanaHogar = $("#selectSemanaHogar").val();
     var idHogar = $("#selectHogarTabla").val();
     var idTipoConsumo = $("#selectTipoConsumoTabla").val();
     //let select = $("#selectTipoConsumoTabla");
@@ -742,7 +813,7 @@ $("#selectSemanaHogar").change(function() {
     select.find("option").remove();
     select = $("#selectFechaTabla");
     select.find("option").remove();
-    cargarDiaSemana('#selectDiaSemanaTabla',0,idSemana,idHogar,idTipoConsumo,/*idMostrar*/2);
+    cargarDiaSemana('#selectDiaSemanaTabla',0,idSemanaHogar,idHogar,idTipoConsumo,/*idMostrar*/2);
     //cargarTipoConsumo('#selectTipoConsumoTabla',0,idSemana,idHogar,/*idMostrar*/2);
     $('#ocultarMostrarDetalle').hide();
     $('#ocultarMostrarDetalleFactura').hide();
@@ -750,6 +821,23 @@ $("#selectSemanaHogar").change(function() {
     $("#celularHogar").html("");
     $("#altaHogar").html("");
     $("#integrantesHogar").html("");
+    document.getElementById('buttonInvestigar').disabled = true;
+    
+    if (idSemana != idSemanaHogar){
+        $('#botonera').hide();
+        document.getElementById('selectHogarTabla').disabled = true;
+        document.getElementById('selectEstadoTabla').disabled = true;
+        document.getElementById('selectAreaTabla').disabled = true;
+        document.getElementById('buttonInvestigar').disabled = true;
+        
+    
+    }else{
+        $('#botonera').show();
+        document.getElementById('selectHogarTabla').disabled = false;
+        document.getElementById('selectEstadoTabla').disabled = false;
+        document.getElementById('selectAreaTabla').disabled = false;
+        //document.getElementById('buttonInvestigar').disabled = true;
+    }
 });
 
 $("#selectConsumosInvestigadosTabla").change(function() {
@@ -1017,15 +1105,22 @@ function enviarConsumoInvestigar(){
             var observacion =	$("#txtComentarios").val();
             
             var settings = {
-                "url": '<?php echo urlApi; ?>g_ValEnviarInvestigarConsumo/'+idConsumo+'/'+idItemInvestigar+'/'+idHogar+'/'+observacion,
-                "method": "get",
+                "url": '<?php echo urlApi; ?>g_ValEnviarInvestigarConsumo',
+                "method": "post",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+                "data": {
+                    "idConsumo":idConsumo,
+                    "idItemInvestigar": idItemInvestigar,
+                    "idHogar":idHogar,
+                    "observacion": observacion
                 }
             }
             $.ajax(settings).done(function(response){
                 $("#investigarConsumoModal").modal("hide");
+                cargarTablaConsumos(idConsumo);
                 const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -1042,7 +1137,9 @@ function enviarConsumoInvestigar(){
                 title: response.message,
                 confirmButtonText: `Ok`,
             })
-            cargarTablaConsumos(idConsumo);
+            
+            
+            
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -1984,9 +2081,9 @@ function cargarProductoCategoria(etiqueta,parametro,idS) {
     })
 }
 
-function cargarConsumosInvestigados(etiqueta,parametro,idS) {
+function cargarConsumosInvestigados(etiqueta,idSemana,idS) {
     var settings = {
-        "url": '<?php echo urlApi; ?>getConsumosInvestigados/' + parametro,
+        "url": '<?php echo urlApi; ?>getConsumosInvestigados/' + idSemana,
         "method": "get",
         "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -3769,21 +3866,21 @@ function cargarTablaConsumos(idConsumo){
                 formatterParams:{
                     decimal:",",
                     thousand:".",
-                    precision:true,
+                    precision:false,
                 }
             },
             {title:"Tasa Cambio", field:"Tasa_de_cambio", hozAlign:"center", sorter:"number", formatter:"money",
                 formatterParams:{
                     decimal:",",
                     thousand:".",
-                    precision:true,
+                    precision:false,
                 }
             },
             {title:"Total Compra", field:"total", sorter:"number", formatter:"money",
                 formatterParams:{
                     decimal:",",
                     thousand:".",
-                    precision:true,}
+                    precision:false,}
             },
             {title:"Moneda", field:"Moneda", sorter:"string"},
 
