@@ -281,6 +281,8 @@ function deleteAction(data) {
     }).then((result) => {
         if (result.isConfirmed) {
             var settings = {
+                "async": true,
+                "crossDomain": true,
                 "url": '<?php echo urlApi; ?>deleteAtributo1/' + data,
                 "method": "get",
                 "headers": {
@@ -390,6 +392,8 @@ function ActualizarRegistro() {
 
 function cargarCategoriaEdit(idCategoria) {
     var settings = {
+        "async": true,
+        "crossDomain": true,
         "url": '<?php echo urlApi; ?>getAllCategoria',
         "method": "get",
         "headers": {
@@ -434,6 +438,8 @@ function cargarCategoriaEdit(idCategoria) {
 function EditAction(data) {
     document.getElementById('FormAtributoEdit').reset();
     var settings = {
+        "async": true,
+        "crossDomain": true,
         "url": '<?php echo urlApi; ?>getAtributo1Id/' + data,
         "method": "get",
         "headers": {
@@ -474,6 +480,8 @@ function EditAction(data) {
 //6666666666666666
 function VisualizarAction(data) {
     var settings = {
+        "async": true,
+        "crossDomain": true,
         "url": '<?php echo urlApi; ?>getAtributo1Id/' + data,
         "method": "get",
         "headers": {
@@ -515,6 +523,8 @@ function VisualizarAction(data) {
 
 function cargarCategoria() {
     var settings = {
+        "async": true,
+        "crossDomain": true,
         "url": '<?php echo urlApi; ?>getAllCategoria',
         "method": "get",
         "headers": {

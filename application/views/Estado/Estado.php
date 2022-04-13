@@ -38,8 +38,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="inputEstado">Estado:</label>
-                            <input type="text" name="inputEstado" id="inputEstado" class="form-control">
+                            <label for="selectEstado">Estado:</label>
+                            <input type="text" name="selectEstado" id="selectEstado" class="form-control">
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -136,8 +136,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEstadoEdit">Estado:</label>
-                                    <input type="text" name="inputEstadoEdit" id="inputEstadoEdit" class="form-control">
+                                    <label for="selectEstadoEdit">Estado:</label>
+                                    <input type="text" name="selectEstadoEdit" id="selectEstadoEdit" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
@@ -188,12 +188,12 @@
                                 <input type="text" name="Codigo" id="inputCodigoVer" class="form-control" readonly>
                             </div>
                             <div id="NombreVer" class="form-group">
-                                <label for="inputEstadoVer">Pais:</label>
+                                <label for="selectEstadoVer">Pais:</label>
                                 <input type="text" name="Estado" id="inputPaisVer" class="form-control" readonly>
                             </div>
                             <div id="NombreVer" class="form-group">
-                                <label for="inputEstado">Estado:</label>
-                                <input type="text" name="Estado" id="inputEstadoVer" class="form-control" readonly>
+                                <label for="selectEstado">Estado:</label>
+                                <input type="text" name="Estado" id="selectEstadoVer" class="form-control" readonly>
                             </div>
                         </div>
                     </div>
@@ -277,7 +277,7 @@ function ActualizarRegistro() {
             },
             "data": {
                 "idEstado": $("#inputIdEditEstado").val(),
-                "estado": $("#inputEstadoEdit").val(),
+                "estado": $("#selectEstadoEdit").val(),
                 "idPais": $("#inputPaisEdit").val()
             }
         }
@@ -385,7 +385,7 @@ function EditAction(data) {
     $.ajax(settings).done(function(response) {
         $('#inputIdEditEstado').val(response.data[0].Id_Estado);
         $('#inputPaisEdit').val(response.data[0].Pais);
-        $('#inputEstadoEdit').val(response.data[0].Estado);
+        $('#selectEstadoEdit').val(response.data[0].Estado);
         cargarPaisEdit(response.data[0].Id_Pais);
         $('#modal-EstadoEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
@@ -422,7 +422,7 @@ function VisualizarAction(data) {
     $.ajax(settings).done(function(response) {
         $('#inputCodigoVer').val(response.data[0].Id_Estado);
         $('#inputPaisVer').val(response.data[0].Pais);
-        $('#inputEstadoVer').val(response.data[0].Estado);
+        $('#selectEstadoVer').val(response.data[0].Estado);
         $('#modal-EstadoVisualizar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -497,7 +497,7 @@ $("#botonenviar").click(function() {
             },
             "data": {
                 "pais": $("#inputPais").val(),
-                "estado": $("#inputEstado").val(),
+                "estado": $("#selectEstado").val(),
                 "activo": 1
             }
         }
@@ -554,7 +554,7 @@ $(document).ready(function() {
             inputPaisEdit: {
                 required: true,
             },
-            inputEstadoEdit: {
+            selectEstadoEdit: {
                 required: true,
                 minlength: 5,
                 maxlength: 20,
@@ -564,7 +564,7 @@ $(document).ready(function() {
             inputPaisEdit: {
                 required: "Por favor ingrese el Pais"
             },
-            inputEstadoEdit: {
+            selectEstadoEdit: {
                 required: "Por favor ingrese el nombre del Estado",
                 minlength: "El estado debe tener al menos 5 caracteres",
                 maxlength: "El estado debe tener al menos 20 caracteres"
@@ -587,7 +587,7 @@ $(document).ready(function() {
             inputPais: {
                 required: true,
             },
-            inputEstado: {
+            selectEstado: {
                 required: true,
                 minlength: 5,
                 maxlength: 20,
@@ -597,7 +597,7 @@ $(document).ready(function() {
             inputPais: {
                 required: "Por favor ingrese el Pais",
             },
-            inputEstado: {
+            selectEstado: {
                 required: "Por favor ingrese el nombre del Estado",
                 minlength: "El nombre del estado debe tener al menos 5 caracteres",
                 maxlength: "El nombre del estado debe tener al maximo 20 caracteres"

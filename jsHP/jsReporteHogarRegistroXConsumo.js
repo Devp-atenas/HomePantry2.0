@@ -173,12 +173,6 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
                 }
             }
         },
-        "rowCallback": function( row, data ) {
-            if ( $.inArray(data.DT_RowId, selected) !== -1 ) {
-                $(row).addClass('selected');
-            }
-        },
-        //22222
         "aoColumns": [{
                 mData: 'Id_PanelHogar',
                 className: "text-center"
@@ -213,21 +207,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
             },
             {
                 mData: 'detalle_1',
-                className: "text-center",
-                render: function(data, type) {
-                    if (type === 'display') {
-                        link = '"Principal/ReporteHogarRegistrsoXConsumo"';
-                        
-                        //<a href="<?php echo base_url('Principal/Parentesco')?>";
-                        
- 
-                        //return '<a href="' + link + '">' + data + '</a>';
-                        return '<a href="<?php echo base_url('+link+')?>"' + data + '</a>';
-                        
-                    }
-                     
-                    return data;
-                }
+                className: "text-center"
             },
             {
                 mData: 'detalle_2',
