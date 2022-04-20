@@ -1,12 +1,10 @@
 $(document).ready(function() {
     cargarPerfil('#selectPerfil',0);
-    
 });
 
 $('#idCrearPerfil').click(function(){
     crearPerfil();
 });
-
 
 function cargarTablaFunciones(idDivTabla){
     var urlApi = sessionStorage.getItem("urlApi");
@@ -32,12 +30,10 @@ function cargarTablaFunciones(idDivTabla){
             {formatter:"rowSelection", titleFormatter:"rowSelection", align:"center", headerSort:false},
             {title:"Opciones", field:"Opcion", sorter:"number"}
             /**/
-            
             //{title:"TTTTTTT", field:"BDBDBDBD", sorter:"number", headerFilter:"input"},
-            
         ],
     });
-    
+
     document.getElementById("idGuardarPerfilOpciones").addEventListener("click", function(){
         //alert(row.select());
         var selectedData = table.getSelectedData();
@@ -51,7 +47,7 @@ function cargarTablaFunciones(idDivTabla){
 
 function crearPerfil(){
     var urlApi = localStorage.getItem("urlApi");
-    
+
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -83,7 +79,6 @@ function crearPerfil(){
                 }
             }
             $.ajax(settings).done(function(response){
-                
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -104,7 +99,6 @@ function crearPerfil(){
                 cargarPerfil('#selectPerfil',0);
                 var form = document.querySelector('#FormPerfil');
                 form.reset();
-            
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -138,9 +132,9 @@ function cargarPerfil(etiqueta,idSeleccionado) {
         "url":urlApi+'getAllPerfiles/1',
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         let selected = $(etiqueta);
@@ -184,9 +178,9 @@ function cargarUsuarios(etiqueta,idSeleccionado) {
         "url":urlApi+'getAllDataUser/',
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         let selected = $(etiqueta);

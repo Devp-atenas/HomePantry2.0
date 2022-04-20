@@ -253,8 +253,8 @@ class Principal extends CI_Controller {
     public function AsociarPerfil(){
         $this->load->view('GestionPerfil/AsociarPerfil');
     }
-    public function PeriodoActualizacion(){
-        $this->load->view('PeriodoActualizacion/PeriodoActualizacion');
+    public function Actividad(){
+        $this->load->view('Actividad/Actividad');
     }
     public function ReporteTotal(){
         $this->load->view('Reportes/ReporteTotal');

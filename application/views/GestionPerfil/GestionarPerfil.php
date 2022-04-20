@@ -301,7 +301,7 @@ function cargarTabla(){
 </script>
 
 <script src="<?php echo base_url('jsHP/jsGestionarPerfil.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsReporteNSE.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

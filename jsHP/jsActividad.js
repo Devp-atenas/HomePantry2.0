@@ -2,54 +2,104 @@ $(document).ready(function() {
     //cargarPerfil('#selectPerfil',0);
     //.max = new Date().toISOString().split("T")[0];
     //fechaHasta.max = new Date().toISOString().split("T")[0];
-    cargarPeriodo('#selectPeriodoActualizacion',0);
     cargarActividad('#selectActividad',0);
     cargarTablaItems('#TablaItems');
-    
-    
+    cargarTabla();
 });
 
-function cargarPeriodo(etiqueta,idSeleccionado) {
-    var settings = {
-        "url":localStorage.getItem("urlApi")+'getAllPeriodo',
-        "method": "get",
-        "headers": {
+$('#CrearActividad').click(function(){
+    addActividad();
+});
+
+
+
+
+function addActividad() {
+    var msg;
+
+    if ($('input:radio[name=abrirAdd]:checked').val() == 1){
+        msg = "Si deja abierta esta actividad, automaticamente la que este actualmente abierta se cerrara!";
+    }else{
+        msg = "...";
+    }
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: '¿Seguro desea crear la actividad?',
+        text: msg,
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: 'Si, Crear Actividad',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var settings = {
+                "url": localStorage.getItem("urlApi")+'addActividad',
+                "method": "POST",
+                "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+                "data": {
+                    "Actividad":$("#inputActividad").val(),
+                    "activo": $('input:radio[name=activoAdd]:checked').val(),
+                    "abrirActividad": $('input:radio[name=abrirAdd]:checked').val()
                 }
-    }
-    $.ajax(settings).done(function(response) {
-        let selected = $(etiqueta);
-        selected.find("option").remove();
-        if (idSeleccionado == 0){
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].Id == idSeleccionado) {
-                selected.append("<option value=" + response.data[i].Id + " selected>" +
-                    response.data[i].Periodo + "</option>");
-            } else {
-                selected.append("<option value=" + response.data[i].Id + ">" + response.data[i].Periodo + "</option>");
             }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+            $.ajax(settings).done(function(response){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                cargarActividad('#selectActividad',0);
+                cargarTabla();
+                //cargarTablaUsuriosPerfil();
+                //var//////// form = document.querySelector('#FormUsuarioPerfil');
+                //form.reset();
+                //cargarUsuarios('#selectUsuario',0);
+                //document.getElementById('guardarAsociarPerfilUsuario').disabled = true;
+                //$('#selectPerfil').empty();
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    //var form = document.querySelector('#FormUsuariosEdit');
+                    //form.reset();
+                    //window.location = '/homepantry20/index.php';
                 }
             })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
         }
     })
 }
@@ -202,8 +252,6 @@ function cargarTablaItems(idDivTabla){
             {formatter:"rowSelection", titleFormatter:"rowSelection", align:"center", headerSort:false},
             {title:"Campos", field:"Item", sorter:"number"},
             {title:"No va", field:"tipo_campohtml", sorter:"number"}
-            /**/
-            //{title:"TTTTTTT", field:"BDBDBDBD", sorter:"number", headerFilter:"input"},
         ],
     });
 
@@ -216,6 +264,95 @@ function cargarTablaItems(idDivTabla){
         });
         
         asociarActividadItems(arrayID);
+    });
+}
+
+function cargarTabla(){
+    $('#TablePerfil').DataTable({
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "bDestroy":     true,
+        "autoWidth":    true,
+        "searching":    false,
+        "bPaginate":    false,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive":   false,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Actividades'
+            }
+        ],
+        "fixedHeader":  true,
+        "scrollY":      300,
+        "deferRender":  true,
+        "scroller":     true,
+        "ajax": {
+            "url": localStorage.getItem("urlApi")+'getAllActividades/',
+            "type": "GET",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/homepantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [{
+                mData: 'Id',
+                className: "text-center"
+            },
+            {
+                mData: 'Actividad',
+                className: "text-center"
+            },
+            {
+                mData: 'ind_activo',
+                className: "text-center"
+            },
+            {
+                mData: 'ind_abierta',
+                className: "text-center"
+            },
+        ],
+        "columnDefs": [{
+            //"width": "100%",
+            "targets": 4,
+            "orderable": true,
+            "data": 'Id',
+            "className": "text-center",
+            "render": function(data, type, row, meta) {
+                return  '<div class="text-wrap width-200">'+
+                '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
+                    data +');"><i class="bi bi-trash3"></i></button>'+
+                '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
+                    data +');"><i class="bi bi-pencil-square"></i></button>'+
+                '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
+                    data +');"><i class="bi bi-zoom-in"></i></button>'+
+                '</div>';
+            }
+        }],
     });
 }
 
