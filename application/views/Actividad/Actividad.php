@@ -135,9 +135,8 @@ select:focus {
                     <table id="TablePerfil" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Actividad</th>
-                                <th>ind_activo</th>
+                                <th>¿Activo?</th>
                                 <th>¿Abierta?</th>
                                 <th>Opciones</th>
                             </tr>
@@ -199,6 +198,99 @@ select:focus {
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="modal-ActividadEditar" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Semana</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormActividadEdit">
+                                <div class="form-group row mb-0 mt-0">
+                                    <div class="col-md-5">
+                                        <label class="inputText font-weight-bold">Actividad:</label>
+                                        <input type="text" name="inputActividadEdit" id="inputActividadEdit" class="form-control">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="inputText font-weight-bold">¿Abrir actividad?:</label>
+                                        <div class="card">
+                                            <div class="form-group">
+                                            <div class="form-check d-inline">
+                                                    <input class="form-check-input" type="radio" id="abrir0Edit" name="abrirEdit" value="0">
+                                                    <label class="form-check-label">No</label>
+                                                </div>
+                                                <div class="form-check d-inline">
+                                                    <input class="form-check-input" type="radio" id="abrirIEdit" name="abrirEdit" value="1">
+                                                    <label class="form-check-label">Si</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="inputText font-weight-bold">Activo:</label>
+                                        <div class="card">
+                                            <div class="form-group">
+                                            <div class="form-check d-inline">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                    <label class="form-check-label">No</label>
+                                                </div>
+                                                <div class="form-check d-inline">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                    <label class="form-check-label">Si</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="visibility:hidden;">
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label for="inputIdEdit">id:</label>
+                                                <input type="text" name="inputIdEdit" id="inputIdEdit"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <HR/>
+                                <div class="text-center">
+                                    <div class="form-group row mb-0 mt-0">
+                                        <div class="col-md-12">
+                                            <div id="TablaItemsEdit"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="bi bi-x-square"></i> Cancelar</button>
+					<button id="guardarActividad"type="button" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Guardar
+                    </button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
 
 <?php $this->load->view('Plantillas/Footer');?>
 

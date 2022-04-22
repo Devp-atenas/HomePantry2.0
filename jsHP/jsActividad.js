@@ -1,7 +1,4 @@
 $(document).ready(function() {
-    //cargarPerfil('#selectPerfil',0);
-    //.max = new Date().toISOString().split("T")[0];
-    //fechaHasta.max = new Date().toISOString().split("T")[0];
     cargarActividad('#selectActividad',0);
     cargarTablaItems('#TablaItems');
     cargarTabla();
@@ -10,6 +7,49 @@ $(document).ready(function() {
 $('#CrearActividad').click(function(){
     addActividad();
 });
+
+
+
+function EditAction(id) {
+    document.getElementById('FormActividadEdit').reset();
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getActividadId/' + id,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        $('#inputIdEdit').val(response.data[0].id);
+        $('#inputActividadEdit').val(response.data[0].Actividad);
+        var radios  = $("input:radio[name='abrirEdit']");
+        radios.filter("[value='"+response.data[0].ind_abierta+"']").attr('checked', true);
+        var radios  = $("input:radio[name='activoEdit']");
+        radios.filter("[value='"+response.data[0].ind_activo+"']").attr('checked', true);
+        cargarTablaItems('#TablaItemsEdit');
+        $('#modal-ActividadEditar').modal('show');
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
 
 
 
@@ -109,9 +149,9 @@ function cargarActividad(etiqueta,idSeleccionado) {
         "url":localStorage.getItem("urlApi")+'getActividadAbierta',
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         let selected = $(etiqueta);
@@ -121,10 +161,10 @@ function cargarActividad(etiqueta,idSeleccionado) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].ind_activo == 1) {
-                selected.append("<option value=" + response.data[i].Id + " selected>" +
+                selected.append("<option value=" + response.data[i].id + " selected>" +
                     response.data[i].Actividad + "</option>");
             } else {
-                selected.append("<option value=" + response.data[i].Id + ">" + response.data[i].Actividad + "</option>");
+                selected.append("<option value=" + response.data[i].id + ">" + response.data[i].Actividad + "</option>");
             }
         }
     }).fail(function(jqXHR, textStatus) {
@@ -250,6 +290,7 @@ function cargarTablaItems(idDivTabla){
         selectablePersistence:true, //make rows selectable
         columns:[
             {formatter:"rowSelection", titleFormatter:"rowSelection", align:"center", headerSort:false},
+            {title:"id", field:"id", sorter:"number"},
             {title:"Campos", field:"Item", sorter:"number"},
             {title:"No va", field:"tipo_campohtml", sorter:"number"}
         ],
@@ -260,11 +301,24 @@ function cargarTablaItems(idDivTabla){
         var selectedData = table.getSelectedData();
         var arrayID;
         arrayID = jQuery.map(selectedData, function(value, index) {
-            return (value.Id);
+            return (value.id);
         });
-        
+
         asociarActividadItems(arrayID);
     });
+    
+    
+    //table.selectRow(3);
+    //table.selectRow(table.getRows().filter(row => row.getData().id == 1));
+    //table.getRows().filter(row => row.getData().id == 1).forEach(row => row.toggleSelect());
+    table.getRows().forEach(row => {
+        if (row.getData().id == 1)
+            row.toggleSelect();
+      });
+      
+    //table.selectRow([1,2,3,4,5,6,7,8,9,10]);
+    
+    
 }
 
 function cargarTabla(){
@@ -320,10 +374,6 @@ function cargarTabla(){
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
         "aoColumns": [{
-                mData: 'Id',
-                className: "text-center"
-            },
-            {
                 mData: 'Actividad',
                 className: "text-center"
             },
@@ -337,11 +387,10 @@ function cargarTabla(){
             },
         ],
         "columnDefs": [{
-            //"width": "100%",
-            "targets": 4,
+            "targets": 3,
             "orderable": true,
-            "data": 'Id',
-            "className": "text-center",
+            "data": 'id',
+            "className": 'text-center',
             "render": function(data, type, row, meta) {
                 return  '<div class="text-wrap width-200">'+
                 '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
