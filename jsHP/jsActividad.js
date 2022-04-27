@@ -1,7 +1,21 @@
+var table;
+
 $(document).ready(function() {
     cargarActividad('#selectActividad',0);
     cargarTablaItems('#TablaItems');
     cargarTabla();
+    
+    
+    //$('#TablaItemsEdit').children().attr('disabled', disabled);
+    $("TablaItemsEdit").find("*").attr("disabled", "disabled");
+    //table.selectRow([8,9]);
+    document.getElementById("bMostrar").addEventListener("click", function(){
+        
+        cargarItemsActividad();
+        //table.deselectRow();
+        //table.selectRow([1,2,3,4]);
+        //table.selectRow(table.getRows().filter(row => row.getData().id == 11 ));
+    });
 });
 
 $('#CrearActividad').click(function(){
@@ -10,10 +24,9 @@ $('#CrearActividad').click(function(){
 
 
 
-function EditAction(id) {
-    document.getElementById('FormActividadEdit').reset();
+function cargarItemsActividad() {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getActividadId/' + id,
+        "url":localStorage.getItem("urlApi")+'getItemsActividadAbierta',
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -21,14 +34,10 @@ function EditAction(id) {
         }
     }
     $.ajax(settings).done(function(response) {
-        $('#inputIdEdit').val(response.data[0].id);
-        $('#inputActividadEdit').val(response.data[0].Actividad);
-        var radios  = $("input:radio[name='abrirEdit']");
-        radios.filter("[value='"+response.data[0].ind_abierta+"']").attr('checked', true);
-        var radios  = $("input:radio[name='activoEdit']");
-        radios.filter("[value='"+response.data[0].ind_activo+"']").attr('checked', true);
-        cargarTablaItems('#TablaItemsEdit');
-        $('#modal-ActividadEditar').modal('show');
+        //table.selectRow(response.data);
+        for (var i = 0; i < response.data.length; i++) {
+            table.selectRow(response.data[i].id);
+        }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -53,6 +62,53 @@ function EditAction(id) {
 
 
 
+
+
+function EditAction(id) {
+    document.getElementById('FormActividadEdit').reset();
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getActividadId/' + id,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        cargarTablaItems('#TablaItemsEdit');
+        $('#inputIdEdit').val(response.data[0].id);
+        $('#inputActividadEdit').val(response.data[0].Actividad);
+        var radios  = $("input:radio[name='abrirEdit']");
+        radios.filter("[value='"+response.data[0].ind_abierta+"']").attr('checked', true);
+        var radios  = $("input:radio[name='activoEdit']");
+        radios.filter("[value='"+response.data[0].ind_activo+"']").attr('checked', true);
+        
+        
+        $('#modal-ActividadEditar').modal('show');
+
+        
+        
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
 
 function addActividad() {
     var msg;
@@ -270,7 +326,7 @@ function asociarActividadItems(arrayID) {
 }
 
 function cargarTablaItems(idDivTabla){
-    var table = new Tabulator(idDivTabla, {
+    table = new Tabulator(idDivTabla, {
         ajaxURL: localStorage.getItem("urlApi")+'getAllItems/',
         renderVerticalBuffer:600,
         ajaxConfig:{
@@ -307,15 +363,13 @@ function cargarTablaItems(idDivTabla){
         asociarActividadItems(arrayID);
     });
     
-    
+//$("#TablaItemsEdit").tabulator("selectRow", 1);
     //table.selectRow(3);
     //table.selectRow(table.getRows().filter(row => row.getData().id == 1));
     //table.getRows().filter(row => row.getData().id == 1).forEach(row => row.toggleSelect());
-    table.getRows().forEach(row => {
-        if (row.getData().id == 1)
-            row.toggleSelect();
-      });
-      
+    
+    //table.selectRow(table.getRows().filter(row => row.getData().id == 0 ));
+    
     //table.selectRow([1,2,3,4,5,6,7,8,9,10]);
     
     
@@ -395,7 +449,7 @@ function cargarTabla(){
                 return  '<div class="text-wrap width-200">'+
                 '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
                     data +');"><i class="bi bi-trash3"></i></button>'+
-                '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
+                '<button id="bEdit" type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
                     data +');"><i class="bi bi-pencil-square"></i></button>'+
                 '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
                     data +');"><i class="bi bi-zoom-in"></i></button>'+
@@ -403,5 +457,10 @@ function cargarTabla(){
             }
         }],
     });
+    
+    
+   
+    
+    
 }
 

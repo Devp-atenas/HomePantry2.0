@@ -57,7 +57,7 @@
     <script src="<?php echo base_url('assets/tableExport/FileSaver/FileSaver.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/tableExport/tableExport.js') ?>"></script>
     <!--Tabulator -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.0.7/js/tabulator.min.js" integrity="sha512-Xak2I6+wZChRIsrNus8RfDM3Li6RTk7oNceRwrYUGvLOFPFbiSd70GvtJnNJvtsohNQ3hyScX2F3GLQUlxqr0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.2.1/js/tabulator.min.js"></script>
     <!--Tabulator Excel -->
     <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
     <!--Tabulator PDF -->

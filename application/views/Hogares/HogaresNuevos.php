@@ -214,7 +214,7 @@
                             </div>
                         </div>
                     </div>
-                    <br />
+                    <HR/>
                     <div class="row">
                         <div class="col text-center">
                             <button id="guardar-step-1" type="button" class="btn btn-outline-success">Guardar</button>
@@ -535,7 +535,6 @@
                                 </div>
                             </div>
                         </div>
-                                
                     </div>
                     <br />
                     <div class="row">
@@ -2516,8 +2515,7 @@
         localStorage.setItem('flagActividad',1);
         localStorage.removeItem('idHogarEditar');
         /*
-            listarCamposPorActividad(idHogar,0); esta dentro de
-            editPanelistasResponsableJefe
+            blanquearCamposPorActividad(idHogar); esta dentro de editPanelistasResponsableJefe
         */
     }else{
         cargarEstado('#estadoHogar',0);
@@ -2673,7 +2671,7 @@
                 $("#identificacion2Hogar").val(response.maxIDPanelHogar);
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,1);
+                    guardarCamposPorActividad(idHogar,1);
                 }
                 
                 const Toast = Swal.mixin({
@@ -2878,7 +2876,7 @@
             $.ajax(settings).done(function(response) {
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,2);
+                    guardarCamposPorActividad(idHogar,2);
                 }
                 
                 const Toast = Swal.mixin({
@@ -3026,7 +3024,7 @@
             $.ajax(settings).done(function(response) {
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,3);
+                    guardarCamposPorActividad(idHogar,3);
                 }
                 const Toast = Swal.mixin({
                     toast: true,
@@ -3161,7 +3159,7 @@
             $.ajax(settings).done(function(response) {
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,4);
+                    guardarCamposPorActividad(idHogar,4);
                 }
                 const Toast = Swal.mixin({
                     toast: true,
@@ -3283,7 +3281,7 @@
             $.ajax(settings).done(function(response) {
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,5);
+                    guardarCamposPorActividad(idHogar,5);
                 }
                 const Toast = Swal.mixin({
                     toast: true,
@@ -3369,7 +3367,7 @@
             $.ajax(settings).done(function(response) {
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,6);
+                    guardarCamposPorActividad(idHogar,6);
                 }
                 const Toast = Swal.mixin({
                     toast: true,
@@ -3576,7 +3574,7 @@
             $.ajax(settings).done(function(response) {
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,7);
+                    guardarCamposPorActividad(idHogar,7);
                 }
                 const Toast = Swal.mixin({
                     toast: true,
@@ -3682,7 +3680,7 @@
             $.ajax(settings).done(function(response) {
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,8);
+                    guardarCamposPorActividad(idHogar,8);
                 }
                 const Toast = Swal.mixin({
                     toast: true,
@@ -3781,7 +3779,7 @@
                 })
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,1);
+                    guardarCamposPorActividad(idHogar,9);
                 }
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 9",$("#identificacion2Hogar").val(),"U");
                 
@@ -3873,7 +3871,7 @@
                 })
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
-                    listarCamposPorActividad(idHogar,1,10);
+                    guardarCamposPorActividad(idHogar,10);
                 }
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
                 
@@ -4138,7 +4136,69 @@
 
     
     /* cccc */
-function listarCamposPorActividad(idHogar,flagAntNuevo,step) {
+    function blanquearCamposPorActividad(idHogar) {
+    var mURL = '<?php echo urlApi; ?>getCamposLimpiarAllStep/'+idHogar;
+    alert(mURL);
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": mURL,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        debugger;
+        var tipoCampo;
+        var valor;
+        var idCampohtml;
+        var idItemsHogar;
+        for (var i = 0; i < response.data.length; i++) {
+            tipoCampo = response.data[i].tipo_campohtml;
+            idItemsHogar = response.data[i].id_itemsHogar;
+            valor = "";
+            if (tipoCampo == 'input'){
+                valor = $('#'+response.data[i].Id_campohtml).val();
+                //alert(response.data[i].Id_campohtml+' input: '+valor);
+                $('#'+response.data[i].Id_campohtml).val('');
+            }else if (tipoCampo == 'select'){
+                valor = $('#'+response.data[i].Id_campohtml).val();
+                idCampohtml = response.data[i].Id_campohtml;
+                //alert('Id_campohtml: '+response.data[i].Id_campohtml+' select valor: '+valor);
+                limpiarCombo(response.data[i].Id_campohtml);
+            }else if (tipoCampo == 'radio'){
+                valor = $('input[name='+response.data[i].Id_campohtml+']:checked').val();
+                //alert(' radio: '+valor);
+                $('input:radio[name='+response.data[i].Id_campohtml+']').attr('checked',false);
+            }
+
+            guardarValorAnterior(idHogar,idItemsHogar,valor);
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function guardarCamposPorActividad(idHogar,step) {
     var mURL;
     if (step == 0){
         mURL = '<?php echo urlApi; ?>getCamposLimpiarAllStep/'+idHogar;
@@ -4160,28 +4220,21 @@ function listarCamposPorActividad(idHogar,flagAntNuevo,step) {
         var tipoCampo;
         var valor;
         var idItemsHogar;
+        //debugger;
         for (var i = 0; i < response.data.length; i++) {
             tipoCampo = response.data[i].tipo_campohtml;
             idItemsHogar = response.data[i].id_itemsHogar;
             if (tipoCampo == 'input'){
                 valor = $('#'+response.data[i].Id_campohtml).val();
-                //alert(response.data[i].Id_campohtml+' input: '+valor);
-                $('#'+response.data[i].Id_campohtml).val('');
             }else if (tipoCampo == 'select'){
                 valor = $("#"+response.data[i].Id_campohtml).val();
-                //alert(response.data[i].Id_campohtml+' select: '+valor);
-                limpiarCombo(response.data[i].Id_campohtml);
+                alert('Id_campohtml: '+response.data[i].Id_campohtml+' select valor: '+valor);
             }else if (tipoCampo == 'radio'){
                 valor = $('input[name='+response.data[i].Id_campohtml+']:checked').val();
                 //alert(response.data[i].Id_campohtml+' radio: '+valor);
-                $('input:radio[name='+response.data[i].Id_campohtml+']').attr('checked',false);
             }
 
-            if (flagAntNuevo == 0){
-                guardarValorAnterior(idHogar,idItemsHogar,valor);
-            }else{
-                guardarValorNuevo(idHogar,idItemsHogar,valor);
-            }
+            guardarValorNuevo(idHogar,idItemsHogar,valor);
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -4496,8 +4549,8 @@ function finalizarFicha(idHogar) {
             }
     }
     $.ajax(settings).done(function(response) {
-        //787878
         
+        $('#claseSocialInformacion').val(response.NSE);
         
         const Toast = Swal.mixin({
                 toast: true,
@@ -6107,7 +6160,7 @@ function HogarEditar() {
         $("#claseSocialInformacion").val(response.data[0].ClaseSocial);
         $("#fechaRegistroInformacion").val(response.data[0].Fec_Registro);
 
-        listarCamposPorActividad(idHogar,0,0);
+        blanquearCamposPorActividad(idHogar);
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({

@@ -211,7 +211,7 @@ select:focus {
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Semana</h3>
+                            <h3 class="card-title">Actividad</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -222,7 +222,7 @@ select:focus {
                             <form id="FormActividadEdit">
                                 <div class="form-group row mb-0 mt-0">
                                     <div class="col-md-5">
-                                        <label class="inputText font-weight-bold">Actividad:</label>
+                                        <label class="inputText font-weight-bold">Actualizar Actividad:</label>
                                         <input type="text" name="inputActividadEdit" id="inputActividadEdit" class="form-control">
                                     </div>
                                     <div class="col-md-3">
@@ -255,7 +255,7 @@ select:focus {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="visibility:hidden;">
+                                    <div class="row" style="display:none;">
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <label for="inputIdEdit">id:</label>
@@ -265,24 +265,49 @@ select:focus {
                                         </div>
                                     </div>
                                 </div>
-                                <HR/>
-                                <div class="text-center">
-                                    <div class="form-group row mb-0 mt-0">
-                                        <div class="col-md-12">
-                                            <div id="TablaItemsEdit"></div>
-                                        </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-md-12">
+                    <div id="myCard" class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Actualizar Items de la Actividad</h3>
+                            <div class="card-tools">
+                                <button id="idItemsActividad" type="button" class="btn btn-tool" aria-expanded="false" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row mb-0 mt-0">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <button id="bMostrar" class="btn btn-info" type="button">
+                                            <i class="bi bi-eye">Mostrar</i>
+                                        </button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div id="activar" class="form-group row mb-0 mt-0">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <div id="TablaItemsEdit"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="bi bi-x-square"></i> Cancelar</button>
-					<button id="guardarActividad"type="button" class="btn btn-primary">
-                        <i class="bi bi-save"></i> Guardar
-                    </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="bi bi-x-square"></i> Cancelar</button>
+                <button id="guardarActividad" type="button" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Guardar
+                </button>
 
             </div>
         </div>
@@ -306,9 +331,9 @@ $(document).ready(function() {
 
 </script>
 
-<script src="<?php echo base_url('jsHP/jsActividad.js') ?>"></script>
 
-<script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
@@ -321,7 +346,8 @@ $(document).ready(function() {
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
-<script src="https://cdn.datatables.net/select/1.3.4/js/dataTables.select.min.js"></script>
+<script src="<?php echo base_url('assets/autoNumeric-1.9.18.js') ?>"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
+<script src="<?php echo base_url('jsHP/jsActividad.js') ?>"></script>

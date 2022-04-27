@@ -706,12 +706,7 @@ $(document).ready(function() {
         }
     });
     document.getElementById('FormAtributo').reset();
-    
-    
-    
-    
-    
-    
+
     $('#TableAtributo').dataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
