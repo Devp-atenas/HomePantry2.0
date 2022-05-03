@@ -3839,10 +3839,10 @@ function cargarTablaConsumos(idConsumo){
                 +'</div>';*/
                 //editar,validar,eliminar,pendiente,deshacer
                 return  "<a id='fg003' href='#' onclick='UpdateDetalleCompra("+id+","+codiBarra+","+idMoneda+","+tasaCambio+","+cantida+","+precioProducto+","+total+"); return false;' ><i class='fa fa-edit data-toggle='tooltip' data-placement='top' title='Editar'></i></a>"
-                        +"<a id='fg003' href='#' onclick='ValidarDetalleCompra("+id+"); return false;' ><i class='fa fa-check text-success data-toggle='tooltip' data-placement='top' title='Validar'></i></a>"
-                        +"<a id='fg003' href='#' onclick='EliminarDetalleCompra("+id+"); return false;' ><i class='fa fa-eraser text-danger data-toggle='tooltip' data-placement='top' title='Eliminar'></i></a>"
-                        +"<a id='fg003' href='#' onclick='PendienteDetalleCompra("+id+"); return false;' ><i class='fa fa-exclamation-triangle text-info data-toggle='tooltip' data-placement='top' title='Pendiente'></i></a>"
-                        +"<a id='fg003' href='#' onclick='DeshacerDetalleCompra("+id+"); return false;' ><i class='fa fa-undo text-warning data-toggle='tooltip' data-placement='top' title='Deshacer'></i></a>";
+                        +" <a id='fg003' href='#' onclick='ValidarDetalleCompra("+id+"); return false;' ><i class='fa fa-check text-success data-toggle='tooltip' data-placement='top' title='Validar'></i></a>"
+                        +" <a id='fg003' href='#' onclick='EliminarDetalleCompra("+id+"); return false;' ><i class='fa fa-eraser text-danger data-toggle='tooltip' data-placement='top' title='Eliminar'></i></a>"
+                        +" <a id='fg003' href='#' onclick='PendienteDetalleCompra("+id+"); return false;' ><i class='fa fa-exclamation-triangle text-info data-toggle='tooltip' data-placement='top' title='Pendiente'></i></a>"
+                        +" <a id='fg003' href='#' onclick='DeshacerDetalleCompra("+id+"); return false;' ><i class='fa fa-undo text-warning data-toggle='tooltip' data-placement='top' title='Deshacer'></i></a>";
     };
 
     var table = new Tabulator("#TablaDetalleProductos", {

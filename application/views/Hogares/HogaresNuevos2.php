@@ -71,7 +71,7 @@
                 </li>
                 <li>
                     <a href="#step-7">
-                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Servicios y equipamientos del hogar"><img class="animation__shake" src="<?php echo base_url('dist/img/EQUIPAMIENTO.png')?>"></span>
+                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Servicios y equipamiento del hogar"><img class="animation__shake" src="<?php echo base_url('dist/img/EQUIPAMIENTO.png')?>"></span>
                     </a>
                 </li>
                 <li>
@@ -214,7 +214,7 @@
                             </div>
                         </div>
                     </div>
-                    <br />
+                    <HR/>
                     <div class="row">
                         <div class="col text-center">
                             <button id="guardar-step-1" type="button" class="btn btn-outline-success">Guardar</button>
@@ -535,7 +535,6 @@
                                 </div>
                             </div>
                         </div>
-                                
                     </div>
                     <br />
                     <div class="row">
@@ -1127,7 +1126,7 @@
             </div>
             <div id="step-7">
                 <form id="formServiciosEquipamientos" action="" method="post">
-                    <h2 class="text-center">Servicios y equipamientos del hogar</h2>
+                    <h2 class="text-center">Servicios y equipamiento del hogar</h2>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">
@@ -1689,10 +1688,9 @@
                     <HR/>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-ficha" type="button" class="btn btn-block btn-success">Finalizar</button>
+                            <button id="guardar-ficha" type="button" class="btn btn-block btn-success">Finalizar y Calcular NSE</button>
                         </div>
                     </div>
-                    
                     <!--/step 10-->
                 </form>
             </div>
@@ -1719,11 +1717,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <button id="guardar-step-11" type="button" class="btn btn-outline-success">Guardar</button>
-                        </div>
-                    </div>
+                    
                     <!--/step 11-->
                 </form>
             </div>
@@ -2015,179 +2009,177 @@
                         </div>
                         <div class="card-body">
                             <form id="FormPanelistaView">
-                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Primer nombre:</div>
-                                                        <input type="text" class="form-control input-sm" id="primerNombreComposicionView" name="primerNombreComposicionView" placeholder="Ingrese Primer nombre ..." readonly>
-                                                    </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Primer nombre:</div>
+                                            <input type="text" class="form-control input-sm" id="primerNombreComposicionView" name="primerNombreComposicionView" placeholder="Ingrese Primer nombre ..." readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                            <input type="text" class="form-control input-sm" id="segundoNombreComposicionView" name="segundoNombreComposicionView" placeholder="Ingrese Segundo nombre ..." readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Primer apellido:</div>
+                                            <input type="text" class="form-control input-sm" id="primerApellidoComposicionView" name="primerApellidoComposicionView" placeholder="Ingrese Primer apellido ..." readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                            <input type="text" class="form-control input-sm" id="segundoApellidoComposicionView" name="segundoApellidoComposicionView" placeholder="Ingrese Segundo apellido ..." readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Nacionalidad</div>
+                                        <div class="card">
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="nacionalidadComposicionView" name="nacionalidadComposicionView" value="1" disabled='disabled'">
+                                                    <label class="form-check-label">Venezolano</label>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Segundo nombre:</div>
-                                                        <input type="text" class="form-control input-sm" id="segundoNombreComposicionView" name="segundoNombreComposicionView" placeholder="Ingrese Segundo nombre ..." readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Primer apellido:</div>
-                                                        <input type="text" class="form-control input-sm" id="primerApellidoComposicionView" name="primerApellidoComposicionView" placeholder="Ingrese Primer apellido ..." readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Segundo apellido:</div>
-                                                        <input type="text" class="form-control input-sm" id="segundoApellidoComposicionView" name="segundoApellidoComposicionView" placeholder="Ingrese Segundo apellido ..." readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">Nacionalidad</div>
-                                                    <div class="card">
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionView" name="nacionalidadComposicionView" value="1" disabled='disabled'">
-                                                                <label class="form-check-label">Venezolano</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="nacionalidadComposicionView" name="nacionalidadComposicionView" value="2" disabled='disabled'">
-                                                                <label class="form-check-label">Extranjero</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Cedula:</div>
-                                                        <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaComposicionView" name="cedulaComposicionView" placeholder="Ingrese Cedula ..." readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">Sexo:</div>
-                                                    <div class="card">
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="sexoComposicionView" name="sexoComposicionView" value="1" disabled='disabled'">
-                                                                <label class="form-check-label">Femenino</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="sexoComposicionView" name="sexoComposicionView" value="2" disabled='disabled'">
-                                                                <label class="form-check-label">Masculino</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Estado civil:</div>
-                                                        <select class="custom-select form-control-border" id="estadoCivilComposicionView" disabled>
-                                                        </select>
-                                                    </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="nacionalidadComposicionView" name="nacionalidadComposicionView" value="2" disabled='disabled'">
+                                                    <label class="form-check-label">Extranjero</label>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
-                                                        <select class="custom-select form-control-border" id="parentescoJefeComposicionView" disabled>
-                                                        </select>
-                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Cedula:</div>
+                                            <input type="text" pattern="\d*" maxlength="8" class="form-control input-sm" id="cedulaComposicionView" name="cedulaComposicionView" placeholder="Ingrese Cedula ..." readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Sexo:</div>
+                                        <div class="card">
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="sexoComposicionView" name="sexoComposicionView" value="1" disabled='disabled'">
+                                                    <label class="form-check-label">Femenino</label>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Educacion:</div>
-                                                        <select class="custom-select form-control-border" id="educacionComposicionView" disabled>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                                        <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionView" placeholder="" readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Edad:</div>
-                                                        <input type="number" class="form-control input-sm" id="edadComposicionView" placeholder="(Valor Calculado) ..." readonly>
-                                                    </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="sexoComposicionView" name="sexoComposicionView" value="2" disabled='disabled'">
+                                                    <label class="form-check-label">Masculino</label>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Celular:</div>
-                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularComposicionView" name="celularComposicion" placeholder="Ingrese Celular..." readonly>
-                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Estado civil:</div>
+                                            <select class="custom-select form-control-border" id="estadoCivilComposicionView" disabled>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                            <select class="custom-select form-control-border" id="parentescoJefeComposicionView" disabled>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Educacion:</div>
+                                            <select class="custom-select form-control-border" id="educacionComposicionView" disabled>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                            <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionView" placeholder="" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Edad:</div>
+                                            <input type="number" class="form-control input-sm" id="edadComposicionView" placeholder="(Valor Calculado) ..." readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Celular:</div>
+                                            <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularComposicionView" name="celularComposicion" placeholder="Ingrese Celular..." readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Celular adicional:</div>
+                                            <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalComposicionView" name="celularAdicionalComposicionView" placeholder="Ingrese Celular adicional ..." readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Correo:</div>
+                                            <input type="email" class="form-control input-sm" id="correoComposicionView" name="correoComposicionView" placeholder="Ingrese correo ..." readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                            <select class="custom-select form-control-border" id="tipoIngresoComposicionView" disabled>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
+                                        <div class="card">
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionView" name="beneficioSocialistaComposicionView" value="0" disabled='disabled'">
+                                                    <label class="form-check-label">No</label>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Celular adicional:</div>
-                                                        <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="celularAdicionalComposicionView" name="celularAdicionalComposicionView" placeholder="Ingrese Celular adicional ..." readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Correo:</div>
-                                                        <input type="email" class="form-control input-sm" id="correoComposicionView" name="correoComposicionView" placeholder="Ingrese correo ..." readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <div class="inputText font-weight-bold">Tipo de ingreso:</div>
-                                                        <select class="custom-select form-control-border" id="tipoIngresoComposicionView" disabled>
-                                                        </select>
-                                                    </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionView" name="beneficioSocialistaComposicionView" value="1" disabled='disabled'">
+                                                    <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">¿Recibe Beneficio Socialista?:</div>
-                                                    <div class="card">
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionView" name="beneficioSocialistaComposicionView" value="0" disabled='disabled'">
-                                                                <label class="form-check-label">No</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="beneficioSocialistaComposicionView" name="beneficioSocialistaComposicionView" value="1" disabled='disabled'">
-                                                                <label class="form-check-label">Si</label>
-                                                            </div>
-                                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Activo:</div>
+                                            <div class="card">
+                                                <div class="form-group">
+                                                <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoView" name="activoView" value="0" disabled='disabled'">
+                                                        <label class="form-check-label">No</label>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">Activo:</div>
-                                                        <div class="card">
-                                                            <div class="form-group">
-                                                            <div class="form-check d-inline">
-                                                                    <input class="form-check-input" type="radio" id="activoView" name="activoView" value="0" disabled='disabled'">
-                                                                    <label class="form-check-label">No</label>
-                                                                </div>
-                                                                <div class="form-check d-inline">
-                                                                    <input class="form-check-input" type="radio" id="activoView" name="activoView" value="1" disabled='disabled'">
-                                                                    <label class="form-check-label">Si</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            <div class="row" style="visibility:hidden;">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="inputIdEditComposicion">id:</label>
-                                                        <input type="text" name="inputIdEditComposicion" id="inputIdEditComposicion"
-                                                            class="form-control">
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoView" name="activoView" value="1" disabled='disabled'">
+                                                        <label class="form-check-label">Si</label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <input type="button" onclick="ActualizarRegistro()" id="editComposicion"
-                                                value="Guardar" class="btn btn-success float-right">
+                                </div>
+                                <div class="row" style="visibility:hidden;">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputIdEditComposicion">id:</label>
+                                            <input type="text" name="inputIdEditComposicion" id="inputIdEditComposicion"
+                                                class="form-control">
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="button" onclick="ActualizarRegistro()" id="editComposicion"
+                                            value="Guardar" class="btn btn-success float-right">
                                     </div>
                                 </div>
                             </form>
@@ -2520,10 +2512,11 @@
         var idHogar = localStorage.getItem("idHogarEditar");
         editPanelistasResponsableJefe(idHogar,1,0);
         editPanelistasResponsableJefe(idHogar,0,1);
-        localStorage.removeItem('idHogarEditar');
         localStorage.setItem('flagActividad',1);
-        
-        // limpiarCamposPorActividad(idHogar); esta dentro de editPanelistasResponsableJefe
+        localStorage.removeItem('idHogarEditar');
+        /*
+            blanquearCamposPorActividad(idHogar); esta dentro de editPanelistasResponsableJefe
+        */
     }else{
         cargarEstado('#estadoHogar',0);
         // Responsable del Hogar
@@ -2670,10 +2663,17 @@
             }
             $.ajax(settings).done(function(response) {
                 
+                // mmmmmmmm
+                
                 
                 ///$("#identificacion1Hogar").val("1234");
                 $("#identificacion1Hogar").val(response.Codi_Hogar);
                 $("#identificacion2Hogar").val(response.maxIDPanelHogar);
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,1);
+                }
+                
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -2874,6 +2874,11 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,2);
+                }
+                
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3017,6 +3022,10 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,3);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3148,6 +3157,10 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,4);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3266,6 +3279,10 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,5);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3348,6 +3365,10 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,6);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3551,6 +3572,10 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,7);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3653,6 +3678,10 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,8);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3748,6 +3777,10 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,9);
+                }
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 9",$("#identificacion2Hogar").val(),"U");
                 
             }).fail(function(jqXHR, textStatus) {
@@ -3836,6 +3869,10 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
+                if (localStorage.getItem('flagActividad') !== null){
+                    var idHogar = $("#identificacion2Hogar").val();
+                    guardarCamposPorActividad(idHogar,10);
+                }
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
                 
             }).fail(function(jqXHR, textStatus) {
@@ -3865,7 +3902,7 @@
     });
 
 
-    $("#guardar-step-11").click(function() {
+    $("#guardar-ficha").click(function() {
         
             var Perro = document.getElementById('Perro').checked ? 1 : 0;
             var Gato = document.getElementById('Gato').checked ? 1 : 0;
@@ -4027,7 +4064,7 @@
                 camposVacios += "Falta completar servicios Públicos<br>";
             }
             if (response.data[0].Ind_paso7 == 0){
-                camposVacios += "Falta completar servicios y equipamientos del hogar<br>";
+                camposVacios += "Falta completar servicios y equipamiento del hogar<br>";
             }
             if (response.data[0].Ind_paso8 == 0){
                 camposVacios += "Falta completar medios<br>";
@@ -4099,28 +4136,46 @@
 
     
     /* cccc */
-function Bitacora(idUsuario,IP,Operacion,idPrincipal,CRUD) {
-    var urlApi = localStorage.getItem("urlApi");
+    function blanquearCamposPorActividad(idHogar) {
+    var mURL = '<?php echo urlApi; ?>getCamposLimpiarAllStep/'+idHogar;
+    alert(mURL);
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url":urlApi+'addHistory',
-        "method": "POST",
+        "url": mURL,
+        "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
-        },
-        "data": {
-            "idUsuario": idUsuario,
-            "IP": IP,
-            "Operacion": Operacion,
-            "idPrincipal": idPrincipal,
-            "CRUD": CRUD
-            
         }
     }
     $.ajax(settings).done(function(response) {
-        
+        debugger;
+        var tipoCampo;
+        var valor;
+        var idCampohtml;
+        var idItemsHogar;
+        for (var i = 0; i < response.data.length; i++) {
+            tipoCampo = response.data[i].tipo_campohtml;
+            idItemsHogar = response.data[i].id_itemsHogar;
+            valor = "";
+            if (tipoCampo == 'input'){
+                valor = $('#'+response.data[i].Id_campohtml).val();
+                //alert(response.data[i].Id_campohtml+' input: '+valor);
+                $('#'+response.data[i].Id_campohtml).val('');
+            }else if (tipoCampo == 'select'){
+                valor = $('#'+response.data[i].Id_campohtml).val();
+                idCampohtml = response.data[i].Id_campohtml;
+                //alert('Id_campohtml: '+response.data[i].Id_campohtml+' select valor: '+valor);
+                limpiarCombo(response.data[i].Id_campohtml);
+            }else if (tipoCampo == 'radio'){
+                valor = $('input[name='+response.data[i].Id_campohtml+']:checked').val();
+                //alert(' radio: '+valor);
+                $('input:radio[name='+response.data[i].Id_campohtml+']').attr('checked',false);
+            }
+
+            guardarValorAnterior(idHogar,idItemsHogar,valor);
+        }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -4142,11 +4197,19 @@ function Bitacora(idUsuario,IP,Operacion,idPrincipal,CRUD) {
         }
     })
 }
-function limpiarCamposPorActividad(idHogar) {
+
+function guardarCamposPorActividad(idHogar,step) {
+    var mURL;
+    if (step == 0){
+        mURL = '<?php echo urlApi; ?>getCamposLimpiarAllStep/'+idHogar;
+    }else{
+        mURL = '<?php echo urlApi; ?>getCamposLimpiarxStep/'+idHogar+'/'+step;
+    }
+    alert(mURL);
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": '<?php echo urlApi; ?>getCamposLimpiar/'+idHogar,
+        "url": mURL,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -4157,23 +4220,21 @@ function limpiarCamposPorActividad(idHogar) {
         var tipoCampo;
         var valor;
         var idItemsHogar;
+        //debugger;
         for (var i = 0; i < response.data.length; i++) {
             tipoCampo = response.data[i].tipo_campohtml;
             idItemsHogar = response.data[i].id_itemsHogar;
             if (tipoCampo == 'input'){
                 valor = $('#'+response.data[i].Id_campohtml).val();
-                //alert(response.data[i].Id_campohtml+' input: '+valor);
-                $('#'+response.data[i].Id_campohtml).val('');
             }else if (tipoCampo == 'select'){
                 valor = $("#"+response.data[i].Id_campohtml).val();
-                //alert(response.data[i].Id_campohtml+' select: '+valor);
-                limpiarCombo(response.data[i].Id_campohtml);
+                alert('Id_campohtml: '+response.data[i].Id_campohtml+' select valor: '+valor);
             }else if (tipoCampo == 'radio'){
                 valor = $('input[name='+response.data[i].Id_campohtml+']:checked').val();
                 //alert(response.data[i].Id_campohtml+' radio: '+valor);
-                $('input:radio[name='+response.data[i].Id_campohtml+']').attr('checked',false);
             }
-            guardarValorAnterior(idHogar,idItemsHogar,valor);
+
+            guardarValorNuevo(idHogar,idItemsHogar,valor);
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -4209,9 +4270,46 @@ function guardarValorAnterior(idHogar,idItemsHogar,valor) {
         }
     }
     $.ajax(settings).done(function(response) {
-       
-       
-       
+
+
+
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function guardarValorNuevo(idHogar,idItemsHogar,valor) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": '<?php echo urlApi; ?>updateValorNuevoActividadHogar/'+idHogar+'/'+idItemsHogar+'/'+valor,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+
+
+
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -4235,7 +4333,6 @@ function guardarValorAnterior(idHogar,idItemsHogar,valor) {
 }
 
 function limpiarCombo(Id_campohtml) {
-    
     switch (Id_campohtml) {
         case "estadoHogar":
             cargarEstado('#estadoHogar',0);
@@ -4260,12 +4357,14 @@ function limpiarCombo(Id_campohtml) {
             break;
         case "tipoVivienda":
             cargarTipoVivienda('#tipoVivienda',0);
+            $('#especifiqueTipoVivienda').val();
             break;
         case "metrosVivienda":
             cargarMetrosVivienda('#metrosVivienda',0);
             break;
         case "ocupacionVivienda":
             cargarOcupacionVivienda('#ocupacionVivienda',0);
+            $('#especifiqueOcupacionVivienda').val();
             break;
         case "puntosLuz":
             cargarPuntosLuz('#puntosLuz',0);
@@ -4450,8 +4549,8 @@ function finalizarFicha(idHogar) {
             }
     }
     $.ajax(settings).done(function(response) {
-        //787878
         
+        $('#claseSocialInformacion').val(response.NSE);
         
         const Toast = Swal.mixin({
                 toast: true,
@@ -5591,244 +5690,43 @@ function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
 }
 // vvvvvvvvvvvvvv
 function EditAction(data) {
-//ActualizarRegistro
-document.getElementById('FormPanelistaEdit').reset();
-var settings = {
-    "async": true,
-        "crossDomain": true,
-        "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,
-    "method": "get",
-    "headers": {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + localStorage.getItem('Token')
-    }
-}
-$.ajax(settings).done(function(response) {
-    $('#primerNombreComposicionEdit').val(response.data[0].Nombre1);
-    $('#segundoNombreComposicionEdit').val(response.data[0].Nombre2);
-    $('#primerApellidoComposicionEdit').val(response.data[0].Apellido1);
-    $('#segundoApellidoComposicionEdit').val(response.data[0].Apellido2);
-    var oblig = $("input:radio[name='nacionalidadComposicionEdit']");
-    oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
-    $('#cedulaComposicionEdit').val(response.data[0].Cedula);
-    var oblig = $("input:radio[name='sexoComposicionEdit']");
-    oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
-    cargarEstadoCivil('#estadoCivilComposicionEdit',response.data[0].Id_EstadoCivil);
-    cargarParentesco('#parentescoJefeComposicionEdit',response.data[0].Id_Parentesco);
-    cargarEducacion('#educacionComposicionEdit',response.data[0].Id_Educacion);
-    $('#celularComposicionEdit').val(response.data[0].Celular);
-    $('#celularAdicionalComposicionEdit').val(response.data[0].CelularAdicional);
-    $('#correoComposicionEdit').val(response.data[0].Correo);
-    cargarTipoIngreso('#tipoIngresoComposicionEdit',response.data[0].Id_TipoIngreso);
-    $('#inputIdEditComposicion').val(response.data[0].Id_Panelista);
-    var oblig = $("input:radio[name='beneficioSocialistaComposicionEdit']");
-    oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
-    var oblig = $("input:radio[name='activoEdit']");
-    oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-    
-    
-    $('#modal-PanelistaEditar').modal('show');
-}).fail(function(jqXHR, textStatus) {
-    if (jqXHR.status == 400) {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 10000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-        Toast.fire({
-            title: 'Su Session ha Expirado',
-            confirmButtonText: `Ok`,
-        })
-        window.location = '/homepantry20/index.php';
-    }
-})
-}
-
-function VisualizarAction(data) {
-document.getElementById('FormPanelistaView').reset();
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,
-    "method": "get",
-    "headers": {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + localStorage.getItem('Token')
-    }
-}
-$.ajax(settings).done(function(response) {
-    $('#primerNombreComposicionView').val(response.data[0].Nombre1);
-    $('#segundoNombreComposicionView').val(response.data[0].Nombre2);
-    $('#primerApellidoComposicionView').val(response.data[0].Apellido1);
-    $('#segundoApellidoComposicionView').val(response.data[0].Apellido2);
-    var oblig = $("input:radio[name='nacionalidadComposicionView']");
-    oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
-    $('#cedulaComposicionView').val(response.data[0].Cedula);
-    var oblig = $("input:radio[name='sexoComposicionView']");
-    oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
-    cargarEstadoCivil('#estadoCivilComposicionView',response.data[0].Id_EstadoCivil);
-    cargarParentesco('#parentescoJefeComposicionView',response.data[0].Id_Parentesco);
-    cargarEducacion('#educacionComposicionView',response.data[0].Id_Educacion);
-    $('#celularComposicionView').val(response.data[0].Celular);
-    $('#celularAdicionalComposicionView').val(response.data[0].CelularAdicional);
-    $('#correoComposicionView').val(response.data[0].Correo);
-    cargarTipoIngreso('#tipoIngresoComposicionView',response.data[0].Id_TipoIngreso);
-    $('#inputIdEditComposicion').val(response.data[0].Id_Panelista);
-    var oblig = $("input:radio[name='beneficioSocialistaComposicionView']");
-    oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
-    var oblig = $("input:radio[name='activoView']");
-    oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-    
-    
-    $('#modal-PanelistaView').modal('show');
-}).fail(function(jqXHR, textStatus) {
-    if (jqXHR.status == 400) {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 10000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-        Toast.fire({
-            title: 'Su Session ha Expirado',
-            confirmButtonText: `Ok`,
-        })
-        window.location = '/homepantry20/index.php';
-    }
-})
-}
-
-function deleteAction(data) {
-Swal.fire({
-    title: '¿Estas seguro?',
-    text: "¡No podrás revertir esto!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: '¡Sí, bórralo!'
-}).then((result) => {
-    if (result.isConfirmed) {
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": '<?php echo urlApi; ?>deletePanelista/' + data,
-            "method": "get",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            }
-        }
-        $.ajax(settings).done(function(response) {
-            var DatosJson = JSON.parse(JSON.stringify(response));
-            Swal.fire({
-                title: DatosJson.message,
-                width: '350px',
-                height: '45px'
-            }).then(function() {
-                let xtable = $('#TableAtributo').DataTable();
-                xtable.ajax.reload(null, false);
-            });
-        }).fail(function(jqXHR, textStatus) {
-            if (jqXHR.status == 400) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    title: 'Su Session ha Expirado',
-                    confirmButtonText: `Ok`,
-                })
-                window.location = '/homepantry20/index.php';
-            }
-        })
-    }
-})
-}
-
-
-
-function ActualizarRegistro() {
-//if ($("#FormAtributoEdit").valid()) {
-if (true) {
-
+    //ActualizarRegistro
+    document.getElementById('FormPanelistaEdit').reset();
     var settings = {
         "async": true,
-        "crossDomain": true,
-        "url": '<?php echo urlApi; ?>updatePanelista',
-        "method": "post",
+            "crossDomain": true,
+            "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,
+        "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
-        },
-        "data": {
-            "idPanelista": $("#inputIdEditComposicion").val(),
-            "primerNombreComposicionEdit": $("#primerNombreComposicionEdit").val(),
-            "segundoNombreComposicionEdit": $("#segundoNombreComposicionEdit").val(),
-            "primerApellidoComposicionEdit": $("#primerApellidoComposicionEdit").val(),
-            "segundoApellidoComposicionEdit": $("#segundoApellidoComposicionEdit").val(),
-            "cedulaComposicionEdit": $("#cedulaComposicionEdit").val(),
-            "celularComposicionEdit": $("#celularComposicionEdit").val(),
-            "celularAdicionalComposicionEdit": $("#celularAdicionalComposicionEdit").val(),
-            "correoComposicionEdit": $("#correoComposicionEdit").val(),
-
-            "estadoCivilComposicionEdit": $("#estadoCivilComposicionEdit").val(),
-            "parentescoJefeComposicionEdit": $("#parentescoJefeComposicionEdit").val(),
-            "educacionComposicionEdit": $("#educacionComposicionEdit").val(),
-            "tipoIngresoComposicionEdit": $("#tipoIngresoComposicionEdit").val(),
-            "fechaNacimientoComposicionEdit": $("#fechaNacimientoComposicionEdit").val(),
-
-            "nacionalidadComposicionEdit": $('input:radio[name=nacionalidadComposicionEdit]:checked').val(),
-            "sexoComposicionEdit": $('input:radio[name=sexoComposicionEdit]:checked').val(),
-            "beneficioSocialistaComposicionEdit": $('input:radio[name=beneficioSocialistaComposicionEdit]:checked').val(),
-
-
-            "activo": $('input:radio[name=activoEdit]:checked').val(),
-
         }
     }
     $.ajax(settings).done(function(response) {
-        ///let xtable = $('#TableAtributo').DataTable();
-        //xtable.ajax.reload(null, false);
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 5000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-        Toast.fire({
-            icon: 'success',
-            title: response.message,
-            confirmButtonText: `Ok`,
-        })
-        cargarTablaComposicion($("#identificacion2Hogar").val());
-        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Actualizacion Panelista",$("#inputIdEditComposicion").val(),"U");
-        var form = document.querySelector('#FormPanelistaEdit');
-        form.reset();
-        $('#modal-PanelistaEditar').modal('hide');
+        $('#primerNombreComposicionEdit').val(response.data[0].Nombre1);
+        $('#segundoNombreComposicionEdit').val(response.data[0].Nombre2);
+        $('#primerApellidoComposicionEdit').val(response.data[0].Apellido1);
+        $('#segundoApellidoComposicionEdit').val(response.data[0].Apellido2);
+        var oblig = $("input:radio[name='nacionalidadComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
+        $('#cedulaComposicionEdit').val(response.data[0].Cedula);
+        var oblig = $("input:radio[name='sexoComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
+        cargarEstadoCivil('#estadoCivilComposicionEdit',response.data[0].Id_EstadoCivil);
+        cargarParentesco('#parentescoJefeComposicionEdit',response.data[0].Id_Parentesco);
+        cargarEducacion('#educacionComposicionEdit',response.data[0].Id_Educacion);
+        $('#celularComposicionEdit').val(response.data[0].Celular);
+        $('#celularAdicionalComposicionEdit').val(response.data[0].CelularAdicional);
+        $('#correoComposicionEdit').val(response.data[0].Correo);
+        cargarTipoIngreso('#tipoIngresoComposicionEdit',response.data[0].Id_TipoIngreso);
+        $('#inputIdEditComposicion').val(response.data[0].Id_Panelista);
+        var oblig = $("input:radio[name='beneficioSocialistaComposicionEdit']");
+        oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
+        var oblig = $("input:radio[name='activoEdit']");
+        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        
+        
+        $('#modal-PanelistaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -5843,22 +5741,218 @@ if (true) {
                 }
             })
             Toast.fire({
-                icon: 'info',
                 title: 'Su Session ha Expirado',
                 confirmButtonText: `Ok`,
             })
-            var form = document.querySelector('#FormUsuariosEdit');
-            form.reset();
             window.location = '/homepantry20/index.php';
         }
     })
 }
+
+function VisualizarAction(data) {
+    document.getElementById('FormPanelistaView').reset();
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": '<?php echo urlApi; ?>getPanelistas_x_IdPanelista/' + data,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        $('#primerNombreComposicionView').val(response.data[0].Nombre1);
+        $('#segundoNombreComposicionView').val(response.data[0].Nombre2);
+        $('#primerApellidoComposicionView').val(response.data[0].Apellido1);
+        $('#segundoApellidoComposicionView').val(response.data[0].Apellido2);
+        var oblig = $("input:radio[name='nacionalidadComposicionView']");
+        oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
+        $('#cedulaComposicionView').val(response.data[0].Cedula);
+        var oblig = $("input:radio[name='sexoComposicionView']");
+        oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
+        cargarEstadoCivil('#estadoCivilComposicionView',response.data[0].Id_EstadoCivil);
+        cargarParentesco('#parentescoJefeComposicionView',response.data[0].Id_Parentesco);
+        cargarEducacion('#educacionComposicionView',response.data[0].Id_Educacion);
+        $('#celularComposicionView').val(response.data[0].Celular);
+        $('#celularAdicionalComposicionView').val(response.data[0].CelularAdicional);
+        $('#correoComposicionView').val(response.data[0].Correo);
+        cargarTipoIngreso('#tipoIngresoComposicionView',response.data[0].Id_TipoIngreso);
+        $('#inputIdEditComposicion').val(response.data[0].Id_Panelista);
+        var oblig = $("input:radio[name='beneficioSocialistaComposicionView']");
+        oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
+        var oblig = $("input:radio[name='activoView']");
+        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        
+        
+        $('#modal-PanelistaView').modal('show');
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
 }
 
+function deleteAction(data) {
+    Swal.fire({
+        title: '¿Estas seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Sí, bórralo!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": '<?php echo urlApi; ?>deletePanelista/' + data,
+                "method": "get",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+            }
+            $.ajax(settings).done(function(response) {
+                var DatosJson = JSON.parse(JSON.stringify(response));
+                Swal.fire({
+                    title: DatosJson.message,
+                    width: '350px',
+                    height: '45px'
+                }).then(function() {
+                    let xtable = $('#TableAtributo').DataTable();
+                    xtable.ajax.reload(null, false);
+                });
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+    })
+}
+
+function ActualizarRegistro() {
+    //if ($("#FormAtributoEdit").valid()) {
+    if (true) {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": '<?php echo urlApi; ?>updatePanelista',
+            "method": "post",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "idPanelista": $("#inputIdEditComposicion").val(),
+                "primerNombreComposicionEdit": $("#primerNombreComposicionEdit").val(),
+                "segundoNombreComposicionEdit": $("#segundoNombreComposicionEdit").val(),
+                "primerApellidoComposicionEdit": $("#primerApellidoComposicionEdit").val(),
+                "segundoApellidoComposicionEdit": $("#segundoApellidoComposicionEdit").val(),
+                "cedulaComposicionEdit": $("#cedulaComposicionEdit").val(),
+                "celularComposicionEdit": $("#celularComposicionEdit").val(),
+                "celularAdicionalComposicionEdit": $("#celularAdicionalComposicionEdit").val(),
+                "correoComposicionEdit": $("#correoComposicionEdit").val(),
+
+                "estadoCivilComposicionEdit": $("#estadoCivilComposicionEdit").val(),
+                "parentescoJefeComposicionEdit": $("#parentescoJefeComposicionEdit").val(),
+                "educacionComposicionEdit": $("#educacionComposicionEdit").val(),
+                "tipoIngresoComposicionEdit": $("#tipoIngresoComposicionEdit").val(),
+                "fechaNacimientoComposicionEdit": $("#fechaNacimientoComposicionEdit").val(),
+
+                "nacionalidadComposicionEdit": $('input:radio[name=nacionalidadComposicionEdit]:checked').val(),
+                "sexoComposicionEdit": $('input:radio[name=sexoComposicionEdit]:checked').val(),
+                "beneficioSocialistaComposicionEdit": $('input:radio[name=beneficioSocialistaComposicionEdit]:checked').val(),
+
+
+                "activo": $('input:radio[name=activoEdit]:checked').val(),
+
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            ///let xtable = $('#TableAtributo').DataTable();
+            //xtable.ajax.reload(null, false);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.message,
+                confirmButtonText: `Ok`,
+            })
+            cargarTablaComposicion($("#identificacion2Hogar").val());
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Actualizacion Panelista",$("#inputIdEditComposicion").val(),"U");
+            var form = document.querySelector('#FormPanelistaEdit');
+            form.reset();
+            $('#modal-PanelistaEditar').modal('hide');
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'info',
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                var form = document.querySelector('#FormUsuariosEdit');
+                form.reset();
+                window.location = '/homepantry20/index.php';
+            }
+        })
+    }
+}
 
 function HogarEditar() {
-    
-    alert('ENTROOOOOO');
+    //alert('ENTROOOOOO');
     var idHogar = localStorage.getItem("idHogarEditar");
     var settings = {
         "async": true,
@@ -5879,13 +5973,11 @@ function HogarEditar() {
         cargarEstado("#estadoHogar",response.data[0].Id_Estado);
         cargarCiudad(response.data[0].Id_Estado,response.data[0].Id_Ciudad);
         cargarMunicipio(response.data[0].Id_Estado,response.data[0].Id_Municipio);
-        ///var Municipio = localStorage.getItem("idMunicipio");
         cargarParroquia(response.data[0].Id_Municipio,response.data[0].Id_Parroquia);
-        // aaa
         var oblig = $("input:radio[name='calle']");
         oblig.filter("[value='"+response.data[0].Ind_CalleAvenidad+"']").attr('checked', true);
         $('#nombreCalle').val(response.data[0].calle);
-        
+
         if (response.data[0].Piso == ''){
             var oblig = $("input:radio[name='vivienda']");
             oblig.filter("[value='vivienda']").attr('checked', true);
@@ -5896,17 +5988,15 @@ function HogarEditar() {
             oblig.filter("[value='edificio']").attr('checked', true);
             $("#divEdificio").show();
         }
-        
+
         $('#nombreEdificio').val(response.data[0].Edificio);
         $('#nombreCasa').val(response.data[0].Casa);
         $('#escaleraCasa').val(response.data[0].Escalera);
         $('#pisoHogar').val(response.data[0].Piso);
         $('#apartamentoEdificio').val(response.data[0].Apto);
-        
         var oblig = $("input:radio[name='tipoZona']");
         oblig.filter("[value='"+response.data[0].Ind_BarrioUrbanizacion+"']").attr('checked', true);
         $('#nombreCalle').val(response.data[0].calle);
-        
         $('#nombreTipoZona').val(response.data[0].barrio);
         $('#referenciaHogar').val(response.data[0].Referencia);
         $('#telefonoHogar').val(response.data[0].TelefonoLocal);
@@ -5915,7 +6005,6 @@ function HogarEditar() {
         // Composición del Hogar
         cargarTablaComposicion(idHogar); // ****
         // Características y tenencia de la vivienda
-        
         cargarTipoVivienda('#tipoVivienda',response.data[0].Id_TipoVivienda);
         cargarMetrosVivienda('#metrosVivienda',response.data[0].id_Metros);
         cargarOcupacionVivienda('#ocupacionVivienda',response.data[0].Id_OcupacionVivienda);
@@ -5949,7 +6038,7 @@ function HogarEditar() {
         oblig.filter("[value='"+response.data[0].Id_ServicioTelefono+"']").attr('checked', true);
         var oblig = $("input:radio[name='cortesElectricos']");
         oblig.filter("[value='"+response.data[0].Id_CortesElectricos+"']").attr('checked', true);
-        // Servicios y equipamientos del hogar
+        // Servicios y equipamiento del hogar
         var oblig = $("input:radio[name='domesticaFija']");
         oblig.filter("[value='"+response.data[0].Id_DomesticaFija+"']").attr('checked', true);
         var oblig = $("input:radio[name='laboresFijas']");
@@ -6027,7 +6116,7 @@ function HogarEditar() {
         $("#cablera2 option[value='"+ response.data[0].Id_Cablera2 +"']").attr("selected",true);
         $("#tvOnline1 option[value='"+ response.data[0].Id_TelevisionOnline1 +"']").attr("selected",true);
         $("#tvOnline2 option[value='"+ response.data[0].Id_TelevisionOnline2 +"']").attr("selected",true);
-        
+
         if(response.data[0].id_FM == 1 || response.data[0].id_AM == 1){
             var oblig = $("input:radio[name='escucharRadio']");
             oblig.filter("[value='1']").attr('checked', true);
@@ -6048,7 +6137,6 @@ function HogarEditar() {
         oblig.filter("[value='"+response.data[0].Id_Moto+"']").attr('checked', true);
         var oblig = $("input:radio[name='casco']");
         oblig.filter("[value='"+response.data[0].Id_SeguroCasco+"']").attr('checked', true);
-        //ppppp
         // Mascotas
         if(response.data[0].Ind_Perro == 1){
             $("#Perro").prop("checked", true);
@@ -6071,9 +6159,8 @@ function HogarEditar() {
         // Información General
         $("#claseSocialInformacion").val(response.data[0].ClaseSocial);
         $("#fechaRegistroInformacion").val(response.data[0].Fec_Registro);
-        
-        limpiarCamposPorActividad(idHogar);
-        
+
+        blanquearCamposPorActividad(idHogar);
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -6094,8 +6181,8 @@ function HogarEditar() {
             window.location = '/homepantry20/index.php';
         }
     })
-    
 }
+
 function cargarMunicipio(parametro,idS) {
     var settings = {
         "async": true,
@@ -6323,7 +6410,7 @@ function cargarTablaComposicion(idHogar){
     });
 }
 </script>
-
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js')?>"></script>

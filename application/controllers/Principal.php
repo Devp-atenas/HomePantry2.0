@@ -292,6 +292,10 @@ class Principal extends CI_Controller {
     public function MantenimientoSemana(){
         $this->load->view('Mantenimiento/MantenimientoSemana');
     }
+    public function DetalleAlertas(){
+        $this->load->view('Alertas/DetalleAlertas');
+    }
+    
     public function logout(){
         $this->load->helper('url');
         echo '<script>';

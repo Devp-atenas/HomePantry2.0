@@ -457,10 +457,5 @@ function cargarTabla(){
             }
         }],
     });
-    
-    
-   
-    
-    
 }
 
