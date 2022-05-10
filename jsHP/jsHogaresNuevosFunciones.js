@@ -766,7 +766,7 @@ function HogarEditar() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url":localStorage.getItem("urlApi")+'/' + idHogar,
+        "url":localStorage.getItem("urlApi")+'getHogarId/' + idHogar,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",

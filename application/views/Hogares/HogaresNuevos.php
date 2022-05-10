@@ -911,39 +911,30 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title"></h3>
-                                    </div>
-                                    <!-- /.card-header -->
-                                    <div class="card-body">
-                                        <table id="TablePanelistas" class="table table-bordered table-striped table-md">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Nacionalidad</th>
-                                                    <th>Cedula</th>
-                                                    <th>Parentesco</th>
-                                                    <th>Fec_Nacimiento</th>
-                                                    <th>Accion</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Nacionalidad</th>
-                                                    <th>Cedula</th>
-                                                    <th>Parentesco</th>
-                                                    <th>Fec_Nacimiento</th>
-                                                    <th>Accion</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <!-- /.card-body -->
-                                </div>
+                                <table id="TablePanelistas" class="table table-bordered table-striped table-md">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Nacionalidad</th>
+                                            <th>Cedula</th>
+                                            <th>Parentesco</th>
+                                            <th>Fec_Nacimiento</th>
+                                            <th>Accion</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Nacionalidad</th>
+                                            <th>Cedula</th>
+                                            <th>Parentesco</th>
+                                            <th>Fec_Nacimiento</th>
+                                            <th>Accion</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -2195,7 +2186,7 @@
     fechaNacimientoJefe.max = new Date().toISOString().split("T")[0];
     fechaNacimientoComposicion.max = new Date().toISOString().split("T")[0];
         //jQuery.noConflict();
-    $().ready(function() {
+    /*$().ready(function() {
         $("#formcontacto").validate({
             rules: {
                 nombreCasa: {
@@ -2493,7 +2484,7 @@
                 },
             }
         });
-    });
+    });*/
 </script>
 <script type="text/javascript">
     if (localStorage.getItem("idHogarEditar") !== null) {
@@ -2549,7 +2540,7 @@
     }
     
     
-    // 11111
+    // Ubicacion del hogar PASO 1
     $("#guardar-step-1").click(function() {
         var camposVacios = "";
         if ($.trim($('#estadoHogar').val()) === '') {
@@ -2633,7 +2624,6 @@
                     "Id_ciudadHogar": $("#ciudadHogar").val(),
                     "Id_municipioHogar": $("#municipioHogar").val(),
                     "Id_parroquiaHogar": $("#parroquiaHogar").val(),
-
                     "Ind_CalleAvenidad": $('input:radio[name=calle]:checked').val(),
                     "Ind_BarrioUrbanizacion": $('input:radio[name=tipoZona]:checked').val(),
                     "calle":$("#nombreCalle").val(),
@@ -2699,7 +2689,7 @@
             })
         }
     });
-    // 22222
+    // Responsable del hogar PASO 2
     $("#guardar-step-2").click(function() {
         var camposVacios = "";
         //var camposVaciosX = "";
@@ -2899,7 +2889,7 @@
             })
         }
     });
-    // 33333
+    // Jefe del Hogar PASO 3
     $("#guardar-step-3").click(function() {
         var jefeResponsableIO = $('input:radio[name=jefeResponsableIO]:checked').val();
         var camposVacios = "";
@@ -3040,7 +3030,7 @@
             })
         }
     });
-    // 44444
+    // Composición del Hogar PASO 4
     $("#guardar-step-4").click(function() {
         var camposVacios = "";
 
@@ -3098,6 +3088,12 @@
             });
             $('#myModal').modal('show');
         } else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3124,7 +3120,8 @@
                     "Correo": $("#correoComposicion").val(),
                     "Celular": $("#celularComposicion").val(),
                     "CelularAdicional": $("#celularAdicionalComposicion").val(),
-                    "id_BeneficioSocialista": $('input:radio[name=beneficioSocialistaComposicion]:checked').val()
+                    "id_BeneficioSocialista": $('input:radio[name=beneficioSocialistaComposicion]:checked').val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
@@ -3189,8 +3186,7 @@
 
             }
         })
-    });
-    $(document).ready(function() {
+        
         $('#ocupacionVivienda').change(function(e) {
             if ($(this).val() != "6") {
                 $("#especifiqueOcupacionVivienda").val('');
@@ -3201,7 +3197,8 @@
             }
         })
     });
-    // 55555
+
+    // Características y tenencia de la vivienda PASO 5
     $("#guardar-step-5").click(function() {
         var camposVacios = "";
 
@@ -3227,6 +3224,12 @@
             });
             $('#myModal').modal('show');
         } else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3246,7 +3249,8 @@
                     "id_PuntosLuz": $("#puntosLuz").val(),
                     "Id_OcupacionVivienda": $("#ocupacionVivienda").val(),
                     "OtroOcupacionVivienda": $("#especifiqueOcupacionVivienda").val(),
-                    "Id_MontoVivienda": $("#montoVivienda").val()
+                    "Id_MontoVivienda": $("#montoVivienda").val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
@@ -3270,9 +3274,8 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                
+
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 5",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3298,7 +3301,7 @@
             })
         }
     });
-    // 66666
+    // Servicios Públicos PASO 6
     $("#guardar-step-6").click(function() {
         var camposVacios = "";
         if (!$("input[name='servicioElectricidad']:radio").is(':checked')) {
@@ -3316,6 +3319,12 @@
             });
             $('#myModal').modal('show');
         } else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3332,7 +3341,8 @@
                     "Id_AseoUrbano": $("#aseoUrbano").val(),
                     "Id_ServicioElectricidad": $('input:radio[name=servicioElectricidad]:checked').val(),
                     "Id_ServicioTelefono": $('input:radio[name=servicioTelefonico]:checked').val(),
-                    "Id_CortesElectricos": $('input:radio[name=cortesElectricos]:checked').val()
+                    "Id_CortesElectricos": $('input:radio[name=cortesElectricos]:checked').val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
@@ -3382,7 +3392,7 @@
             })
         }
     });
-    // 77777
+    // Servicios y equipamiento del hogar PASO 7
     $("#guardar-step-7").click(function() {
         var camposVacios = "";
         if (!$("input[name='domesticaFija']:radio").is(':checked')) {
@@ -3493,6 +3503,12 @@
             });
             $('#myModal').modal('show');
         } else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3537,7 +3553,8 @@
                     "id_CantvAcometida": $('input:radio[name=cantvAcometida]:checked').val(),
                     "id_CantvFijo": $('input:radio[name=cantvFijo]:checked').val(),
                     "id_Movistar": $('input:radio[name=movistar]:checked').val(),
-                    "id_Digitel": $('input:radio[name=digitel]:checked').val()
+                    "id_Digitel": $('input:radio[name=digitel]:checked').val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
@@ -3562,7 +3579,6 @@
                     confirmButtonText: `Ok`,
                 })
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 7",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3588,7 +3604,7 @@
             })
         }
     });
-    //888888
+    // Medios PASO 8
     $("#guardar-step-8").click(function() {
         var camposVacios = "";
         if ($.trim($('#cantidadTV').val()) === '') {
@@ -3624,6 +3640,13 @@
         } else {
             var FM = document.getElementById('FM').checked ? 1 : 0;
             var AM = document.getElementById('AM').checked ? 1 : 0;
+            
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3643,7 +3666,8 @@
                     "Id_TelevisionOnline1": $("#tvOnline1").val(),
                     "Id_TelevisionOnline2":$("#tvOnline2").val(),
                     "id_FM": FM,
-                    "id_AM": AM
+                    "id_AM": AM,
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
@@ -3668,7 +3692,6 @@
                     confirmButtonText: `Ok`,
                 })
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 8",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3694,7 +3717,7 @@
             })
         }
     });
-    //999999
+    // Vehículos PASO 9
     $("#guardar-step-9").click(function() {
         var camposVacios = "";
         if ($.trim($('#totalAutos').val()) === '') {
@@ -3712,7 +3735,13 @@
                 $('#modal-body').html(camposVacios);
             });
             $('#myModal').modal('show');
-        } else {
+        }else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3726,7 +3755,8 @@
                     "Id_Hogar": $("#identificacion2Hogar").val(),
                     "Id_Autos": $("#totalAutos").val(),
                     "Id_Moto": $('input:radio[name=moto]:checked').val(),
-                    "Id_SeguroCasco": $('input:radio[name=casco]:checked').val()
+                    "Id_SeguroCasco": $('input:radio[name=casco]:checked').val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
@@ -3751,7 +3781,6 @@
                     guardarCamposPorActividad(idHogar,9);
                 }
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 9",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3777,31 +3806,29 @@
             })
         }
     });
-    //AAAAA
+    // Mascotas PASO 10
     $("#guardar-step-10").click(function() {
         var camposVacios = "";
-        if ($.trim($('#totalAutos').val()) === '') {
-            camposVacios += "Seleccione  cantidad de televisores<br>";
-        }
-        /* bbbb */
-        if (!$("input[name='moto']:radio").is(':checked')) {
-            camposVacios  += "Seleccione si posee moto<br>";
-        }
-        if (!$("input[name='casco']:radio").is(':checked')) {
-            camposVacios  += "Seleccione seguro <br>";
-        }
+        
         if (camposVacios != "") {
             $(function() {
                 $('#modal-body').html(camposVacios);
             });
             $('#myModal').modal('show');
-        } else {
+        }else {
             var Perro = document.getElementById('Perro').checked ? 1 : 0;
             var Gato = document.getElementById('Gato').checked ? 1 : 0;
             var Pez = document.getElementById('Pez').checked ? 1 : 0;
             var Ave = document.getElementById('Ave').checked ? 1 : 0;
             var Roedor = document.getElementById('Roedor').checked ? 1 : 0;
             var Otro = document.getElementById('Otro').checked ? 1 : 0;
+
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3818,7 +3845,8 @@
                     "Ind_Pez": Pez,
                     "Ind_Ave": Ave,
                     "Ind_Roedor": Roedor,
-                    "Ind_Otro": Otro
+                    "Ind_Otro": Otro,
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
@@ -3843,7 +3871,6 @@
                     guardarCamposPorActividad(idHogar,10);
                 }
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3871,83 +3898,110 @@
     });
 
     $("#guardar-ficha").click(function() {
-            var Perro = document.getElementById('Perro').checked ? 1 : 0;
-            var Gato = document.getElementById('Gato').checked ? 1 : 0;
-            var Pez = document.getElementById('Pez').checked ? 1 : 0;
-            var Ave = document.getElementById('Ave').checked ? 1 : 0;
-            var Roedor = document.getElementById('Roedor').checked ? 1 : 0;
-            var Otro = document.getElementById('Otro').checked ? 1 : 0;
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": '<?php echo urlApi; ?>calcularNSE/',
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
-                "data": {
-                    "Id_Hogar": $("#identificacion2Hogar").val(),
-                    "educacionResponsable": $("#educacionResponsable").val(),
-                    "tipoIngresoResponsable": $("#tipoIngresoResponsable").val(),
-                    "beneficioSocialistaResponsable": $("#beneficioSocialistaResponsable").val(),
-                    "educacionJefe": $("#educacionJefe").val(),
-                    "tipoIngresoJefe": $("#tipoIngresoJefe").val(),
-                    "beneficioSocialistaJefe": $("#beneficioSocialistaJefe").val(),
-                    "tipoVivienda": $("#tipoVivienda").val(),
-                    "metrosVivienda": $("#metrosVivienda").val(),
-                    "puntosLuz": $("#puntosLuz").val(),
-                    "ocupacionVivienda": $("#ocupacionVivienda").val(),
-                    "montoVivienda": $("#montoVivienda").val(),
-                    "aguasBlancas": $("#aguasBlancas").val(),
-                    "aguasNegras": $("#aguasNegras").val(),
-                    "aseoUrbano": $("#aseoUrbano").val(),
-                    "servicioElectricidad": $('input:radio[name=servicioElectricidad]:checked').val(),
-                    "servicioTelefonico": $('input:radio[name=servicioTelefonico]:checked').val(),
-                    "domesticaFija": $('input:radio[name=domesticaFija]:checked').val(),
-                    "laboresFijas": $('input:radio[name=laboresFijas]:checked').val(),
-                    "domesticaXDia": $('input:radio[name=domesticaXDia]:checked').val(),
-                    "conexionInternetTlf": $('input:radio[name=conexionInternetTlf]:checked').val(),
-                    "conexionInternetMovil": $('input:radio[name=conexionInternetMovil]:checked').val(),
-                    "conexionInternetBandaAncha": $('input:radio[name=conexionInternetBandaAncha]:checked').val(),
-                    "celularJefeFamilia": $('input:radio[name=celularJefeFamilia]:checked').val(),
-                    "seguroHcmJefeFamilia": $('input:radio[name=seguroHcmJefeFamilia]:checked').val(),
-                    "seguroHcmEmpresaJefeFamilia": $('input:radio[name=seguroHcmEmpresaJefeFamilia]:checked').val(),
-                    "seguroSocialJefeFamilia": $('input:radio[name=seguroSocialJefeFamilia]:checked').val(),
-                    "aireAcondicionado": $('input:radio[name=aireAcondicionado]:checked').val(),
-                    "calentadorAguaElectrico": $('input:radio[name=calentadorAguaElectrico]:checked').val(),
-                    "calentadorAguaGas": $('input:radio[name=calentadorAguaGas]:checked').val(),
-                    "computadorPersonal": $('input:radio[name=computadorPersonal]:checked').val(),
-                    "computadorLaptop": $('input:radio[name=computadorLaptop]:checked').val(),
-                    "DVD": $('input:radio[name=DVD]:checked').val(),
-                    "homeTeatro": $('input:radio[name=homeTeatro]:checked').val(),
-                    "juegosVideo": $('input:radio[name=juegosVideo]:checked').val(),
-                    "hornoMicroOnda": $('input:radio[name=hornoMicroOnda]:checked').val(),
-                    "cocinaElectrica": $('input:radio[name=cocinaElectrica]:checked').val(),
-                    "cocinaGasBombona": $('input:radio[name=cocinaGasBombona]:checked').val(),
-                    "cocinaGasDirecto": $('input:radio[name=cocinaGasDirecto]:checked').val(),
-                    "cocinaKerosene": $('input:radio[name=cocinaKerosene]:checked').val(),
-                    "secadoraRopa": $('input:radio[name=secadoraRopa]:checked').val(),
-                    "lavadoraAutomatica": $('input:radio[name=lavadoraAutomatica]:checked').val(),
-                    "lavadoraSemiAutomatica": $('input:radio[name=lavadoraSemiAutomatica]:checked').val(),
-                    "lavadoraRodillo": $('input:radio[name=lavadoraRodillo]:checked').val(),
-                    "nevera": $('input:radio[name=nevera]:checked').val(),
-                    "freezer": $('input:radio[name=freezer]:checked').val(),
-                    "lavaplatos": $('input:radio[name=lavaplatos]:checked').val(),
-                    "cantidadTV": $("#cantidadTV").val(),
-                    "tipoTV": $("#tipoTV").val(),
-                    "Senal": $("#Senal").val(),
-                    "totalAutos": $("#totalAutos").val(),
-                    "moto": $('input:radio[name=moto]:checked').val(),
-                    "Ind_Perro": Perro,
-                    "Ind_Gato": Gato,
-                    "Ind_Pez": Pez,
-                    "Ind_Ave": Ave,
-                    "Ind_Roedor": Roedor,
-                    "Ind_Otro": Otro
-                }
+        var Perro = document.getElementById('Perro').checked ? 1 : 0;
+        var Gato = document.getElementById('Gato').checked ? 1 : 0;
+        var Pez = document.getElementById('Pez').checked ? 1 : 0;
+        var Ave = document.getElementById('Ave').checked ? 1 : 0;
+        var Roedor = document.getElementById('Roedor').checked ? 1 : 0;
+        var Otro = document.getElementById('Otro').checked ? 1 : 0;
+
+        if (localStorage.getItem("flagActividad") !== null){
+            flagNuevoHogar = 0;
+        }else{
+            flagNuevoHogar = 1;
+        }
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": '<?php echo urlApi; ?>calcularNSE/',
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Id_Hogar": $("#identificacion2Hogar").val(),
+                "educacionResponsable": $("#educacionResponsable").val(),
+                "tipoIngresoResponsable": $("#tipoIngresoResponsable").val(),
+                "beneficioSocialistaResponsable": $("#beneficioSocialistaResponsable").val(),
+                "educacionJefe": $("#educacionJefe").val(),
+                "tipoIngresoJefe": $("#tipoIngresoJefe").val(),
+                "beneficioSocialistaJefe": $("#beneficioSocialistaJefe").val(),
+                "tipoVivienda": $("#tipoVivienda").val(),
+                "metrosVivienda": $("#metrosVivienda").val(),
+                "puntosLuz": $("#puntosLuz").val(),
+                "ocupacionVivienda": $("#ocupacionVivienda").val(),
+                "montoVivienda": $("#montoVivienda").val(),
+                "aguasBlancas": $("#aguasBlancas").val(),
+                "aguasNegras": $("#aguasNegras").val(),
+                "aseoUrbano": $("#aseoUrbano").val(),
+                "servicioElectricidad": $('input:radio[name=servicioElectricidad]:checked').val(),
+                "servicioTelefonico": $('input:radio[name=servicioTelefonico]:checked').val(),
+                "domesticaFija": $('input:radio[name=domesticaFija]:checked').val(),
+                "laboresFijas": $('input:radio[name=laboresFijas]:checked').val(),
+                "domesticaXDia": $('input:radio[name=domesticaXDia]:checked').val(),
+                "conexionInternetTlf": $('input:radio[name=conexionInternetTlf]:checked').val(),
+                "conexionInternetMovil": $('input:radio[name=conexionInternetMovil]:checked').val(),
+                "conexionInternetBandaAncha": $('input:radio[name=conexionInternetBandaAncha]:checked').val(),
+                "celularJefeFamilia": $('input:radio[name=celularJefeFamilia]:checked').val(),
+                "seguroHcmJefeFamilia": $('input:radio[name=seguroHcmJefeFamilia]:checked').val(),
+                "seguroHcmEmpresaJefeFamilia": $('input:radio[name=seguroHcmEmpresaJefeFamilia]:checked').val(),
+                "seguroSocialJefeFamilia": $('input:radio[name=seguroSocialJefeFamilia]:checked').val(),
+                "aireAcondicionado": $('input:radio[name=aireAcondicionado]:checked').val(),
+                "calentadorAguaElectrico": $('input:radio[name=calentadorAguaElectrico]:checked').val(),
+                "calentadorAguaGas": $('input:radio[name=calentadorAguaGas]:checked').val(),
+                "computadorPersonal": $('input:radio[name=computadorPersonal]:checked').val(),
+                "computadorLaptop": $('input:radio[name=computadorLaptop]:checked').val(),
+                "DVD": $('input:radio[name=DVD]:checked').val(),
+                "homeTeatro": $('input:radio[name=homeTeatro]:checked').val(),
+                "juegosVideo": $('input:radio[name=juegosVideo]:checked').val(),
+                "hornoMicroOnda": $('input:radio[name=hornoMicroOnda]:checked').val(),
+                "cocinaElectrica": $('input:radio[name=cocinaElectrica]:checked').val(),
+                "cocinaGasBombona": $('input:radio[name=cocinaGasBombona]:checked').val(),
+                "cocinaGasDirecto": $('input:radio[name=cocinaGasDirecto]:checked').val(),
+                "cocinaKerosene": $('input:radio[name=cocinaKerosene]:checked').val(),
+                "secadoraRopa": $('input:radio[name=secadoraRopa]:checked').val(),
+                "lavadoraAutomatica": $('input:radio[name=lavadoraAutomatica]:checked').val(),
+                "lavadoraSemiAutomatica": $('input:radio[name=lavadoraSemiAutomatica]:checked').val(),
+                "lavadoraRodillo": $('input:radio[name=lavadoraRodillo]:checked').val(),
+                "nevera": $('input:radio[name=nevera]:checked').val(),
+                "freezer": $('input:radio[name=freezer]:checked').val(),
+                "lavaplatos": $('input:radio[name=lavaplatos]:checked').val(),
+                "cantidadTV": $("#cantidadTV").val(),
+                "tipoTV": $("#tipoTV").val(),
+                "Senal": $("#Senal").val(),
+                "totalAutos": $("#totalAutos").val(),
+                "moto": $('input:radio[name=moto]:checked').val(),
+                "Ind_Perro": Perro,
+                "Ind_Gato": Gato,
+                "Ind_Pez": Pez,
+                "Ind_Ave": Ave,
+                "Ind_Roedor": Roedor,
+                "Ind_Otro": Otro,
+                "flagNuevoHogar":flagNuevoHogar
             }
-            $.ajax(settings).done(function(response) {
+        }
+        $.ajax(settings).done(function(response) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.message,
+                confirmButtonText: `Ok`,
+            })
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3960,43 +4014,20 @@
                     }
                 })
                 Toast.fire({
-                    icon: 'success',
-                    title: response.message,
+                    icon: 'info',
+                    title: 'Su Session ha Expirado',
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
-                
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'info',
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    var form = document.querySelector('#FormPaisEdit');
-                    form.reset();
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
-
-    );
+                var form = document.querySelector('#FormPaisEdit');
+                form.reset();
+                window.location = '/homepantry20/index.php';
+            }
+        })
+    });
     //787878
     $("#guardar-ficha").click(function() {
         var camposVacios = "";
-        
-       
+
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -4118,7 +4149,6 @@
             $("#divCortesElectricos").hide();
         }
     });
-
 
     $("input[name='vivienda']").click(function() {
         if ($("#viviendaCasa").is(":checked")) {

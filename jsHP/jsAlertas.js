@@ -8,6 +8,77 @@ $('#selectTipoAlertas').change(function(){
     cargarTablaAlertas4TipoAlerta('#TableAlert',idTipoAlerta)
 });
 
+
+$('#idResponderAlerta').click(function(){
+    var idAlerta = $("#inputId").val();
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'RespuestaAlerta/',
+        "method": "post",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
+        "data": {
+            "idAlerta": idAlerta,
+            "Alerta": $("#inputAlerta").val(),
+            "RespuestaAlerta": $("#inputRespuestaAlerta").val(),
+            "IdUsuario":localStorage.getItem('IdUsuario')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: response.message,
+            confirmButtonText: `Ok`,
+        })
+        var form = document.querySelector('#FormAlerta');
+        form.reset();
+        idTipoAlerta = $("#selectTipoAlertas").val();
+        cargarTablaAlertas4TipoAlerta('#TableAlert',idTipoAlerta)
+        $('#modal-responderAlerta').modal('hide');
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'info',
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            var form = document.querySelector('#FormUsuariosEdit');
+            form.reset();
+            window.location = '/homepantry20/index.php';
+        }
+    })
+});
+
+
+
+
+
 function ListaAlertas(IdUsuario){
     var settings = {
         "url":localStorage.getItem("urlApi")+'getAlertas4Perfil/'+IdUsuario,
@@ -114,19 +185,106 @@ function cargarTiposAlertas(etiqueta,idUsuario,idSeleccionado) {
     })
 }
 
+function showVisualizarAlerta(id) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAlertaId/' + id,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        
+        
+
+        if (response.data[0].Id_TipoAlerta == 1){
+            if (response.data[0].Ind_RespuestaAlerta){
+                $("#inputAlertaVer").val(response.data[0].Alerta);
+                $("#inputAlertaResp").val(response.data[0].Alerta);
+                $("#inputUsuarioResp").val(response.data[0].nombreUsuario);
+                $("#inputRespuestaAlertaResp").val(response.data[0].RespuestaAlerta);
+                $('#modal-visualizarRespuestaAlerta').modal('show');
+            }else{
+                $("#inputAlertaAlert").val(response.data[0].Alerta);
+                $("#inputNSEAnteriorAlert").val(response.data[0].NSE_Anterior);
+                $("#inputNSENuevoAlert").val(response.data[0].NSE_Nuevo);
+                $('#modal-visualizarAlerta').modal('show');
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function showResponderAlerta(id) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAlertaId/' + id,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        $("#inputId").val(id);
+        $("#inputAlerta").val(response.data[0].Alerta);
+        $('#modal-responderAlerta').modal('show');
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
 function cargarTablaAlertas4TipoAlerta(idDivTabla,idTipoAlerta){
     var bottomAcciones = function(cell, formatterParams){
-        var value_ = cell.getValue();
-        var id = cell.getRow().getData().Id_Consumo_Detalle_Productos;
-        var codiBarra = cell.getRow().getData().Numero_codigo_barras;
-        var idMoneda = cell.getRow().getData().id_Moneda;
-        var tasaCambio = cell.getRow().getData().Tasa_de_cambio;
-        var cantida = cell.getRow().getData().Cantidad;
-        var precioProducto = cell.getRow().getData().Precio_producto;
-        var total = cell.getRow().getData().total;
+        var id = cell.getRow().getData().id_Alerta;
+        var IndRespuestaAlerta = cell.getRow().getData().Ind_RespuestaAlerta;
+        var Alerta = cell.getRow().getData().Alerta;
+        var IndRespuestaAlerta = cell.getRow().getData().Ind_RespuestaAlerta;
+        
 
-        return  "<a id='fg003' href='#' onclick='responderAlerta("+id+","+codiBarra+","+idMoneda+","+tasaCambio+","+cantida+","+precioProducto+","+total+"); return false;' ><i class='bi bi-reply-fill text-info data-toggle='tooltip' data-placement='top' title='Responder'></i></a>"
-                +" <a id='fg003' href='#' onclick='VerAlerta("+id+"); return false;' ><i class='bi bi-search text-dark data-toggle='tooltip' data-placement='top' title='Visualizar'></i></a> ";
+        var botones =  "<a id='fg003' href='#' onclick='showResponderAlerta("+id+")' ><i class='bi bi-reply-fill text-info data-toggle='tooltip' data-placement='top' title='Responder'></i></a>"
+                    +" <a id='fg003' href='#' onclick='showVisualizarAlerta("+id+"); return false;' ><i class='bi bi-search text-dark data-toggle='tooltip' data-placement='top' title='Visualizar'></i></a> ";
+
+        if (!IndRespuestaAlerta){
+            return botones;
+        }else{
+            return "<a id='fg003' href='#' onclick='showVisualizarAlerta("+id+"); return false;' ><i class='bi bi-search text-dark data-toggle='tooltip' data-placement='top' title='Ver respuesta'></i></a> ";
+        }
     };
 
     table = new Tabulator(idDivTabla, {
@@ -144,11 +302,11 @@ function cargarTablaAlertas4TipoAlerta(idDivTabla,idTipoAlerta){
         progressload : "scroll",
         groupBy:"Alerta",
         placeholder:"Datos no encontrados",
-        selectable:true,
+        selectable:false,
         locale:true,
         selectablePersistence:true, //make rows selectable
         columns:[
-            {title:"Indicador Respusta Alerta", field:"Ind_RespuestaAlerta", hozAlign:"center", formatter:function(cell, formatterParams){
+            {title:"Informacion", field:"Ind_RespuestaAlerta", hozAlign:"center", formatter:function(cell, formatterParams){
                 var Ind_RespuestaAlerta = cell.getRow().getData().Ind_RespuestaAlerta;
 
                 if (Ind_RespuestaAlerta){
@@ -157,11 +315,21 @@ function cargarTablaAlertas4TipoAlerta(idDivTabla,idTipoAlerta){
                     return "<i class='bi bi-bell text-danger'></i>";
                 }
             }},
-            {title:"Alerta", field:"Alerta", sorter:"string"},
-            {title:"Respuesta", field:"RespuestaAlerta", sorter:"string"},
+            {title:"Alerta", field:"RespuAlert", sorter:"string"},
+            //{title:"Alerta", field:"Alerta", sorter:"string"},
+            //{title:"Respuesta", field:"RespuestaAlerta", sorter:"string"},
             {title:"Referencia", field:"Id_Referencia", sorter:"number"},
+            {title:"Usuario", field:"nombreUsuario", hozAlign:"center", formatter:function(cell, formatterParams){
+                var Ind_RespuestaAlerta = cell.getRow().getData().Ind_RespuestaAlerta;
+
+                if (Ind_RespuestaAlerta){
+                    return cell.getRow().getData().nombreUsuario;
+                }else{
+                    return "<i class='bi bi-cpu text-dark'></i>";
+                }
+            }},
             {title:"Fecha de la Alerta", field:"Fec_Ult_Mod", sorter:"number"},
-            {formatter:bottomAcciones, hozAlign:"center"}
+            {formatter:bottomAcciones, hozAlign:"right"}
         ],
     });
 }

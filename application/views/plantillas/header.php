@@ -86,16 +86,9 @@
                         <span id="Total" class="badge badge-danger navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        
                         <div id="TotalAlertas"></div>
                         <div class="dropdown-divider"></div>
                         <div id="Alertas4Perfil"></div>
-                        
-                        
-                        
-                        
-                        
-                        
                         <a href="<?php echo base_url('Principal/DetalleAlertas')?>" class="dropdown-item dropdown-footer">Ir a detalle de las alertas</a>
                     </div>
                 </li>
@@ -120,19 +113,19 @@
         <!-- Sidebar -->
         <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div id="lockscreen-image2" class="lockscreen-image">
-                <span class="" id="nombreUsuario2"></span>
-            </div>
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div id="lockscreen-image2" class="lockscreen-image">
+                    <span class="" id="nombreUsuario2"></span>
+                </div>
                 <div class="info">
                     <a href="#" class="d-block"><p id="usuario"></p></a>
                 </div>
             </div>
-        <!-- Sidebar Menu -->
-            <?php
-                $this->load->view('Menu/Menu');
-            ?>
-        <!-- /.sidebar-menu -->
+            <!-- Sidebar Menu -->
+                <?php
+                    $this->load->view('Menu/Menu');
+                ?>
+            <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
     </aside>

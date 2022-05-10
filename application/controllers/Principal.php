@@ -235,6 +235,9 @@ class Principal extends CI_Controller {
     public function SustitucionHogares(){
         $this->load->view('Hogares/SustitucionHogares');
     }
+    public function SustitucionHogaresNSE(){
+        $this->load->view('Hogares/SustitucionHogaresNSE');
+    }
     public function CrearEstudio(){
         $this->load->view('Hogares/CrearEstudio');
     }
@@ -294,6 +297,10 @@ class Principal extends CI_Controller {
     }
     public function DetalleAlertas(){
         $this->load->view('Alertas/DetalleAlertas');
+    }
+    
+    public function temp(){
+        $this->load->view('Actividad/temp');
     }
     
     public function logout(){

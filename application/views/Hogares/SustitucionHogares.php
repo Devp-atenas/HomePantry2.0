@@ -10,54 +10,42 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<!-- Main content Agregar Producto 11111-->
-<!-- /Windows datatables Producto Rango-->
+
 <section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12"> <!-- bg-danger bg-gradient -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group row mb-0 mt-0">
+                <div class="col-md-4">
+                    <label class="inputText font-weight-bold">Estado:</label>
+                    <select id="selectEstadoI" name="selectEstadoI" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="inputText font-weight-bold">Clase Social:</label>
+                    <select id="selectClaseSocialI" name="selectClaseSocialI" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <div id="showButton">
+                        <label>Sustituir Hogar:</label>
+                        <button id="bSustituirI" type="button" class="btn btn-block btn-sm btn-primary" onclick="callSustituirHogar();">
+                            <i class="fas fa-sync-alt"></i>&nbsp;Sustituir
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="showTablas">
+                <h2 class="text-center">Hogares Muestra</h2>
                 <div class="form-group row mb-0 mt-0">
-                    <div class="col-md-4">
-                        <label class="inputText font-weight-bold">Estado:</label>
-                        <select id="selectEstadoI" name="selectEstadoI" class="form-control">
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="inputText font-weight-bold">Clase Social:</label>
-                        <select id="selectClaseSocialI" name="selectClaseSocialI" class="form-control">
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <div id="showButton">
-                            <label>Sustituir Hogar:</label>
-                            <button type="button" class="btn btn-block btn-sm btn-primary" onclick="callSustituirHogar();">
-                                <i class="fas fa-sync-alt"></i>&nbsp;Sustituir
-                            </button>
-                        </div>
+                    <div class="col-md-12 text-center">
+                        <div id="TablaHogaresMuestraI"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <HR/>
-        <div id="showTablas">
-            <h2 class="text-center">Hogares Muestra</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group row mb-0 mt-0">
-                        <div class="col-md-12 text-center">
-                            <div id="TablaHogaresMuestraI"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <HR/>
-            <h2 class="text-center">Hogares Sustitutos</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group row mb-0 mt-0">
-                        <div class="col-md-12 text-center">
-                            <div id="TablaHogaresMuestra0"></div>
-                        </div>
+                <HR/>
+                <h2 class="text-center">Hogares Sustitutos</h2>
+                <div class="form-group row mb-0 mt-0">
+                    <div class="col-md-12 text-center">
+                        <div id="TablaHogaresMuestra0"></div>
                     </div>
                 </div>
             </div>
@@ -180,7 +168,8 @@ $(document).ready(function() {
     sessionStorage.setItem("urlApi",urlApi);
     $('#showTablas').hide();
     cargarEstado(urlApi,'#selectEstadoI');
-    $('#showButton').hide();
+    //$('#showButton').hide();
+    $('#bSustituirI').prop('disabled', true);
     sessionStorage.removeItem("flag0");
     sessionStorage.removeItem("flagI");
 });
@@ -190,7 +179,8 @@ $("#selectEstadoI").change(function() {
     cargarClaseSocial(urlApi,'#selectClaseSocialI');
     
     $('#showTablas').hide();
-    $('#showButton').hide();
+    //$('#showButton').hide();
+    $('#bSustituirI').prop('disabled', true);
     sessionStorage.removeItem("flag0");
     sessionStorage.removeItem("flagI");
 });
@@ -202,14 +192,15 @@ $("#selectClaseSocialI").change(function() {
     cargarTablaHogaresMuestraIO(urlApi,"#TablaHogaresMuestraI",idEstado,claseSocial,1);
     cargarTablaHogaresMuestraIO(urlApi,"#TablaHogaresMuestra0",idEstado,claseSocial,0);
     $('#showTablas').show();
-    $('#showButton').hide();
+    //$('#showButton').hide();
+    $('#bSustituirI').prop('disabled', true);
     sessionStorage.removeItem("flag0");
     sessionStorage.removeItem("flagI");
 });
 </script>
 
 <script src="<?php echo base_url('jsHP/maestro.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsHogaresSustitutos.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsSustitucionHogares.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

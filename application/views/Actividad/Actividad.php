@@ -42,13 +42,13 @@ select:focus {
     width: auto;
 }
 </style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1><i class="bi bi-diagram-3"></i></i>&nbsp;Actividad</h1>
             </div>
-            
         </div>
     </div><!-- /.container-fluid -->
 </section>
