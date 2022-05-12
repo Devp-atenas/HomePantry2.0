@@ -46,10 +46,7 @@
     <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-es_ES.js"></script>    
     
-    <script src="<?php echo base_url('vendor/js/custom.min.js') ?>"></script>
-    <script src="<?php echo base_url('vendor/js/fastclick.js') ?>"></script>
-    <script src="<?php echo base_url('vendor/js/jquery.smartWizard.js') ?>"></script>
-    <script src="<?php echo base_url('vendor/js/nprogress.js') ?>"></script>
+    
     
     
     <!--Table Export -->

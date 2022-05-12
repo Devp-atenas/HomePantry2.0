@@ -1,3 +1,23 @@
+$(document).ready(function() {
+    /*let button = document.querySelector(".buttonNext");
+    button.disabled = true;*/
+    
+    $('.buttonNext').prop('disabled', true);
+});
+
+
+
+function msgCrearHogar(Codigo){
+    if (Codigo == ""){
+        Swal.fire(
+            'The Internet?',
+            'That thing is still around?',
+            'question'
+        )
+    }
+}
+
+
 function blanquearCamposPorActividad(idHogar) {
     var mURL = localStorage.getItem("urlApi")+'getCamposLimpiarAllStep/'+idHogar;
     alert(mURL);
@@ -12,11 +32,12 @@ function blanquearCamposPorActividad(idHogar) {
         }
     }
     $.ajax(settings).done(function(response) {
-        debugger;
+        //debugger;
         var tipoCampo;
         var valor;
         var idCampohtml;
         var idItemsHogar;
+
         for (var i = 0; i < response.data.length; i++) {
             tipoCampo = response.data[i].tipo_campohtml;
             idItemsHogar = response.data[i].id_itemsHogar;
@@ -195,6 +216,7 @@ function guardarValorNuevo(idHogar,idItemsHogar,valor) {
 }
 
 function limpiarCombo(Id_campohtml) {
+    
     switch (Id_campohtml) {
         case "estadoHogar":
             cargarEstado('#estadoHogar',0);
@@ -202,7 +224,7 @@ function limpiarCombo(Id_campohtml) {
             $("#municipioHogar").empty();
             $("#parroquiaHogar").empty();
             break;
-        case "estadoCivilResponsable":
+        /*case "estadoCivilResponsable":
             cargarEstadoCivil('#estadoCivilResponsable',0);
             break;
         case "parentescoJefeResponsable":
@@ -213,7 +235,7 @@ function limpiarCombo(Id_campohtml) {
             break;
         case "tipoIngresoResponsable":
             cargarTipoIngreso('#tipoIngresoResponsable',0);
-            break;
+            break;*/
         case "bancoTransferenciaResponsable":
             cargarBanco('#bancoTransferenciaResponsable',0);
             break;
@@ -307,7 +329,7 @@ function finalizarFicha(idHogar) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url":localStorage.getItem("urlApi")+'updateNSE_idHogar/'+idHogar,
+        "url":localStorage.getItem("urlApi")+'finalizarFicha_idHogar/'+idHogar,
         "method": "get",
         "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",

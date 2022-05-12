@@ -5,7 +5,13 @@ $(document).ready(function() {
 
 $('#selectTipoAlertas').change(function(){
     idTipoAlerta = $("#selectTipoAlertas").val();
-    cargarTablaAlertas4TipoAlerta('#TableAlert',idTipoAlerta)
+    if (idTipoAlerta != 2){
+        cargarTablaAlertas4TipoAlerta('#TableAlert',idTipoAlerta)
+    }else if (idTipoAlerta == 2){
+        cargarTablaAlertasFichaIncompleta('#TableAlert');
+    }
+    
+    
 });
 
 
@@ -74,6 +80,41 @@ $('#idResponderAlerta').click(function(){
         }
     })
 });
+
+function AlertaFichaIncompleta(idHogar) {
+    var settings = {
+        "url":localStorage.getItem("urlApi")+'addAlertaFichaIncompleta/'+idHogar,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+       
+       
+       
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
 
 
 
@@ -195,9 +236,6 @@ function showVisualizarAlerta(id) {
         }
     }
     $.ajax(settings).done(function(response) {
-        
-        
-
         if (response.data[0].Id_TipoAlerta == 1){
             if (response.data[0].Ind_RespuestaAlerta){
                 $("#inputAlertaVer").val(response.data[0].Alerta);
@@ -275,8 +313,6 @@ function cargarTablaAlertas4TipoAlerta(idDivTabla,idTipoAlerta){
         var IndRespuestaAlerta = cell.getRow().getData().Ind_RespuestaAlerta;
         var Alerta = cell.getRow().getData().Alerta;
         var IndRespuestaAlerta = cell.getRow().getData().Ind_RespuestaAlerta;
-        
-
         var botones =  "<a id='fg003' href='#' onclick='showResponderAlerta("+id+")' ><i class='bi bi-reply-fill text-info data-toggle='tooltip' data-placement='top' title='Responder'></i></a>"
                     +" <a id='fg003' href='#' onclick='showVisualizarAlerta("+id+"); return false;' ><i class='bi bi-search text-dark data-toggle='tooltip' data-placement='top' title='Visualizar'></i></a> ";
 
@@ -297,7 +333,7 @@ function cargarTablaAlertas4TipoAlerta(idDivTabla,idTipoAlerta){
                 "Authorization": "Bearer " + localStorage.getItem('Token')
             },
         },
-        height : "300px" ,
+        height : "280px" ,
         layout:"fitDataTable",//fitDataTable",
         progressload : "scroll",
         groupBy:"Alerta",
@@ -330,6 +366,44 @@ function cargarTablaAlertas4TipoAlerta(idDivTabla,idTipoAlerta){
             }},
             {title:"Fecha de la Alerta", field:"Fec_Ult_Mod", sorter:"number"},
             {formatter:bottomAcciones, hozAlign:"right"}
+        ],
+    });
+}
+function cargarTablaAlertasFichaIncompleta(idDivTabla){
+    table = new Tabulator(idDivTabla, {
+        ajaxURL: localStorage.getItem("urlApi")+'getHogaresFichaIncompleta/',
+        ajaxConfig:{
+            method:"GET", //set request type to Position
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+        },
+        height : "280px" ,
+        layout:"fitDataStretch",//,fitDataStretch,fitDataTable",
+        progressload : "scroll",
+        //paginationSize : 20,
+        placeholder:"Datos no encontrados",
+        selectable:1,
+        selectablePersistence:true, //make rows selectable
+        columns:[
+            {title:"Creado por:", field:"Creado", sorter:"string"},
+            {title:"Fecha", field:"Fec_Ult_Mod", sorter:"number"},
+            {title:"Id PanelHogar", field:"Id_PanelHogar", sorter:"number"},
+            {title:"CodigoHogar", field:"CodigoHogar", sorter:"string"},
+            {title:"Estado", field:"Estado", sorter:"string"},
+            {title:"Ciudad", field:"Ciudad", sorter:"string"},
+            {title:"Municipio", field:"Municipio", sorter:"string"},
+            {title:"Parroquia", field:"Parroquia", sorter:"string"},
+            {title:"Responsable del hogar", field:"ind_paso2", sorter:"number", hozAlign:"center", formatter:"tickCross"},
+            {title:"Jefe del Hogar", field:"ind_paso3", sorter:"number", hozAlign:"center", formatter:"tickCross"},
+            {title:"Composición del hogar", field:"ind_paso4", sorter:"number", hozAlign:"center", formatter:"tickCross"},
+            {title:"Características y tenencia", field:"ind_paso5", sorter:"number", hozAlign:"center", formatter:"tickCross"},
+            {title:"Servicios Público", field:"ind_paso6", sorter:"number", hozAlign:"center", formatter:"tickCross"},
+            {title:"Servicios y equipamiento", field:"ind_paso7", hozAlign:"center", sorter:"number", formatter:"tickCross"},
+            {title:"Medios", field:"ind_paso8", sorter:"number", hozAlign:"center", formatter:"tickCross"},
+            {title:"Vehículos", field:"ind_paso9", sorter:"number", hozAlign:"center", formatter:"tickCross"},
+            {title:"Mascotas", field:"ind_paso10", sorter:"string", hozAlign:"center", formatter:"tickCross"}
         ],
     });
 }

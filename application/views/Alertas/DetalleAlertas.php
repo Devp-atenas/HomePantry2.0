@@ -1,55 +1,24 @@
 <!-- Content Header (Page header) -->
 <?php $this->load->view('Plantillas/Header');?>
-<style>
-.table.dataTable {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 10px;
-}
-
-.table.dataTable thead,tfoot {
-    background: linear-gradient(to right, #D69232, #B6a232, #D69232);
-    color: white;
-    /*font-bold: weight;*/
-    /*font-weight: bold;*/
-    font-weight: 900;
-    
-}
-
-table.dataTable thead .sorting_asc,
-.sorting_desc,
-.sorting {
-    background-image: none !important;
-}
-
-#tablaValPrecios {
-    table-layout: fixed;
-    width: 100% !important;
-}
-
-#tablaValPrecios td,
-#tablaValPrecios th {
-    width: auto !important;
-    white-space: normal;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-#tablaValPrecios select {
-    width: 50px;
-}
-
-select:focus {
-    width: auto;
-}
-</style>
 
 <!-- Content Header (Page header) -->
 
 <!-- Main content Agregar Producto 11111-->
 <!-- /Windows datatables Producto Rango-->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            
+                <h1><i class="bi bi-bell"></i>&nbsp;Detalle de alertas</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
 <section class="content">
     <div class="container-fluid">
-    <h2 class="text-center">Alertas</h2>
+    
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">

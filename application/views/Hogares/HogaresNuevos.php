@@ -209,12 +209,22 @@
                         </div>
                     </div>
                     <HR/>
-                    <div class="row">
+                    <div class="row align-items-end">
                         <div class="col text-center">
-                            <button id="guardar-step-1" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-1" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
+                    <div class="row" style="visibility:hidden;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">id:</label>
+                                <input type="text" name="" id="" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    
                 </form>
+                
             </div>
             <div id="step-2">
                 <form id="formResponsableHogar" action="" method="post">
@@ -533,7 +543,7 @@
                     <br />
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-2" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-2" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -717,7 +727,7 @@
                 </div>
                 <div class="row">
                     <div class="col text-center">
-                        <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                        <button id="guardar-paso-3" type="button" class="btn btn-outline-success">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -887,7 +897,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col text-center">
-                                                    <button id="guardar-step-4" type="button" class="btn btn-outline-success">Guardar</button>
+                                                    <button id="guardar-paso-4" type="button" class="btn btn-outline-success">Guardar</button>
                                                 </div>
                                             </div>
                                             <!--/step 4-->
@@ -1010,7 +1020,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-5" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-5" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 5-->
@@ -1103,7 +1113,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-6" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-6" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 6-->
@@ -1480,7 +1490,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-7" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-7" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 7-->
@@ -1573,7 +1583,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-8" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-8" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 8-->
@@ -1623,7 +1633,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-9" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-9" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 9-->
@@ -1667,7 +1677,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-10" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-10" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <HR/>
@@ -2179,9 +2189,36 @@
     <!-- /.modal-dialog -->
 </div>
 
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="<?php echo base_url('vendor/js/custom.min.js') ?>"></script>
+<script src="<?php echo base_url('vendor/js/fastclick.js') ?>"></script>
+<script src="<?php echo base_url('vendor/js/jquery.smartWizard.js') ?>"></script>
+<script src="<?php echo base_url('vendor/js/nprogress.js') ?>"></script>
+
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosCombos.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsAlertas.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosFunciones.js') ?>"></script>
 <script>
+    //$('.buttonNext').prop('disabled', true);
     fechaNacimientoResponsable.max = new Date().toISOString().split("T")[0];
     fechaNacimientoJefe.max = new Date().toISOString().split("T")[0];
     fechaNacimientoComposicion.max = new Date().toISOString().split("T")[0];
@@ -2494,6 +2531,10 @@
         editPanelistasResponsableJefe(idHogar,0,1);
         localStorage.setItem('flagActividad',1);
         localStorage.removeItem('idHogarEditar');
+        cargarEducacion('#educacionComposicion',0);
+        cargarEstadoCivil('#estadoCivilComposicion',0);
+        cargarParentesco('#parentescoJefeComposicion',0);
+        cargarTipoIngreso('#tipoIngresoComposicion',0);
         /*
             blanquearCamposPorActividad(idHogar); esta dentro de editPanelistasResponsableJefe
         */
@@ -2541,7 +2582,8 @@
     
     
     // Ubicacion del hogar PASO 1
-    $("#guardar-step-1").click(function() {
+    $("#guardar-paso-1").click(function() {
+        var idHogar2 = $("#identificacion2Hogar").val();
         var camposVacios = "";
         if ($.trim($('#estadoHogar').val()) === '') {
             camposVacios += "Seleccione estado <br>";
@@ -2643,6 +2685,11 @@
             $.ajax(settings).done(function(response) {
                 $("#identificacion1Hogar").val(response.Codi_Hogar);
                 $("#identificacion2Hogar").val(response.maxIDPanelHogar);
+                
+                if (idHogar2 == ""){
+                    AlertaFichaIncompleta(response.maxIDPanelHogar);
+                }
+                
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,1);
@@ -2690,7 +2737,7 @@
         }
     });
     // Responsable del hogar PASO 2
-    $("#guardar-step-2").click(function() {
+    $("#guardar-paso-2").click(function() {
         var camposVacios = "";
         //var camposVaciosX = "";
         if ($.trim($('#estadoCivilResponsable').val()) === '') {
@@ -2890,7 +2937,7 @@
         }
     });
     // Jefe del Hogar PASO 3
-    $("#guardar-step-3").click(function() {
+    $("#guardar-paso-3").click(function() {
         var jefeResponsableIO = $('input:radio[name=jefeResponsableIO]:checked').val();
         var camposVacios = "";
         if ($.trim($('#estadoCivilJefe').val()) === '') {
@@ -3031,7 +3078,7 @@
         }
     });
     // Composición del Hogar PASO 4
-    $("#guardar-step-4").click(function() {
+    $("#guardar-paso-4").click(function() {
         var camposVacios = "";
 
         if ($.trim($('#estadoCivilComposicion').val()) === '') {
@@ -3199,7 +3246,7 @@
     });
 
     // Características y tenencia de la vivienda PASO 5
-    $("#guardar-step-5").click(function() {
+    $("#guardar-paso-5").click(function() {
         var camposVacios = "";
 
         if ($("#tipoVivienda").val() == "12") {
@@ -3302,7 +3349,7 @@
         }
     });
     // Servicios Públicos PASO 6
-    $("#guardar-step-6").click(function() {
+    $("#guardar-paso-6").click(function() {
         var camposVacios = "";
         if (!$("input[name='servicioElectricidad']:radio").is(':checked')) {
             camposVacios += "Seleccione servicio de electricidad<br>";
@@ -3393,7 +3440,7 @@
         }
     });
     // Servicios y equipamiento del hogar PASO 7
-    $("#guardar-step-7").click(function() {
+    $("#guardar-paso-7").click(function() {
         var camposVacios = "";
         if (!$("input[name='domesticaFija']:radio").is(':checked')) {
             camposVacios += "Seleccione doméstica fija<br>";
@@ -3605,7 +3652,7 @@
         }
     });
     // Medios PASO 8
-    $("#guardar-step-8").click(function() {
+    $("#guardar-paso-8").click(function() {
         var camposVacios = "";
         if ($.trim($('#cantidadTV').val()) === '') {
             camposVacios += "Seleccione  cantidad de televisores<br>";
@@ -3718,7 +3765,7 @@
         }
     });
     // Vehículos PASO 9
-    $("#guardar-step-9").click(function() {
+    $("#guardar-paso-9").click(function() {
         var camposVacios = "";
         if ($.trim($('#totalAutos').val()) === '') {
             camposVacios += "Seleccione  cantidad de televisores<br>";
@@ -3807,7 +3854,7 @@
         }
     });
     // Mascotas PASO 10
-    $("#guardar-step-10").click(function() {
+    $("#guardar-paso-10").click(function() {
         var camposVacios = "";
         
         if (camposVacios != "") {
@@ -3897,7 +3944,7 @@
         }
     });
 
-    $("#guardar-ficha").click(function() {
+    $("#guardar-ficha_").click(function() {
         var Perro = document.getElementById('Perro').checked ? 1 : 0;
         var Gato = document.getElementById('Gato').checked ? 1 : 0;
         var Pez = document.getElementById('Pez').checked ? 1 : 0;
@@ -4044,44 +4091,58 @@
         $.ajax(settings).done(function(response) {
             var camposVacios = "";
             if ( $("#identificacion2Hogar").val() == ""){
-                camposVacios += "Falta completar Ubicacion del hogar<br>";
+                camposVacios += " Falta completar Ubicacion del hogar<br>";
             }
             if (response.data[0].Ind_paso2 == 0){
-                camposVacios += "Falta completar responsable del hogar<br>";
+                camposVacios += "Responsable del hogar<br>";
             }
             if (response.data[0].Ind_paso3 == 0){
-                camposVacios += "Falta completar jefe del Hogar<br>";
+                camposVacios += "Jefe del Hogar<br>";
             }
             if (response.data[0].Ind_paso4 == 0){
-                camposVacios += "Falta completar composición del hogar<br>";
+                camposVacios += "Composición del hogar<br>";
             }
             if (response.data[0].Ind_paso5 == 0){
-                camposVacios += "Falta completar características y tenencia de la vivienda<br>";
+                camposVacios += "Características y tenencia de la vivienda<br>";
             }
             if (response.data[0].Ind_paso6 == 0){
-                camposVacios += "Falta completar servicios Públicos<br>";
+                camposVacios += "Servicios Públicos<br>";
             }
             if (response.data[0].Ind_paso7 == 0){
-                camposVacios += "Falta completar servicios y equipamiento del hogar<br>";
+                camposVacios += "Servicios y equipamiento del hogar<br>";
             }
             if (response.data[0].Ind_paso8 == 0){
-                camposVacios += "Falta completar medios<br>";
+                camposVacios += "Medios<br>";
             }
             if (response.data[0].Ind_paso9 == 0){
-                camposVacios += "Falta completar vehículos<br>";
+                camposVacios += "Vehículos<br>";
             }
             if (response.data[0].Ind_paso10 == 0){
-                camposVacios += "Falta completar mascotas<br>";
+                camposVacios += "Mascotas<br>";
             }
 
             if (camposVacios != "") {
-                alert(camposVacios);
+                Swal.fire({
+                    title: '<strong>Complete y guarde los siguientes pasos para poder finalizar</strong>',
+                    icon: 'warning',
+                    html:camposVacios,
+                    showCloseButton: false,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText:
+                        '<i class="bi bi-clipboard-x"></i> OK!',
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                    cancelButtonText:
+                        '',
+                    cancelButtonAriaLabel: ''
+                })
+                
+                /*alert(camposVacios);
                 $(function() {
                     $('#modal-bodyFinalizar').html(camposVacios);
                 });
-                $('#myModalFinalizar').modal('show');
+                $('#myModalFinalizar').modal('show');*/
             } else {
-                alert(camposVacios);
                 finalizarFicha( $("#identificacion2Hogar").val());
                 const Toast = Swal.mixin({
                 toast: true,
