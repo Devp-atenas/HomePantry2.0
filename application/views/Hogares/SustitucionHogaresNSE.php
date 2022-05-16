@@ -14,8 +14,6 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            
-            
             <div class="form-group row mb-0 mt-0">
                 <div class="col-md-4">
                     <label class="inputText font-weight-bold">Estado:</label>
