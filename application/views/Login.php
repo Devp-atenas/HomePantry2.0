@@ -78,7 +78,7 @@ if(!isset($_SESSION)){
             </div>
         </div>
     </body>
-    
+    <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
     <!-- jQuery -->
     <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
     <!-- Bootstrap 4 -->
@@ -97,7 +97,6 @@ if(!isset($_SESSION)){
                 //alert("Hola 1: "+data.ip);
                 var IP2 = data.ip;
                 localStorage.setItem("IPHP20",data.ip);
-                            
         });
 
         $(function() {
@@ -129,20 +128,9 @@ if(!isset($_SESSION)){
                             localStorage.setItem("nombreUsuario",data.nombreUsuario);
                             localStorage.setItem("IdUsuario",data.IdUsuario);
                             localStorage.setItem("Avatar",data.Avatar);
-                            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar",localStorage.getItem("IdUsuario"),"R");
-                            //generarMenu($("#user").val());
-                            //localStorage.setItem("Nivel",data.Nivel);
-                            //localStorage.setItem("ID_Nivel",data.ID_Nivel);
-                            //localStorage.setItem("Cliente",data.Cliente);
-                            //localStorage.setItem("ID_Cliente",data.ID_Cliente);
-                            //localStorage.setItem("ApellidosUsuarios",data.ApellidosUsuarios);
-                            //localStorage.setItem("menu",JSON.stringify(data.menu));
+                            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
                             var form = document.querySelector('#quickForm');
                             form.reset();
-                            $('#exampleInputEmail1').val('');
-                            $('#exampleInputPassword1').val('');
-                            var token = data.token;
-                            var us = data.Login;
                             const Toast = Swal.mixin({
                                 toast: true,
                                 position: 'top-end',
@@ -261,60 +249,6 @@ if(!isset($_SESSION)){
                     TT += '</li>';
                 });
             localStorage.setItem("menuXD", TT);
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
-
-        function Bitacora(idUsuario,IP,Operacion,idPrincipal,CRUD) {
-            var urlApi = localStorage.getItem("urlApi");
-            var settings = {
-                "url":urlApi+'addHistory',
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
-                "data": {
-                    "idUsuario": idUsuario,
-                    "IP": IP,
-                    "Operacion": Operacion,
-                    "idPrincipal": idPrincipal,
-                    "CRUD": CRUD
-                }
-            }
-            $.ajax(settings).done(function(response) {
-                let selected = $(etiqueta);
-                selected.find("option").remove();
-                if (idSeleccionado == 0){
-                    selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-                }
-                for (var i = 0; i < response.data.length; i++) {
-                    if (response.data[i].Id_Area == idSeleccionado) {
-                        selected.append("<option value=" + response.data[i].Id_Area + " selected>" +
-                            response.data[i].Id_Area + " - " + response.data[i].Area + "</option>");
-                    } else {
-                        selected.append("<option value=" + response.data[i].Id_Area + ">" + response
-                            .data[i].Id_Area + " - " + response.data[i].Area + "</option>");
-                    }
-                }
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({

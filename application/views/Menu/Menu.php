@@ -28,7 +28,7 @@
             $.each(response, function(menuKey, menuValue) {
                 TT += '<li class="nav-item">'
                 +       '<a href="#" class="nav-link">'
-                +           '<i class="nav-icon fas fa-circle"></i>'
+                +           '<i class="nav-icon bi bi-menu-app-fill"></i>'
                 +           '<p>'+menuKey+'<i class="right fas fa-angle-left"></i></p>'
                 +       '</a>'
                 +       '<ul class="nav nav-treeview">';
@@ -36,7 +36,7 @@
                 url = "<?php echo base_url('"+subMenuValue.Url+"');?>"
                 TT += '<li class="nav-item">'
                     +              '<a href="'+url+'" class="nav-link">'
-                    +                  '<i class="far fa-dot-circle nav-icon"></i>'
+                    +                  '<i class="nav-icon '+subMenuValue.icon+'"></i>'
                     +                  '<p>'+subMenuValue.Nombre+'</p>'
                     +              '</a>'
                     +          '</li>';

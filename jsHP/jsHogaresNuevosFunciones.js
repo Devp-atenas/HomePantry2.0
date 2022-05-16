@@ -991,7 +991,9 @@ function HogarEditar() {
         $("#claseSocialInformacion").val(response.data[0].ClaseSocial);
         $("#fechaRegistroInformacion").val(response.data[0].Fec_Registro);
 
-        blanquearCamposPorActividad(idHogar);
+        if (response.data[0].Ind_fichaCompleta == 1){
+            blanquearCamposPorActividad(idHogar);
+        }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({

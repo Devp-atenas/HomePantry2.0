@@ -2217,313 +2217,12 @@
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosCombos.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsAlertas.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosFunciones.js') ?>"></script>
-<script>
-    //$('.buttonNext').prop('disabled', true);
+
+<script type="text/javascript">
     fechaNacimientoResponsable.max = new Date().toISOString().split("T")[0];
     fechaNacimientoJefe.max = new Date().toISOString().split("T")[0];
     fechaNacimientoComposicion.max = new Date().toISOString().split("T")[0];
-        //jQuery.noConflict();
-    /*$().ready(function() {
-        $("#formcontacto").validate({
-            rules: {
-                nombreCasa: {
-                    required: true,
-                    minlength: 2
-                },
-                escaleraCasa: {
-                    required: true,
-                    minlength: 1
-                },
-                nombreEdificio: {
-                    required: true,
-                    minlength: 3
-                },
-                apartamentoEdificio: {
-                    required: true,
-                    minlength: 1
-                },
-                telefonoHogar: {
-                    required: true,
-                    minlength: 11
-                },
-                referenciaHogar: {
-                    required: true
-                },
-                primerNombreResponsable: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoNombreResponsable: {
-                    required: true
-                },
-                primerApellidoResponsable: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoApellidoResponsable: {
-                    required: true
-                },
-                cedulaResponsable: {
-                    required: true,
-                    minlength: 6
-                },
-                celularResponsable: {
-                    required: true,
-                    minlength: 11
-                },
-                celularAdicionalResponsable: {
-                    required: true,
-                    minlength: 11
-                },
-                numeroCortesiaResponsable: {
-                    required: true,
-                    minlength: 11
-                },
-                correoResponsable: {
-                    required: true
-                },
-                correoAlternoResponsable: {
-                    required: true
-                },
-                titularTransferenciaResponsable: {
-                    required: true,
-                    minlength: 2
-                },
-                cedulaTransferenciaResponsable: {
-                    required: true,
-                    minlength: 6
-                },
-                numeroCuentaResponsable: {
-                    required: true,
-                    minlength: 20
-                },
-                primerNombreJefe: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoNombreJefe: {
-                    required: true,
-                    minlength: 2
-                },
-                primerApellidoJefe: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoApellidoJefe: {
-                    required: true,
-                    minlength: 2
-                },
-                cedulaJefe: {
-                    required: true,
-                    minlength: 6
-                },
-                celularJefe: {
-                    required: true,
-                    minlength: 11
-                },
-                celularAdicionalJefe: {
-                    required: true,
-                    minlength: 11
-                },
-                correoJefe: {
-                    required: true,
-                    minlength: 5
-                },
-                primerNombreComposicion: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoNombreComposicion: {
-                    required: true,
-                    minlength: 2
-                },
-                primerApellidoComposicion: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoApellidoComposicion: {
-                    required: true,
-                    minlength: 2
-                },
-                cedulaComposicion: {
-                    required: true,
-                    minlength: 6
-                },
-                celularComposicion: {
-                    required: true,
-                    minlength: 11
-                },
-                celularAdicionalComposicion: {
-                    required: true,
-                    minlength: 11
-                },
-                correoComposicion: {
-                    required: true,
-                    minlength: 5
-                },
-                especifiqueTipoVivienda: {
-                    minlength: 3
-                },
-                numeroAmbientes: {
-                    required: true,
-                    minlength: 1
-                },
-                numeroBanos: {
-                    required: true,
-                    minlength: 1
-                },
-                especifiqueOcupacionVivienda: {
-                    minlength: 3
-                }
-            },
-            messages: {
-                nombreCasa: {
-                    required: "Por favor Ingrese Nombre de la casa completo",
-                    minlength: "Debe tener al menos 3 caracteres"
-                },
-                escaleraCasa: {
-                    required: "Por favor intoduzca la escalera",
-                    minlength: "Debe tener al menos 1 caracteres"
-                },
-                nombreEdificio: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 3 caracteres"
-                },
-                apartamentoEdificio: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 1 caracteres"
-                },
-                telefonoHogar: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Telefono incompleto"
-                },
-                referenciaHogar: {
-                    required: "Por favor intoduzca Valor"
-                },
-                primerNombreResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoNombreResponsable: {
-                    required: "Por favor intoduzca Valor"
-                },
-                primerApellidoResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoApellidoResponsable: {
-                    required: "Por favor intoduzca Valor"
-                },
-                cedulaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 6 caracteres"
-                },
-                celularResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                celularAdicionalResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 11 caracteres"
-                },
-                numeroCortesiaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 11 caracteres"
-                },
-                titularTransferenciaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                cedulaTransferenciaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 6 caracteres"
-                },
-                numeroCuentaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 20 digitos"
-                },
-                primerNombreJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoNombreJefe: {
-                    required: "Por favor intoduzca Valor"
-                },
-                primerApellidoJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoApellidoJefe: {
-                    required: "Por favor intoduzca Valor"
-                },
-                cedulaJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 6 caracteres"
-                },
-                celularJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                celularAdicionalJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                correoJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 5 caracteres"
-                },
-                primerNombreComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoNombreComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                primerApellidoComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoApellidoComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                cedulaComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 6 caracteres"
-                },
-                celularComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                celularAdicionalComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                correoComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 5 caracteres"
-                },
-                especifiqueTipoVivienda: {
-                    minlength: "Debe tener al menos 3 caracteres"
-                },
-                numeroAmbientes: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 1 caracteres"
-                },
-                numeroBanos: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 1 caracteres"
-                },
-                especifiqueOcupacionVivienda: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 3 caracteres"
-                },
-            }
-        });
-    });*/
-</script>
-<script type="text/javascript">
+    
     if (localStorage.getItem("idHogarEditar") !== null) {
         HogarEditar();
         var idHogar = localStorage.getItem("idHogarEditar");
@@ -2710,7 +2409,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 1",$("#identificacion2Hogar").val(),"C");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 1 (idPanelHogar)",$("#identificacion2Hogar").val(),"C");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -2910,7 +2609,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 2",$("#identificacion2Hogar").val(),"C");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 2 (idPanelHogar)",$("#identificacion2Hogar").val(),"C");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3051,7 +2750,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 3",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 3 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3196,8 +2895,7 @@
                 cargarTablaComposicion($("#identificacion2Hogar").val());
                 var form = document.querySelector('#formComposicionHogar');
                 form.reset();
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 4",$("#identificacion2Hogar").val(),"U");
-                
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 4 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3322,7 +3020,7 @@
                     confirmButtonText: `Ok`,
                 })
 
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 5",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 5 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3413,7 +3111,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 6",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 6 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3625,7 +3323,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 7",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 7 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3738,7 +3436,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 8",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 8 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3827,7 +3525,7 @@
                     var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,9);
                 }
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 9",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 9 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3917,7 +3615,7 @@
                     var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,10);
                 }
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 10 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -4046,7 +3744,7 @@
                 title: response.message,
                 confirmButtonText: `Ok`,
             })
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 10",$("#identificacion2Hogar").val(),"U");
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({
@@ -4160,7 +3858,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Ficha Finalizada (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
