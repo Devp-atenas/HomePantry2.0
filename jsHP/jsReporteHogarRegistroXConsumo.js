@@ -1,15 +1,10 @@
 $(document).ready(function() {
-    //$("#showTableReporteConsumoXDia").hide();
     cargarPeriodo('#selectPeriodo',0);
-    //cargarEstado('#selectEstado',0);
-    //cargarSemanaTop6('#selectSemana',0);
-    //cargarTablaReporteConsumo("","","",3000);
 });
 
 $("#selectPeriodo").change(function() {
-    $("#showTableReporteConsumoXDia").hide();
+    $("#showTableReporteHogarRegistroXConsumo").hide();
     cargarTipoConsumo("#selecTipoConsumo",0);
-    
 });
 
 $("#selecTipoConsumo").change(function() {
@@ -17,7 +12,6 @@ $("#selecTipoConsumo").change(function() {
     var idTipoConsumo = $('#selecTipoConsumo').val();
     cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo);
     $("#showTableReporteHogarRegistroXConsumo").show();
-    
 });
 
 
@@ -207,23 +201,58 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
             },
             {
                 mData: 'detalle_1',
-                className: "text-center"
+                className: "text-center",
+                render: function (data, type, row) {
+                    if (data != "0-0"){
+                        return "<a id='fg003' href='#' onclick='callReporteConsumoHogar("+row.Id_Semana_1+","+row.Id_Area+","+row.Id_Estado+","+row.Id_PanelHogar+"); return false;' >"+data+"</a>";
+                    }else{
+                        return data;
+                    }
+                }
             },
             {
                 mData: 'detalle_2',
-                className: "text-center"
+                className: "text-center",
+                render: function (data, type, row) {
+                    if (data != "0-0"){
+                        return "<a id='fg003' href='#' onclick='callReporteConsumoHogar("+row.Id_Semana_2+","+row.Id_Area+","+row.Id_Estado+","+row.Id_PanelHogar+"); return false;' >"+data+"</a>";
+                    }else{
+                        return data;
+                    }
+                }
             },
             {
                 mData: 'detalle_3',
-                className: "text-center"
+                className: "text-center",
+                render: function (data, type, row) {
+                    if (data != "0-0"){
+                        return "<a id='fg003' href='#' onclick='callReporteConsumoHogar("+row.Id_Semana_3+","+row.Id_Area+","+row.Id_Estado+","+row.Id_PanelHogar+"); return false;' >"+data+"</a>";
+                    }else{
+                        return data;
+                    }
+                }
             },
             {
                 mData: 'detalle_4',
-                className: "text-center"
+                className: "text-center",
+                render: function (data, type, row) {
+                    if (data != "0-0"){
+                        return "<a id='fg003' href='#' onclick='callReporteConsumoHogar("+row.Id_Semana_4+","+row.Id_Area+","+row.Id_Estado+","+row.Id_PanelHogar+"); return false;' >"+data+"</a>";
+                    }else{
+                        return data;
+                    }
+                }
             },
             {
                 mData: 'detalle_5',
-                className: "text-center"
+                className: "text-center",
+                render: function (data, type, row) {
+                    if (data != "0-0"){
+                        return "<a id='fg003' href='#' onclick='callReporteConsumoHogar("+row.Id_Semana_5+","+row.Id_Area+","+row.Id_Estado+","+row.Id_PanelHogar+"); return false;' >"+data+"</a>";
+                    }else{
+                        return data;
+                    }
+                }
             }
         ],
         "columnDefs": [{
@@ -284,18 +313,12 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
                     $('td', row).eq(12).css('color', '#FFFFFF');
                 }
             }*/
-        }
+        },
+        
     });
    
-    $('#TablaRegistroXConsumo tbody').on('click', 'td', function () {
-        
-        alert( oTable.cell( this ).data() );
-        alert( oTable.cell( 3 ).data() );
-        
-        //window.location = '/homepantry20/index.php';
-    } );
+   
 }
-
 
 
 

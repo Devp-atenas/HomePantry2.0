@@ -46,8 +46,8 @@ select:focus {
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
+            <div class="col-sm-12">
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte Hogar Registro por Consumo</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -55,7 +55,6 @@ select:focus {
 
 <section class="content">
     <div class="container-fluid">
-    <h2 class="text-center">Hogar Registrso por Consumo</h2>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
@@ -111,6 +110,31 @@ select:focus {
 <?php $this->load->view('Plantillas/Footer');?>
 
 <script src="<?php echo base_url('jsHP/jsReporteHogarRegistroXConsumo.js') ?>"></script>
+
+
+<script>
+    function callReporteConsumoHogar(idSemana,idArea,idEstado,idHogar){
+        var idTipoConsumo = $('#selecTipoConsumo').val();
+        localStorage.setItem("idSemana", idSemana);
+        localStorage.setItem("idArea", idArea);
+        localStorage.setItem("idEstado", idEstado);
+        localStorage.setItem("idPanelHogar", idHogar);
+        localStorage.setItem("flagHogarRegCon", 1);
+        localStorage.setItem("idTipoConsumo",idTipoConsumo);
+            
+        var win = window.open("<?php echo base_url('Principal/ReporteConsumoPorHogar')?>", '_blank');
+        win.focus();
+        
+    }
+
+
+
+
+</script>
+
+
+
+
 
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>

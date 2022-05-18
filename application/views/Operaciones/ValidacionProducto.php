@@ -934,7 +934,7 @@ function cargarTabla(id_semanaT,id_categoriaT,id_productoT,minimo,maximo){
             {title:"Estado", field:"Estado", sorter:"string"},
             {title:"Fecha de Creacion", field:"Fecha_Creacion", hozAlign:"center", sorter:"number"},
             {title:"Acciones",formatter:bottomAcciones, hozAlign:"center", maxWidth : 200}
-                ],
+        ],
             });
 
     document.getElementById("bottonProcesarValidarProducto").addEventListener("click", function(){
