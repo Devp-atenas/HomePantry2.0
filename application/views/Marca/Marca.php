@@ -137,18 +137,17 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                        <!--
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="inputText font-weight-bold">Categoria:</div>
-                                    <select id="inputCategoriaTabla" name="inputCategoriaTabla" class="form-control">
-                                    </select>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Categoria:</div>
+                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
--->
-                            <table id="TableMarca" class="table table-bordered table-striped">
+
+                            <table id="TableMarca" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
                                         <th>Categoria</th>
@@ -160,7 +159,6 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Categoria</th>
@@ -951,8 +949,16 @@ $("#botonenviar").click(function() {
     }
 });
 
+$("#selectCategoriaTabla").change(function() {
+    var id_categoriaT = $("#selectCategoriaTabla").val();
+    //console.log(id_categoriaT);
+    cargarTabla(id_categoriaT);
+    $('#TableMarca').show();
+});
+
 $(document).ready(function() {
     cargarCategoria("#inputCategoria");
+    cargarCategoria("#selectCategoriaTabla");
     cargarFabricante("#inputFabricante");
     $('#FormMarcaEdit').validate({
         rules: {
@@ -1003,6 +1009,8 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
+    
+    
     $('#FormMarca').validate({
         rules: {
             inputCategoria: {
@@ -1056,9 +1064,9 @@ $(document).ready(function() {
     //cargarCategoria("#inputCategoriaTabla");
     
     
+});
     
-    
- 
+function cargarTabla(Id){
     $('#TableMarca').dataTable({
         
         "lengthMenu": [
@@ -1073,10 +1081,11 @@ $(document).ready(function() {
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "ajax": {
-            "url": '<?php echo urlApi; ?>getAllMarca',
+            "url": '<?php echo urlApi; ?>getMarca4Categoria/'+Id,
             "type": "GET",
             "headers": {
-                /*'Authorization': 'bearer ' + localStorage.getItem('Token')*/
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
@@ -1141,9 +1150,9 @@ $(document).ready(function() {
             }
         }],
     });
-    
+}
 
-});
+
 </script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

@@ -5,15 +5,14 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Tipo de Consumo por Dia</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
 
 <section class="content">
-    <div class="container-fluid">
-    <h2 class="text-center">Tipo de Consumo por Dia</h2>
+    <div class="container-fluid">Tipo de Consumo por Dia
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">

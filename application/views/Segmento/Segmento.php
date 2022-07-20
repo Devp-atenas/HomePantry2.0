@@ -7,13 +7,6 @@
             <div class="col-sm-6">
                 <h1><i class="fas fa-cubes"></i>&nbsp;Mantenimiento de Segmento:</h1>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="<?php echo base_url('Principal/dashboard') ?>">Inicio</a></li>
-                    <li class="breadcrumb-item active"><a href="<?php echo base_url('Principal/logout') ?>">Salir</a>
-                    </li>
-                </ol>
-            </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -98,7 +91,17 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="TableSegmento" class="table table-bordered table-striped table-sm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Categoria:</div>
+                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table id="TableSegmento" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
                                         <th>Categoria</th>
@@ -398,9 +401,9 @@ function cargarCategoriaEdit(idCategoria) {
         "url": '<?php echo urlApi; ?>getAllCategoria',
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         let selectCategoriaEdit = $("#inputCategoriaEdit");
@@ -520,12 +523,12 @@ function cargarCategoria() {
         "url": '<?php echo urlApi; ?>getAllCategoria',
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
-        let select = $("#inputCategoria");
+        let select = $("#selectCategoriaTabla");
         select.find("option").remove();
         select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         for (var i = 0; i < response.data.length; i++) {
@@ -562,9 +565,9 @@ $("#botonenviar").click(function() {
             "url": '<?php echo urlApi; ?>addNewSegmento',
             "method": "POST",
             "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
             "data": {
                 "Id_Categoria": $("#inputCategoria").val(),
                 "Segmento": $("#inputSegmento").val(),
@@ -617,6 +620,15 @@ $("#botonenviar").click(function() {
         })
     }
 });
+
+$("#selectCategoriaTabla").change(function() {
+    var id_categoriaT = $("#selectCategoriaTabla").val();
+    //console.log(id_categoriaT);
+    cargarTabla(id_categoriaT);
+    $('#TableSegmento').show();
+});
+
+
 $(document).ready(function() {
     cargarCategoria();
     $('#FormSegmentoEdit').validate({
@@ -709,6 +721,10 @@ $(document).ready(function() {
         }
     });
     document.getElementById('FormSegmento').reset();
+    
+});
+
+function cargarTabla(Id){
     $('#TableSegmento').dataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
@@ -722,12 +738,12 @@ $(document).ready(function() {
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "ajax": {
-            "url": '<?php echo urlApi; ?>getAllSegmento',
+            "url": '<?php echo urlApi; ?>getSegmento4Categoria/'+Id,
             "type": "GET",
             "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
                     var err = JSON.parse(xhr.responseText);
@@ -779,7 +795,9 @@ $(document).ready(function() {
             }
         }],
     });
-});
+}
+
+
 </script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

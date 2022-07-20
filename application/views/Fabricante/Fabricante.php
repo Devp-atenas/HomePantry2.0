@@ -514,7 +514,7 @@ function cargarCategoriaEdit(idCategoria) {
 function EditAction(data) {
     document.getElementById('FormFabricanteEdit').reset();
     var settings = {
-        "url": '<?php echo urlApi; ?>getFabricanteId/' + data,
+        "url": '<?php echo urlApi; ?>getFabricanteIdV1/' + data,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -557,12 +557,12 @@ function EditAction(data) {
 
 function VisualizarAction(data) {
     var settings = {
-        "url": '<?php echo urlApi; ?>getFabricanteId/' + data,
+        "url": '<?php echo urlApi; ?>getFabricanteIdV1/' + data,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
-            /*'Authorization': 'bearer ' + localStorage.getItem('Token')*/
-        }
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
     }
     $.ajax(settings).done(function(response) {
         $('#inputFabricanteVer').val(response.data[0].Fabricante);
@@ -699,7 +699,8 @@ $("#botonenviar").click(function() {
     }
 });
 $(document).ready(function() {
-    cargarCategoria();
+    //cargarCategoria();
+    cargarTabla();
     $('#FormFabricanteEdit').validate({
         rules: {
             inputCategoriaEdit: {
@@ -775,6 +776,10 @@ $(document).ready(function() {
         }
     });
     document.getElementById('FormFabricante').reset();
+    
+});
+
+function cargarTabla(){
     $('#TableFabricante').dataTable({
         "lengthMenu": [
             [10, 20, 50, -1],
@@ -791,7 +796,8 @@ $(document).ready(function() {
             "url": '<?php echo urlApi; ?>getAllFabricante',
             "type": "GET",
             "headers": {
-                /*'Authorization': 'bearer ' + localStorage.getItem('Token')*/
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
@@ -848,7 +854,7 @@ $(document).ready(function() {
             }
         }],
     });
-});
+}
 </script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

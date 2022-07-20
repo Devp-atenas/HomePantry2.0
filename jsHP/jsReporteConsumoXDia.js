@@ -87,8 +87,8 @@ function cargarTablaReporteConsumoXDia_Area(idArea,idSemana){
                 }
         },
         layout:"fitDataStretch",
-        height : "400px" ,
-        //groupBy:"Fecha_Creacion",
+        height : "200px" ,
+        groupBy:"Fecha_Creacion",
         placeholder:"Datos no encontrados",
         selectable:false, //make rows selectable
         columns:[

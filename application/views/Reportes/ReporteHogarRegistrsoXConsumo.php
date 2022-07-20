@@ -58,16 +58,22 @@ select:focus {
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
-                <div class="col-md-2">
+                    <div class="col-md-2">
                         <label class="inputText font-weight-bold">Periodo:</label>
                         <select id="selectPeriodo" name="selectPeriodo" class="form-control form-control-sm">
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label class="inputText font-weight-bold">Tipo de Consumo:</label>
                         <select id="selecTipoConsumo" name="selecTipoConsumo" class="form-control form-control-sm">
                         </select>
                     </div>
+                    <div class="col-md-3">
+                        <label class="inputText font-weight-bold">Mostrar:</label>
+                        <select id="selecMostrar" name="selecMostrar" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    
                 </div>
             </div>
         </div>

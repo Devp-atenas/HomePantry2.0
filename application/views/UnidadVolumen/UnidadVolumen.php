@@ -7,13 +7,6 @@
             <div class="col-sm-6">
                 <h1><i class="fas fa-list-ul"></i>&nbsp;Mantenimiento de Unidad Medidas:</h1>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="<?php echo base_url('Principal/dashboard') ?>">Inicio</a></li>
-                    <li class="breadcrumb-item active"><a href="<?php echo base_url('Principal/logout') ?>">Salir</a>
-                    </li>
-                </ol>
-            </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -98,7 +91,17 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="TableUnidMedida" class="table table-bordered table-striped table-sm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Categoria:</div>
+                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table id="TableUnidMedida" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
                                         <th>Categoria</th>
@@ -335,9 +338,9 @@ function ActualizarRegistro() {
             "url": '<?php echo urlApi; ?>updateUndVolumen',
             "method": "post",
             "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
             "data": {
                 "Id_UnidadMedida": $("#inputIdEditUndMedida").val(),
                 "Id_Categoria": $("#inputCategoriaEdit").val(),
@@ -398,9 +401,9 @@ function cargarCategoriaEdit(idCategoria) {
         "url": '<?php echo urlApi; ?>getAllCategoria',
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         let selectCategoriaEdit = $("#inputCategoriaEdit");
@@ -442,9 +445,9 @@ function EditAction(data) {
         "url": '<?php echo urlApi; ?>getUnidaMedidaId/' + data,
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         $('#inputIdEditUndMedida').val(response.data[0].Id_UnidadMedida);
@@ -480,9 +483,9 @@ function VisualizarAction(data) {
         "url": '<?php echo urlApi; ?>getUnidaMedidaId/' + data,
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         $('#inputCodigoVer').val(response.data[0].Id_UnidadMedida);
@@ -520,12 +523,12 @@ function cargarCategoria() {
         "url": '<?php echo urlApi; ?>getAllCategoria',
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
-        let select = $("#inputCategoria");
+        let select = $("#selectCategoriaTabla");
         select.find("option").remove();
         select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         for (var i = 0; i < response.data.length; i++) {
@@ -562,9 +565,9 @@ $("#botonenviar").click(function() {
             "url": '<?php echo urlApi; ?>addNewUnidaMedida',
             "method": "POST",
             "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
             "data": {
                 "Id_Categoria": $("#inputCategoria").val(),
                 "UnidadMedida": $("#inputUndMedida").val(),
@@ -616,6 +619,13 @@ $("#botonenviar").click(function() {
             }
         })
     }
+});
+
+$("#selectCategoriaTabla").change(function() {
+    var id_categoriaT = $("#selectCategoriaTabla").val();
+    //console.log(id_categoriaT);
+    cargarTabla(id_categoriaT);
+    $('#TableUnidMedida').show();
 });
 
 $(document).ready(function() {
@@ -707,6 +717,10 @@ $(document).ready(function() {
         }
     });
     document.getElementById('FormUndMedida').reset();
+    
+});
+
+function cargarTabla(Id){
     $('#TableUnidMedida').dataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
@@ -720,10 +734,11 @@ $(document).ready(function() {
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "ajax": {
-            "url": '<?php echo urlApi; ?>getAllUnidadMedida',
+            "url": '<?php echo urlApi; ?>getUnidadMedida4Categoria/'+Id,
             "type": "GET",
             "headers": {
-                /*'Authorization': 'bearer ' + localStorage.getItem('Token')*/
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
@@ -741,7 +756,7 @@ $(document).ready(function() {
                         width: '250px',
                         height: '25px'
                     })
-                    window.location.href = '/retailscannig/Principal/logout';
+                    window.location.href = '/homepantry20/Principal/logout';
                 }
             }
         },
@@ -776,7 +791,7 @@ $(document).ready(function() {
             }
         }],
     });
-});
+}
 </script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

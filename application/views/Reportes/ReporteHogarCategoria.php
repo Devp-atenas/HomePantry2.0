@@ -49,7 +49,7 @@ select:focus {
         <div class="row mb-2">
             <div class="col-sm-6">
             
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte Hogar por Categoria</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -58,7 +58,6 @@ select:focus {
 <!-- /Windows datatables Producto Rango-->
 <section class="content">
     <div class="container-fluid">
-    <h2 class="text-center">Hogar por Categoria</h2>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">

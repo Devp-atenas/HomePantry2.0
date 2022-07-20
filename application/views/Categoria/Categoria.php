@@ -753,7 +753,8 @@ $(document).ready(function() {
             "url": '<?php echo urlApi;?>getAllCategoria',
             "type": "GET",
             "headers": {
-                /*'Authorization': 'bearer ' + localStorage.getItem('Token')*/
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {

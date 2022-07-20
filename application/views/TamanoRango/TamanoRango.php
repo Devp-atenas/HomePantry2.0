@@ -98,7 +98,18 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="TableTamRango" class="table table-bordered table-striped table-sm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Categoria:</div>
+                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <table id="TableTamRango" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
                                         <th>Categoria</th>
@@ -528,7 +539,7 @@ function cargarCategoria() {
                 }
     }
     $.ajax(settings).done(function(response) {
-        let select = $("#inputCategoria");
+        let select = $("#selectCategoriaTabla");
         select.find("option").remove();
         select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         for (var i = 0; i < response.data.length; i++) {
@@ -620,6 +631,14 @@ $("#botonenviar").click(function() {
         })
     }
 });
+
+$("#selectCategoriaTabla").change(function() {
+    var id_categoriaT = $("#selectCategoriaTabla").val();
+    //console.log(id_categoriaT);
+    cargarTabla(id_categoriaT);
+    $('#TableTamRango').show();
+});
+
 $(document).ready(function() {
     cargarCategoria();
     $('#FormTamRangoEdit').validate({
@@ -709,6 +728,10 @@ $(document).ready(function() {
         }
     });
     document.getElementById('FormTamRango').reset();
+    
+});
+
+function cargarTabla(Id){
     $('#TableTamRango').dataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
@@ -722,10 +745,11 @@ $(document).ready(function() {
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "ajax": {
-            "url": '<?php echo urlApi; ?>getAllTamRango',
+            "url": '<?php echo urlApi; ?>getTamRango4Categoria/'+Id,
             "type": "GET",
             "headers": {
-                /*'Authorization': 'bearer ' + localStorage.getItem('Token')*/
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
@@ -778,7 +802,8 @@ $(document).ready(function() {
             }
         }],
     });
-});
+}
+
 </script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

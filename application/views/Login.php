@@ -1,15 +1,18 @@
 <?php
-if(!isset($_SESSION)){
-    session_start();
-}else{
-    session_destroy();
-    session_start();
-}
+    //require_once "recaptchalib.php";
+    if(!isset($_SESSION)){
+        session_start();
+    }else{
+        session_destroy();
+        session_start();
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
     <head>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>| Acceso Home Pantry |</title>
@@ -36,6 +39,7 @@ if(!isset($_SESSION)){
     </head>
 
     <body class="hold-transition login-page">
+
         <div id="ocultar" class="login-box">
             <!-- /.login-logo -->
             <div class="card card-outline card-primary">
@@ -45,8 +49,17 @@ if(!isset($_SESSION)){
                         class="img-size-60">
                 </div>
                 <div class="card-body">
+                
+                
+                
+                
+                
                     <p class="login-box-msg pb-0 text-info">Ingrese sus credenciales de acceso</p>
-                    <form id="quickForm">
+                    
+                   
+                    
+                    
+                    <form id="quickForm" method="post">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Correo electrónico:</label>
@@ -58,6 +71,7 @@ if(!isset($_SESSION)){
                                 <input type="password" id="password" class="form-control form-control-sm"
                                     id="exampleInputPassword1" placeholder="Introduzca su contraseña">
                             </div>
+                            
                             <!--
                             <div class="form-group">
                                 <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
@@ -66,11 +80,16 @@ if(!isset($_SESSION)){
                             </div>
                             -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-sm btn-block btn-primary">I n g r e s a r</button>
+                            
+                                <button type="submit" name="submitForm" class="btn btn-sm btn-block btn-primary">I n g r e s a r</button>
                             </div>
                         </div>
 
                     </form>
+                    
+                    	
+                 
+                    
                     <p class="mb-1"><small>
                             <a href="<?php echo base_url('Principal/ReinicioPassword')?>">Olvidé mi contraseña</a>
                         </small></p>
@@ -78,6 +97,7 @@ if(!isset($_SESSION)){
             </div>
         </div>
     </body>
+ 
     <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
     <!-- jQuery -->
     <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></script>

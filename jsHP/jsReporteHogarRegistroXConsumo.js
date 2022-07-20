@@ -8,11 +8,29 @@ $("#selectPeriodo").change(function() {
 });
 
 $("#selecTipoConsumo").change(function() {
+    cargarMostrar('#selecMostrar');
+    $("#showTableReporteHogarRegistroXConsumo").hide();
+});
+
+$("#selecMostrar").change(function() {
+    $("#showTableReporteHogarRegistroXConsumo").hide();
     var idPeriodo = $('#selectPeriodo').val();
     var idTipoConsumo = $('#selecTipoConsumo').val();
-    cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo);
+    var mostrar = $('#selecMostrar').val();
+    cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar);
     $("#showTableReporteHogarRegistroXConsumo").show();
 });
+
+
+function cargarMostrar(etiqueta) {
+    let selected = $(etiqueta);
+    selected.find("option").remove();
+    selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+    selected.append("<option value='1'>Mostrar Todos</option>");
+    selected.append("<option value='2'>Mostrar Registros Indebidos</option>");
+}
+
+
 
 
 function cargarPeriodo(etiqueta,idSeleccionado) {
@@ -109,10 +127,18 @@ function cargarTipoConsumo(etiqueta,idSeleccionado) {
 //55555
 
 
-function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
-   var urlApi = localStorage.getItem("urlApi");
+function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
+    var urlApi = localStorage.getItem("urlApi");
+    var urlV;
     
-   var oTable = $('#TablaRegistroXConsumo').DataTable({
+    if (mostrar == 1){
+        urlV = urlApi+'getDatosReporteHogarRegistroXConsumo/'+idPeriodo+'/'+idTipoConsumo;
+    }else{
+        urlV = urlApi+'getDatosReporteHogarRegistroIndebidoXConsumo/'+idPeriodo+'/'+idTipoConsumo;
+    }
+    
+    
+    var oTable = $('#TablaRegistroXConsumo').DataTable({
         "lengthMenu": [
             [ -1],
             ["All"]
@@ -126,7 +152,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
         "buttons": [
             {
                 extend: 'excelHtml5',
-                title: 'Reporte de Hogar Registrso por Consumo'
+                title: 'Reporte de Hogar Registro por Consumo'
             }
         ],
         "fixedHeader":    true,
@@ -141,7 +167,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
         },
         
         "ajax": {
-            "url": urlApi+'getDatosReporteHogarRegistrsoXConsumo/'+idPeriodo+'/'+idTipoConsumo,
+            "url": urlV,
             "type": "GET",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -264,55 +290,52 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo){
         }],
         "createdRow": function( row, data, dataIndex){
             var consDet_1 = data['detalle_1'].split("-");
-            if(consDet_1[0]===consDet_1[1]){
-                if (consDet_1[0]==0){
-                    $('td', row).eq(8).css('background', '#777777');
-                    $('td', row).eq(8).css('color', '#FFFFFF');
-                }else{
-                    $('td', row).eq(8).css('background', '#AA6677');
-                    $('td', row).eq(8).css('color', '#FFFFFF');
-                }
+            if(consDet_1[0] == 0){
+                $('td', row).eq(8).css('background', '#E32017');
+                $('td', row).eq(8).css('color', '#FFFFFF');
+                $('td', row).eq(8).css('font-weigh', 'bold');
+            }else if (Number(consDet_1[1])-Number(consDet_1[0]) < 5){
+                $('td', row).eq(8).css('background', '#FFC059');
+                $('td', row).eq(8).css('color', '#FFFFFF');
+                $('td', row).eq(8).css('font-weigh', 'bold');
             }
+            
             var consDet_2 = data['detalle_2'].split("-");
-            if(consDet_2[0]==consDet_2[1]){
-                if (consDet_2[0]==0){
-                    $('td', row).eq(9).css('background', '#777777');
-                    $('td', row).eq(9).css('color', '#FFFFFF');
-                }else{
-                    $('td', row).eq(9).css('background', '#AA6677');
-                    $('td', row).eq(9).css('color', '#FFFFFF');
-                }
+            if(consDet_2[0] == 0){
+                $('td', row).eq(9).css('background', '#E32017');
+                $('td', row).eq(9).css('color', '#FFFFFF');
+            }else if (Number(consDet_2[1])-Number(consDet_2[0]) < 5){
+                $('td', row).eq(9).css('background', '#FFC059');
+                $('td', row).eq(9).css('color', '#FFFFFF');
             }
+            
             var consDet_3 = data['detalle_3'].split("-");
-            if(consDet_3[0]==consDet_3[1]){
-                if (consDet_3[0]==0){
-                    $('td', row).eq(10).css('background', '#777777');
-                    $('td', row).eq(10).css('color', '#FFFFFF');
-                }else{
-                    $('td', row).eq(10).css('background', '#AA6677');
-                    $('td', row).eq(10).css('color', '#FFFFFF');
-                }
+            if(consDet_3[0] == 0){
+                $('td', row).eq(10).css('background', '#E32017');
+                $('td', row).eq(10).css('color', '#FFFFFF');
+            }else if (Number(consDet_3[1])-Number(consDet_3[0]) < 5){
+                $('td', row).eq(10).css('background', '#FFC059');
+                $('td', row).eq(10).css('color', '#FFFFFF');
             }
+            
             var consDet_4 = data['detalle_4'].split("-");
-            if(consDet_4[0]==consDet_4[1]){
-                if (consDet_4[0]==0){
-                    $('td', row).eq(11).css('background', '#777777');
-                    $('td', row).eq(11).css('color', '#FFFFFF');
-                }else{
-                    $('td', row).eq(11).css('background', '#AA6677');
-                    $('td', row).eq(11).css('color', '#FFFFFF');
-                }
-            }/*
-            var consDet_5 = data['detalle_5'].split("-");
-            if(consDet_5[0]==consDet_5[1]){
-                if (consDet_5[0]==0){
-                    $('td', row).eq(12).css('background', '#777777');
-                    $('td', row).eq(12).css('color', '#FFFFFF');
-                }else{
-                    $('td', row).eq(12).css('background', '#AA6677');
-                    $('td', row).eq(12).css('color', '#FFFFFF');
-                }
+            if(consDet_4[0] == 0){
+                $('td', row).eq(11).css('background', '#E32017');
+                $('td', row).eq(11).css('color', '#FFFFFF');
+            }else if (Number(consDet_4[1])-Number(consDet_4[0]) < 5){
+                $('td', row).eq(11).css('background', '#FFC059');
+                $('td', row).eq(11).css('color', '#FFFFFF');
+            }
+            
+            /*var consDet_5 = data['detalle_5'].split("-");
+            if(consDet_5[0] == 0){
+                $('td', row).eq(12).css('background', '#E32017');
+                $('td', row).eq(12).css('color', '#FFFFFF');
+            }else if (Number(consDet_5[1])-Number(consDet_5[0]) < 5){
+                $('td', row).eq(12).css('background', '#FFC059');
+                $('td', row).eq(12).css('color', '#FFFFFF');
             }*/
+            
         },
         
     });

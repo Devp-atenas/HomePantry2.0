@@ -7,13 +7,6 @@
             <div class="col-sm-6">
                 <h1><i class="fas fa-list-ol"></i>&nbsp;Mantenimiento de Producto:</h1>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="<?php echo base_url('Principal/dashboard') ?>">Inicio</a></li>
-                    <li class="breadcrumb-item active"><a href="<?php echo base_url('Principal/logout') ?>">Salir</a>
-                    </li>
-                </ol>
-            </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -221,22 +214,23 @@
                         </button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="inputText font-weight-bold">Categoria:</div>
-                            <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
+                <div class="card-body" >
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title"></h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Categoria:</div>
+                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                
                             <table id="TableProducto" class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
@@ -1172,7 +1166,7 @@ function VisualizarAction(data) {
 
 function cargarCategoria(etiqueta,idS) {
     var settings = {
-        "url": '<?php echo urlApi; ?>getAllCategoria',
+        "url": '<?php echo urlApi; ?>getAllCategorias',
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -1798,7 +1792,7 @@ function cargarSegmento(etiqueta,id_categoria,idS) {
         "url": '<?php echo urlApi; ?>getAllSegmento_x_Categoria/' + id_categoria,
         "method": "get",
         "headers": {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
         }
     }
@@ -1843,7 +1837,7 @@ function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
         "url": '<?php echo urlApi; ?>getAllMarca_x_Categoria_x_Fabricante/' + id_categoria+'/'+id_fabricante,
         "method": "get",
         "headers": {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
         }
     }
@@ -2106,6 +2100,7 @@ function cargarTabla(Id){
 
 
 </script>
+<script src="<?php echo base_url('jsHP/jsProductoV1.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>

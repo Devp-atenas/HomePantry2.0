@@ -102,7 +102,16 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="TableTam" class="table table-bordered table-striped table-sm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Categoria:</div>
+                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <table id="TableTamano" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
                                         <th>Categoria</th>
@@ -530,7 +539,7 @@ function cargarCategoria() {
                 }
     }
     $.ajax(settings).done(function(response) {
-        let select = $("#inputCategoria");
+        let select = $("#selectCategoriaTabla");
         select.find("option").remove();
         select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         for (var i = 0; i < response.data.length; i++) {
@@ -622,6 +631,14 @@ $("#botonenviar").click(function() {
         })
     }
 });
+
+$("#selectCategoriaTabla").change(function() {
+    var id_categoriaT = $("#selectCategoriaTabla").val();
+    //console.log(id_categoriaT);
+    cargarTabla(id_categoriaT);
+    $('#TableTamano').show();
+});
+
 $(document).ready(function() {
     $.validator.addMethod('decimal', function(value, element) {
         return this.optional(element) || /^((\d+(\\.\d{0,3})?)|((\d*(\.\d{1,3}))))$/.test(value);
@@ -709,7 +726,12 @@ $(document).ready(function() {
         }
     });
     document.getElementById('FormTam').reset();
-    $('#TableTam').dataTable({
+    
+});
+
+
+function cargarTabla(Id){
+    $('#TableTamano').dataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
             [10, 25, 50, 100, "All"]
@@ -722,7 +744,7 @@ $(document).ready(function() {
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "ajax": {
-            "url": '<?php echo urlApi; ?>getAllTamano',
+            "url": '<?php echo urlApi; ?>getTamano4Categoria/'+Id,
             "type": "GET",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -780,7 +802,7 @@ $(document).ready(function() {
             }
         }],
     });
-});
+}
 </script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

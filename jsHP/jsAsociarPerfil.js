@@ -33,7 +33,7 @@ $('#guardarAsociarPerfilUsuarioEdit').click(function(){
 function cargarPerfil(etiqueta,idSeleccionado) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url":urlApi+'getAllPerfiles/1',
+        "url": urlApi+'getAllPerfiles/1',
         "method": "get",
         "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
