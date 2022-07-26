@@ -533,7 +533,7 @@ function cargarCategoria() {
         select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         for (var i = 0; i < response.data.length; i++) {
             select.append("<option value=" + response.data[i].id_Categoria + ">" + response.data[i]
-                .id_Categoria + "-" + response.data[i].Categoria + "</option>");
+                .id_Categoria + "-" + response.data[i].nombre + "</option>");
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

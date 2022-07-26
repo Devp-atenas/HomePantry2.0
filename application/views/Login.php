@@ -49,16 +49,7 @@
                         class="img-size-60">
                 </div>
                 <div class="card-body">
-                
-                
-                
-                
-                
                     <p class="login-box-msg pb-0 text-info">Ingrese sus credenciales de acceso</p>
-                    
-                   
-                    
-                    
                     <form id="quickForm" method="post">
                         <div class="card-body">
                             <div class="form-group">
@@ -71,33 +62,21 @@
                                 <input type="password" id="password" class="form-control form-control-sm"
                                     id="exampleInputPassword1" placeholder="Introduzca su contraseña">
                             </div>
-                            
-                            <!--
-                            <div class="form-group">
-                                <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                                <label class="custom-control-label" for="exampleCheck1">Acepto los <a href="#">términos de
-                                        servicio.</a></label>
-                            </div>
-                            -->
                             <div class="card-footer">
-                            
                                 <button type="submit" name="submitForm" class="btn btn-sm btn-block btn-primary">I n g r e s a r</button>
                             </div>
                         </div>
-
                     </form>
-                    
-                    	
-                 
-                    
-                    <p class="mb-1"><small>
+                    <p class="mb-1">
+                        <small>
                             <a href="<?php echo base_url('Principal/ReinicioPassword')?>">Olvidé mi contraseña</a>
-                        </small></p>
+                        </small>
+                    </p>
                 </div>
             </div>
         </div>
     </body>
- 
+
     <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
     <!-- jQuery -->
     <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></script>

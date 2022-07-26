@@ -1,11 +1,44 @@
 <!-- Content Header (Page header) -->
 <?php $this->load->view('Plantillas/Header');?>
-<!-- Content Header (Page header) -->
+<style>
+.table.dataTable {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10px;
+}
+
+.table.dataTable thead {
+    background: linear-gradient(to right, #D69232, #B6a232, #D69232);
+    color: white;
+    /*font-bold: weight;*/
+    /*font-weight: bold;*/
+    font-weight: 900;
+    
+}
+
+table.dataTable thead .sorting_asc,
+.sorting_desc,
+.sorting {
+    background-image: none !important;
+}
+
+select:focus {
+    width: auto;
+}
+
+.text-wrap{
+    white-space:normal;
+}
+.width-200{
+    width:120px;
+}
+
+</style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fas fa-list-ol"></i>&nbsp;Mantenimiento de Producto:</h1>
+                <h1><i class="fas fa-list-ol"></i>&nbsp;Mantenimiento de Producto</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -23,7 +56,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-body" style="display: none;">
+                <div class="card-body" style="display:none;">
                     <form id="FormProducto">
                         <div class="row">
                             <div class="col-md-4">
@@ -230,7 +263,6 @@
                                     </div>
                                 </div>
                             </div>
-                
                             <table id="TableProducto" class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
@@ -246,19 +278,6 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Codigo de Barra</th>
-                                        <th>Segmento</th>
-                                        <th>Fabricanta</th>
-                                        <th>Marca</th>
-                                        <th>Tamano</th>
-                                        <th>Tamaño Rango</th>
-                                        <th>Unidad Medida</th>
-                                        <th>Fragmentacion</th><th></th>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -666,9 +685,6 @@
     </div>
 </div>
 
-
-
-
 <!-- Windows Modal CodigoBarraExistenteModal
  -->
 <div class="modal fade" id="CodigoBarraExistenteModal" tabindex="-1" role="dialog">
@@ -733,6 +749,7 @@
 <!-- /.modal Masivo precios -->
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
+<script src="<?php echo base_url('jsDiccionario/jsProductoV2.js') ?>"></script>
 
 <script>
 $("#botonenviar").click(function() {
@@ -750,23 +767,77 @@ $(document).ready(function() {
             selectCategoriaEdit: {
                 required: true,
             },
-            inputTamEdit: {
+            selectFabricanteEdit: {
+                required: true,
+            },
+            selectMarcaEdit: {
+                required: true,
+            },
+            inputSegmentoEdit: {
+                required: true,
+            },
+            selectTamanoEdit: {
+                required: true,
+            },
+            selectTamanoRangoEdit: {
+                required: true,
+            },
+            selectUnidadMedidaEdit: {
+                required: true,
+            },
+            inputFragmentacionEdit: {
                 required: true,
                 decimal: true
             },
-            inputAbreviaturaEdit: {
+            inputCodigoBarraEdit: {
                 required: true,
-                minlength: 3,
-                maxlength: 5,
+                minlength: 3
             },
+            inputProductoEdit: {
+                required: true,
+                minlength: 3
+            },
+            
         },
         messages: {
             selectCategoriaEdit: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese la XXXXXXXX"
             },
-            inputTamEdit: {
-                required: "Por favor ingrese el Producto",
-
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
+            },
+            selectCategoriaEdit: {
+                required: "Por favor ingrese la XXXXXXXX"
             },
             inputAbreviaturaEdit: {
                 required: "Por favor ingrese la abreviatura de la Producto",
@@ -867,16 +938,17 @@ $(document).ready(function() {
 $("#selectCategoriaTabla").change(function() {
     var id_categoriaT = $("#selectCategoriaTabla").val();
     console.log(id_categoriaT);
-    cargarTabla(id_categoriaT);
+    cargarTablaV2(id_categoriaT);
     $('#TableProducto').show();
 });
 
 $("#selectCategoria").change(function() {
+    var id_categoria = $("#selectCategoria").val();
+
     $("#idBotonAgregarPoducto").prop('disabled', false);
     $('#selectFabricante').select2();
-    cargarFabricante("#selectFabricante",0);
+    cargarFabricante("#selectFabricante",id_categoria,0);
 
-    var id_categoria = $("#selectCategoria").val();
     if ($.trim($('#selectFabricante').val()) !== '') {
         var id_fabricante = $("#selectFabricante").val();
         let selectMarca = $("#selectMarca");
@@ -927,1002 +999,7 @@ $("#selectFabricante").change(function() {
 });
 
 
-function deleteAction(data) {
-    Swal.fire({
-        title: '¿Estas seguro?',
-        text: "¡No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '¡Sí, bórralo!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            var settings = {
-                "url": '<?php echo urlApi; ?>deleteTamano/' + data,
-                "method": "get",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
-            }
-            $.ajax(settings).done(function(response) {
-                var DatosJson = JSON.parse(JSON.stringify(response));
-                Swal.fire({
-                    title: DatosJson.message,
-                    width: '350px',
-                    height: '45px'
-                }).then(function() {
-                    let xtable = $('#TableProducto').DataTable();
-                    xtable.ajax.reload(null, false);
-                });
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
-    })
-}
-// 333333
-function ActualizarRegistro() {
-    if ($("#FormProductoEdit").valid()) {
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": '<?php echo urlApi; ?>updateTamano',
-            "method": "post",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "data": {
-                "Id_Tamano": $("#inputIdEditTamano").val(),
-                "Id_Categoria": $("#selectCategoriaEdit").val(),
-                "Tamano": $("#inputTamEdit").val(),
-                "activo": $('input:radio[name=activoAdd]:checked').val()
-            }
-        }
-        $.ajax(settings).done(function(response) {
-            let xtable = $('#TableProducto').DataTable();
-            xtable.ajax.reload(null, false);
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 5000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                icon: 'success',
-                title: response.message,
-                confirmButtonText: `Ok`,
-            })
-            var form = document.querySelector('#FormProductoEdit');
-            form.reset();
-            $('#actualizarProductoModal').modal('hide');
-        }).fail(function(jqXHR, textStatus) {
-            if (jqXHR.status == 400) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'info',
-                    title: 'Su Session ha Expirado',
-                    confirmButtonText: `Ok`,
-                })
-                var form = document.querySelector('#FormUsuariosEdit');
-                form.reset();
-                window.location = '/homepantry20/index.php';
-            }
-        })
-    }
-}
 
-// 22222
-function EditAction(data) {
-    document.getElementById('FormProductoEditar').reset();
-    var settings = {
-        "url": '<?php echo urlApi; ?>getProductoId/' + data,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        $('#inputIdEditProducto').val(response.data[0].Id_Producto);
-        cargarCategoria("#selectCategoriaEdit",response.data[0].id_Categoria);
-        cargarSegmento("#inputSegmentoEdit",response.data[0].id_Categoria,response.data[0].id_Segmento);
-        cargarTamano("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano);
-        cargarFabricante("#selectFabricanteEdit",response.data[0].id_Fabricante);
-        cargarTamanoRango("#selectTamanoRangoEdit",response.data[0].id_Categoria,response.data[0].id_Categoria);
-        cargarUnidadMedida("#selectUnidadMedidaEdit",response.data[0].id_Categoria,response.data[0].id_UnidadMedida);
-        cargarAtributo1("#selectAtributo1Edit",response.data[0].id_Categoria,response.data[0].id_Atributo1);
-        cargarAtributo2("#selectAtributo2Edit",response.data[0].id_Categoria,response.data[0].Id_Atributo2);
-        cargarAtributo3("#selectAtributo3Edit",response.data[0].id_Categoria,response.data[0].id_Atributo3);
-        cargarAtributo4("#selectAtributo4Edit",response.data[0].id_Categoria,response.data[0].id_Atributo4);
-        cargarAtributo5("#selectAtributo5Edit",response.data[0].id_Categoria,response.data[0].id_Atributo5);
-        cargarAtributo6("#selectAtributo6Edit",response.data[0].id_Categoria,response.data[0].id_Atributo6);
-        cargarAtributo7("#selectAtributo7Edit",response.data[0].id_Categoria,response.data[0].id_Atributo7);
-        cargarMarca("#selectMarcaEdit",response.data[0].id_Categoria,response.data[0].id_Fabricante,response.data[0].id_Marca);
-        $('#inputFragmentacionEdit').val(response.data[0].Fragmentacion);
-        $('#inputCodigoBarraEdit').val(response.data[0].CodigoBarra);
-        $('#inputProductoEdit').val(response.data[0].Producto);
-        var oblig = $("input:radio[name='activoEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        var oblig = $("input:radio[name='pendienteEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        $('#actualizarProductoModal').modal('show');
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-
-function VisualizarAction(data) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getProductoId/' + data,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        
-        $('#inputCategoriaVer').val(response.data[0].Categoria);
-        $('#inputFabricanteVer').val(response.data[0].Fabricante);
-        $('#inputMarcaVer').val(response.data[0].Marca);
-        $('#inputSegmentoVer').val(response.data[0].Segmento);
-        $('#inputTamanoVer').val(Number.parseFloat(response.data[0].Tamano).toFixed(3));
-        $('#inputTamanoRangoVer').val(response.data[0].TamanoRango);
-        $('#inputUnidadMedidaVer').val(response.data[0].UnidadMedida);
-        
-        $('#inputFragmentacionVer').val(response.data[0].Fragmentacion);
-        $('#inputCodigoBarraVer').val(response.data[0].CodigoBarra);
-        $('#inputProductoVer').val(response.data[0].Producto);
-        
-        
-        $('#inputAtributo1Ver').val(response.data[0].id_Atributo1);
-        $('#inputAtributo2Ver').val(response.data[0].id_Atributo2);
-        $('#inputAtributo3Ver').val(response.data[0].id_Atributo3);
-        $('#inputAtributo4Ver').val(response.data[0].id_Atributo4);
-        $('#inputAtributo5Ver').val(response.data[0].id_Atributo5);
-        $('#inputAtributo6Ver').val(response.data[0].id_Atributo6);
-        $('#inputAtributo7Ver').val(response.data[0].id_Atributo7);
-        
-        
-        var oblig = $("input:radio[name='activoVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        var oblig = $("input:radio[name='pendienteVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        
-        $('#visualizarProductoModal').modal('show');
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-
-function cargarCategoria(etiqueta,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllCategorias',
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == -1){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id_Categoria === idS){
-                select.append("<option value=" + response.data[i].id_Categoria + " selected>" + response
-                .data[i].Categoria + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id_Categoria + ">" + response
-                .data[i].Categoria + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-// ****
-
-//****
-
-function ejecutarAgregarProductoNuevo(){
-    if ($("#FormProducto").valid()) {
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": '<?php echo urlApi; ?>addProductoNuevo',
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "data": {
-                "Id_Categoria": $("#selectCategoria").val(),
-                "CodigoBarra": $("#inputCodigoBarra").val(),
-                "Producto": $("#inputProducto").val(),
-                "id_Segmento": $("#inputSegmento").val(),
-                "Id_Fabricante": $("#selectFabricante").val(),
-                "Id_Marca": $("#selectMarca").val(),
-                "Id_Tamano": $("#selectTamano").val(),
-                "Id_TamanoRango": $("#selectTamanoRango").val(),
-                "id_UnidadMedida": $("#selectUnidadMedida").val(),
-                "Fragmentacion": $("#inputFragmentacion").val(),
-                "activo": $('input:radio[name=activoAdd]:checked').val(),
-                "Ind_Pendiente": $('input:radio[name=pendienteAdd]:checked').val(),
-                "Id_Atributo1": $("#selectAtributo1").val(),
-                "Id_Atributo2": $("#selectAtributo2").val(),
-                "Id_Atributo3": $("#selectAtributo3").val(),
-                "Id_Atributo4": $("#selectAtributo4").val(),
-                "Id_Atributo5": $("#selectAtributo5").val(),
-                "Id_Atributo6": $("#selectAtributo6").val(),
-                "Id_Atributo7": $("#selectAtributo7").val()
-            }
-        }
-        $.ajax(settings).done(function(response) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                icon: 'success',
-                title: response.message,
-                confirmButtonText: `Ok`,
-            })
-            $('#CodigoBarraExistenteModal').modal('hide');
-            var form = document.querySelector('form');
-            form.reset();
-            let select = $('#selectFabricante');
-            select.find("option").remove();
-        
-            
-        }).fail(function(jqXHR, textStatus) {
-            if (jqXHR.status == 400) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'info',
-                    title: 'Su Session ha Expirado',
-                    confirmButtonText: `Ok`,
-                })
-                var form = document.querySelector('#FormProducto');
-                form.reset();
-                window.location = '/homepantry20/index.php';
-            }
-        })
-    }
-}
-
-function existeCodigoBarra(CodigoBarras) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>CantidadProductoXCodigoBarra/' + CodigoBarras,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        if (response.data[0].Cantidad != 0){
-            var idCategoria = $('#selectCategoria').val();
-            cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria);
-            $('#htmlCodigoBarras').html(CodigoBarras);
-            $('#CodigoBarraExistenteModal').modal('show');
-        }else{
-            ejecutarAgregarProductoNuevo();
-        }
-        
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-
-function cargarAtributo7(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllAtributo7_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarAtributo6(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllAtributo6_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarAtributo5(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllAtributo5_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarAtributo4(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllAtributo4_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarAtributo3(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllAtributo3_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarAtributo2(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllAtributo2_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarAtributo1(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllAtributo1_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarUnidadMedida(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllUnidadMed_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarTamanoRango(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllRango_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarTamano(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllTamano_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarSegmento(etiqueta,id_categoria,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllSegmento_x_Categoria/' + id_categoria,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllMarca_x_Categoria_x_Fabricante/' + id_categoria+'/'+id_fabricante,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let selectMarca = $(etiqueta);
-        selectMarca.find("option").remove();
-        if (idS == 0){
-            selectMarca.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-                selectMarca.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].Marca + "</option>");
-            }else{
-                selectMarca.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].Marca + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-function cargarFabricante(etiqueta,idS) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllFabricante',
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == 0){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id_Fabricante === idS){
-            select.append("<option value=" + response.data[i].id_Fabricante + " selected>" + response
-                .data[i].Fabricante + " - "+ response.data[i].id_Fabricante + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id_Fabricante + ">" + response
-                .data[i].Fabricante + " - "+ response.data[i].id_Fabricante + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-//****
 function cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria){
     var msg = "";
     var flag = false;
@@ -1998,9 +1075,8 @@ function cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria){
 
 
 }
-
-
-function cargarTabla(Id){
+//Version 1
+function cargarTablaV2(Id){
     $('#TableProducto').dataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
@@ -2009,10 +1085,12 @@ function cargarTabla(Id){
         "bDestroy": true,
         "autoWidth": true,
         "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": true,
+        "responsive": false,
         "buttons": [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
+        "bPaginate":    false,
+        "scrollY":      400,
         "ajax": {
             "url": '<?php echo urlApi; ?>getAllProductos_x_categoria/' + Id,
             "type": "GET",
@@ -2087,12 +1165,117 @@ function cargarTabla(Id){
             "data": 'Id_Producto',
             "className": "text-center",
             "render": function(data, type, row, meta) {
-                return '<a title="Eliminar" href="#"><img id="EliminarImg" src=<?php echo base_url('assets/iconos/delete.png') ?> width="30" height="30"  onclick="deleteAction(' +
-                    data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
-                    data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Visualizar" href="#"><img src=<?php echo base_url('assets/iconos/ver.png') ?> width="25" height="25" onclick="VisualizarAction(' +
-                    data + '); return false;"></a>';
+                return  '<div class="text-wrap width-200">'+
+                            '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
+                                data +');"><i class="bi bi-trash3"></i></button>'+
+                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
+                                data +');"><i class="bi bi-pencil-square"></i></button>'+
+                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
+                                data +');"><i class="bi bi-zoom-in"></i></button>'+
+                        '</div>';
+            }
+        }],
+    });
+}
+//Version 1
+function cargarTablaV1(Id){
+    $('#TableProducto').dataTable({
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": false,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": false,
+        "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
+        "bPaginate":    false,
+        "scrollY":      400,
+        "fixedHeader":  true,
+        "deferRender":  true,
+        "ajax": {
+            "url": '<?php echo urlApi; ?>getAllProductos_x_categoriaV1/' + Id,
+            "type": "GET",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/homepantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [{
+                mData: 'Producto',
+                className: "text-center",
+                title: 'JJJJJ'
+            },
+            {
+                mData: 'CodigoBarra',
+                className: "text-center"
+            },
+            {
+                mData: 'Segmento',
+                className: "text-center"
+            },
+            {
+                mData: 'Fabricante',
+                className: "text-center"
+            },
+            {
+                mData: 'Marca',
+                className: "text-center"
+            },
+            {
+                mData: 'Tamano',
+                className: "text-center"
+            },
+            {
+                mData: 'TamanoRango',
+                className: "text-center"
+            },
+            {
+                mData: 'UnidadMedida',
+                className: "text-center"
+            },
+            {
+                mData: 'Fragmentacion',
+                className: "text-center"
+            },
+            
+        ],
+        "columnDefs": [{
+            "targets": 9,
+            "orderable": true,
+            "data": 'Id_Producto',
+            "className": "text-center",
+            "render": function(data, type, row, meta) {
+                return  '<div class="text-wrap width-200">'+
+                            '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
+                                data +');"><i class="bi bi-trash3"></i></button>'+
+                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
+                                data +');"><i class="bi bi-pencil-square"></i></button>'+
+                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
+                                data +');"><i class="bi bi-zoom-in"></i></button>'+
+                        '</div>';
             }
         }],
     });
@@ -2100,7 +1283,6 @@ function cargarTabla(Id){
 
 
 </script>
-<script src="<?php echo base_url('jsHP/jsProductoV1.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
