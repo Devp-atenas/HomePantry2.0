@@ -379,7 +379,7 @@
 
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsFabricanteV2.js') ?>"></script>
+<script src="<?php echo base_url('jsDiccionario/jsFabricanteV1.js') ?>"></script>
 <script>
     $("#selectCategoriaTabla").change(function() {
         var id_categoriaT = $("#selectCategoriaTabla").val();

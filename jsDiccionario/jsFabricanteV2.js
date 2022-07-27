@@ -114,9 +114,12 @@ $("#botonenviar").click(function() {
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Fabricante (IdCategoria): "+$("#inputFabricante").val(),$("#selectCategoria").val(),"C");
             var form = document.querySelector('#FormFabricante');
             form.reset();
-            cargarCategoria("#selectCategoriaTabla",0);
-            $('#TableFabricante').hide();
-            //let xtable = $('#TableFabricante').DataTable();
+            //cargarCategoria("#selectCategoriaTabla",0);
+            //$('#TableFabricante').hide();
+            if ($.trim($('#selectCategoriaTabla').val()) != '') {
+                let xtable = $('#TableFabricante').DataTable();
+                xtable.ajax.reload(null, false);
+            }//let xtable = $('#TableFabricante').DataTable();
             //xtable.ajax.reload(null, false);
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {

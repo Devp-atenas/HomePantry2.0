@@ -417,7 +417,7 @@
 
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsMarcaV2.js') ?>"></script>
+<script src="<?php echo base_url('jsDiccionario/jsMarcaV1.js') ?>"></script>
 
 <script>
     $("#selectCategoria").change(function() {
@@ -432,7 +432,6 @@
 
     $("#selectCategoriaTabla").change(function() {
         var id_categoriaT = $("#selectCategoriaTabla").val();
-        //console.log(id_categoriaT);
         cargarTabla(id_categoriaT);
         $('#TableMarca').show();
     });

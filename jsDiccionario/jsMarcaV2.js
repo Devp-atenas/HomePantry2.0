@@ -20,7 +20,7 @@ $("#botonenviar").click(function() {
         }
         $.ajax(settings).done(function(response) {
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nueva Marca: "+$("#inputMarca").val(),0,"C");
-                const Toast = Swal.mixin({
+            const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
@@ -31,15 +31,17 @@ $("#botonenviar").click(function() {
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
             })
-            Toast.fire({
-                icon: 'success',
-                title: response.message,
-                confirmButtonText: `Ok`,
-            })
-            var form = document.querySelector('#FormMarca');
-            form.reset();
+        Toast.fire({
+            icon: 'success',
+            title: response.message,
+            confirmButtonText: `Ok`,
+        })
+        var form = document.querySelector('#FormMarca');
+        form.reset();
+        if ($.trim($('#selectCategoriaTabla').val()) != '') {
             let xtable = $('#TableMarca').DataTable();
             xtable.ajax.reload(null, false);
+        }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({
@@ -180,7 +182,8 @@ function deleteAction(data) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: '¡Sí, bórralo!'
+        confirmButtonText: '¡Sí, bórralo!',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             var settings = {
@@ -192,7 +195,7 @@ function deleteAction(data) {
                 }
             }
             $.ajax(settings).done(function(response) {
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Borrar Marca (IdCategoria)",data,"D");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Borrar Marca (IdMarca)",data,"D");
                 var DatosJson = JSON.parse(JSON.stringify(response));
                 Swal.fire({
                     title: DatosJson.message,

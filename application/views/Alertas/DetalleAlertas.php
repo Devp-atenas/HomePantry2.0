@@ -275,7 +275,6 @@
 
 <?php $this->load->view('Plantillas/Footer');?>
 
-<script src="<?php echo base_url('jsHP/jsAlertas.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

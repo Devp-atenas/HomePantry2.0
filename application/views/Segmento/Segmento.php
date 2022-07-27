@@ -1,11 +1,42 @@
 <!-- Content Header (Page header) -->
 <?php $this->load->view('Plantillas/Header'); ?>
 <!-- Content Header (Page header) -->
+<style>
+    .table.dataTable {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+    }
+    .table.dataTable thead {
+        background: linear-gradient(to right, #D69232, #B6a232, #D69232);
+        color: white;
+        /*font-bold: weight;*/
+        /*font-weight: bold;*/
+        font-weight: 900;
+    }
+
+    table.dataTable thead .sorting_asc,
+    .sorting_desc,
+    .sorting {
+        background-image: none !important;
+    }
+
+    select:focus {
+        width: auto;
+    }
+
+    .text-wrap{
+        white-space:normal;
+    }
+    .width-200{
+        width:120px;
+    }
+</style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fas fa-cubes"></i>&nbsp;Mantenimiento de Segmento:</h1>
+                <h1><i class="bi bi-peace-fill"></i>&nbsp;Mantenimiento de Segmento</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -29,7 +60,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Categoria:</div>
-                                    <select id="inputCategoria" name="inputCategoria" class="form-control">
+                                    <select id="selectCategoria" name="selectCategoria" class="form-control">
                                     </select>
                                 </div>
                             </div>
@@ -44,11 +75,11 @@
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0" disabled='disabled'">
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1" checked disabled='disabled'">
                                             <label class="form-check-label">Si</label>
                                         </div>
                                     </div>
@@ -153,7 +184,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Categoria:</div>
-                                            <select id="inputCategoriaEdit" name="inputCategoriaEdit" class="form-control">
+                                            <select id="selectCategoriaEdit" name="selectCategoriaEdit" class="form-control">
                                             </select>
                                         </div>
                                     </div>
@@ -168,11 +199,11 @@
                                         <div class="card">
                                             <div class="form-group">
                                             <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -235,7 +266,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="inputText font-weight-bold">Categoria:</div>
-                                        <input type="text" name="Categoria" id="inputCategoriaVer" class="form-control" readonly>
+                                        <input type="text" name="Categoria" id="selectCategoriaVer" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
@@ -274,532 +305,16 @@
 
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
+<script src="<?php echo base_url('jsDiccionario/jsSegmentoV1.js') ?>"></script>
 
 <script>
-// 5555555555555555
-function deleteAction(data) {
-    Swal.fire({
-        title: '¿Estas seguro?',
-        text: "¡No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '¡Sí, bórralo!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            var settings = {
-                "url": '<?php echo urlApi; ?>deleteSegmento/' + data,
-                "method": "get",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
-            }
-            $.ajax(settings).done(function(response) {
-                var DatosJson = JSON.parse(JSON.stringify(response));
-                Swal.fire({
-                    title: DatosJson.message,
-                    width: '450px',
-                    height: '35px'
-                }).then(function() {
-                    let xtable = $('#TableSegmento').DataTable();
-                    xtable.ajax.reload(null, false);
-                });
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
-    })
-}
-// 33333333
-function ActualizarRegistro() {
-    if ($("#FormSegmentoEdit").valid()) {
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": '<?php echo urlApi; ?>updateSegmento',
-            "method": "post",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "data": {
-                "Id_Segmento": $("#inputIdEditSegmento").val(),
-                "Id_Categoria": $("#inputCategoriaEdit").val(),
-                "Segmento": $("#inputSegmentoEdit").val(),
-                "activo":  $('input:radio[name=activoEdit]:checked').val()
-            }
-        }
-        $.ajax(settings).done(function(response) {
-            let xtable = $('#TableSegmento').DataTable();
-            xtable.ajax.reload(null, false);
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 5000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                icon: 'success',
-                title: response.message,
-                confirmButtonText: `Ok`,
-            })
-            var form = document.querySelector('#FormSegmentoEdit');
-            form.reset();
-            $('#modal-SegmentoEditar').modal('hide');
-        }).fail(function(jqXHR, textStatus) {
-            if (jqXHR.status == 400) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'info',
-                    title: 'Su Session ha Expirado',
-                    confirmButtonText: `Ok`,
-                })
-                var form = document.querySelector('#FormUsuariosEdit');
-                form.reset();
-                window.location = '/homepantry20/index.php';
-            }
-        })
-    }
-}
-// 9999
-function cargarCategoriaEdit(idCategoria) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllCategoria',
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let selectCategoriaEdit = $("#inputCategoriaEdit");
-        selectCategoriaEdit.find("option").remove();
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id_Categoria == idCategoria) {
-                selectCategoriaEdit.append("<option value=" + response.data[i].id_Categoria + " selected>" +
-                    response.data[i].id_Categoria + "-" + response.data[i].Categoria + "</option>");
-            } else {
-                selectCategoriaEdit.append("<option value=" + response.data[i].id_Categoria + ">" + response
-                    .data[i].id_Categoria + "-" + response.data[i].Categoria + "</option>");
-            }
-            
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-// 2222
-function EditAction(data) {
-    document.getElementById('FormSegmentoEdit').reset();
-    var settings = {
-        "url": '<?php echo urlApi; ?>getSegmentoId/' + data,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        cargarCategoriaEdit(response.data[0].Id_Categoria);
-        $('#inputSegmentoEdit').val(response.data[0].Segmento);
-        var oblig = $("input:radio[name='activoEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        $('#inputIdEditSegmento').val(response.data[0].Id_Segmento);
-        $('#modal-SegmentoEditar').modal('show');
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-// 44444
-function VisualizarAction(data) {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getSegmentoId/' + data,
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        $('#inputCodigoVer').val(response.data[0].Id_Segmento);
-        $('#inputCategoriaVer').val(response.data[0].Categoria);
-        $('#inputSegmentoVer').val(response.data[0].Segmento);
-        var oblig = $("input:radio[name='activoVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        
-        $('#modal-SegmentoVisualizar').modal('show');
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-// 999999
-function cargarCategoria() {
-    var settings = {
-        "url": '<?php echo urlApi; ?>getAllCategoria',
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $("#selectCategoriaTabla");
-        select.find("option").remove();
-        select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        for (var i = 0; i < response.data.length; i++) {
-            select.append("<option value=" + response.data[i].id_Categoria + ">" + response.data[i]
-                .id_Categoria + "-" + response.data[i].nombre + "</option>");
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-// 1111
-$("#botonenviar").click(function() {
-    if ($("#FormSegmento").valid()) {
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": '<?php echo urlApi; ?>addNewSegmento',
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "data": {
-                "Id_Categoria": $("#inputCategoria").val(),
-                "Segmento": $("#inputSegmento").val(),
-                "activo":  $('input:radio[name=activoAdd]:checked').val()
-            }
-        }
-        $.ajax(settings).done(function(response) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                icon: 'success',
-                title: response.message,
-                confirmButtonText: `Ok`,
-            })
-            var form = document.querySelector('#FormSegmento');
-            form.reset();
-            let xtable = $('#TableSegmento').DataTable();
-            xtable.ajax.reload(null, false);
-        }).fail(function(jqXHR, textStatus) {
-            if (jqXHR.status == 400) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'info',
-                    title: 'Su Session ha Expirado',
-                    confirmButtonText: `Ok`,
-                })
-                var form = document.querySelector('#FormSegmento');
-                form.reset();
-                window.location = '/homepantry20/index.php';
-            }
-        })
-    }
+    $("#selectCategoriaTabla").change(function() {
+        var id_categoriaT = $("#selectCategoriaTabla").val();
+        cargarTabla(id_categoriaT);
+        $('#TableSegmento').show();
 });
-
-$("#selectCategoriaTabla").change(function() {
-    var id_categoriaT = $("#selectCategoriaTabla").val();
-    //console.log(id_categoriaT);
-    cargarTabla(id_categoriaT);
-    $('#TableSegmento').show();
-});
-
-
-$(document).ready(function() {
-    cargarCategoria();
-    $('#FormSegmentoEdit').validate({
-        rules: {
-            inputCategoriaEdit: {
-                required: true,
-            },
-            inputSegmentoEdit: {
-                required: true,
-                minlength: 10,
-                maxlength: 50,
-            },
-            inputAbreviaturaEdit: {
-                required: true,
-                minlength: 3,
-                maxlength: 5,
-            },
-        },
-        messages: {
-            inputCategoriaEdit: {
-                required: "Por favor ingrese la categoria"
-            },
-            inputSegmentoEdit: {
-                required: "Por favor ingrese el nombre de la Segmento",
-                minlength: "Su Segmento debe tener al menos 5 caracteres",
-                maxlength: "Su Segmento debe tener al menos 50 caracteres"
-            },
-            inputAbreviaturaEdit: {
-                required: "Por favor ingrese la abreviatura de la Segmento",
-                minlength: "Su Abreviatura debe tener al menos 3 caracteres",
-                maxlength: "Su Abreviatura debe tener al menos 5 caracteres"
-            },
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-        }
-    });
-    $('#FormSegmento').validate({
-        rules: {
-            inputCategoria: {
-                required: true,
-            },
-            inputSegmento: {
-                required: true,
-                minlength: 10,
-                maxlength: 50,
-            },
-            inputAbreviatura: {
-                required: true,
-                minlength: 3,
-                maxlength: 5,
-            },
-        },
-        messages: {
-            inputCategoria: {
-                required: "Por favor ingrese la categoria"
-            },
-            inputFabricante: {
-                required: "Por favor ingrese el fabricante"
-            },
-            inputSegmento: {
-                required: "Por favor ingrese la categoria del Segmento",
-                minlength: "Su Segmento debe tener al menos 5 caracteres",
-                maxlength: "Su Segmento debe tener al menos 50 caracteres"
-            },
-            inputAbreviatura: {
-                required: "Por favor ingrese la abreviatura del Segmento",
-                minlength: "Su abrevitura debe tener al menos 3 caracteres",
-                maxlength: "Su abreviatura debe tener al menos 5 caracteres"
-            },
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-        }
-    });
-    document.getElementById('FormSegmento').reset();
-    
-});
-
-function cargarTabla(Id){
-    $('#TableSegmento').dataTable({
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
-        "bDestroy": true,
-        "autoWidth": true,
-        "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": true,
-        "buttons": [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-        "ajax": {
-            "url": '<?php echo urlApi; ?>getSegmento4Categoria/'+Id,
-            "type": "GET",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "error": function(xhr, error, thrown) {
-                if (xhr.status === 403) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '300px',
-                        height: '100px'
-                    })
-                }
-                if (xhr.status === 400) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '250px',
-                        height: '25px'
-                    })
-                    window.location.href = '/retailscannig/Principal/logout';
-                }
-            }
-        },
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-        },
-        "aoColumns": [{
-                mData: 'Categoria',
-                className: "text-center"
-            },
-            {
-                mData: 'Segmento',
-                className: "text-center"
-            },
-            {
-                mData: 'status',
-                className: "text-center"
-            },
-        ],
-        "columnDefs": [{
-            "targets": 3,
-            "orderable": true,
-            "data": 'Id_Segmento',
-            "className": "text-center",
-            "render": function(data, type, row, meta) {
-                return '<a title="Eliminar" href="#"><img id="EliminarImg" src=<?php echo base_url('assets/iconos/delete.png') ?> width="30" height="30"  onclick="deleteAction(' +
-                    data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
-                    data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Visualizar" href="#"><img src=<?php echo base_url('assets/iconos/ver.png') ?> width="25" height="25" onclick="VisualizarAction(' +
-                    data + '); return false;"></a>';
-            }
-        }],
-    });
-}
-
-
 </script>
-
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>

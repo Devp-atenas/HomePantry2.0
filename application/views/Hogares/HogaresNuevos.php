@@ -2215,7 +2215,6 @@
 <script src="<?php echo base_url('vendor/js/nprogress.js') ?>"></script>
 
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosCombos.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsAlertas.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosFunciones.js') ?>"></script>
 
 <script type="text/javascript">
