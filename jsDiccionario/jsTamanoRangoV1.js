@@ -1,9 +1,9 @@
 $("#botonenviar").click(function() {
-    if ($("#FormTam").valid()) {
+    if ($("#FormTamRango").valid()) {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": localStorage.getItem("urlApi")+'addNewTamano',
+            "url": localStorage.getItem("urlApi")+'addNewTamRangoV1',
             "method": "POST",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -11,12 +11,12 @@ $("#botonenviar").click(function() {
                 },
             "data": {
                 "Id_Categoria": $("#selectCategoria").val(),
-                "Tamano": eliminarSeparadorMiles($("#inputTam").val()),
+                "TamanoRango": $("#inputTamRango").val(),
                 "activo":  $('input:radio[name=activoAdd]:checked').val()
             }
         }
         $.ajax(settings).done(function(response) {
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo tamaño: "+$("#inputTam").val(),0,"C");
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo tamaño rango: "+$("#inputTamRango").val(),0,"C");
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -33,10 +33,10 @@ $("#botonenviar").click(function() {
                 title: response.message,
                 confirmButtonText: `Ok`,
             })
-            var form = document.querySelector('#FormTam');
+            var form = document.querySelector('#FormTamRango');
             form.reset();
             if ($.trim($('#selectCategoriaTabla').val()) != '') {
-                let xtable = $('#TableTamano').DataTable();
+                let xtable = $('#TableTamRango').DataTable();
                 xtable.ajax.reload(null, false);
             }
         }).fail(function(jqXHR, textStatus) {
@@ -57,7 +57,7 @@ $("#botonenviar").click(function() {
                     title: 'Su Session ha Expirado',
                     confirmButtonText: `Ok`,
                 })
-                var form = document.querySelector('#FormTam');
+                var form = document.querySelector('#FormTamRango');
                 form.reset();
                 window.location = '/homepantry20/index.php';
             }
@@ -68,35 +68,15 @@ $("#botonenviar").click(function() {
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);
     cargarCategoria("#selectCategoriaTabla",-1);
-    
-    $(function($) {
-        $('#inputTam').autoNumeric('init', {
-            lZero: 'deny',
-            aSep: '.',
-            aDec: ','
-        });
-        $('#inputTamEdit').autoNumeric('init', {
-            lZero: 'deny',
-            aSep: '.',
-            aDec: ','
-        });
-        $('#inputCantidad').autoNumeric('init', {
-            lZero: 'deny',
-            aSep: '.',
-            aDec: ','
-        });
-    });
-    
-    $.validator.addMethod('decimal', function(value, element) {
-        return this.optional(element) || /^((\d+(\\.\d{0,3})?)|((\d*(\.\d{1,3}))))$/.test(value);
-    }, "Please ingrese a formato de numero correcto, formato 0.000");
-    $('#FormTamEdit').validate({
+    $('#FormTamRangoEdit').validate({
         rules: {
             selectCategoriaEdit: {
                 required: true,
             },
-            inputTamEdit: {
-                required: true
+            inputTamRangoEdit: {
+                required: true,
+                minlength: 5,
+                maxlength: 50,
             },
             inputAbreviaturaEdit: {
                 required: true,
@@ -108,12 +88,13 @@ $(document).ready(function() {
             selectCategoriaEdit: {
                 required: "Por favor ingrese la categoria"
             },
-            inputTamEdit: {
-                required: "Por favor ingrese el Tamaño",
-
+            inputTamRangoEdit: {
+                required: "Por favor ingrese el Tamaño Rango",
+                minlength: "Su Tamaño Rango debe tener al menos 5 caracteres",
+                maxlength: "Su Tamaño Rango debe tener al menos 50 caracteres"
             },
             inputAbreviaturaEdit: {
-                required: "Por favor ingrese la abreviatura de la Tamaño",
+                required: "Por favor ingrese la abreviatura de la Segmento",
                 minlength: "Su Abreviatura debe tener al menos 3 caracteres",
                 maxlength: "Su Abreviatura debe tener al menos 5 caracteres"
             },
@@ -130,13 +111,15 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
-    $('#FormTam').validate({
+    $('#FormTamRango').validate({
         rules: {
             selectCategoria: {
                 required: true,
             },
-            inputTam: {
-                required: true
+            inputTamRango: {
+                required: true,
+                minlength: 5,
+                maxlength: 50,
             },
             inputAbreviatura: {
                 required: true,
@@ -148,11 +131,13 @@ $(document).ready(function() {
             selectCategoria: {
                 required: "Por favor ingrese la categoria"
             },
-            inputTam: {
-                required: "Por favor ingrese el Tamaño",
+            inputTamRango: {
+                required: "Por favor ingrese el Tamaño Rango ",
+                minlength: "Su Tamaño Rango debe tener al menos 5 caracteres",
+                maxlength: "Su Tamaño Rango debe tener al menos 50 caracteres"
             },
             inputAbreviatura: {
-                required: "Por favor ingrese la abreviatura del Tamaño",
+                required: "Por favor ingrese la abreviatura del Tamaño Rango",
                 minlength: "Su abrevitura debe tener al menos 3 caracteres",
                 maxlength: "Su abreviatura debe tener al menos 5 caracteres"
             },
@@ -169,7 +154,7 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
-    document.getElementById('FormTam').reset();
+    document.getElementById('FormTamRango').reset();
     
 });
 
@@ -186,7 +171,7 @@ function deleteAction(data) {
     }).then((result) => {
         if (result.isConfirmed) {
             var settings = {
-                "url": localStorage.getItem("urlApi")+'deleteTamano/' + data,
+                "url": localStorage.getItem("urlApi")+'deleteTamRangoV1/' + data,
                 "method": "get",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -194,14 +179,14 @@ function deleteAction(data) {
                 }
             }
             $.ajax(settings).done(function(response) {
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Borrar Tamaño (IdTamano)",data,"D");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Borrar Tamaño (IdTamanoRango)",data,"D");
                 var DatosJson = JSON.parse(JSON.stringify(response));
                 Swal.fire({
                     title: DatosJson.message,
-                    width: '350px',
+                    width: '650px',
                     height: '45px'
                 }).then(function() {
-                    let xtable = $('#TableTamano').DataTable();
+                    let xtable = $('#TableTamRango').DataTable();
                     xtable.ajax.reload(null, false);
                 });
             }).fail(function(jqXHR, textStatus) {
@@ -227,27 +212,30 @@ function deleteAction(data) {
         }
     })
 }
-// 333333
+
 function ActualizarRegistro() {
-    if ($("#FormTamEdit").valid()) {
+    if ($("#FormTamRangoEdit").valid()) {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": localStorage.getItem("urlApi")+'updateTamano',
+            "url": localStorage.getItem("urlApi")+'updateTamRangoV1',
             "method": "post",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
             "data": {
-                "Id_Tamano": $("#inputIdEditTamano").val(),
+                "Id_TamanoRango": $("#inputIdEditTamRango").val(),
                 "Id_Categoria": $("#selectCategoriaEdit").val(),
-                "Tamano": eliminarSeparadorMiles($("#inputTamEdit").val()),
-                "activo": $('input:radio[name=activoAdd]:checked').val()
+                "TamanoRango": $("#inputTamRangoEdit").val(),
+                "activo":  $('input:radio[name=activoEdit]:checked').val()
+                
             }
         }
         $.ajax(settings).done(function(response) {
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Actualizar Tamano (IdTamano)",$("#inputIdEditTamano").val(),"U");
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Actualizar Tamano (IdTamanoRango)",$("#inputIdEditTamRango").val(),"U");
+            let xtable = $('#TableTamRango').DataTable();
+            xtable.ajax.reload(null, false);
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -264,11 +252,9 @@ function ActualizarRegistro() {
                 title: response.message,
                 confirmButtonText: `Ok`,
             })
-            var form = document.querySelector('#FormTamEdit');
+            var form = document.querySelector('#FormTamRangoEdit');
             form.reset();
-            let xtable = $('#TableTamano').DataTable();
-            xtable.ajax.reload(null, false);
-            $('#modal-TamanoEditar').modal('hide');
+            $('#modal-TamRangoEditar').modal('hide');
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({
@@ -294,24 +280,26 @@ function ActualizarRegistro() {
         })
     }
 }
+
 function EditAction(data) {
-    document.getElementById('FormTamEdit').reset();
+    document.getElementById('FormTamRangoEdit').reset();
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getTamanoId/' + data,
+        "url": localStorage.getItem("urlApi")+'getTamRangoIdV1/' + data,
         "method": "get",
         "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
     }
     $.ajax(settings).done(function(response) {
-        $('#inputIdEditTamano').val(response.data[0].Id_Tamano);
+        $('#inputIdEditTamRango').val(response.data[0].Id_TamanoRango);
         cargarCategoria("#selectCategoriaEdit",response.data[0].Id_Categoria);
-        $('#inputTamEdit').val(new Intl.NumberFormat("de-DE").format(response.data[0].Tamano));
+        $('#inputTamRangoEdit').val(response.data[0].TamanoRango);
         var oblig = $("input:radio[name='activoEdit']");
         oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño (IdTamano)",data,"R");
-        $('#modal-TamanoEditar').modal('show');
+        $('#inputIdEditSegmento').val(response.data[0].Id_Segmento);
+        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño Rango (IdTamanoRango)",data,"R");
+        $('#modal-TamRangoEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -336,7 +324,7 @@ function EditAction(data) {
 
 function VisualizarAction(data) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getTamanoId/' + data,
+        "url": localStorage.getItem("urlApi")+'getTamRangoIdV1/' + data,
         "method": "get",
         "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -344,13 +332,14 @@ function VisualizarAction(data) {
                 }
     }
     $.ajax(settings).done(function(response) {
-        $('#inputCodigoVer').val(response.data[0].Id_Tamano);
+        $('#inputCodigoVer').val(response.data[0].Id_TamanoRango);
         $('#selectCategoriaVer').val(response.data[0].Categoria);
-        $('#inputTamanoVer').val(new Intl.NumberFormat("de-DE").format(response.data[0].Tamano));
+        $('#inputTamanoRango').val(response.data[0].TamanoRango);
+        $('#inputAbreviaturaVer').val(response.data[0].Abreviatura);
         var oblig = $("input:radio[name='activoVer']");
         oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño (IdTamaño)",data,"R");
-        $('#modal-TamanoVisualizar').modal('show');
+        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño Rango (IdTamanoRango)",data,"R");
+        $('#modal-TamRangoVisualizar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -375,7 +364,7 @@ function VisualizarAction(data) {
 
 function cargarCategoria(etiqueta,idS) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllCategoria',
+        "url": localStorage.getItem("urlApi")+'getAllCategoriaV1',
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -418,17 +407,10 @@ function cargarCategoria(etiqueta,idS) {
         }
     })
 }
-function eliminarSeparadorMiles(number){
-    const regex = /[.]/g;
-    var aux = number.replace(regex, '');
-    aux = aux.replace(',', '.');
-    return aux;
-}
-
 
 function cargarTabla(Id){
-    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tabla Tamaño (IdCategoria)",Id,"R");
-    $('#TableTamano').dataTable({
+    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tabla Tamaño Rango (IdCategoria)",Id,"R");
+    $('#TableTamRango').dataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
             [10, 25, 50, 100, "All"]
@@ -443,12 +425,12 @@ function cargarTabla(Id){
         "fixedHeader":  true,
         "deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getTamano4Categoria/'+Id,
+            "url": localStorage.getItem("urlApi")+'getTamRango4CategoriaV1/'+Id,
             "type": "GET",
             "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
                     var err = JSON.parse(xhr.responseText);
@@ -465,7 +447,7 @@ function cargarTabla(Id){
                         width: '250px',
                         height: '25px'
                     })
-                    window.location.href = '/homepantry20/index.php';
+                    window.location.href = '/retailscannig/Principal/logout';
                 }
             }
         },
@@ -477,8 +459,7 @@ function cargarTabla(Id){
                 className: "text-center"
             },
             {
-                mData: 'Tamano',
-                render: $.fn.dataTable.render.number('.', ',', 3, ''),
+                mData: 'TamanoRango',
                 className: "text-center"
             },
             {
@@ -489,7 +470,7 @@ function cargarTabla(Id){
         "columnDefs": [{
             "targets": 3,
             "orderable": true,
-            "data": 'Id_Tamano',
+            "data": 'Id_TamanoRango',
             "className": "text-center",
             "render": function(data, type, row, meta) {
                 return  '<div class="text-wrap width-200">'+

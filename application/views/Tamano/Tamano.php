@@ -37,7 +37,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-rulers"></i>&nbsp;Mantenimiento de Tamaño</h1>
+                <h1><i class="bi bi-rulers"></i>&nbsp;Mantenimiento Tamaño</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -66,10 +66,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Tamaño:</div>
-                                    <input type="text" name="inputTam" id="inputTam" class="form-control">
+                                    <input type="text" name="inputTam" id="inputTam" class="form-control text-right">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -184,10 +184,10 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Tamaño:</div>
-                                            <input type="text" name="inputTamEdit" id="inputTamEdit" class="form-control">
+                                            <input type="text" name="inputTamEdit" id="inputTamEdit" class="form-control text-right">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -264,10 +264,10 @@
                                         <input type="text" name="selectCategoriaVer" id="selectCategoriaVer" class="form-control" readonly>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <div class="inputText font-weight-bold">Tamaño:</div>
-                                        <input type="text" name="Tamaño" id="inputTamanoVer" class="form-control" readonly>
+                                        <input type="text" name="inputTamanoVer" id="inputTamanoVer" class="form-control text-right" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -300,6 +300,9 @@
 
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
+<script src="<?php echo base_url('jsDiccionario/jsTamanoV1.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
+
 <script>
     $("#selectCategoriaTabla").change(function() {
         var id_categoriaT = $("#selectCategoriaTabla").val();
@@ -319,3 +322,4 @@
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/autoNumeric-1.9.18.js') ?>"></script>

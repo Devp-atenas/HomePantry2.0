@@ -288,7 +288,6 @@
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsDiccionario/jsUnidadVolumenV1.js') ?>"></script>
-
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

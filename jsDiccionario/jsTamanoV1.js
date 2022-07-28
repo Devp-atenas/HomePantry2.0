@@ -3,7 +3,7 @@ $("#botonenviar").click(function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": localStorage.getItem("urlApi")+'addNewTamano',
+            "url": localStorage.getItem("urlApi")+'addNewTamanoV1',
             "method": "POST",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -186,7 +186,7 @@ function deleteAction(data) {
     }).then((result) => {
         if (result.isConfirmed) {
             var settings = {
-                "url": localStorage.getItem("urlApi")+'deleteTamano/' + data,
+                "url": localStorage.getItem("urlApi")+'deleteTamanoV1/' + data,
                 "method": "get",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -233,7 +233,7 @@ function ActualizarRegistro() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": localStorage.getItem("urlApi")+'updateTamano',
+            "url": localStorage.getItem("urlApi")+'updateTamanoV1',
             "method": "post",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -297,7 +297,7 @@ function ActualizarRegistro() {
 function EditAction(data) {
     document.getElementById('FormTamEdit').reset();
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getTamanoId/' + data,
+        "url": localStorage.getItem("urlApi")+'getTamanoIdV1/' + data,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -336,7 +336,7 @@ function EditAction(data) {
 
 function VisualizarAction(data) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getTamanoId/' + data,
+        "url": localStorage.getItem("urlApi")+'getTamanoIdV1/' + data,
         "method": "get",
         "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -375,7 +375,7 @@ function VisualizarAction(data) {
 
 function cargarCategoria(etiqueta,idS) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllCategoria',
+        "url": localStorage.getItem("urlApi")+'getAllCategoriaV1',
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -443,7 +443,7 @@ function cargarTabla(Id){
         "fixedHeader":  true,
         "deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getTamano4Categoria/'+Id,
+            "url": localStorage.getItem("urlApi")+'getTamano4CategoriaV1/'+Id,
             "type": "GET",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",

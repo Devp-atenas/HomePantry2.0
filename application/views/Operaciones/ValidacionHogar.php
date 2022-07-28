@@ -590,11 +590,6 @@ $(document).ready(function() {
         $('#ocultarMostrarDetalle').show();
         $('#ocultarMostrarDetalleFactura').show();
         
-        
-        
-        
-         
-        
         localStorage.removeItem('flagValProdToValHogar');
         
     }else{
@@ -603,12 +598,6 @@ $(document).ready(function() {
         $('#ocultarMostrarDetalleFactura').hide();
         document.getElementById('buttonInvestigar').disabled = true;
     }
-    
-    
-    
-    
-    
-    
     
     
     $(function($) {
