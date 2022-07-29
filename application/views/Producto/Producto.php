@@ -38,7 +38,7 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fas fa-list-ol"></i>&nbsp;Mantenimiento de Producto</h1>
+                <h1><i class="bi bi-upc-scan"></i>&nbsp;Mantenimiento Producto</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
