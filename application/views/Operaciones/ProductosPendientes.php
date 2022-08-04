@@ -789,16 +789,9 @@ $("#botonenviar").click(function() {
         })
     }
 });
-function showMostrarMasivoPrecios() {
-    
-    
-    
-    
-    
-    
+function showMostrarMasivoPrecios() {    
     $("#inputCodigoBarraModal").val($("#selectProductosPendientes").val());
 	$("#inputPrecioMasivoModal").val("");
-
 	$("#modal-MasivoPrecios").modal("show");
 }
 //****
@@ -1055,9 +1048,6 @@ function verificarProductoExista() {
             jQuery("#PPTOP").attr('checked', true);
             var PPTOP = $('input:radio[name=PPTOP]:checked').val()
             cargarProductosPendientesTopN('#selectProductosPendientes',PPTOP);
-            
-            
-            
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -1401,7 +1391,6 @@ function ActualizarConsumoManual() {
         }
     })
 }
-
 
 function UpdatePrecioxPromedio(idConsumoDetalle,idMoneda,tasaCambio,cantidad){
     var precio = eliminarSeparadorMiles($('#inputPromedioR').val());

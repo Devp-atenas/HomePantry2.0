@@ -295,7 +295,7 @@
 </div>
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsAtributo3V2.js') ?>"></script>
+<script src="<?php echo base_url('jsDiccionario/jsAtributo3V1.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
 <script>

@@ -293,8 +293,6 @@ $(document).ready(function() {
     
     
     $(function($) {
-        
-        
         $('#inputCantidad').autoNumeric('init', {
             lZero: 'deny',
             aSep: '.',
@@ -527,22 +525,14 @@ function ValidarHogar(idConsumoDetalleProductos) {
     })
 }
 
-
-
-
-
-
-
-
-
 function EditActionDatos(data) {
     var settings = {
         "url": '<?php echo urlApi; ?>getDetalleCompraId/' + data,
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         $('#inputId').val(response.data[0].Id_Consumo_Detalle_Productos);

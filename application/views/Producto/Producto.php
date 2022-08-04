@@ -12,7 +12,6 @@
     /*font-bold: weight;*/
     /*font-weight: bold;*/
     font-weight: 900;
-    
 }
 
 table.dataTable thead .sorting_asc,
@@ -85,7 +84,7 @@ select:focus {
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Segmento:</div>
-                                    <select id="inputSegmento" name="inputSegmento" class="form-control">
+                                    <select id="selectSegmento" name="selectSegmento" class="form-control">
                                     </select>
                                 </div>
                             </div>
@@ -137,11 +136,11 @@ select:focus {
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0" disabled='disabled'">
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1" checked>
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1" checked disabled='disabled'">
                                             <label class="form-check-label">Si</label>
                                         </div>
                                     </div>
@@ -308,7 +307,7 @@ select:focus {
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="FormProductoEditar">
+                            <form id="FormProductoEdit">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -336,7 +335,7 @@ select:focus {
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Segmento:</div>
-                                            <select id="inputSegmentoEdit" name="inputSegmentoEdit" class="form-control">
+                                            <select id="selectSegmentoEdit" name="selectSegmentoEdit" class="form-control">
                                             </select>
                                         </div>
                                     </div>
@@ -388,11 +387,11 @@ select:focus {
                                         <div class="card">
                                             <div class="form-group">
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -514,7 +513,7 @@ select:focus {
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="FormProductoEditar">
+                            <form id="FormProductoEdit">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -539,7 +538,7 @@ select:focus {
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Segmento:</div>
-                                            <input type="text" name="inputSegmentoVer" id="inputSegmentoVer" class="form-control" readonly>
+                                            <input type="text" name="selectSegmentoVer" id="selectSegmentoVer" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -684,9 +683,7 @@ select:focus {
         </div>
     </div>
 </div>
-
-<!-- Windows Modal CodigoBarraExistenteModal
- -->
+<!-- Windows Modal CodigoBarraExistenteModal -->
 <div class="modal fade" id="CodigoBarraExistenteModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -736,8 +733,8 @@ select:focus {
             <div class="modal-footer">
                 <div class="row">
                     <div class="col-12">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button id="idBotonAgregarPoducto"type="button" class="btn btn-success" onclick="ejecutarAgregarProductoNuevo()">Agregar Producto</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button id="idBotonAgregarPoducto"type="button" class="btn btn-success" onclick="ejecutarAgregarProductoNuevo()">Agregar Producto</button>
                     </div>
                 </div>
             </div>
@@ -758,187 +755,11 @@ $("#botonenviar").click(function() {
     //ejecutarAgregarProductoNuevo();
 });
 
-$(document).ready(function() {
-    //$('#inputCategoria').select2();
-    $('#TableProducto').hide();
-    cargarCategoria("#selectCategoria",-1);
-    $('#FormProductoEdit').validate({
-        rules: {
-            selectCategoriaEdit: {
-                required: true,
-            },
-            selectFabricanteEdit: {
-                required: true,
-            },
-            selectMarcaEdit: {
-                required: true,
-            },
-            inputSegmentoEdit: {
-                required: true,
-            },
-            selectTamanoEdit: {
-                required: true,
-            },
-            selectTamanoRangoEdit: {
-                required: true,
-            },
-            selectUnidadMedidaEdit: {
-                required: true,
-            },
-            inputFragmentacionEdit: {
-                required: true,
-                decimal: true
-            },
-            inputCodigoBarraEdit: {
-                required: true,
-                minlength: 3
-            },
-            inputProductoEdit: {
-                required: true,
-                minlength: 3
-            },
-            
-        },
-        messages: {
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            selectCategoriaEdit: {
-                required: "Por favor ingrese la XXXXXXXX"
-            },
-            inputAbreviaturaEdit: {
-                required: "Por favor ingrese la abreviatura de la Producto",
-                minlength: "Su Abreviatura debe tener al menos 3 caracteres",
-                maxlength: "Su Abreviatura debe tener al menos 5 caracteres"
-            },
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-        }
-    });
-    $('#FormProducto').validate({
-        rules: {
-            selectCategoria: {
-                required: true,
-            },
-            selectFabricante: {
-                required: true
-            },
-            selectMarca: {
-                required: true
-            },
-            inputSegmento: {
-                required: true
-            },
-            selectTamano: {
-                required: true
-            },
-            selectTamanoRango: {
-                required: true
-            },
-            selectUnidadMedida: {
-                required: true
-            },
-            inputFragmentacion: {
-                required: true
-            },
-            inputCodigoBarra: {
-                required: true,
-                minlength: 13,
-                maxlength: 20
-            },
-            inputProducto: {
-                required: true
-            },
-            activoAdd: {
-                required: true
-            },
-            pendienteAdd: {
-                required: true
-            },
-            inputAbreviatura: {
-                required: true,
-                minlength: 3,
-                maxlength: 5
-            },
-        },
-        messages: {
-            selectCategoria: {
-                required: "Por favor ingrese la categoria"
-            },
-            selectMarca: {
-                required: "Por favor ingrese la Marca"
-            },
-            inputTam: {
-                required: "Por favor ingrese el Producto",
-            },
-            inputAbreviatura: {
-                required: "Por favor ingrese la abreviatura del Producto",
-                minlength: "Su abrevitura debe tener al menos 3 caracteres",
-                maxlength: "Su abreviatura debe tener al menos 5 caracteres"
-            },
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-        }
-    });
-    document.getElementById('FormProducto').reset();
-    cargarCategoria("#selectCategoriaTabla",-1);
-});
-// ??????????????????????????????????????????????????????????????????????
+
 $("#selectCategoriaTabla").change(function() {
     var id_categoriaT = $("#selectCategoriaTabla").val();
     console.log(id_categoriaT);
-    cargarTablaV2(id_categoriaT);
+    cargarTabla(id_categoriaT);
     $('#TableProducto').show();
 });
 
@@ -955,7 +776,7 @@ $("#selectCategoria").change(function() {
         selectMarca.find("option").remove();
         cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
     }
-    let selectSegmento = $("#inputSegmento");
+    let selectSegmento = $("#selectSegmento");
     selectSegmento.find("option").remove();
     let selectTamano = $("#selectTamano");
     selectTamano.find("option").remove();
@@ -977,7 +798,7 @@ $("#selectCategoria").change(function() {
     selectAtributo6.find("option").remove();
     let selectAtributo7 = $("#selectAtributo7");
     selectAtributo7.find("option").remove();
-    cargarSegmento("#inputSegmento",id_categoria,0);
+    cargarSegmento("#selectSegmento",id_categoria,0);
     cargarTamano("#selectTamano",id_categoria,0);
     cargarTamanoRango("#selectTamanoRango",id_categoria,0);
     cargarUnidadMedida("#selectUnidadMedida",id_categoria,0);
@@ -990,6 +811,58 @@ $("#selectCategoria").change(function() {
     cargarAtributo7("#selectAtributo7",id_categoria,0);
 });
 
+$("#selectCategoriaEdit").change(function() {
+    var id_categoria = $("#selectCategoria").val();
+
+    $("#idBotonAgregarPoducto").prop('disabled', false);
+    $('#selectFabricanteEdit').select2();
+    cargarFabricante("#selectFabricanteEdit",id_categoria,0);
+
+    if ($.trim($('#selectFabricanteEdit').val()) !== '') {
+        var id_fabricante = $("#selectFabricanteEdit").val();
+        let selectMarca = $("#selectMarcaEdit");
+        selectMarca.find("option").remove();
+        cargarMarca("#selectMarcaEdit",id_categoria,id_fabricante,0);
+    }
+    let selectSegmento = $("#selectSegmentoEdit");
+    selectSegmento.find("option").remove();
+    let selectTamano = $("#selectTamano");
+    selectTamano.find("option").remove();
+    let selectTamanoRango = $("#selectTamanoRangoEdit");
+    selectTamanoRango.find("option").remove();
+    let selectUnidadMedida = $("#selectUnidadMedidaEdit");
+    selectUnidadMedida.find("option").remove();
+    let selectAtributo1 = $("#selectAtributo1Edit");
+    selectAtributo1.find("option").remove();
+    let selectAtributo2 = $("#selectAtributo2Edit");
+    selectAtributo2.find("option").remove();
+    let selectAtributo3 = $("#selectAtributo3Edit");
+    selectAtributo3.find("option").remove();
+    let selectAtributo4 = $("#selectAtributo4Edit");
+    selectAtributo4.find("option").remove();
+    let selectAtributo5 = $("#selectAtributo5Edit");
+    selectAtributo5.find("option").remove();
+    let selectAtributo6 = $("#selectAtributo6Edit");
+    selectAtributo6.find("option").remove();
+    let selectAtributo7 = $("#selectAtributo7Edit");
+    selectAtributo7.find("option").remove();
+    cargarSegmento("#selectSegmentoEdit",id_categoria,0);
+    cargarTamano("#selectTamanoEdit",id_categoria,0);
+    cargarTamanoRango("#selectTamanoRangoEdit",id_categoria,0);
+    cargarUnidadMedida("#selectUnidadMedidaEdit",id_categoria,0);
+    cargarAtributo1("#selectAtributo1Edit",id_categoria,0);
+    cargarAtributo2("#selectAtributo2Edit",id_categoria,0);
+    cargarAtributo3("#selectAtributo3Edit",id_categoria,0);
+    cargarAtributo4("#selectAtributo4Edit",id_categoria,0);
+    cargarAtributo5("#selectAtributo5Edit",id_categoria,0);
+    cargarAtributo6("#selectAtributo6Edit",id_categoria,0);
+    cargarAtributo7("#selectAtributo7Edit",id_categoria,0);
+});
+
+
+
+
+
 $("#selectFabricante").change(function() {
     var id_categoria = $("#selectCategoria").val();
     var id_fabricante = $("#selectFabricante").val();
@@ -997,289 +870,6 @@ $("#selectFabricante").change(function() {
     selectMarca.find("option").remove();
     cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
 });
-
-
-
-function cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria){
-    var msg = "";
-    var flag = false;
-    $('#TableCodigoBarraExistente').dataTable({
-        "bDestroy": true,
-        "autoWidth": true,
-        "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": true,
-        "searching": false,
-        "bPaginate": false,
-        "ordering": false,
-        "info":     false,
-        "ajax": {
-            "url": '<?php echo urlApi; ?>getProductoXCodigoBarra/' + CodigoBarras,
-            "type": "GET",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "error": function(xhr, error, thrown) {
-                if (xhr.status === 403) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '300px',
-                        height: '100px'
-                    })
-                }
-                if (xhr.status === 400) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '250px',
-                        height: '25px'
-                    })
-                    window.location.href = '/homepantry20/Principal/logout';
-                }
-            }
-        },
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-        },
-        "aoColumns": [{
-                mData: 'Categoria',
-                className: "text-center"
-            },
-            {
-                mData: 'Producto',
-                className: "text-center"
-            }
-            
-        ],
-        "createdRow": function( row, data, dataIndex){
-            if (data['Id_Categoria'] == idCategoria){
-                $('td', row).eq(0).css('color', '#EE0000');
-                $('td', row).eq(1).css('color', '#EE0000');
-                $("#idBotonAgregarPoducto").prop('disabled', true);
-                flag = true;
-                msg = "El codigo de barra ya pertenece a una categoria!!!";
-                $('#htmlMensajeModal').html(msg);
-            }
-            
-            if (flag){
-                msg = "El codigo de barra ya pertenece a una categoria!!!";
-                $('#htmlMensajeModal').html(msg);
-            }else{
-                msg = "Si de desea agregar el producto con el mismo codigo de barras presione en agregar Producto";
-                $('#htmlMensajeModal').html(msg);
-            }
-            
-        }
-    });
-
-
-}
-//Version 1
-function cargarTablaV2(Id){
-    $('#TableProducto').dataTable({
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
-        "bDestroy": true,
-        "autoWidth": true,
-        "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": false,
-        "buttons": [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-        "bPaginate":    false,
-        "scrollY":      400,
-        "ajax": {
-            "url": '<?php echo urlApi; ?>getAllProductos_x_categoria/' + Id,
-            "type": "GET",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "error": function(xhr, error, thrown) {
-                if (xhr.status === 403) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '300px',
-                        height: '100px'
-                    })
-                }
-                if (xhr.status === 400) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '250px',
-                        height: '25px'
-                    })
-                    window.location.href = '/homepantry20/Principal/logout';
-                }
-            }
-        },
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-        },
-        "aoColumns": [{
-                mData: 'Producto',
-                className: "text-center"
-            },
-            {
-                mData: 'CodigoBarra',
-                className: "text-center"
-            },
-            {
-                mData: 'Segmento',
-                className: "text-center"
-            },
-            {
-                mData: 'Fabricante',
-                className: "text-center"
-            },
-            {
-                mData: 'Marca',
-                className: "text-center"
-            },
-            {
-                mData: 'Tamano',
-                className: "text-center"
-            },
-            {
-                mData: 'TamanoRango',
-                className: "text-center"
-            },
-            {
-                mData: 'UnidadMedida',
-                className: "text-center"
-            },
-            {
-                mData: 'Fragmentacion',
-                className: "text-center"
-            },
-            
-        ],
-        "columnDefs": [{
-            "targets": 9,
-            "orderable": true,
-            "data": 'Id_Producto',
-            "className": "text-center",
-            "render": function(data, type, row, meta) {
-                return  '<div class="text-wrap width-200">'+
-                            '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
-                                data +');"><i class="bi bi-trash3"></i></button>'+
-                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
-                                data +');"><i class="bi bi-pencil-square"></i></button>'+
-                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
-                                data +');"><i class="bi bi-zoom-in"></i></button>'+
-                        '</div>';
-            }
-        }],
-    });
-}
-//Version 1
-function cargarTablaV1(Id){
-    $('#TableProducto').dataTable({
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
-        "bDestroy": true,
-        "autoWidth": false,
-        "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": false,
-        "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
-        "bPaginate":    false,
-        "scrollY":      400,
-        "fixedHeader":  true,
-        "deferRender":  true,
-        "ajax": {
-            "url": '<?php echo urlApi; ?>getAllProductos_x_categoriaV1/' + Id,
-            "type": "GET",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "error": function(xhr, error, thrown) {
-                if (xhr.status === 403) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '300px',
-                        height: '100px'
-                    })
-                }
-                if (xhr.status === 400) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '250px',
-                        height: '25px'
-                    })
-                    window.location.href = '/homepantry20/Principal/logout';
-                }
-            }
-        },
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-        },
-        "aoColumns": [{
-                mData: 'Producto',
-                className: "text-center",
-                title: 'JJJJJ'
-            },
-            {
-                mData: 'CodigoBarra',
-                className: "text-center"
-            },
-            {
-                mData: 'Segmento',
-                className: "text-center"
-            },
-            {
-                mData: 'Fabricante',
-                className: "text-center"
-            },
-            {
-                mData: 'Marca',
-                className: "text-center"
-            },
-            {
-                mData: 'Tamano',
-                className: "text-center"
-            },
-            {
-                mData: 'TamanoRango',
-                className: "text-center"
-            },
-            {
-                mData: 'UnidadMedida',
-                className: "text-center"
-            },
-            {
-                mData: 'Fragmentacion',
-                className: "text-center"
-            },
-            
-        ],
-        "columnDefs": [{
-            "targets": 9,
-            "orderable": true,
-            "data": 'Id_Producto',
-            "className": "text-center",
-            "render": function(data, type, row, meta) {
-                return  '<div class="text-wrap width-200">'+
-                            '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
-                                data +');"><i class="bi bi-trash3"></i></button>'+
-                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
-                                data +');"><i class="bi bi-pencil-square"></i></button>'+
-                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
-                                data +');"><i class="bi bi-zoom-in"></i></button>'+
-                        '</div>';
-            }
-        }],
-    });
-}
 
 
 </script>
@@ -1297,3 +887,4 @@ function cargarTablaV1(Id){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="<?php echo base_url('assets/autoNumeric-1.9.18.js') ?>"></script>
