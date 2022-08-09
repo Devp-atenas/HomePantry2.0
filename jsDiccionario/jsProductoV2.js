@@ -18,8 +18,6 @@ $(document).ready(function() {
         });
     });
 
-
-
     //$('#inputCategoria').select2();
     $('#TableProducto').hide();
     cargarCategoria("#selectCategoria",-1);
