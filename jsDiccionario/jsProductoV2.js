@@ -1309,18 +1309,31 @@ function SeparadorMiles(number){
 function cargarTabla(Id){
     $('#TableProducto').dataTable({
         "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
+            [ -1],
+            ["All"]
         ],
         "bDestroy": true,
         "autoWidth": true,
-        "dom": '<"wrapper"flitp><"center"B>',
+        "searching": false,
+        "bPaginate": false,
+        "dom": 'Bfrtip',
         "responsive": false,
         "buttons": [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            {
+                extend: 'excelHtml5',
+                title: 'Reporte de Hogar Registro por Consumo'
+            }
         ],
-        "bPaginate":    false,
-        "scrollY":      400,
+        "fixedHeader":    true,
+        "scrollX":        true,
+        "scrollY":        400,
+        "deferRender":    true,
+        "scroller":       true,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+            "decimal": ",",
+            "thousands": "."
+        },        
         "ajax": {
             "url": localStorage.getItem("urlApi")+'getAllProductos_x_categoria/' + Id,
             "type": "GET",

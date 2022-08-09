@@ -164,8 +164,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
             "decimal": ",",
             "thousands": "."
-        },
-        
+        },        
         "ajax": {
             "url": urlV,
             "type": "GET",

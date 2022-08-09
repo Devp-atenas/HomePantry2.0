@@ -11,7 +11,6 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- Main content Agregar Producto aaaaaaaaaaa-->
-
 <!-- /Windows datatables Producto Rango-->
 <section class="content">
     <div class="container-fluid">
@@ -42,7 +41,7 @@
                     <div  iv id="showBotones" class="col-md-6" style="display:none;">
                         <div class="col-md-4">
                             <label>Maestro de Productos:</label>
-                            <button type="button" id="crearPN"class="btn btn-block btn-sm btn-primary" data-toggle="modal" data-target="#modal-crearProducto">
+                            <button type="button" class="btn btn-block btn-sm btn-primary" data-toggle="modal" data-target="#modal-crearProducto">
                                 <i class="fas fa-plus"></i>&nbsp;CREAR
                             </button>
                         </div>
@@ -172,6 +171,8 @@
 		<!-- /.modal-dialog -->
 	</div>
     <!-- /.modal -->
+	
+
 
 <!-- Windows Modal Editar Datos de consumo 222222 -->
 <div class="modal fade" id="modal-EditarDatos">
@@ -256,7 +257,6 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
 <!-- /.modal Masivo precios -->
 <div class="modal fade" id="modal-MasivoPrecios">
     <div class="modal-dialog modal-lg">
@@ -297,7 +297,7 @@
 </div>
 <!-- /.modal -->
 
-<!-- Windows Modal crearProducto *****-->
+<!-- Windows Modal crearProducto -->
 <div class="modal fade" id="modal-crearProducto">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -324,21 +324,21 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Categoria:</div>
-                                    <select id="selectCategoriaNP" name="selectCategoriaNP" class="form-control">
+                                    <select id="inputCategoria" name="inputCategoria" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fabricante:</div>
-                                    <select id="selectFabricanteNP" name="selectFabricanteNP" class="form-control">
+                                    <select id="inputFabricante" name="inputFabricante" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Marca:</div>
-                                    <select id="selectMarcaNP" name="selectMarcaNP" class="form-control">
+                                    <select id="inputMarca" name="inputMarca" class="form-control">
                                     </select>
                                 </div>
                             </div>
@@ -347,21 +347,21 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Segmento:</div>
-                                    <select id="selectSegmentoNP" name="selectSegmentoNP" class="form-control">
+                                    <select id="inputSegmento" name="inputSegmento" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Tamaño:</div>
-                                    <select id="selectTamanoNP" name="selectTamanoNP" class="form-control">
+                                    <select id="inputTamano" name="inputTamano" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Tamaño Rango:</div>
-                                    <select id="selectTamanoRangoNP" name="selectTamanoRangoNP" class="form-control">
+                                    <select id="inputTamanoRango" name="inputTamanoRango" class="form-control">
                                     </select>
                                 </div>
                             </div>
@@ -370,14 +370,14 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Unidad Medida:</div>
-                                    <select id="selectUnidadMedidaNP" name="selectUnidadMedidaNP" class="form-control">
+                                    <select id="inputUnidadMedida" name="inputUnidadMedida" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fragmentacion:</div>
-                                    <input type="text" name="inputFragmentacionNP" id="inputFragmentacionNP" class="form-control">
+                                    <input type="text" name="inputFragmentacion" id="inputFragmentacion" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -391,7 +391,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Producto:</div>
-                                    <input type="text" name="inputProductoNP" id="inputProductoNP" class="form-control">
+                                    <input type="text" name="inputProducto" id="inputProducto" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -399,11 +399,11 @@
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAddNP" name="activoAddNP" value="0">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0">
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAddNP" name="activoAddNP" value="1">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1">
                                             <label class="form-check-label">Si</label>
                                         </div>
                                     </div>
@@ -414,11 +414,11 @@
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="pendienteAddNP" name="pendienteAddNP" value="0">
+                                            <input class="form-check-input" type="radio" id="pendienteAdd" name="pendienteAdd" value="0">
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="pendienteAddNP" name="pendienteAddNP" value="1">
+                                            <input class="form-check-input" type="radio" id="pendienteAdd" name="pendienteAdd" value="1">
                                             <label class="form-check-label">Si</label>
                                         </div>
                                     </div>
@@ -429,21 +429,21 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Atributo 1:</div>
-                                    <select id="selectAtributo1NP" name="selectAtributo1NP" class="form-control">
+                                    <select id="inputAtributo1" name="inputAtributo1" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Atributo 2:</div>
-                                    <select id="selectAtributo2NP" name="selectAtributo2NP" class="form-control">
+                                    <select id="inputAtributo2" name="inputAtributo2" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Atributo 3:</div>
-                                    <select id="selectAtributo3NP" name="selectAtributo3NP" class="form-control">
+                                    <select id="inputAtributo3" name="inputAtributo3" class="form-control">
                                     </select>
                                 </div>
                             </div>
@@ -452,21 +452,21 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Atributo 4:</div>
-                                    <select id="selectAtributo4NP" name="selectAtributo4NP" class="form-control">
+                                    <select id="inputAtributo4" name="inputAtributo4" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Atributo 5:</div>
-                                    <select id="selectAtributo5NP" name="selectAtributo5NP" class="form-control">
+                                    <select id="inputAtributo5" name="inputAtributo5" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Atributo 6:</div>
-                                    <select id="selectAtributo6NP" name="selectAtributo6NP" class="form-control">
+                                    <select id="inputAtributo6" name="inputAtributo6" class="form-control">
                                     </select>
                                 </div>
                             </div>
@@ -475,7 +475,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Atributo 7:</div>
-                                    <select id="selectAtributo7NP" name="selectAtributo7NP" class="form-control">
+                                    <select id="inputAtributo7" name="inputAtributo7" class="form-control">
                                     </select>
                                 </div>
                             </div>
@@ -483,7 +483,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12">
-                                    <input type="button" id="botonenviarNP" value="Guardar"
+                                    <input type="button" id="botonenviar" value="Guardar"
                                         class="btn btn-success float-right">
                                 </div>
                             </div>
@@ -503,10 +503,11 @@
 
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsProductoV2.js') ?>"></script>
-<script src="<?php echo base_url('jsOperaciones/jsProductosPendientes.js') ?>"></script>
 
 <script>
+
+
+//aaaaaaaa
 $("input[name='PPTOP']").click(function() {
     var PPTOP = $('input:radio[name=PPTOP]:checked').val();
     
@@ -516,13 +517,6 @@ $("input[name='PPTOP']").click(function() {
         cargarProductosPendientes('#selectProductosPendientes');
     }
 });
-
-
-
-
-
-
-
 
 $("#selectProductosPendientes").change(function() {
     $('#categoria').html("");
@@ -564,25 +558,25 @@ $("#botonenviar").click(function() {
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
             "data": {
-                "Id_Categoria": $("#selectCategoria").val(),
+                "Id_Categoria": $("#inputCategoria").val(),
                 "CodigoBarra": $("#inputCodigoBarraNP").val(),
                 "Producto": $("#inputProducto").val(),
-                "id_Segmento": $("#selectSegmento").val(),
-                "Id_Fabricante": $("#selectFabricante").val(),
-                "Id_Marca": $("#selectMarca").val(),
-                "Id_Tamano": $("#selectTamano").val(),
-                "Id_TamanoRango": $("#selectTamanoRango").val(),
-                "id_UnidadMedida": $("#selectUnidadMedida").val(),
+                "id_Segmento": $("#inputSegmento").val(),
+                "Id_Fabricante": $("#inputFabricante").val(),
+                "Id_Marca": $("#inputMarca").val(),
+                "Id_Tamano": $("#inputTamano").val(),
+                "Id_TamanoRango": $("#inputTamanoRango").val(),
+                "id_UnidadMedida": $("#inputUnidadMedida").val(),
                 "Fragmentacion": $("#inputFragmentacion").val(),
                 "activo": $('input:radio[name=activoAdd]:checked').val(),
                 "Ind_Pendiente": $('input:radio[name=pendienteAdd]:checked').val(),
-                "Id_Atributo1": $("#selectAtributo1").val(),
-                "Id_Atributo2": $("#selectAtributo2").val(),
-                "Id_Atributo3": $("#selectAtributo3").val(),
-                "Id_Atributo4": $("#selectAtributo4").val(),
-                "Id_Atributo5": $("#selectAtributo5").val(),
-                "Id_Atributo6": $("#selectAtributo6").val(),
-                "Id_Atributo7": $("#selectAtributo7").val()
+                "Id_Atributo1": $("#inputAtributo1").val(),
+                "Id_Atributo2": $("#inputAtributo2").val(),
+                "Id_Atributo3": $("#inputAtributo3").val(),
+                "Id_Atributo4": $("#inputAtributo4").val(),
+                "Id_Atributo5": $("#inputAtributo5").val(),
+                "Id_Atributo6": $("#inputAtributo6").val(),
+                "Id_Atributo7": $("#inputAtributo7").val()
             }
         }
         $.ajax(settings).done(function(response) {
@@ -637,64 +631,64 @@ $("#botonenviar").click(function() {
     }
 });
 
-$("#selectCategoria").change(function() {
-    cargarFabricante("#selectFabricante",0);
+$("#inputCategoria").change(function() {
+    cargarFabricante("#inputFabricante",0);
     
-    var id_categoria = $("#selectCategoria").val();
-    if ($.trim($('#selectFabricante').val()) !== '') {
-        var id_fabricante = $("#selectFabricante").val();
-        let selectMarca = $("#selectMarca");
+    var id_categoria = $("#inputCategoria").val();
+    if ($.trim($('#inputFabricante').val()) !== '') {
+        var id_fabricante = $("#inputFabricante").val();
+        let selectMarca = $("#inputMarca");
         selectMarca.find("option").remove();
-        cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
+        cargarMarca("#inputMarca",id_categoria,id_fabricante,0);
     }
-    let selectSegmento = $("#selectSegmento");
+    let selectSegmento = $("#inputSegmento");
     selectSegmento.find("option").remove();
-    let selectTamano = $("#selectTamano");
+    let selectTamano = $("#inputTamano");
     selectTamano.find("option").remove();
-    let selectTamanoRango = $("#selectTamanoRango");
+    let selectTamanoRango = $("#inputTamanoRango");
     selectTamanoRango.find("option").remove();
-    let selectUnidadMedida = $("#selectUnidadMedida");
+    let selectUnidadMedida = $("#inputUnidadMedida");
     selectUnidadMedida.find("option").remove();
-    let selectAtributo1 = $("#selectAtributo1");
+    let selectAtributo1 = $("#inputAtributo1");
     selectAtributo1.find("option").remove();
-    let selectAtributo2 = $("#selectAtributo2");
+    let selectAtributo2 = $("#inputAtributo2");
     selectAtributo2.find("option").remove();
-    let selectAtributo3 = $("#selectAtributo3");
+    let selectAtributo3 = $("#inputAtributo3");
     selectAtributo3.find("option").remove();
-    let selectAtributo4 = $("#selectAtributo4");
+    let selectAtributo4 = $("#inputAtributo4");
     selectAtributo4.find("option").remove();
-    let selectAtributo5 = $("#selectAtributo5");
+    let selectAtributo5 = $("#inputAtributo5");
     selectAtributo5.find("option").remove();
-    let selectAtributo6 = $("#selectAtributo6");
+    let selectAtributo6 = $("#inputAtributo6");
     selectAtributo6.find("option").remove();
-    let selectAtributo7 = $("#selectAtributo7");
+    let selectAtributo7 = $("#inputAtributo7");
     selectAtributo7.find("option").remove();
     
-    cargarSegmento("#selectSegmento",id_categoria,0);
-    cargarTamano("#selectTamano",id_categoria,0);
-    cargarTamanoRango("#selectTamanoRango",id_categoria,0);
-    cargarUnidadMedida("#selectUnidadMedida",id_categoria,0);
-    cargarAtributo1("#selectAtributo1",id_categoria,0);
-    cargarAtributo2("#selectAtributo2",id_categoria,0);
-    cargarAtributo3("#selectAtributo3",id_categoria,0);
-    cargarAtributo4("#selectAtributo4",id_categoria,0);
-    cargarAtributo5("#selectAtributo5",id_categoria,0);
-    cargarAtributo6("#selectAtributo6",id_categoria,0);
-    cargarAtributo7("#selectAtributo7",id_categoria,0);
+    cargarSegmento("#inputSegmento",id_categoria,0);
+    cargarTamano("#inputTamano",id_categoria,0);
+    cargarTamanoRango("#inputTamanoRango",id_categoria,0);
+    cargarUnidadMedida("#inputUnidadMedida",id_categoria,0);
+    cargarAtributo1("#inputAtributo1",id_categoria,0);
+    cargarAtributo2("#inputAtributo2",id_categoria,0);
+    cargarAtributo3("#inputAtributo3",id_categoria,0);
+    cargarAtributo4("#inputAtributo4",id_categoria,0);
+    cargarAtributo5("#inputAtributo5",id_categoria,0);
+    cargarAtributo6("#inputAtributo6",id_categoria,0);
+    cargarAtributo7("#inputAtributo7",id_categoria,0);
     
 });
 
-$("#selectFabricante").change(function() {
-    var id_categoria = $("#selectCategoria").val();
-    var id_fabricante = $("#selectFabricante").val();
-    let selectMarca = $("#selectMarca");
+$("#inputFabricante").change(function() {
+    var id_categoria = $("#inputCategoria").val();
+    var id_fabricante = $("#inputFabricante").val();
+    let selectMarca = $("#inputMarca");
     selectMarca.find("option").remove();
-    cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
+    cargarMarca("#inputMarca",id_categoria,id_fabricante,0);
 });
 
 
 
-function cargarCategoria_(etiqueta,idS) {
+function cargarCategoria(etiqueta,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllCategoria',
         "method": "get",
@@ -741,7 +735,11 @@ function cargarCategoria_(etiqueta,idS) {
     })
 }
 // Inicio Crear Producto
-function cargarAtributo7_(etiqueta,id_categoria,idS) {
+
+
+
+
+function cargarAtributo7(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllAtributo7_x_Categoria/' + id_categoria,
         "method": "get",
@@ -786,8 +784,7 @@ function cargarAtributo7_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarAtributo6_(etiqueta,id_categoria,idS) {
+function cargarAtributo6(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllAtributo6_x_Categoria/' + id_categoria,
         "method": "get",
@@ -832,8 +829,7 @@ function cargarAtributo6_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarAtributo5_(etiqueta,id_categoria,idS) {
+function cargarAtributo5(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllAtributo5_x_Categoria/' + id_categoria,
         "method": "get",
@@ -878,8 +874,7 @@ function cargarAtributo5_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarAtributo4_(etiqueta,id_categoria,idS) {
+function cargarAtributo4(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllAtributo4_x_Categoria/' + id_categoria,
         "method": "get",
@@ -924,8 +919,7 @@ function cargarAtributo4_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarAtributo3_(etiqueta,id_categoria,idS) {
+function cargarAtributo3(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllAtributo3_x_Categoria/' + id_categoria,
         "method": "get",
@@ -970,8 +964,7 @@ function cargarAtributo3_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarAtributo2_(etiqueta,id_categoria,idS) {
+function cargarAtributo2(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllAtributo2_x_Categoria/' + id_categoria,
         "method": "get",
@@ -1016,8 +1009,7 @@ function cargarAtributo2_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarAtributo1_(etiqueta,id_categoria,idS) {
+function cargarAtributo1(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllAtributo1_x_Categoria/' + id_categoria,
         "method": "get",
@@ -1062,8 +1054,7 @@ function cargarAtributo1_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarUnidadMedida_(etiqueta,id_categoria,idS) {
+function cargarUnidadMedida(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllUnidadMed_x_Categoria/' + id_categoria,
         "method": "get",
@@ -1108,8 +1099,7 @@ function cargarUnidadMedida_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarTamanoRango_(etiqueta,id_categoria,idS) {
+function cargarTamanoRango(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllRango_x_Categoria/' + id_categoria,
         "method": "get",
@@ -1154,8 +1144,7 @@ function cargarTamanoRango_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarTamano_(etiqueta,id_categoria,idS) {
+function cargarTamano(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllTamano_x_Categoria/' + id_categoria,
         "method": "get",
@@ -1200,8 +1189,7 @@ function cargarTamano_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarSegmento_(etiqueta,id_categoria,idS) {
+function cargarSegmento(etiqueta,id_categoria,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllSegmento_x_Categoria/' + id_categoria,
         "method": "get",
@@ -1246,8 +1234,7 @@ function cargarSegmento_(etiqueta,id_categoria,idS) {
         }
     })
 }
-
-function cargarMarca_(etiqueta,id_categoria,id_fabricante,idS) {
+function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllMarca_x_Categoria_x_Fabricante/' + id_categoria+'/'+id_fabricante,
         "method": "get",
@@ -1292,8 +1279,7 @@ function cargarMarca_(etiqueta,id_categoria,id_fabricante,idS) {
         }
     })
 }
-
-function cargarFabricante_(etiqueta,idS) {
+function cargarFabricante(etiqueta,idS) {
     var settings = {
         "url": '<?php echo urlApi; ?>getAllFabricante',
         "method": "get",
@@ -1337,6 +1323,15 @@ function cargarFabricante_(etiqueta,idS) {
             window.location = '/homepantry20/index.php';
         }
     })
+}
+//**** */
+
+function eliminarSeparadorMiles(number){
+    
+    const regex = /[.]/g;
+    var aux = number.replace(regex, '');
+    aux = aux.replace(',', '.');
+    return aux;
 }
 function cargarTabla(CodigoBarras){
     var bottomAcciones = function(cell, formatterParams){

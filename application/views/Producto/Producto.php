@@ -746,7 +746,7 @@ select:focus {
 <!-- /.modal Masivo precios -->
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsProductoV2.js') ?>"></script>
+<script src="<?php echo base_url('jsDiccionario/jsProductoV1.js') ?>"></script>
 
 <script>
 $("#botonenviar").click(function() {
@@ -755,8 +755,6 @@ $("#botonenviar").click(function() {
     //ejecutarAgregarProductoNuevo();
 });
 
-
-// ??????????????????????????????????????????????????????????????????????
 $("#selectCategoriaTabla").change(function() {
     var id_categoriaT = $("#selectCategoriaTabla").val();
     console.log(id_categoriaT);
@@ -859,10 +857,6 @@ $("#selectCategoriaEdit").change(function() {
     cargarAtributo6("#selectAtributo6Edit",id_categoria,0);
     cargarAtributo7("#selectAtributo7Edit",id_categoria,0);
 });
-
-
-
-
 
 $("#selectFabricante").change(function() {
     var id_categoria = $("#selectCategoria").val();
