@@ -41,7 +41,7 @@ function cargarTablaFunciones(idDivTabla){
         arrayID = jQuery.map(selectedData, function(value, index) {
             return (value.id_opcion);
         });
-        //crearPerfil(arrayID);
+        AsociarPerfilOpciones(arrayID);
     });
 }
 
@@ -76,6 +76,86 @@ function crearPerfil(){
                     "Perfil":$("#inputPerfil").val(),
                     "Descripcion":$("#inputDescripcion").val(),
                     "activo":  $('input:radio[name=activoAdd]:checked').val()
+                }
+            }
+            $.ajax(settings).done(function(response){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                cargarTabla();
+                cargarPerfil('#selectPerfil',0);
+                var form = document.querySelector('#FormPerfil');
+                form.reset();
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    //var form = document.querySelector('#FormUsuariosEdit');
+                    //form.reset();
+                    //window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+    })
+}
+
+function AsociarPerfilOpciones(arrayID){
+    var urlApi = localStorage.getItem("urlApi");
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: '¿Seguro Asociar Opciones al perfil?',
+        text: " ... ",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: 'Si, Asociar Opciones al Perfil',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var settings = {
+                "url": urlApi+'asociarOpcionesPerfil',
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+                "data": {
+                    "Id_Perfil":$("#selectPerfil").val(),
+                    "arrayID":arrayID
                 }
             }
             $.ajax(settings).done(function(response){

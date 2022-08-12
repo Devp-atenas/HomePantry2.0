@@ -2229,12 +2229,16 @@
         editPanelistasResponsableJefe(idHogar,0,1);
         localStorage.setItem('flagActividad',1);
         localStorage.removeItem('idHogarEditar');
-        cargarEducacion('#educacionComposicion',0);
-        cargarEstadoCivil('#estadoCivilComposicion',0);
-        cargarParentesco('#parentescoJefeComposicion',0);
-        cargarTipoIngreso('#tipoIngresoComposicion',0);
         /*
-            blanquearCamposPorActividad(idHogar); esta dentro de editPanelistasResponsableJefe
+            cargarEducacion('#educacionComposicion',0);
+            cargarEstadoCivil('#estadoCivilComposicion',0);
+            cargarParentesco('#parentescoJefeComposicion',0);
+            cargarTipoIngreso('#tipoIngresoComposicion',0);
+        */
+
+        /*
+            !!!!!!!!! No eliminar este comentario !!!!
+            blanquearCamposPorActividad(idHogar); Ojo: esta dentro de HogarEditar
         */
     }else{
         cargarEstado('#estadoHogar',0);
@@ -2921,6 +2925,18 @@
         }
     });
     $(document).ready(function() {
+        $('#fechaNacimientoResponsable').change(function(e) {
+            calcularEdad('#fechaNacimientoResponsable','#edadResponsable')
+        })
+        
+        $('#fechaNacimientoJefe').change(function(e) {
+            calcularEdad('#fechaNacimientoJefe','#edadJefe')
+        })
+        
+        $('#fechaNacimientoComposicion').change(function(e) {
+            calcularEdad('#fechaNacimientoComposicion','#edadComposicion')
+        })
+        
         $('#tipoVivienda').change(function(e) {
             if ($(this).val() != "12") {
                 $("#especifiqueTipoVivienda").val('');

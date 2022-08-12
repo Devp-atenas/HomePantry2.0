@@ -7,6 +7,59 @@ $(document).ready(function() {
 
 
 
+
+function calcularEdad_(inputFecha,inputCalculada) { ///calcular edad
+    var FechaNacimiento = $(inputFecha).val();
+    var fechaNacimiento = new Date(FechaNacimiento);
+    var fechaActual = new Date();
+    var dia = fechaActual.getDate();
+    var mes = fechaActual.getMonth()+1;
+    var año = fechaActual.getFullYear();
+    
+    /*alert('---- Actual: '+fechaActual);
+    alert(fechaActual.getDate());
+    alert(fechaActual.getMonth());
+    alert('---- Nacimiento: '+fechaNacimiento);
+    alert(fechaNacimiento.getDate());
+    alert(fechaNacimiento.getMonth());
+    */
+    fechaActual.setDate(dia);
+    fechaActual.setMonth(mes);
+    fechaActual.setFullYear(año);
+    edad = Math.floor(((fechaActual - fechaNacimiento) / (1000 * 60 * 60 * 24) / 365));
+    $(inputCalculada).val(edad);
+}
+
+function calculaEdad(nombre, diaNacimiento, mesNacimiento, anioNacimiento){
+    var nombre = document.getElementById("nombre").value;
+    var diaNacimiento = document.getElementById("dia").value;
+    var mesNacimiento = document.getElementById("mes").value;
+    var anioNacimiento = document.getElementById("anio").value;
+    var salida = document.getElementById("salida");
+
+    var fechaNacimiento = new Date(FechaNacimiento);
+    
+    this.nombre = nombre;
+    this.diaNacimiento = diaNacimiento;
+    this.mesNacimiento = mesNacimiento;
+    this.anioNacimiento = anioNacimiento;
+
+    this.edad=function edad(){
+        var calcula=0;
+        var fechaActual=new Date();
+        var dia=fechaActual.getDate();
+        var mes= fechaActual.getMonth()+1;
+        var hoy=fechaActual.getFullYear();
+
+        if(mes<this.mesNacimiento||(mes==this.mesNacimiento&&dia<this.dia)){
+            return calcula=parseInt(hoy-this.anioNacimiento)-1; 
+        }else{
+            return calcula=parseInt(hoy-this.anioNacimiento);  
+        }
+    };
+    salida.innerHTML= "La edad actual de "+nombre+" es  "+this.edad()+".";
+}
+
 function msgCrearHogar(Codigo){
     if (Codigo == ""){
         Swal.fire(
@@ -17,10 +70,9 @@ function msgCrearHogar(Codigo){
     }
 }
 
-
 function blanquearCamposPorActividad(idHogar) {
     var mURL = localStorage.getItem("urlApi")+'getCamposLimpiarAllStep/'+idHogar;
-    alert(mURL);
+    //alert(mURL);
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -396,106 +448,121 @@ function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
             }
         }
         $.ajax(settings).done(function(response) {
-            if (responsable == 1 && parentesco == 0){
-                $("#inputIdEditResponsable").val(response.data[0].Id_Panelista);
-                $("#primerNombreResponsable").val(response.data[0].Nombre1);
-                $("#segundoNombreResponsable").val(response.data[0].Nombre2);
-                $("#primerApellidoResponsable").val(response.data[0].Apellido1);
-                $("#segundoApellidoResponsable").val(response.data[0].Apellido2);
-                var oblig = $("input:radio[name='nacionalidadResponsable']");
-                oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
-                $("#cedulaResponsable").val(response.data[0].Cedula);
-                var oblig = $("input:radio[name='sexoResponsable']");
-                oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
-                //$("#estadoCivilResponsable option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
-                //$("#parentescoJefeResponsable option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
-                $("#fechaNacimientoResponsable").val(response.data[0].Fec_Nacimiento);
-                $("#correoResponsable").val(response.data[0].Correo);
-                $("#correoAlternoResponsable").val(response.data[0].CorreoAlterno);
-                //$("#tipoIngresoResponsable option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
-                $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
+            if (response.data.length != 0){
+                if (responsable == 1 && parentesco == 0){
+                    $("#inputIdEditResponsable").val(response.data[0].Id_Panelista);
+                    $("#primerNombreResponsable").val(response.data[0].Nombre1);
+                    $("#segundoNombreResponsable").val(response.data[0].Nombre2);
+                    $("#primerApellidoResponsable").val(response.data[0].Apellido1);
+                    $("#segundoApellidoResponsable").val(response.data[0].Apellido2);
+                    var oblig = $("input:radio[name='nacionalidadResponsable']");
+                    oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
+                    $("#cedulaResponsable").val(response.data[0].Cedula);
+                    var oblig = $("input:radio[name='sexoResponsable']");
+                    oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
+                    //$("#estadoCivilResponsable option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
+                    //$("#parentescoJefeResponsable option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
+                    $("#fechaNacimientoResponsable").val(response.data[0].Fec_Nacimiento);
+                    $("#correoResponsable").val(response.data[0].Correo);
+                    $("#correoAlternoResponsable").val(response.data[0].CorreoAlterno);
+                    //$("#tipoIngresoResponsable option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
+                    $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
 
-                cargarEducacion('#educacionResponsable',response.data[0].Id_Educacion);
-                cargarEstadoCivil('#estadoCivilResponsable',response.data[0].Id_EstadoCivil);
-                cargarParentesco('#parentescoJefeResponsable',response.data[0].Id_Parentesco);
-                cargarTipoIngreso('#tipoIngresoResponsable',response.data[0].Id_TipoIngreso);
+                    cargarEducacion('#educacionResponsable',response.data[0].Id_Educacion);
+                    cargarEstadoCivil('#estadoCivilResponsable',response.data[0].Id_EstadoCivil);
+                    cargarParentesco('#parentescoJefeResponsable',response.data[0].Id_Parentesco);
+                    cargarTipoIngreso('#tipoIngresoResponsable',response.data[0].Id_TipoIngreso);
 
-                var oblig = $("input:radio[name='frecuenciaCompraResponsable']");
-                oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
-                if(response.data[0].id_Lunes == 1){
-                    $("#lunes").prop("checked", true);
+                    var oblig = $("input:radio[name='frecuenciaCompraResponsable']");
+                    oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
+                    if(response.data[0].id_Lunes == 1){
+                        $("#lunes").prop("checked", true);
+                    }
+                    if(response.data[0].id_Martes == 1){
+                        $("#martes").prop("checked", true);
+                    }
+                    if(response.data[0].id_Miercoles == 1){
+                        $("#miercoles").prop("checked", true);
+                    }
+                    if(response.data[0].id_Jueves == 1){
+                        $("#jueves").prop("checked", true);
+                    }
+                    if(response.data[0].id_Viernes == 1){
+                        $("#viernes").prop("checked", true);
+                    }
+                    if(response.data[0].id_Sabado == 1){
+                        $("#sabado").prop("checked", true);
+                    }
+                    if(response.data[0].id_Domingo == 1){
+                        $("#domingo").prop("checked", true);
+                    }
+                    var oblig = $("input:radio[name='beneficioSocialistaResponsable']");
+                    oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
+                    $("#celularResponsable").val(response.data[0].Celular);
+                    $("#celularAdicionalResponsable").val(response.data[0].CelularAdicional);
+                    $("#numeroCortesiaResponsable").val(response.data[0].NumeroCortesia);
+                    $("#titularTransferenciaResponsable").val(response.data[0].Titular);
+                    var oblig = $("input:radio[name='nacionalidadTransferenciaResponsable']");
+                    oblig.filter("[value='"+response.data[0].id_NacionalidadTitular+"']").attr('checked', true);
+                    $("#cedulaTransferenciaResponsable").val(response.data[0].CedulaTitular);
+                    cargarBanco('#bancoTransferenciaResponsable',response.data[0].Id_Banco);
+                    $("#numeroCuentaResponsable").val(response.data[0].NumeroCuenta);
+                    var oblig = $("input:radio[name='pagoRapidoTrasferencia']");
+                    oblig.filter("[value='"+response.data[0].Id_PagoRapido+"']").attr('checked', true);
                 }
-                if(response.data[0].id_Martes == 1){
-                    $("#martes").prop("checked", true);
-                }
-                if(response.data[0].id_Miercoles == 1){
-                    $("#miercoles").prop("checked", true);
-                }
-                if(response.data[0].id_Jueves == 1){
-                    $("#jueves").prop("checked", true);
-                }
-                if(response.data[0].id_Viernes == 1){
-                    $("#viernes").prop("checked", true);
-                }
-                if(response.data[0].id_Sabado == 1){
-                    $("#sabado").prop("checked", true);
-                }
-                if(response.data[0].id_Domingo == 1){
-                    $("#domingo").prop("checked", true);
-                }
-                var oblig = $("input:radio[name='beneficioSocialistaResponsable']");
-                oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
-                $("#celularResponsable").val(response.data[0].Celular);
-                $("#celularAdicionalResponsable").val(response.data[0].CelularAdicional);
-                $("#numeroCortesiaResponsable").val(response.data[0].NumeroCortesia);
-                $("#titularTransferenciaResponsable").val(response.data[0].Titular);
-                var oblig = $("input:radio[name='nacionalidadTransferenciaResponsable']");
-                oblig.filter("[value='"+response.data[0].id_NacionalidadTitular+"']").attr('checked', true);
-                $("#cedulaTransferenciaResponsable").val(response.data[0].CedulaTitular);
-                cargarBanco('#bancoTransferenciaResponsable',response.data[0].Id_Banco);
-                $("#numeroCuentaResponsable").val(response.data[0].NumeroCuenta);
-                var oblig = $("input:radio[name='pagoRapidoTrasferencia']");
-                oblig.filter("[value='"+response.data[0].Id_PagoRapido+"']").attr('checked', true);
-            }
-            if (responsable == 0 && parentesco == 1){
-                if (response.data[0].ResponsablePanel != response.data[0].Id_Parentesco){
-                    document.getElementById("divResponsableJefe").style.visibility = "visible";
-                    var oblig = $("input:radio[name='jefeResponsableIO']");
-                    oblig.filter("[value='0']").attr('checked', true);
-                }else{
-                    document.getElementById("divResponsableJefe").style.visibility = "hidden";
-                    var oblig = $("input:radio[name='jefeResponsableIO']");
-                    oblig.filter("[value='1']").attr('checked', true);
-                }
-                document.getElementById("responsableJefeNO").disabled=true;
-                document.getElementById("responsableJefeSI").disabled=true;
+                if (responsable == 0 && parentesco == 1){
+                    if (response.data[0].ResponsablePanel != response.data[0].Id_Parentesco){
+                        document.getElementById("divResponsableJefe").style.visibility = "visible";
+                        var oblig = $("input:radio[name='jefeResponsableIO']");
+                        oblig.filter("[value='0']").attr('checked', true);
+                    }else{
+                        document.getElementById("divResponsableJefe").style.visibility = "hidden";
+                        var oblig = $("input:radio[name='jefeResponsableIO']");
+                        oblig.filter("[value='1']").attr('checked', true);
+                    }
+                    document.getElementById("responsableJefeNO").disabled=true;
+                    document.getElementById("responsableJefeSI").disabled=true;
 
-                $("#inputIdEditJefe").val(response.data[0].Id_Panelista);
-                $("#primerNombreJefe").val(response.data[0].Nombre1);
-                $("#segundoNombreJefe").val(response.data[0].Nombre2);
-                $("#primerApellidoJefe").val(response.data[0].Apellido1);
-                $("#segundoApellidoJefe").val(response.data[0].Apellido2);
-                var oblig = $("input:radio[name='nacionalidadJefe']");
-                oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
-                $("#cedulaJefe").val(response.data[0].Cedula);
-                var oblig = $("input:radio[name='sexoJefe']");
-                oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
-                $("#parentescoJefeJefe option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
-                $("#fechaNacimientoJefe").val(response.data[0].Fec_Nacimiento);
-                $("#correoJefe").val(response.data[0].Correo);
-                $("#correoAlternoJefe").val(response.data[0].CorreoAlterno);
-                $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
-                var oblig = $("input:radio[name='frecuenciaCompraJefe']");
-                oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
-                var oblig = $("input:radio[name='beneficioSocialistaJefe']");
-                oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
-                $("#celularJefe").val(response.data[0].Celular);
-                $("#celularAdicionalJefe").val(response.data[0].CelularAdicional);
+                    $("#inputIdEditJefe").val(response.data[0].Id_Panelista);
+                    $("#primerNombreJefe").val(response.data[0].Nombre1);
+                    $("#segundoNombreJefe").val(response.data[0].Nombre2);
+                    $("#primerApellidoJefe").val(response.data[0].Apellido1);
+                    $("#segundoApellidoJefe").val(response.data[0].Apellido2);
+                    var oblig = $("input:radio[name='nacionalidadJefe']");
+                    oblig.filter("[value='"+response.data[0].Id_Nacionalidad+"']").attr('checked', true);
+                    $("#cedulaJefe").val(response.data[0].Cedula);
+                    var oblig = $("input:radio[name='sexoJefe']");
+                    oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
+                    $("#parentescoJefeJefe option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
+                    $("#fechaNacimientoJefe").val(response.data[0].Fec_Nacimiento);
+                    $("#correoJefe").val(response.data[0].Correo);
+                    $("#correoAlternoJefe").val(response.data[0].CorreoAlterno);
+                    $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
+                    var oblig = $("input:radio[name='frecuenciaCompraJefe']");
+                    oblig.filter("[value='"+response.data[0].Id_FrecuenciaCompra+"']").attr('checked', true);
+                    var oblig = $("input:radio[name='beneficioSocialistaJefe']");
+                    oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
+                    $("#celularJefe").val(response.data[0].Celular);
+                    $("#celularAdicionalJefe").val(response.data[0].CelularAdicional);
 
-                cargarEducacion('#educacionJefe',response.data[0].Id_Educacion);
-                cargarEstadoCivil('#estadoCivilJefe',response.data[0].Id_EstadoCivil);
-                cargarParentesco('#parentescoJefeJefe',response.data[0].Id_Parentesco);
-                cargarTipoIngreso('#tipoIngresoJefe',response.data[0].Id_TipoIngreso);
+                    cargarEducacion('#educacionJefe',response.data[0].Id_Educacion);
+                    cargarEstadoCivil('#estadoCivilJefe',response.data[0].Id_EstadoCivil);
+                    cargarParentesco('#parentescoJefeJefe',response.data[0].Id_Parentesco);
+                    cargarTipoIngreso('#tipoIngresoJefe',response.data[0].Id_TipoIngreso);
+                }
+            }else{
+                if (responsable == 1 && parentesco == 0){
+                    cargarEducacion('#educacionResponsable',0);
+                    cargarEstadoCivil('#estadoCivilResponsable',0);
+                    cargarParentesco('#parentescoJefeResponsable',0);
+                    cargarTipoIngreso('#tipoIngresoResponsable',0);
+                }
+                if (responsable == 0 && parentesco == 1){
+                    cargarEducacion('#educacionJefe',0);
+                    cargarEstadoCivil('#estadoCivilJefe',0);
+                    cargarParentesco('#parentescoJefeJefe',0);
+                    cargarTipoIngreso('#tipoIngresoJefe',0);
+                }
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {

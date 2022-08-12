@@ -5,7 +5,7 @@
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Versión</b> 2.0.0
+            <b>Versión</b> 2022.08.01
         </div>
         <strong>Copyright &copy; 2021 </strong> ATENAS GRUPO CONSULTOR, C.A. Todos los derechos reservados..
     </footer>

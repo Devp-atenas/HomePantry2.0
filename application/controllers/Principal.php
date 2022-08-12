@@ -171,7 +171,7 @@ class Principal extends CI_Controller {
     public function Producto(){
         $this->load->view('Producto/Producto');
     }
-    //---------------------------
+    //----------- NSE ------------
     public function MetrosVivienda(){
         $this->load->view('nse/MetrosVivienda');
     }
@@ -223,6 +223,10 @@ class Principal extends CI_Controller {
     public function Autos(){
         $this->load->view('nse/Autos');
     }
+    public function FrecuenciaElectricidad(){
+        $this->load->view('nse/FrecuenciaElectricidad');
+    }
+    //----------- Operaciones ------------
     public function ValidacionProducto(){
         $this->load->view('Operaciones/ValidacionProducto');
     }
@@ -232,6 +236,7 @@ class Principal extends CI_Controller {
     public function ProductosPendientes(){
         $this->load->view('Operaciones/ProductosPendientes');
     }
+    //----------- Hogares ------------
     public function SustitucionHogares(){
         $this->load->view('Hogares/SustitucionHogares');
     }
@@ -241,24 +246,22 @@ class Principal extends CI_Controller {
     public function CrearEstudio(){
         $this->load->view('Hogares/CrearEstudio');
     }
+    //----------- Estudio ------------
     public function CargarEstudio(){
         $this->load->view('Estudio/CargarEstudio');
     }
+    //----------- MaestroAutenticar ------------
     public function Menu(){
         $this->load->view('MaestroAutenticar/MenuMaestro');
     }
-    public function SessionLock(){
-        $this->load->view('SessionLock');
-    }
+    //----------- GestionPerfil ------------
     public function GestionarPerfil(){
         $this->load->view('GestionPerfil/GestionarPerfil');
     }
     public function AsociarPerfil(){
         $this->load->view('GestionPerfil/AsociarPerfil');
     }
-    public function Actividad(){
-        $this->load->view('Actividad/Actividad');
-    }
+    //----------- Reportes ------------
     public function ReporteTotal(){
         $this->load->view('Reportes/ReporteTotal');
     }
@@ -295,13 +298,17 @@ class Principal extends CI_Controller {
     public function ReporteHogarCategoria(){
         $this->load->view('Reportes/ReporteHogarCategoria');
     }
+    //----------- Mantenimiento ------------
     public function MantenimientoSemana(){
         $this->load->view('Mantenimiento/MantenimientoSemana');
     }
     public function DetalleAlertas(){
         $this->load->view('Alertas/DetalleAlertas');
     }
-    
+    //----------- Actividad ------------
+    public function Actividad(){
+        $this->load->view('Actividad/Actividad');
+    }
     public function temp(){
         $this->load->view('Actividad/temp');
     }
@@ -321,6 +328,10 @@ class Principal extends CI_Controller {
         $this->load->view('SessionLock');
         redirect('/');
 	}
+    public function SessionLock(){
+        $this->load->view('SessionLock');
+    }
+    
     
     public function user_view(){
 

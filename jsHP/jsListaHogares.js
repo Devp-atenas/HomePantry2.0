@@ -21,12 +21,12 @@ function cargarTablaAlertasFichaIncompleta(idDivTabla){
         selectable:1,
         selectablePersistence:true, //make rows selectable
         columns:[
-            {title:"Id_PanelHogar:", field:"Id_PanelHogar", sorter:"number"},
-            {title:"CodigoHogar", field:"CodigoHogar", sorter:"string"},
-            {title:"Responsable", field:"NombreR", sorter:"string"},
-            {title:"Cedula", field:"cedulaR", sorter:"number"},
-            {title:"Jefe", field:"NombreJJ", sorter:"string"},
-            {title:"Cedula", field:"cedulaJJ", sorter:"number"},
+            {title:"Id_PanelHogar:", field:"Id_PanelHogar", sorter:"number", headerFilter:true},
+            {title:"CodigoHogar", field:"CodigoHogar", sorter:"string", headerFilter:true},
+            {title:"Responsable", field:"NombreR", sorter:"string", headerFilter:true},
+            {title:"Cedula", field:"cedulaR", sorter:"number", headerFilter:true},
+            {title:"Jefe", field:"NombreJJ", sorter:"string", headerFilter:true},
+            {title:"Cedula", field:"cedulaJJ", sorter:"number", headerFilter:true},
             {title:"Acciones",formatter:bottomAcciones, hozAlign:"center", maxWidth : 150}
             
         ],

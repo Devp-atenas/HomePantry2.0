@@ -143,6 +143,7 @@ function cargarCantidadTV(identificador,edit) {
         }
     })
 }
+
 function cargarTipoTV(identificador,edit) {
     var settings = {
         "async": true,
@@ -192,6 +193,7 @@ function cargarTipoTV(identificador,edit) {
         }
     })
 }
+
 function cargarSenal(identificador,edit) {
     var settings = {
         "async": true,
@@ -241,6 +243,7 @@ function cargarSenal(identificador,edit) {
         }
     })
 }
+
 function cargarAguasBlancas(identificador,edit) {
     var settings = {
         "async": true,
@@ -290,6 +293,7 @@ function cargarAguasBlancas(identificador,edit) {
         }
     })
 }
+
 function cargarAguasNegras(identificador,edit) {
     var settings = {
         "async": true,
@@ -339,6 +343,7 @@ function cargarAguasNegras(identificador,edit) {
         }
     })
 }
+
 function cargarAseoUrbano(identificador,edit) {
     var settings = {
         "async": true,
@@ -388,6 +393,7 @@ function cargarAseoUrbano(identificador,edit) {
         }
     })
 }
+
 function cargarMontoVivienda(identificador,edit) {
     var settings = {
         "async": true,
@@ -437,6 +443,7 @@ function cargarMontoVivienda(identificador,edit) {
         }
     })
 }
+
 function cargarPuntosLuz(identificador,edit) {
     var settings = {
         "async": true,
@@ -486,6 +493,7 @@ function cargarPuntosLuz(identificador,edit) {
         }
     })
 }
+
 function cargarOcupacionVivienda(identificador,edit) {
     var settings = {
         "url":localStorage.getItem("urlApi")+'getAllOcupacionVivienda/',
@@ -533,6 +541,7 @@ function cargarOcupacionVivienda(identificador,edit) {
         }
     })
 }
+
 function cargarMetrosVivienda(identificador,edit) {
     var settings = {
         "async": true,
@@ -582,6 +591,7 @@ function cargarMetrosVivienda(identificador,edit) {
         }
     })
 }
+
 function cargarTipoVivienda(identificador,edit) {
     var settings = {
         "async": true,
@@ -632,6 +642,7 @@ function cargarTipoVivienda(identificador,edit) {
         }
     })
 }
+
 function cargarTvOnline(identificador,edit) {
     var settings = {
         "async": true,
@@ -681,6 +692,7 @@ function cargarTvOnline(identificador,edit) {
         }
     })
 }
+
 function cargarCablera(identificador,edit) {
     var settings = {
         "async": true,
@@ -730,6 +742,7 @@ function cargarCablera(identificador,edit) {
         }
     })
 }
+
 function cargarBanco(identificador,edit) {
     var settings = {
         "async": true,
@@ -779,6 +792,7 @@ function cargarBanco(identificador,edit) {
         }
     })
 }
+
 function cargarEducacion(identificador,edit) {
     var settings = {
         "async": true,
@@ -829,6 +843,7 @@ function cargarEducacion(identificador,edit) {
         }
     })
 }
+
 function cargarTipoIngreso(identificador,edit) {
     var settings = {
         "async": true,
@@ -927,6 +942,7 @@ function cargarParentesco(identificador,edit) {
         }
     })
 }
+
 function cargarEstadoCivil(identificador,edit) {
     var settings = {
         "async": true,
@@ -976,6 +992,7 @@ function cargarEstadoCivil(identificador,edit) {
         }
     })
 }
+
 function cargarMunicipio(parametro,idS) {
     var settings = {
         "async": true,
@@ -1024,7 +1041,7 @@ function cargarMunicipio(parametro,idS) {
         }
     })
 }
-// zzzzzzzzzzzzzzzzzzz
+
 function cargarCiudad(parametro,idS) {
     var settings = {
         "async": true,

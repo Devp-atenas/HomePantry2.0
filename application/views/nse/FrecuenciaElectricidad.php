@@ -37,18 +37,18 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-sort-numeric-up"></i>&nbsp;Mantenimiento Atributo 1</h1>
+                <h1><i class="bi bi-lightning-charge-fill"></i>&nbsp;Mantenimiento Frecuencia Electricidad</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<!-- Main content Agregar Atributo 71111-->
+<!-- Main content Agregar VNSE-->
 <section class="content">
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Atributo 1</h3>
+                    <h3 class="card-title">Frecuencia Electricidad</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -56,23 +56,22 @@
                     </div>
                 </div>
                 <div class="card-body" style="display: none;">
-                    <form id="FormAtributo">
+                    <form id="FormVNSE">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <div class="inputText font-weight-bold">Categoria:</div>
-                                    <select id="selectCategoria" name="selectCategoria" class="form-control">
-                                    </select>
-                                </div>
-                            </div>
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Atributo:</div>
-                                    <input type="text" name="inputAtributo" id="inputAtributo" class="form-control">
+                                    <div class="inputText font-weight-bold">Frecuencia Electricidad:</div>
+                                    <input type="text" name="inputNombreAdd" id="inputNombreAdd" class="form-control input-sm"placeholder="Ingrese nombre del item ...">
                                 </div>
                             </div>
                             <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Activo:</div>
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Peso:</div>
+                                    <input type="number" step="0.01" name="pesoAdd" id="pesoAdd" placeholder="Ingrese puntaje NSE ..." class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="inputText font-weight-bold">Activo:</div>
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
@@ -87,7 +86,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12">
@@ -110,7 +108,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listados de Atributo</h3>
+                    <h3 class="card-title">Listado Frecuencia Electricidad</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -124,20 +122,11 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="inputText font-weight-bold">Categoria:</div>
-                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <table id="TableAtributo" class="table table-bordered table-striped table-sm" style="display:none;">
+                            <table id="TableVNSE" class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
-                                        <th>Categoria</th>
-                                        <th>Atributo</th>
+                                        <th>Frecuencia Electricidad</th>
+                                        <th>Peso</th>
                                         <th>Estatus</th>
                                         <th></th>
                                     </tr>
@@ -151,8 +140,8 @@
         </div>
     </div>
 </section>
-<!-- Windows Modal Editar Registros 222222 -->
-<div class="modal fade" id="modal-AtributoEditar">
+<!-- Windows Modal Editar Item -->
+<div class="modal fade" id="modal-VNSEEditar">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -164,7 +153,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Atributo</h3>
+                            <h3 class="card-title">Frecuencia Electricidad</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -172,42 +161,41 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="FormAtributoEdit">
+                            <form id="FormVNSEEdit">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                   <div class="col-md-5">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Categoria:</div>
-                                            <select id="selectCategoriaEdit" name="selectCategoriaEdit" class="form-control">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo:</div>
-                                            <input type="text" name="inputAtributoEdit" id="inputAtributoEdit" class="form-control">
+                                            <div class="inputText font-weight-bold">Frecuencia Electricidad:</div>
+                                            <input type="text" name="inputNombreEdit" id="inputNombreEdit" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                    <div class="inputText font-weight-bold">Activo:</div>
-                                        <div class="card">
-                                            <div class="form-group">
-                                            <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
-                                                    <label class="form-check-label">No</label>
-                                                </div>
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Peso:</div>
+                                            <input type="number" step="0.01" name="pesoEdit" id="pesoEdit" placeholder="Ingrese puntaje NSE ..." class="form-control input-sm">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Activo:</div>
+                                            <div class="card">
+                                                <div class="form-group">
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
-                                                    <label class="form-check-label">Si</label>
+                                                        <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
+                                                        <label class="form-check-label">No</label>
+                                                    </div>
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
+                                                        <label class="form-check-label">Si</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <div class="row" style="visibility:hidden;">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="inputIdEditAtributo">id:</label>
-                                            <input type="text" name="inputIdEditAtributo" id="inputIdEditAtributo"
+                                            <label for="inputIdEditVNSE">id:</label>
+                                            <input type="text" name="inputIdEditVNSE" id="inputIdEditVNSE"
                                                 class="form-control">
                                         </div>
                                     </div>
@@ -254,16 +242,10 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="inputText font-weight-bold">Categoria:</div>
-                                        <input type="text" name="selectCategoriaVer" id="selectCategoriaVer" class="form-control" readonly>
-                                    </div>
-                                </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <div class="inputText font-weight-bold">Atributo:</div>
-                                        <input type="text" name="inputAtributoVer" id="inputAtributoVer" class="form-control" readonly>
+                                        <input type="text" name="inputNombreVer" id="inputNombreVer" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -295,16 +277,10 @@
 </div>
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsAtributo1V1.js') ?>"></script>
+<script src="<?php echo base_url('jsVNSE/jsFrecuenciaElectricidad.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
-<script>
-    $("#selectCategoriaTabla").change(function() {
-        var id_categoriaT = $("#selectCategoriaTabla").val();
-        cargarTabla(id_categoriaT);
-        $('#TableAtributo').show();
-    });
-</script>
+
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>

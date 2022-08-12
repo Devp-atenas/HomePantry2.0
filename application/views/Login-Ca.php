@@ -15,7 +15,16 @@ if(!isset($_SESSION)){
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>| Acceso Home Pantry |</title>
-        
+
+        <script type="text/javascript">
+            var onloadCallback = function() {
+                    grecaptcha.render('html_element', {
+                    'sitekey' : '6LfpKXMgAAAAAOSLPHHyskhmtgkMEDOzfhv7Bayn'
+                });
+            };
+        </script>
+
+
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -63,10 +72,14 @@ if(!isset($_SESSION)){
                                     id="exampleInputPassword1" placeholder="Introduzca su contraseña">
                             </div>
                             <div class="card-footer">
-                                <button type="submit" name="submitForm" class="btn btn-sm btn-block btn-primary">I n g r e s a r</button>
+                                <button type="submit" id="submitForm" name="submitForm" class="btn btn-sm btn-block btn-primary">I n g r e s a r</button>
                             </div>
                         </div>
                     </form>
+                    <div class="g-recaptcha" data-sitekey="6LfpKXMgAAAAAOSLPHHyskhmtgkMEDOzfhv7Bayn"></div>
+                    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+                        async defer>
+                    </script>
                     <p class="mb-1">
                         <small>
                             <a href="<?php echo base_url('Principal/ReinicioPassword')?>">Olvidé mi contraseña</a>
@@ -98,20 +111,28 @@ if(!isset($_SESSION)){
                 localStorage.setItem("IPHP20",data.ip);
         });
 
-        $(function() {
-            $.validator.setDefaults({
-                submitHandler: function() {
-                    var usuario = {
-                        user:  $("#user").val(),
-                        password: $("#password").val()
-                    };
-                    $.ajax({
-                        url: '<?php echo urlApi; ?>getLogin',
-                        type: 'post',
-                        contentType: 'application/json; charset=utf-8',
-                        data: JSON.stringify(usuario),
-                        success: function(data) {
-                            /*$.getJSON('https://api.ipify.org?format=json', function(data){
+        
+
+
+        $("#botonenviar").click(function() {
+            var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": '<?php echo urlApi; ?>getLogin',
+                    "method": "post",
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Authorization": "Bearer " + localStorage.getItem('Token')
+                    },
+                    "data": {
+                        "user": $("#user").val(),
+                        "password": $("#password").val()
+                    }
+                }
+                $.ajax(settings).done(function(response) {
+                    
+
+                    /*$.getJSON('https://api.ipify.org?format=json', function(data){
                                     alert("Hola 2: "+data.ip);
                             });*/
                             //generarMenu();
@@ -148,13 +169,74 @@ if(!isset($_SESSION)){
                                 title: data.message
                             })
                             window.location.href = "Principal/dashboard"
-                        },
-                        error: function(xhr, status, error) {
+                }).fail(function(jqXHR, textStatus) {
+                    if (jqXHR.status == 400) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'info',
+                            title: 'Su Session ha Expirado',
+                            confirmButtonText: `Ok`,
+                        })
+                        var form = document.querySelector('#FormUsuariosEdit');
+                        form.reset();
+                        window.location = '/homepantry20/index.php';
+                    }
+                })        
+        });
+
+
+
+
+
+
+        function LogIN() {
+            if ($("#FormAtributoEdit").valid()) {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": '<?php echo urlApi; ?>getLogin',
+                    "method": "post",
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Authorization": "Bearer " + localStorage.getItem('Token')
+                    },
+                    "data": {
+                        "user": $("#user").val(),
+                        "password": $("#password").val()
+                    }
+                }
+                $.ajax(settings).done(function(response) {
+                    
+
+                    /*$.getJSON('https://api.ipify.org?format=json', function(data){
+                                    alert("Hola 2: "+data.ip);
+                            });*/
+                            //generarMenu();
+                            //alert("Hola 2: "+IP2);
+                            var IP = localStorage.getItem("IPHP20");
+                            localStorage.clear();
+                            var urlApi = '<?php echo urlApi; ?>';
+                            localStorage.setItem("IP",IP);
+                            localStorage.setItem("urlApi",urlApi);
+                            localStorage.setItem("Token", data.token);
+                            localStorage.setItem("Usuario", data.Login);
+                            localStorage.setItem("user", $("#user").val());
+                            localStorage.setItem("nombreUsuario",data.nombreUsuario);
+                            localStorage.setItem("IdUsuario",data.IdUsuario);
+                            localStorage.setItem("Avatar",data.Avatar);
+                            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
                             var form = document.querySelector('#quickForm');
                             form.reset();
-                            $('#exampleInputEmail1').val('');
-                            $('#exampleInputPassword1').val('');
-                            var err = JSON.parse(xhr.responseText);
                             const Toast = Swal.mixin({
                                 toast: true,
                                 position: 'top-end',
@@ -169,13 +251,62 @@ if(!isset($_SESSION)){
                                 }
                             })
                             Toast.fire({
-                                icon: 'error',
-                                title: err.message
+                                icon: 'success',
+                                title: data.message
                             })
-                        }
-                    });
-                }
-            });
+                            window.location.href = "Principal/dashboard"
+
+
+
+
+
+
+
+
+
+
+                }).fail(function(jqXHR, textStatus) {
+                    if (jqXHR.status == 400) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'info',
+                            title: 'Su Session ha Expirado',
+                            confirmButtonText: `Ok`,
+                        })
+                        var form = document.querySelector('#FormUsuariosEdit');
+                        form.reset();
+                        window.location = '/homepantry20/index.php';
+                    }
+                })
+            }
+        }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        $(function() {            
             $('#quickForm').validate({
                 rules: {
                     email: {
