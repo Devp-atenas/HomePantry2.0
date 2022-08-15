@@ -108,7 +108,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="<?php echo base_url('Principal/dashboard')?>" class="brand-link">
-            <img src="<?php echo base_url('dist/img/cropped-emblemaAtenasColor-32x32.png')?>" alt="Atenas"
+            <!-- dist/img/cropped-emblemaAtenasColor-32x32.png -->
+            <img src="<?php echo base_url('assets/img/HomePantry.png')?>" alt="Atenas"
                 class="brand-image img-thumbnail elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">Home Pantry</span>
         </a>
