@@ -1,5 +1,5 @@
 <!-- Colocar Include Header y Menu 27jul21 -->
-<?php $this->load->view('Plantillas/Header'); ?>
+<?php $this->load->view('Plantillas/Header'); ?>     
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">

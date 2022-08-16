@@ -133,6 +133,12 @@ function blanquearCamposPorActividad(idHogar) {
     })
 }
 
+
+
+
+
+
+
 function guardarCamposPorActividad(idHogar,step) {
     var mURL;
     if (step == 0){
