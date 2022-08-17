@@ -27,7 +27,7 @@ function cargarMostrar(etiqueta) {
     selected.find("option").remove();
     selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
     selected.append("<option value='1'>Mostrar Todos</option>");
-    selected.append("<option value='2'>Mostrar Registros Indebidos</option>");
+    //selected.append("<option value='2'>Mostrar Registros Indebidos</option>");
 }
 
 
