@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 
 
-function calcularEdad_(inputFecha,inputCalculada) { ///calcular edad
+function calcularEdad(inputFecha,inputCalculada) { ///calcular edad
     var FechaNacimiento = $(inputFecha).val();
     var fechaNacimiento = new Date(FechaNacimiento);
     var fechaActual = new Date();
@@ -132,12 +132,6 @@ function blanquearCamposPorActividad(idHogar) {
         }
     })
 }
-
-
-
-
-
-
 
 function guardarCamposPorActividad(idHogar,step) {
     var mURL;
@@ -1067,6 +1061,41 @@ function HogarEditar() {
         if (response.data[0].Ind_fichaCompleta == 1){
             blanquearCamposPorActividad(idHogar);
         }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function desactivarAlerta(idHogar) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'finalizarFicha_idHogar/'+idHogar,
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {        
+        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta desactivada de ficha incompleta",idHogar,"U");
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({

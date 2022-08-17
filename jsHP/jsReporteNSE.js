@@ -12,8 +12,7 @@ function cargarTablaReporteNSE2(){
     var urlApi = localStorage.getItem("urlApi");
     
     oTable = $('#TablaReporteNSE').DataTable({
-        
-        
+        /*
         "initComplete": function () {
             this.api().columns([0, 1, 9]).every( function () {
                 var column = this;
@@ -34,9 +33,7 @@ function cargarTablaReporteNSE2(){
                 } );
             } );
         },
-        
-        
-        
+        */
     //var oTable = jQuery('#TablaReporteNSE').DataTable({
             "lengthMenu": [
             [ -1],
@@ -45,8 +42,8 @@ function cargarTablaReporteNSE2(){
         "bDestroy":     true,
         "autoWidth":    true,
         "searching":    false,
-        select: true,
-        select: 'single',
+        //select: true,
+        //select: 'single',
         "bPaginate":    false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive":   false,
@@ -509,14 +506,14 @@ function cargarTablaReporteNSE2(){
     
     //var table = $('#example').DataTable();
  
-    oTable.on( 'select', function ( e, dt, type, indexes ) {
-    if ( type === 'row' ) {
-        var data = oTable.rows( indexes ).data().pluck( 'id' );
- 
-        // do something with the ID of the selected items
-    }
-} );
+    /*oTable.on( 'select', function ( e, dt, type, indexes ) {
+        if ( type === 'row' ) {
+            var data = oTable.rows( indexes ).data().pluck( 'id' );
     
+            // do something with the ID of the selected items
+        }
+    });
+    */
     
 /*
     $('#example tbody').on('click', 'tr', function () {

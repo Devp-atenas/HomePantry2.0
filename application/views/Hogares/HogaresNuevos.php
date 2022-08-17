@@ -1,10 +1,10 @@
 <!-- Colocar Include Header y Menu 27jul21 -->
-<?php $this->load->view('Plantillas/Header'); ?>     
+<?php $this->load->view('Plantillas/Header'); ?>
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fa fa-plus-square aria-hidden=" true""></i>&nbsp;Registro del hogar </h1>
+                <h1><i class="fa fa-plus-square"></i>&nbsp;Registro del hogar </h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -278,7 +278,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Sexo:</div>
+                            <div class="inputText font-weight-bold">Genero:</div>
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check">
@@ -619,7 +619,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="inputText font-weight-bold">Sexo:</div>
+                                <div class="inputText font-weight-bold">Genero:</div>
                                 <div class="card">
                                     <div class="form-group">
                                         <div class="form-check">
@@ -801,7 +801,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">Sexo:</div>
+                                                    <div class="inputText font-weight-bold">Genero:</div>
                                                     <div class="card">
                                                         <div class="form-group">
                                                             <div class="form-check">
@@ -921,7 +921,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <table id="TablePanelistas" class="table table-bordered table-striped table-md">
+                                <table id="TablePanelistas" class="table table-bordered table-striped table-sm">
                                     <thead>
                                         <tr>
                                             <th>Nombres</th>
@@ -933,17 +933,6 @@
                                             <th>Accion</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Nombres</th>
-                                            <th>Apellidos</th>
-                                            <th>Nacionalidad</th>
-                                            <th>Cedula</th>
-                                            <th>Parentesco</th>
-                                            <th>Fec_Nacimiento</th>
-                                            <th>Accion</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -1796,7 +1785,7 @@
                         </div>
                         <div class="card-body">
                             <form id="FormPanelistaEdit">
-                                <div class="row">t
+                                <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Primer nombre:</div>
@@ -1845,7 +1834,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="inputText font-weight-bold">Sexo:</div>
+                                        <div class="inputText font-weight-bold">Genero:</div>
                                         <div class="card">
                                             <div class="form-group">
                                                 <div class="form-check">
@@ -2052,7 +2041,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="inputText font-weight-bold">Sexo:</div>
+                                        <div class="inputText font-weight-bold">Genero:</div>
                                         <div class="card">
                                             <div class="form-group">
                                                 <div class="form-check">
@@ -2229,12 +2218,12 @@
         editPanelistasResponsableJefe(idHogar,0,1);
         localStorage.setItem('flagActividad',1);
         localStorage.removeItem('idHogarEditar');
-        /*
+        
             cargarEducacion('#educacionComposicion',0);
             cargarEstadoCivil('#estadoCivilComposicion',0);
             cargarParentesco('#parentescoJefeComposicion',0);
             cargarTipoIngreso('#tipoIngresoComposicion',0);
-        */
+        
 
         /*
             !!!!!!!!! No eliminar este comentario !!!!
@@ -3953,19 +3942,38 @@
         cargarParroquia(parametro3,0);
     });
 
+
+
+// 9999
+
 function cargarTablaComposicion(idHogar){
     $('#TablePanelistas').dataTable({
         "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
+            [ -1],
+            ["All"]
         ],
         "bDestroy": true,
         "autoWidth": true,
+        "searching": false,
+        "bPaginate": false,
         "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": true,
+        "responsive": false,
         "buttons": [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            {
+                extend: 'excelHtml5',
+                title: 'Reporte de Hogar Registro por Consumo'
+            }
         ],
+        "fixedHeader":    false,
+        "scrollX":        true,
+        "scrollY":        400,
+        "deferRender":    true,
+        "scroller":       true,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+            "decimal": ",",
+            "thousands": "."
+        },        
         "ajax": {
             "url": '<?php echo urlApi; ?>getPanelistas_x_CodHogar/'+idHogar,
             "type": "GET",
@@ -4027,10 +4035,18 @@ function cargarTablaComposicion(idHogar){
             "data": 'Id_Panelista',
             "className": "text-center",
             "render": function(data, type, row, meta) {
-                return '<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
+                    /*return '<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
                     data +
                     '); return false;"></a>&nbsp;&nbsp;<a title="Visualizar" href="#"><img src=<?php echo base_url('assets/iconos/ver.png') ?> width="25" height="25" onclick="VisualizarAction(' +
                     data + '); return false;"></a>';
+*/
+
+                    return  '<div class="text-wrap width-200">'+
+                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
+                                data +');"><i class="bi bi-pencil-square"></i></button>'+
+                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
+                                data +');"><i class="bi bi-zoom-in"></i></button>'+
+                        '</div>';
             }
         }],
     });

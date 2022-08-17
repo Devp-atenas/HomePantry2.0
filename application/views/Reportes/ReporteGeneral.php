@@ -6,7 +6,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
             
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte General</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -15,7 +15,6 @@
 <section class="content">
     <div class="container-fluid">
         <div id="showTablas">
-            <h2 class="text-center">Reportes General</h2>
             <div class="row">
                 <div class="col-md-12"> <!-- bg-danger bg-gradient -->
                     <form id="formReporte" action="" method="post">
@@ -42,11 +41,6 @@
 </section>
 
 <?php $this->load->view('Plantillas/Footer');?>
-
-<script>
-
-
-</script>
 
 <script src="<?php echo base_url('jsHP/jsReporteGeneral.js') ?>"></script>
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>

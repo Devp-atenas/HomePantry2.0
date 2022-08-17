@@ -47,7 +47,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-es_ES.js"></script>    
     
     
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>    
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>    
     
+
+    
+
     
     <!--Table Export -->
     <script src="<?php echo base_url('assets/tableExport/js-xlsx/xlsx.core.min.js') ?>"></script>

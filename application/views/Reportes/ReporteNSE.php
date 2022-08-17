@@ -47,7 +47,7 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte Nivel Socio Economico</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -56,9 +56,7 @@ select:focus {
 <section class="content">
     <div class="container-fluid">
         <div id="showTablas">
-            <h2 class="text-center">Nivel Socio Economico</h2>
-           
-            <div class="row">
+             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
