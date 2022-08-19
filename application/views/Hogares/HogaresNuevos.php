@@ -3003,8 +3003,22 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    //$('#claseSocialInformacion').val(response.NSE);
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Características y tenencia de la vivienda (Paso 5) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+
+                    if (response.NSECalculado != response.NSEAnterior){
+                        AlertaCambioNSE(idHogar,response.NSEAnterior,response.NSECalculado);
+                        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta cambio NSE actualizando Características y tenencia de la vivienda (Paso 5) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    }
+
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Características y tenencia de la vivienda (Paso 5) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                }
+
                 if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,5);
                 }
                 const Toast = Swal.mixin({
@@ -3022,9 +3036,7 @@
                     icon: 'success',
                     title: response.message,
                     confirmButtonText: `Ok`,
-                })
-
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 5 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                })  
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3095,8 +3107,22 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    //$('#claseSocialInformacion').val(response.NSE);
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Servicios Públicos(Paso 6) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+
+                    if (response.NSECalculado != response.NSEAnterior){
+                        AlertaCambioNSE(idHogar,response.NSEAnterior,response.NSECalculado);
+                        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta cambio NSE actualizando Servicios Públicos(Paso 6) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    }
+
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Servicios Públicos(Paso 6) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                }
+
                 if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,6);
                 }
                 const Toast = Swal.mixin({
@@ -3115,7 +3141,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 6 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3307,8 +3332,22 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    //$('#claseSocialInformacion').val(response.NSE);
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Servicios y equipamiento del hogar(Paso 7) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+
+                    if (response.NSECalculado != response.NSEAnterior){
+                        AlertaCambioNSE(idHogar,response.NSEAnterior,response.NSECalculado);
+                        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta cambio NSE actualizando Servicios y equipamiento del hogar(Paso 7) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    }
+
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Servicios y equipamiento del hogar(Paso 7) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                }
+
                 if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,7);
                 }
                 const Toast = Swal.mixin({
@@ -3327,7 +3366,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 7 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3420,8 +3458,22 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    //$('#claseSocialInformacion').val(response.NSE);
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Medios(Paso 8) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+
+                    if (response.NSECalculado != response.NSEAnterior){
+                        AlertaCambioNSE(idHogar,response.NSEAnterior,response.NSECalculado);
+                        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta cambio NSE actualizando Medios(Paso 8) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    }
+
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Medios(Paso 8) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                }
+
                 if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,8);
                 }
                 const Toast = Swal.mixin({
@@ -3440,7 +3492,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 8 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3509,6 +3560,24 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    //$('#claseSocialInformacion').val(response.NSE);
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Vehículos(Paso 9) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+
+                    if (response.NSECalculado != response.NSEAnterior){
+                        AlertaCambioNSE(idHogar,response.NSEAnterior,response.NSECalculado);
+                        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta cambio NSE actualizando Vehículos(Paso 9) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    }
+
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Vehículos(Paso 9) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                }
+
+                if (localStorage.getItem('flagActividad') !== null){
+                    guardarCamposPorActividad(idHogar,9);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3525,11 +3594,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
-                    guardarCamposPorActividad(idHogar,9);
-                }
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 9 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3599,6 +3663,24 @@
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    //$('#claseSocialInformacion').val(response.NSE);
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Mascotas(Paso 10) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+
+                    if (response.NSECalculado != response.NSEAnterior){
+                        AlertaCambioNSE(idHogar,response.NSEAnterior,response.NSECalculado);
+                        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta cambio NSE actualizando Mascotas(Paso 10) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    }
+
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Mascotas(Paso 10) (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                }
+
+                if (localStorage.getItem('flagActividad') !== null){
+                    guardarCamposPorActividad(idHogar,10);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3615,11 +3697,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
-                    guardarCamposPorActividad(idHogar,10);
-                }
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 10 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3929,17 +4006,17 @@
         selectMunicipio.find("option").remove();
         let selectParroquia = $("#parroquiaHogar");
         selectParroquia.find("option").remove();
-        cargarCiudad(parametro,0);
+        cargarCiudad("#ciudadHogar",parametro,0);
     });
     $("#ciudadHogar").change(function() {
         //cargarCablera('#cablera1');
         //cargarCablera('#cablera2');
         var parametro2 = $("#estadoHogar").val();
-        cargarMunicipio(parametro2,0);
+        cargarMunicipio("#municipioHogar",parametro2,0);
     });
     $("#municipioHogar").change(function() {
         var parametro3 = $("#municipioHogar").val();
-        cargarParroquia(parametro3,0);
+        cargarParroquia("#parroquiaHogar",parametro3,0);
     });
 
 

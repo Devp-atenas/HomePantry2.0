@@ -5,9 +5,6 @@ $(document).ready(function() {
     $('.buttonNext').prop('disabled', true);
 });
 
-
-
-
 function calcularEdad(inputFecha,inputCalculada) { ///calcular edad
     var FechaNacimiento = $(inputFecha).val();
     var fechaNacimiento = new Date(FechaNacimiento);
@@ -140,7 +137,7 @@ function guardarCamposPorActividad(idHogar,step) {
     }else{
         mURL = localStorage.getItem("urlApi")+'getCamposLimpiarxStep/'+idHogar+'/'+step;
     }
-    alert(mURL);
+    //alert(mURL);
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -163,7 +160,7 @@ function guardarCamposPorActividad(idHogar,step) {
                 valor = $('#'+response.data[i].Id_campohtml).val();
             }else if (tipoCampo == 'select'){
                 valor = $("#"+response.data[i].Id_campohtml).val();
-                alert('Id_campohtml: '+response.data[i].Id_campohtml+' select valor: '+valor);
+                //alert('Id_campohtml: '+response.data[i].Id_campohtml+' select valor: '+valor);
             }else if (tipoCampo == 'radio'){
                 valor = $('input[name='+response.data[i].Id_campohtml+']:checked').val();
                 //alert(response.data[i].Id_campohtml+' radio: '+valor);
@@ -389,6 +386,7 @@ function finalizarFicha(idHogar) {
             }
     }
     $.ajax(settings).done(function(response) {
+        desactivarAlerta(idHogar);
         
         $('#claseSocialInformacion').val(response.NSE);
         
@@ -556,6 +554,8 @@ function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
                     cargarEstadoCivil('#estadoCivilResponsable',0);
                     cargarParentesco('#parentescoJefeResponsable',0);
                     cargarTipoIngreso('#tipoIngresoResponsable',0);
+                    cargarBanco('#bancoTransferenciaResponsable',0);
+                    
                 }
                 if (responsable == 0 && parentesco == 1){
                     cargarEducacion('#educacionJefe',0);
@@ -869,9 +869,9 @@ function HogarEditar() {
         $("#estadoHogar option[value='"+ response.data[0].Id_Estado +"']").attr("selected",true);
         var Estado = $("#estadoHogar").val();
         cargarEstado("#estadoHogar",response.data[0].Id_Estado);
-        cargarCiudad(response.data[0].Id_Estado,response.data[0].Id_Ciudad);
-        cargarMunicipio(response.data[0].Id_Estado,response.data[0].Id_Municipio);
-        cargarParroquia(response.data[0].Id_Municipio,response.data[0].Id_Parroquia);
+        cargarCiudad("#ciudadHogar",response.data[0].Id_Estado,response.data[0].Id_Ciudad);
+        cargarMunicipio("#municipioHogar",response.data[0].Id_Estado,response.data[0].Id_Municipio);
+        cargarParroquia("#parroquiaHogar",response.data[0].Id_Municipio,response.data[0].Id_Parroquia);
         var oblig = $("input:radio[name='calle']");
         oblig.filter("[value='"+response.data[0].Ind_CalleAvenidad+"']").attr('checked', true);
         $('#nombreCalle').val(response.data[0].calle);
@@ -1087,7 +1087,7 @@ function desactivarAlerta(idHogar) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url":localStorage.getItem("urlApi")+'finalizarFicha_idHogar/'+idHogar,
+        "url":localStorage.getItem("urlApi")+'desactivarAlertaFichaIncompleta/'+idHogar,
         "method": "get",
         "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -1095,7 +1095,7 @@ function desactivarAlerta(idHogar) {
             }
     }
     $.ajax(settings).done(function(response) {        
-        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta desactivada de ficha incompleta",idHogar,"U");
+        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta desactivada en ficha incompleta(IdHogar)",idHogar,"U");
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -1117,3 +1117,5 @@ function desactivarAlerta(idHogar) {
         }
     })
 }
+
+
