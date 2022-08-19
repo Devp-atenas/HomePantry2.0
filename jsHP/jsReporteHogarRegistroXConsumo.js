@@ -18,6 +18,7 @@ $("#selecMostrar").change(function() {
     var idTipoConsumo = $('#selecTipoConsumo').val();
     var mostrar = $('#selecMostrar').val();
     cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar);
+    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte registro por consumo {idPeriodo:"+idPeriodo+",idTipoConsumo:"+idTipoConsumo+",mostrar:"+mostrar+"} (idTipoConsumo)",idTipoConsumo,"R");
     $("#showTableReporteHogarRegistroXConsumo").show();
 });
 

@@ -1678,6 +1678,8 @@ function PendienteDetalleCompra(idConsumoDetalle){
 //9999999
 //99999
 function cargarTablaConsumos(idConsumo){
+    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte Consumo por hogar(idConsumo)",idConsumo,"R");
+
     var URL;
 
     var idTipoConsumo = $("#selectTipoConsumoTabla").val();
@@ -1860,6 +1862,8 @@ function ActualizarCalculoTotales() {
 
 // ??????????????????????????????????????????????????????????????????????
 </script>
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
+
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>

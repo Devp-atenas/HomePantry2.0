@@ -177,6 +177,8 @@ function cargarSemana(identificador,idEditar) {
 
 
 function cargarTablaReporteTicket(idSemana,idArea,idEstado){
+    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte Reporte Ticket: {idSemana:"+idSemana+",idArea:"+idArea+",idEstado:"+idEstado+"}",0,"R");
+
     var urlApi = localStorage.getItem("urlApi");
     
     $('#TablaReporteTicket').dataTable({

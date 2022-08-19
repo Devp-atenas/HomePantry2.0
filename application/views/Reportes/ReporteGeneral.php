@@ -41,6 +41,7 @@
 </section>
 
 <?php $this->load->view('Plantillas/Footer');?>
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
 <script src="<?php echo base_url('jsHP/jsReporteGeneral.js') ?>"></script>
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>

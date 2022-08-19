@@ -158,9 +158,6 @@ function AlertaCambioNSE(idHogar,NSEAnterior,NSENuevo) {
 }
 
 
-
-
-
 function ListaAlertas(IdUsuario){
     var settings = {
         "url":localStorage.getItem("urlApi")+'getAlertas4Perfil/'+IdUsuario,

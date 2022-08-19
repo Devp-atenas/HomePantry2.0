@@ -1,10 +1,12 @@
 $(document).ready(function() {
     var urlApi = '<?php echo urlApi; ?>';
-    cargarTablaReporteGeneral('#TablaReporte');
+    cargarTablaReporteCablera('#TablaReporte');
     
     //$('#showButton').hide();
 });
-function cargarTablaReporteGeneral(idDivTabla){
+function cargarTablaReporteCablera(idDivTabla){
+    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte cablera",0,"R");
+
     var urlApi = localStorage.getItem("urlApi");
     var table = new Tabulator(idDivTabla, {
         ajaxURL: urlApi+'getDatosReporteCablera/',

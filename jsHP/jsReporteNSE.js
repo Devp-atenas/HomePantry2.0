@@ -10,7 +10,8 @@ $(document).ready(function() {
 
 function cargarTablaReporteNSE2(){
     var urlApi = localStorage.getItem("urlApi");
-    
+    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte NSE",0,"R");
+
     oTable = $('#TablaReporteNSE').DataTable({
         /*
         "initComplete": function () {
@@ -535,7 +536,8 @@ function cargarTablaReporteNSE2(){
 
 
 
-function cargarTablaReporteNSE(){
+function cargarTablaReporteNSE______(){
+    
     var urlApi = localStorage.getItem("urlApi");
     var bottomAcciones = function(cell, formatterParams){
     var id = cell.getRow().getData().Id_Estudio;
@@ -649,13 +651,6 @@ function cargarTablaReporteNSE(){
             {title:"PesoSeguroSocial", field:"PesoSeguroSocial", sorter:"string"},
             {title:"SeguroVehiculo", field:"SeguroVehiculo", sorter:"string"},
             {title:"PesoSeguroVehiculo", field:"PesoSeguroVehiculo", sorter:"string"},
-            
-
-
-
-
-
-            
         ],
     });
 }

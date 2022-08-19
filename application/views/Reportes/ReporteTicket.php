@@ -154,6 +154,7 @@ select:focus {
 </section>
 
 <?php $this->load->view('Plantillas/Footer');?>
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
 <script src="<?php echo base_url('jsHP/jsReporteTicket.js') ?>"></script>
 

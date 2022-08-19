@@ -2,6 +2,8 @@ $(document).ready(function() {
     cargarTablaReporte('#TablaReporte');
 });
 function cargarTablaReporte(idDivTabla){
+    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte Total",0,"R");
+
     var urlApi = localStorage.getItem("urlApi");
     var table = new Tabulator(idDivTabla, {
         ajaxURL: urlApi+'getReporteTotalHomePantry/',

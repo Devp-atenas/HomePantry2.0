@@ -3561,7 +3561,7 @@
             }
             $.ajax(settings).done(function(response) {
                 var idHogar = $("#identificacion2Hogar").val();
-    
+                // 66666
                 if (response.isFichaCompleta==1){
                     //$('#claseSocialInformacion').val(response.NSE);
                     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Vehículos(Paso 9) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");

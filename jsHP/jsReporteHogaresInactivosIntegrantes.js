@@ -1,9 +1,10 @@
 $(document).ready(function() {
-    cargarTablaReporteGeneral('#TablaReporte');
+    cargarTablaReporteHogaresInactivos('#TablaReporte');
     
     //$('#showButton').hide();
 });
-function cargarTablaReporteGeneral(idDivTabla){
+function cargarTablaReporteHogaresInactivos(idDivTabla){
+    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte Hogares Inactivos",0,"R");
     var urlApi = localStorage.getItem("urlApi");
     var table = new Tabulator(idDivTabla, {
         ajaxURL: urlApi+'getDatosReporteHogaresInactivosIntegrantes/',
