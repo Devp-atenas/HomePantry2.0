@@ -1,11 +1,11 @@
 $(document).ready(function() {
     /*let button = document.querySelector(".buttonNext");
     button.disabled = true;*/
-    
     $('.buttonNext').prop('disabled', true);
+    //$("#formUbicacionHogar :input").prop("disabled", true);
 });
 
-function calcularEdad(inputFecha,inputCalculada) { ///calcular edad
+function calcularEdad(inputFecha,inputCalculada){ ///calcular edad
     var FechaNacimiento = $(inputFecha).val();
     var fechaNacimiento = new Date(FechaNacimiento);
     var fechaActual = new Date();

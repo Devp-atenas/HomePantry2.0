@@ -312,6 +312,10 @@ class Principal extends CI_Controller {
     public function temp(){
         $this->load->view('Actividad/temp');
     }
+    //----------- Configuracion ------------
+    public function BloquearFicha(){
+        $this->load->view('Configuracion/BloquearFicha');
+    }
     
     public function logout(){
         $this->load->helper('url');
