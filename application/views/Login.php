@@ -166,6 +166,7 @@ if(!isset($_SESSION)){
 
     </body>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="<?php echo base_url('jsHP/jsLogin.js') ?>"></script>
     <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
     <!-- jQuery -->
     <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
