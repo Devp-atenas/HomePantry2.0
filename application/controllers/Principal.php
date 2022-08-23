@@ -12,6 +12,9 @@ class Principal extends CI_Controller {
     public function hogares(){
         $this->load->view('Hogares/HogaresNuevos');
 	}
+    public function FichaHogar(){
+        $this->load->view('Hogares/FichaHogar');
+	}
     public function ListaHogares(){
         $this->load->view('ListaHogares/ListaHogares');
 	}

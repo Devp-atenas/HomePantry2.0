@@ -1,51 +1,48 @@
+var table;
 $(document).ready(function() {
     cargarPerfil('#selectPerfil',0);
+    document.getElementById("bMostrarOpcionesPerfil").addEventListener("click", function(){
+        cargarOpcionesPerfil(localStorage.getItem('idPerfilOpcionesEdit'));
+    });
 });
 
-$('#idCrearPerfil').click(function(){
-    crearPerfil();
-});
-
-function cargarTablaFunciones(idDivTabla){
-    var urlApi = sessionStorage.getItem("urlApi");
-    var table = new Tabulator(idDivTabla, {
-        ajaxURL: urlApi+'getAllFunciones/',
-        renderVerticalBuffer:600,
-        ajaxConfig:{
-            method:"GET", //set request type to Position
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-        },
-        height : "550px" ,
-        layout:"fitDataTable",//fitDataTable",
-        progressload : "scroll",
-        groupBy:"Padre",
-        placeholder:"Datos no encontrados",
-        selectable:true,
-        locale:true,
-        selectablePersistence:true, //make rows selectable
-        columns:[
-            {formatter:"rowSelection", titleFormatter:"rowSelection", align:"center", headerSort:false},
-            {title:"Opciones", field:"Opcion", sorter:"number"}
-            /**/
-            //{title:"TTTTTTT", field:"BDBDBDBD", sorter:"number", headerFilter:"input"},
-        ],
-    });
-
-    document.getElementById("idGuardarPerfilOpciones").addEventListener("click", function(){
-        //alert(row.select());
-        var selectedData = table.getSelectedData();
-        var arrayID;
-        arrayID = jQuery.map(selectedData, function(value, index) {
-            return (value.id_opcion);
-        });
-        AsociarPerfilOpciones(arrayID);
-    });
+function cargarOpcionesPerfil(idPerfil) {
+    var settings = {
+        "url":localStorage.getItem("urlApi")+'getOpcionesPerfil/'+idPerfil,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        //table.selectRow(response.data);
+        for (var i = 0; i < response.data.length; i++) {
+            table.selectRow(response.data[i].id);
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
 }
 
-function crearPerfil(){
+$('#idCrearPerfil').click(function(){
     var urlApi = localStorage.getItem("urlApi");
 
     const swalWithBootstrapButtons = Swal.mixin({
@@ -95,7 +92,7 @@ function crearPerfil(){
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                cargarTabla();
+                cargarTablaPerfiles();
                 cargarPerfil('#selectPerfil',0);
                 var form = document.querySelector('#FormPerfil');
                 form.reset();
@@ -124,6 +121,46 @@ function crearPerfil(){
             })
         }
     })
+});
+
+function cargarTablaFunciones(idDivTabla){
+    table = new Tabulator(idDivTabla, {
+        //async: false,
+        ajaxURL: localStorage.getItem("urlApi")+'getAllFunciones/',
+        renderVerticalBuffer:600,
+        ajaxConfig:{
+            method:"GET", //set request type to Position
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+        },
+        height : "550px" ,
+        layout:"fitDataTable",//fitDataTable",
+        progressload : "scroll",
+        groupBy:"Padre",
+        placeholder:"Datos no encontrados",
+        selectable:true,
+        locale:true,
+        selectablePersistence:true, //make rows selectable
+        columns:[
+            {formatter:"rowSelection", titleFormatter:"rowSelection", align:"center", headerSort:false},
+            {title:"id", field:"id", sorter:"number"},
+            {title:"Opciones", field:"Opcion", sorter:"number"}
+            /**/
+            //{title:"TTTTTTT", field:"BDBDBDBD", sorter:"number", headerFilter:"input"},
+        ],
+    });
+
+    document.getElementById("idGuardarPerfilOpciones").addEventListener("click", function(){
+        //alert(row.select());
+        var selectedData = table.getSelectedData();
+        var arrayID;
+        arrayID = jQuery.map(selectedData, function(value, index) {
+            return (value.id);
+        });
+        AsociarPerfilOpciones(arrayID);
+    });
 }
 
 function AsociarPerfilOpciones(arrayID){
@@ -175,7 +212,7 @@ function AsociarPerfilOpciones(arrayID){
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                cargarTabla();
+                cargarTablaPerfiles();
                 cargarPerfil('#selectPerfil',0);
                 var form = document.querySelector('#FormPerfil');
                 form.reset();
@@ -297,6 +334,47 @@ function cargarUsuarios(etiqueta,idSeleccionado) {
         }
     })
 }
-
-
-
+// 6666666666
+function EditAction(id) {
+    document.getElementById('FormActividadEdit').reset();
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getPerfilId/' + id,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        //cargarTablaItems('#PerfilOpcionesEditar');
+        cargarTablaFunciones('#PerfilOpcionesEditar');
+        $('#inputIdEdit').val(response.data[0].Id);
+        $('#inputPerfilEdit').val(response.data[0].Perfil);
+        $('#inputDescripcionPerfildEdit').val(response.data[0].descripcion);
+        var radios  = $("input:radio[name='activoEdit']");
+        radios.filter("[value='"+response.data[0].ind_activo+"']").attr('checked', true);
+        localStorage.setItem('idPerfilOpcionesEdit',response.data[0].Id);
+        cargarOpcionesPerfil(response.data[0].Id);
+        
+        $('#modal-PerfilOpcionesEditar').modal('show'); 
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}

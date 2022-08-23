@@ -316,7 +316,6 @@ select:focus {
     <!-- /.modal-dialog -->
 </div>
 
-
 <?php $this->load->view('Plantillas/Footer');?>
 
 <script>

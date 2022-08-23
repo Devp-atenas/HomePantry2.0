@@ -198,6 +198,117 @@ select:focus {
     </div>
 </section>
 
+
+
+<div class="modal fade" id="modal-PerfilOpcionesEditar" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Perfil</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormActividadEdit">
+                                <div class="form-group row mb-0 mt-0">
+                                <div class="col-md-5">
+                                        <label class="inputText font-weight-bold">Perfil:</label>
+                                        <input type="text" name="inputPerfilEdit" id="inputPerfilEdit" class="form-control">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label class="inputText font-weight-bold">Descripcion:</label>
+                                        <input type="text" name="inputDescripcionPerfildEdit" id="inputDescripcionPerfildEdit" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="inputText font-weight-bold">Activo:</label>
+                                        <div class="card">
+                                            <div class="form-group">
+                                            <div class="form-check d-inline">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                    <label class="form-check-label">No</label>
+                                                </div>
+                                                <div class="form-check d-inline">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                    <label class="form-check-label">Si</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;">
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label for="inputIdEdit">id:</label>
+                                                <input type="text" name="inputIdEdit" id="inputIdEdit"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-md-12">
+                    <div id="myCard" class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Actualizar Items de la Actividad</h3>
+                            <div class="card-tools">
+                                <button id="idItemsActividad" type="button" class="btn btn-tool" aria-expanded="false" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row mb-0 mt-0">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <button id="bMostrarOpcionesPerfil" class="btn btn-info" type="button">
+                                            <i class="bi bi-eye">Mostrar</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="activar" class="form-group row mb-0 mt-0">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <div id="PerfilOpcionesEditar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="bi bi-x-square"></i> Cancelar</button>
+                <button id="guardarActividad" type="button" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Guardar
+                </button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
 <?php $this->load->view('Plantillas/Footer');?>
 
 <script>
@@ -205,11 +316,11 @@ $(document).ready(function() {
     var urlApi = '<?php echo urlApi; ?>';
     sessionStorage.setItem("urlApi",urlApi);
     cargarTablaFunciones('#TablaFunciones');
-    cargarTabla();
+    cargarTablaPerfiles();
     //$('#showButton').hide();
 });
 
-function cargarTabla(){
+function cargarTablaPerfiles(){
     $('#TablePerfil').DataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
@@ -288,12 +399,14 @@ function cargarTabla(){
             "data": 'Id',
             "className": "text-center",
             "render": function(data, type, row, meta) {
-                return '<a title="Eliminar" href="#"><img id="EliminarImg" src=<?php echo base_url('assets/iconos/delete.png') ?> width="30" height="30"  onclick="deleteAction(' +
-                    data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
-                    data +
-                    '); return false;"></a>&nbsp;&nbsp;<a title="Visualizar" href="#"><img src=<?php echo base_url('assets/iconos/ver.png') ?> width="25" height="25" onclick="VisualizarAction(' +
-                    data + '); return false;"></a>';
+                return  '<div class="text-wrap width-200">'+
+                '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
+                    data +');"><i class="bi bi-trash3"></i></button>'+
+                '<button id="bEdit" type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
+                    data +');"><i class="bi bi-pencil-square"></i></button>'+
+                '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
+                    data +');"><i class="bi bi-zoom-in"></i></button>'+
+                '</div>';
             }
         }],
     });

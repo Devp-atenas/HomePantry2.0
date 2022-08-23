@@ -39,7 +39,7 @@ function EditAction(data) {
     localStorage.setItem("idHogarEditar",data);
     //HogarEditar();
     //editPanelistasResponsableJefe
-    window.location.href = "Hogares/HogaresNuevos"
+    window.location.href = "FichaHogar"
 }
 
 </script>

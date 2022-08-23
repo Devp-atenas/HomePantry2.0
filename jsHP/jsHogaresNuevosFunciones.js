@@ -381,33 +381,37 @@ function finalizarFicha(idHogar) {
         "url":localStorage.getItem("urlApi")+'finalizarFicha_idHogar/'+idHogar,
         "method": "get",
         "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
-        desactivarAlerta(idHogar);
+        // La alerta de desactiva en el controlador
+        // 66666666666
         
-        $('#claseSocialInformacion').val(response.NSE);
-        
-        const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                icon: 'success',
-                title: response.message,
-                confirmButtonText: `Ok`,
-            })
+        if (response.NSECalculado != response.NSEAnterior){
+            AlertaCambioNSE(idHogar,response.NSEAnterior,response.NSECalculado);
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta cambio NSE (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+        }else{
+            $('#claseSocialInformacion').val(response.NSECalculado);
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Registro de Hogar",idHogar,"U");
-
+        }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 10000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: response.message,
+            confirmButtonText: `Ok`,
+        })
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
