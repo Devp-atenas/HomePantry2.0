@@ -29,7 +29,7 @@
             <?php $this->load->view('Plantillas/Footer'); ?>
 <script>
 $(document).ready(function() {
-    cargarTablaHogares("#TableHogaresPanelistas");
+    cargarTablaHogares("#TableHogaresPanelistas"); 
 });
 
 function EditAction(data) {
