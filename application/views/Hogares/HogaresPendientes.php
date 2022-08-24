@@ -4,7 +4,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1><i class="fa fa-plus-square aria-hidden=" true""></i>&nbsp;Listar Hogares</h1>
+                            <h1><i class="fa fa-plus-square aria-hidden=" true""></i>&nbsp;Hogares Pendientes</h1>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->

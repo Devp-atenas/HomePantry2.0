@@ -6,17 +6,9 @@ class Principal extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('url');
     }
+    /* ----------------- OJO Reordenado ---------------------- */
 	public function dashboard(){
         $this->load->view('dashboard');
-	}
-    public function hogares(){
-        $this->load->view('Hogares/HogaresNuevos');
-	}
-    public function FichaHogar(){
-        $this->load->view('Hogares/FichaHogar');
-	}
-    public function ListaHogares(){
-        $this->load->view('ListaHogares/ListaHogares');
 	}
     public function ingresar(){
         $this->load->view('ListaHogares/ListaHogares');
@@ -24,41 +16,11 @@ class Principal extends CI_Controller {
     public function ValidacionProductosNuevos_(){
         $this->load->view('ProductosNuevos/ValidacionProductosNuevos');
     }
-    public function Usuarios(){
-        $this->load->view('Usuarios/Usuario');
-	}
-    public function ImportarUsuariosHP(){
-        $this->load->view('Importar/Usuario');
-	}
-    public function Recoverpassword(){
-        $this->load->view('ReinicioPassword/Recover-password.php');
-    }
     public function ValidationDataPharmatencion(){
         $this->load->view('Validacion/Pharmatencion');
     }
-    public function ReinicioPassword(){
-        $this->load->view('ReinicioPassword/ReinicioPassword');
-	}
-    public function ReinicioPasswordMensajeEnvioCorreo(){
-        $this->load->view('ReinicioPassword/ReinicioPasswordMensajeCorreo');
-	}
-    public function ReinicioPassworkOK(){
-        $this->load->view('ReinicioPassword/ReinicioPasswordOk');
-	}
     public function TiendasRetail(){
         $this->load->view('TiendasRetail/TiendasRetail');
-	}
-    public function Pais(){
-        $this->load->view('Pais/Pais');
-	}
-    public function Municipio(){
-        $this->load->view('Municipio/Municipio');
-	}
-    public function Estado(){
-        $this->load->view('Estado/Estado');
-	}
-    public function Area(){
-        $this->load->view('Area/Area');
 	}
     public function Pharmatencion(){
         $this->load->view('Producto/Pharmatencion');
@@ -66,36 +28,9 @@ class Principal extends CI_Controller {
     public function Tiendas(){
         $this->load->view('Tienda/Tienda');
 	}
-    public function Fabricante(){
-        $this->load->view('Fabricante/Fabricante');
-	}
-    public function Segmento(){
-        $this->load->view('Segmento/Segmento');
-	}
-    public function Categoria(){
-        $this->load->view('Categoria/Categoria');
-	}
-    public function Categoria2(){
-        $this->load->view('Categoria2/Categoria2');
-	}
-    public function Marca(){
-        $this->load->view('Marca/Marca');
-	}
-    public function UnidadVolumen(){
-        $this->load->view('UnidadVolumen/UnidadVolumen');
-	}
-    public function Tamano(){
-        $this->load->view('Tamano/Tamano');
-	}
     public function Construccion(){
         $this->load->view('Construccion/Construccion');
 	}
-    public function Parroquia(){
-        $this->load->view('Parroquia/Parroquia');
-	}
-    public function TamanoRango(){
-        $this->load->view('TamanoRango/TamanoRango');
-    }
     public function DiaDia(){
         $this->load->view('Producto/DiaDia');
     }
@@ -144,6 +79,80 @@ class Principal extends CI_Controller {
     public function UsuariosRetail(){
         $this->load->view('UsuariosRetail/UsRetail');
     }
+    public function Header(){
+        $this->load->view('Header2/Header');
+    }
+    //----------- XXXXXXXXXX ------------
+    //----------- XXXXXXXXXX ------------
+    //----------- XXXXXXXXXX ------------
+    //----------- XXXXXXXXXX ------------
+    //----------- XXXXXXXXXX ------------
+    //----------- XXXXXXXXXX ------------
+    //----------- XXXXXXXXXX ------------
+    //----------- Pesos (Puntaje) ------------
+    //----------- USUARIO / PERFIL ------------
+    public function ReinicioPassword(){
+        $this->load->view('ReinicioPassword/ReinicioPassword');
+	}
+    public function ReinicioPasswordMensajeEnvioCorreo(){
+        $this->load->view('ReinicioPassword/ReinicioPasswordMensajeCorreo');
+	}
+    public function ReinicioPassworkOK(){
+        $this->load->view('ReinicioPassword/ReinicioPasswordOk');
+	}
+    public function Usuarios(){
+        $this->load->view('Usuarios/Usuario');
+	}
+    public function ImportarUsuariosHP(){
+        $this->load->view('Importar/Usuario');
+	}
+    public function Recoverpassword(){
+        $this->load->view('ReinicioPassword/Recover-password.php');
+    }
+    //----------- GEOGRAFIA ------------
+    public function Pais(){
+        $this->load->view('Pais/Pais');
+	}
+    public function Municipio(){
+        $this->load->view('Municipio/Municipio');
+	}
+    public function Estado(){
+        $this->load->view('Estado/Estado');
+	}
+    public function Parroquia(){
+        $this->load->view('Parroquia/Parroquia');
+	}
+    public function Area(){
+        $this->load->view('Area/Area');
+	}
+    //----------- Diccionario ------------
+    public function Producto(){
+        $this->load->view('Producto/Producto');
+    }
+    public function Fabricante(){
+        $this->load->view('Fabricante/Fabricante');
+	}
+    public function Segmento(){
+        $this->load->view('Segmento/Segmento');
+	}
+    public function Categoria(){
+        $this->load->view('Categoria/Categoria');
+	}
+    public function Categoria2(){
+        $this->load->view('Categoria2/Categoria2');
+	}
+    public function Marca(){
+        $this->load->view('Marca/Marca');
+	}
+    public function UnidadVolumen(){
+        $this->load->view('UnidadVolumen/UnidadVolumen');
+	}
+    public function Tamano(){
+        $this->load->view('Tamano/Tamano');
+	}
+    public function TamanoRango(){
+        $this->load->view('TamanoRango/TamanoRango');
+    }
     public function Atributo1(){
         $this->load->view('Atributo1/Atributo1');
     }
@@ -165,16 +174,10 @@ class Principal extends CI_Controller {
     public function Atributo7(){
         $this->load->view('Atributo7/Atributo7');
     }
+    //----------- NSE ------------
     public function PuntajeSino(){
         $this->load->view('PuntajeSino/PuntajeSino');
     }
-    public function Header(){
-        $this->load->view('Header2/Header');
-    }
-    public function Producto(){
-        $this->load->view('Producto/Producto');
-    }
-    //----------- NSE ------------
     public function MetrosVivienda(){
         $this->load->view('nse/MetrosVivienda');
     }
@@ -249,6 +252,18 @@ class Principal extends CI_Controller {
     public function CrearEstudio(){
         $this->load->view('Hogares/CrearEstudio');
     }
+    public function hogares(){//CAMBIO por FichaHogar() (lo dejo por si acaso)
+        $this->load->view('Hogares/HogaresNuevos');
+	}
+    public function FichaHogar(){
+        $this->load->view('Hogares/FichaHogar');
+	}
+    public function HogaresPendientes(){
+        $this->load->view('Hogares/HogaresPendientes');
+	}
+    public function ListaHogares(){
+        $this->load->view('ListaHogares/ListaHogares');
+	}
     //----------- Estudio ------------
     public function CargarEstudio(){
         $this->load->view('Estudio/CargarEstudio');
@@ -319,7 +334,7 @@ class Principal extends CI_Controller {
     public function BloquearFicha(){
         $this->load->view('Configuracion/BloquearFicha');
     }
-    
+    //----------- INGRESAR/SALIR SISTEMA ------------
     public function logout(){
         $this->load->helper('url');
         echo '<script>';

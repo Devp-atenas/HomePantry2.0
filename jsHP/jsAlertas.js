@@ -6,10 +6,26 @@ $(document).ready(function() {
 $('#selectTipoAlertas').change(function(){
     idTipoAlerta = $("#selectTipoAlertas").val();
     if (idTipoAlerta != 2){
-        cargarTablaAlertas4TipoAlerta('#TableAlert',idTipoAlerta)
+        cargarTablaAlertaCambioNSE('#TableAlert',idTipoAlerta);
     }else if (idTipoAlerta == 2){
-        cargarTablaAlertasFichaIncompleta('#TableAlert');
+        cargarTablaAlertasFicha('#TableAlert');
     }
+
+
+    switch(idTipoAlerta) {
+        case 1:
+        case 4: // CAMBIO NSE
+        cargarTablaAlertaCambioNSE('#TableAlert',idTipoAlerta);
+          break;
+        case 2:
+          cargarTablaAlertasFicha('#TableAlert');
+          break;
+        default:
+          // code block
+      }
+
+
+
     
     
 });
@@ -54,7 +70,7 @@ $('#idResponderAlerta').click(function(){
         var form = document.querySelector('#FormAlerta');
         form.reset();
         idTipoAlerta = $("#selectTipoAlertas").val();
-        cargarTablaAlertas4TipoAlerta('#TableAlert',idTipoAlerta)
+        cargarTablaAlertaCambioNSE('#TableAlert',idTipoAlerta)
         $('#modal-responderAlerta').modal('hide');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -381,7 +397,7 @@ function showResponderAlerta(id) {
     })
 }
 
-function cargarTablaAlertas4TipoAlerta(idDivTabla,idTipoAlerta){
+function cargarTablaAlertaCambioNSE(idDivTabla,idTipoAlerta){
     var bottomAcciones = function(cell, formatterParams){
         var id = cell.getRow().getData().id_Alerta;
         var IndRespuestaAlerta = cell.getRow().getData().Ind_RespuestaAlerta;
@@ -443,7 +459,7 @@ function cargarTablaAlertas4TipoAlerta(idDivTabla,idTipoAlerta){
         ],
     });
 }
-function cargarTablaAlertasFichaIncompleta(idDivTabla){
+function cargarTablaAlertasFicha(idDivTabla){
     table = new Tabulator(idDivTabla, {
         ajaxURL: localStorage.getItem("urlApi")+'getHogaresFichaIncompleta/',
         ajaxConfig:{

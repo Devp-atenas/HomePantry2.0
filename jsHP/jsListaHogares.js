@@ -1,4 +1,4 @@
-function cargarTablaAlertasFichaIncompleta(idDivTabla){
+function cargarTablaHogares(idDivTabla){
     var bottomAcciones = function(cell, formatterParams){
         var value = cell.getRow().getData().Id_PanelHogar;
         return  "<a id='jjj' href='#' onclick='EditAction("+value+"); return false;' ><i class='bi bi-house-fill' data-toggle='tooltip' data-placement='top' title='Cargar Hogar'></i></a>";
