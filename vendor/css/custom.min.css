@@ -4688,12 +4688,12 @@ fieldset {
 }
 .wizard_horizontal ul.wizard_steps li a.selected:before,
 .step_no {
-	background: #719833;
+	background: #cff0f3;
 	color: #fff;
 }
 .wizard_horizontal ul.wizard_steps li a.done:before,
 .wizard_horizontal ul.wizard_steps li a.done .step_no {
-	background: #1abb9c;
+	background: #97e7ef;
 	color: #fff;
 }
 .wizard_horizontal ul.wizard_steps li:first-child a:before {
@@ -4786,7 +4786,7 @@ fieldset {
 }
 .wizard_verticle ul.wizard_steps li a.selected:before,
 .step_no {
-	background: #719833;
+	background: #cdebe5;
 	color: #fff;
 }
 .wizard_verticle ul.wizard_steps li a.done:before,

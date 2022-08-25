@@ -785,10 +785,10 @@ function cargarBanco(identificador,idS) {
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
                 selected.append("<option value='" + response.data[i].id + "' selected>" + response
-                .data[i].banco + "</option>");
+                .data[i].banco + " ("+ response.data[i].codigo+")</option>");
             }else{
                 selected.append("<option value='" + response.data[i].id + "'>" + response
-                .data[i].banco + "</option>");
+                .data[i].banco + " ("+ response.data[i].codigo+")</option>");
             }
         }
     }).fail(function(jqXHR, textStatus) {

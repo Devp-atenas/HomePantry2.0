@@ -18,6 +18,10 @@ Linea: 13239 Menu principal hover
 fff - 222
 Linea: 13252
 c2c7d0 -  
+
+-----------------------------
+Linea 13222: Fondo del menu
+Amarillo: F6a232
 */
 :root {
 	--blue: #007bff;
@@ -12892,7 +12896,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 [class*="sidebar-dark"] .brand-link,
 [class*="sidebar-dark"] .brand-link .pushmenu {
-	color: rgba(255, 255, 255, 0.8);
+	color: rgba(0, 0, 0, 0.8);
 }
 [class*="sidebar-dark"] .brand-link .pushmenu:hover,
 [class*="sidebar-dark"] .brand-link:hover {
@@ -13220,7 +13224,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 	border-color: rgba(0, 0, 0, 0.1);
 }
 [class*="sidebar-dark-"] {
-	background-color: #F6a232;
+	background-color: #a6b9d1; /*F6a232*/ /*d5e1f0*/
 }
 [class*="sidebar-dark-"] .user-panel a:hover {
 	color: #fff;
@@ -13263,7 +13267,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 	color: #d0d4db;
 }
 [class*="sidebar-dark-"] .sidebar a {
-	color: #FFF;
+	color: #000;
 }
 [class*="sidebar-dark-"] .sidebar a:focus,
 [class*="sidebar-dark-"] .sidebar a:hover {
@@ -19998,7 +20002,7 @@ body.text-sm .control-sidebar {
 	color: #fff;
 }
 .navbar-white {
-	background-color: #fff;
+	background-color: #a6b9d15c;
 	color: #1f2d3d;
 }
 .navbar-white.navbar-light .form-control-navbar::-webkit-input-placeholder {
@@ -28969,7 +28973,7 @@ body.text-sm .input-group-text {
 	background: #454d55;
 }
 .card-primary:not(.card-outline) > .card-header {
-	background-color: #FBCA81;
+	background-color: #4f81bb;
 }
 .card-primary:not(.card-outline) > .card-header,
 .card-primary:not(.card-outline) > .card-header a {

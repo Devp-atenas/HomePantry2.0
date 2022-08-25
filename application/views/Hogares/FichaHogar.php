@@ -40,7 +40,7 @@
                 </li>
                 <li>
                     <a href="#step-2">
-                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Responsable del hogar"><img class="animation__shake" src="<?php echo base_url('dist/img/RESPONSABLE.png')?>"></span>
+                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Responsable del panel"><img class="animation__shake" src="<?php echo base_url('dist/img/RESPONSABLE.png')?>"></span>
                     </a>
                 </li>
                 <li>
@@ -228,7 +228,7 @@
             </div>
             <div id="step-2">
                 <form id="formResponsableHogar" action="" method="post">
-                    <h2 class="text-center">Responsable del hogar</h2>
+                    <h2 class="text-center">Responsable del panel</h2>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -736,7 +736,7 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Nuevo Hogar</h3>
+                                <h3 class="card-title">Miembro del Hogar</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                         <i class="fas fa-minus"></i>
@@ -2231,7 +2231,7 @@
         */
     }else{
         cargarEstado('#estadoHogar',0);
-        // Responsable del Hogar
+        // Responsable del panel
         cargarEstadoCivil('#estadoCivilResponsable',0);
         cargarParentesco('#parentescoJefeResponsable',0);
         cargarEducacion('#educacionResponsable',0);
@@ -2427,7 +2427,7 @@
             })
         }
     });
-    // Responsable del hogar PASO 2
+    // Responsable del panel PASO 2
     $("#guardar-paso-2").click(function() {
         var camposVacios = "";
         //var camposVaciosX = "";
@@ -2914,6 +2914,15 @@
         }
     });
     $(document).ready(function() {
+
+        window.addEventListener("keydown", function(e) {
+            if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+
+
+
         $('#fechaNacimientoResponsable').change(function(e) {
             calcularEdad('#fechaNacimientoResponsable','#edadResponsable')
         })
@@ -3836,7 +3845,7 @@
                 camposVacios += " Falta completar Ubicacion del hogar<br>";
             }
             if (response.data[0].Ind_paso2 == 0){
-                camposVacios += "Responsable del hogar<br>";
+                camposVacios += "Responsable del panel<br>";
             }
             if (response.data[0].Ind_paso3 == 0){
                 camposVacios += "Jefe del Hogar<br>";
