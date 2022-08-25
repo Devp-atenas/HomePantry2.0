@@ -4,7 +4,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1><i class="fa fa-plus-square aria-hidden=" true""></i>&nbsp;Hogares Pendientes</h1>
+                            <h1><i class="fa fa-plus-square aria-hidden="></i>&nbsp;Hogares Pendientes!!!!!</h1>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -17,7 +17,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div id="TableHogaresPanelistas"></div>
+                                    <div id="TableHogaresPendientes"></div>
                                 </div>
                             </div>
                         </div>
@@ -27,9 +27,13 @@
             <!-- /.content -->
             <!-- Windows Modal Visualizar Registros-->
             <?php $this->load->view('Plantillas/Footer'); ?>
+
+
+<script src="<?php echo base_url('jsHP/jsListaHogares.js') ?>"></script>
 <script>
 $(document).ready(function() {
-    cargarTablaHogares("#TableHogaresPanelistas");
+    var idUsuario = localStorage.getItem("IdUsuario");
+    cargarTablaHogaresPendientes("#TableHogaresPendientes",idUsuario);
 });
 
 function EditAction(data) {
@@ -38,12 +42,9 @@ function EditAction(data) {
     //editPanelistasResponsableJefe
     window.location.href = "FichaHogar"
 }
-
 </script>
 
 <!-- DataTables  & Plugins -->
-<script src="<?php echo base_url('jsHP/jsListaHogares.js') ?>"></script>
-
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>

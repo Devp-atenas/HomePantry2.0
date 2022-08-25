@@ -31,6 +31,7 @@
 <script src="<?php echo base_url('jsHP/jsListaHogares.js') ?>"></script>
 <script>
 $(document).ready(function() {
+    //debugger;
     cargarTablaHogares("#TableHogaresPanelistas"); 
 });
 

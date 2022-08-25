@@ -216,6 +216,7 @@ if(!isset($_SESSION)){
                             localStorage.setItem("user", $("#user").val());
                             localStorage.setItem("nombreUsuario",data.nombreUsuario);
                             localStorage.setItem("IdUsuario",data.IdUsuario);
+                            localStorage.setItem("idPerfil",data.idPerfil);
                             localStorage.setItem("Avatar",data.Avatar);
                             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
                             var form = document.querySelector('#quickForm');

@@ -2787,15 +2787,15 @@
         if ($("#primerNombreComposicion").val() == "") {
             camposVacios += "Primer nombre<br>";
         }
-        if ($("#segundoNombreComposicion").val() == "") {
+        /*if ($("#segundoNombreComposicion").val() == "") {
             camposVacios += "Segundo nombre<br>";
-        }
+        }*/
         if ($("#primerApellidoComposicion").val() == "") {
             camposVacios += "Primer apellido<br>";
         }
-        if ($("#segundoApellidoComposicion").val() == "") {
+        /*if ($("#segundoApellidoComposicion").val() == "") {
             camposVacios += "Segundo apellido<br>";
-        }
+        }*/
         if (!$("input[name='nacionalidadComposicion']:radio").is(':checked')) {
             camposVacios += "Seleccione Nacionalidad<br>";
         }

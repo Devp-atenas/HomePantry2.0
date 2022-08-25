@@ -73,6 +73,12 @@ select:focus {
                         <select id="selecMostrar" name="selecMostrar" class="form-control form-control-sm">
                         </select>
                     </div>
+                    <div class="col-md-3">
+                        <label class="inputText font-weight-bold">Estado:</label>
+                        <select id="selecEstado" name="selecEstado" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    
                     
                 </div>
             </div>
