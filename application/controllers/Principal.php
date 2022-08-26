@@ -316,6 +316,9 @@ class Principal extends CI_Controller {
     public function ReporteHogarCategoria(){
         $this->load->view('Reportes/ReporteHogarCategoria');
     }
+    public function PagoIncentivos(){
+        $this->load->view('Reportes/PagoIncentivos');
+    }
     //----------- Mantenimiento ------------
     public function MantenimientoSemana(){
         $this->load->view('Mantenimiento/MantenimientoSemana');
