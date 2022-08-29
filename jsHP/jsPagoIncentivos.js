@@ -12,6 +12,7 @@ $("#selectArea").change(function() {
 
 $("#selectCantSemana").change(function() {
     var idCantidadSemana = $('#selectArea').val();
+    
     //$("#showTableReporteHogarRegistroXConsumo").hide();
     //cargarTipoConsumo("#selecTipoConsumo",0);
 });

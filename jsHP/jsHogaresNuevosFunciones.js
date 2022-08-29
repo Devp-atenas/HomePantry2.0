@@ -5,6 +5,45 @@ $(document).ready(function() {
     //$("#formUbicacionHogar :input").prop("disabled", true);
 });
 
+$(function(){
+    $("#fechaNacimientoResponsable").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+});
+
+$(function(){
+    $("#fechaNacimientoJefe").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+});
+
+$(function(){
+    $("#fechaNacimientoComposicion").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+});
+
+$(function(){
+    $("#fechaNacimientoComposicionEdit").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+});
+
+$(function(){
+    $("#fechaNacimientoComposicionView").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+});
+
+
+
+
+
 function calcularEdad(inputFecha,inputCalculada){ ///calcular edad
     var FechaNacimiento = $(inputFecha).val();
     var fechaNacimiento = new Date(FechaNacimiento);
@@ -1040,6 +1079,12 @@ function HogarEditar() {
         var oblig = $("input:radio[name='casco']");
         oblig.filter("[value='"+response.data[0].Id_SeguroCasco+"']").attr('checked', true);
         // Mascotas
+        
+        var oblig = $("input:radio[name='poseeMascota']");
+        oblig.filter("[value='"+response.data[0].Id_Mascotas+"']").attr('checked', true);
+        
+        
+        
         if(response.data[0].Ind_Perro == 1){
             $("#Perro").prop("checked", true);
         }

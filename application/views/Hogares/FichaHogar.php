@@ -318,7 +318,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                <input type="text" class="form-control datepicker" id="fechaNacimientoResponsable" placeholder="">
+                                <input type="text" class="form-control" id="fechaNacimientoResponsable" placeholder="">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -659,7 +659,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                    <input type="text" class="form-control datepicker" id="fechaNacimientoJefe" placeholder="">
+                                    <input type="text" class="form-control" id="fechaNacimientoJefe" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -841,7 +841,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                                        <input type="text" class="form-control datepicker" id="fechaNacimientoComposicion" placeholder="">
+                                                        <input type="text" class="form-control" id="fechaNacimientoComposicion" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -1633,7 +1633,23 @@
                     <h2 class="text-center">Mascotas</h2>
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="inputText font-weight-bold">¿Posee Mascota?</div>
+                        <div class="inputText font-weight-bold">¿Posee Mascota?</div>
+                            <div class="card">
+                                <div class="form-group">
+                                    <div class="form-check d-inline">
+                                        <input class="form-check-input" type="radio" name="poseeMascota" value="0">
+                                        <label class="form-check-label">No</label>
+                                    </div>
+                                    <div class="form-check d-inline">
+                                        <input class="form-check-input" type="radio" name="poseeMascota" value="1">
+                                        <label class="form-check-label">Si</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                    <div class="col-md-3">
+                        
                             <div class="card">
                             <div class="form-group">
                                     <div class="form-check">
@@ -1874,7 +1890,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                            <input type="text" class="form-control datepicker" id="fechaNacimientoComposicionEdit" placeholder="">
+                                            <input type="text" class="form-control" id="fechaNacimientoComposicionEdit" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -2081,7 +2097,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                            <input type="text" class="form-control datepicker" id="fechaNacimientoComposicionView" placeholder="" readonly>
+                                            <input type="text" class="form-control" id="fechaNacimientoComposicionView" placeholder="" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -3631,6 +3647,7 @@
                 },
                 "data": {
                     "Id_Hogar": $("#identificacion2Hogar").val(),
+                    "Id_Mascotas": $('input:radio[name=poseeMascota]:checked').val(),
                     "Ind_Perro": Perro,
                     "Ind_Gato": Gato,
                     "Ind_Pez": Pez,
