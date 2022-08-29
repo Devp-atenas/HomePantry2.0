@@ -45,55 +45,24 @@ $(function(){
 
 
 function calcularEdad(inputFecha,inputCalculada){ ///calcular edad
-    var FechaNacimiento = $(inputFecha).val();
-    var fechaNacimiento = new Date(FechaNacimiento);
-    var fechaActual = new Date();
-    var dia = fechaActual.getDate();
-    var mes = fechaActual.getMonth()+1;
-    var año = fechaActual.getFullYear();
+    const fechaActual = new Date();
+    const anoActual = parseInt(fechaActual.getFullYear());
+    const mesActual = parseInt(fechaActual.getMonth()) + 1;
+    const diaActual = parseInt(fechaActual.getDate());
     
-    /*alert('---- Actual: '+fechaActual);
-    alert(fechaActual.getDate());
-    alert(fechaActual.getMonth());
-    alert('---- Nacimiento: '+fechaNacimiento);
-    alert(fechaNacimiento.getDate());
-    alert(fechaNacimiento.getMonth());
-    */
-    fechaActual.setDate(dia);
-    fechaActual.setMonth(mes);
-    fechaActual.setFullYear(año);
-    edad = Math.floor(((fechaActual - fechaNacimiento) / (1000 * 60 * 60 * 24) / 365));
-    $(inputCalculada).val(edad);
-}
-
-function calculaEdad(nombre, diaNacimiento, mesNacimiento, anioNacimiento){
-    var nombre = document.getElementById("nombre").value;
-    var diaNacimiento = document.getElementById("dia").value;
-    var mesNacimiento = document.getElementById("mes").value;
-    var anioNacimiento = document.getElementById("anio").value;
-    var salida = document.getElementById("salida");
-
-    var fechaNacimiento = new Date(FechaNacimiento);
+    const diaNacimiento = parseInt(String(inputFecha).substring(0, 2));
+    const mesNacimiento = parseInt(String(inputFecha).substring(3, 5));
+    const anoNacimiento = parseInt(String(inputFecha).substring(6, 10));
     
-    this.nombre = nombre;
-    this.diaNacimiento = diaNacimiento;
-    this.mesNacimiento = mesNacimiento;
-    this.anioNacimiento = anioNacimiento;
-
-    this.edad=function edad(){
-        var calcula=0;
-        var fechaActual=new Date();
-        var dia=fechaActual.getDate();
-        var mes= fechaActual.getMonth()+1;
-        var hoy=fechaActual.getFullYear();
-
-        if(mes<this.mesNacimiento||(mes==this.mesNacimiento&&dia<this.dia)){
-            return calcula=parseInt(hoy-this.anioNacimiento)-1; 
-        }else{
-            return calcula=parseInt(hoy-this.anioNacimiento);  
+    var edad = anoActual - anoNacimiento;
+    if (mesActual < mesNacimiento) {
+        edad--;
+    } else if (mesActual === mesNacimiento) {
+        if (diaActual < diaNacimiento) {
+            edad--;
         }
-    };
-    salida.innerHTML= "La edad actual de "+nombre+" es  "+this.edad()+".";
+    }
+    $(inputCalculada).val(edad);
 }
 
 function msgCrearHogar(Codigo){
@@ -504,6 +473,7 @@ function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
                     //$("#estadoCivilResponsable option[value='"+ response.data[0].Id_EstadoCivil +"']").attr("selected",true);
                     //$("#parentescoJefeResponsable option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
                     $("#fechaNacimientoResponsable").val(response.data[0].Fec_Nacimiento);
+                    calcularEdad($("#fechaNacimientoResponsable").val(),'#edadResponsable');
                     $("#correoResponsable").val(response.data[0].Correo);
                     $("#correoAlternoResponsable").val(response.data[0].CorreoAlterno);
                     //$("#tipoIngresoResponsable option[value='"+ response.data[0].Id_TipoIngreso +"']").attr("selected",true);
@@ -576,6 +546,9 @@ function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
                     oblig.filter("[value='"+response.data[0].Id_Sexo+"']").attr('checked', true);
                     $("#parentescoJefeJefe option[value='"+ response.data[0].Id_Parentesco +"']").attr("selected",true);
                     $("#fechaNacimientoJefe").val(response.data[0].Fec_Nacimiento);
+                    calcularEdad($("#fechaNacimientoJefe").val(),'#edadJefe');
+                    
+                    
                     $("#correoJefe").val(response.data[0].Correo);
                     $("#correoAlternoJefe").val(response.data[0].CorreoAlterno);
                     $("#personasDelHogar option[value='"+ response.data[0].CantidadPersonas +"']").attr("selected",true);
@@ -631,8 +604,10 @@ function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
 }
 // vvvvvvvvvvvvvv
 function EditAction(data) {
+    //alert('id_panelista: '+data);
     //ActualizarRegistro
     document.getElementById('FormPanelistaEdit').reset();
+    //$("#FormPanelistaEdit")[0].reset();
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -665,8 +640,9 @@ function EditAction(data) {
         oblig.filter("[value='"+response.data[0].id_BeneficioSocialista+"']").attr('checked', true);
         var oblig = $("input:radio[name='activoEdit']");
         oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        
-        
+        $("#fechaNacimientoComposicionEdit").val(response.data[0].Fec_Nacimiento);            
+        calcularEdad($("#fechaNacimientoComposicionEdit").val(),'#edadComposicionEdit');
+                    
         $('#modal-PanelistaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

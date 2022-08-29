@@ -2940,15 +2940,15 @@
 
 
         $('#fechaNacimientoResponsable').change(function(e) {
-            calcularEdad('#fechaNacimientoResponsable','#edadResponsable')
+            calcularEdad($("#fechaNacimientoResponsable").val(),'#edadResponsable');
         })
         
         $('#fechaNacimientoJefe').change(function(e) {
-            calcularEdad('#fechaNacimientoJefe','#edadJefe')
+            calcularEdad($("#fechaNacimientoJefe").val(),'#edadJefe');
         })
         
         $('#fechaNacimientoComposicion').change(function(e) {
-            calcularEdad('#fechaNacimientoComposicion','#edadComposicion')
+            calcularEdad($("#fechaNacimientoComposicion").val(),'#edadComposicion');
         })
         
         $('#tipoVivienda').change(function(e) {
