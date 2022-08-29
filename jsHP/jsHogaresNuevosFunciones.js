@@ -8,7 +8,16 @@ $(document).ready(function() {
 $(function(){
     $("#fechaNacimientoResponsable").datepicker({
         changeMonth: true,
-        changeYear: true
+        changeYear: true,
+        minDate: -30*12*70, 
+        maxDate: "0D",
+        monthNames: ['Enero', 'Febreo', 'Marzo',
+        'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre',
+        'Octubre', 'Noviembre', 'Diciembre'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
+
+
     });
 });
 
