@@ -1018,9 +1018,9 @@ function HogarEditar() {
         $("#cablera2 option[value='"+ response.data[0].Id_Cablera2 +"']").attr("selected",true);
         $("#tvOnline1 option[value='"+ response.data[0].Id_TelevisionOnline1 +"']").attr("selected",true);
         $("#tvOnline2 option[value='"+ response.data[0].Id_TelevisionOnline2 +"']").attr("selected",true);
-
+        var oblig = $("input:radio[name='escucharRadio']");
         if(response.data[0].id_FM == 1 || response.data[0].id_AM == 1){
-            var oblig = $("input:radio[name='escucharRadio']");
+            
             oblig.filter("[value='1']").attr('checked', true);
             $("#divEmisora").show();
             if(response.data[0].id_FM == 1){
@@ -1030,7 +1030,7 @@ function HogarEditar() {
                 $("#AM").prop("checked", true);
             }
         }else{
-            oblig.filter("[value='2']").attr('checked', true);
+            oblig.filter("[value='0']").attr('checked', true);
         }
 
         // Vehículos

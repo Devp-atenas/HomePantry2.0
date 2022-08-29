@@ -318,7 +318,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                <input type="date" class="form-control input-sm" id="fechaNacimientoResponsable" placeholder="">
+                                <input type="text" class="form-control datepicker" id="fechaNacimientoResponsable" placeholder="">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -659,7 +659,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                    <input type="date" class="form-control input-sm" id="fechaNacimientoJefe" placeholder="">
+                                    <input type="text" class="form-control datepicker" id="fechaNacimientoJefe" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -841,7 +841,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                                        <input type="date" class="form-control input-sm" id="fechaNacimientoComposicion" placeholder="">
+                                                        <input type="text" class="form-control datepicker" id="fechaNacimientoComposicion" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -1874,7 +1874,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                            <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionEdit" placeholder="">
+                                            <input type="text" class="form-control datepicker" id="fechaNacimientoComposicionEdit" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -2081,7 +2081,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                            <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionView" placeholder="" readonly>
+                                            <input type="text" class="form-control datepicker" id="fechaNacimientoComposicionView" placeholder="" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -2692,7 +2692,7 @@
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": '<?php echo urlApi; ?>addJefeComposicionHogar/',
+                "url": '<?php echo urlApi; ?>addJefeHogar/',
                 "method": "POST",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -3850,9 +3850,9 @@
             if (response.data[0].Ind_paso3 == 0){
                 camposVacios += "Jefe del Hogar<br>";
             }
-            if (response.data[0].Ind_paso4 == 0){
+            /*if (response.data[0].Ind_paso4 == 0){
                 camposVacios += "Composición del hogar<br>";
-            }
+            }*/
             if (response.data[0].Ind_paso5 == 0){
                 camposVacios += "Características y tenencia de la vivienda<br>";
             }
@@ -3886,7 +3886,7 @@
                     cancelButtonAriaLabel: ''
                 })
             } else {
-                alert($("#identificacion2Hogar").val());
+                //alert($("#identificacion2Hogar").val());
                 finalizarFicha($("#identificacion2Hogar").val());
             }
         }).fail(function(jqXHR, textStatus) {
