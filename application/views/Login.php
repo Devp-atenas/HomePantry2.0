@@ -76,85 +76,36 @@ if(!isset($_SESSION)){
             </div>
         </div>
 
-        <div class="modal fade" id="modal-PerfilUsuario">
-            <div class="modal-dialog modal-lg">
+        <!-- Modal -->
+        <div id="myModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Perfiles del Usuario</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <div class="col-md-12">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Atributo</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <form id="FormAtributoEdit">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <div class="inputText font-weight-bold">Categoria:</div>
-                                                    <select id="selectCategoriaEdit" name="selectCategoriaEdit" class="form-control">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <div class="inputText font-weight-bold">Atributo:</div>
-                                                    <input type="text" name="inputAtributoEdit" id="inputAtributoEdit" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                            <div class="inputText font-weight-bold">Activo:</div>
-                                                <div class="card">
-                                                    <div class="form-group">
-                                                    <div class="form-check d-inline">
-                                                            <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
-                                                            <label class="form-check-label">No</label>
-                                                        </div>
-                                                        <div class="form-check d-inline">
-                                                            <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
-                                                            <label class="form-check-label">Si</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="visibility:hidden;">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="inputIdEditAtributo">id:</label>
-                                                    <input type="text" name="inputIdEditAtributo" id="inputIdEditAtributo"
-                                                        class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <input type="button" onclick="ActualizarRegistro()" id="editUsuario"
-                                                        value="Guardar" class="btn btn-success float-right">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                <div class="modal-body">
+                    <form id="FormAtributoEdit">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Perfiles:</div>
+                                    <select id="selectPerfil" name="selectPerfil" class="form-control">
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                    </div>
+                    </form> 
                 </div>
-                <!-- /.modal-content -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id='ingresarMP'class="btn btn-primary">Ingresar</button>
+                    
+                </div>
             </div>
-            <!-- /.modal-dialog -->
         </div>
 
 
@@ -187,6 +138,34 @@ if(!isset($_SESSION)){
                 var IP2 = data.ip;
                 localStorage.setItem("IPHP20",data.ip);
         });
+        
+        
+        
+        
+        $('#ingresarMP').click(function(){
+            $('#myModal').modal('hide');
+            var idPerfil = $('#selectPerfil').val();
+            localStorage.setItem("idPerfil",idPerfil);
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal
+                        .stopTimer)
+                    toast.addEventListener('mouseleave', Swal
+                        .resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: 'Ingresando a Home Pantry'
+            })
+            window.location.href = "Principal/dashboard";               
+        });
 
         $(function() {
             $.validator.setDefaults({
@@ -196,16 +175,17 @@ if(!isset($_SESSION)){
                         password: $("#password").val()
                     };
                     $.ajax({
-                        url: '<?php echo urlApi; ?>getLogin',
+                        url: '<?php echo urlApi; ?>getLoginMP',
                         type: 'post',
                         contentType: 'application/json; charset=utf-8',
                         data: JSON.stringify(usuario),
                         success: function(data) {
-                            /*$.getJSON('https://api.ipify.org?format=json', function(data){
-                                    alert("Hola 2: "+data.ip);
-                            });*/
-                            //generarMenu();
-                            //alert("Hola 2: "+IP2);
+                            
+                            cargarPerfilesUsuario('#selectPerfil',0,data.IdUsuario);
+                            //$('#myModal').modal('show');
+                            
+                            
+                            
                             var IP = localStorage.getItem("IPHP20");
                             localStorage.clear();
                             var urlApi = '<?php echo urlApi; ?>';
@@ -219,9 +199,9 @@ if(!isset($_SESSION)){
                             localStorage.setItem("idPerfil",data.idPerfil);
                             localStorage.setItem("Avatar",data.Avatar);
                             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
-                            var form = document.querySelector('#quickForm');
-                            form.reset();
-                            const Toast = Swal.mixin({
+                            //var form = document.querySelector('#quickForm');
+                            //form.reset();
+                            /*const Toast = Swal.mixin({
                                 toast: true,
                                 position: 'top-end',
                                 showConfirmButton: false,
@@ -238,7 +218,7 @@ if(!isset($_SESSION)){
                                 icon: 'success',
                                 title: data.message
                             })
-                            window.location.href = "Principal/dashboard"
+                            *///window.location.href = "Principal/dashboard"
                         },
                         error: function(xhr, status, error) {
                             var form = document.querySelector('#quickForm');
@@ -306,6 +286,96 @@ if(!isset($_SESSION)){
             });
         });
 
+       function cargarPerfilesUsuario(identificador,idS,idUsuario) {
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url":localStorage.getItem("urlApi")+'getPerfilesUsuario/'+idUsuario,
+                "method": "get",
+                "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Authorization": "Bearer " + localStorage.getItem('Token')
+                    }
+            }
+            $.ajax(settings).done(function(response) {
+                alert(response.data.length);
+                
+                if (response.data.length == 1){
+                    localStorage.setItem("idPerfil",response.data[0].id);
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal
+                                .stopTimer)
+                            toast.addEventListener('mouseleave', Swal
+                                .resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Ingresando a Home Pantry'
+                    })
+                    window.location.href = "Principal/dashboard";
+                }else{
+                    let selected = $(identificador);
+                    selected.find("option").remove();
+                    if (idS == 0){
+                        selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+                    }
+                    for (var i = 0; i < response.data.length; i++) {
+                        if (response.data[i].id === idS){
+                            selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                            .data[i].Perfil + "</option>");
+                        }else{
+                            selected.append("<option value='" + response.data[i].id + "'>" + response
+                            .data[i].Perfil + "</option>");
+                        }
+                    }
+                    $('#myModal').modal('show');
+                }
+                
+                
+                
+                
+                
+                
+
+
+
+
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+
+
+
+
+
+        
+        
         function generarMenu_(user){
             var settings = {
                 "url": '<?php echo urlApi; ?>getOpcionesMenu/'+user,

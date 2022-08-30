@@ -2900,7 +2900,9 @@
                     confirmButtonText: `Ok`,
                 })
                 localStorage.setItem('idHogar',$("#identificacion2Hogar").val());
-                cargarTablaComposicion($("#identificacion2Hogar").val());
+                //cargarTablaComposicion($("#identificacion2Hogar").val());
+                let xtable = $('#TablePanelistas').DataTable();
+                xtable.ajax.reload(null, false);
                 var form = document.querySelector('#formComposicionHogar');
                 form.reset();
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 4 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
