@@ -39,14 +39,12 @@ if(!isset($_SESSION)){
     </head>
 
     <body class="hold-transition login-page">
-
         <div id="ocultar" class="login-box">
             <!-- /.login-logo -->
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
                     <a class="h1"><b></b></a>
-                    <img src="<?php echo base_url('assets/img/HomePantry.png')?>" width="128px" heightalt="100px" "Retail Scanning"
-                        class="img-size-60">
+                    <img src="<?php echo base_url('assets/img/HomePantry.png')?>" width="128px" heightalt="100px" class="img-size-60">
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg pb-0 text-info">Ingrese sus credenciales de acceso</p>
@@ -76,45 +74,50 @@ if(!isset($_SESSION)){
             </div>
         </div>
 
-        <!-- Modal -->
-        <div id="myModal" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Perfiles del Usuario</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                <div class="modal-body">
-                    <form id="FormAtributoEdit">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <div class="inputText font-weight-bold">Perfiles:</div>
-                                    <select id="selectPerfil" name="selectPerfil" class="form-control">
-                                    </select>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Elija perfil con el que desea entrar</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <form id="FormPelfilesUsuario">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="inputText font-weight-bold">Perfiles:</div>
+                                                    <select id="selectPerfil" name="selectPerfil" class="form-control">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>                          
                                 </div>
                             </div>
                         </div>
-                    </form> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" id='botonIngresarMP'class="btn btn-primary">Ingresar</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" id='ingresarMP'class="btn btn-primary">Ingresar</button>
-                    
-                </div>
+                <!-- /.modal-content -->
             </div>
+            <!-- /.modal-dialog -->
         </div>
-
-
-
-
-
-
-
-
     </body>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="<?php echo base_url('jsHP/jsLogin.js') ?>"></script>
@@ -142,7 +145,7 @@ if(!isset($_SESSION)){
         
         
         
-        $('#ingresarMP').click(function(){
+        $('#botonIngresarMP').click(function(){
             $('#myModal').modal('hide');
             var idPerfil = $('#selectPerfil').val();
             localStorage.setItem("idPerfil",idPerfil);
@@ -181,11 +184,6 @@ if(!isset($_SESSION)){
                         data: JSON.stringify(usuario),
                         success: function(data) {
                             
-                            cargarPerfilesUsuario('#selectPerfil',0,data.IdUsuario);
-                            //$('#myModal').modal('show');
-                            
-                            
-                            
                             var IP = localStorage.getItem("IPHP20");
                             localStorage.clear();
                             var urlApi = '<?php echo urlApi; ?>';
@@ -199,6 +197,8 @@ if(!isset($_SESSION)){
                             localStorage.setItem("idPerfil",data.idPerfil);
                             localStorage.setItem("Avatar",data.Avatar);
                             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
+                            cargarPerfilesUsuario('#selectPerfil',0,data.IdUsuario);
+                            
                             //var form = document.querySelector('#quickForm');
                             //form.reset();
                             /*const Toast = Swal.mixin({
@@ -298,8 +298,6 @@ if(!isset($_SESSION)){
                     }
             }
             $.ajax(settings).done(function(response) {
-                alert(response.data.length);
-                
                 if (response.data.length == 1){
                     localStorage.setItem("idPerfil",response.data[0].id);
                     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
@@ -338,12 +336,6 @@ if(!isset($_SESSION)){
                     }
                     $('#myModal').modal('show');
                 }
-                
-                
-                
-                
-                
-                
 
 
 
@@ -369,12 +361,6 @@ if(!isset($_SESSION)){
                 }
             })
         }
-
-
-
-
-
-        
         
         function generarMenu_(user){
             var settings = {

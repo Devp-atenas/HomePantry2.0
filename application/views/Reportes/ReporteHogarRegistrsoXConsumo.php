@@ -131,7 +131,7 @@ select:focus {
         localStorage.setItem("idArea", idArea);
         localStorage.setItem("idEstado", idEstado);
         localStorage.setItem("idPanelHogar", idHogar);
-        localStorage.setItem("flagHogarRegCon", 1);
+        localStorage.setItem("flagHogarRegCon", 1); 
         localStorage.setItem("idTipoConsumo",idTipoConsumo);
             
         var win = window.open("<?php echo base_url('Principal/ReporteConsumoPorHogar')?>", '_blank');

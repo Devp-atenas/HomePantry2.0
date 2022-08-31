@@ -25,7 +25,6 @@ $("#selecMostrar").change(function() {
 });
 
 $("#selecEstado").change(function() {
-    cargarEstado("#selecEstado",0);
     $("#showTableReporteHogarRegistroXConsumo").hide();
     var idPeriodo = $('#selectPeriodo').val();
     var idTipoConsumo = $('#selecTipoConsumo').val();
@@ -40,8 +39,8 @@ function cargarMostrar(etiqueta) {
     let selected = $(etiqueta);
     selected.find("option").remove();
     selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-    selected.append("<option value='1'>Mostrar Todos</option>");
-    //selected.append("<option value='2'>Mostrar Registros Indebidos</option>");
+    selected.append("<option value='1'>Todos los Consumos</option>");
+    selected.append("<option value='2'>Consumos escasos</option>");
 }
 
 function cargarEstado(identificador,idS) {
@@ -195,7 +194,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
     if (mostrar == 1){
         urlV = urlApi+'getDatosReporteHogarRegistroXConsumo/'+idPeriodo+'/'+idTipoConsumo;
     }else{
-        urlV = urlApi+'getDatosReporteHogarRegistroIndebidoXConsumo/'+idPeriodo+'/'+idTipoConsumo;
+        urlV = urlApi+'getDatosReporteHogarRegistroXConsumoEscasos/'+idPeriodo+'/'+idTipoConsumo;
     }
     
     
@@ -410,7 +409,7 @@ function cargarTablaHogarRegistroxConsumo4Estado(idPeriodo,idTipoConsumo,mostrar
     if (mostrar == 1){
         urlV = urlApi+'getDatosReporteHogarRegistroXConsumo4Estado/'+idPeriodo+'/'+idTipoConsumo+'/'+idEstado;
     }else{
-        urlV = urlApi+'getDatosReporteHogarRegistroIndebidoXConsumo4Estado/'+idPeriodo+'/'+idTipoConsumo+'/'+idEstado;
+        urlV = urlApi+'getDatosReporteHogarRegistroXConsumo4EstadoEscasos/'+idPeriodo+'/'+idTipoConsumo+'/'+idEstado;
     }
     
     
