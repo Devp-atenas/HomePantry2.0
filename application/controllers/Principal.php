@@ -322,6 +322,10 @@ class Principal extends CI_Controller {
     public function PagoIncentivos(){
         $this->load->view('Reportes/PagoIncentivos');
     }
+    public function ReporteConsumosSemanal(){
+        $this->load->view('Reportes/ReporteConsumosSemanal');
+    }
+    
     //----------- Mantenimiento ------------
     public function MantenimientoSemana(){
         $this->load->view('Mantenimiento/MantenimientoSemana');

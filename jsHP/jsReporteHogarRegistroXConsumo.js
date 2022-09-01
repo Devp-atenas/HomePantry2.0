@@ -191,6 +191,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
     var urlApi = localStorage.getItem("urlApi");
     var urlV;
     
+    
     if (mostrar == 1){
         urlV = urlApi+'getDatosReporteHogarRegistroXConsumo/'+idPeriodo+'/'+idTipoConsumo;
     }else{
@@ -386,15 +387,16 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
                 $('td', row).eq(11).css('color', '#FFFFFF');
             }
             
-            /*var consDet_5 = data['detalle_5'].split("-");
-            if(consDet_5[0] == 0){
-                $('td', row).eq(12).css('background', '#E32017');
-                $('td', row).eq(12).css('color', '#FFFFFF');
-            }else if (Number(consDet_5[1])-Number(consDet_5[0]) < 5){
-                $('td', row).eq(12).css('background', '#FFC059');
-                $('td', row).eq(12).css('color', '#FFFFFF');
-            }*/
-            
+            if ( data['detalle_5']!=undefined){
+                var consDet_5 = data['detalle_5'].split("-");
+                if(consDet_5[0] == 0){
+                    $('td', row).eq(12).css('background', '#E32017');
+                    $('td', row).eq(12).css('color', '#FFFFFF');
+                }else if (Number(consDet_5[1])-Number(consDet_5[0]) < 5){
+                    $('td', row).eq(12).css('background', '#FFC059');
+                    $('td', row).eq(12).css('color', '#FFFFFF');
+                }
+            }
         },
         
     });

@@ -47,7 +47,7 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte Hogar Registro por Consumo</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte de Consumos Semanal</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -59,8 +59,8 @@ select:focus {
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
                     <div class="col-md-2">
-                        <label class="inputText font-weight-bold">Periodo:</label>
-                        <select id="selectPeriodo" name="selectPeriodo" class="form-control form-control-sm">
+                        <label class="inputText font-weight-bold">Area:</label>
+                        <select id="selectArea" name="selectArea" class="form-control form-control-sm">
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -69,17 +69,10 @@ select:focus {
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="inputText font-weight-bold">Mostrar:</label>
-                        <select id="selecMostrar" name="selecMostrar" class="form-control form-control-sm">
-                        </select>
-                    </div>
-                    <div class="col-md-3">
                         <label class="inputText font-weight-bold">Estado:</label>
                         <select id="selecEstado" name="selecEstado" class="form-control form-control-sm">
                         </select>
                     </div>
-                    
-                    
                 </div>
             </div>
         </div>
@@ -100,6 +93,7 @@ select:focus {
                                         <th>Estado</th>
                                         <th>Nombre Panelista</th>
                                         <th>Apellido Panelista</th>
+                                        <th>Tipo de Consumo</th>
                                         <th>detalle_1</th>
                                         <th>detalle_2</th>
                                         <th>detalle_3</th>
@@ -121,7 +115,7 @@ select:focus {
 
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsReporteHogarRegistroXConsumo.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsReporteConsumosSemanal.js') ?>"></script>
 
 
 <script>
@@ -138,16 +132,7 @@ select:focus {
         win.focus();
         
     }
-
-
-
-
 </script>
-
-
-
-
-
 
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
