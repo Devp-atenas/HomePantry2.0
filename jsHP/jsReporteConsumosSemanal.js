@@ -9,14 +9,15 @@ $("#selectArea").change(function() {
 });
 
 $("#selecTipoConsumo").change(function() {
+    $("#showTableReporteHogarRegistroXConsumo").hide();
     var idArea = $('#selectArea').val();
     var idTipoConsumo = $('#selecTipoConsumo').val();
+    //cargarEstado("#selecEstado",0);
+    cargarEstadoXArea("#selecEstado",0,idArea);
     cargarTablaHogarRegistroxConsumoSemanal(idArea,0,idTipoConsumo);
     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte registro por consumo Semanal por area(idTipoConsumo)",idTipoConsumo,"R");
     $("#showTableReporteHogarRegistroXConsumo").show();
 });
-
-
 
 $("#selecEstado").change(function() {
     $("#showTableReporteHogarRegistroXConsumo").hide();
@@ -27,14 +28,6 @@ $("#selecEstado").change(function() {
     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte registro por consumo Semanal por estado(idTipoConsumo)",idTipoConsumo,"R");
     $("#showTableReporteHogarRegistroXConsumo").show();
 });
-
-function cargarMostrar(etiqueta) {
-    let selected = $(etiqueta);
-    selected.find("option").remove();
-    selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-    selected.append("<option value='1'>Todos los Consumos</option>");
-    selected.append("<option value='2'>Consumos escasos</option>");
-}
 
 function cargarArea(etiqueta,idS) {
     var settings = {
@@ -84,6 +77,56 @@ function cargarArea(etiqueta,idS) {
     })
 }
 
+
+function cargarEstadoXArea(etiqueta,idSeleccionado,idArea) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url":urlApi+'getEstadoXArea/'+idArea,
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(etiqueta);
+        selected.find("option").remove();
+        if (idSeleccionado == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id == idSeleccionado) {
+                selected.append("<option value=" + response.data[i].id + " selected>" +
+                    response.data[i].id + " - " + response.data[i].Estado + "</option>");
+            } else {
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i].id + " - " + response.data[i].Estado + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
 function cargarEstado(identificador,idS) {
     var settings = {
         "async": true,
@@ -132,53 +175,7 @@ function cargarEstado(identificador,idS) {
     })
 }
 
-function cargarPeriodo(etiqueta,idSeleccionado) {
-    var urlApi = localStorage.getItem("urlApi");
-    var settings = {
-        "url":urlApi+'getAllPeriodo',
-        "method": "get",
-        "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
-    }
-    $.ajax(settings).done(function(response) {
-        let selected = $(etiqueta);
-        selected.find("option").remove();
-        if (idSeleccionado == 0){
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].Id == idSeleccionado) {
-                selected.append("<option value=" + response.data[i].Id + " selected>" +
-                    response.data[i].Periodo + "</option>");
-            } else {
-                selected.append("<option value=" + response.data[i].Id + ">" + response.data[i].Periodo + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-
-function cargarTipoConsumo(etiqueta,idSeleccionado) {
+function cargarTipoConsumo(etiqueta,idSeleccionado){
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
         "url":urlApi+'getAllTipoConsumo',
@@ -223,7 +220,6 @@ function cargarTipoConsumo(etiqueta,idSeleccionado) {
         }
     })
 }
-//55555
 
 function cargarTablaHogarRegistroxConsumoSemanal(idArea,idEstado,idTipoConsumo){
     var urlApi = localStorage.getItem("urlApi");
@@ -425,10 +421,7 @@ function cargarTablaHogarRegistroxConsumoSemanal(idArea,idEstado,idTipoConsumo){
                 }
             }
         },
-        
     });
-   
-   
 }
 //--------------------------------------------------------------------------------------------
 
