@@ -225,7 +225,7 @@ function cargarTablaHogarRegistroxConsumoSemanal(idArea,idEstado,idTipoConsumo){
     var urlApi = localStorage.getItem("urlApi");
     var urlV;
 
-    var p = 6;
+    var p;
     
     if (idEstado == 0){
         urlV = urlApi+'getDatosReporteConsumosSemanal/'+idArea+'/'+idTipoConsumo;
@@ -264,12 +264,15 @@ function cargarTablaHogarRegistroxConsumoSemanal(idArea,idEstado,idTipoConsumo){
             "url": urlV,
             "type": "GET",
             "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            /*"success": function (data, type, row) {
+                p = row.Id_Semana_1;
+            
+            },*/
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
-                    var err = JSON.parse(xhr.responseText);
                     Swal.fire({
                         title: err.message,
                         width: '300px',
@@ -336,10 +339,11 @@ function cargarTablaHogarRegistroxConsumoSemanal(idArea,idEstado,idTipoConsumo){
             },
             {
                 mData: 'detalle_2',
-                //title:`${12}`,
+                title:`${p}`,
                 className: "text-center",
                 render: function (data, type, row) {
                     if (data != "0"){
+                        p=15;
                         return "<a id='fg003' href='#' onclick='callReporteConsumoHogar("+row.Id_Semana_2+","+row.Id_Area+","+row.Id_Estado+","+row.Id_PanelHogar+"); return false;' >"+data+"</a>";
                     }else{
                         return data;
