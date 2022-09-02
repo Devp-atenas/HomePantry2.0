@@ -2,7 +2,7 @@ $(document).ready(function() {
     cargarArea('#selectArea',0);
 });
 
-$("#selectArea").change(function() {
+$("#selectArea").change(function(){
     $("#showTableReporteHogarRegistroXConsumo").hide();
     var idArea = $('#selectArea').val();
     cargarTipoConsumo("#selecTipoConsumo",0);
@@ -28,6 +28,103 @@ $("#selecEstado").change(function() {
     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte registro por consumo Semanal por estado(idTipoConsumo)",idTipoConsumo,"R");
     $("#showTableReporteHogarRegistroXConsumo").show();
 });
+
+
+
+function callCargarTabla(idPeriodo,idEstado) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getSemanasUltimoPeriodo/',
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        
+        $("#showTableReporteHogarRegistroXConsumo").hide();
+        var idTipoConsumo = $('#selecTipoConsumo').val();
+        var mostrar = $('#selecMostrar').val();
+        cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar,idEstado,response.data);
+        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte registro por consumo {idPeriodo:"+idPeriodo+",idTipoConsumo:"+idTipoConsumo+",mostrar:"+mostrar+"} (idTipoConsumo)",idTipoConsumo,"R");
+        $("#showTableReporteHogarRegistroXConsumo").show();
+
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
+function cargarSemanas4Periodo(etiqueta,idS) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getAllArea/',
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(etiqueta);
+        selected.find("option").remove();
+        if (idS == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                selected.append("<option value='" + response.data[i].id + "'>" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
 
 function cargarArea(etiqueta,idS) {
     var settings = {
@@ -339,7 +436,10 @@ function cargarTablaHogarRegistroxConsumoSemanal(idArea,idEstado,idTipoConsumo){
             },
             {
                 mData: 'detalle_2',
-                title:`${p}`,
+                /*title:jQuery.map(data, function(value, index) {
+                    return (value.Id_Semana_2);
+                }),*/
+                /*title:`${p}`,*/
                 className: "text-center",
                 render: function (data, type, row) {
                     if (data != "0"){

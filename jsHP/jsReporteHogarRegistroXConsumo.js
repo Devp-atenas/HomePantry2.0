@@ -14,34 +14,74 @@ $("#selecTipoConsumo").change(function() {
 });
 
 $("#selecMostrar").change(function() {
+    var idPeriodo = $('#selectPeriodo').val();
     cargarEstado("#selecEstado",0);
-    $("#showTableReporteHogarRegistroXConsumo").hide();
+    callCargarTabla(idPeriodo,0);
+    /*$("#showTableReporteHogarRegistroXConsumo").hide();
     var idPeriodo = $('#selectPeriodo').val();
     var idTipoConsumo = $('#selecTipoConsumo').val();
     var mostrar = $('#selecMostrar').val();
     cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar);
     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte registro por consumo {idPeriodo:"+idPeriodo+",idTipoConsumo:"+idTipoConsumo+",mostrar:"+mostrar+"} (idTipoConsumo)",idTipoConsumo,"R");
-    $("#showTableReporteHogarRegistroXConsumo").show();
+    $("#showTableReporteHogarRegistroXConsumo").show();*/
 });
 
 $("#selecEstado").change(function() {
-    $("#showTableReporteHogarRegistroXConsumo").hide();
     var idPeriodo = $('#selectPeriodo').val();
+    var idEstado = $('#selecEstado').val();
+    callCargarTabla(idPeriodo,idEstado);
+    /*$("#showTableReporteHogarRegistroXConsumo").hide();
     var idTipoConsumo = $('#selecTipoConsumo').val();
     var mostrar = $('#selecMostrar').val();
-    var idEstado = $('#selecEstado').val();
     cargarTablaHogarRegistroxConsumo4Estado(idPeriodo,idTipoConsumo,mostrar,idEstado);
     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte registro por consumo {idPeriodo:"+idPeriodo+",idTipoConsumo:"+idTipoConsumo+",mostrar:"+mostrar+"} (idTipoConsumo)",idTipoConsumo,"R");
-    $("#showTableReporteHogarRegistroXConsumo").show();
+    $("#showTableReporteHogarRegistroXConsumo").show();*/
 });
 
-function cargarMostrar(etiqueta) {
-    let selected = $(etiqueta);
-    selected.find("option").remove();
-    selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-    selected.append("<option value='1'>Todos los Consumos</option>");
-    selected.append("<option value='2'>Consumos escasos</option>");
+function callCargarTabla(idPeriodo,idEstado) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getSemanas4Periodo/'+idPeriodo,
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        
+        $("#showTableReporteHogarRegistroXConsumo").hide();
+        var idTipoConsumo = $('#selecTipoConsumo').val();
+        var mostrar = $('#selecMostrar').val();
+        cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar,idEstado,response.data);
+        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Reporte registro por consumo {idPeriodo:"+idPeriodo+",idTipoConsumo:"+idTipoConsumo+",mostrar:"+mostrar+"} (idTipoConsumo)",idTipoConsumo,"R");
+        $("#showTableReporteHogarRegistroXConsumo").show();
+
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
 }
+
+
+
 
 function cargarEstado(identificador,idS) {
     var settings = {
@@ -184,19 +224,33 @@ function cargarTipoConsumo(etiqueta,idSeleccionado) {
         }
     })
 }
-//55555
+
+function cargarMostrar(etiqueta) {
+    let selected = $(etiqueta);
+    selected.find("option").remove();
+    selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+    selected.append("<option value='1'>Todos los Consumos</option>");
+    selected.append("<option value='2'>Consumos escasos</option>");
+}
 
 
-function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
+
+
+function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar,idEstado,arraySemanas){
     var urlApi = localStorage.getItem("urlApi");
     var urlV;
     
     
-    if (mostrar == 1){
+    if (mostrar == 1 && idEstado == 0){// Todos los consumos & Todos los Estados
         urlV = urlApi+'getDatosReporteHogarRegistroXConsumo/'+idPeriodo+'/'+idTipoConsumo;
-    }else{
+    }else if (mostrar == 2 && idEstado == 0){// Consumos escasos & Todos los Estados
         urlV = urlApi+'getDatosReporteHogarRegistroXConsumoEscasos/'+idPeriodo+'/'+idTipoConsumo;
+    }else if (mostrar == 1 && idEstado != 0){// Todos los consumos por estado
+        urlV = urlApi+'getDatosReporteHogarRegistroXConsumo4Estado/'+idPeriodo+'/'+idTipoConsumo+'/'+idEstado;
+    }else if (mostrar == 2 && idEstado != 0){// Consumos escasos por estados
+        urlV = urlApi+'getDatosReporteHogarRegistroXConsumo4EstadoEscasos/'+idPeriodo+'/'+idTipoConsumo+'/'+idEstado;
     }
+    
     
     
     var oTable = $('#TablaRegistroXConsumo').DataTable({
@@ -286,6 +340,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
                 className: "text-center"
             },
             {
+                title:`${arraySemanas[0].Semana}`,
                 mData: 'detalle_1',
                 className: "text-center",
                 render: function (data, type, row) {
@@ -297,6 +352,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
                 }
             },
             {
+                title:`${arraySemanas[1].Semana}`,
                 mData: 'detalle_2',
                 className: "text-center",
                 render: function (data, type, row) {
@@ -308,6 +364,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
                 }
             },
             {
+                title:`${arraySemanas[2].Semana}`,
                 mData: 'detalle_3',
                 className: "text-center",
                 render: function (data, type, row) {
@@ -319,6 +376,7 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
                 }
             },
             {
+                title:`${arraySemanas[3].Semana}`,
                 mData: 'detalle_4',
                 className: "text-center",
                 render: function (data, type, row) {
@@ -329,7 +387,13 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
                     }
                 }
             },
+            
+            
             {
+                
+                
+                
+                title: `${arraySemanas[4].Semana}`,
                 mData: 'detalle_5',
                 className: "text-center",
                 render: function (data, type, row) {
@@ -400,11 +464,9 @@ function cargarTablaHogarRegistroxConsumo(idPeriodo,idTipoConsumo,mostrar){
         },
         
     });
-   
-   
 }
 
-function cargarTablaHogarRegistroxConsumo4Estado(idPeriodo,idTipoConsumo,mostrar,idEstado){
+function cargarTablaHogarRegistroxConsumo4Estado____(idPeriodo,idTipoConsumo,mostrar,idEstado){
     var urlApi = localStorage.getItem("urlApi");
     var urlV;
     
