@@ -47,7 +47,7 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte Hogar Registro por Consumo</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Pago de Incentivos al Hogar</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -73,38 +73,36 @@ select:focus {
                         <select id="selectCantSemana" name="selectCantSemana" class="form-control form-control-sm" data-live-search="true">
                         </select>
                     </div>
-                    <div class="col-md-3">
-                        <label class="inputText font-weight-bold">Estado:</label>
-                        <select id="selecEstado" name="selecEstado" class="form-control form-control-sm">
-                        </select>
-                    </div>
+                    
                 </div>
             </div>
         </div>
-        <div id="showTableReporteHogarRegistroXConsumo" style="display: none">
+        <div id="showReportePagoIncentivos" style="display: none">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group row mb-0 mt-0">
                         <div class="col-md-12 text-center">
-                            <div id="TableReporteHogarRegistroXConsumo"></div>
-                            <table id="TablaRegistroXConsumo" class="table table-bordered table-striped table-sm">
+                            <div id="TableReportePagoIncentivos"></div>
+                            <table id="TablaPagoIncentivos" class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
                                         <th>idHogar</th>
                                         <th>CodigoHogar</th>
-                                        <th>Clase Social</th>
-                                        <th># Personas</th>
                                         <th>Area</th>
                                         <th>Estado</th>
                                         <th>Nombre Panelista</th>
                                         <th>Apellido Panelista</th>
+                                        <th>Nombre Titular</th>
+                                        <th>Cedula</th>
+                                        <th>Banco</th>
+                                        <th>Cod Banco</th>
+                                        <th>Cuenta</th>
                                         <th>detalle_1</th>
                                         <th>detalle_2</th>
                                         <th>detalle_3</th>
                                         <th>detalle_4</th>
                                         <th>detalle_5</th>
                                         <th>idHogar</th>
-                                        
                                     </tr>
                                 </thead>
                             </table>
