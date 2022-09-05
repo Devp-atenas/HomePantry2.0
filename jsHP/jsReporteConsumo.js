@@ -23,6 +23,10 @@ $("#selectSemana").change(function() {
     var idArea = $('#selectGArea').val();
     var idEstado = $('#selectGArea').val();
     var idSemana = $('#selectSemana').val();
+    alert();
+    alert();
+    alert();
+    
     cargarTablaReporteConsumo(idArea,idEstado,idSemana,3000);
 });
 

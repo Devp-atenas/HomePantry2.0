@@ -6,7 +6,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
             
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte</h1>
+                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte Consumos</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -15,7 +15,6 @@
 <!-- /Windows datatables Producto Rango-->
 <section class="content">
     <div class="container-fluid">
-    <h2 class="text-center">Consumos</h2>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">

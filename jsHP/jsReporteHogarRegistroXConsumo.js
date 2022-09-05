@@ -229,8 +229,8 @@ function cargarMostrar(etiqueta) {
     let selected = $(etiqueta);
     selected.find("option").remove();
     selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-    selected.append("<option value='1'>Todos los Consumos</option>");
-    selected.append("<option value='2'>Consumos escasos</option>");
+    selected.append("<option value='1'>Consumos General</option>");
+    selected.append("<option value='2'>Consumos Escasos</option>");
 }
 
 

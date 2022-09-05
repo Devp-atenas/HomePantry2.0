@@ -325,6 +325,10 @@ class Principal extends CI_Controller {
     public function ReporteConsumosSemanal(){
         $this->load->view('Reportes/ReporteConsumosSemanal');
     }
+    public function RevisarInvestigaciones(){
+        $this->load->view('Reportes/RevisarInvestigaciones');
+    }
+    
     
     //----------- Mantenimiento ------------
     public function MantenimientoSemana(){

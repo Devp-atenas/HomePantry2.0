@@ -449,58 +449,7 @@ function cargarTablaIncentivos(idPeriodo,idArea,idCantSemana,arraySemanas){
             "data": 'Id_PanelHogar',
             "className": "text-center",
         }],
-        "createdRow": function( row, data, dataIndex){
-            var posInicial = 11;
-
-            var consDet_1 = data['detalle_1'].split("-");
-            if(consDet_1[0] == 0){
-                $('td', row).eq(posInicial).css('background', '#E32017');
-                $('td', row).eq(posInicial).css('color', '#FFFFFF');
-                $('td', row).eq(posInicial).css('font-weigh', 'bold');
-            }else if (Number(consDet_1[1])-Number(consDet_1[0]) < 5){
-                $('td', row).eq(posInicial).css('background', '#FFC059');
-                $('td', row).eq(posInicial).css('color', '#FFFFFF');
-                $('td', row).eq(posInicial).css('font-weigh', 'bold');
-            }
-            
-            var consDet_2 = data['detalle_2'].split("-");
-            if(consDet_2[0] == 0){
-                $('td', row).eq(posInicial+1).css('background', '#E32017');
-                $('td', row).eq(posInicial+1).css('color', '#FFFFFF');
-            }else if (Number(consDet_2[1])-Number(consDet_2[0]) < 5){
-                $('td', row).eq(posInicial+1).css('background', '#FFC059');
-                $('td', row).eq(posInicial+1).css('color', '#FFFFFF');
-            }
-            
-            var consDet_3 = data['detalle_3'].split("-");
-            if(consDet_3[0] == 0){
-                $('td', row).eq(posInicial+2).css('background', '#E32017');
-                $('td', row).eq(posInicial+2).css('color', '#FFFFFF');
-            }else if (Number(consDet_3[1])-Number(consDet_3[0]) < 5){
-                $('td', row).eq(posInicial+2).css('background', '#FFC059');
-                $('td', row).eq(posInicial+2).css('color', '#FFFFFF');
-            }
-            
-            var consDet_4 = data['detalle_4'].split("-");
-            if(consDet_4[0] == 0){
-                $('td', row).eq(posInicial+3).css('background', '#E32017');
-                $('td', row).eq(posInicial+3).css('color', '#FFFFFF');
-            }else if (Number(consDet_4[1])-Number(consDet_4[0]) < 5){
-                $('td', row).eq(posInicial+3).css('background', '#FFC059');
-                $('td', row).eq(posInicial+3).css('color', '#FFFFFF');
-            }
-            
-            if ( data['detalle_5']!=undefined){
-                var consDet_5 = data['detalle_5'].split("-");
-                if(consDet_5[0] == 0){
-                    $('td', row).eq(posInicial+4).css('background', '#E32017');
-                    $('td', row).eq(posInicial+4).css('color', '#FFFFFF');
-                }else if (Number(consDet_5[1])-Number(consDet_5[0]) < 5){
-                    $('td', row).eq(posInicial+4).css('background', '#FFC059');
-                    $('td', row).eq(posInicial+4).css('color', '#FFFFFF');
-                }
-            }
-        },
+        
         
     });
 }
