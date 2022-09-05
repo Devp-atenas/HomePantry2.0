@@ -195,7 +195,7 @@ function cargarTablaReporteTicket(idSemana,idArea,idEstado){
         "buttons": [
             {
                 extend: 'excelHtml5',
-                title: 'Reporte NSE'
+                title: 'Reporte Ticket'
             }
         ],
         "fixedHeader":  true,

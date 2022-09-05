@@ -297,7 +297,7 @@ function cargarTablaIncentivos(idPeriodo,idArea,idCantSemana,arraySemanas){
         "buttons": [
             {
                 extend: 'excelHtml5',
-                title: 'Reporte de Hogar Registro por Consumo'
+                title: 'Reporte Pago Incentivo'
             }
         ],
         "fixedHeader":    true,

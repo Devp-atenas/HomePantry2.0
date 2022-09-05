@@ -237,7 +237,7 @@ function cargarTablaHogarRegistroxConsumoSemanal(idArea,idEstado,idTipoConsumo,a
         "buttons": [
             {
                 extend: 'excelHtml5',
-                title: 'Reporte de Hogar Registro por Consumo Semanal'
+                title: 'Reporte Registro por Consumo Semanal'
             }
         ],
         "fixedHeader":    true,
