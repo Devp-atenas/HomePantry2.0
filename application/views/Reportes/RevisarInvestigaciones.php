@@ -98,9 +98,169 @@
 			</table>		 
 			
 		</div>
-        
+
+        <div class="col-md-12" id="ocultarMostrarDetalleFactura" style="display:none;" >
+            <div class="form-group row mb-0 mt-0">
+                <div class="col-md-12 text-center">
+                    <h4>Detalle de la Factura</h4>
+                </div>
+            </div>
+            <div class="form-group row mb-0 mt-0">
+                <div class="col-md-2">
+                    <div class="inputText font-weight-bold">Canal:</div>
+                    <select id="selectCanalTabla" name="selectCanalTabla" class="form-control form-control-sm">
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <div class="inputText font-weight-bold">Cadena:</div>
+                    <select id="selectCadenaTabla" name="selectCadenaTabla" class="form-control form-control-sm">
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <div class="inputText font-weight-bold">Factura:</div>
+                    <div class="card">
+                        <div class="form-group">
+                        <div class="form-check d-inline">
+                                <input class="form-check-input" type="radio" id="tieneFactura" name="tieneFactura" value="0" disabled='disabled'">
+                                <label class="form-check-label">No</label>
+                            </div>
+                            <div class="form-check d-inline">
+                                <input class="form-check-input" type="radio" id="tieneFactura" name="tieneFactura" value="1" disabled='disabled'">
+                                <label class="form-check-label">Si</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="inputText font-weight-bold">Total Productos:</div>
+                    <input type="text" name="inputTotalProductos" id="inputTotalProductos" class="form-control input-sm">
+                </div>
+                <div class="col-md-2">
+                    <div class="inputText font-weight-bold">Tipo de Moneda:</div>
+                    <select id="selectTipoMonedaTabla" name="selectTipoMonedaTabla" class="form-control form-control-sm">
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <div class="inputText font-weight-bold">Monto Factura:</div>
+                    <input type="text" name="inputMontoFactura" id="inputMontoFactura" class="form-control input-sm">
+                </div>
+            </div>
+            <HR/>
+            <div class="form-group-row alert alert-info" role="alert" id="hogarResuelto" style="display:none;" >
+                <h5>
+                    <strong>
+                        <p class="text-center"><i class="fas fa-check-double"></i>&nbsp;INVESTIGACI&Oacute;N DE CONSUMO RESUELTO&nbsp;<i class="fas fa-check-double"></i></p>
+                        <p id="motivoInv"></p>
+                        <p id="comentarioInv"></p>
+                        <p id="motivoRsp" class="text-danger"></p>
+                    </strong>
+                </h5>
+            </div>
+            <div class="form-group-row form-group-sm row mb-0 mt-0">
+                <div class="col-sm-9">
+                    <p class="text-danger" id="idDetalleConsumoM"></p>
+                </div>
+            </div>
+        </div>
+        <HR/>
+        <div id="ocultarMostrarDetalle" style="display:none;" >
+            <div class="form-group row mb-0 mt-0">
+                <div class="col-md-12 text-center">
+                    <h4>Detalle Productos</h4>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row mb-0 mt-0">
+                        <div class="col-md-12 text-center">
+                            <div id="TablaDetalleProductos"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+<!-- /.modal investigarConsumo -->
+<div class="modal fade" id="responderInvestigacion">
+    <div class="modal-dialog modal-dialog-centered"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class='fas fa-edit'></i>&nbsp;Responder Investigaci&oacute;n</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">				
+                    <label>Motivo a Investigar:</label>
+                    <input type="text" class="form-control input-sm" title="Motivo Investigacion" name="inputMotivoInvestigacion" id="inputMotivoInvestigacion" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="comentario">Deje aqu&iacute; comentario adicional:</label>
+                    <textarea class="form-control" rows="3" id="inputComentarios" style="resize: none;" readonly></textarea>
+                </div>                                              
+                <div class="form-group"> 
+                    <label for="comentario">Deje aqu&iacute; la respuesta del panelista:</label>
+                    <textarea class="form-control" rows="3" id="txtRespuesta" style="resize: none;"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" title="Salir"><i class='fas fa-sign-out-alt'></i> Salir</button>
+                <button type="button" class="btn btn-primary" title="Grabar" onclick="enviarRespuestaInvestigacion();" id="btn-investigar"><i class='fas fa-paper-plane'></i> Enviar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+
+
+
+<div class="modal" id="responderInvestigacion_" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel" data-focus-on="input:first">
+    <div class="modal-dialog modal-dialog-centered"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>					
+                <h4 class="modal-title">Large Modal</h4>					
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">				
+                    <label>Motivo a Investigar:</label>
+                    <input type="text" class="form-control input-sm" title="Motivo Investigacion" name="txtMotivoInvestigacion" id="txtMotivoInvestigacion" readonly />
+                </div>
+                
+                <div class="form-group"> 
+                    <label for="comentario">Comentario Adicional a Investigar:</label>
+                    <textarea class="form-control" rows="10" id="txtPregunta" style="resize: none;" readonly></textarea>
+                </div> 			
+                                                                
+                <div class="form-group"> 
+                    <label for="comentario">Deje aqu&iacute; la respuesta del panelista:</label>
+                    <textarea class="form-control" rows="10" id="txtRespuesta" style="resize: none;"></textarea>
+                </div>                              
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" title="Salir"><i class='fas fa-sign-out-alt'></i> Salir</button>
+                <button type="button" class="btn btn-primary" title="Grabar" onclick="enviarRespuestaInvestigacion();" id="btn-investigar"><i class='fas fa-paper-plane'></i> Enviar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+	
+
+
+
 
 <?php $this->load->view('Plantillas/Footer');?>
 

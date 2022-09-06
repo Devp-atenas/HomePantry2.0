@@ -3850,7 +3850,11 @@ function cargarTablaConsumos(idConsumo){
             {title:"Tipo Barras", field:"Tipo_codigo_barras", sorter:"string"},
             {title:"Código Barras", field:"Numero_codigo_barras", sorter:"string"},
             {title:"Descripción", field:"descripcion", sorter:"string"},
-            {title:"Cantidad", field:"Cantidad", hozAlign:"center", sorter:"Number"},
+            {title:"Cantidad", field:"Cantidad", hozAlign:"center", sorter:"Number",
+                bottomCalc:"sum", topCalcParams:{
+                    precision:2
+                }
+            },
             {title:"Precio Unitario", field:"Precio_producto", sorter:"number", formatter:"money",
                 formatterParams:{
                     decimal:",",
@@ -3865,11 +3869,14 @@ function cargarTablaConsumos(idConsumo){
                     precision:false,
                 }
             },
-            {title:"Total Compra", field:"total", sorter:"number", formatter:"money",
+            {title:"Total Compra2", field:"total", sorter:"number", formatter:"money",
                 formatterParams:{
                     decimal:",",
                     thousand:".",
-                    precision:false,}
+                    precision:false},
+                bottomCalc:"sum", topCalcParams:{
+                    precision:2,
+                }
             },
             {title:"Moneda", field:"Moneda", sorter:"string"},
 

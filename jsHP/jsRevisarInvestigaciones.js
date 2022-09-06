@@ -1,5 +1,6 @@
 $(document).ready(function() {
     cargarHogaresInvestigados('#selecHogarInvestigado',0);
+    $('#investigar').attr('disabled', true);
     
 });
 
@@ -13,19 +14,281 @@ $("#selecHogarInvestigado").change(function() {
 $("#selecFecha").change(function(){
     var idConsumo = $("#selecFecha").val();
     var idHogar = $("#selecHogarInvestigado").val();
+    $('#investigar').attr('disabled', false);
     cargarSemana4idConsumo('#inputSemana',idConsumo);
 	cargarArea4idHogar('#inputArea',idHogar);
 	cargarEstado4idHogar('#inputEstado',idHogar);
 	cargarConsumo4idConsumo('#inputTipoConsumo',idConsumo);
 	cargarMotivoConsumo4idConsumo('#inputMotivoInvestigar',idConsumo);
-	//cargarSemana4idConsumo('#inputSemana',idConsumo);
-	
+    
+    cargarTablaConsumos(idConsumo);
+    cargarResumen(idConsumo);
+    $('#ocultarMostrarDetalle').show();
+    $('#ocultarMostrarDetalleFactura').show();
 });
+
+function resultadoInvestigacionHogar() {
+	//	
+	$("#txtRespuesta").val("");	
+	$("#responderInvestigacion").modal("show");
+	//$(".modal-title").html("<i class='fas fa-edit'></i> Responder Investigaci&oacute;n");		
+	//				
+}
+
+function cargarResumen(idConsumo) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getBuscarDetalleConsumoxDia/' + idConsumo,
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        cargarCanal('#selectCanalTabla',response.data[0].Id_Canal);
+        cargarCadena('#selectCaden aTabla',response.data[0].Id_Cadena,response.data[0].Id_Canal);
+        var oblig = $("input:radio[name='tieneFactura']");
+        oblig.filter("[value='"+response.data[0].Tiene_Factura+"']").attr('checked', true);
+        $('#inputTotalProductos').val(response.data[0].total_Items);
+        cargarMoneda('#selectTipoMonedaTabla',response.Id_Moneda);
+        numero = response.data[0].Total_Compra;
+        $('#inputMontoFactura').val(new Intl.NumberFormat("de-DE").format(numero));
+        //****
+        //$('#inputMontoFactura').val(response.data[0].Total_Compra);
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarCanal(identificador,idEditar) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAllCanal/',
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(identificador);
+        selected.find("option").remove();
+        if (idEditar == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].Id_Canal == idEditar) {
+                selected.append("<option value=" + response.data[i].Id_Canal + " selected>" +
+                    response.data[i].Canal + "</option>");
+            } else {
+                selected.append("<option value=" + response.data[i].Id_Canal + ">" + response.data[i].Canal + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarCadena(identificador,idEditar,idCanal) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getCadenaxCanal/'+idCanal,
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(identificador);
+        selected.find("option").remove();
+        if (idEditar == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].Id_Cadena == idEditar) {
+                selected.append("<option value=" + response.data[i].Id_Cadena + " selected>" +
+                    response.data[i].Cadena + "</option>");
+            } else {
+                selected.append("<option value=" + response.data[i].Id_Cadena + ">" + response.data[i].Cadena + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarMoneda(identificador,idS) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAllMoneda/',
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(identificador);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].Id_Moneda === idS){
+                select.append("<option value=" + response.data[i].Id_Moneda + " selected>" + response
+                .data[i].Moneda + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].Id_Moneda + ">" + response
+                .data[i].Moneda + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
+function cargarTablaConsumos(idConsumo){
+    var URL;
+
+    //var idTipoConsumo = $("#selectTipoConsumoTabla").val();
+    URL = localStorage.getItem("urlApi")+'getBuscarDetalleFacturaxConsumo/'+idConsumo;
+    /*if (idConsumo == 0 && idTipConsumo == 0){
+        URL = '<?php echo urlApi; ?>g_ValBuscarDetallesxProductosxFacturaResuelto/' + idConsumo;
+    }else{
+        URL = '<?php echo urlApi; ?>getBuscarDetalleFacturaxConsumo/' + idConsumo;
+    }*/
+    
+    //$("#idDetalleConsumoM").html('<strong>Detalle Productos: ('+idConsumo+ ')</strong>');
+    
+    var table = new Tabulator("#TablaDetalleProductos", {
+        ajaxURL: URL,
+        ajaxConfig:{
+            method:"GET", //set request type to Position
+            headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+        },
+        layout:"fitDataStretch",
+        placeholder:"Datos no encontrados",
+        selectable:true, //make rows selectable
+        columns:[
+            {title:"Tipo Barras", field:"Tipo_codigo_barras", sorter:"string"},
+            {title:"Código Barras", field:"Numero_codigo_barras", sorter:"string"},
+            {title:"Descripción", field:"descripcion", sorter:"string"},
+            {title:"Cantidad", field:"Cantidad", hozAlign:"center", sorter:"Number",
+                bottomCalc:"sum", topCalcParams:{
+                    precision:2
+                }
+            },
+            {title:"Precio Unitario", field:"Precio_producto", sorter:"number", formatter:"money",
+                formatterParams:{
+                    decimal:",",
+                    thousand:".",
+                    precision:false,
+                }
+            },
+            {title:"Tasa Cambio", field:"Tasa_de_cambio", hozAlign:"center", sorter:"number", formatter:"money",
+                formatterParams:{
+                    decimal:",",
+                    thousand:".",
+                    precision:false,
+                }
+            },
+            {title:"Total Compra", field:"total", sorter:"number", formatter:"money",
+                formatterParams:{
+                    decimal:",",
+                    thousand:".",
+                    precision:false
+                },
+                bottomCalc:"sum", topCalcParams:{
+                    decimal:",",
+                    thousand:".",
+                    precision:2
+                    
+                }
+            },
+            {title:"Moneda", field:"Moneda", sorter:"string"},
+        ],
+    });
+}
+
+
+
 
 function cargarMotivoConsumo4idConsumo(etiqueta,idConsumo) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url":urlApi+'getTipoConsumo4IdConsumo/'+idConsumo,
+        "url":localStorage.getItem("urlApi")+'getMotivoInvestigacion4IdConsumo/'+idConsumo,
         "method": "get",
         "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -36,7 +299,19 @@ function cargarMotivoConsumo4idConsumo(etiqueta,idConsumo) {
         if( response.data.length == 0) {
             $(etiqueta).val("No Aplica");
         }else{
-            $(etiqueta).val(response.data[0].tipo);
+            var motivoObservacion = response.data[0].InvestigacionItems.split('-');
+            var observacion = replaceAll($.trim(motivoObservacion[1]), "_", ",");
+
+            $(etiqueta).val($.trim(motivoObservacion[0]));
+            $("#inputComentarioAdicional").val(observacion);
+			
+            $('#inputMotivoInvestigacion').val($.trim(motivoObservacion[0]));
+            $("#inputComentarios").val(observacion);
+			
+            //$("#txtMotivoInvestigar").val(motivo);				
+			//$("#txtMotivoInvestigacion").val(motivo);
+			//$("#txtComentarioAdicional").val(observa);				
+			//$("#txtPregunta").val(observa);	
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -211,199 +486,6 @@ function cargarSemana4idConsumo(etiqueta,idConsumo) {
     })
 }
 
-
-function buscarSemana() {
-	//	
-	//Reset_Detalles();	
-	//
-	let ajax = {
-		id_consumo: $("#cboIdConsumo").val(),
-	};
-	$.ajax({		
-		url: "g_rRevInvBuscarSemanas.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {			
-			if(data!=="False"){
-				$("#txtSemana").val(data);
-			}else{
-				$("#txtSemana").val("No Aplica");
-			}
-			$("#loader").html("");			
-		},
-	});		
-}
-//
-function buscarArea() {		
-	//		
-	//Reset_Detalles();
-	//
-	var idItems		=	$("#cboHogar option:selected" ).text().trim();
-	var fields 		=	idItems.split('-');	
-	var idHogar		=	fields[0];
-	//
-	let ajax = {
-		id_hogar: idHogar,
-	};
-	//
-	$.ajax({			
-		url: "g_rRevInvBuscarArea.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {			
-			if(data!=="False"){
-				$("#txtArea").val(data);
-			}else{
-				$("#txtArea").val("No Aplica");
-			}
-			$("#loader").html("");			
-		},
-	});		
-}
-//
-function buscarEstado() {	
-	//		
-	//Reset_Detalles();
-	//
-	var idItems		=	$("#cboHogar option:selected" ).text().trim();
-	var fields 		=	idItems.split('-');	
-	var idHogar		=	fields[0];
-	//
-	let ajax = {
-		id_hogar: idHogar,
-	};
-	//
-	$.ajax({			
-		url: "g_rRevInvBuscarEstado.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {			
-			if(data!=="False"){
-				$("#txtEstado").val(data);
-			}else{
-				$("#txtEstado").val("No Aplica");
-			}
-			$("#loader").html("");			
-		},
-	});		
-}
-//
-function buscarTipoConsumo() {
-	//
-	//debugger;
-	//		
-	//Reset_Detalles();
-	//	
-	var idConsumo =	$("#cboIdConsumo" ).val().trim();	
-	//	
-	let ajax = {
-		id_consumo: idConsumo,
-	};
-	//
-	$.ajax({			
-		url: "g_rRevInvBuscarTipoConsumo.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {			
-			if(data!=="False"){
-				$("#txtTipoConsumo").val(data);
-			}else{
-				$("#txtTipoConsumo").val("No Aplica");
-			}
-			$("#loader").html("");			
-		},
-	});		
-}
-//
-function buscarDiaSemana() {
-	//
-	var idConsumo =	$("#cboIdConsumo" ).val().trim();
-	let ajax = {
-		id_consumo: idConsumo,
-	};
-	//		
-	$.ajax({		
-		url: "g_rRevInvBuscarDiaSemana.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {
-			if(data=="False"){
-				$("#txtDiaSemana").val("No Aplica");
-			}else{
-				$("#txtDiaSemana").val(data);				
-			}
-			$("#loader").html("");	
-		},
-	});		
-}
-//
-function buscarMotivoInvestigacion() {
-	//
-	// Buscar Motivo de la investigacion del consumo
-	//
-	// debugger;	
-	//
-	var idConsumo =	$("#cboIdConsumo" ).val().trim();	
-	//
-	$.ajax({		
-		url: "g_rRevInvBuscarMotivoInvestigacion.asp?id_consumo=" + idConsumo,
-		cache: false,
-		async: false,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando Motivo..!");
-		},
-		success: function (data) {
-			//debugger;
-			console.log(data);							
-			//
-			var fields 		=	data.split('-');	
-			var motivo		=	fields[0];
-			var observa 	=	fields[1];
-			//
-			observa = replaceAll(observa, "_", ",");
-			
-			if(data=="False"){
-				$("#txtMotivoInvestigar").val("No Aplica");
-				$("#txtMotivoInvestigacion").val("No Aplica");
-				$("#txtComentarioAdicional").val("No Aplica");				
-				$("#txtPregunta").val("No Aplica");			
-			}else{
-				$("#txtMotivoInvestigar").val(motivo);				
-				$("#txtMotivoInvestigacion").val(motivo);
-				$("#txtComentarioAdicional").val(observa);				
-				$("#txtPregunta").val(observa);			
-			}
-			$("#loader").html("");
-		},
-	});		
-}
-//
 
 
 function cargarHogaresInvestigados(etiqueta,idSeleccionado) {
@@ -689,156 +771,6 @@ function buscarAltaHogar() {
 	});		
 }
 //
-function buscarSemana() {
-	//	
-	//Reset_Detalles();	
-	//
-	let ajax = {
-		id_consumo: $("#cboIdConsumo").val(),
-	};
-	$.ajax({		
-		url: "g_rRevInvBuscarSemanas.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {			
-			if(data!=="False"){
-				$("#txtSemana").val(data);
-			}else{
-				$("#txtSemana").val("No Aplica");
-			}
-			$("#loader").html("");			
-		},
-	});		
-}
-//
-function buscarArea() {		
-	//		
-	//Reset_Detalles();
-	//
-	var idItems		=	$("#cboHogar option:selected" ).text().trim();
-	var fields 		=	idItems.split('-');	
-	var idHogar		=	fields[0];
-	//
-	let ajax = {
-		id_hogar: idHogar,
-	};
-	//
-	$.ajax({			
-		url: "g_rRevInvBuscarArea.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {			
-			if(data!=="False"){
-				$("#txtArea").val(data);
-			}else{
-				$("#txtArea").val("No Aplica");
-			}
-			$("#loader").html("");			
-		},
-	});		
-}
-//
-function buscarEstado() {	
-	//		
-	//Reset_Detalles();
-	//
-	var idItems		=	$("#cboHogar option:selected" ).text().trim();
-	var fields 		=	idItems.split('-');	
-	var idHogar		=	fields[0];
-	//
-	let ajax = {
-		id_hogar: idHogar,
-	};
-	//
-	$.ajax({			
-		url: "g_rRevInvBuscarEstado.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {			
-			if(data!=="False"){
-				$("#txtEstado").val(data);
-			}else{
-				$("#txtEstado").val("No Aplica");
-			}
-			$("#loader").html("");			
-		},
-	});		
-}
-//
-function buscarTipoConsumo() {
-	//
-	//debugger;
-	//		
-	//Reset_Detalles();
-	//	
-	var idConsumo =	$("#cboIdConsumo" ).val().trim();	
-	//	
-	let ajax = {
-		id_consumo: idConsumo,
-	};
-	//
-	$.ajax({			
-		url: "g_rRevInvBuscarTipoConsumo.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {			
-			if(data!=="False"){
-				$("#txtTipoConsumo").val(data);
-			}else{
-				$("#txtTipoConsumo").val("No Aplica");
-			}
-			$("#loader").html("");			
-		},
-	});		
-}
-//
-function buscarDiaSemana() {
-	//
-	var idConsumo =	$("#cboIdConsumo" ).val().trim();
-	let ajax = {
-		id_consumo: idConsumo,
-	};
-	//		
-	$.ajax({		
-		url: "g_rRevInvBuscarDiaSemana.asp",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "html",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {
-			if(data=="False"){
-				$("#txtDiaSemana").val("No Aplica");
-			}else{
-				$("#txtDiaSemana").val(data);				
-			}
-			$("#loader").html("");	
-		},
-	});		
-}
-//
 function buscarMotivoInvestigacion() {
 	//
 	// Buscar Motivo de la investigacion del consumo
@@ -879,210 +811,6 @@ function buscarMotivoInvestigacion() {
 			$("#loader").html("");
 		},
 	});		
-}
-//
-function buscarDetalleConsumoxDia() {
-	//
-	// Buscar el detalle los del consumo individual
-	// debugger;
-	// Reset_Detalles();
-	buscarCadena(0);
-	buscarCanal();
-	buscarMonedaPagoFactura();
-	//	
-	var idConsumo =	$("#cboIdConsumo" ).val().trim();	
-	var idXonsumo =	$("#cboHogar" ).val().trim();	
-	//			
-	$.ajax({		
-		url: "g_rRevInvBuscarDetalleConsumoxDia.asp?id_Consumo=" + idConsumo,
-		cache: false,
-		async: false,
-		dataType: "json",
-		beforeSend: function(objeto){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-		},
-		success: function (data) {							
-			debugger;				
-			console.log(data);				
-			//
-			var canal  = parseInt(data[0].canal);
-			var cadena = parseInt(data[0].cadena);
-			var moneda = parseInt(data[0].moneda);
-			var totalProductos = parseInt(data[0].totalproductos);
-			sessionStorage.setItem("idtipoConsumo", data[0].tipoconsumo );
-			//
-			$("#cboCanal").val(canal).change();
-			$("#cboCadena").val(cadena).change();			
-			$("#MonedaPagoFactura").val(moneda).change();
-			$("#totalProductos").val(totalProductos);
-			//
-			$("#cboCanal").prop("disabled","disabled");
-			$("#cboCadena").prop("disabled","disabled");			
-			$("#MonedaPagoFactura").prop("disabled","disabled");			
-			$("#totalProductos").prop("disabled","disabled");
-			var factura=data[0].tienefactura;
-			//
-			if(factura==="True"){
-				$("#loader").html("");				
-				$("#tienefactura").html("Tiene Factura: ( SI )");
-				$("#totalFactura").val("");							
-				$("#tieneFactura").val("1");				
-			}else{
-				$("#tienefactura").html("Tiene Factura: ( NO )");					
-				$("#totalFactura").val("");
-				$("#tieneFactura").val("0");
-			}
-			if(parseFloat(data[0].totalcompra)===0){
-				$("#montoFactura").html('Total Compra: Ver factura');	
-			}else{
-				var totalcompraGeneral = parseFloat(data[0].totalcompra);					
-				totalcompra = Number(data[0].totalcompra).toLocaleString("es-ES", {minimumFractionDigits: 2});					
-				$("#montoFactura").html("<span>Total Compra: " + totalcompra + "</span>");	
-				$("#totalFactura").val(totalcompra);
-				$("#totalFactura").attr("disabled", "disabled");
-			}								
-			$("#loader").html("");
-			//
-			buscarImagenFactura();
-			//
-		},    				
-	});		
-}
-//
-function buscarImagenFactura() {
-	//	
-	buscarDetallexProductoFactura();
-	//
-	//debugger;
-	var idConsumo =	$("#cboIdConsumo").val().trim();
-	//	
-	$.ajax({
-		url: "g_ValBuscarImagenFacturaxDia.asp",
-		type: 'GET',
-		cache: false,
-		async: false,
-		dataType: 'JSON',
-		/*En el data se define los datos que se mandaran y como, en este ejemplo se envian los datos como tipo JSON*/
-		data: {id_Consumo: idConsumo},
-		/*El beforSend se ejecuta hasta que se reciba una respuesta del servidor, mientras tanto mostrara el mensaje "Cargando..."*/
-		beforeSend: function(){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando Imagen!");
-		}
-	})
-	/*Si la consulta se realizo con exito*/
-	.done(function(data) {
-		//debugger;
-		$("#DetalleFactura").css("display", "block");				
-		console.log(data);
-		if (data[0].id==="0"){
-			var imagen = "images/"+ data[0].imagen;	
-		}else{
-			var imagen = "images/facturas/"+ data[0].imagen;	
-		}
-		$("#imgfactura").attr("src", imagen);		
-		$("#loader").html("");			
-		//
-		//buscarResumenSemanal();
-		//
-	})
-	/*Si la consulta Fallo*/
-	.fail(function() {
-		swal("Alerta..!","Algo salio mal, Intente de Nuevo\nde continuar este Mensaje Reportelo\(img)", "error");
-	},'json');
-}
-//
-function buscarDetallexProductoFactura() {
-	//
-	//debugger;
-	var idConsumo     =	$("#cboIdConsumo").val().trim();
-	var idTipoConsumo = sessionStorage.getItem("idtipoConsumo");
-	//	
-	$.ajax({
-		url: "g_rRevInvBuscarDetallesxProductosxFactura.asp",
-		type: 'GET',
-		cache: false,
-		async: false,
-		dataType: 'HTML',
-		data: { id_Consumo : idConsumo, id_tipoConsumo : idTipoConsumo },
-		beforeSend: function(){
-			$("#loader").html("<img src='images/ajax_small.gif'> Buscando Imagen!");
-		}
-	})
-	/*Si la consulta se realizo con exito*/
-	.done(function(data) {
-		//debugger;
-		console.log(data);
-		$("#loader").html("");
-		$("#tabla-resultados").html(data);
-		//				
-	})
-	/*Si la consulta Fallo*/
-	.fail(function() {
-		swal("Alerta..! bDxPF()","Algo salio mal, Intente de Nuevo\nde continuar este Mensaje Reportelo", "error");
-	},'HTML');
-		
-}
-//
-function buscarCadena(id) {
-	$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");
-	$("#cboCadena").prop("disabled", true);
-	let ajax = {
-		opcion: 1,
-		id: id,
-	};
-	$.ajax({
-		url: "g_rRevInvBuscarCadenaxConsumo.asp",
-		type: "POST",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "json",
-		success: function (data) {
-			//debugger;
-			let select = $("#cboCadena");
-			select.find("option").remove();
-			select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-			$.each(data.data, function (key, value) {
-				select.append("<option value=" + value.id + ">" + value.nombre + "</option>");
-			});
-			$("#loader").html("");
-			var len = $("#cboCadena option").length;
-			if (len <= 2) {
-				$("#cboCadena").prop("selectedIndex", 1);
-				$("#cboCadena").prop("disabled", true);
-				texto=$("#cboCadena option:selected" ).text().trim();			
-			} else {
-				$("#cboCadena").prop("selectedIndex", 0);
-				$("#cboCadena").prop("disabled", false);
-			}	  
-		},
-  });
-}
-//
-function buscarCanal() {
-	$("#loader").html("<img src='images/ajax_small.gif'> Buscando!");	
-	let ajax = {
-			id: 0,
-		opcion: 2,
-	};
-	$.ajax({
-		url: "g_rRevInvBuscarCadenaxConsumo.asp",
-		type: "POST",
-		cache: false,
-		async: false,
-		data: ajax,
-		dataType: "json",
-		success: function (data) {
-			//debugger;
-			let select = $("#cboCanal");
-			select.find("option").remove();
-			select.append("<option value='0' selected disabled> -- Seleccione -- </option>");
-			$.each(data.data, function (key, value) {
-				select.append("<option value=" + value.id + ">" + value.nombre + "</option>");
-			});
-			$("#loader").html("");			
-		},
-  });
 }
 //
 function buscarHogarValidado() {
