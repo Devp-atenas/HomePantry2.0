@@ -6,6 +6,7 @@ $(document).ready(function() {
 
 $("#selecHogarInvestigado").change(function() {
     var idHogar = $("#selecHogarInvestigado").val();
+    cargarAltaHogar(idHogar);
     cargarConsumosInvestigados('#selecFecha',0,idHogar);
     $('#inputSemana').val("");
     $('#inputArea').val("");
@@ -137,6 +138,58 @@ function enviarRespuestaInvestigacion(){
     })
 }
 
+function cargarAltaHogar(idHogar) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url":urlApi+'getAltaHogarxIdHohar/'+idHogar,
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        
+            //debugger;
+            var NombreC   = response.data[0].Nombre;
+            var celular  = response.data[0].Celular;
+            var fecha    = response.data[0].fecha;
+            //
+            if (fecha == null || fecha == "" || fecha.length == 0 || fecha == undefined ) {
+                $("#responsableHogar").html(NombreC);
+                $("#celularHogar").html(celular);
+                $("#altaHogar").html("Sin Registro");			
+            }else{
+                $("#responsableHogar").html(NombreC);
+                $("#celularHogar").html(celular);
+                $("#altaHogar").html(fecha);			
+            }
+
+
+
+
+
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
 
 
 
