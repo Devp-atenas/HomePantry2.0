@@ -6,14 +6,21 @@ $(document).ready(function() {
 
 $("#selecHogarInvestigado").change(function() {
     var idHogar = $("#selecHogarInvestigado").val();
-    cargarConsumosInvestigados('#selecFecha',0,idHogar)
+    cargarConsumosInvestigados('#selecFecha',0,idHogar);
+    $('#inputSemana').val("");
+    $('#inputArea').val("");
+    $('#inputEstado').val("");
+    $('#inputTipoConsumo').val("");
+    
+    $('#inputMotivoInvestigar').val("");
+    $('#inputComentarioAdicional').val("");
     $("#tablaResumen").show();
 });
 
 
 $("#selecFecha").change(function(){
-    var idConsumo = $("#selecFecha").val();
     var idHogar = $("#selecHogarInvestigado").val();
+    var idConsumo = $("#selecFecha").val();
     $('#investigar').attr('disabled', false);
     cargarSemana4idConsumo('#inputSemana',idConsumo);
 	cargarArea4idHogar('#inputArea',idHogar);
@@ -28,12 +35,112 @@ $("#selecFecha").change(function(){
 });
 
 function resultadoInvestigacionHogar() {
-	//	
-	$("#txtRespuesta").val("");	
+	$("#inputRespuesta").val("");	
 	$("#responderInvestigacion").modal("show");
-	//$(".modal-title").html("<i class='fas fa-edit'></i> Responder Investigaci&oacute;n");		
-	//				
 }
+
+function enviarRespuestaInvestigacion(){
+    var idConsumo =	$("#selecFecha").val();
+	var observacion	  = $("#inputRespuesta").val(); 
+	//
+	/*if (observacion == null || observacion == "" || observacion.Length == 0 || observacion== undefined ) {
+		swal("Aviso..!", "Debe Indicar la Respuesta...!", "error");
+		return false;	
+	}*/
+	//
+	console.log(observacion);
+	//eliminar todo tipo de saltos de línea
+ 	observacion = observacion.replace(/(\r\n|\n|\r)/gm, " ");
+	//eliminarán todos los caracteres no imprimibles
+	observacion = observacion.replace(/[^\x20-\x7E]/gmi, "")	
+ 	console.log(observacion);
+	observacion = replaceAll(observacion, ",", "_");
+	observacion = replaceAll(observacion, "'", "`");
+	observacion = observacion.replace(/['"]+/g, '`');
+	console.log(observacion);
+    
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        
+    customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: "¿Seguro enviar respuesta?",
+	    text: " Esta accion no se puede reversar..! ",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: 'Si, Enviar Respuesta',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var idConsumo = $("#selectFechaTabla").val();
+            var idItemInvestigar =	$("#selectInvestigar").val();
+            var idHogar = $("#selectHogarTabla").val();
+            var observacion =	$("#txtComentarios").val();
+            
+            var settings = {
+                "url": localStorage.getItem("urlApi")+'respuestaConsumoInvestigado/'+idConsumo+'/'+observacion,
+                "method": "GET",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+            }
+            $.ajax(settings).done(function(response){
+                // resetear formularios
+                $("#responderInvestigacion").modal("hide");	
+
+
+                const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.message,
+                confirmButtonText: `Ok`,
+            })
+
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                }
+            })
+        }
+    })
+}
+
+
+
+
+
 
 function cargarResumen(idConsumo) {
     var settings = {
@@ -310,8 +417,8 @@ function cargarMotivoConsumo4idConsumo(etiqueta,idConsumo) {
 			
             //$("#txtMotivoInvestigar").val(motivo);				
 			//$("#txtMotivoInvestigacion").val(motivo);
-			//$("#txtComentarioAdicional").val(observa);				
-			//$("#txtPregunta").val(observa);	
+			//$("#txtComentarioAdicional").val(observacion);				
+			//$("#txtPregunta").val(observacion);	
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -793,9 +900,9 @@ function buscarMotivoInvestigacion() {
 			//
 			var fields 		=	data.split('-');	
 			var motivo		=	fields[0];
-			var observa 	=	fields[1];
+			var observacion 	=	fields[1];
 			//
-			observa = replaceAll(observa, "_", ",");
+			observacion = replaceAll(observacion, "_", ",");
 			
 			if(data=="False"){
 				$("#txtMotivoInvestigar").val("No Aplica");
@@ -805,8 +912,8 @@ function buscarMotivoInvestigacion() {
 			}else{
 				$("#txtMotivoInvestigar").val(motivo);				
 				$("#txtMotivoInvestigacion").val(motivo);
-				$("#txtComentarioAdicional").val(observa);				
-				$("#txtPregunta").val(observa);			
+				$("#txtComentarioAdicional").val(observacion);				
+				$("#txtPregunta").val(observacion);			
 			}
 			$("#loader").html("");
 		},
@@ -1010,97 +1117,12 @@ function buscarHogarInvestigado() {
 //
 function resultadoInvestigacionHogar() {
 	//	
-	$("#txtRespuesta").val("");	
+	$("#inputRespuesta").val("");	
 	$("#responderInvestigacion").modal("show");
 	$(".modal-title").html("<i class='fas fa-edit'></i> Responder Investigaci&oacute;n");		
 	//				
 }
 //
-function enviarRespuestaInvestigacion() {
-	//
-	debugger;
-	var idConsumo =	$("#cboIdConsumo").val();
-	var observa	  = $("#txtRespuesta").val(); 
-	//
-	if (observa == null || observa == "" || observa.Length == 0 || observa== undefined ) {
-		swal("Aviso..!", "Debe Indicar la Respuesta...!", "error");
-		return false;	
-	}
-	//
-	console.log(observa);
-	//eliminar todo tipo de saltos de línea
- 	observa = observa.replace(/(\r\n|\n|\r)/gm, " ");
-	//eliminarán todos los caracteres no imprimibles
-	observa = observa.replace(/[^\x20-\x7E]/gmi, "")	
- 	console.log(observa);
-	observa = replaceAll(observa, ",", "_");
-	observa = replaceAll(observa, "'", "`");
-	observa = observa.replace(/['"]+/g, '`');
-	console.log(observa);
-	//
-	swal({
-		title: "¿ Seguro Enviar la Respuesta ?",
-	  text: " Esta accion no se puede reversar..! ",
-	  type: "warning",
-	  showCancelButton: true,
-	  confirmButtonClass: "btn-danger",
-	  confirmButtonText: "Si",
-	  cancelButtonText: "No",
-	  closeOnConfirm: true,
-	  showLoaderOnConfirm: true,
-	},
-	function () {
-		//				
-		let ajax = {				
-			id_Consumo  : idConsumo,
-			observacion	: observa,
-		};								
-		$.ajax({		
-			url: "g_rRevInvRespuestaInvestigacionConsumo.asp",
-			type: 'GET',
-			cache: false,
-			async: false,
-			data: ajax,
-			beforeSend: function(objeto){
-				$("#loader").html("<img src='images/ajax_small.gif'> Enviando, Respuesta!");
-			}			
-		})
-		/*Si la consulta se realizo con exito*/
-		.done(function(data) {
-			//
-			if(data==="True"){				
-				$("#loader").html("");
-				$("#responderInvestigacion").modal("hide");					
-				swal("Aviso..!", "Respuesta Enviada...!", "success");
-				//
-				var esUltimoElementoSeleccionado = $("#cboIdConsumo > option:selected").index() == $("#cboIdConsumo > option").length -1;
-				if (!esUltimoElementoSeleccionado) {					
-					$("#cboIdConsumo option:selected").remove();
-					$("#cboIdConsumo > option:selected").removeAttr("selected").next("option").attr("selected", "selected");
-				} else {
-					$("#cboIdConsumo option:selected").remove();
-					$("#cboIdConsumo > option:selected").removeAttr("selected");
-				   	$("#cboIdConsumo > option").first().attr("selected", "selected");
-				}
-				//				
-				if($("#cboIdConsumo option").length===1) { 
-					Reset();
-				}else{
-					$("#cboIdConsumo").change();
-				}
-				//
-			}else{
-				swal("Aviso..!", "Algo Salio Mal.., Intente de nuevo!","error");
-			}
-		})
-		/*Si la consulta Fallo*/
-		.fail(function() {			
-			swal("Alerta..!","Algo salio mal, Intente de Nuevo\nde continuar este Mensaje Reportelo\n(er)", "error");
-		},'HTML');
-		//
-	}
-  );
-}
 //
 function replaceAll(text, busca, reemplaza) {
   while (text.toString().indexOf(busca) != -1)

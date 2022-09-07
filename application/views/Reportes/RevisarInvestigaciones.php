@@ -204,7 +204,7 @@
                 </div>                                              
                 <div class="form-group"> 
                     <label for="comentario">Deje aqu&iacute; la respuesta del panelista:</label>
-                    <textarea class="form-control" rows="3" id="txtRespuesta" style="resize: none;"></textarea>
+                    <textarea class="form-control" rows="3" id="inputRespuesta" style="resize: none;"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
