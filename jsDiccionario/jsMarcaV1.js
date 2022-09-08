@@ -361,7 +361,7 @@ function deleteAction(data) {
     })
 }
 
-function cargarFabricanteEdit(id_Fabricante) {
+function cargarFabrican_teEdit_(id_Fabricante) {
 
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAllFabricanteV1/',
@@ -487,7 +487,10 @@ function EditAction(data) {
     }
     $.ajax(settings).done(function(response) {
         cargarCategoria("#selectCategoriaEdit",response.data[0].Id_Categoria);
-        alert(response.data[0].Id_Fabricante)
+        //alert('Id: '+data)
+        
+        //alert('Cat: '+response.data[0].Id_Categoria)
+        //alert('FAB: '+response.data[0].Id_Fabricante)
         cargarFabricante('#selectFabricanteEdit',response.data[0].Id_Categoria,response.data[0].Id_Fabricante);
         $('#inputIdEditMarca').val(response.data[0].Id_Marca);
         $('#inputMarcaEdit').val(response.data[0].Marca);
@@ -617,7 +620,61 @@ function cargarCategoria(etiqueta,idS) {
     })
 }
 
+
 function cargarFabricante(etiqueta,idCat,idS) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getAllFabricantes_x_CategoriaV1/'+idCat,
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(etiqueta);
+        selected.find("option").remove();
+        if (idS == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id == idS){
+                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                selected.append("<option value='" + response.data[i].id + "'>" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
+
+function cargarFa_bricante(etiqueta,idCat,idS) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAllFabricantes_x_CategoriaV1/'+idCat,
         "method": "get",
@@ -633,7 +690,7 @@ function cargarFabricante(etiqueta,idCat,idS) {
             select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         }
         for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id == idS){
+            if (response.data[i].id === idS){
             select.append("<option value=" + response.data[i].id + " selected>" + response
                 .data[i].nombre + " - "+ response.data[i].id + "</option>");
             }else{
