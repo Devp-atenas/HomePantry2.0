@@ -1067,10 +1067,8 @@ function grafica(v1,v2,v3,v4,v5,t1,t2,t3,t4,t5,idGrafica){
         }
     });
 }
-
+// 7777777777777777777
 function enviarConsumoInvestigar(){
-    
-    
     const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success',
@@ -1156,11 +1154,6 @@ function enviarConsumoInvestigar(){
     })
 }
 
-
-
-
-
-
 function callEnviarConsumoInvestigar(){
     cargarMotivosInvestigar("#selectInvestigar",0);
     var fecha = new Date();
@@ -1226,10 +1219,6 @@ function cargarMotivosInvestigar(etiqueta,idS) {
         }
     })
 }
-
-
-
-
 
 function cargarResumenSemanal(idSemana,idHogar,idTipoConsumo) {
     var valoresSemana = new Array();

@@ -96,7 +96,17 @@ function enviarRespuestaInvestigacion(){
                 }
             }
             $.ajax(settings).done(function(response){
-                // resetear formularios
+                cargarConsumosInvestigados('#selecFecha',0,idHogar);
+                $('#inputSemana').val("");
+                $('#inputArea').val("");
+                $('#inputEstado').val("");
+                $('#inputTipoConsumo').val("");
+                
+                $('#inputMotivoInvestigar').val("");
+                $('#inputComentarioAdicional').val("");
+                $("#tablaResumen").hide();
+                
+                
                 $("#responderInvestigacion").modal("hide");	
 
 
@@ -459,23 +469,14 @@ function cargarMotivoConsumo4idConsumo(etiqueta,idConsumo) {
                 }
     }
     $.ajax(settings).done(function(response) {
-        if( response.data.length == 0) {
-            $(etiqueta).val("No Aplica");
-        }else{
-            var motivoObservacion = response.data[0].InvestigacionItems.split('-');
-            var observacion = replaceAll($.trim(motivoObservacion[1]), "_", ",");
+        var motivoObservacion = response.data[0].InvestigacionItems;
+        var observacion = response.data[0].Observaciones_enviadas;
 
-            $(etiqueta).val($.trim(motivoObservacion[0]));
-            $("#inputComentarioAdicional").val(observacion);
-			
-            $('#inputMotivoInvestigacion').val($.trim(motivoObservacion[0]));
-            $("#inputComentarios").val(observacion);
-			
-            //$("#txtMotivoInvestigar").val(motivo);				
-			//$("#txtMotivoInvestigacion").val(motivo);
-			//$("#txtComentarioAdicional").val(observacion);				
-			//$("#txtPregunta").val(observacion);	
-        }
+        $(etiqueta).val($.trim(motivoObservacion));
+        $("#inputComentarioAdicional").val(observacion);
+        
+        $('#inputMotivoInvestigacion').val($.trim(motivoObservacion));
+        $("#inputComentarios").val(observacion);
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
