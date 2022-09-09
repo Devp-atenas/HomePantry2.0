@@ -41,24 +41,7 @@ function resultadoInvestigacionHogar() {
 }
 
 function enviarRespuestaInvestigacion(){
-    var idConsumo =	$("#selecFecha").val();
-	var observacion	  = $("#inputRespuesta").val(); 
-	//
-	/*if (observacion == null || observacion == "" || observacion.Length == 0 || observacion== undefined ) {
-		swal("Aviso..!", "Debe Indicar la Respuesta...!", "error");
-		return false;	
-	}*/
-	//
-	console.log(observacion);
-	//eliminar todo tipo de saltos de línea
- 	observacion = observacion.replace(/(\r\n|\n|\r)/gm, " ");
-	//eliminarán todos los caracteres no imprimibles
-	observacion = observacion.replace(/[^\x20-\x7E]/gmi, "")	
- 	console.log(observacion);
-	observacion = replaceAll(observacion, ",", "_");
-	observacion = replaceAll(observacion, "'", "`");
-	observacion = observacion.replace(/['"]+/g, '`');
-	console.log(observacion);
+    
     
 
     const swalWithBootstrapButtons = Swal.mixin({
@@ -79,17 +62,37 @@ function enviarRespuestaInvestigacion(){
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            var idConsumo = $("#selectFechaTabla").val();
-            var idItemInvestigar =	$("#selectInvestigar").val();
-            var idHogar = $("#selectHogarTabla").val();
-            var observacion =	$("#txtComentarios").val();
+            
+            var idConsumo =	$("#selecFecha").val();
+            var observacion	  = $("#inputRespuesta").val(); 
+            //
+            /*if (observacion == null || observacion == "" || observacion.Length == 0 || observacion== undefined ) {
+                swal("Aviso..!", "Debe Indicar la Respuesta...!", "error");
+                return false;	
+            }*/
+            //
+            console.log(observacion);
+            //eliminar todo tipo de saltos de línea
+            observacion = observacion.replace(/(\r\n|\n|\r)/gm, " ");
+            //eliminarán todos los caracteres no imprimibles
+            observacion = observacion.replace(/[^\x20-\x7E]/gmi, "")	
+            console.log(observacion);
+            observacion = replaceAll(observacion, ",", "_");
+            observacion = replaceAll(observacion, "'", "`");
+            observacion = observacion.replace(/['"]+/g, '`');
+            console.log(observacion);
             
             var settings = {
-                "url": localStorage.getItem("urlApi")+'respuestaConsumoInvestigado/'+idConsumo+'/'+observacion,
-                "method": "GET",
+                "url": localStorage.getItem("urlApi")+'respuestaConsumoInvestigado',
+                "method": "POST",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+                "data": {
+                    "idConsumo":idConsumo,
+                    "observacion":observacion
+                    
                 }
             }
             $.ajax(settings).done(function(response){
