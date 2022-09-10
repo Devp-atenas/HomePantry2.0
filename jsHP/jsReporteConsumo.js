@@ -6,9 +6,6 @@ $(document).ready(function() {
 });
 
 
-
-
-
 $("#selectGArea").change(function() {
     var idArea = $('#selectGArea').val();
     cargarEstadoXArea('#selectEstado',0,idArea);
@@ -23,9 +20,6 @@ $("#selectSemana").change(function() {
     var idArea = $('#selectGArea').val();
     var idEstado = $('#selectGArea').val();
     var idSemana = $('#selectSemana').val();
-    alert();
-    alert();
-    alert();
     
     cargarTablaReporteConsumo(idArea,idEstado,idSemana,3000);
 });
@@ -174,12 +168,6 @@ function cargarEstadoXArea(etiqueta,idSeleccionado,idArea) {
     })
 }
 
-
-
-
-
-
-
 function cargarTablaReporteConsumo(idArea,idEstado,idSemana,cantidad){
     var urlApi = localStorage.getItem("urlApi");
     var bottomAcciones = function(cell, formatterParams){
@@ -207,17 +195,11 @@ function cargarTablaReporteConsumo(idArea,idEstado,idSemana,cantidad){
         selectable:false, //make rows selectable
         columns:[
             {title:"Tipo de Consumo", field:"TipoConsumo", sorter:"string"},
-            {title:"Hogares_que_Reportaron", field:"Hogares_que_Reportaron", sorter:"string"},
-            {title:"Hogares_que_ReportaronAntr", field:"Hogares_que_ReportaronAnt", sorter:"string"},
+            {title:"# Hogares que Reportaron", field:"CantSemAct", sorter:"string"},
+            {title:"# Hogares que Reportaron (Ant)", field:"CantSemAnt", sorter:"string"},
             {title:"Variacion", field:"Variacion", sorter:"string"},
-            {title:"# Hogares que Faltan", field:"Hogares_que_Reportaron", formatter:function(cell, formatterParams, onRendered){
-                //cell - the cell component
-                //formatterParams - parameters set for the column
-                //onRendered - function to call when the formatter has been rendered
-            
-                return cantidad - cell.getValue(); //return the contents of the cell;
-            },
-            },
+            {title:"# Hogares que Faltan", field:"cantHogaresFaltan", sorter:"string"},
+            {title:"% de Cumplimiento", field:"Cumplimiento", sorter:"string"},
             {formatter:bottomAcciones, hozAlign:"center"}
         ],
     });
