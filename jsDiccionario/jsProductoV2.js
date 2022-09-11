@@ -851,7 +851,9 @@ function deleteAction(data) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: '¡Sí, bórralo!'
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: '¡Sí, bórralo!',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             var urlApi = localStorage.getItem("urlApi");

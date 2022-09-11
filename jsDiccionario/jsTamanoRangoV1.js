@@ -166,6 +166,7 @@ function deleteAction(data) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
+        cancelButtonText:  'No, Cancelar',
         confirmButtonText: '¡Sí, bórralo!',
         reverseButtons: true
     }).then((result) => {
