@@ -224,8 +224,7 @@ function deleteAction(data) {
         cancelButtonColor: '#d33',
         cancelButtonText:  'No, Cancelar',
         confirmButtonText: '¡Sí, bórralo!',
-        confirmButtonText: 'Si, Validar status del producto',
-        
+        confirmButtonText: 'Si, Validar status del producto',        
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {

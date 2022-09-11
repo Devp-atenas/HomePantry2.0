@@ -24,15 +24,16 @@
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label class="inputText font-weight-bold">Estado:</label>
-                        <select id="selectEstado" name="selectEstado" class="form-control form-control-sm">
-                        </select>
-                    </div>
-                    <div class="col-md-2">
                         <label class="inputText font-weight-bold">Semana:</label>
                         <select id="selectSemana" name="selectSemana" class="form-control form-control-sm">
                         </select>
                     </div>
+                    <div class="col-md-2">
+                        <label class="inputText font-weight-bold">Estado:</label>
+                        <select id="selectEstado" name="selectEstado" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    
                 </div>
             </div>
         </div>

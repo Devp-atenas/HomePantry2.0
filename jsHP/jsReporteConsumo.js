@@ -2,27 +2,32 @@ $(document).ready(function() {
     cargarGArea('#selectGArea',0);
     //cargarEstado('#selectEstado',0);
     //cargarSemanaTop6('#selectSemana',0);
-    //cargarTablaReporteConsumo("","","",3000);
 });
 
 
 $("#selectGArea").change(function() {
-    var idArea = $('#selectGArea').val();
-    cargarEstadoXArea('#selectEstado',0,idArea);
-});
-
-$("#selectEstado").change(function() {
     cargarSemanaTop6('#selectSemana',0);
 });
 
+
 $("#selectSemana").change(function() {
-    idArea,idEstado,idSemana
     var idArea = $('#selectGArea').val();
-    var idEstado = $('#selectGArea').val();
-    var idSemana = $('#selectSemana').val();
-    
-    cargarTablaReporteConsumo(idArea,idEstado,idSemana,3000);
+    cargarEstadoXArea('#selectEstado',0,idArea);
+  
+    var idArea = $('#selectGArea').val();
+    var idSemana = $('#selectSemana').val(); 
+    cargarTablaReporteConsumo(idArea,0,idSemana);
 });
+
+$("#selectEstado").change(function() {
+    var idArea = $('#selectGArea').val();
+    var idEstado = $('#selectEstado').val();
+    var idSemana = $('#selectSemana').val(); 
+    cargarTablaReporteConsumo(idArea,idEstado,idSemana);
+    
+});
+
+
 
 function cargarSemanaTop6(etiqueta,idSeleccionado) {
     var urlApi = localStorage.getItem("urlApi");
@@ -168,7 +173,16 @@ function cargarEstadoXArea(etiqueta,idSeleccionado,idArea) {
     })
 }
 
-function cargarTablaReporteConsumo(idArea,idEstado,idSemana,cantidad){
+function cargarTablaReporteConsumo(idArea,idEstado,idSemana){
+    
+    var API;
+    if (idEstado == 0){
+        API = localStorage.getItem("urlApi")+'getDatosReporteConsumo/'+idArea+'/'+idSemana;
+    }else{
+        API = localStorage.getItem("urlApi")+'getDatosReporteConsumo4Estado/'+idArea+'/'+idEstado+'/'+idSemana;
+    }
+    
+    
     var urlApi = localStorage.getItem("urlApi");
     var bottomAcciones = function(cell, formatterParams){
     var id = cell.getRow().getData().Id_Estudio;
@@ -177,7 +191,7 @@ function cargarTablaReporteConsumo(idArea,idEstado,idSemana,cantidad){
     };
 
     var table = new Tabulator("#TableReporteConsumo", {
-        ajaxURL: urlApi+'getDatosReporteConsumo/'+idArea+'/'+idSemana,
+        ajaxURL: API,
         ajaxConfig:{
             method:"GET", //set request type to Position
             headers: {
