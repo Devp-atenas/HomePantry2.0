@@ -33,6 +33,17 @@
                         <select id="selectEstado" name="selectEstado" class="form-control form-control-sm">
                         </select>
                     </div>
+                    <div class="col-md-2">
+                        <label class="font-weight-bold">Estado A:</label>
+                        <select id="selectEstadosAgrupados" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    
+
+
+
+
+                    
                     
                 </div>
             </div>
@@ -50,12 +61,29 @@
                 </div>
             </div>
         </div>
+        <HR/>
+        <div id="showTablaPanelistasFaltaron4Consumo">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row mb-0 mt-0">
+                        <div class="col-md-12 text-center">
+                            <div id="TablePanelistasFaltaron4Consumo"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
     </div>
 </section>
 
 <?php $this->load->view('Plantillas/Footer');?>
 
 <script src="<?php echo base_url('jsHP/jsReporteConsumo.js') ?>"></script>
+
+
+
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
