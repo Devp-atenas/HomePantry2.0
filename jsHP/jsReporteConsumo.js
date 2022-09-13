@@ -1,26 +1,50 @@
 $(document).ready(function() {
     cargarGArea('#selectGArea',0);
     generarEstadosAgrupados('#selectEstadosAgrupados')
+    $('#selectEstadosAgrupados').select2();
 });
 
-$("#selectGArea").change(function() {
+$("#selectEstadosAgrupados").change(function() {
+    cargarSemanaTop6('#selectSemana',0);
+});
+
+$("#selectSemana").change(function() {
+    /*var idArea = $('#selectGArea').val();
+    var idSemana = $('#selectSemana').val(); 
+    cargarEstadoXArea('#selectEstado',0,idArea);
+    cargarTablaReporteConsumo(idArea,0,idSemana);*/
+    var idEstados = $('#selectEstadosAgrupados option:selected').toArray().map(item => item.value);
+    var idSemana = $('#selectSemana').val(); 
+    cargarTablaReporteConsumo(idEstados,idSemana);
+});
+
+
+//---------------------------
+
+
+
+
+
+
+
+$("#selectGArea_").change(function() {
     cargarSemanaTop6('#selectSemana',0);
     $('#showTablaPanelistasFaltaron4Consumo').hide();
     //$('#showButton').hide();
 });
 
-$("#selectSemana").change(function() {
+$("#selectSemana_").change(function() {
     var idArea = $('#selectGArea').val();
     var idSemana = $('#selectSemana').val(); 
     cargarEstadoXArea('#selectEstado',0,idArea);
     cargarTablaReporteConsumo(idArea,0,idSemana);
 });
 
-$("#selectEstado").change(function() {
+$("#selectEstado_").change(function() {
     var idArea = $('#selectGArea').val();
     var idEstado = $('#selectEstado').val();
     var idSemana = $('#selectSemana').val(); 
-    cargarTablaReporteConsumo(idArea,idEstado,idSemana);
+    //cargarTablaReporteConsumo(idArea,idEstado,idSemana);
 });
 
 
@@ -232,7 +256,46 @@ function cargarEstadoXArea(etiqueta,idSeleccionado,idArea) {
     })
 }
 
-function cargarTablaReporteConsumo(idArea,idEstado,idSemana){
+function cargarTablaReporteConsumo(idEstados,idSemana){
+    //alert(idEstados);
+    //alert(idSemana);
+    
+    
+    var bottomAcciones = function(cell, formatterParams){
+    var id = cell.getRow().getData().Id_Estudio;
+    return  "<a id='fg003' href='#' onclick='callUpdateEstudio_(); return false;' ><i class='bi bi-bag-check text-primary data-toggle='tooltip' data-placement='top' title='Hogares que reportaron'></i></a>"
+            +"<a id='fg003' href='#' onclick='cargarPanelistasFaltaron4Consumo(); return false;' ><i class='bi bi-bag-x text-danger data-toggle='tooltip' data-placement='top' title='Hogares que faltan'></i></a>";
+    };
+
+    var table = new Tabulator("#TableReporteConsumo", {
+        ajaxURL: localStorage.getItem("urlApi")+'getDatosReporteConsumo4EstadoAgrupados',
+        ajaxConfig:{
+            method:"POST", //set request type to Position
+            headers: {
+                "contentType": "application/json;",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            body: JSON.stringify({
+                "idEstados": idEstados,
+                "idSemana": idSemana
+
+            })
+        },
+        layout:"fitDataFill",
+        placeholder:"Datos no encontrados",
+        selectable:false, //make rows selectable
+        columns:[
+            {title:"Tipo de Consumo", field:"TipoConsumo", sorter:"string"},
+            {title:"# Hogares que Reportaron", field:"CantSemAct", hozAlign:"center", sorter:"string"},
+            {title:"# Hogares que Reportaron (Ant)", field:"CantSemAnt", hozAlign:"center", sorter:"string"},
+            {title:"Variacion", field:"Variacion",  hozAlign:"center", sorter:"string"},
+            {title:"# Hogares que Faltan", field:"cantHogaresFaltan", hozAlign:"center", sorter:"string"},
+            {title:"% de Cumplimiento", field:"Cumplimiento", hozAlign:"center", sorter:"string"},
+            {formatter:bottomAcciones, hozAlign:"center"}
+        ],
+    });
+}
+function cargarTablaReporteConsumo_(idArea,idEstado,idSemana){
     
     
     var API;
@@ -257,11 +320,6 @@ function cargarTablaReporteConsumo(idArea,idEstado,idSemana){
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
-            "data": {
-                "idArea":idArea,
-                "idEstado": idEstado,
-                "idSemana": idSemana
-            }
         },
         layout:"fitDataFill",
         placeholder:"Datos no encontrados",

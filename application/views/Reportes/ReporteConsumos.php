@@ -18,24 +18,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
-                <div class="col-md-2">
-                        <label class="inputText font-weight-bold">Area:</label>
-                        <select id="selectGArea" name="selectGArea" class="form-control form-control-sm">
+                    <div class="col-md-5">
+                        <label class="font-weight-bold">Estados:</label>
+                        
+                        <select  id="selectEstadosAgrupados" class="select2" multiple="multiple" data-placeholder="Seleccione estado" style="width: 100%;">
+                        <!--<select id="selectEstadosAgrupados" class="form-control form-control-sm">-->
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label class="inputText font-weight-bold">Semana:</label>
                         <select id="selectSemana" name="selectSemana" class="form-control form-control-sm">
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label class="inputText font-weight-bold">Estado:</label>
                         <select id="selectEstado" name="selectEstado" class="form-control form-control-sm">
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label class="font-weight-bold">Estado A:</label>
-                        <select id="selectEstadosAgrupados" class="form-control form-control-sm">
                         </select>
                     </div>
                     
@@ -81,6 +78,7 @@
 <?php $this->load->view('Plantillas/Footer');?>
 
 <script src="<?php echo base_url('jsHP/jsReporteConsumo.js') ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.full.min.js" integrity="sha512-rNNKEb5WQbxA4pLtGV9W746iT7tZlpjC6duViljPlPQhOOPz6Vu3nae8G9A36/W8WT+BWhso9vgETSfSP604vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
