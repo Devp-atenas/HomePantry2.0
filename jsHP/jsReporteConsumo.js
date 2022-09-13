@@ -13,8 +13,13 @@ $("#selectSemana").change(function() {
     var idSemana = $('#selectSemana').val(); 
     cargarEstadoXArea('#selectEstado',0,idArea);
     cargarTablaReporteConsumo(idArea,0,idSemana);*/
-    var idEstados = $('#selectEstadosAgrupados option:selected').toArray().map(item => item.value);
+    //debugger;
+    //var idEstados = $('#selectEstadosAgrupados option:selected').toArray().map(item => item.value);
+    var idEstados = $('#selectEstadosAgrupados').val();
+    idEstados = idEstados.join();
     var idSemana = $('#selectSemana').val(); 
+    console.log(idEstados);
+    console.log(idSemana);
     cargarTablaReporteConsumo(idEstados,idSemana);
 });
 
@@ -268,18 +273,13 @@ function cargarTablaReporteConsumo(idEstados,idSemana){
     };
 
     var table = new Tabulator("#TableReporteConsumo", {
-        ajaxURL: localStorage.getItem("urlApi")+'getDatosReporteConsumo4EstadoAgrupados',
+        ajaxURL: localStorage.getItem("urlApi")+'getDatosReporteConsumo4EstadoAgrupados/'+idEstados+'/'+idSemana,
         ajaxConfig:{
-            method:"POST", //set request type to Position
+            method:"GET", //set request type to Position
             headers: {
-                "contentType": "application/json;",
+                "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            body: JSON.stringify({
-                "idEstados": idEstados,
-                "idSemana": idSemana
-
-            })
+            }
         },
         layout:"fitDataFill",
         placeholder:"Datos no encontrados",
