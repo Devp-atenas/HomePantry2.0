@@ -40,7 +40,7 @@
                 </li>
                 <li>
                     <a href="#step-2">
-                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Responsable del hogar"><img class="animation__shake" src="<?php echo base_url('dist/img/RESPONSABLE.png')?>"></span>
+                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Responsable del panel"><img class="animation__shake" src="<?php echo base_url('dist/img/RESPONSABLE.png')?>"></span>
                     </a>
                 </li>
                 <li>
@@ -228,7 +228,7 @@
             </div>
             <div id="step-2">
                 <form id="formResponsableHogar" action="" method="post">
-                    <h2 class="text-center">Responsable del hogar</h2>
+                    <h2 class="text-center">Responsable del panel</h2>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -318,7 +318,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                <input type="date" class="form-control input-sm" id="fechaNacimientoResponsable" placeholder="">
+                                <input type="text" class="form-control" id="fechaNacimientoResponsable" placeholder="">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -659,7 +659,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                    <input type="date" class="form-control input-sm" id="fechaNacimientoJefe" placeholder="">
+                                    <input type="text" class="form-control" id="fechaNacimientoJefe" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -736,7 +736,7 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Nuevo Hogar</h3>
+                                <h3 class="card-title">Miembro del Hogar</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                         <i class="fas fa-minus"></i>
@@ -841,7 +841,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                                        <input type="date" class="form-control input-sm" id="fechaNacimientoComposicion" placeholder="">
+                                                        <input type="text" class="form-control" id="fechaNacimientoComposicion" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -1633,7 +1633,23 @@
                     <h2 class="text-center">Mascotas</h2>
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="inputText font-weight-bold">¿Posee Mascota?</div>
+                        <div class="inputText font-weight-bold">¿Posee Mascota?</div>
+                            <div class="card">
+                                <div class="form-group">
+                                    <div class="form-check d-inline">
+                                        <input class="form-check-input" type="radio" name="poseeMascota" value="0">
+                                        <label class="form-check-label">No</label>
+                                    </div>
+                                    <div class="form-check d-inline">
+                                        <input class="form-check-input" type="radio" name="poseeMascota" value="1">
+                                        <label class="form-check-label">Si</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                    <div class="col-md-3">
+                        
                             <div class="card">
                             <div class="form-group">
                                     <div class="form-check">
@@ -1874,7 +1890,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                            <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionEdit" placeholder="">
+                                            <input type="text" class="form-control" id="fechaNacimientoComposicionEdit" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -2081,7 +2097,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                            <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionView" placeholder="" readonly>
+                                            <input type="text" class="form-control" id="fechaNacimientoComposicionView" placeholder="" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -2231,7 +2247,7 @@
         */
     }else{
         cargarEstado('#estadoHogar',0);
-        // Responsable del Hogar
+        // Responsable del panel
         cargarEstadoCivil('#estadoCivilResponsable',0);
         cargarParentesco('#parentescoJefeResponsable',0);
         cargarEducacion('#educacionResponsable',0);
@@ -2427,7 +2443,7 @@
             })
         }
     });
-    // Responsable del hogar PASO 2
+    // Responsable del panel PASO 2
     $("#guardar-paso-2").click(function() {
         var camposVacios = "";
         //var camposVaciosX = "";
@@ -2692,7 +2708,7 @@
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": '<?php echo urlApi; ?>addJefeComposicionHogar/',
+                "url": '<?php echo urlApi; ?>addJefeHogar/',
                 "method": "POST",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -2787,15 +2803,15 @@
         if ($("#primerNombreComposicion").val() == "") {
             camposVacios += "Primer nombre<br>";
         }
-        if ($("#segundoNombreComposicion").val() == "") {
+        /*if ($("#segundoNombreComposicion").val() == "") {
             camposVacios += "Segundo nombre<br>";
-        }
+        }*/
         if ($("#primerApellidoComposicion").val() == "") {
             camposVacios += "Primer apellido<br>";
         }
-        if ($("#segundoApellidoComposicion").val() == "") {
+        /*if ($("#segundoApellidoComposicion").val() == "") {
             camposVacios += "Segundo apellido<br>";
-        }
+        }*/
         if (!$("input[name='nacionalidadComposicion']:radio").is(':checked')) {
             camposVacios += "Seleccione Nacionalidad<br>";
         }
@@ -2884,7 +2900,9 @@
                     confirmButtonText: `Ok`,
                 })
                 localStorage.setItem('idHogar',$("#identificacion2Hogar").val());
-                cargarTablaComposicion($("#identificacion2Hogar").val());
+                //cargarTablaComposicion($("#identificacion2Hogar").val());
+                let xtable = $('#TablePanelistas').DataTable();
+                xtable.ajax.reload(null, false);
                 var form = document.querySelector('#formComposicionHogar');
                 form.reset();
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 4 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
@@ -2914,16 +2932,25 @@
         }
     });
     $(document).ready(function() {
+
+        window.addEventListener("keydown", function(e) {
+            if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+
+
+
         $('#fechaNacimientoResponsable').change(function(e) {
-            calcularEdad('#fechaNacimientoResponsable','#edadResponsable')
+            calcularEdad($("#fechaNacimientoResponsable").val(),'#edadResponsable');
         })
         
         $('#fechaNacimientoJefe').change(function(e) {
-            calcularEdad('#fechaNacimientoJefe','#edadJefe')
+            calcularEdad($("#fechaNacimientoJefe").val(),'#edadJefe');
         })
         
         $('#fechaNacimientoComposicion').change(function(e) {
-            calcularEdad('#fechaNacimientoComposicion','#edadComposicion')
+            calcularEdad($("#fechaNacimientoComposicion").val(),'#edadComposicion');
         })
         
         $('#tipoVivienda').change(function(e) {
@@ -3622,6 +3649,7 @@
                 },
                 "data": {
                     "Id_Hogar": $("#identificacion2Hogar").val(),
+                    "Id_Mascotas": $('input:radio[name=poseeMascota]:checked').val(),
                     "Ind_Perro": Perro,
                     "Ind_Gato": Gato,
                     "Ind_Pez": Pez,
@@ -3836,14 +3864,14 @@
                 camposVacios += " Falta completar Ubicacion del hogar<br>";
             }
             if (response.data[0].Ind_paso2 == 0){
-                camposVacios += "Responsable del hogar<br>";
+                camposVacios += "Responsable del panel<br>";
             }
             if (response.data[0].Ind_paso3 == 0){
                 camposVacios += "Jefe del Hogar<br>";
             }
-            if (response.data[0].Ind_paso4 == 0){
+            /*if (response.data[0].Ind_paso4 == 0){
                 camposVacios += "Composición del hogar<br>";
-            }
+            }*/
             if (response.data[0].Ind_paso5 == 0){
                 camposVacios += "Características y tenencia de la vivienda<br>";
             }
@@ -3877,7 +3905,7 @@
                     cancelButtonAriaLabel: ''
                 })
             } else {
-                alert($("#identificacion2Hogar").val());
+                //alert($("#identificacion2Hogar").val());
                 finalizarFicha($("#identificacion2Hogar").val());
             }
         }).fail(function(jqXHR, textStatus) {
@@ -4068,6 +4096,11 @@ function cargarTablaComposicion(idHogar){
 }
 </script>
 
+<script type="text/javascript">
+   /*$(function(){
+ $("[data-mask]").inputmask(); 
+});*/
+</script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js')?>"></script>
@@ -4081,3 +4114,8 @@ function cargarTablaComposicion(idHogar){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js')?>"></script>
+
+
+<!--
+<script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+-->

@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fa fa-plus-square aria-hidden=" true""></i>&nbsp;Registro del hogar </h1>
+                <h1><i class="fa fa-plus-square"></i>&nbsp;Registro del hogar </h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -40,7 +40,7 @@
                 </li>
                 <li>
                     <a href="#step-2">
-                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Responsable del hogar"><img class="animation__shake" src="<?php echo base_url('dist/img/RESPONSABLE.png')?>"></span>
+                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Responsable del panel"><img class="animation__shake" src="<?php echo base_url('dist/img/RESPONSABLE.png')?>"></span>
                     </a>
                 </li>
                 <li>
@@ -209,16 +209,26 @@
                         </div>
                     </div>
                     <HR/>
-                    <div class="row">
+                    <div class="row align-items-end">
                         <div class="col text-center">
-                            <button id="guardar-step-1" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-1" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
+                    <div class="row" style="visibility:hidden;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">id:</label>
+                                <input type="text" name="" id="" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    
                 </form>
+                
             </div>
             <div id="step-2">
                 <form id="formResponsableHogar" action="" method="post">
-                    <h2 class="text-center">Responsable del hogar</h2>
+                    <h2 class="text-center">Responsable del panel</h2>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -268,7 +278,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Sexo:</div>
+                            <div class="inputText font-weight-bold">Genero:</div>
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check">
@@ -308,7 +318,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                <input type="date" class="form-control input-sm" id="fechaNacimientoResponsable" placeholder="">
+                                <input type="text" class="form-control" id="fechaNacimientoResponsable" placeholder="">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -533,7 +543,7 @@
                     <br />
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-2" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-2" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -609,7 +619,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="inputText font-weight-bold">Sexo:</div>
+                                <div class="inputText font-weight-bold">Genero:</div>
                                 <div class="card">
                                     <div class="form-group">
                                         <div class="form-check">
@@ -649,7 +659,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                    <input type="date" class="form-control input-sm" id="fechaNacimientoJefe" placeholder="">
+                                    <input type="text" class="form-control" id="fechaNacimientoJefe" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -717,7 +727,7 @@
                 </div>
                 <div class="row">
                     <div class="col text-center">
-                        <button id="guardar-step-3" type="button" class="btn btn-outline-success">Guardar</button>
+                        <button id="guardar-paso-3" type="button" class="btn btn-outline-success">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -726,7 +736,7 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Nuevo Hogar</h3>
+                                <h3 class="card-title">Miembro del Hogar</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                         <i class="fas fa-minus"></i>
@@ -791,7 +801,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="inputText font-weight-bold">Sexo:</div>
+                                                    <div class="inputText font-weight-bold">Genero:</div>
                                                     <div class="card">
                                                         <div class="form-group">
                                                             <div class="form-check">
@@ -831,7 +841,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                                        <input type="date" class="form-control input-sm" id="fechaNacimientoComposicion" placeholder="">
+                                                        <input type="text" class="form-control" id="fechaNacimientoComposicion" placeholder="">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -887,7 +897,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col text-center">
-                                                    <button id="guardar-step-4" type="button" class="btn btn-outline-success">Guardar</button>
+                                                    <button id="guardar-paso-4" type="button" class="btn btn-outline-success">Guardar</button>
                                                 </div>
                                             </div>
                                             <!--/step 4-->
@@ -911,39 +921,19 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title"></h3>
-                                    </div>
-                                    <!-- /.card-header -->
-                                    <div class="card-body">
-                                        <table id="TablePanelistas" class="table table-bordered table-striped table-md">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Nacionalidad</th>
-                                                    <th>Cedula</th>
-                                                    <th>Parentesco</th>
-                                                    <th>Fec_Nacimiento</th>
-                                                    <th>Accion</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Nacionalidad</th>
-                                                    <th>Cedula</th>
-                                                    <th>Parentesco</th>
-                                                    <th>Fec_Nacimiento</th>
-                                                    <th>Accion</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <!-- /.card-body -->
-                                </div>
+                                <table id="TablePanelistas" class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Nacionalidad</th>
+                                            <th>Cedula</th>
+                                            <th>Parentesco</th>
+                                            <th>Fec_Nacimiento</th>
+                                            <th>Accion</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -1019,7 +1009,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-5" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-5" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 5-->
@@ -1112,7 +1102,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-6" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-6" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 6-->
@@ -1489,7 +1479,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-7" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-7" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 7-->
@@ -1582,7 +1572,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-8" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-8" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 8-->
@@ -1632,7 +1622,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-9" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-9" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <!--/step 9-->
@@ -1643,7 +1633,23 @@
                     <h2 class="text-center">Mascotas</h2>
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="inputText font-weight-bold">¿Posee Mascota?</div>
+                        <div class="inputText font-weight-bold">¿Posee Mascota?</div>
+                            <div class="card">
+                                <div class="form-group">
+                                    <div class="form-check d-inline">
+                                        <input class="form-check-input" type="radio" name="poseeMascota" value="0">
+                                        <label class="form-check-label">No</label>
+                                    </div>
+                                    <div class="form-check d-inline">
+                                        <input class="form-check-input" type="radio" name="poseeMascota" value="1">
+                                        <label class="form-check-label">Si</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                    <div class="col-md-3">
+                        
                             <div class="card">
                             <div class="form-group">
                                     <div class="form-check">
@@ -1676,13 +1682,13 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-step-10" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-10" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <HR/>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-ficha" type="button" class="btn btn-block btn-success">Finalizar y Calcular NSE</button>
+                            <button id="finalizar-calcularNSE" type="button" class="btn btn-block btn-success">Finalizar y Calcular NSE</button>
                         </div>
                     </div>
                     <!--/step 10-->
@@ -1795,7 +1801,7 @@
                         </div>
                         <div class="card-body">
                             <form id="FormPanelistaEdit">
-                                <div class="row">t
+                                <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Primer nombre:</div>
@@ -1844,7 +1850,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="inputText font-weight-bold">Sexo:</div>
+                                        <div class="inputText font-weight-bold">Genero:</div>
                                         <div class="card">
                                             <div class="form-group">
                                                 <div class="form-check">
@@ -1884,7 +1890,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                            <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionEdit" placeholder="">
+                                            <input type="text" class="form-control" id="fechaNacimientoComposicionEdit" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -2051,7 +2057,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="inputText font-weight-bold">Sexo:</div>
+                                        <div class="inputText font-weight-bold">Genero:</div>
                                         <div class="card">
                                             <div class="form-group">
                                                 <div class="form-check">
@@ -2091,7 +2097,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
-                                            <input type="date" class="form-control input-sm" id="fechaNacimientoComposicionView" placeholder="" readonly>
+                                            <input type="text" class="form-control" id="fechaNacimientoComposicionView" placeholder="" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -2188,314 +2194,39 @@
     <!-- /.modal-dialog -->
 </div>
 
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="<?php echo base_url('vendor/js/custom.min.js') ?>"></script>
+<script src="<?php echo base_url('vendor/js/fastclick.js') ?>"></script>
+<script src="<?php echo base_url('vendor/js/jquery.smartWizard.js') ?>"></script>
+<script src="<?php echo base_url('vendor/js/nprogress.js') ?>"></script>
+
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosCombos.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosFunciones.js') ?>"></script>
-<script>
+
+<script type="text/javascript">
     fechaNacimientoResponsable.max = new Date().toISOString().split("T")[0];
     fechaNacimientoJefe.max = new Date().toISOString().split("T")[0];
     fechaNacimientoComposicion.max = new Date().toISOString().split("T")[0];
-        //jQuery.noConflict();
-    $().ready(function() {
-        $("#formcontacto").validate({
-            rules: {
-                nombreCasa: {
-                    required: true,
-                    minlength: 2
-                },
-                escaleraCasa: {
-                    required: true,
-                    minlength: 1
-                },
-                nombreEdificio: {
-                    required: true,
-                    minlength: 3
-                },
-                apartamentoEdificio: {
-                    required: true,
-                    minlength: 1
-                },
-                telefonoHogar: {
-                    required: true,
-                    minlength: 11
-                },
-                referenciaHogar: {
-                    required: true
-                },
-                primerNombreResponsable: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoNombreResponsable: {
-                    required: true
-                },
-                primerApellidoResponsable: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoApellidoResponsable: {
-                    required: true
-                },
-                cedulaResponsable: {
-                    required: true,
-                    minlength: 6
-                },
-                celularResponsable: {
-                    required: true,
-                    minlength: 11
-                },
-                celularAdicionalResponsable: {
-                    required: true,
-                    minlength: 11
-                },
-                numeroCortesiaResponsable: {
-                    required: true,
-                    minlength: 11
-                },
-                correoResponsable: {
-                    required: true
-                },
-                correoAlternoResponsable: {
-                    required: true
-                },
-                titularTransferenciaResponsable: {
-                    required: true,
-                    minlength: 2
-                },
-                cedulaTransferenciaResponsable: {
-                    required: true,
-                    minlength: 6
-                },
-                numeroCuentaResponsable: {
-                    required: true,
-                    minlength: 20
-                },
-                primerNombreJefe: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoNombreJefe: {
-                    required: true,
-                    minlength: 2
-                },
-                primerApellidoJefe: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoApellidoJefe: {
-                    required: true,
-                    minlength: 2
-                },
-                cedulaJefe: {
-                    required: true,
-                    minlength: 6
-                },
-                celularJefe: {
-                    required: true,
-                    minlength: 11
-                },
-                celularAdicionalJefe: {
-                    required: true,
-                    minlength: 11
-                },
-                correoJefe: {
-                    required: true,
-                    minlength: 5
-                },
-                primerNombreComposicion: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoNombreComposicion: {
-                    required: true,
-                    minlength: 2
-                },
-                primerApellidoComposicion: {
-                    required: true,
-                    minlength: 2
-                },
-                segundoApellidoComposicion: {
-                    required: true,
-                    minlength: 2
-                },
-                cedulaComposicion: {
-                    required: true,
-                    minlength: 6
-                },
-                celularComposicion: {
-                    required: true,
-                    minlength: 11
-                },
-                celularAdicionalComposicion: {
-                    required: true,
-                    minlength: 11
-                },
-                correoComposicion: {
-                    required: true,
-                    minlength: 5
-                },
-                especifiqueTipoVivienda: {
-                    minlength: 3
-                },
-                numeroAmbientes: {
-                    required: true,
-                    minlength: 1
-                },
-                numeroBanos: {
-                    required: true,
-                    minlength: 1
-                },
-                especifiqueOcupacionVivienda: {
-                    minlength: 3
-                }
-            },
-            messages: {
-                nombreCasa: {
-                    required: "Por favor Ingrese Nombre de la casa completo",
-                    minlength: "Debe tener al menos 3 caracteres"
-                },
-                escaleraCasa: {
-                    required: "Por favor intoduzca la escalera",
-                    minlength: "Debe tener al menos 1 caracteres"
-                },
-                nombreEdificio: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 3 caracteres"
-                },
-                apartamentoEdificio: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 1 caracteres"
-                },
-                telefonoHogar: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Telefono incompleto"
-                },
-                referenciaHogar: {
-                    required: "Por favor intoduzca Valor"
-                },
-                primerNombreResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoNombreResponsable: {
-                    required: "Por favor intoduzca Valor"
-                },
-                primerApellidoResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoApellidoResponsable: {
-                    required: "Por favor intoduzca Valor"
-                },
-                cedulaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 6 caracteres"
-                },
-                celularResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                celularAdicionalResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 11 caracteres"
-                },
-                numeroCortesiaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 11 caracteres"
-                },
-                titularTransferenciaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                cedulaTransferenciaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 6 caracteres"
-                },
-                numeroCuentaResponsable: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 20 digitos"
-                },
-                primerNombreJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoNombreJefe: {
-                    required: "Por favor intoduzca Valor"
-                },
-                primerApellidoJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoApellidoJefe: {
-                    required: "Por favor intoduzca Valor"
-                },
-                cedulaJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 6 caracteres"
-                },
-                celularJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                celularAdicionalJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                correoJefe: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 5 caracteres"
-                },
-                primerNombreComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoNombreComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                primerApellidoComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                segundoApellidoComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 2 caracteres"
-                },
-                cedulaComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 6 caracteres"
-                },
-                celularComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                celularAdicionalComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener 11 caracteres"
-                },
-                correoComposicion: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 5 caracteres"
-                },
-                especifiqueTipoVivienda: {
-                    minlength: "Debe tener al menos 3 caracteres"
-                },
-                numeroAmbientes: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 1 caracteres"
-                },
-                numeroBanos: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 1 caracteres"
-                },
-                especifiqueOcupacionVivienda: {
-                    required: "Por favor intoduzca Valor",
-                    minlength: "Debe tener al menos 3 caracteres"
-                },
-            }
-        });
-    });
-</script>
-<script type="text/javascript">
+    
     if (localStorage.getItem("idHogarEditar") !== null) {
         HogarEditar();
         var idHogar = localStorage.getItem("idHogarEditar");
@@ -2503,12 +2234,20 @@
         editPanelistasResponsableJefe(idHogar,0,1);
         localStorage.setItem('flagActividad',1);
         localStorage.removeItem('idHogarEditar');
+        
+            cargarEducacion('#educacionComposicion',0);
+            cargarEstadoCivil('#estadoCivilComposicion',0);
+            cargarParentesco('#parentescoJefeComposicion',0);
+            cargarTipoIngreso('#tipoIngresoComposicion',0);
+        
+
         /*
-            blanquearCamposPorActividad(idHogar); esta dentro de editPanelistasResponsableJefe
+            !!!!!!!!! No eliminar este comentario !!!!
+            blanquearCamposPorActividad(idHogar); Ojo: esta dentro de HogarEditar
         */
     }else{
         cargarEstado('#estadoHogar',0);
-        // Responsable del Hogar
+        // Responsable del panel
         cargarEstadoCivil('#estadoCivilResponsable',0);
         cargarParentesco('#parentescoJefeResponsable',0);
         cargarEducacion('#educacionResponsable',0);
@@ -2549,8 +2288,9 @@
     }
     
     
-    // 11111
-    $("#guardar-step-1").click(function() {
+    // Ubicacion del hogar PASO 1
+    $("#guardar-paso-1").click(function() {
+        var idHogar2 = $("#identificacion2Hogar").val();
         var camposVacios = "";
         if ($.trim($('#estadoHogar').val()) === '') {
             camposVacios += "Seleccione estado <br>";
@@ -2612,12 +2352,6 @@
             });
             $('#myModal').modal('show');
         } else {
-            if (localStorage.getItem("flagActividad") !== null){
-                flagNuevoHogar = 0;
-            }else{
-                flagNuevoHogar = 1;
-            }
-
             const fecha = new Date();
             const YYYY = fecha.getFullYear();
             const YY = YYYY%100;
@@ -2652,13 +2386,17 @@
                     "telefonoHogar": $("#telefonoHogar").val(),
                     "viviendaCasa": $("#viviendaCasa").val(),
                     "Id_Usuario": localStorage.getItem("IdUsuario"),
-                    "tipoCasa": $("#tipoCasa").val(),
-                    "flagNuevoHogar":flagNuevoHogar
+                    "tipoCasa": $("#tipoCasa").val()
                 }
             }
             $.ajax(settings).done(function(response) {
                 $("#identificacion1Hogar").val(response.Codi_Hogar);
                 $("#identificacion2Hogar").val(response.maxIDPanelHogar);
+                
+                if (idHogar2 == ""){
+                    AlertaFichaIncompleta(response.maxIDPanelHogar);
+                }
+                
                 if (localStorage.getItem('flagActividad') !== null){
                     var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,1);
@@ -2679,7 +2417,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 1",$("#identificacion2Hogar").val(),"C");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 1 (idPanelHogar)",$("#identificacion2Hogar").val(),"C");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -2705,8 +2443,8 @@
             })
         }
     });
-    // 22222
-    $("#guardar-step-2").click(function() {
+    // Responsable del panel PASO 2
+    $("#guardar-paso-2").click(function() {
         var camposVacios = "";
         //var camposVaciosX = "";
         if ($.trim($('#estadoCivilResponsable').val()) === '') {
@@ -2879,7 +2617,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 2",$("#identificacion2Hogar").val(),"C");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 2 (idPanelHogar)",$("#identificacion2Hogar").val(),"C");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -2905,8 +2643,8 @@
             })
         }
     });
-    // 33333
-    $("#guardar-step-3").click(function() {
+    // Jefe del Hogar PASO 3
+    $("#guardar-paso-3").click(function() {
         var jefeResponsableIO = $('input:radio[name=jefeResponsableIO]:checked').val();
         var camposVacios = "";
         if ($.trim($('#estadoCivilJefe').val()) === '') {
@@ -2970,7 +2708,7 @@
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": '<?php echo urlApi; ?>addJefeComposicionHogar/',
+                "url": '<?php echo urlApi; ?>addJefeHogar/',
                 "method": "POST",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -3020,7 +2758,7 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 3",$("#identificacion2Hogar").val(),"U");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 3 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3046,8 +2784,8 @@
             })
         }
     });
-    // 44444
-    $("#guardar-step-4").click(function() {
+    // Composición del Hogar PASO 4
+    $("#guardar-paso-4").click(function() {
         var camposVacios = "";
 
         if ($.trim($('#estadoCivilComposicion').val()) === '') {
@@ -3065,15 +2803,15 @@
         if ($("#primerNombreComposicion").val() == "") {
             camposVacios += "Primer nombre<br>";
         }
-        if ($("#segundoNombreComposicion").val() == "") {
+        /*if ($("#segundoNombreComposicion").val() == "") {
             camposVacios += "Segundo nombre<br>";
-        }
+        }*/
         if ($("#primerApellidoComposicion").val() == "") {
             camposVacios += "Primer apellido<br>";
         }
-        if ($("#segundoApellidoComposicion").val() == "") {
+        /*if ($("#segundoApellidoComposicion").val() == "") {
             camposVacios += "Segundo apellido<br>";
-        }
+        }*/
         if (!$("input[name='nacionalidadComposicion']:radio").is(':checked')) {
             camposVacios += "Seleccione Nacionalidad<br>";
         }
@@ -3104,6 +2842,12 @@
             });
             $('#myModal').modal('show');
         } else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3130,7 +2874,8 @@
                     "Correo": $("#correoComposicion").val(),
                     "Celular": $("#celularComposicion").val(),
                     "CelularAdicional": $("#celularAdicionalComposicion").val(),
-                    "id_BeneficioSocialista": $('input:radio[name=beneficioSocialistaComposicion]:checked').val()
+                    "id_BeneficioSocialista": $('input:radio[name=beneficioSocialistaComposicion]:checked').val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
@@ -3155,11 +2900,12 @@
                     confirmButtonText: `Ok`,
                 })
                 localStorage.setItem('idHogar',$("#identificacion2Hogar").val());
-                cargarTablaComposicion($("#identificacion2Hogar").val());
+                //cargarTablaComposicion($("#identificacion2Hogar").val());
+                let xtable = $('#TablePanelistas').DataTable();
+                xtable.ajax.reload(null, false);
                 var form = document.querySelector('#formComposicionHogar');
                 form.reset();
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 4",$("#identificacion2Hogar").val(),"U");
-                
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 4 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3186,6 +2932,27 @@
         }
     });
     $(document).ready(function() {
+
+        window.addEventListener("keydown", function(e) {
+            if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+
+
+
+        $('#fechaNacimientoResponsable').change(function(e) {
+            calcularEdad($("#fechaNacimientoResponsable").val(),'#edadResponsable');
+        })
+        
+        $('#fechaNacimientoJefe').change(function(e) {
+            calcularEdad($("#fechaNacimientoJefe").val(),'#edadJefe');
+        })
+        
+        $('#fechaNacimientoComposicion').change(function(e) {
+            calcularEdad($("#fechaNacimientoComposicion").val(),'#edadComposicion');
+        })
+        
         $('#tipoVivienda').change(function(e) {
             if ($(this).val() != "12") {
                 $("#especifiqueTipoVivienda").val('');
@@ -3195,8 +2962,7 @@
 
             }
         })
-    });
-    $(document).ready(function() {
+        
         $('#ocupacionVivienda').change(function(e) {
             if ($(this).val() != "6") {
                 $("#especifiqueOcupacionVivienda").val('');
@@ -3207,8 +2973,9 @@
             }
         })
     });
-    // 55555
-    $("#guardar-step-5").click(function() {
+
+    // Características y tenencia de la vivienda PASO 5
+    $("#guardar-paso-5").click(function() {
         var camposVacios = "";
 
         if ($("#tipoVivienda").val() == "12") {
@@ -3233,6 +3000,12 @@
             });
             $('#myModal').modal('show');
         } else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3252,12 +3025,20 @@
                     "id_PuntosLuz": $("#puntosLuz").val(),
                     "Id_OcupacionVivienda": $("#ocupacionVivienda").val(),
                     "OtroOcupacionVivienda": $("#especifiqueOcupacionVivienda").val(),
-                    "Id_MontoVivienda": $("#montoVivienda").val()
+                    "Id_MontoVivienda": $("#montoVivienda").val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+                if (response.isFichaCompleta==1){
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se actualizo Características y tenencia de la vivienda (Paso 5) Falta Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    AlertaHogarSinRecalcularNSE($("#identificacion2Hogar").val());
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Características y tenencia de la vivienda (Paso 5) (idPanelHogar)",$("#identificacion2Hogar").val(),"C");
+                }
+
                 if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,5);
                 }
                 const Toast = Swal.mixin({
@@ -3275,10 +3056,7 @@
                     icon: 'success',
                     title: response.message,
                     confirmButtonText: `Ok`,
-                })
-                
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 5",$("#identificacion2Hogar").val(),"U");
-                
+                })  
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3304,8 +3082,8 @@
             })
         }
     });
-    // 66666
-    $("#guardar-step-6").click(function() {
+    // Servicios Públicos PASO 6
+    $("#guardar-paso-6").click(function() {
         var camposVacios = "";
         if (!$("input[name='servicioElectricidad']:radio").is(':checked')) {
             camposVacios += "Seleccione servicio de electricidad<br>";
@@ -3322,6 +3100,12 @@
             });
             $('#myModal').modal('show');
         } else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3338,12 +3122,21 @@
                     "Id_AseoUrbano": $("#aseoUrbano").val(),
                     "Id_ServicioElectricidad": $('input:radio[name=servicioElectricidad]:checked').val(),
                     "Id_ServicioTelefono": $('input:radio[name=servicioTelefonico]:checked').val(),
-                    "Id_CortesElectricos": $('input:radio[name=cortesElectricos]:checked').val()
+                    "Id_CortesElectricos": $('input:radio[name=cortesElectricos]:checked').val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Actualizo Servicios Públicos(Paso 6) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    AlertaHogarSinRecalcularNSE($("#identificacion2Hogar").val());
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Servicios Públicos(Paso 6)",$("#identificacion2Hogar").val(),"C");
+                }
+                
                 if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,6);
                 }
                 const Toast = Swal.mixin({
@@ -3362,7 +3155,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 6",$("#identificacion2Hogar").val(),"U");
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3388,8 +3180,8 @@
             })
         }
     });
-    // 77777
-    $("#guardar-step-7").click(function() {
+    // Servicios y equipamiento del hogar PASO 7
+    $("#guardar-paso-7").click(function() {
         var camposVacios = "";
         if (!$("input[name='domesticaFija']:radio").is(':checked')) {
             camposVacios += "Seleccione doméstica fija<br>";
@@ -3499,6 +3291,12 @@
             });
             $('#myModal').modal('show');
         } else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3543,12 +3341,21 @@
                     "id_CantvAcometida": $('input:radio[name=cantvAcometida]:checked').val(),
                     "id_CantvFijo": $('input:radio[name=cantvFijo]:checked').val(),
                     "id_Movistar": $('input:radio[name=movistar]:checked').val(),
-                    "id_Digitel": $('input:radio[name=digitel]:checked').val()
+                    "id_Digitel": $('input:radio[name=digitel]:checked').val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Actualizo Servicios y equipamiento del hogar(Paso 7) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    AlertaHogarSinRecalcularNSE($("#identificacion2Hogar").val());
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Servicios y equipamiento del hogar(Paso 7)",$("#identificacion2Hogar").val(),"C");
+                }
+                
                 if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,7);
                 }
                 const Toast = Swal.mixin({
@@ -3567,8 +3374,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 7",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3594,8 +3399,8 @@
             })
         }
     });
-    //888888
-    $("#guardar-step-8").click(function() {
+    // Medios PASO 8
+    $("#guardar-paso-8").click(function() {
         var camposVacios = "";
         if ($.trim($('#cantidadTV').val()) === '') {
             camposVacios += "Seleccione  cantidad de televisores<br>";
@@ -3630,6 +3435,13 @@
         } else {
             var FM = document.getElementById('FM').checked ? 1 : 0;
             var AM = document.getElementById('AM').checked ? 1 : 0;
+            
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3649,12 +3461,21 @@
                     "Id_TelevisionOnline1": $("#tvOnline1").val(),
                     "Id_TelevisionOnline2":$("#tvOnline2").val(),
                     "id_FM": FM,
-                    "id_AM": AM
+                    "id_AM": AM,
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Actualizo Medios(Paso 8) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    AlertaHogarSinRecalcularNSE($("#identificacion2Hogar").val());
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Medios(Paso 8)",$("#identificacion2Hogar").val(),"C");
+                }
+                
                 if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
                     guardarCamposPorActividad(idHogar,8);
                 }
                 const Toast = Swal.mixin({
@@ -3673,8 +3494,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 8",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3700,8 +3519,8 @@
             })
         }
     });
-    //999999
-    $("#guardar-step-9").click(function() {
+    // Vehículos PASO 9
+    $("#guardar-paso-9").click(function() {
         var camposVacios = "";
         if ($.trim($('#totalAutos').val()) === '') {
             camposVacios += "Seleccione  cantidad de televisores<br>";
@@ -3718,7 +3537,13 @@
                 $('#modal-body').html(camposVacios);
             });
             $('#myModal').modal('show');
-        } else {
+        }else {
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3732,10 +3557,23 @@
                     "Id_Hogar": $("#identificacion2Hogar").val(),
                     "Id_Autos": $("#totalAutos").val(),
                     "Id_Moto": $('input:radio[name=moto]:checked').val(),
-                    "Id_SeguroCasco": $('input:radio[name=casco]:checked').val()
+                    "Id_SeguroCasco": $('input:radio[name=casco]:checked').val(),
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+                // 66666
+                if (response.isFichaCompleta==1){
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Actualizo Vehículos(Paso 9) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    AlertaHogarSinRecalcularNSE($("#identificacion2Hogar").val());
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se GuardoVehículos(Paso 9)",$("#identificacion2Hogar").val(),"C");
+                }
+                
+                if (localStorage.getItem('flagActividad') !== null){
+                    guardarCamposPorActividad(idHogar,9);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3752,12 +3590,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
-                    guardarCamposPorActividad(idHogar,9);
-                }
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 9",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3783,31 +3615,29 @@
             })
         }
     });
-    //AAAAA
-    $("#guardar-step-10").click(function() {
+    // Mascotas PASO 10
+    $("#guardar-paso-10").click(function() {
         var camposVacios = "";
-        if ($.trim($('#totalAutos').val()) === '') {
-            camposVacios += "Seleccione  cantidad de televisores<br>";
-        }
-        /* bbbb */
-        if (!$("input[name='moto']:radio").is(':checked')) {
-            camposVacios  += "Seleccione si posee moto<br>";
-        }
-        if (!$("input[name='casco']:radio").is(':checked')) {
-            camposVacios  += "Seleccione seguro <br>";
-        }
+        
         if (camposVacios != "") {
             $(function() {
                 $('#modal-body').html(camposVacios);
             });
             $('#myModal').modal('show');
-        } else {
+        }else {
             var Perro = document.getElementById('Perro').checked ? 1 : 0;
             var Gato = document.getElementById('Gato').checked ? 1 : 0;
             var Pez = document.getElementById('Pez').checked ? 1 : 0;
             var Ave = document.getElementById('Ave').checked ? 1 : 0;
             var Roedor = document.getElementById('Roedor').checked ? 1 : 0;
             var Otro = document.getElementById('Otro').checked ? 1 : 0;
+
+            if (localStorage.getItem("flagActividad") !== null){
+                flagNuevoHogar = 0;
+            }else{
+                flagNuevoHogar = 1;
+            }
+
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -3819,15 +3649,29 @@
                 },
                 "data": {
                     "Id_Hogar": $("#identificacion2Hogar").val(),
+                    "Id_Mascotas": $('input:radio[name=poseeMascota]:checked').val(),
                     "Ind_Perro": Perro,
                     "Ind_Gato": Gato,
                     "Ind_Pez": Pez,
                     "Ind_Ave": Ave,
                     "Ind_Roedor": Roedor,
-                    "Ind_Otro": Otro
+                    "Ind_Otro": Otro,
+                    "flagNuevoHogar":flagNuevoHogar
                 }
             }
             $.ajax(settings).done(function(response) {
+                var idHogar = $("#identificacion2Hogar").val();
+    
+                if (response.isFichaCompleta==1){
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Actualizo Mascotas(Paso 10) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+                    AlertaHogarSinRecalcularNSE($("#identificacion2Hogar").val());
+                }else{
+                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Mascotas(Paso 10)",$("#identificacion2Hogar").val(),"C");
+                }
+                
+                if (localStorage.getItem('flagActividad') !== null){
+                    guardarCamposPorActividad(idHogar,10);
+                }
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3844,12 +3688,6 @@
                     title: response.message,
                     confirmButtonText: `Ok`,
                 })
-                if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
-                    guardarCamposPorActividad(idHogar,10);
-                }
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
-                
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -3876,84 +3714,111 @@
         }
     });
 
-    $("#guardar-ficha").click(function() {
-            var Perro = document.getElementById('Perro').checked ? 1 : 0;
-            var Gato = document.getElementById('Gato').checked ? 1 : 0;
-            var Pez = document.getElementById('Pez').checked ? 1 : 0;
-            var Ave = document.getElementById('Ave').checked ? 1 : 0;
-            var Roedor = document.getElementById('Roedor').checked ? 1 : 0;
-            var Otro = document.getElementById('Otro').checked ? 1 : 0;
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": '<?php echo urlApi; ?>calcularNSE/',
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
-                "data": {
-                    "Id_Hogar": $("#identificacion2Hogar").val(),
-                    "educacionResponsable": $("#educacionResponsable").val(),
-                    "tipoIngresoResponsable": $("#tipoIngresoResponsable").val(),
-                    "beneficioSocialistaResponsable": $("#beneficioSocialistaResponsable").val(),
-                    "educacionJefe": $("#educacionJefe").val(),
-                    "tipoIngresoJefe": $("#tipoIngresoJefe").val(),
-                    "beneficioSocialistaJefe": $("#beneficioSocialistaJefe").val(),
-                    "tipoVivienda": $("#tipoVivienda").val(),
-                    "metrosVivienda": $("#metrosVivienda").val(),
-                    "puntosLuz": $("#puntosLuz").val(),
-                    "ocupacionVivienda": $("#ocupacionVivienda").val(),
-                    "montoVivienda": $("#montoVivienda").val(),
-                    "aguasBlancas": $("#aguasBlancas").val(),
-                    "aguasNegras": $("#aguasNegras").val(),
-                    "aseoUrbano": $("#aseoUrbano").val(),
-                    "servicioElectricidad": $('input:radio[name=servicioElectricidad]:checked').val(),
-                    "servicioTelefonico": $('input:radio[name=servicioTelefonico]:checked').val(),
-                    "domesticaFija": $('input:radio[name=domesticaFija]:checked').val(),
-                    "laboresFijas": $('input:radio[name=laboresFijas]:checked').val(),
-                    "domesticaXDia": $('input:radio[name=domesticaXDia]:checked').val(),
-                    "conexionInternetTlf": $('input:radio[name=conexionInternetTlf]:checked').val(),
-                    "conexionInternetMovil": $('input:radio[name=conexionInternetMovil]:checked').val(),
-                    "conexionInternetBandaAncha": $('input:radio[name=conexionInternetBandaAncha]:checked').val(),
-                    "celularJefeFamilia": $('input:radio[name=celularJefeFamilia]:checked').val(),
-                    "seguroHcmJefeFamilia": $('input:radio[name=seguroHcmJefeFamilia]:checked').val(),
-                    "seguroHcmEmpresaJefeFamilia": $('input:radio[name=seguroHcmEmpresaJefeFamilia]:checked').val(),
-                    "seguroSocialJefeFamilia": $('input:radio[name=seguroSocialJefeFamilia]:checked').val(),
-                    "aireAcondicionado": $('input:radio[name=aireAcondicionado]:checked').val(),
-                    "calentadorAguaElectrico": $('input:radio[name=calentadorAguaElectrico]:checked').val(),
-                    "calentadorAguaGas": $('input:radio[name=calentadorAguaGas]:checked').val(),
-                    "computadorPersonal": $('input:radio[name=computadorPersonal]:checked').val(),
-                    "computadorLaptop": $('input:radio[name=computadorLaptop]:checked').val(),
-                    "DVD": $('input:radio[name=DVD]:checked').val(),
-                    "homeTeatro": $('input:radio[name=homeTeatro]:checked').val(),
-                    "juegosVideo": $('input:radio[name=juegosVideo]:checked').val(),
-                    "hornoMicroOnda": $('input:radio[name=hornoMicroOnda]:checked').val(),
-                    "cocinaElectrica": $('input:radio[name=cocinaElectrica]:checked').val(),
-                    "cocinaGasBombona": $('input:radio[name=cocinaGasBombona]:checked').val(),
-                    "cocinaGasDirecto": $('input:radio[name=cocinaGasDirecto]:checked').val(),
-                    "cocinaKerosene": $('input:radio[name=cocinaKerosene]:checked').val(),
-                    "secadoraRopa": $('input:radio[name=secadoraRopa]:checked').val(),
-                    "lavadoraAutomatica": $('input:radio[name=lavadoraAutomatica]:checked').val(),
-                    "lavadoraSemiAutomatica": $('input:radio[name=lavadoraSemiAutomatica]:checked').val(),
-                    "lavadoraRodillo": $('input:radio[name=lavadoraRodillo]:checked').val(),
-                    "nevera": $('input:radio[name=nevera]:checked').val(),
-                    "freezer": $('input:radio[name=freezer]:checked').val(),
-                    "lavaplatos": $('input:radio[name=lavaplatos]:checked').val(),
-                    "cantidadTV": $("#cantidadTV").val(),
-                    "tipoTV": $("#tipoTV").val(),
-                    "Senal": $("#Senal").val(),
-                    "totalAutos": $("#totalAutos").val(),
-                    "moto": $('input:radio[name=moto]:checked').val(),
-                    "Ind_Perro": Perro,
-                    "Ind_Gato": Gato,
-                    "Ind_Pez": Pez,
-                    "Ind_Ave": Ave,
-                    "Ind_Roedor": Roedor,
-                    "Ind_Otro": Otro
-                }
+    $("#finalizar-calcularNSE_").click(function() {
+        var Perro = document.getElementById('Perro').checked ? 1 : 0;
+        var Gato = document.getElementById('Gato').checked ? 1 : 0;
+        var Pez = document.getElementById('Pez').checked ? 1 : 0;
+        var Ave = document.getElementById('Ave').checked ? 1 : 0;
+        var Roedor = document.getElementById('Roedor').checked ? 1 : 0;
+        var Otro = document.getElementById('Otro').checked ? 1 : 0;
+
+        if (localStorage.getItem("flagActividad") !== null){
+            flagNuevoHogar = 0;
+        }else{
+            flagNuevoHogar = 1;
+        }
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": '<?php echo urlApi; ?>calcularNSE/',
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Id_Hogar": $("#identificacion2Hogar").val(),
+                "educacionResponsable": $("#educacionResponsable").val(),
+                "tipoIngresoResponsable": $("#tipoIngresoResponsable").val(),
+                "beneficioSocialistaResponsable": $("#beneficioSocialistaResponsable").val(),
+                "educacionJefe": $("#educacionJefe").val(),
+                "tipoIngresoJefe": $("#tipoIngresoJefe").val(),
+                "beneficioSocialistaJefe": $("#beneficioSocialistaJefe").val(),
+                "tipoVivienda": $("#tipoVivienda").val(),
+                "metrosVivienda": $("#metrosVivienda").val(),
+                "puntosLuz": $("#puntosLuz").val(),
+                "ocupacionVivienda": $("#ocupacionVivienda").val(),
+                "montoVivienda": $("#montoVivienda").val(),
+                "aguasBlancas": $("#aguasBlancas").val(),
+                "aguasNegras": $("#aguasNegras").val(),
+                "aseoUrbano": $("#aseoUrbano").val(),
+                "servicioElectricidad": $('input:radio[name=servicioElectricidad]:checked').val(),
+                "servicioTelefonico": $('input:radio[name=servicioTelefonico]:checked').val(),
+                "domesticaFija": $('input:radio[name=domesticaFija]:checked').val(),
+                "laboresFijas": $('input:radio[name=laboresFijas]:checked').val(),
+                "domesticaXDia": $('input:radio[name=domesticaXDia]:checked').val(),
+                "conexionInternetTlf": $('input:radio[name=conexionInternetTlf]:checked').val(),
+                "conexionInternetMovil": $('input:radio[name=conexionInternetMovil]:checked').val(),
+                "conexionInternetBandaAncha": $('input:radio[name=conexionInternetBandaAncha]:checked').val(),
+                "celularJefeFamilia": $('input:radio[name=celularJefeFamilia]:checked').val(),
+                "seguroHcmJefeFamilia": $('input:radio[name=seguroHcmJefeFamilia]:checked').val(),
+                "seguroHcmEmpresaJefeFamilia": $('input:radio[name=seguroHcmEmpresaJefeFamilia]:checked').val(),
+                "seguroSocialJefeFamilia": $('input:radio[name=seguroSocialJefeFamilia]:checked').val(),
+                "aireAcondicionado": $('input:radio[name=aireAcondicionado]:checked').val(),
+                "calentadorAguaElectrico": $('input:radio[name=calentadorAguaElectrico]:checked').val(),
+                "calentadorAguaGas": $('input:radio[name=calentadorAguaGas]:checked').val(),
+                "computadorPersonal": $('input:radio[name=computadorPersonal]:checked').val(),
+                "computadorLaptop": $('input:radio[name=computadorLaptop]:checked').val(),
+                "DVD": $('input:radio[name=DVD]:checked').val(),
+                "homeTeatro": $('input:radio[name=homeTeatro]:checked').val(),
+                "juegosVideo": $('input:radio[name=juegosVideo]:checked').val(),
+                "hornoMicroOnda": $('input:radio[name=hornoMicroOnda]:checked').val(),
+                "cocinaElectrica": $('input:radio[name=cocinaElectrica]:checked').val(),
+                "cocinaGasBombona": $('input:radio[name=cocinaGasBombona]:checked').val(),
+                "cocinaGasDirecto": $('input:radio[name=cocinaGasDirecto]:checked').val(),
+                "cocinaKerosene": $('input:radio[name=cocinaKerosene]:checked').val(),
+                "secadoraRopa": $('input:radio[name=secadoraRopa]:checked').val(),
+                "lavadoraAutomatica": $('input:radio[name=lavadoraAutomatica]:checked').val(),
+                "lavadoraSemiAutomatica": $('input:radio[name=lavadoraSemiAutomatica]:checked').val(),
+                "lavadoraRodillo": $('input:radio[name=lavadoraRodillo]:checked').val(),
+                "nevera": $('input:radio[name=nevera]:checked').val(),
+                "freezer": $('input:radio[name=freezer]:checked').val(),
+                "lavaplatos": $('input:radio[name=lavaplatos]:checked').val(),
+                "cantidadTV": $("#cantidadTV").val(),
+                "tipoTV": $("#tipoTV").val(),
+                "Senal": $("#Senal").val(),
+                "totalAutos": $("#totalAutos").val(),
+                "moto": $('input:radio[name=moto]:checked').val(),
+                "Ind_Perro": Perro,
+                "Ind_Gato": Gato,
+                "Ind_Pez": Pez,
+                "Ind_Ave": Ave,
+                "Ind_Roedor": Roedor,
+                "Ind_Otro": Otro,
+                "flagNuevoHogar":flagNuevoHogar
             }
-            $.ajax(settings).done(function(response) {
+        }
+        $.ajax(settings).done(function(response) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: response.message,
+                confirmButtonText: `Ok`,
+            })
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 10",$("#identificacion2Hogar").val(),"U");
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -3966,47 +3831,24 @@
                     }
                 })
                 Toast.fire({
-                    icon: 'success',
-                    title: response.message,
+                    icon: 'info',
+                    title: 'Su Session ha Expirado',
                     confirmButtonText: `Ok`,
                 })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
-                
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'info',
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    var form = document.querySelector('#FormPaisEdit');
-                    form.reset();
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
-
-    );
-    //787878
-    $("#guardar-ficha").click(function() {
+                var form = document.querySelector('#FormPaisEdit');
+                form.reset();
+                window.location = '/homepantry20/index.php';
+            }
+        })
+    });
+    //fffffffffffffffffffffff
+    $("#finalizar-calcularNSE").click(function() {
         var camposVacios = "";
-        
-       
+
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": '<?php echo urlApi; ?>buscarPasos/',
+            "url": '<?php echo urlApi; ?>getBloquesGuardados/',
             "method": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -4019,62 +3861,52 @@
         $.ajax(settings).done(function(response) {
             var camposVacios = "";
             if ( $("#identificacion2Hogar").val() == ""){
-                camposVacios += "Falta completar Ubicacion del hogar<br>";
+                camposVacios += " Falta completar Ubicacion del hogar<br>";
             }
             if (response.data[0].Ind_paso2 == 0){
-                camposVacios += "Falta completar responsable del hogar<br>";
+                camposVacios += "Responsable del panel<br>";
             }
             if (response.data[0].Ind_paso3 == 0){
-                camposVacios += "Falta completar jefe del Hogar<br>";
+                camposVacios += "Jefe del Hogar<br>";
             }
-            if (response.data[0].Ind_paso4 == 0){
-                camposVacios += "Falta completar composición del hogar<br>";
-            }
+            /*if (response.data[0].Ind_paso4 == 0){
+                camposVacios += "Composición del hogar<br>";
+            }*/
             if (response.data[0].Ind_paso5 == 0){
-                camposVacios += "Falta completar características y tenencia de la vivienda<br>";
+                camposVacios += "Características y tenencia de la vivienda<br>";
             }
             if (response.data[0].Ind_paso6 == 0){
-                camposVacios += "Falta completar servicios Públicos<br>";
+                camposVacios += "Servicios Públicos<br>";
             }
             if (response.data[0].Ind_paso7 == 0){
-                camposVacios += "Falta completar servicios y equipamiento del hogar<br>";
+                camposVacios += "Servicios y equipamiento del hogar<br>";
             }
             if (response.data[0].Ind_paso8 == 0){
-                camposVacios += "Falta completar medios<br>";
+                camposVacios += "Medios<br>";
             }
             if (response.data[0].Ind_paso9 == 0){
-                camposVacios += "Falta completar vehículos<br>";
+                camposVacios += "Vehículos<br>";
             }
             if (response.data[0].Ind_paso10 == 0){
-                camposVacios += "Falta completar mascotas<br>";
+                camposVacios += "Mascotas<br>";
             }
 
             if (camposVacios != "") {
-                alert(camposVacios);
-                $(function() {
-                    $('#modal-bodyFinalizar').html(camposVacios);
-                });
-                $('#myModalFinalizar').modal('show');
+                Swal.fire({
+                    title: '<strong>Complete y guarde los siguientes pasos para poder finalizar</strong>',
+                    icon: 'warning',
+                    html: camposVacios, // Aqui esta!!!!!
+                    showCloseButton: false,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: '<i class="bi bi-clipboard-x"></i> OK!',
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                    cancelButtonText: '',
+                    cancelButtonAriaLabel: ''
+                })
             } else {
-                alert(camposVacios);
-                finalizarFicha( $("#identificacion2Hogar").val());
-                const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-                })
-                Toast.fire({
-                    icon: 'success',
-                    title: response.message,
-                    confirmButtonText: `Ok`,
-                })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Hogar Paso 10",$("#identificacion2Hogar").val(),"U");
+                //alert($("#identificacion2Hogar").val());
+                finalizarFicha($("#identificacion2Hogar").val());
             }
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
@@ -4125,7 +3957,6 @@
         }
     });
 
-
     $("input[name='vivienda']").click(function() {
         if ($("#viviendaCasa").is(":checked")) {
             $("#divVivienda").show();
@@ -4142,32 +3973,50 @@
         selectMunicipio.find("option").remove();
         let selectParroquia = $("#parroquiaHogar");
         selectParroquia.find("option").remove();
-        cargarCiudad(parametro,0);
+        cargarCiudad("#ciudadHogar",parametro,0);
     });
+
     $("#ciudadHogar").change(function() {
         //cargarCablera('#cablera1');
         //cargarCablera('#cablera2');
         var parametro2 = $("#estadoHogar").val();
-        cargarMunicipio(parametro2,0);
+        cargarMunicipio("#municipioHogar",parametro2,0);
     });
+
     $("#municipioHogar").change(function() {
         var parametro3 = $("#municipioHogar").val();
-        cargarParroquia(parametro3,0);
+        cargarParroquia("#parroquiaHogar",parametro3,0);
     });
+// 9999
 
 function cargarTablaComposicion(idHogar){
     $('#TablePanelistas').dataTable({
         "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
+            [ -1],
+            ["All"]
         ],
         "bDestroy": true,
         "autoWidth": true,
+        "searching": false,
+        "bPaginate": false,
         "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": true,
+        "responsive": false,
         "buttons": [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            {
+                extend: 'excelHtml5',
+                title: 'Reporte de Hogar Registro por Consumo'
+            }
         ],
+        "fixedHeader":    false,
+        "scrollX":        true,
+        "scrollY":        400,
+        "deferRender":    true,
+        "scroller":       true,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+            "decimal": ",",
+            "thousands": "."
+        },        
         "ajax": {
             "url": '<?php echo urlApi; ?>getPanelistas_x_CodHogar/'+idHogar,
             "type": "GET",
@@ -4229,16 +4078,29 @@ function cargarTablaComposicion(idHogar){
             "data": 'Id_Panelista',
             "className": "text-center",
             "render": function(data, type, row, meta) {
-                return '<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
+                    /*return '<a title="Editar" href="#"><img src=<?php echo base_url('assets/iconos/editar.png') ?> width="25" height="25" onclick="EditAction(' +
                     data +
                     '); return false;"></a>&nbsp;&nbsp;<a title="Visualizar" href="#"><img src=<?php echo base_url('assets/iconos/ver.png') ?> width="25" height="25" onclick="VisualizarAction(' +
                     data + '); return false;"></a>';
+*/
+
+                    return  '<div class="text-wrap width-200">'+
+                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
+                                data +');"><i class="bi bi-pencil-square"></i></button>'+
+                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
+                                data +');"><i class="bi bi-zoom-in"></i></button>'+
+                        '</div>';
             }
         }],
     });
 }
 </script>
 
+<script type="text/javascript">
+   /*$(function(){
+ $("[data-mask]").inputmask(); 
+});*/
+</script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js')?>"></script>
@@ -4252,3 +4114,8 @@ function cargarTablaComposicion(idHogar){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js')?>"></script>
+
+
+<!--
+<script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+-->

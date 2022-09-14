@@ -2900,9 +2900,9 @@
                     confirmButtonText: `Ok`,
                 })
                 localStorage.setItem('idHogar',$("#identificacion2Hogar").val());
-                //cargarTablaComposicion($("#identificacion2Hogar").val());
-                let xtable = $('#TablePanelistas').DataTable();
-                xtable.ajax.reload(null, false);
+                cargarTablaComposicion($("#identificacion2Hogar").val());
+                //let xtable = $('#TablePanelistas').DataTable();
+                //xtable.ajax.reload(null, false);
                 var form = document.querySelector('#formComposicionHogar');
                 form.reset();
                 Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 4 (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
@@ -2939,8 +2939,25 @@
             }
         }, false);
 
+        //8888888
 
+        $('#parentescoJefeResponsable').change(function(e) {
 
+            var idParentesco = $('#parentescoJefeResponsable').val();
+            document.getElementById("responsableJefeNO").disabled=true;
+            document.getElementById("responsableJefeSI").disabled=true;
+                    
+            if (idParentesco == 1){
+                document.getElementById("divResponsableJefe").style.visibility = "hidden";
+                var oblig = $("input:radio[name='jefeResponsableIO']");
+                oblig.filter("[value='0']").attr('checked', true);
+            }else{
+                document.getElementById("divResponsableJefe").style.visibility = "visible";
+                var oblig = $("input:radio[name='jefeResponsableIO']");
+                oblig.filter("[value='0']").attr('checked', true);
+            }
+        })
+        
         $('#fechaNacimientoResponsable').change(function(e) {
             calcularEdad($("#fechaNacimientoResponsable").val(),'#edadResponsable');
         })
@@ -3869,6 +3886,7 @@
             if (response.data[0].Ind_paso3 == 0){
                 camposVacios += "Jefe del Hogar<br>";
             }
+
             /*if (response.data[0].Ind_paso4 == 0){
                 camposVacios += "Composición del hogar<br>";
             }*/
@@ -3933,14 +3951,14 @@
         })
     });
 
-    /* cccc */
-    $("input[name='jefeResponsableIO']").click(function() {
+    /* 8888888 */
+    /*$("input[name='jefeResponsableIO']").click(function() {
         if ($("#responsableJefeSI").is(":checked")) {
             document.getElementById("divResponsableJefe").style.visibility = "hidden";
         } else {
             document.getElementById("divResponsableJefe").style.visibility = "visible";
         }
-    });
+    });*/
     $("input[name='escucharRadio']").click(function() {
         if ($("#emisoraSi").is(":checked")) {
             $("#divEmisora").show();
@@ -4096,6 +4114,11 @@ function cargarTablaComposicion(idHogar){
 }
 </script>
 
+<script type="text/javascript">
+   /*$(function(){
+ $("[data-mask]").inputmask(); 
+});*/
+</script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js')?>"></script>
@@ -4109,3 +4132,8 @@ function cargarTablaComposicion(idHogar){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js')?>"></script>
+
+
+<!--
+<script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+-->

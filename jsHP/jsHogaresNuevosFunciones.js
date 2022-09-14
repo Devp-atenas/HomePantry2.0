@@ -534,11 +534,11 @@ function editPanelistasResponsableJefe(idHogar,responsable,parentesco){
                     if (response.data[0].ResponsablePanel != response.data[0].Id_Parentesco){
                         document.getElementById("divResponsableJefe").style.visibility = "visible";
                         var oblig = $("input:radio[name='jefeResponsableIO']");
-                        oblig.filter("[value='0']").attr('checked', true);
+                        oblig.filter("[value='1']").attr('checked', true);
                     }else{
                         document.getElementById("divResponsableJefe").style.visibility = "hidden";
                         var oblig = $("input:radio[name='jefeResponsableIO']");
-                        oblig.filter("[value='1']").attr('checked', true);
+                        oblig.filter("[value='0']").attr('checked', true);
                     }
                     document.getElementById("responsableJefeNO").disabled=true;
                     document.getElementById("responsableJefeSI").disabled=true;
@@ -790,6 +790,8 @@ function deleteAction(data) {
 }
 
 function ActualizarRegistro() {
+    var format = $("#fechaNacimientoComposicionEdit").val().split("/");
+    var fechaYYYYMMDD = format[2]+'-'+format[1] +'-'+format[0]
     //if ($("#FormAtributoEdit").valid()) {
     if (true) {
         var settings = {
@@ -801,11 +803,11 @@ function ActualizarRegistro() {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
             },
-            "data": {
+            "data": {                
                 "idPanelista": $("#inputIdEditComposicion").val(),
                 "primerNombreComposicionEdit": $("#primerNombreComposicionEdit").val(),
                 "segundoNombreComposicionEdit": $("#segundoNombreComposicionEdit").val(),
-                "primerApellidoComposicionEdit": $("#primerApellidoComposicionEdit").val(),
+                "primerApelidoComposicionEdit": $("#primerApellidoComposicionEdit").val(),
                 "segundoApellidoComposicionEdit": $("#segundoApellidoComposicionEdit").val(),
                 "cedulaComposicionEdit": $("#cedulaComposicionEdit").val(),
                 "celularComposicionEdit": $("#celularComposicionEdit").val(),
@@ -816,7 +818,7 @@ function ActualizarRegistro() {
                 "parentescoJefeComposicionEdit": $("#parentescoJefeComposicionEdit").val(),
                 "educacionComposicionEdit": $("#educacionComposicionEdit").val(),
                 "tipoIngresoComposicionEdit": $("#tipoIngresoComposicionEdit").val(),
-                "fechaNacimientoComposicionEdit": $("#fechaNacimientoComposicionEdit").val(),
+                "fechaNacimientoComposicionEdit": fechaYYYYMMDD,
 
                 "nacionalidadComposicionEdit": $('input:radio[name=nacionalidadComposicionEdit]:checked').val(),
                 "sexoComposicionEdit": $('input:radio[name=sexoComposicionEdit]:checked').val(),
