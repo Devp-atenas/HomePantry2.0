@@ -369,11 +369,11 @@ function cargarCategoria(etiqueta,edit) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id_Categoria == edit){
-                select.append("<option value=" + response.data[i].id_Categoria + "Seleted>" + response.data[i]
-                .id_Categoria + "-" + response.data[i].Categoria + "</option>");
+                select.append("<option value=" + response.data[i].id_Categoria + "Seleted>"+response.data[i].Categoria +  " - " +response.data[i]
+                .id_Categoria +"</option>");
             }else{
-                select.append("<option value=" + response.data[i].id_Categoria + ">" + response.data[i]
-                .id_Categoria + "-" + response.data[i].Categoria + "</option>");
+                select.append("<option value=" + response.data[i].id_Categoria + ">"+response.data[i].Categoria +  " - " +response.data[i]
+                .id_Categoria +"</option>");
             }
         }
     }).fail(function(jqXHR, textStatus) {

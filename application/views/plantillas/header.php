@@ -144,7 +144,8 @@
 
         <!-- Main content -->
         <div class="content">
-<!-- jQuery -->
+    <!-- jQuery -->
+
 
 
 <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></script>

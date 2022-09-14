@@ -1,4 +1,3 @@
-<!-- Content Header (Page header) -->
 <?php $this->load->view('Plantillas/Header');?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
