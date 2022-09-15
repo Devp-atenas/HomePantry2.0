@@ -17,7 +17,6 @@ $("#selectSemana").change(function() {
     cargarTablaReporteConsumo(idEstados,idSemana);
 });
 
-
 function cargarSemanaTop6(etiqueta,idSeleccionado) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
@@ -66,8 +65,6 @@ function cargarSemanaTop6(etiqueta,idSeleccionado) {
     })
 }
 
-
-
 function cargarEstadosAgrupados(etiqueta){
     var settings = {
         "url":localStorage.getItem("urlApi")+'getEstados4AreaAgrupado/',
@@ -110,7 +107,6 @@ function cargarEstadosAgrupados(etiqueta){
         }
     })
 }
-
 
 function cargarTablaReporteConsumo(idEstados,idSemana){
     //alert(idEstados);

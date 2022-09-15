@@ -350,15 +350,11 @@ class Principal extends CI_Controller {
     }
     //----------- INGRESAR/SALIR SISTEMA ------------
     public function logout(){
-        $this->load->helper('url');
+        //$this->load->helper('url');
         echo '<script>';
-        echo 'var nombreUsuario = localStorage.getItem("nombreUsuario");';
-        echo 'var user = localStorage.getItem("user");';
-        echo 'var Avatar = localStorage.getItem("Avatar");';
         echo 'sessionStorage.clear();';
         echo 'localStorage.clear();';
-        echo 'localStorage.setItem("nombreUsuario",nombreUsuario);';
-        echo 'localStorage.setItem("Avatar",Avatar);';
+        echo 'alert(999)';
         echo '</script>';
         $this->session->sess_destroy();
         $this->load->view('SessionLock');

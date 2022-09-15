@@ -81,8 +81,12 @@
                         <a class="dropdown-item" href="javascript:;">Help</a>
                         -->
                         <a class="dropdown-item" href="<?php echo base_url('Principal/SessionLock')?>">
-                            <i class="fa fa-sign-out pull-right"></i>Bloquear
+                            <i class="bi bi-lock-fill"></i>&nbsp;Bloquear
                         </a>
+                        <a class="dropdown-item" href="<?php echo base_url('Principal/logout')?>">
+                            <i class="bi bi-arrow-right-circle"></i>&nbsp;Salir
+                        </a>
+                        
                     </div>
                 </li>
 

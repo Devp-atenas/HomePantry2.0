@@ -90,18 +90,19 @@ select:focus {
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Tamaño:</div>
-                                    <select id="selectTamano" name="selectTamano" class="form-control">
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
                                     <div class="inputText font-weight-bold">Tamaño Rango:</div>
                                     <select id="selectTamanoRango" name="selectTamanoRango" class="form-control">
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Tamaño:</div>
+                                    <select id="selectTamano" name="selectTamano" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -341,15 +342,15 @@ select:focus {
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Tamaño:</div>
-                                            <select id="selectTamanoEdit" name="selectTamanoEdit" class="form-control">
+                                            <div class="inputText font-weight-bold">Tamaño Rango:</div>
+                                            <select id="selectTamanoRangoEdit" name="selectTamanoRangoEdit" class="form-control">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Tamaño Rango:</div>
-                                            <select id="selectTamanoRangoEdit" name="selectTamanoRangoEdit" class="form-control">
+                                            <div class="inputText font-weight-bold">Tamaño:</div>
+                                            <select id="selectTamanoEdit" name="selectTamanoEdit" class="form-control">
                                             </select>
                                         </div>
                                     </div>
@@ -798,8 +799,8 @@ $("#selectCategoria").change(function() {
     let selectAtributo7 = $("#selectAtributo7");
     selectAtributo7.find("option").remove();
     cargarSegmento("#selectSegmento",id_categoria,0);
-    cargarTamano("#selectTamano",id_categoria,0);
     cargarTamanoRango("#selectTamanoRango",id_categoria,0);
+    //cargarTamano("#selectTamano",id_categoria,0);
     cargarUnidadMedida("#selectUnidadMedida",id_categoria,0);
     cargarAtributo1("#selectAtributo1",id_categoria,0);
     cargarAtributo2("#selectAtributo2",id_categoria,0);
@@ -809,6 +810,15 @@ $("#selectCategoria").change(function() {
     cargarAtributo6("#selectAtributo6",id_categoria,0);
     cargarAtributo7("#selectAtributo7",id_categoria,0);
 });
+
+$("#selectTamanoRango").change(function() {
+    var idTamanoRango = $("#selectTamanoRango").val();
+    var id_categoria = $("#selectCategoria").val();
+
+    cargarTamano("#selectTamano",id_categoria,0,idTamanoRango);
+});
+
+
 
 $("#selectCategoriaEdit").change(function() {
     var id_categoria = $("#selectCategoria").val();
@@ -846,7 +856,6 @@ $("#selectCategoriaEdit").change(function() {
     let selectAtributo7 = $("#selectAtributo7Edit");
     selectAtributo7.find("option").remove();
     cargarSegmento("#selectSegmentoEdit",id_categoria,0);
-    cargarTamano("#selectTamanoEdit",id_categoria,0);
     cargarTamanoRango("#selectTamanoRangoEdit",id_categoria,0);
     cargarUnidadMedida("#selectUnidadMedidaEdit",id_categoria,0);
     cargarAtributo1("#selectAtributo1Edit",id_categoria,0);
@@ -858,6 +867,14 @@ $("#selectCategoriaEdit").change(function() {
     cargarAtributo7("#selectAtributo7Edit",id_categoria,0);
 });
 
+//999999999
+$("#selectTamanoRangoEdit").change(function() {
+    var id_categoria = $("#selectCategoria").val();
+    var idTamanoRango = $("#selectTamanoRangoEdit").val();
+    cargarTamano("#selectTamanoEdit",id_categoria,0,idTamanoRango);
+    
+});
+
 $("#selectFabricante").change(function() {
     var id_categoria = $("#selectCategoria").val();
     var id_fabricante = $("#selectFabricante").val();
@@ -865,6 +882,7 @@ $("#selectFabricante").change(function() {
     selectMarca.find("option").remove();
     cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
 });
+
 
 
 </script>

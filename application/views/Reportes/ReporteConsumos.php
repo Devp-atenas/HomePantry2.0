@@ -20,7 +20,7 @@
                     <div class="col-md-5">
                         <label class="font-weight-bold">Estados:</label>
                         
-                        <select  id="selectEstadosAgrupados" class="select2" multiple="multiple" data-placeholder="Seleccione estado" style="width: 100%;">
+                        <select  id="selectEstadosAgrupados" class="select2" multiple="multiple" data-placeholder="Seleccione estado o escribalos" style="width: 100%;">
                         <!--<select id="selectEstadosAgrupados" class="form-control form-control-sm">-->
                         </select>
                     </div>

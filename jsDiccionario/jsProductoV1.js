@@ -798,10 +798,10 @@ function cargarTamanoRango(etiqueta,id_categoria,idS) {
         }
     })
 }
-function cargarTamano(etiqueta,id_categoria,idS) {
+function cargarTamano(etiqueta,id_categoria,idS,idTamanoRango) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'getAllTamano_x_CategoriaV1/' + id_categoria,
+        "url": urlApi+'getAllTamano_x_CategoriaV1/' + id_categoria+"/"+idTamanoRango,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -1000,9 +1000,9 @@ function EditAction(data) {
         $('#inputIdEditProducto').val(response.data[0].Id_Producto);
         cargarCategoria("#selectCategoriaEdit",response.data[0].id_Categoria);
         cargarSegmento("#selectSegmentoEdit",response.data[0].id_Categoria,response.data[0].id_Segmento);
-        cargarTamano("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano);
         cargarFabricante("#selectFabricanteEdit",response.data[0].id_Categoria,response.data[0].id_Fabricante);
         cargarTamanoRango("#selectTamanoRangoEdit",response.data[0].id_Categoria,response.data[0].id_Categoria);
+        cargarTamano("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano);
         cargarUnidadMedida("#selectUnidadMedidaEdit",response.data[0].id_Categoria,response.data[0].id_UnidadMedida);
         cargarAtributo1("#selectAtributo1Edit",response.data[0].id_Categoria,response.data[0].id_Atributo1);
         cargarAtributo2("#selectAtributo2Edit",response.data[0].id_Categoria,response.data[0].Id_Atributo2);
