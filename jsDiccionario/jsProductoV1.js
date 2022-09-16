@@ -1392,11 +1392,11 @@ function cargarTabla(Id){
                 className: "text-center"
             },
             {
-                mData: 'Tamano',
+                mData: 'TamanoRango',
                 className: "text-center"
             },
             {
-                mData: 'TamanoRango',
+                mData: 'Tamano',
                 className: "text-center"
             },
             {

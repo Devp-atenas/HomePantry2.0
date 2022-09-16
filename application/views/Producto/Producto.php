@@ -271,8 +271,8 @@ select:focus {
                                         <th>Segmento</th>
                                         <th>Fabricanta</th>
                                         <th>Marca</th>
-                                        <th>Tamano</th>
                                         <th>Tamaño Rango</th>
+                                        <th>Tamano</th>
                                         <th>Unidad Medida</th>
                                         <th>Fragmentacion</th>
                                         <th></th>
