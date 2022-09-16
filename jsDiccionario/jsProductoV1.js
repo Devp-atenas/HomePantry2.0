@@ -798,7 +798,7 @@ function cargarTamanoRango(etiqueta,id_categoria,idS) {
         }
     })
 }
-function cargarTamano(etiqueta,id_categoria,idS,idTamanoRango) {
+function cargarTamano(etiqueta,id_categoria,idS,idTamanoRango) { 
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
         "url": urlApi+'getAllTamano_x_CategoriaV1/' + id_categoria+"/"+idTamanoRango,

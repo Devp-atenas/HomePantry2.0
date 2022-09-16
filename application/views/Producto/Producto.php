@@ -867,7 +867,7 @@ $("#selectCategoriaEdit").change(function() {
 });
 
 //999999999
-$("#selectTamanoRangoEdit").change(function() {
+$("#selectTamanoRangoEdit").change(function() { 
     var id_categoria = $("#selectCategoriaEdit").val();
     var idTamanoRango = $("#selectTamanoRangoEdit").val();
     cargarTamano("#selectTamanoEdit",id_categoria,0,idTamanoRango);
