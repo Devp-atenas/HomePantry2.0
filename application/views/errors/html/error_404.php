@@ -145,7 +145,7 @@ a::after {
 <div class="terminal">
   <h1>Error <span class="errorcode">404</span></h1>
   <p class="output">LA PÁGINA QUE ESTÁ BUSCANDO PODRÍA HABERSE ELIMINADO, CAMBIADO DE NOMBRE O ESTÁ TEMPORALMENTE NO DISPONIBLE..</p>
-  <p class="output">POR FAVOR VAYA A LA PAGINA ANTERIOR <a href="#1">PAGINA ANTERIOR</a> O <a href="#2">VAYA AL INICIO</a>.</p>
+  <p class="output">POR FAVOR VAYA A LA PAGINA ANTERIOR <a href="#1" onclick="history.back()">REGRESAR</a> O <a href="#2">VAYA AL INICIO</a>.</p>
   <p class="output">QUE TENGA BUEN DIA.</p>
 </div>
 	</body>
