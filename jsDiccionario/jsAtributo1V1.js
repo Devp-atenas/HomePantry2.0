@@ -449,7 +449,12 @@ function cargarTabla(Id){
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
-        "aoColumns": [{
+        "aoColumns": [
+            {
+                mData: 'Id_Atributo',
+                className: "text-center"
+            },
+            {
                 mData: 'Categoria',
                 className: "text-center"
             },
@@ -463,7 +468,7 @@ function cargarTabla(Id){
             },
         ],
         "columnDefs": [{
-            "targets": 3,
+            "targets": 4,
             "orderable": true,
             "data": 'Id_Atributo',
             "className": "text-center",

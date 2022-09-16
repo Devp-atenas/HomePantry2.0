@@ -1371,7 +1371,12 @@ function cargarTabla(Id){
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
-        "aoColumns": [{
+        "aoColumns": [
+            {
+                mData: 'Id_Producto',
+                className: "text-center"
+            },
+            {
                 mData: 'Producto',
                 className: "text-center"
             },
@@ -1407,10 +1412,22 @@ function cargarTabla(Id){
                 mData: 'Fragmentacion',
                 className: "text-center"
             },
+            {
+                mData: 'Fec_Alta',
+                className: "text-center"
+            },
+            {
+                mData: 'Ind_Activo',
+                className: "text-center"
+            },
+            {
+                mData: 'Ind_Pendiente',
+                className: "text-center"
+            },
             
         ],
         "columnDefs": [{
-            "targets": 9,
+            "targets": 13,
             "orderable": true,
             "data": 'Id_Producto',
             "className": "text-center",

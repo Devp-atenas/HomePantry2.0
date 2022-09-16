@@ -266,6 +266,7 @@ select:focus {
                             <table id="TableProducto" class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Producto</th>
                                         <th>Codigo de Barra</th>
                                         <th>Segmento</th>
@@ -275,6 +276,10 @@ select:focus {
                                         <th>Tamano</th>
                                         <th>Unidad Medida</th>
                                         <th>Fragmentacion</th>
+                                        <th>Fecha Alta</th>
+                                        <th>Activo?</th>
+                                        <th>Pendiente?  </th>
+                                        
                                         <th></th>
                                     </tr>
                                 </thead>

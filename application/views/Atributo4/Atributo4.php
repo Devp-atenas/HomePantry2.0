@@ -136,9 +136,10 @@
                             <table id="TableAtributo" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Categoria</th>
                                         <th>Atributo</th>
-                                        <th>Estatus</th>
+                                        <th>Activo?</th>
                                         <th></th>
                                     </tr>
                                 </thead>
