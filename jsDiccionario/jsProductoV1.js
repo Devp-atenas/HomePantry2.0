@@ -1321,7 +1321,7 @@ function cargarTabla(Id){
         ],
         "bDestroy": true,
         "autoWidth": true,
-        "searching": false,
+        "searching": true,
         "bPaginate": false,
         "dom": 'Bfrtip',
         "responsive": false,
