@@ -814,7 +814,6 @@ $("#selectCategoria").change(function() {
 $("#selectTamanoRango").change(function() {
     var idTamanoRango = $("#selectTamanoRango").val();
     var id_categoria = $("#selectCategoria").val();
-
     cargarTamano("#selectTamano",id_categoria,0,idTamanoRango);
 });
 
@@ -869,11 +868,12 @@ $("#selectCategoriaEdit").change(function() {
 
 //999999999
 $("#selectTamanoRangoEdit").change(function() {
-    var id_categoria = $("#selectCategoria").val();
+    var id_categoria = $("#selectCategoriaEdit").val();
     var idTamanoRango = $("#selectTamanoRangoEdit").val();
     cargarTamano("#selectTamanoEdit",id_categoria,0,idTamanoRango);
     
 });
+
 
 $("#selectFabricante").change(function() {
     var id_categoria = $("#selectCategoria").val();
