@@ -1402,8 +1402,9 @@ function cargarTabla(Id){
         "buttons": [
             {
                 extend: 'excelHtml5',
-                title: 'Reporte de Hogar Registro por Consumo'
-            }
+                title: 'Producto'
+            },
+            'colvis'
         ],
         //"fixedHeader":    true,
         "scrollX":        true,
@@ -1452,7 +1453,9 @@ function cargarTabla(Id){
             },
             {
                 mData: 'Producto',
-                className: "text-center"
+                className: "no-wrap",
+                width: "50vh",
+                    
             },
             {
                 mData: 'CodigoBarra',
@@ -1460,11 +1463,11 @@ function cargarTabla(Id){
             },
             {
                 mData: 'Fabricante',
-                className: "text-center"
+                className: "no-wrap"
             },
             {
                 mData: 'Marca',
-                className: "text-center"
+                className: "no-wrap"
             },
             {
                 mData: 'Segmento',

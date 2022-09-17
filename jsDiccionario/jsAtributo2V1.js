@@ -606,7 +606,12 @@ function cargarTabla(Id){
         "autoWidth": false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive": false,
-        "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Diccionario Atributo 2 - '+$('select[name="selectCategoriaTabla"] option:selected').text()
+            }
+        ],
         "bPaginate":    false,
         "scrollY":      400,
         "fixedHeader":  true,

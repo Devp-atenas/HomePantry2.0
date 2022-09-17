@@ -263,7 +263,7 @@ select:focus {
                                     </div>
                                 </div>
                             </div>
-                            <table id="TableProducto" class="table table-bordered table-striped table-sm">
+                            <table id="TableProducto" class="table table-bordered table-striped table-hover table-sm">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -947,4 +947,8 @@ $("#selectFabricante").change(function() {
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.2.4/js/dataTables.fixedHeader.min.js"></script>
+
+
+
 <script src="<?php echo base_url('assets/autoNumeric-1.9.18.js') ?>"></script>
