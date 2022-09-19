@@ -12,7 +12,9 @@
     <aside class="control-sidebar control-sidebar-dark">
     </aside>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <script src="<?php echo base_url('assets/jquery-validation/jquery.validate.min.js') ?>"></script>
             
     <script src="<?php echo base_url('assets/jquery-validation/additional-methods.min.js') ?>"></script>
@@ -39,7 +41,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
     
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url('assets/selectpicker/js/bootstrap-select.js') ?>"></script>

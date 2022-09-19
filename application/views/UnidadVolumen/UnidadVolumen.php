@@ -108,7 +108,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listados de Unidad Medida</h3>
+                    <h3 class="card-title">Listado de Unidad Medida</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -122,9 +122,20 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="TableUnidMedida" class="table table-bordered table-striped table-sm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Categoria:</div>
+                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table id="TableUnidMedida" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Categoria</th>
                                         <th>Unidad Medida</th>
                                         <th>Estatus</th>
@@ -181,11 +192,11 @@
                                         <div class="card">
                                             <div class="form-group">
                                             <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -290,6 +301,47 @@
 <script src="<?php echo base_url('jsDiccionario/jsUnidadVolumenV1.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
+<script>
+    $("#inputUndMedida").keyup(function () {
+        var idCategoria = $("#selectCategoria").val();
+        var UnidadMedida = $("#inputUndMedida").val();
+        
+        $.ajax({
+            type: "POST",
+            url: localStorage.getItem("urlApi")+'getUnidadMedida4CategoriaV1_Autocompletar',
+            data: JSON.stringify({ "UnidadMedida": UnidadMedida,"idCategoria":idCategoria }),
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var arrayElemento = jQuery.map(data, function(value, index) {
+                        return (value.UnidadMedida);
+                });
+
+                $('#inputUndMedida').autocomplete({
+                    clearButton: true,
+                    source: arrayElemento,
+                    selectFirst: true,
+                    minLength: 2
+                });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error: ' + xhr.responseText);
+            }
+        });
+    });
+
+    $("#selectCategoriaTabla").change(function() {
+        var id_categoriaT = $("#selectCategoriaTabla").val();
+        cargarTabla(id_categoriaT);
+        $('#TableUnidMedida').show();
+    });
+
+    
+
+</script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>

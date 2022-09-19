@@ -173,12 +173,13 @@
                             <table id="TableMarca" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Categoria</th>
                                         <th>Fabricante</th>
                                         <th>Marca</th>
                                         <th>Medicina</th>
                                         <th>Marca Propia</th>
-                                        <th>Activo</th>
+                                        <th>Activo?</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -271,11 +272,11 @@
                                         <div class="card">
                                             <div class="form-group">
                                             <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -435,6 +436,42 @@
         cargarTabla(id_categoriaT);
         $('#TableMarca').show();
     });
+
+    $("#inputMarca").keyup(function () {
+        var idCategoria = $("#selectCategoria").val();
+        var marca = $("#inputMarca").val();
+        
+        $.ajax({
+            type: "POST",
+            url: localStorage.getItem("urlApi")+'getMarca4Categoria_MarcaAB',
+            data: JSON.stringify({ "marca": marca,"idCategoria":idCategoria }),
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var arrayElemento = jQuery.map(data, function(value, index) {
+                        return (value.Marca);
+                });
+
+                $('#inputMarca').autocomplete({
+                    clearButton: true,
+                    source: arrayElemento,
+                    selectFirst: true,
+                    minLength: 2
+                });
+        
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error: ' + xhr.responseText);
+            }
+        });
+    });
+
+
+
+
 </script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

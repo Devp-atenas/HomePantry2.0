@@ -65,8 +65,9 @@ $("#botonenviar").click(function() {
 
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);
+    cargarCategoria("#selectCategoriaTabla",-1);
     
-    cargarTabla();
+    //cargarTabla();
     
     $('#FormUndMedidaEdit').validate({
         rules: {
@@ -407,7 +408,7 @@ function cargarCategoria(etiqueta,idS) {
     })
 }
 
-function cargarTabla(){
+function cargarTabla(Id){
     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tabla Unidad Volumen",0,"R");
     $('#TableUnidMedida').dataTable({
         "lengthMenu": [
@@ -418,13 +419,18 @@ function cargarTabla(){
         "autoWidth": false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive": false,
-        "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de Unidad Medida - '+$('select[name="selectCategoriaTabla"] option:selected').text()
+            }
+        ],
         "bPaginate":    false,
         "scrollY":      400,
         "fixedHeader":  true,
         "deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getAllUnidadMedidaV1/',
+            "url": localStorage.getItem("urlApi")+'getAllUnidadMedidaV1/'+Id,
             "type": "GET",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -453,7 +459,12 @@ function cargarTabla(){
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
-        "aoColumns": [{
+        "aoColumns": [
+            {
+                mData: 'Id_UnidadMedida',
+                className: "text-center"
+            },
+            {
                 mData: 'Categoria',
                 className: "text-center"
             },
@@ -467,7 +478,7 @@ function cargarTabla(){
             },
         ],
         "columnDefs": [{
-            "targets": 3,
+            "targets": 4,
             "orderable": true,
             "data": 'Id_UnidadMedida',
             "className": "text-center",

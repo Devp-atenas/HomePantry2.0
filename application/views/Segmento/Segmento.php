@@ -135,20 +135,14 @@
                             <table id="TableSegmento" class="table table-bordered table-striped table-sm" style="display:none;">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Categoria</th>
                                         <th>Segmento</th>
                                         <th>Estatus</th>
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Categoria</th>
-                                        <th>Segmento</th>
-                                        <th>Estatus</th>
-                                        <th></th>
-                                    </tr>
-                                </tfoot>
+                               
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -199,11 +193,11 @@
                                         <div class="card">
                                             <div class="form-group">
                                             <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -308,11 +302,42 @@
 <script src="<?php echo base_url('jsDiccionario/jsSegmentoV1.js') ?>"></script>
 
 <script>
+    $("#inputSegmento").keyup(function () {
+        var idCategoria = $("#selectCategoria").val();
+        var valorBuscar = $("#inputSegmento").val();
+        
+        $.ajax({
+            type: "POST",
+            url: localStorage.getItem("urlApi")+'getSegmento4CategoriaV1_Autocompletar',
+            data: JSON.stringify({ "valorBuscar": valorBuscar,"idCategoria":idCategoria }),
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var arrayElemento = jQuery.map(data, function(value, index) {
+                        return (value.Segmento);
+                });
+
+                $('#inputSegmento').autocomplete({
+                    clearButton: true,
+                    source: arrayElemento,
+                    selectFirst: true,
+                    minLength: 2
+                });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error: ' + xhr.responseText);
+            }
+        });
+    });
+
     $("#selectCategoriaTabla").change(function() {
         var id_categoriaT = $("#selectCategoriaTabla").val();
         cargarTabla(id_categoriaT);
         $('#TableSegmento').show();
-});
+    });
 </script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

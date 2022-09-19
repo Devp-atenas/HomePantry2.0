@@ -362,11 +362,11 @@ function EditAction(data) {
         $("#inputCategoriaEdit option[value='"+ response.data[0].Id_Categoria +"']").attr("selected",true);
         //$("#inputFabricanteEdit option[value='"+ response.data[0].id +"']").attr("selected",true);
         var oblig = $("input:radio[name='activoEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+            oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
         var oblig = $("input:radio[name='medicinaEdit']");
-        oblig.filter("[value='"+response.data[0].Ind_Medicina+"']").attr('checked', true);
+            oblig.filter("[value='"+response.data[0].Ind_Medicina+"']").attr('checked', true);
         var oblig = $("input:radio[name='marcaEdit']");
-        oblig.filter("[value='"+response.data[0].Ind_MarcaPropia+"']").attr('checked', true);
+            oblig.filter("[value='"+response.data[0].Ind_MarcaPropia+"']").attr('checked', true);
 
         $('#modal-MarcaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
@@ -576,7 +576,12 @@ function cargarTabla(Id){
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
-        "aoColumns": [{
+        "aoColumns": [
+            {
+                mData: 'Id_Marca',
+                className: "text-center"
+            },
+            {
                 mData: 'Categoria',
                 className: "text-center"
             },
@@ -602,7 +607,7 @@ function cargarTabla(Id){
             },
         ],
         "columnDefs": [{
-            "targets": 6,
+            "targets": 7,
             "orderable": true,
             "data": 'Id_Marca',
             "className": "text-center",
