@@ -193,11 +193,11 @@
                                         <div class="card">
                                             <div class="form-group">
                                             <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>

@@ -463,7 +463,7 @@ function cargarTabla(Id){
             },
         ],
         "columnDefs": [{
-            "targets": 3,
+            "targets": 4,
             "orderable": true,
             "data": 'Id_Atributo',
             "className": "text-center",

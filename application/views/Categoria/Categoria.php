@@ -120,7 +120,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listados de Categoria</h3>
+                    <h3 class="card-title">Listado de Categoria</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -137,6 +137,7 @@
                             <table id="TableCategoria" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Categoria</th>
                                         <th>Factor</th>
                                         <th>Minimo %</th>
@@ -184,21 +185,39 @@
                                             <input type="text" class="form-control input-sm" id="CategoriaEdit" placeholder="Ingrese nombre de la categoria ...">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                    <div class="inputText font-weight-bold">Medicina:</div>
-                                        <div class="card">
-                                            <div class="form-group">
-                                            <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="medicinaEdit" name="medicinaEdit" value="0">
-                                                    <label class="form-check-label">No</label>
-                                                </div>
-                                                <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="medicinaEdit" name="medicinaEdit" value="1">
-                                                    <label class="form-check-label">Si</label>
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Medicina:</div>
+                                            <div class="card">
+                                                <div class="form-group">
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="medicinaEdit" name="medicinaEdit" value="0">
+                                                        <label class="form-check-label">No</label>
+                                                    </div>
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="medicinaEdit" name="medicinaEdit" value="1">
+                                                        <label class="form-check-label">Si</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="inputText font-weight-bold">Activo:</div>
+                                            <div class="card">
+                                                <div class="form-group">
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                        <label class="form-check-label">No</label>
+                                                    </div>
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                        <label class="form-check-label">Si</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
@@ -362,6 +381,45 @@
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer'); ?>
 <script src="<?php echo base_url('jsDiccionario/jsCategoriaV1.js') ?>"></script>
+
+<script>
+    $("#CategoriaAdd").keyup(function () {
+        //var idCategoria = $("#selectCategoria").val();
+        var valorBuscar = $("#CategoriaAdd").val();
+        
+        $.ajax({
+            type: "POST",
+            url: localStorage.getItem("urlApi")+'getAllCategoriaV1_Autocompletar',
+            data: JSON.stringify({ "valorBuscar": valorBuscar}),
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var arrayElemento = jQuery.map(data, function(value, index) {
+                        return (value.Categoria);
+                });
+
+                $('#CategoriaAdd').autocomplete({
+                    clearButton: true,
+                    source: arrayElemento,
+                    selectFirst: true,
+                    minLength: 2
+                });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error: ' + xhr.responseText);
+            }
+        });
+    });
+
+    
+
+</script>
+
+
+
 <!-- DataTables  & Plugins -->
 
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>

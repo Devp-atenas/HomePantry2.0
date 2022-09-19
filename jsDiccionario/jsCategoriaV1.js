@@ -288,6 +288,8 @@ function EditAction(data) {
         $('#CategoriaEdit').val(response.data[0].Categoria);
         var oblig = $("input:radio[name='medicinaEdit']");
         oblig.filter("[value='"+response.data[0].ind_Medicina+"']").attr('checked', true);
+        var oblig = $("input:radio[name='activoEdit']");
+        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
         $('#inputFactorEdit').val(response.data[0].Factor);
         $('#inputminimoEdit').val(response.data[0].Min_Por_Val);
         $('#inputmaximoEdit').val(response.data[0].Max_Por_Val);
@@ -329,6 +331,7 @@ function ActualizarRegistro() {
                 "id_Categoria": $("#idCategoriaEdit").val(),
                 "Categoria": $("#CategoriaEdit").val(),
                 "ind_Medicina": $('input:radio[name=medicinaEdit]:checked').val(),
+                "activo": $('input:radio[name=activoEdit]:checked').val(),
                 "Factor": $("#inputFactorEdit").val(),
                 "Min_Por_Val": $("#inputminimoEdit").val(),
                 "Max_Por_Val": $("#inputmaximoEdit").val()
@@ -393,7 +396,12 @@ function cargarTabla(){
         "autoWidth": false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive": false,
-        "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de Categoria'
+            }
+        ],
         "bPaginate":    false,
         "scrollY":      400,
         "fixedHeader":  true,
@@ -428,7 +436,12 @@ function cargarTabla(){
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
-        "aoColumns": [{
+        "aoColumns": [
+            {
+                mData: 'id_Categoria',
+                className: "text-center"
+            },
+            {
                 mData: 'Categoria',
                 className: "text-center"
             },
@@ -457,7 +470,7 @@ function cargarTabla(){
             },
         ],
         "columnDefs": [{
-            "targets": 6,
+            "targets": 7,
             "orderable": true,
             "data": 'id_Categoria',
             "className": "text-center",

@@ -409,7 +409,12 @@ function cargarTabla(Id){
         "autoWidth": false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive": false,
-        "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de Fabricante - '+$('select[name="selectCategoriaTabla"] option:selected').text()
+            }
+        ],
         "bPaginate":    false,
         "scrollY":      400,
         "fixedHeader":  true,
@@ -444,7 +449,12 @@ function cargarTabla(Id){
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
-        "aoColumns": [{
+        "aoColumns": [
+            {
+                mData: 'id_Fabricante',
+                className: "text-center"
+            },
+            {
                 mData: 'Fabricante',
                 className: "text-center"
             },
@@ -462,7 +472,7 @@ function cargarTabla(Id){
             },
         ],
         "columnDefs": [{
-            "targets": 4,
+            "targets": 5,
             "orderable": true,
             "data": 'id_Fabricante',
             "className": "text-center",

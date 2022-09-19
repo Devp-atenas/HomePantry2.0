@@ -443,7 +443,7 @@
         
         $.ajax({
             type: "POST",
-            url: localStorage.getItem("urlApi")+'getMarca4Categoria_MarcaAB',
+            url: localStorage.getItem("urlApi")+'getMarca4CategoriaV1_Autocompletar',
             data: JSON.stringify({ "marca": marca,"idCategoria":idCategoria }),
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('Token')

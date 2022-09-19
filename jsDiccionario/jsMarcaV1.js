@@ -499,7 +499,7 @@ function cargarFabricante(etiqueta,idCat,idS) {
             select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         }
         for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
+            if (response.data[i].id == idS){
             select.append("<option value=" + response.data[i].id + " selected>" + response
                 .data[i].nombre + " - "+ response.data[i].id + "</option>");
             }else{
@@ -541,7 +541,12 @@ function cargarTabla(Id){
         "autoWidth": false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive": false,
-        "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de Marca - '+$('select[name="selectCategoriaTabla"] option:selected').text()
+            }
+        ],
         "bPaginate":    false,
         "scrollY":      400,
         "fixedHeader":  true,

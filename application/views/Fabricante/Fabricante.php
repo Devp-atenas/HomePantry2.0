@@ -166,10 +166,11 @@
                                 <table id="TableFabricante" class="table table-bordered table-striped" style="display:none;">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>Fabricante</th>
                                             <th>Medicina</th>
                                             <th>Marca Propia</th>
-                                            <th>Estado</th>
+                                            <th>Activo?</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -248,11 +249,11 @@
                                         <div class="card">
                                             <div class="form-group">
                                             <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -381,6 +382,37 @@
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsDiccionario/jsFabricanteV1.js') ?>"></script>
 <script>
+    $("#inputFabricante").keyup(function () {
+        var idCategoria = $("#selectCategoria").val();
+        var valorBuscar = $("#inputFabricante").val();
+        
+        $.ajax({
+            type: "POST",
+            url: localStorage.getItem("urlApi")+'getAllFabricante4CategoriaV1_Autocompletar',
+            data: JSON.stringify({ "valorBuscar": valorBuscar,"idCategoria":idCategoria }),
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var arrayElemento = jQuery.map(data, function(value, index) {
+                        return (value.Fabricante);
+                });
+
+                $('#inputFabricante').autocomplete({
+                    clearButton: true,
+                    source: arrayElemento,
+                    selectFirst: true,
+                    minLength: 2
+                });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error: ' + xhr.responseText);
+            }
+        });
+    });
+
     $("#selectCategoriaTabla").change(function() {
         var id_categoriaT = $("#selectCategoriaTabla").val();
         cargarTabla(id_categoriaT);

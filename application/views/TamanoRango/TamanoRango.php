@@ -188,38 +188,38 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                    <div class="inputText font-weight-bold">Activo:</div>
-                                        <div class="card">
-                                            <div class="form-group">
-                                            <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
-                                                    <label class="form-check-label">No</label>
-                                                </div>
-                                                <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
-                                                    <label class="form-check-label">Si</label>
+                                        <div class="inputText font-weight-bold">Activo:</div>
+                                            <div class="card">
+                                                <div class="form-group">
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                        <label class="form-check-label">No</label>
+                                                    </div>
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                        <label class="form-check-label">Si</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row" style="visibility:hidden;">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="inputIdEditTamRango">id:</label>
-                                            <input type="text" name="inputIdEditTamRango" id="inputIdEditTamRango"
-                                                class="form-control">
+                                    <div class="row" style="visibility:hidden;">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="inputIdEditTamRango">id:</label>
+                                                <input type="text" name="inputIdEditTamRango" id="inputIdEditTamRango"
+                                                    class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <input type="button" onclick="ActualizarRegistro()" id="editUsuario"
-                                                value="Guardar" class="btn btn-success float-right">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <input type="button" onclick="ActualizarRegistro()" id="editUsuario"
+                                                    value="Guardar" class="btn btn-success float-right">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                             </form>
                         </div>
                     </div>
