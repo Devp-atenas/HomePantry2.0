@@ -166,21 +166,21 @@ select:focus {
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Atributo 1:</div>
+                                    <div class="inputText font-weight-bold" id="Atrib1">Atributo 1:</div>
                                     <select id="selectAtributo1" name="selectAtributo1" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Atributo 2:</div>
+                                    <div class="inputText font-weight-bold" id="Atrib2">Atributo 2:</div>
                                     <select id="selectAtributo2" name="selectAtributo2" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Atributo 3:</div>
+                                    <div class="inputText font-weight-bold" id="Atrib3">Atributo 3:</div>
                                     <select id="selectAtributo3" name="selectAtributo3" class="form-control">
                                     </select>
                                 </div>
@@ -189,21 +189,21 @@ select:focus {
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Atributo 4:</div>
+                                    <div class="inputText font-weight-bold" id="Atrib4">Atributo 4:</div>
                                     <select id="selectAtributo4" name="selectAtributo4" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Atributo 5:</div>
+                                    <div class="inputText font-weight-bold" id="Atrib5">Atributo 5:</div>
                                     <select id="selectAtributo5" name="selectAtributo5" class="form-control">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Atributo 6:</div>
+                                    <div class="inputText font-weight-bold" id="Atrib6">Atributo 6:</div>
                                     <select id="selectAtributo6" name="selectAtributo6" class="form-control">
                                     </select>
                                 </div>
@@ -212,7 +212,7 @@ select:focus {
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Atributo 7:</div>
+                                    <div class="inputText font-weight-bold" id="Atrib7">Atributo 7:</div>
                                     <select id="selectAtributo7" name="selectAtributo7" class="form-control">
                                     </select>
                                 </div>
@@ -621,19 +621,19 @@ select:focus {
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo 1:</div>
+                                            <label class="inputText font-weight-bold" id="atrib1">Atributo 1:</label>
                                             <input type="text" name="inputAtributo1Ver" id="inputAtributo1Ver" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo 2:</div>
+                                            <label class="inputText font-weight-bold" id="atrib2">Atributo 2:</label>
                                             <input type="text" name="inputAtributo2Ver" id="inputAtributo2Ver" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo 3:</div>
+                                            <label class="inputText font-weight-bold" id="atrib3">Atributo 3:</label>
                                             <input type="text" name="inputAtributo3Ver" id="inputAtributo3Ver" class="form-control" readonly>
                                         </div>
                                     </div>
@@ -641,19 +641,19 @@ select:focus {
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo 4:</div>
+                                            <label class="inputText font-weight-bold" id="atrib4">Atributo 4:</label>
                                             <input type="text" name="inputAtributo4Ver" id="inputAtributo4Ver" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo 5:</div>
+                                            <label class="inputText font-weight-bold" id="atrib5">Atributo 5:</label>
                                             <input type="text" name="inputAtributo5Ver" id="inputAtributo5Ver" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo 6:</div>
+                                            <label class="inputText font-weight-bold" id="atrib6">Atributo 6:</label>
                                             <input type="text" name="inputAtributo6Ver" id="inputAtributo6Ver" class="form-control" readonly>
                                         </div>
                                     </div>
@@ -661,7 +661,7 @@ select:focus {
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo 7:</div>
+                                            <label class="inputText font-weight-bold" id="atrib7">Atributo 7:</label>
                                             <input type="text" name="inputAtributo7Ver" id="inputAtributo7Ver" class="form-control" readonly>
                                         </div>
                                     </div>
@@ -807,7 +807,7 @@ $("#selectCategoriaTabla").change(function() {
 
 $("#selectCategoria").change(function() {
     var id_categoria = $("#selectCategoria").val();
-
+    cargarNombreAtributos(id_categoria);
     $("#idBotonAgregarPoducto").prop('disabled', false);
     $('#selectFabricante').select2();
     cargarFabricante("#selectFabricante",id_categoria,0);

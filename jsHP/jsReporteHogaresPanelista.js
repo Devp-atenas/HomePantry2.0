@@ -17,6 +17,7 @@ function cargarTablaReportePanelistas(idDivTabla){
                 "Authorization": "Bearer " + localStorage.getItem('Token')
             },
         },
+        columnCalcs:"both",
         height : "400px" ,
         layout:"fitDataStretch",//,fitDataStretch,fitDataTable",
         progressload : "scroll",
@@ -36,6 +37,24 @@ function cargarTablaReportePanelistas(idDivTabla){
             {title:"Parentesco", field:"Parentesco", sorter:"string"},
             {title:"Sexo", field:"Sexo", sorter:"string"},
             {title:"Fec_Nacimiento", field:"Fec_Nacimiento", sorter:"string"},
+            {title:"Celular", field:"Celular", sorter:"string"},
+            {title:"Movilnet", field:"Movilnet", sorter:"string",
+                bottomCalc:"sum", topCalcParams:{
+                    precision:2
+                }
+            },
+            {title:"Movistar", field:"Movistar", sorter:"string",
+                bottomCalc:"sum", topCalcParams:{
+                    precision:2
+                }
+            },
+            {title:"Digitel", field:"Digitel", sorter:"string",
+                bottomCalc:"sum", topCalcParams:{
+                    precision:2
+                }
+            },
+            //{title:"Movistar", field:"Movistar", sorter:"string"},
+            //{title:"Digitel", field:"Digitel", sorter:"string"},
             {title:"Titular", field:"Titular", sorter:"string"},
             {title:"CedulaTitular", field:"CedulaTitular", sorter:"number"},
             {title:"Banco", field:"Banco", sorter:"string"},

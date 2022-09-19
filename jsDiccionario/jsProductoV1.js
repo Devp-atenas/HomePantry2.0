@@ -195,6 +195,51 @@ $(document).ready(function() {
     cargarCategoria("#selectCategoriaTabla",-1);
 });
 
+function cargarNombreAtributos(id_categoria) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'getNombreAtributos/' + id_categoria,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        $("#Atrib1").html(response.data[0].NomAtr01);
+        $("#Atrib2").html(response.data[0].NomAtr02);
+        $("#Atrib3").html(response.data[0].NomAtr03);
+        $("#Atrib4").html(response.data[0].NomAtr04);
+        $("#Atrib5").html(response.data[0].NomAtr05);
+        $("#Atrib6").html(response.data[0].NomAtr06);
+        $("#Atrib7").html(response.data[0].NomAtr07);
+        
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
+
 function cargarCategoria(etiqueta,idS) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAllCategoriaV1',
