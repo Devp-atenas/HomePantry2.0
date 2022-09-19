@@ -145,7 +145,7 @@ $(document).ready(function() {
             },
             inputCodigoBarra: {
                 required: true,
-                minlength: 13,
+                minlength: 8,
                 maxlength: 20
             },
             inputProducto: {

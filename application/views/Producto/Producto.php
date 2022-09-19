@@ -393,11 +393,11 @@ select:focus {
                                         <div class="card">
                                             <div class="form-group">
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" checked disabled='disabled'">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -755,6 +755,43 @@ select:focus {
 <script src="<?php echo base_url('jsDiccionario/jsProductoV1.js') ?>"></script>
 
 <script>
+
+
+$("#inputProducto").keyup(function () {
+        var idCategoria = $("#selectCategoria").val();
+        var valorBuscar = $("#inputProducto").val();
+        
+        $.ajax({
+            type: "POST",
+            url: localStorage.getItem("urlApi")+'getAllProductos_x_categoriaV1_Autocompletar',
+            data: JSON.stringify({ "valorBuscar": valorBuscar,"idCategoria":idCategoria }),
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var arrayElemento = jQuery.map(data, function(value, index) {
+                        return (value.Producto);
+                });
+
+                $('#inputProducto').autocomplete({
+                    clearButton: true,
+                    source: arrayElemento,
+                    selectFirst: true,
+                    minLength: 2
+                });
+        
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error: ' + xhr.responseText);
+            }
+        });
+    });
+
+
+
+
 $("#botonenviar").click(function() {
     CodigoBarras = $('#inputCodigoBarra').val();
     existeCodigoBarra(CodigoBarras);
