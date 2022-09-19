@@ -85,6 +85,6 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 //define('urlApi','http://216.198.73.34:3000/api/');
-//define('urlApi','http://localhost:3000/api/');
-define('urlApi','http://localhost:3002/api/');
+define('urlApi','http://localhost:3001/api/');
+//define('urlApi','http://104.238.248.34:3002/api/');
 
