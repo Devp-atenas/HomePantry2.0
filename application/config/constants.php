@@ -86,5 +86,5 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 //define('urlApi','http://216.198.73.34:3000/api/');
 //define('urlApi','http://localhost:3000/api/');
-define('urlApi','http://localhost:3001/api/');
+define('urlApi','http://localhost:3002/api/');
 
