@@ -1343,8 +1343,6 @@ function cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria){
             }
         }
     });
-
-
 }
 
 function eliminarSeparadorMiles(number){

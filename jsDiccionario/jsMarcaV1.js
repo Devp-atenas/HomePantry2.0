@@ -1,4 +1,52 @@
 $("#botonenviar").click(function() {
+    existeMarca($("#inputMarca").val().toUpperCase());   
+});
+
+function existeMarca(Marca) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'CantidadMarcaV1/' + Marca,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cantidad != 0){
+            var idCategoria = $('#selectCategoria').val();
+            cargarTablaDiccionarioExistente(Marca,idCategoria);
+            $('#htmlItem').html(Marca);
+            $('#DiccionarioExistenteModal').modal('show');
+        }else{
+            alert('se llama a ejecutarAgregarMarca()');
+            //ejecutarAgregarMarca();
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+function ejecutarAgregarMarca(){
     if ($("#FormMarca").valid()) {
         var settings = {
             "async": true,
@@ -66,7 +114,90 @@ $("#botonenviar").click(function() {
             }
         })
     }
-});
+}
+
+function cargarTablaDiccionarioExistente(Item,idCategoria){
+    var msg = "Si de desea agregar el item presione en agregar";
+    var flag = false;
+    $('#TableDiccionarioExistente').dataTable({
+        "autoWidth": false,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "scrollY":      '50vh',
+        "responsive": false,
+        "searching": false,
+        "bPaginate": false,
+        "ordering": false,
+        "info":     false,
+        "ajax": {
+            "url": localStorage.getItem("urlApi")+'getMarcasXNombreMarcaV1/' + Item,
+            "type": "GET",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/homepantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [
+            {
+                mData: 'Categoria',
+                className: "text-center"
+            },
+            {
+                mData: 'Item',
+                className: "text-center"
+            },
+            {
+                mData: 'status',
+                className: "text-center"
+            }
+            
+        ],
+        "createdRow": function( row, data, dataIndex){
+            if (data['Id_Categoria'] == idCategoria){
+                $('td', row).eq(0).css('color', '#EE0000');
+                $('td', row).eq(1).css('color', '#EE0000');
+                $('td', row).eq(2).css('color', '#EE0000');
+                $("#idBotonAgregarPoducto").prop('disabled', true);
+                //flag = true;
+                msg = "El Item ya pertenece a la categoria:"+data['Categoria']+"; no podra ser agregado";
+                $('#htmlMensajeModal').html(msg);
+            }
+            /*if (flag){
+                //msg = "El Item ya pertenece a una categoria!!!";
+                $('#htmlMensajeModal').html(msg);
+            }else{
+                msg = "Si de desea agregar el item presione en agregar";
+                $('#htmlMensajeModal').html(msg);
+            }*/
+
+            $('#htmlMensajeModal').html(msg);
+        }
+    });
+}
+
+
+
 
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);
@@ -356,6 +487,7 @@ function EditAction(data) {
     }
     $.ajax(settings).done(function(response) {
         cargarCategoria("#selectCategoriaEdit",response.data[0].Id_Categoria);
+        alert(response.data[0].Id_Fabricante)
         cargarFabricante('#selectFabricanteEdit',response.data[0].Id_Categoria,response.data[0].Id_Fabricante);
         $('#inputIdEditMarca').val(response.data[0].Id_Marca);
         $('#inputMarcaEdit').val(response.data[0].Marca);
@@ -406,6 +538,8 @@ function VisualizarAction(data) {
         $('#inputMarcaVer').val(response.data[0].Marca);
         $('#inputFabricanteVer').val(response.data[0].nombre);
         $('#inputAbreviaturaVer').val(response.data[0].Abreviatura);
+        $('#inputFabricanteVer').val(response.data[0].Fabricante);
+        
 
         var oblig = $("input:radio[name='activoVer']");
         oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);

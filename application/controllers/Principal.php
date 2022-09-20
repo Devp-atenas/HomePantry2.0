@@ -6,11 +6,11 @@ class Principal extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('url');
     }
-    /* ----------------- OJO Reordenado ---------------------- */
+    /* ----------------- !OJO¡ Re-ordenado ---------------------- */
 	public function dashboard(){
         $this->load->view('dashboard');
 	}
-    public function ingresar(){
+    public function ingresar(){  // ???????????????
         $this->load->view('ListaHogares/ListaHogares');
 	}
     public function ValidacionProductosNuevos_(){
@@ -89,7 +89,6 @@ class Principal extends CI_Controller {
     //----------- XXXXXXXXXX ------------
     //----------- XXXXXXXXXX ------------
     //----------- XXXXXXXXXX ------------
-    //----------- Pesos (Puntaje) ------------
     //----------- USUARIO / PERFIL ------------
     public function ReinicioPassword(){
         $this->load->view('ReinicioPassword/ReinicioPassword');
@@ -265,7 +264,10 @@ class Principal extends CI_Controller {
         $this->load->view('Hogares/HogaresPendientes');
 	}
     public function ListaHogares(){
-        $this->load->view('ListaHogares/ListaHogares');
+        $this->load->view('Hogares/ListaHogares');
+	}
+    public function DeshabilitarHogares(){
+        $this->load->view('Hogares/DeshabilitarHogares');
 	}
     //----------- Estudio ------------
     public function CargarEstudio(){
@@ -328,8 +330,6 @@ class Principal extends CI_Controller {
     public function RevisarInvestigaciones(){
         $this->load->view('Reportes/RevisarInvestigaciones');
     }
-    
-    
     //----------- Mantenimiento ------------
     public function MantenimientoSemana(){
         $this->load->view('Mantenimiento/MantenimientoSemana');
@@ -354,10 +354,10 @@ class Principal extends CI_Controller {
         echo '<script>';
         echo 'sessionStorage.clear();';
         echo 'localStorage.clear();';
-        echo 'alert(999)';
+        //echo 'alert(999)';
         echo '</script>';
         $this->session->sess_destroy();
-        $this->load->view('SessionLock');
+        //$this->load->view('SessionLock');
         redirect('/');
 	}
     public function SessionLock(){

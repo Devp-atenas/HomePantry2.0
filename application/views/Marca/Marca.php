@@ -146,7 +146,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listados de Marca</h3>
+                    <h3 class="card-title">Listado de Marca</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -234,7 +234,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Marca:</div>
-                                            <input type="text" name="inputMarca" id="inputMarcaEdit" class="form-control">
+                                            <input type="text" name="inputMarcaEdit" id="inputMarcaEdit" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -340,14 +340,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Categoria:</div>
-                                            <input type="text" name="Categoria" id="selectCategoriaVer" class="form-control"
+                                            <input type="text" name="inputCategoriaVer" id="inputCategoriaVer" class="form-control"
                                     readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fabricante:</div>
-                                            <input type="text" name="Marca" id="selectFabricanteVer" class="form-control" readonly>
+                                            <input type="text" name="inputFabricanteVer" id="inputFabricanteVer" class="form-control" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -355,7 +355,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Marca:</div>
-                                            <input type="text" name="Marca" id="inputMarcaVer" class="form-control" readonly>
+                                            <input type="text" name="inputMarcaVer" id="inputMarcaVer" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -415,8 +415,76 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
 <!-- /Windows Modal Visualizar Registros-->
+
+
+<!-- Windows Modal DiccionarioExistenteModal -->
+<div class="modal fade" id="DiccionarioExistenteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fa-light fa-barcode-scan"></i>&nbsp;Marcas Duplicadas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Marcas Existente</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormDatosEdit">
+                                <h5 class="text-center">Item Duplicados: <span class="label label-danger" id="htmlItem"></span>
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="TableDiccionarioExistente" class="table table-bordered table-striped table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Categoria</th>
+                                                    <th>Marca</th>
+                                                    <th>Activo?</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-center"><span class="label label-danger" id="htmlMensajeModal"></span></h5>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button id="idBotonAgregarPoducto"type="button" class="btn btn-success" onclick="ejecutarAgregarProductoNuevo()">Agregar Producto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsDiccionario/jsMarcaV1.js') ?>"></script>
 

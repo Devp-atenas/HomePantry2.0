@@ -1125,8 +1125,6 @@ function enviarConsumoInvestigar(){
                 confirmButtonText: `Ok`,
             })
             
-            
-            
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -1145,9 +1143,6 @@ function enviarConsumoInvestigar(){
                         title: 'Su Session ha Expirado',
                         confirmButtonText: `Ok`,
                     })
-                    //var form = document.querySelector('#FormUsuariosEdit');
-                    //form.reset();
-                    //window.location = '/homepantry20/index.php';
                 }
             })
         }
