@@ -25,8 +25,72 @@
     </div>
 </section>
 <!-- /.content -->
-<!-- Windows Modal CodigoBarraExistenteModal -->
-<div class="modal fade" id="hogarPerteneceMuestraModal" tabindex="-1" role="dialog">
+
+
+<!-- Windows Modal Editar modal-deshabilitarHogar -->
+<div class="modal fade" id="modal-deshabilitarHogar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Deshabilitar Hogar</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormAtributoEdit">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Motivo:</div>
+                                            <select id="selectMotivo" name="selectMotivo" class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Comentario:</div>
+                                            <input type="text" name="inputAtributoEdit" id="inputAtributoEdit" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" id="idBTDeshabilitarHogar" class="btn btn-success" data-dismiss="modal">Deshabilitar</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+<!-- Windows Modal modal-hogarPerteneceMuestra -->
+<div class="modal fade" id="modal-hogarPerteneceMuestra" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
