@@ -1,5 +1,7 @@
 $("#botonenviar").click(function() {
-    existeMarca($("#inputMarca").val().toUpperCase());   
+    if ($("#FormMarca").valid()) {
+        existeMarca($("#inputMarca").val().toUpperCase());
+    }
 });
 
 function existeMarca(Marca) {
@@ -43,8 +45,6 @@ function existeMarca(Marca) {
         }
     })
 }
-
-
 
 function ejecutarAgregarMarca(){
     if ($("#FormMarca").valid()) {
@@ -119,15 +119,26 @@ function ejecutarAgregarMarca(){
 function cargarTablaDiccionarioExistente(Item,idCategoria){
     var msg = "Si de desea agregar el item presione en agregar";
     var flag = false;
+    $("#idBotonAgregarPoducto").prop('disabled', false);
     $('#TableDiccionarioExistente').dataTable({
-        "autoWidth": false,
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": true,
         "dom": '<"wrapper"flitp><"center"B>',
-        "scrollY":      '50vh',
         "responsive": false,
-        "searching": false,
-        "bPaginate": false,
-        "ordering": false,
-        "info":     false,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de marcas duplicadas'
+            }
+        ],
+        "bPaginate":    false,
+        "scrollY":      '30vh',
+        //"fixedHeader":  true,
+        //"deferRender":  true,
         "ajax": {
             "url": localStorage.getItem("urlApi")+'getMarcasXNombreMarcaV1/' + Item,
             "type": "GET",
@@ -180,7 +191,7 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
                 $('td', row).eq(2).css('color', '#EE0000');
                 $("#idBotonAgregarPoducto").prop('disabled', true);
                 //flag = true;
-                msg = "El Item ya pertenece a la categoria:"+data['Categoria']+"; no podra ser agregado";
+                msg = "El Item ya pertenece a la categoria: "+data['Categoria']+"; no podra ser agregado";
                 $('#htmlMensajeModal').html(msg);
             }
             /*if (flag){
@@ -211,16 +222,17 @@ $(document).ready(function() {
             selectFabricanteEdit: {
                 required: true
             },
+            medicinaEdit: {
+                required: true,
+            },
+            marcaEdit: {
+                required: true,
+            },
             inputMarcaEdit: {
                 required: true,
                 minlength: 5,
                 maxlength: 50,
-            },
-            inputAbreviaturaEdit: {
-                required: true,
-                minlength: 3,
-                maxlength: 5,
-            },
+            }
         },
         messages: {
             selectCategoriaEdit: {
@@ -234,11 +246,13 @@ $(document).ready(function() {
                 minlength: "Su marca debe tener al menos 5 caracteres",
                 maxlength: "Su marca debe tener al menos 50 caracteres"
             },
-            inputAbreviaturaEdit: {
-                required: "Por favor ingrese la abreviatura de la Marca",
-                minlength: "Su Abreviatura debe tener al menos 3 caracteres",
-                maxlength: "Su Abreviatura debe tener al menos 5 caracteres"
+            medicinaEdit: {
+                required: "Por favor ingrese medicina"
             },
+            marcaEdit: {
+                required: "Por favor ingrese marca"
+            },
+            
         },
         errorElement: 'span',
         errorPlacement: function(error, element) {
@@ -261,16 +275,17 @@ $(document).ready(function() {
             selectFabricante: {
                 required: true,
             },
+            medicinaAdd: {
+                required: true,
+            },
+            marcaAdd: {
+                required: true,
+            },
             inputMarca: {
                 required: true,
                 minlength: 5,
                 maxlength: 50,
-            },
-            inputAbreviatura: {
-                required: true,
-                minlength: 3,
-                maxlength: 5,
-            },
+            }
         },
         messages: {
             selectCategoria: {
@@ -279,15 +294,16 @@ $(document).ready(function() {
             selectFabricante: {
                 required: "Por favor ingrese el fabricante"
             },
+            medicinaAdd: {
+                required: "Por favor ingrese medicina"
+            },
+            marcaAdd: {
+                required: "Por favor ingrese marca"
+            },
             inputMarca: {
                 required: "Por favor ingrese la categoria del Marca",
                 minlength: "Su marca debe tener al menos 5 caracteres",
                 maxlength: "Su marca debe tener al máximo 50 caracteres"
-            },
-            inputAbreviatura: {
-                required: "Por favor ingrese la abreviatura del Marca",
-                minlength: "Su abrevitura debe tener al menos 3 caracteres",
-                maxlength: "Su abreviatura debe tener al máximo 5 caracteres"
             },
         },
         errorElement: 'span',
@@ -305,7 +321,59 @@ $(document).ready(function() {
     document.getElementById('FormMarca').reset();
 });
 
+
+
 function deleteAction(data) {
+    var msg;
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdMarcaV1/'+data,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cant != 0){
+            if (response.data[0].Cant == 1){
+                msg = "No se puede eliminar la marca debido a que existe "+response.data[0].Cant
+                    +" producto asociado";
+            }else{
+                msg = "No se puede eliminar la marca debido a que existen "+response.data[0].Cant
+                    +" productos asociados";
+            }
+            $('#msg').html(msg);
+            $('#NosePuedeEliminarModal').modal('show');
+        }else{
+            deleteMarca(data);
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php/index.php/index.php';
+        }
+    })
+}
+
+
+
+
+
+function deleteMarca(data) {
     Swal.fire({
         title: '¿Estas seguro?',
         text: "¡No podrás revertir esto!",
@@ -357,49 +425,6 @@ function deleteAction(data) {
                     window.location = '/homepantry20/index.php/index.php/index.php';
                 }
             })
-        }
-    })
-}
-
-function cargarFabrican_teEdit_(id_Fabricante) {
-
-    var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllFabricanteV1/',
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let selectFabricanteEdit = $("#inputFabricanteEdit");
-        selectFabricanteEdit.find("option").remove();
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id == id_Fabricante) {
-                selectFabricanteEdit.append("<option value=" + response.data[i].id + " selected>" +
-                    response.data[i].nombre + "</option>");
-            }else{
-                selectFabricanteEdit.append("<option value=" + response.data[i].id + ">" + response.data[i].nombre + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php/index.php/index.php';
         }
     })
 }
@@ -487,13 +512,9 @@ function EditAction(data) {
     }
     $.ajax(settings).done(function(response) {
         cargarCategoria("#selectCategoriaEdit",response.data[0].Id_Categoria);
-        //alert('Id: '+data)
-        
-        //alert('Cat: '+response.data[0].Id_Categoria)
-        //alert('FAB: '+response.data[0].Id_Fabricante)
         cargarFabricante('#selectFabricanteEdit',response.data[0].Id_Categoria,response.data[0].Id_Fabricante);
         $('#inputIdEditMarca').val(response.data[0].Id_Marca);
-        $('#inputMarcaEdit').val(response.data[0].Marca);
+        $('#inputMarcaEdit').val($.trim(response.data[0].Marca));
         $("#inputCategoriaEdit option[value='"+ response.data[0].Id_Categoria +"']").attr("selected",true);
         //$("#inputFabricanteEdit option[value='"+ response.data[0].id +"']").attr("selected",true);
         var oblig = $("input:radio[name='activoEdit']");
@@ -620,61 +641,7 @@ function cargarCategoria(etiqueta,idS) {
     })
 }
 
-
 function cargarFabricante(etiqueta,idCat,idS) {
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url":localStorage.getItem("urlApi")+'getAllFabricantes_x_CategoriaV1/'+idCat,
-        "method": "get",
-        "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            }
-    }
-    $.ajax(settings).done(function(response) {
-        let selected = $(etiqueta);
-        selected.find("option").remove();
-        if (idS == 0){
-            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id == idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
-                .data[i].nombre + "</option>");
-            }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
-                .data[i].nombre + "</option>");
-            }
-        }
-    
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php';
-        }
-    })
-}
-
-
-
-
-
-function cargarFa_bricante(etiqueta,idCat,idS) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAllFabricantes_x_CategoriaV1/'+idCat,
         "method": "get",
@@ -690,8 +657,9 @@ function cargarFa_bricante(etiqueta,idCat,idS) {
             select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         }
         for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
-            select.append("<option value=" + response.data[i].id + " selected>" + response
+            
+            if (response.data[i].id == idS){
+                select.append("<option value=" + response.data[i].id + " selected>" + response
                 .data[i].nombre + " - "+ response.data[i].id + "</option>");
             }else{
                 select.append("<option value=" + response.data[i].id + ">" + response

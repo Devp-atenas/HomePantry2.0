@@ -113,11 +113,11 @@
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0" disabled='disabled'">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0" disabled='disabled'>
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1" checked disabled='disabled'">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1" checked disabled='disabled'>
                                             <label class="form-check-label">Si</label>
                                         </div>
                                     </div>
@@ -272,11 +272,11 @@
                                         <div class="card">
                                             <div class="form-group">
                                             <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'>
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" disabled='disabled'>
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -423,7 +423,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fa-light fa-barcode-scan"></i>&nbsp;Marcas Duplicadas</h5>
+            <h5 class="modal-title"><i class="bi bi-info-circle"></i>&nbsp;Informacion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -441,7 +441,7 @@
                         </div>
                         <div class="card-body">
                             <form id="FormDatosEdit">
-                                <h5 class="text-center">Item Duplicados: <span class="label label-danger" id="htmlItem"></span>
+                                <h5 class="text-center">Item Duplicado: <span class="label label-danger" id="htmlItem"></span>
                                 </h5>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -480,6 +480,49 @@
     <!-- /.modal-dialog -->
 </div>
 
+<!-- Windows Modal No se puede eliminar -->
+<div class="modal fade" id="NosePuedeEliminarModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-info-circle"></i>&nbsp;Informacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Producto Existente</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            
+                            <h5 class="text-center"><span class="label label-danger" id="msg"></span>
+                            </h5>
+                                
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 
 
@@ -505,7 +548,7 @@
         $('#TableMarca').show();
     });
 
-    $("#inputMarca").keyup(function () {
+    $("#inputMarca_").keyup(function () {
         var idCategoria = $("#selectCategoria").val();
         var marca = $("#inputMarca").val();
         
