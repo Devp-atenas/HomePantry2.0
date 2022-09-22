@@ -1,5 +1,5 @@
     <nav class="mt-2 nav-compact">
-        <ul id="menuXD" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul id="menuXD" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
         </ul>
     </nav>
 

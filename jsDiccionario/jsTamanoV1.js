@@ -1,5 +1,53 @@
 $("#botonenviar").click(function() {
     if ($("#FormTam").valid()) {
+        var tamano = eliminarSeparadorMiles($("#inputTam").val())
+        existeTamano(tamano);
+    }
+});
+
+function existeTamano(Tamano) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'CantidadTamanoV1/' + Tamano,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cantidad != 0){
+            var idCategoria = $('#selectCategoria').val();
+            cargarTablaDiccionarioExistente(Tamano,idCategoria);
+            $('#htmlItem').html(Tamano);
+            $('#DiccionarioExistenteModal').modal('show');
+        }else{
+            ejecutarAgregarTamano();
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function ejecutarAgregarTamano(){
+    if ($("#FormTam").valid()) {
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -63,7 +111,90 @@ $("#botonenviar").click(function() {
             }
         })
     }
-});
+}
+
+function cargarTablaDiccionarioExistente(Item,idCategoria){
+    var msg = "Si de desea agregar el item presione en agregar";
+    var flag = false;
+    $("#idBotonAgregarTamano").prop('disabled', false);
+    $('#TableDiccionarioExistente').dataTable({
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": true,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": false,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de marcas duplicadas'
+            }
+        ],
+        "bPaginate":    false,
+        "scrollY":      '25vh',
+        //"fixedHeader":  true,
+        //"deferRender":  true,
+        "ajax": {
+            "url": localStorage.getItem("urlApi")+'getTamanoXNombreTamanoV1/' + Item,
+            "type": "GET",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/homepantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [
+            {
+                mData: 'Categoria',
+                className: "text-center"
+            },
+            {
+                mData: 'Item',
+                className: "text-center"
+            },
+            {
+                mData: 'status',
+                className: "text-center"
+            }
+        ],
+        "createdRow": function( row, data, dataIndex){
+            if (data['Id_Categoria'] == idCategoria){
+                $('td', row).eq(0).css('color', '#EE0000');
+                $('td', row).eq(1).css('color', '#EE0000');
+                $('td', row).eq(2).css('color', '#EE0000');
+                $("#idBotonAgregarTamano").prop('disabled', true);
+                msg = "El Item ya pertenece a la categoria: "+data['Categoria']+"; no podra ser agregado";
+                $('#htmlMensajeModal').html(msg);
+            }
+            $('#htmlMensajeModal').html(msg);
+        }
+    });
+}
+
+
 
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);
@@ -90,6 +221,45 @@ $(document).ready(function() {
     /*$.validator.addMethod('decimal', function(value, element) {
         return this.optional(element) || /^((\d+(\\.\d{0,3})?)|((\d*(\.\d{1,3}))))$/.test(value);
     }, "Please ingrese a formato de numero correcto, formato 0.000");*/
+    $('#FormTam').validate({
+        rules: {
+            selectCategoria: {
+                required: true,
+            },
+            inputTam: {
+                required: true
+            },
+            inputAbreviatura: {
+                required: true,
+                minlength: 3,
+                maxlength: 5,
+            },
+        },
+        messages: {
+            selectCategoria: {
+                required: "Por favor ingrese la categoria"
+            },
+            inputTam: {
+                required: "Por favor ingrese el Tamaño",
+            },
+            inputAbreviatura: {
+                required: "Por favor ingrese la abreviatura del Tamaño",
+                minlength: "Su abrevitura debe tener al menos 3 caracteres",
+                maxlength: "Su abreviatura debe tener al menos 5 caracteres"
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
     $('#FormTamEdit').validate({
         rules: {
             selectCategoriaEdit: {
@@ -130,50 +300,57 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
-    $('#FormTam').validate({
-        rules: {
-            selectCategoria: {
-                required: true,
-            },
-            inputTam: {
-                required: true
-            },
-            inputAbreviatura: {
-                required: true,
-                minlength: 3,
-                maxlength: 5,
-            },
-        },
-        messages: {
-            selectCategoria: {
-                required: "Por favor ingrese la categoria"
-            },
-            inputTam: {
-                required: "Por favor ingrese el Tamaño",
-            },
-            inputAbreviatura: {
-                required: "Por favor ingrese la abreviatura del Tamaño",
-                minlength: "Su abrevitura debe tener al menos 3 caracteres",
-                maxlength: "Su abreviatura debe tener al menos 5 caracteres"
-            },
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-        }
-    });
     document.getElementById('FormTam').reset();
-    
 });
 
 function deleteAction(data) {
+    var idCategoria = $('#selectCategoriaTabla').val();
+    var msg;
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdTamanoV1/'+data+"/"+idCategoria,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cant != 0){
+            if (response.data[0].Cant == 1){
+                msg = "No se puede eliminar el tamaño debido a que existe "+response.data[0].Cant
+                    +" producto asociado";
+            }else{
+                msg = "No se puede eliminar el tamaño debido a que existen "+response.data[0].Cant
+                    +" productos asociados";
+            }
+            $('#msg').html(msg);
+            $('#NosePuedeEliminarModal').modal('show');
+        }else{
+            deleteTamano(data);
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php/index.php/index.php';
+        }
+    })
+}
+
+function deleteTamano(data) {
     Swal.fire({
         title: '¿Estas seguro?',
         text: "¡No podrás revertir esto!",

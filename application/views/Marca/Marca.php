@@ -441,7 +441,7 @@
                         </div>
                         <div class="card-body">
                             <form id="FormDatosEdit">
-                                <h5 class="text-center">Item Duplicado: <span class="label label-danger" id="htmlItem"></span>
+                                <h5 class="text-center">Duplicado para: <span class="label label-danger" id="htmlItem"></span>
                                 </h5>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -456,9 +456,10 @@
                                         </table>
                                     </div>
                                 </div>
+                                <HR/>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h5 class="text-center"><span class="label label-danger" id="htmlMensajeModal"></span></h5>
+                                        <h5 class="text-center"><span class="bg-info text-white" id="htmlMensajeModal"></span></h5>
                                     </div>
                                 </div>
                             </form>
@@ -469,8 +470,8 @@
             <div class="modal-footer">
                 <div class="row">
                     <div class="col-12">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        <button id="idBotonAgregarPoducto"type="button" class="btn btn-success" onclick="ejecutarAgregarProductoNuevo()">Agregar Producto</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="idBotonAgregarMarca"type="button" class="btn btn-success" onclick="ejecutarAgregarMarca()">Agregar</button>
                     </div>
                 </div>
             </div>
@@ -502,11 +503,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            
-                            <h5 class="text-center"><span class="label label-danger" id="msg"></span>
-                            </h5>
-                                
-                           
+                            <h5 class="text-center"><span class="label label-danger" id="msg"></span></h5>
                         </div>
                     </div>
                 </div>
@@ -514,7 +511,7 @@
             <div class="modal-footer">
                 <div class="row">
                     <div class="col-12">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Ok</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Entendido</button>
                     </div>
                 </div>
             </div>
@@ -523,10 +520,6 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
-
-
-
 
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsDiccionario/jsMarcaV1.js') ?>"></script>
@@ -579,10 +572,6 @@
             }
         });
     });
-
-
-
-
 </script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

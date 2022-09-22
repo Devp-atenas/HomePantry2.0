@@ -21,8 +21,7 @@ function existeMarca(Marca) {
             $('#htmlItem').html(Marca);
             $('#DiccionarioExistenteModal').modal('show');
         }else{
-            alert('se llama a ejecutarAgregarMarca()');
-            //ejecutarAgregarMarca();
+            ejecutarAgregarMarca();
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -118,8 +117,7 @@ function ejecutarAgregarMarca(){
 
 function cargarTablaDiccionarioExistente(Item,idCategoria){
     var msg = "Si de desea agregar el item presione en agregar";
-    var flag = false;
-    $("#idBotonAgregarPoducto").prop('disabled', false);
+    $("#idBotonAgregarMarca").prop('disabled', false);
     $('#TableDiccionarioExistente').dataTable({
         "lengthMenu": [
             [10, 25, 50, 100, -1],
@@ -189,26 +187,14 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
                 $('td', row).eq(0).css('color', '#EE0000');
                 $('td', row).eq(1).css('color', '#EE0000');
                 $('td', row).eq(2).css('color', '#EE0000');
-                $("#idBotonAgregarPoducto").prop('disabled', true);
-                //flag = true;
+                $("#idBotonAgregarMarca").prop('disabled', true);
                 msg = "El Item ya pertenece a la categoria: "+data['Categoria']+"; no podra ser agregado";
                 $('#htmlMensajeModal').html(msg);
             }
-            /*if (flag){
-                //msg = "El Item ya pertenece a una categoria!!!";
-                $('#htmlMensajeModal').html(msg);
-            }else{
-                msg = "Si de desea agregar el item presione en agregar";
-                $('#htmlMensajeModal').html(msg);
-            }*/
-
             $('#htmlMensajeModal').html(msg);
         }
     });
 }
-
-
-
 
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);
@@ -321,12 +307,11 @@ $(document).ready(function() {
     document.getElementById('FormMarca').reset();
 });
 
-
-
 function deleteAction(data) {
+    var idCategoria = $('#selectCategoriaTabla').val();
     var msg;
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdMarcaV1/'+data,
+        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdMarcaV1/'+data+"/"+idCategoria,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -364,14 +349,10 @@ function deleteAction(data) {
                 title: 'Su Session ha Expirado',
                 confirmButtonText: `Ok`,
             })
-            window.location = '/homepantry20/index.php/index.php/index.php';
+            window.location = '/homepantry20/index.php';
         }
     })
 }
-
-
-
-
 
 function deleteMarca(data) {
     Swal.fire({
