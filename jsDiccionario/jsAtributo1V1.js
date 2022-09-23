@@ -1,4 +1,51 @@
 $("#botonenviar").click(function() {
+    if ($("#FormSegmento").valid()) {
+        existeAtributo1($("#inputSegmento").val().toUpperCase());
+    }
+});
+
+function existeAtributo1(Atributo) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'CantidadAtributo1V1/' + Atributo,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cantidad != 0){
+            var idCategoria = $('#selectCategoria').val();
+            cargarTablaDiccionarioExistente(Atributo,idCategoria);
+            $('#htmlItem').html(Atributo);
+            $('#DiccionarioExistenteModal').modal('show');
+        }else{
+            ejecutarAgregarAtributo1();
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function ejecutarAgregarAtributo1() {
     if ($("#FormAtributo").valid()) {
         var settings = {
             "async": true,
@@ -63,7 +110,7 @@ $("#botonenviar").click(function() {
             }
         })
     }
-});
+}
 
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);

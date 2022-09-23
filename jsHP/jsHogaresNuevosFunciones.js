@@ -1,3 +1,8 @@
+$('.buttonNext').click(function() {
+    alert('Hola');
+});
+
+
 $(document).ready(function() {
     /*let button = document.querySelector(".buttonNext");
     button.disabled = true;*/

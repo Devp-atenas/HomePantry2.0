@@ -142,6 +142,10 @@
                                         <input class="form-check-input" type="radio" id="calle" name="calle" value="4">
                                         <label class="form-check-label">Carrera</label>
                                     </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="calle" name="calle" value="5">
+                                        <label class="form-check-label">Otro</label>
+                                    </div>
                                     <div class="inputText font-weight-bold">Nombre:</div>
                                     <input type="text" class="form-control input-sm" id="nombreCalle" name="nombreCalle" placeholder="Nombre de la quinta ...">
                                 </div>
@@ -161,6 +165,10 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" id="tipoZona" name="tipoZona" value="3">
                                         <label class="form-check-label">Zona</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="tipoZona" name="tipoZona" value="4">
+                                        <label class="form-check-label">Otro</label>
                                     </div>
                                     <div class="inputText font-weight-bold">Nombre:</div>
                                     <input type="text" class="form-control input-sm" id="nombreTipoZona" name="nombreTipoZona" placeholder="Nombre de zona ...">
