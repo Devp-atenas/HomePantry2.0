@@ -1,3 +1,16 @@
+
+
+$("#botonenviar").click(function() {
+    if ($("#FormProducto").valid()) {
+        var CodigoBarras = $('#inputCodigoBarra').val();
+        existeCodigoBarra(CodigoBarras);
+    }
+});
+
+
+
+
+
 $(document).ready(function() {
 
     $(function($) {
@@ -149,35 +162,51 @@ $(document).ready(function() {
                 maxlength: 20
             },
             inputProducto: {
-                required: true
+                required: true,
+                minlength: 2,
+                maxlength: 50
             },
             activoAdd: {
                 required: true
-            },
-            pendienteAdd: {
-                required: true
-            },
-            inputAbreviatura: {
-                required: true,
-                minlength: 3,
-                maxlength: 5
-            },
+            }
         },
         messages: {
             selectCategoria: {
                 required: "Por favor ingrese la categoria"
             },
+            selectFabricante: {
+                required: "Por favor ingrese Fabricante"
+            },
             selectMarca: {
-                required: "Por favor ingrese la Marca"
+                required: "Por favor ingrese el Marca",
             },
-            inputTam: {
+            selectSegmento: {
+                required: "Por favor ingrese el Segmento",
+            },
+            selectTamanoRango: {
+                required: "Por favor ingrese el Tamaño Rango",
+            },
+            selectTamano: {
+                required: "Por favor ingrese el Tamaño",
+            },
+            selectUnidadMedida: {
+                required: "Por favor ingrese el Unidad Medida",
+            },
+            inputFragmentacion: {
+                required: "Por favor ingrese el Fragmentacion",
+            },
+            inputCodigoBarra: {
+                required: "Por favor ingrese el Codigo de Barra",
+                minlength: "Longitud Minima 8",
+                required: "Longitud Maxima 20",
+                
+            },
+            inputProducto: {
                 required: "Por favor ingrese el Producto",
-            },
-            inputAbreviatura: {
-                required: "Por favor ingrese la abreviatura del Producto",
-                minlength: "Su abrevitura debe tener al menos 3 caracteres",
-                maxlength: "Su abreviatura debe tener al menos 5 caracteres"
-            },
+                minlength: "Longitud Minima 8",
+                maxlength: "Longitud Maxima 50",
+                
+            }
         },
         errorElement: 'span',
         errorPlacement: function(error, element) {
@@ -1113,13 +1142,13 @@ function VisualizarAction(data) {
         $('#inputFragmentacionVer').val(SeparadorMiles(response.data[0].Fragmentacion));
         $('#inputCodigoBarraVer').val(response.data[0].CodigoBarra);
         $('#inputProductoVer').val(response.data[0].Producto);
-        $('#inputAtributo1Ver').val(response.data[0].id_Atributo1);
-        $('#inputAtributo2Ver').val(response.data[0].id_Atributo2);
-        $('#inputAtributo3Ver').val(response.data[0].id_Atributo3);
-        $('#inputAtributo4Ver').val(response.data[0].id_Atributo4);
-        $('#inputAtributo5Ver').val(response.data[0].id_Atributo5);
-        $('#inputAtributo6Ver').val(response.data[0].id_Atributo6);
-        $('#inputAtributo7Ver').val(response.data[0].id_Atributo7);
+        $('#inputAtributo1Ver').val(response.data[0].Atributo1);
+        $('#inputAtributo2Ver').val(response.data[0].Atributo2);
+        $('#inputAtributo3Ver').val(response.data[0].Atributo3);
+        $('#inputAtributo4Ver').val(response.data[0].Atributo4);
+        $('#inputAtributo5Ver').val(response.data[0].Atributo5);
+        $('#inputAtributo6Ver').val(response.data[0].Atributo6);
+        $('#inputAtributo7Ver').val(response.data[0].Atributo7);
         var oblig = $("input:radio[name='activoVer']");
         oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
         var oblig = $("input:radio[name='pendienteVer']");
@@ -1233,6 +1262,7 @@ function ejecutarAgregarProductoNuevo(){
 
 function existeCodigoBarra(CodigoBarras) {
     var urlApi = localStorage.getItem("urlApi");
+    alert(CodigoBarras);
     var settings = {
         "url": urlApi+'CantidadProductoXCodigoBarraV1/' + CodigoBarras,
         "method": "get",

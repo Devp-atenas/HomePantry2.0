@@ -1,5 +1,52 @@
 $("#botonenviar").click(function() {
     if ($("#FormUndMedida").valid()) {
+        existeUnidadMedida($("#inputUndMedida").val().toUpperCase());
+    }
+});
+
+function existeUnidadMedida(UnidadMedida) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'CantidadUnidadMedidaV1/' + UnidadMedida,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cantidad != 0){
+            var idCategoria = $('#selectCategoria').val();
+            cargarTablaDiccionarioExistente(UnidadMedida,idCategoria);
+            $('#htmlItem').html(UnidadMedida);
+            $('#DiccionarioExistenteModal').modal('show');
+        }else{
+            ejecutarAgregarUnidadMedida();
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function ejecutarAgregarUnidadMedida() {
+    if ($("#FormUndMedida").valid()) {
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -17,6 +64,7 @@ $("#botonenviar").click(function() {
         }
         $.ajax(settings).done(function(response) {
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Unidad Volumen: "+$("#inputUndMedida").val(),0,"C");
+            $('#DiccionarioExistenteModal').modal('hide');
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -61,7 +109,205 @@ $("#botonenviar").click(function() {
             }
         })
     }
-});
+}
+
+function cargarTablaDiccionarioExistente(Item,idCategoria){
+    var msg = "Si de desea agregar el item presione en agregar";
+    var flag = false;
+    $("#idBotonAgregarUnidadMedida").prop('disabled', false);
+    $('#TableDiccionarioExistente').dataTable({
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": true,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": false,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de Tamano Rangos duplicadas'
+            }
+        ],
+        "bPaginate":    false,
+        "scrollY":      '25vh',
+        //"fixedHeader":  true,
+        //"deferRender":  true,
+        "ajax": {
+            "url": localStorage.getItem("urlApi")+'getUnidadMedidasXNombreUnidadMedidaV1/' + Item,
+            "type": "GET",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/homepantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [
+            {
+                mData: 'Categoria',
+                className: "text-center"
+            },
+            {
+                mData: 'Item',
+                className: "text-center"
+            },
+            {
+                mData: 'status',
+                className: "text-center"
+            }
+            
+        ],
+        "createdRow": function( row, data, dataIndex){
+            if (data['Id_Categoria'] == idCategoria){
+                $('td', row).eq(0).css('color', '#EE0000');
+                $('td', row).eq(1).css('color', '#EE0000');
+                $('td', row).eq(2).css('color', '#EE0000');
+                $("#idBotonAgregarUnidadMedida").prop('disabled', true);
+                //flag = true;
+                msg = "El Item ya pertenece a la categoria: "+data['Categoria']+"; no podra ser agregado";
+                $('#htmlMensajeModal').html(msg);
+            }
+            /*if (flag){
+                //msg = "El Item ya pertenece a una categoria!!!";
+                $('#htmlMensajeModal').html(msg);
+            }else{
+                msg = "Si de desea agregar el item presione en agregar";
+                $('#htmlMensajeModal').html(msg);
+            }*/
+
+            $('#htmlMensajeModal').html(msg);
+        }
+    });
+}
+
+
+function deleteAction(data) {
+    var idCategoria = $('#selectCategoriaTabla').val();
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdUnidadMedidaV1/'+data,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cant != 0){
+            if (response.data[0].Cant == 1){
+                msg = "No se puede eliminar Unidad Medida rango debido a que existe "+response.data[0].Cant
+                    +" producto asociado";
+            }else{
+                msg = "No se puede eliminar Unidad Medida debido a que existen "+response.data[0].Cant
+                    +" productos asociados";
+            }
+            $('#msg').html(msg);
+            $('#NosePuedeEliminarModal').modal('show');
+        }else{
+            deleteUnidadMedida(data);
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php/index.php/index.php';
+        }
+    })
+}
+
+
+function deleteUnidadMedida(data) {
+    Swal.fire({
+        title: '¿Estas seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: '¡Sí, bórralo!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var settings = {
+                "url": localStorage.getItem("urlApi")+'deleteUnidadMedidaV1/' + data,
+                "method": "get",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+            }
+            $.ajax(settings).done(function(response) {
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Borrar UnidadVolumen (IdUnidadVolumen)",data,"D");
+                var DatosJson = JSON.parse(JSON.stringify(response));
+                Swal.fire({
+                    title: DatosJson.message,
+                    width: '650px',
+                    height: '35px'
+                }).then(function() {
+                    let xtable = $('#TableUnidMedida').DataTable();
+                    xtable.ajax.reload(null, false);
+                });
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+    })
+}
+
+
+
 
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);
@@ -119,14 +365,9 @@ $(document).ready(function() {
             },
             inputUndMedida: {
                 required: true,
-                minlength: 5,
+                minlength: 2,
                 maxlength: 20,
-            },
-            inputAbreviatura: {
-                required: true,
-                minlength: 3,
-                maxlength: 5,
-            },
+            }
         },
         messages: {
             selectCategoria: {
@@ -134,8 +375,8 @@ $(document).ready(function() {
             },
             inputUndMedida: {
                 required: "Por favor ingrese la Unidad de Medida",
-                minlength: "Su Segmento debe tener al menos 5 caracteres",
-                maxlength: "Su Segmento debe tener al menos 20 caracteres"
+                minlength: "Unidad Medida debe tener al menos 5 caracteres",
+                maxlength: "Unidad Medida debe ser menor a 20 caracteres"
             },
             inputAbreviatura: {
                 required: "Por favor ingrese la abreviatura de la Unidad Medida",
@@ -159,61 +400,6 @@ $(document).ready(function() {
     
 });
 
-function deleteAction(data) {
-    Swal.fire({
-        title: '¿Estas seguro?',
-        text: "¡No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText:  'No, Cancelar',
-        confirmButtonText: '¡Sí, bórralo!',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            var settings = {
-                "url": localStorage.getItem("urlApi")+'deleteUndMedidaV1/' + data,
-                "method": "get",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
-            }
-            $.ajax(settings).done(function(response) {
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Borrar UnidadVolumen (IdUnidadVolumen)",data,"D");
-                var DatosJson = JSON.parse(JSON.stringify(response));
-                Swal.fire({
-                    title: DatosJson.message,
-                    width: '650px',
-                    height: '35px'
-                }).then(function() {
-                    let xtable = $('#TableUnidMedida').DataTable();
-                    xtable.ajax.reload(null, false);
-                });
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
-    })
-}
 
 function ActualizarRegistro() {
     if ($("#FormUndMedidaEdit").valid()) {

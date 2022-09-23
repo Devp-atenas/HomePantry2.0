@@ -66,6 +66,7 @@ function ejecutarAgregarMarca(){
             }
         }
         $.ajax(settings).done(function(response) {
+            $('#DiccionarioExistenteModal').modal('hide');
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nueva Marca: "+$("#inputMarca").val(),0,"C");
                 const Toast = Swal.mixin({
                 toast: true,

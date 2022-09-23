@@ -1,81 +1,52 @@
-$(document).ready(function() {
-    document.getElementById('FormFabricante').reset();
-    cargarCategoria("#selectCategoria",0);
-    cargarCategoria("#selectCategoriaTabla",0);
-
-    $('#FormFabricante').validate({
-        rules: {
-            selectCategoria: {
-                required: true,
-            },
-            inputFabricante: {
-                required: true,
-                minlength: 3,
-                maxlength: 50,
-            },
-        },
-        messages: {
-            selectCategoria: {
-                required: "Por favor ingrese la categoria"
-            },
-            inputFabricante: {
-                required: "Por favor ingrese fabricante",
-                minlength: "Su fabricante debe tener al menos 5 caracteres",
-                maxlength: "Su fabricante debe tener al máximo 50 caracteres"
-            }
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-        }
-    });
-    $('#FormFabricanteEdit').validate({
-        rules: {
-            inputCategoriaEdit: {
-                required: true,
-            },
-            inputFabricanteEdit: {
-                required: true
-            },
-            inputAbreviaturaEdit: {
-                required: true
-            },
-        },
-        messages: {
-            inputCategoriaEdit: {
-                required: "Por favor ingrese la categoria del Fabricante"
-            },
-            inputFabricanteEdit: {
-                required: "Por favor ingrese el nombre del fabricante",
-                minlength: "Su nombre debe tener al menos 5 caracteres"
-            },
-            inputAbreviaturaEdit: {
-                required: "Por favor ingrese la abreviatura del Fabricante",
-                minlength: "Su nombre debe tener al menos 3 caracteres"
-            },
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-        }
-    });
+$("#botonenviar").click(function() {
+    if ($("#FormFabricante").valid()) {
+        existeFabricante($("#inputFabricante").val().toUpperCase());
+    }
 });
 
-$("#botonenviar").click(function() {
+function existeFabricante(Fabricante) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'CantidadFabricanteV1/' + Fabricante,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cantidad != 0){
+            var idCategoria = $('#selectCategoria').val();
+            cargarTablaDiccionarioExistente(Fabricante,idCategoria);
+            $('#htmlItem').html(Fabricante);
+            $('#DiccionarioExistenteModal').modal('show');
+        }else{
+            ejecutarAgregarFabricante();
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+function ejecutarAgregarFabricante(Fabricante) {
     if ($("#FormFabricante").valid()) {
         var settings = {
             "async": true,
@@ -95,6 +66,8 @@ $("#botonenviar").click(function() {
             }
         }
         $.ajax(settings).done(function(response) {
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Fabricante (IdCategoria): "+$("#inputFabricante").val(),$("#selectCategoria").val(),"C");
+            $('#DiccionarioExistenteModal').modal('hide');
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -111,7 +84,6 @@ $("#botonenviar").click(function() {
                 title: response.message,
                 confirmButtonText: `Ok`,
             })
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Fabricante (IdCategoria): "+$("#inputFabricante").val(),$("#selectCategoria").val(),"C");
             var form = document.querySelector('#FormFabricante');
             form.reset();
             if ($.trim($('#selectCategoriaTabla').val()) != '') {
@@ -142,9 +114,143 @@ $("#botonenviar").click(function() {
             }
         })
     }
-});
+}
+
+
+function cargarTablaDiccionarioExistente(Item,idCategoria){
+    var msg = "Si de desea agregar el item presione en agregar";
+    var flag = false;
+    $("#idBotonAgregarFabricante").prop('disabled', false);
+    $('#TableDiccionarioExistente').dataTable({
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": true,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": false,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de Fabricantes duplicadas'
+            }
+        ],
+        "bPaginate":    false,
+        "scrollY":      '25vh',
+        //"fixedHeader":  true,
+        //"deferRender":  true,
+        "ajax": {
+            "url": localStorage.getItem("urlApi")+'getFabricantesXNombreFabricanteV1/' + Item,
+            "type": "GET",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/homepantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [
+            {
+                mData: 'Categoria',
+                className: "text-center"
+            },
+            {
+                mData: 'Item',
+                className: "text-center"
+            },
+            {
+                mData: 'status',
+                className: "text-center"
+            }
+            
+        ],
+        "createdRow": function( row, data, dataIndex){
+            if (data['Categoria'] == idCategoria){
+                $('td', row).eq(0).css('color', '#EE0000');
+                $('td', row).eq(1).css('color', '#EE0000');
+                $('td', row).eq(2).css('color', '#EE0000');
+                $("#idBotonAgregarFabricante").prop('disabled', true);
+                msg = "El Item ya pertenece a la categoria: "+data['Categoria']+"; no podra ser agregado";
+                $('#htmlMensajeModal').html(msg);
+            }
+            
+
+            $('#htmlMensajeModal').html(msg);
+        }
+    });
+}
+
+
 
 function deleteAction(data) {
+    var idCategoria = $('#selectCategoriaTabla').val();
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdFabricanteV1/'+data,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cant != 0){
+            if (response.data[0].Cant == 1){
+                msg = "No se puede eliminar Fabricante debido a que existe "+response.data[0].Cant
+                    +" producto asociado";
+            }else{
+                msg = "No se puede eliminar Fabricante debido a que existen "+response.data[0].Cant
+                    +" productos asociados";
+            }
+            $('#msg').html(msg);
+            $('#NosePuedeEliminarModal').modal('show');
+        }else{
+            deleteFabricante(data);
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/';
+        }
+    })
+}
+
+
+function deleteFabricante(data) {
     Swal.fire({
         title: '¿Estas seguro de eliminar fabricante?',
         text: "¡No podrás revertir esto!",
@@ -199,6 +305,98 @@ function deleteAction(data) {
         }
     })
 }
+
+
+$(document).ready(function() {
+    document.getElementById('FormFabricante').reset();
+    cargarCategoria("#selectCategoria",0);
+    cargarCategoria("#selectCategoriaTabla",0);
+
+    $('#FormFabricante').validate({
+        rules: {
+            selectCategoria: {
+                required: true,
+            },
+            inputFabricante: {
+                required: true,
+                minlength: 3,
+                maxlength: 50,
+            },
+            medicinaAdd: {
+                required: true
+            },
+            marcaAdd: {
+                required: true
+            },
+        },
+        messages: {
+            selectCategoria: {
+                required: "Por favor ingrese la categoria"
+            },
+            inputFabricante: {
+                required: "Por favor ingrese fabricante",
+                minlength: "Su fabricante debe tener al menos 3 caracteres",
+                maxlength: "Su fabricante debe tener máximo 50 caracteres"
+            },
+            medicinaAdd: {
+                required: "Por favor ingrese medicina"
+            },
+            marcaAdd: {
+                required: "Por favor ingrese marca"
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+    $('#FormFabricanteEdit').validate({
+        rules: {
+            inputCategoriaEdit: {
+                required: true,
+            },
+            inputFabricanteEdit: {
+                required: true
+            },
+            inputAbreviaturaEdit: {
+                required: true
+            },
+        },
+        messages: {
+            inputCategoriaEdit: {
+                required: "Por favor ingrese la categoria del Fabricante"
+            },
+            inputFabricanteEdit: {
+                required: "Por favor ingrese el nombre del fabricante",
+                minlength: "Su nombre debe tener al menos 5 caracteres"
+            },
+            inputAbreviaturaEdit: {
+                required: "Por favor ingrese la abreviatura del Fabricante",
+                minlength: "Su nombre debe tener al menos 3 caracteres"
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+});
+
+
 // *****
 function ActualizarRegistro() {
     if ($("#FormFabricanteEdit").valid()) {

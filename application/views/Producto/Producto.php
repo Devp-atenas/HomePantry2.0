@@ -137,11 +137,11 @@ select:focus {
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0" disabled='disabled'">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="0" disabled='disabled'>
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1" checked disabled='disabled'">
+                                            <input class="form-check-input" type="radio" id="activoAdd" name="activoAdd" value="1" checked disabled='disabled'>
                                             <label class="form-check-label">Si</label>
                                         </div>
                                     </div>
@@ -757,7 +757,7 @@ select:focus {
 <script>
 
 
-$("#inputProducto").keyup(function () {
+$("#inputProducto_").keyup(function () {
         var idCategoria = $("#selectCategoria").val();
         var valorBuscar = $("#inputProducto").val();
         
@@ -792,11 +792,7 @@ $("#inputProducto").keyup(function () {
 
 
 
-$("#botonenviar").click(function() {
-    CodigoBarras = $('#inputCodigoBarra').val();
-    existeCodigoBarra(CodigoBarras);
-    //ejecutarAgregarProductoNuevo();
-});
+
 
 $("#selectCategoriaTabla").change(function() {
     var id_categoriaT = $("#selectCategoriaTabla").val();

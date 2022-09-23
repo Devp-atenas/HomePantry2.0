@@ -63,6 +63,7 @@ function ejecutarAgregarSegmento(){
             }
         }
         $.ajax(settings).done(function(response) {
+            $('#DiccionarioExistenteModal').modal('hide');
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Segmento: "+$("#inputSegmento").val(),0,"C");
             const Toast = Swal.mixin({
                 toast: true,

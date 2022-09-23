@@ -64,6 +64,7 @@ function ejecutarAgregarTamano(){
             }
         }
         $.ajax(settings).done(function(response) {
+            $('#DiccionarioExistenteModal').modal('hide');
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo tamaño: "+$("#inputTam").val(),0,"C");
             const Toast = Swal.mixin({
                 toast: true,
