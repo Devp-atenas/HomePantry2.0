@@ -193,11 +193,11 @@
                                         <div class="card">
                                             <div class="form-group">
                                             <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" value="0" disabled='disabled'>
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1">
+                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" value="0" disabled='disabled'>
                                                     <label class="form-check-label">Si</label>
                                                 </div>
                                             </div>
@@ -295,8 +295,116 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
 <!-- /Windows Modal Visualizar Registros-->
+
+
+
+<!-- Windows Modal DiccionarioExistenteModal -->
+<div class="modal fade" id="DiccionarioExistenteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-info-circle"></i>&nbsp;Informacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Atributo4 Existente</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormDatosEdit">
+                                <h5 class="text-center">Duplicado para: <span class="label label-danger" id="htmlItem"></span>
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="TableDiccionarioExistente" class="table table-bordered table-striped table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Categoria</th>
+                                                    <th>Atributo4</th>
+                                                    <th>Activo?</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <HR/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-center"><span class="bg-info text-white" id="htmlMensajeModal"></span></h5>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="idBotonAgregarAtributo4"type="button" class="btn btn-success" onclick="ejecutarAgregarAtributo4()">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- Windows Modal No se puede eliminar -->
+<div class="modal fade" id="NosePuedeEliminarModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-info-circle"></i>&nbsp;Informacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Atributo4 Existente</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="text-center"><span class="label label-danger" id="msg"></span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Entendido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsDiccionario/jsAtributo4V1.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>

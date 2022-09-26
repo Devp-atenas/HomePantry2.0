@@ -1,5 +1,56 @@
 $("#botonenviar").click(function() {
     if ($("#FormAtributo").valid()) {
+        existeAtributo5($("#inputAtributo").val());
+    }
+});
+
+
+function existeAtributo5(Atributo) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'CantidadAtributo5V1/',
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
+        "data":{
+            "Atributo":Atributo
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cantidad != 0){
+            var idCategoria = $('#selectCategoria').val();
+            cargarTablaDiccionarioExistente(Atributo,idCategoria);
+            $('#htmlItem').html(Atributo);
+            $('#DiccionarioExistenteModal').modal('show');
+        }else{
+            ejecutarAgregarAtributo5();
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function ejecutarAgregarAtributo5() {
+    if ($("#FormAtributo").valid()) {
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -11,11 +62,12 @@ $("#botonenviar").click(function() {
             },
             "data": {
                 "Id_Categoria": $("#selectCategoria").val(),
-                "Atributo": $("#inputAtributo").val(),
+                "Atributo": $("#inputAtributo").val().toUpperCase(),
                 "activo":  $('input:radio[name=activoAdd]:checked').val()
             }
         }
         $.ajax(settings).done(function(response) {
+            $('#DiccionarioExistenteModal').modal('hide');
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Atributo5: "+$("#inputAtributo").val(),0,"C");
             const Toast = Swal.mixin({
                 toast: true,
@@ -63,7 +115,140 @@ $("#botonenviar").click(function() {
             }
         })
     }
-});
+}
+
+function cargarTablaDiccionarioExistente(Item,idCategoria){
+    var msg = "Si de desea agregar el item presione en agregar";
+    $("#idBotonAgregarAtributo5").prop('disabled', false);
+    $('#TableDiccionarioExistente').dataTable({
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": true,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": false,
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Listado de marcas duplicadas'
+            }
+        ],
+        "bPaginate":    false,
+        "scrollY":      '30vh',
+        //"fixedHeader":  true,
+        //"deferRender":  true,
+        "ajax": {
+            "url": localStorage.getItem("urlApi")+'getAtributo5XNombreAtributo5V1/',
+            "type": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data":{
+                "Atributo":Item
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/homepantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [
+            {
+                mData: 'Categoria',
+                className: "text-center"
+            },
+            {
+                mData: 'Item',
+                className: "text-center"
+            },
+            {
+                mData: 'status',
+                className: "text-center"
+            }
+            
+        ],
+        "createdRow": function( row, data, dataIndex){
+            if (data['Id_Categoria'] == idCategoria){
+                $('td', row).eq(0).css('color', '#EE0000');
+                $('td', row).eq(1).css('color', '#EE0000');
+                $('td', row).eq(2).css('color', '#EE0000');
+                $("#idBotonAgregarAtributo5").prop('disabled', true);
+                msg = "El Item ya pertenece a la categoria: "+data['Categoria']+"; no podra ser agregado";
+                $('#htmlMensajeModal').html(msg);
+            }
+            $('#htmlMensajeModal').html(msg);
+        }
+    });
+}
+
+
+function deleteAction(data) {
+    var msg;
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdAtributo5V1/'+data,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cant != 0){
+            if (response.data[0].Cant == 1){
+                msg = "No se puede eliminar Atributo debido a que existe "+response.data[0].Cant
+                    +" producto asociado";
+            }else{
+                msg = "No se puede eliminar la marca debido a que existen "+response.data[0].Cant
+                    +" productos asociados";
+            }
+            $('#msg').html(msg);
+            $('#NosePuedeEliminarModal').modal('show');
+        }else{
+            deleteAtributo5(data);
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
 
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);
@@ -153,7 +338,7 @@ $(document).ready(function() {
     document.getElementById('FormAtributo').reset();
 });
 
-function deleteAction(data) {
+function deleteAtributo5(data) {
     Swal.fire({
         title: '¿Estas seguro?',
         text: "¡No podrás revertir esto!",
@@ -223,7 +408,7 @@ function ActualizarRegistro() {
             "data": {
                 "Id_Atributo": $("#inputIdEditAtributo").val(),
                 "Id_Categoria": $("#selectCategoriaEdit").val(),
-                "Atributo": $("#inputAtributoEdit").val(),
+                "Atributo": $("#inputAtributoEdit").val().toUpperCase(),
                 "activo": $('input:radio[name=activoEdit]:checked').val()
             }
         }
