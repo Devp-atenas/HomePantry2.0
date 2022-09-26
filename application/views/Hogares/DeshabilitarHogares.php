@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="FormAtributoEdit">
+                            <form id="FormDeshabilitarHogar">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -58,10 +58,20 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Comentario:</div>
-                                            <input type="text" name="inputAtributoEdit" id="inputAtributoEdit" class="form-control">
+                                            <input type="text" name="inputComentario" id="inputComentario" class="form-control">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row" style="visibility:hidden;">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputIdHogar">id:</label>
+                                            <input type="text" name="inputIdHogar" id="inputIdHogar"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 
                             </form>
                         </div>
@@ -92,7 +102,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fa-light fa-barcode-scan"></i>&nbsp;Hogar perteneciente a la Muestra</h5>
+                <h5 class="modal-title"><i class="bi bi-info-circle"></i>&nbsp;Hogar pertenece a la muestra</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -132,7 +142,7 @@ function EditAction(data) {
 </script>
 
 <!-- DataTables  & Plugins -->
-
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

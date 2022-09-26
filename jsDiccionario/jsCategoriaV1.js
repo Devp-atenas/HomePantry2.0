@@ -7,12 +7,15 @@ $("#botonenviar").click(function() {
 function existeCategoria(Categoria) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'CantidadCategoriaV1/' + Categoria,
-        "method": "get",
+        "url": urlApi+'CantidadCategoriaV1/',
+        "method": "post",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
+        },
+        "data": {
+            "Categoria": Categoria
+        },
     }
     $.ajax(settings).done(function(response) {
         if (response.data[0].Cantidad != 0){
@@ -139,11 +142,14 @@ function cargarTablaDiccionarioExistente(Item){
         //"fixedHeader":  true,
         //"deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getCategoriaXNombreCategoriaV1/' + Item,
-            "type": "GET",
+            "url": localStorage.getItem("urlApi")+'getCategoriaXNombreCategoriaV1/',
+            "type": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Categoria": Item
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {

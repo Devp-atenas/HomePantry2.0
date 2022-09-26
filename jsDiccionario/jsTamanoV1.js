@@ -8,12 +8,15 @@ $("#botonenviar").click(function() {
 function existeTamano(Tamano) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'CantidadTamanoV1/' + Tamano,
-        "method": "get",
+        "url": urlApi+'CantidadTamanoV1/',
+        "method": "post",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
+        },
+        "data": {
+            "Tamano": Tamano
+        },
     }
     $.ajax(settings).done(function(response) {
         if (response.data[0].Cantidad != 0){
@@ -138,11 +141,14 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
         //"fixedHeader":  true,
         //"deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getTamanoXNombreTamanoV1/' + Item,
-            "type": "GET",
+            "url": localStorage.getItem("urlApi")+'getTamanoXNombreTamanoV1/',
+            "type": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Tamano": Item
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {

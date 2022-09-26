@@ -7,11 +7,14 @@ $("#botonenviar").click(function() {
 function existeFabricante(Fabricante) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'CantidadFabricanteV1/' + Fabricante,
-        "method": "get",
+        "url": urlApi+'CantidadFabricanteV1/',
+        "method": "POST",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
+        "data": {
+            "Fabricante": Fabricante
         }
     }
     $.ajax(settings).done(function(response) {
@@ -141,11 +144,14 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
         //"fixedHeader":  true,
         //"deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getFabricantesXNombreFabricanteV1/' + Item,
-            "type": "GET",
+            "url": localStorage.getItem("urlApi")+'getFabricantesXNombreFabricanteV1/',
+            "type": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Fabricante": Item
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {

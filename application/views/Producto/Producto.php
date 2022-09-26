@@ -115,7 +115,7 @@ select:focus {
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fragmentacion:</div>
-                                    <input type="text" name="inputFragmentacion" id="inputFragmentacion" class="form-control">
+                                    <input type="text" name="inputFragmentacion" id="inputFragmentacion" class="form-control" readonly="readonly" />
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -269,13 +269,12 @@ select:focus {
                                         <th>#</th>
                                         <th>Producto</th>
                                         <th>Codigo de Barra</th>
-                                        <th>Segmento</th>
                                         <th>Fabricanta</th>
                                         <th>Marca</th>
+                                        <th>Segmento</th>
                                         <th>Tamaño Rango</th>
                                         <th>Tamano</th>
                                         <th>Unidad Medida</th>
-                                        <th>Fragmentacion</th>
                                         <th>Fecha Alta</th>
                                         <th>Activo?</th>
                                         <th>Pendiente?  </th>
@@ -371,7 +370,7 @@ select:focus {
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fragmentacion:</div>
-                                            <input type="text" name="inputFragmentacionEdit" id="inputFragmentacionEdit" class="form-control">
+                                            <input type="text" name="inputFragmentacionEdit" id="inputFragmentacionEdit" class="form-control" readonly="readonly" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -924,6 +923,7 @@ $("#selectFabricante").change(function() {
 
 
 </script>
+<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>

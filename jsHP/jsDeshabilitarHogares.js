@@ -1,29 +1,43 @@
-function desactivarHogar(idPanelHogar,idMuestra){
-    if (idMuestra != 0){
-        $('#modal-hogarPerteneceMuestra').modal('show');
-    }else{
-        cargarMotivoDeshabilitarHogar('#selectMotivo',0);
-        $('#modal-deshabilitarHogar').modal('show');
-    }
-
-    
-    /*
-    
-    
-    
-    
+$("#idBTDeshabilitarHogar").click(function() {
+        
+    var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getIdMuestra4IdPanelHogar/' + idPanelHogar,
-        "method": "get",
+        "url": urlApi+'deshabilitarHogar/',
+        "method": "POST",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
+        "data":{
+            "idMotivo":$('#selectMotivo').val(),
+            "Comentario":$('#inputComentario').val(),
+            "idHogar":$('#inputIdHogar').val()
+            
         }
     }
     $.ajax(settings).done(function(response) {
+        $('#modal-deshabilitarHogar').modal('hide');
+        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Hogar deshabilitado por : "+$("#selectMotivo option:selected").text()+" (idHogar)",$('#inputIdHogar').val(),"D");
+        cargarTablaHogares("#TableHogaresPanelistas");   
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 10000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: response.message,
+            confirmButtonText: `Ok`,
+        })
+        var form = document.querySelector('#FormDeshabilitarHogar');
+        form.reset();
         
-        
-
 
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -44,9 +58,19 @@ function desactivarHogar(idPanelHogar,idMuestra){
             })
             window.location = '/homepantry20/index.php';
         }
-    })*/
-}
+    })
+});
 
+
+function desactivarHogar(idPanelHogar,idMuestra){
+    if (idMuestra != 0){
+        $('#modal-hogarPerteneceMuestra').modal('show');
+    }else{
+        cargarMotivoDeshabilitarHogar('#selectMotivo',0);
+        $('#inputIdHogar').val(idPanelHogar);
+        $('#modal-deshabilitarHogar').modal('show');
+    }
+}
 
 function cargarMotivoDeshabilitarHogar(etiqueta,idS) {
     var settings = {

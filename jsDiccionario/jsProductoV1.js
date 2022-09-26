@@ -7,6 +7,7 @@ $("#botonenviar").click(function() {
 
 $(document).ready(function() {
 
+    
     $(function($) {
         $('#inputFragmentacion').autoNumeric('init', {
             lZero: 'deny',
@@ -50,9 +51,6 @@ $(document).ready(function() {
             },
             selectUnidadMedidaEdit: {
                 required: true,
-            },
-            inputFragmentacionEdit: {
-                required: true
             },
             inputCodigoBarraEdit: {
                 required: true,
@@ -145,9 +143,6 @@ $(document).ready(function() {
             selectUnidadMedida: {
                 required: true
             },
-            inputFragmentacion: {
-                required: true
-            },
             inputCodigoBarra: {
                 required: true,
                 minlength: 8,
@@ -183,9 +178,6 @@ $(document).ready(function() {
             },
             selectUnidadMedida: {
                 required: "Por favor ingrese el Unidad Medida",
-            },
-            inputFragmentacion: {
-                required: "Por favor ingrese el Fragmentacion",
             },
             inputCodigoBarra: {
                 required: "Por favor ingrese el Codigo de Barra",
@@ -1249,7 +1241,7 @@ function ejecutarAgregarProductoNuevo(){
 
 function existeCodigoBarra(CodigoBarras) {
     var urlApi = localStorage.getItem("urlApi");
-    alert(CodigoBarras);
+    //alert(CodigoBarras);
     var settings = {
         "url": urlApi+'CantidadProductoXCodigoBarraV1/' + CodigoBarras,
         "method": "get",
@@ -1439,15 +1431,15 @@ function cargarTabla(Id){
                 className: "text-center"
             },
             {
-                mData: 'Segmento',
-                className: "text-center"
-            },
-            {
                 mData: 'Fabricante',
                 className: "text-center"
             },
             {
                 mData: 'Marca',
+                className: "text-center"
+            },
+            {
+                mData: 'Segmento',
                 className: "text-center"
             },
             {
@@ -1460,10 +1452,6 @@ function cargarTabla(Id){
             },
             {
                 mData: 'UnidadMedida',
-                className: "text-center"
-            },
-            {
-                mData: 'Fragmentacion',
                 className: "text-center"
             },
             {
@@ -1481,7 +1469,7 @@ function cargarTabla(Id){
             
         ],
         "columnDefs": [{
-            "targets": 13,
+            "targets": 12,
             "orderable": true,
             "data": 'Id_Producto',
             "className": "text-center",

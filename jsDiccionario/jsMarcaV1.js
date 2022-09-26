@@ -7,12 +7,15 @@ $("#botonenviar").click(function() {
 function existeMarca(Marca) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'CantidadMarcaV1/' + Marca,
-        "method": "get",
+        "url": urlApi+'CantidadMarcaV1/',
+        "method": "post",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
+        },
+        "data": {
+            "Marca": Marca
+        },
     }
     $.ajax(settings).done(function(response) {
         if (response.data[0].Cantidad != 0){
@@ -144,6 +147,9 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Marca": Item
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
@@ -312,7 +318,7 @@ function deleteAction(data) {
     var idCategoria = $('#selectCategoriaTabla').val();
     var msg;
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdMarcaV1/'+data+"/"+idCategoria,
+        "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdMarcaV1/'+data,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",

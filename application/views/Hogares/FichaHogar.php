@@ -209,7 +209,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <div class="inputText font-weight-bold">Telefono:</div>
+                                <div class="inputText font-weight-bold">Telefono Local:</div>
                                 <input type="text" pattern="\d*" maxlength="11" class="form-control input-sm" id="telefonoHogar" name="telefonoHogar" placeholder="Ingrese Telefono ...">
                                 <div class="inputText font-weight-bold">Referencia:</div>
                                 <input type="text" maxlength="50" class="form-control" id="referenciaHogar" name="referenciaHogar" placeholder="Referencia ...">

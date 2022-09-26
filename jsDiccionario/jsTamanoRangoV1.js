@@ -7,12 +7,15 @@ $("#botonenviar").click(function() {
 function existeTamRango(TamRango) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'CantidadTamRangoV1/' + TamRango,
-        "method": "get",
+        "url": urlApi+'CantidadTamRangoV1/',
+        "method": "post",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
+        },
+        "data": {
+            "TamRango": TamRango
+        },
     }
     $.ajax(settings).done(function(response) {
         if (response.data[0].Cantidad != 0){
@@ -139,10 +142,13 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
         //"deferRender":  true,
         "ajax": {
             "url": localStorage.getItem("urlApi")+'getTamRangosXNombreTamRangoV1/' + Item,
-            "type": "GET",
+            "type": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "TamRango": Item
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
