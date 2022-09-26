@@ -57,7 +57,7 @@ function ejecutarAgregarCategoria(Fabricante) {
                 "Authorization": "Bearer " + localStorage.getItem('Token')
             },
             "data": {
-                "Categoria": $("#CategoriaAdd").val(),
+                "Categoria": $("#CategoriaAdd").val().toUpperCase(),
                 "ind_Medicina": $('input:radio[name=medicinaAdd]:checked').val(),
                 "Factor": $("#inputFactorAdd").val(),
                 "Min_Por_Val": $("#inputminimoAdd").val(),
@@ -513,7 +513,7 @@ function ActualizarRegistro() {
             },
             "data": {
                 "id_Categoria": $("#idCategoriaEdit").val(),
-                "Categoria": $("#CategoriaEdit").val(),
+                "Categoria": $("#CategoriaEdit").val().toUpperCase(),
                 "ind_Medicina": $('input:radio[name=medicinaEdit]:checked').val(),
                 "activo": $('input:radio[name=activoEdit]:checked').val(),
                 "Factor": $("#inputFactorEdit").val(),

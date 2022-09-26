@@ -728,7 +728,7 @@ select:focus {
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h5 class="text-center"><span class="label label-danger" id="htmlMensajeModal"></span></h5>
+                                        <h5 class="text-center"><span class="bg-info text-white" id="htmlMensajeModal"></span></h5>
                                     </div>
                                 </div>
                             </form>

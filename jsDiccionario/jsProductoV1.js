@@ -1,15 +1,9 @@
-
-
 $("#botonenviar").click(function() {
     if ($("#FormProducto").valid()) {
         var CodigoBarras = $('#inputCodigoBarra').val();
         existeCodigoBarra(CodigoBarras);
     }
 });
-
-
-
-
 
 $(document).ready(function() {
 
@@ -30,8 +24,6 @@ $(document).ready(function() {
             aDec: ','
         });
     });
-
-
 
     //$('#inputCategoria').select2();
     $('#TableProducto').hide();
@@ -265,10 +257,6 @@ function cargarNombreAtributos(id_categoria) {
     })
 }
 
-
-
-
-
 function cargarCategoria(etiqueta,idS) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAllCategoriaV1',
@@ -314,7 +302,6 @@ function cargarCategoria(etiqueta,idS) {
         }
     })
 }
-
 
 function cargarFabricante(etiqueta,idCat,idS) {
     var urlApi = localStorage.getItem("urlApi");
@@ -998,7 +985,7 @@ function ActualizarRegistro() {
                 "id_UnidadMedida": $("#selectUnidadMedidaEdit").val(),
                 "Fragmentacion": eliminarSeparadorMiles($("#inputFragmentacionEdit").val()),
                 "CodigoBarra": $("#inputCodigoBarraEdit").val(),
-                "Producto": $("#inputProductoEdit").val(),
+                "Producto": $("#inputProductoEdit").val().toUpperCase(),
                 "activo": $('input:radio[name=activoEdit]:checked').val(),
                 "Ind_Pendiente": $('input:radio[name=pendienteEdit]:checked').val(),
                 "Id_Atributo1": $("#selectAtributo1Edit").val(),
@@ -1191,7 +1178,7 @@ function ejecutarAgregarProductoNuevo(){
             "data": {
                 "Id_Categoria": $("#selectCategoria").val(),
                 "CodigoBarra": $("#inputCodigoBarra").val(),
-                "Producto": $("#inputProducto").val(),
+                "Producto": $("#inputProducto").val().toUpperCase(),
                 "id_Segmento": $("#selectSegmento").val(),
                 "Id_Fabricante": $("#selectFabricante").val(),
                 "Id_Marca": $("#selectMarca").val(),
@@ -1211,8 +1198,8 @@ function ejecutarAgregarProductoNuevo(){
             }
         }
         $.ajax(settings).done(function(response) {
-            
-            //Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se agrego producto (IdCategoria): "+$("#inputProducto").val() + " - " +$("#inputCodigoBarra").val(),$("#selectCategoria").val(),"C");
+            $('#CodigoBarraExistenteModal').modal('hide');
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se agrego producto (IdCategoria): "+$("#inputProducto").val() + " - " +$("#inputCodigoBarra").val(),$("#selectCategoria").val(),"C");
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -1305,7 +1292,7 @@ function existeCodigoBarra(CodigoBarras) {
 }
 
 function cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria){
-    var msg = "";
+    var msg = "Si de desea agregar el producto presione en agregar";
     var flag = false;
     $('#TableCodigoBarraExistente').dataTable({
         "bDestroy": true,
@@ -1360,17 +1347,11 @@ function cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria){
                 $('td', row).eq(0).css('color', '#EE0000');
                 $('td', row).eq(1).css('color', '#EE0000');
                 $("#idBotonAgregarPoducto").prop('disabled', true);
-                flag = true;
                 msg = "El codigo de barra ya pertenece a una categoria!!!";
                 $('#htmlMensajeModal').html(msg);
             }
-            if (flag){
-                msg = "El codigo de barra ya pertenece a una categoria!!!";
-                $('#htmlMensajeModal').html(msg);
-            }else{
-                msg = "Si de desea agregar el producto con el mismo codigo de barras presione en agregar Producto";
-                $('#htmlMensajeModal').html(msg);
-            }
+            
+            $('#htmlMensajeModal').html(msg);
         }
     });
 }

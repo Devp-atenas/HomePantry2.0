@@ -58,7 +58,7 @@ function ejecutarAgregarUnidadMedida() {
             },
             "data": {
                 "Id_Categoria": $("#selectCategoria").val(),
-                "UnidadMedida": $("#inputUndMedida").val(),
+                "UnidadMedida": $("#inputUndMedida").val().toUpperCase(),
                 "activo":  $('input:radio[name=activoAdd]:checked').val()
             }
         }
@@ -415,7 +415,7 @@ function ActualizarRegistro() {
             "data": {
                 "Id_UnidadMedida": $("#inputIdEditUndMedida").val(),
                 "Id_Categoria": $("#selectCategoriaEdit").val(),
-                "UnidadMedida": $("#inputUndMedidaEdit").val(),
+                "UnidadMedida": $("#inputUndMedidaEdit").val().toUpperCase(),
                 "activo":  $('input:radio[name=activoEdit]:checked').val()
             }
         }

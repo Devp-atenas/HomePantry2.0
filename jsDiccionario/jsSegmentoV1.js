@@ -58,7 +58,7 @@ function ejecutarAgregarSegmento(){
             },
             "data": {
                 "Id_Categoria": $("#selectCategoria").val(),
-                "Segmento": $("#inputSegmento").val(),
+                "Segmento": $("#inputSegmento").val().toUpperCase(),
                 "activo":  $('input:radio[name=activoAdd]:checked').val()
             }
         }
@@ -481,7 +481,7 @@ function ActualizarRegistro() {
             "data": {
                 "Id_Segmento": $("#inputIdEditSegmento").val(),
                 "Id_Categoria": $("#selectCategoriaEdit").val(),
-                "Segmento": $("#inputSegmentoEdit").val(),
+                "Segmento": $("#inputSegmentoEdit").val().toUpperCase(),
                 "activo":  $('input:radio[name=activoEdit]:checked').val()
             }
         }

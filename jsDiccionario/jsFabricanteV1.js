@@ -59,7 +59,7 @@ function ejecutarAgregarFabricante(Fabricante) {
             },
             "data": {
                 "Id_Categoria": $("#selectCategoria").val(),
-                "Fabricante": $("#inputFabricante").val(),
+                "Fabricante": $("#inputFabricante").val().toUpperCase(),
                 "Ind_Medicina": $('input:radio[name=medicinaAdd]:checked').val(),
                 "Ind_MarcaPropia": $('input:radio[name=marcaAdd]:checked').val(),
                 "status": $('input:radio[name=activoAdd]:checked').val()
@@ -411,7 +411,7 @@ function ActualizarRegistro() {
             },
             "data": {
                 "IdFabricante": $("#inputIdEditFabricante").val(),
-                "Fabricante": $("#inputFabricanteEdit").val(),
+                "Fabricante": $("#inputFabricanteEdit").val().toUpperCase(),
                 "Ind_Medicina":  $('input:radio[name=medicinaEdit]:checked').val(),
                 "Ind_Medicina":  $('input:radio[name=medicinaEdit]:checked').val(),
                 "Ind_MarcaPropia":  $('input:radio[name=marcaEdit]:checked').val(),

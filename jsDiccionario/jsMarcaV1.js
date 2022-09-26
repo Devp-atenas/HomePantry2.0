@@ -59,7 +59,7 @@ function ejecutarAgregarMarca(){
             "data": {
                 "Id_Categoria": $("#selectCategoria").val(),
                 "Id_Fabricante": $("#selectFabricante").val(),
-                "Marca": $("#inputMarca").val(),
+                "Marca": $("#inputMarca").val().toUpperCase(),
                 "Ind_Medicina":  $('input:radio[name=medicinaAdd]:checked').val(),
                 "Ind_MarcaPropia":  $('input:radio[name=marcaAdd]:checked').val(),
                 "activo":  $('input:radio[name=activoAdd]:checked').val()
@@ -426,7 +426,7 @@ function ActualizarRegistro() {
                 "Id_Marca": $("#inputIdEditMarca").val(),
                 "Id_Categoria": $("#selectCategoriaEdit").val(),
                 "Id_Fabricante": $("#selectFabricanteEdit").val(),
-                "Marca": $("#inputMarcaEdit").val(),
+                "Marca": $("#inputMarcaEdit").val().toUpperCase(),
                 "activo":  $('input:radio[name=activoEdit]:checked').val(),
                 "Ind_MarcaPropia":  $('input:radio[name=marcaEdit]:checked').val(),
                 "Ind_Medicina":  $('input:radio[name=medicinaEdit]:checked').val()
