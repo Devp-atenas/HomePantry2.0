@@ -7,11 +7,14 @@ $("#botonenviar").click(function() {
 function existeSegmento(Segmento) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'CantidadSegmentoV1/' + Segmento,
-        "method": "get",
+        "url": urlApi+'CantidadSegmentoV1/',
+        "method": "POST",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
+        "data": {
+            "Segmento": Segmento
         }
     }
     $.ajax(settings).done(function(response) {
@@ -45,6 +48,8 @@ function existeSegmento(Segmento) {
     })
 }
 
+
+
 function ejecutarAgregarSegmento(){
     if ($("#FormSegmento").valid()) {
         var settings = {
@@ -58,7 +63,7 @@ function ejecutarAgregarSegmento(){
             },
             "data": {
                 "Id_Categoria": $("#selectCategoria").val(),
-                "Segmento": $("#inputSegmento").val().toUpperCase(),
+                "Segmento": $("#inputSegmento").val(),
                 "activo":  $('input:radio[name=activoAdd]:checked').val()
             }
         }
@@ -139,11 +144,14 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
         //"fixedHeader":  true,
         //"deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getSegmentoXNombreSegmentoV1/' + Item,
-            "type": "GET",
+            "url": localStorage.getItem("urlApi")+'getSegmentoXNombreSegmentoV1/',
+            "type": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "data": {
+                "Segmento": Item
             },
             "error": function(xhr, error, thrown) {
                 if (xhr.status === 403) {
