@@ -178,58 +178,76 @@ class Principal extends CI_Controller {
         $this->load->view('PuntajeSino/PuntajeSino');
     }
     public function MetrosVivienda(){
-        $this->load->view('nse/MetrosVivienda');
+        $this->load->view('NSE/MetrosVivienda');
     }
     public function Parentesco(){
-        $this->load->view('nse/Parentesco');
+        $this->load->view('NSE/Parentesco');
     }
     public function Educacion(){
-        $this->load->view('nse/Educacion');
+        $this->load->view('NSE/Educacion');
     }
     public function TipoIngreso(){
-        $this->load->view('nse/TipoIngreso');
+        $this->load->view('NSE/TipoIngreso');
     }
     public function TipoVivienda(){
-        $this->load->view('nse/TipoVivienda');
+        $this->load->view('NSE/TipoVivienda');
     }
     public function PuntosLuz(){
-        $this->load->view('nse/PuntosLuz');
+        $this->load->view('NSE/PuntosLuz');
     }
     public function OcupacionVivienda(){
-        $this->load->view('nse/OcupacionVivienda');
+        $this->load->view('NSE/OcupacionVivienda');
     }
     public function MontoVivienda(){
-        $this->load->view('nse/MontoVivienda');
+        $this->load->view('NSE/MontoVivienda');
     }
     public function AguasBlancas(){
-        $this->load->view('nse/AguasBlancas');
+        $this->load->view('NSE/AguasBlancas');
     }
     public function AguasNegras(){
-        $this->load->view('nse/AguasNegras');
+        $this->load->view('NSE/AguasNegras');
     }
     public function AseoUrbano(){
-        $this->load->view('nse/AseoUrbano');
+        $this->load->view('NSE/AseoUrbano');
     }
     public function CantidadTV(){
-        $this->load->view('nse/CantidadTV');
+        $this->load->view('NSE/CantidadTV');
     }
     public function TipoTV(){
-        $this->load->view('nse/TipoTV');
+        $this->load->view('NSE/TipoTV');
     }
     public function TipoSenal(){
-        $this->load->view('nse/TipoSenal');
+        $this->load->view('NSE/TipoSenal');
     }
     public function OperadoraCable(){
-        $this->load->view('nse/OperadoraCable');
+        $this->load->view('NSE/OperadoraCable');
     }
     public function TvOnline(){
-        $this->load->view('nse/TvOnline');
+        $this->load->view('NSE/TvOnline');
     }
     public function Autos(){
-        $this->load->view('nse/Autos');
+        $this->load->view('NSE/Autos');
     }
     public function FrecuenciaElectricidad(){
-        $this->load->view('nse/FrecuenciaElectricidad');
+        $this->load->view('NSE/FrecuenciaElectricidad');
+    }
+    public function Zona(){
+        $this->load->view('NSE/Zona');
+    }
+    public function Techo(){
+        $this->load->view('NSE/Techo');
+    }
+    public function Piso(){
+        $this->load->view('NSE/Piso');
+    }
+    public function Paredes(){
+        $this->load->view('NSE/Paredes');
+    }
+    public function Pintura(){
+        $this->load->view('NSE/Pintura');
+    }
+    public function PEstacionamiento(){
+        $this->load->view('NSE/PEstacionamiento');
     }
     //----------- Operaciones ------------
     public function ValidacionProducto(){

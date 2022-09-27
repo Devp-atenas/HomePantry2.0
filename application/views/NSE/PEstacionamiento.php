@@ -35,8 +35,8 @@
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><i class="bi bi-lightning-charge-fill"></i>&nbsp;Mantenimiento Frecuencia Electricidad</h1>
+            <div class="col-sm-12">
+                <h1><i class="bi bi-pin-map"></i>&nbsp;Mantenimiento Puestos Estacionamiento</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -47,7 +47,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Frecuencia Electricidad</h3>
+                    <h3 class="card-title">Puestos Estacionamiento</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -59,7 +59,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Frecuencia Electricidad:</div>
+                                    <div class="inputText font-weight-bold">Puestos Estacionamiento:</div>
                                     <input type="text" name="inputNombreAdd" id="inputNombreAdd" class="form-control input-sm"placeholder="Ingrese nombre del item ...">
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listado Frecuencia Electricidad</h3>
+                    <h3 class="card-title">Listado Puestos Estacionamiento</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -124,7 +124,7 @@
                             <table id="TableVNSE" class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
-                                        <th>Frecuencia Electricidad</th>
+                                        <th>Puestos Estacionamiento</th>
                                         <th>Peso</th>
                                         <th>Estatus</th>
                                         <th></th>
@@ -152,7 +152,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Frecuencia Electricidad</h3>
+                            <h3 class="card-title">Puestos Estacionamiento</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -164,7 +164,7 @@
                                 <div class="row">
                                    <div class="col-md-5">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">Frecuencia Electricidad:</div>
+                                            <div class="inputText font-weight-bold">Puestos Estacionamiento:</div>
                                             <input type="text" name="inputNombreEdit" id="inputNombreEdit" class="form-control">
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Frecuencia de Electricidad</h3>
+                            <h3 class="card-title">Puestos Estacionamiento</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -243,7 +243,7 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <div class="inputText font-weight-bold">Frecuencia de Electricidad:</div>
+                                        <div class="inputText font-weight-bold">Puestos Estacionamiento:</div>
                                         <input type="text" name="inputNombreVer" id="inputNombreVer" class="form-control" readonly>
                                     </div>
                                 </div>
@@ -276,7 +276,7 @@
 </div>
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsVNSE/jsFrecuenciaElectricidad.js') ?>"></script>
+<script src="<?php echo base_url('jsVNSE/jsPEstacionamiento.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
 

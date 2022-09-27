@@ -59,7 +59,7 @@ function SmartWizard(target, options) {
         this.contentWidth = $this.elmStepContainer.width();
 
         $($this.buttons.next).click(function() {
-			//if (false){
+			/*
 			if ($("#identificacion2Hogar").val() == ""){
 				Swal.fire(
 					'Complete y guarde ubicacion del hogar',
@@ -69,7 +69,9 @@ function SmartWizard(target, options) {
 			}else{
 				$this.goForward();
 				return false;
-			}
+			}*/
+            $this.goForward();
+				return false;
         });
         $($this.buttons.previous).click(function() {
             $this.goBackward();

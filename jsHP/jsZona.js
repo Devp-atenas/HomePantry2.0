@@ -3,7 +3,7 @@ $("#botonenviar").click(function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": localStorage.getItem("urlApi")+'addFrecuenciaElectricidad',
+            "url": localStorage.getItem("urlApi")+'addZona',
             "method": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -139,7 +139,7 @@ function deleteAction(data) {
     }).then((result) => {
         if (result.isConfirmed) {
             var settings = {
-                "url": localStorage.getItem("urlApi")+'deleteFrecuenciaElectricidad/' + data,
+                "url": localStorage.getItem("urlApi")+'deleteZona/' + data,
                 "method": "GET",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -147,7 +147,7 @@ function deleteAction(data) {
                 }
             }
             $.ajax(settings).done(function(response) {
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Borrar Frecuencia Electricidad (IdFrecuenciaElectricidad)",data,"D");
+                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Borrar Frecuencia Electricidad (IdZona)",data,"D");
                 var DatosJson = JSON.parse(JSON.stringify(response));
                 Swal.fire({
                     title: DatosJson.message,
@@ -186,7 +186,7 @@ function ActualizarRegistro() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": localStorage.getItem("urlApi")+'updateFrecuenciaElectricidad',
+            "url": localStorage.getItem("urlApi")+'updateZona',
             "method": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -200,7 +200,7 @@ function ActualizarRegistro() {
             }
         }
         $.ajax(settings).done(function(response) {
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Actualizar FrecuenciaElectricidad (Id)",$("#inputIdEditVNSE").val(),"U");
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Actualizar Zona (Id)",$("#inputIdEditVNSE").val(),"U");
             let xtable = $('#TableVNSE').DataTable();
             xtable.ajax.reload(null, false);
             const Toast = Swal.mixin({
@@ -251,7 +251,7 @@ function ActualizarRegistro() {
 function EditAction(data) {
     document.getElementById('FormVNSEEdit').reset();
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getFrecuenciaElectricidadId/' + data,
+        "url": localStorage.getItem("urlApi")+'getZonaId/' + data,
         "method": "GET",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -259,7 +259,7 @@ function EditAction(data) {
         }
     }
     $.ajax(settings).done(function(response) {
-        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta FrecuenciaElectricidad (Id)",data,"R");
+        Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Zona (Id)",data,"R");
         
         $('#inputIdEditVNSE').val(response.data[0].id);
         $('#inputNombreEdit').val(response.data[0].nombre);
@@ -291,7 +291,7 @@ function EditAction(data) {
 
 function VisualizarAction(data) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getFrecuenciaElectricidadId/' + data,
+        "url": localStorage.getItem("urlApi")+'getZonaId/' + data,
         "method": "GET",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -356,7 +356,7 @@ function cargarTabla(){
             "thousands": "."
         },   
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getAllFrecuenciaElectricidad/',
+            "url": localStorage.getItem("urlApi")+'getAllZona/',
             "type": "GET",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
