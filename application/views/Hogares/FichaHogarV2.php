@@ -1132,34 +1132,21 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="inputText font-weight-bold">¿Se producen cortes eléctricos en su sector?</div>
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="cortesElectricos" name="cortesElectricos" value="1">
-                                        <label class="form-check-label">Diario</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio"  id="cortesElectricos" name="cortesElectricos" value="2">
-                                        <label class="form-check-label">Interdiario</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio"  id="cortesElectricos" name="cortesElectricos" value="3">
-                                        <label class="form-check-label">Una vez a la Semana</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio"  id="cortesElectricos" name="cortesElectricos" value="4">
-                                        <label class="form-check-label">Una vez al mes</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio"  id="cortesElectricos" name="cortesElectricos" value="5">
-                                        <label class="form-check-label">No aplica</label>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Frecuencia Electricidad:</div>
+                                <select class="custom-select form-control-border" id="selectFrecuenciaElectricidad" name="selectFrecuenciaElectricidad">
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Frecuencia agua:</div>
+                                <select class="custom-select form-control-border" id="selectFrecuenciaAgua" name="selectFrecuenciaAgua">
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-3">
                             <div class="inputText font-weight-bold">Almacenamiento Agua: </div>
                             <div class="card">
@@ -1177,15 +1164,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <div class="inputText font-weight-bold">Frecuencia agua:</div>
-                                <select class="custom-select form-control-border" id="selectFrecuenciaAgua" name="selectFrecuenciaAgua">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Frecuencia Electricidad:</div>
-                                <select class="custom-select form-control-border" id="selectFrecuenciaElectricidad" name="selectFrecuenciaElectricidad">
+                                <div class="inputText font-weight-bold">Tipo de Almacenamiento de Agua:</div>
+                                <select class="custom-select form-control-border" id="selectTipoAlmacAgua" name="selectTipoAlmacAgua">
                                 </select>
                             </div>
                         </div>
@@ -2356,10 +2336,6 @@
 
         cargarEstado('#estadoHogar',0);
         cargarZona('#selectZona',0);
-        cargarTecho('#selectTecho',0);
-        cargarPiso('#selectPiso',0);
-        cargarParedes('#selectParedes',0);
-        cargarPEstacionamiento('#selectPEstacionamiento',0);
         // Responsable del panel
         cargarEstadoCivil('#estadoCivilResponsable',0);
         cargarParentesco('#parentescoJefeResponsable',0);
@@ -2382,10 +2358,18 @@
         cargarOcupacionVivienda('#ocupacionVivienda',0);
         cargarPuntosLuz('#puntosLuz',0);
         cargarMontoVivienda('#montoVivienda',0);
+        cargarTecho('#selectTecho',0);
+        cargarPiso('#selectPiso',0);
+        cargarParedes('#selectParedes',0);
+        cargarPEstacionamiento('#selectPEstacionamiento',0);
         // Servicios Públicos
         cargarAguasBlancas('#aguasBlancas',0);
         cargarAguasNegras('#aguasNegras',0);
         cargarAseoUrbano('#aseoUrbano',0);
+        cargarFrecuenciaElectricidad('#selectFrecuenciaElectricidad',0);
+        cargarFrecuenciaAgua('#selectFrecuenciaAgua',0);
+        cargarTipoAlmacenamientoAgua('#selectTipoAlmacAgua',0);
+        
         // TV
         cargarCantidadTV('#cantidadTV',0);
         cargarTipoTV('#tipoTV',0);

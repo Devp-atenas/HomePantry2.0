@@ -671,9 +671,6 @@ function cargarPEstacionamiento(identificador,idS) {
     })
 }
 
-
-
-
 function cargarTipoVivienda(identificador,idS) {
     var settings = {
         "async": true,
@@ -913,6 +910,153 @@ function cargarMontoVivienda(identificador,idS) {
     })
 }
 // ------------------------  Paso 6) Servicios Públicos
+function cargarTipoAlmacenamientoAgua(identificador,idS) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getAllTipoAlmacenamientoAguaCombo/',
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(identificador);
+        selected.find("option").remove();
+        if (idS == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                selected.append("<option value='" + response.data[i].id + "'>" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarFrecuenciaAgua(identificador,idS) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getAllFrecuenciaAguaCombo/',
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(identificador);
+        selected.find("option").remove();
+        if (idS == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                selected.append("<option value='" + response.data[i].id + "'>" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarFrecuenciaElectricidad(identificador,idS) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getAllFrecuenciaElectricidadCombo/',
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(identificador);
+        selected.find("option").remove();
+        if (idS == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                selected.append("<option value='" + response.data[i].id + "'>" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
 function cargarAguasBlancas(identificador,idS) {
     var settings = {
         "async": true,

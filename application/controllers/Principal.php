@@ -228,9 +228,6 @@ class Principal extends CI_Controller {
     public function Autos(){
         $this->load->view('NSE/Autos');
     }
-    public function FrecuenciaElectricidad(){
-        $this->load->view('NSE/FrecuenciaElectricidad');
-    }
     public function Zona(){
         $this->load->view('NSE/Zona');
     }
@@ -248,6 +245,15 @@ class Principal extends CI_Controller {
     }
     public function PEstacionamiento(){
         $this->load->view('NSE/PEstacionamiento');
+    }
+    public function FrecuenciaElectricidad(){
+        $this->load->view('NSE/FrecuenciaElectricidad');
+    }
+    public function FrecuenciaAgua(){
+        $this->load->view('NSE/FrecuenciaAgua');
+    }
+    public function TipoAlmacenamientoAgua(){
+        $this->load->view('NSE/TipoAlmacenamientoAgua');
     }
     //----------- Operaciones ------------
     public function ValidacionProducto(){
