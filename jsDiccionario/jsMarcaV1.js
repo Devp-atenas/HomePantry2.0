@@ -142,7 +142,7 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
         //"fixedHeader":  true,
         //"deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getMarcasXNombreMarcaV1/' + Item,
+            "url": localStorage.getItem("urlApi")+'getMarcasXNombreMarcaV1/',
             "type": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
