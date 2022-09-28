@@ -1576,24 +1576,31 @@
                 <form id="formMedios" action="" method="post">
                     <h2 class="text-center">Medios</h2>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <div class="inputText font-weight-bold">¿Cuantos Televisores hay en su Hogar?</div>
-                                <select class="custom-select form-control-border" id="cantidadTV">
+                                <div class="inputText font-weight-bold">¿Cuantos Televisores Posee?</div>
+                                <select class="custom-select form-control-border" id="cantidadTV" name="cantidadTV">
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Tipo de TV</div>
-                                <select class="custom-select form-control-border" id="tipoTV">
+                                <select class="custom-select form-control-border" id="tipoTV" name="tipoTV">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">¿Cuantos Televisores Plasma Posee?</div>
+                                <select class="custom-select form-control-border" id="cantidadPlasma" name="cantidadPlasma">
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Señal:</div>
-                                <select class="custom-select form-control-border" id="Senal">
+                                <select class="custom-select form-control-border" id="Senal" name="Senal">
                                 </select>
                             </div>
                         </div>
@@ -1602,28 +1609,28 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Cableras #1:</div>
-                                <select class="custom-select form-control-border" id="cablera1">
+                                <select class="custom-select form-control-border" id="cablera1" name="cablera1">
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Cableras #2:</div>
-                                <select class="custom-select form-control-border" id="cablera2">
+                                <select class="custom-select form-control-border" id="cablera2" name="cablera2">
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">TV Online #1:</div>
-                                <select class="custom-select form-control-border" id="tvOnline1">
+                                <select class="custom-select form-control-border" id="tvOnline1" name="tvOnline1">
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">TV Online #2:</div>
-                                <select class="custom-select form-control-border" id="tvOnline2">
+                                <select class="custom-select form-control-border" id="tvOnline2" name="tvOnline2">
                                 </select>
                             </div>
                         </div>
