@@ -223,7 +223,7 @@ $(document).ready(function() {
             },
             inputMarcaEdit: {
                 required: true,
-                minlength: 5,
+                minlength: 2,
                 maxlength: 50,
             }
         },
@@ -236,7 +236,7 @@ $(document).ready(function() {
             },
             inputMarcaEdit: {
                 required: "Por favor ingrese el nombre de la Marca",
-                minlength: "Su marca debe tener al menos 5 caracteres",
+                minlength: "Su marca debe tener al menos 2 caracteres",
                 maxlength: "Su marca debe tener al menos 50 caracteres"
             },
             medicinaEdit: {
@@ -276,7 +276,7 @@ $(document).ready(function() {
             },
             inputMarca: {
                 required: true,
-                minlength: 5,
+                minlength: 2,
                 maxlength: 50,
             }
         },
@@ -295,7 +295,7 @@ $(document).ready(function() {
             },
             inputMarca: {
                 required: "Por favor ingrese la categoria del Marca",
-                minlength: "Su marca debe tener al menos 5 caracteres",
+                minlength: "Su marca debe tener al menos 2 caracteres",
                 maxlength: "Su marca debe tener al máximo 50 caracteres"
             },
         },

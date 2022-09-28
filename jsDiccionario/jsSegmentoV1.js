@@ -376,7 +376,7 @@ $(document).ready(function() {
             },
             inputSegmentoEdit: {
                 required: true,
-                minlength: 10,
+                minlength: 2,
                 maxlength: 50,
             },
             inputAbreviaturaEdit: {
@@ -391,7 +391,7 @@ $(document).ready(function() {
             },
             inputSegmentoEdit: {
                 required: "Por favor ingrese el nombre de la Segmento",
-                minlength: "Su Segmento debe tener al menos 5 caracteres",
+                minlength: "Su Segmento debe tener al menos 2 caracteres",
                 maxlength: "Su Segmento debe tener al menos 50 caracteres"
             },
             inputAbreviaturaEdit: {

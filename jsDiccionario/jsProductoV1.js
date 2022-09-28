@@ -187,7 +187,7 @@ $(document).ready(function() {
             },
             inputProducto: {
                 required: "Por favor ingrese el Producto",
-                minlength: "Longitud Minima 8",
+                minlength: "Longitud Minima 2",
                 maxlength: "Longitud Maxima 50",
                 
             }

@@ -313,6 +313,7 @@ $(document).ready(function() {
         rules: {
             CategoriaAdd: {
                 required: true,
+                minlength: 2
             },
             inputMinimo: {
                 required: true,
@@ -341,7 +342,7 @@ $(document).ready(function() {
         messages: {
             CategoriaAdd: {
                 required: "Por favor ingrese los nombres del Categoria",
-                minlength: "Categoriae debe tener al menos 5 caracteres"
+                minlength: "Categoria debe tener al menos 2 caracteres"
             },
             inputminimoAdd: {
                 required: "Por favor ingrese el Minimo de la Categoria",
@@ -368,8 +369,9 @@ $(document).ready(function() {
     //Boton de Guardar Actualizar Categoria
     $('#FormCategoriaEdit').validate({
         rules: {
-            inputNombresEdit: {
+            inputCategoriaEdit: {
                 required: true,
+                minlength: 2
             },
             inputAbreviaturaEdit: {
                 required: true,
@@ -386,9 +388,9 @@ $(document).ready(function() {
             },
         },
         messages: {
-            inputNombresEdit: {
-                required: "Por favor ingrese los nombres del Categoria",
-                minlength: "Su nombre debe tener al menos 5 caracteres"
+            inputCategoriaEdit: {
+                required: "Por favor ingrese los nombres de Categoria",
+                minlength: "Su nombre debe tener al menos 2 caracteres"
             },
             inputAbreviaturaEdit: {
                 required: "Por favor ingrese los Abreviatura del Categoria",

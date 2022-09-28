@@ -325,7 +325,7 @@ $(document).ready(function() {
             },
             inputFabricante: {
                 required: true,
-                minlength: 3,
+                minlength: 2,
                 maxlength: 50,
             },
             medicinaAdd: {
@@ -341,7 +341,7 @@ $(document).ready(function() {
             },
             inputFabricante: {
                 required: "Por favor ingrese fabricante",
-                minlength: "Su fabricante debe tener al menos 3 caracteres",
+                minlength: "Su fabricante debe tener al menos 2 caracteres",
                 maxlength: "Su fabricante debe tener máximo 50 caracteres"
             },
             medicinaAdd: {

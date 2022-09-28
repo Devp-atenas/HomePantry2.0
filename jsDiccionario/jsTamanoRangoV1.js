@@ -326,7 +326,7 @@ $(document).ready(function() {
             },
             inputTamRangoEdit: {
                 required: true,
-                minlength: 5,
+                minlength: 2,
                 maxlength: 50,
             },
             inputAbreviaturaEdit: {
@@ -341,7 +341,7 @@ $(document).ready(function() {
             },
             inputTamRangoEdit: {
                 required: "Por favor ingrese el Tamaño Rango",
-                minlength: "Su Tamaño Rango debe tener al menos 5 caracteres",
+                minlength: "Su Tamaño Rango debe tener al menos 2 caracteres",
                 maxlength: "Su Tamaño Rango debe tener al menos 50 caracteres"
             },
             inputAbreviaturaEdit: {

@@ -328,7 +328,7 @@ $(document).ready(function() {
             },
             inputUndMedidaEdit: {
                 required: true,
-                minlength: 5,
+                minlength: 2,
                 maxlength: 20,
             },
             inputAbreviaturaEdit: {
@@ -343,7 +343,7 @@ $(document).ready(function() {
             },
             inputUndMedidaEdit: {
                 required: "Por favor ingrese la Unidad de Medida",
-                minlength: "Su Segmento debe tener al menos 5 caracteres",
+                minlength: "Su Segmento debe tener al menos 2 caracteres",
                 maxlength: "Su Segmento debe tener al menos 20 caracteres"
             },
             inputAbreviaturaEdit: {
@@ -381,7 +381,7 @@ $(document).ready(function() {
             },
             inputUndMedida: {
                 required: "Por favor ingrese la Unidad de Medida",
-                minlength: "Unidad Medida debe tener al menos 5 caracteres",
+                minlength: "Unidad Medida debe tener al menos 2 caracteres",
                 maxlength: "Unidad Medida debe ser menor a 20 caracteres"
             },
             inputAbreviatura: {
