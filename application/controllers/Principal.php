@@ -255,6 +255,12 @@ class Principal extends CI_Controller {
     public function TipoAlmacenamientoAgua(){
         $this->load->view('NSE/TipoAlmacenamientoAgua');
     }
+    public function TVPlasmaCantidad(){
+        $this->load->view('NSE/TVPlasmaCantidad');
+    }
+    public function SmartTVCantidad(){
+        $this->load->view('NSE/SmartTVCantidad');
+    }
     //----------- Operaciones ------------
     public function ValidacionProducto(){
         $this->load->view('Operaciones/ValidacionProducto');
