@@ -1,5 +1,36 @@
 <!-- Colocar Include Header y Menu 27jul21 -->
 <?php $this->load->view('Plantillas/Header'); ?>
+<style>
+    .table.dataTable {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+    }
+    .table.dataTable thead {
+        background: linear-gradient(to right, #D69232, #B6a232, #D69232);
+        color: white;
+        /*font-bold: weight;*/
+        /*font-weight: bold;*/
+        font-weight: 900;
+    }
+
+    table.dataTable thead .sorting_asc,
+    .sorting_desc,
+    .sorting {
+        background-image: none !important;
+    }
+
+    select:focus {
+        width: auto;
+    }
+
+    .text-wrap{
+        white-space:normal;
+    }
+    .width-200{
+        width:120px;
+    }
+</style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -1705,6 +1736,39 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                        <div class="col-md-3">
+                                                <div class="inputText font-weight-bold">¿Posee Streaming? </div>
+                                                <div class="card">
+                                                    <div class="form-group">
+                                                        <div class="form-check d-inline">
+                                                            <input class="form-check-input" type="radio" id="Streaming" name="Streaming" value="0">
+                                                            <label class="form-check-label">No</label>
+                                                        </div>
+                                                        <div class="form-check d-inline">
+                                                            <input class="form-check-input" type="radio" id="Streaming" name="Streaming" value="1">
+                                                            <label class="form-check-label">Si</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="inputText font-weight-bold">¿Posee Music Streaming? </div>
+                                                <div class="card">
+                                                    <div class="form-group">
+                                                        <div class="form-check d-inline">
+                                                            <input class="form-check-input" type="radio" id="MusicStreaming" name="MusicStreaming" value="0">
+                                                            <label class="form-check-label">No</label>
+                                                        </div>
+                                                        <div class="form-check d-inline">
+                                                            <input class="form-check-input" type="radio" id="MusicStreaming" name="MusicStreaming" value="1">
+                                                            <label class="form-check-label">Si</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                         <div class="row">
                                             <div class="col text-center">
