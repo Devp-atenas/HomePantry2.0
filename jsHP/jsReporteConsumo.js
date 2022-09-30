@@ -1,8 +1,21 @@
 $(document).ready(function() {
-    //cargarGArea('#selectGArea',0);
+
     cargarEstadosAgrupados('#selectEstadosAgrupados')
-    $('#selectEstadosAgrupados').select2();
+    
+    $('#selectEstadosAgrupados').select2({
+        closeOnSelect: false
+    });
+    
+
+
+
+    //cargarGArea('#selectGArea',0);
+    //$('#selectEstadosAgrupados').select2();
 });
+
+
+
+
 
 $("#selectEstadosAgrupados").change(function() {
     $("#showTabla").hide();

@@ -125,7 +125,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="card">
-                                <div class="form-group">
+                                <div class="form-group ">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" id="calle" name="calle" value="1">
                                         <label class="form-check-label">Calle</label>
@@ -1573,104 +1573,154 @@
                 </form>
             </div>
             <div id="step-8">
-                <form id="formMedios" action="" method="post">
-                    <h2 class="text-center">Medios</h2>
+
+                <h2 class="text-center">Medios</h2>
+                                        
+
+                <section class="content">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">¿Cuantos Televisores Posee?</div>
-                                <select class="custom-select form-control-border" id="cantidadTV" name="cantidadTV">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Tipo de TV</div>
-                                <select class="custom-select form-control-border" id="tipoTV" name="tipoTV">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">¿Cuantos Televisores Plasma Posee?</div>
-                                <select class="custom-select form-control-border" id="cantidadPlasma" name="cantidadPlasma">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Señal:</div>
-                                <select class="custom-select form-control-border" id="Senal" name="Senal">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Cableras #1:</div>
-                                <select class="custom-select form-control-border" id="cablera1" name="cablera1">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">Cableras #2:</div>
-                                <select class="custom-select form-control-border" id="cablera2" name="cablera2">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">TV Online #1:</div>
-                                <select class="custom-select form-control-border" id="tvOnline1" name="tvOnline1">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div class="inputText font-weight-bold">TV Online #2:</div>
-                                <select class="custom-select form-control-border" id="tvOnline2" name="tvOnline2">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="inputText font-weight-bold">¿Le gusta escuchar Radio?</div>
-                            <div class="card">
-                                <div class="form-group">
-                                <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" class="escucharEmisora" id="emisoraNo" name="escucharRadio" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" class="escucharEmisora" id="emisoraSi" name="escucharRadio" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div id="divEmisora" style="display:none;">
-                                        <div class="form-group">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="FM" value="1">
-                                                <label class="form-check-label">FM</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="AM" value="1">
-                                                <label class="form-check-label">AM</label>
-                                            </div>
-                                        </div>
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Tipos de Televisores</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
                                     </div>
                                 </div>
+                                <div class="card-body" style="display: none;">
+                                    <form id="FormTelevisores">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="inputText font-weight-bold">Tipo de TV</div>
+                                                    <select class="custom-select form-control-border" id="tipoTV" name="tipoTV">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="inputText font-weight-bold">Cantidad de Televisores</div>
+                                                    <select class="custom-select form-control-border" id="tipoTV" name="tipoTV">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <input type="button" id="agregarTipoTV" value="Agregar"
+                                                        class="btn btn-success float-right">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </form>
+
+
+                                    <HR/>
+                                    <div id="listadoTV">
+                                        <table id="TableListadoTV" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Tipo TV</th>
+                                                    <th>Cantidad</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>          
+
+                                </div>
+                                <!-- /.card-body -->
                             </div>
+                            <!-- /.card -->
                         </div>
                     </div>
+                </section>
+
+
+
+                <section class="content">
                     <div class="row">
-                        <div class="col text-center">
-                            <button id="guardar-paso-8" type="button" class="btn btn-outline-success">Guardar</button>
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Detalle de Medio</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--<div class="card-body" style="display: none;">-->
+                                <div class="card-body">
+                                    <form id="formMedios" action="" method="post">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="inputText font-weight-bold">Señal:</div>
+                                                    <select class="custom-select form-control-border" id="Senal" name="Senal">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="inputText font-weight-bold">¿Le gusta escuchar Radio?</div>
+                                                <div class="card">
+                                                    <div class="form-group">
+                                                    <div class="form-check d-inline">
+                                                            <input class="form-check-input" type="radio" class="escucharEmisora" id="emisoraNo" name="escucharRadio" value="0">
+                                                            <label class="form-check-label">No</label>
+                                                        </div>
+                                                        <div class="form-check d-inline">
+                                                            <input class="form-check-input" type="radio" class="escucharEmisora" id="emisoraSi" name="escucharRadio" value="1">
+                                                            <label class="form-check-label">Si</label>
+                                                        </div>
+                                                        <div id="divEmisora" style="display:none;">
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" id="FM" value="1">
+                                                                    <label class="form-check-label">FM</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" id="AM" value="1">
+                                                                    <label class="form-check-label">AM</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="inputText font-weight-bold">Cableras:</div>
+                                                    <select class="custom-select form-control-border" id="cablera1" name="cablera1">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="inputText font-weight-bold">TV Online:</div>
+                                                    <select class="custom-select form-control-border" id="tvOnline1" name="tvOnline1">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col text-center">
+                                                <button id="guardar-paso-8" type="button" class="btn btn-outline-success">Guardar</button>
+                                            </div>
+                                        </div>
+                                        <!--/step 8-->
+                                    </form>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
                         </div>
                     </div>
-                    <!--/step 8-->
-                </form>
+                             
+                </section>
             </div>
             <div id="step-9">
                 <form id="formVehiculos" action="" method="post">
@@ -1683,6 +1733,28 @@
                                 </select>
                             </div>
                         </div>
+                        
+                        
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Carros 2005</div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="Perro" value="1">
+                                        <label class="form-check-label">Carros menores al 2005</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="Gato" value="1">
+                                        <label class="form-check-label">Carros mayores o iguales a 2005</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
                         <div class="col-md-3">
                             <div class="inputText font-weight-bold">¿Posee Moto?</div>
                             <div class="card">
@@ -1698,8 +1770,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="inputText font-weight-bold">¿Cuenta al menos uno de ellos con Seguro de Casco?</div>
+                        <div class="col-md-3">
+                            <div class="inputText font-weight-bold">¿Posee Seguro de Casco?</div>
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check d-inline">
@@ -1743,8 +1815,7 @@
                         </div>
                             
                     <div class="col-md-3">
-                        
-                            <div class="card">
+                        <div class="card">
                             <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="Perro" value="1">
@@ -4219,7 +4290,7 @@ function cargarTablaComposicion(idHogar){
  $("[data-mask]").inputmask(); 
 });*/
 </script>
-<script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsBitacora.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-bs4/js/dataTables.bootstrap4.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-responsive/js/dataTables.responsive.min.js')?>"></script>
@@ -4232,8 +4303,6 @@ function cargarTablaComposicion(idHogar){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js')?>"></script>
-
-
 <!--
 <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
 -->

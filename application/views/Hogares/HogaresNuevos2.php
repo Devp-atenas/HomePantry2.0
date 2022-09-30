@@ -1633,7 +1633,7 @@
                     <h2 class="text-center">Mascotas</h2>
                     <div class="row">
                         <div class="col-md-3">
-                        <div class="inputText font-weight-bold">¿Posee Mascota?</div>
+                            <div class="inputText font-weight-bold">¿Posee Mascota?</div>
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check d-inline">
@@ -1648,10 +1648,9 @@
                             </div>
                         </div>
                             
-                    <div class="col-md-3">
-                        
+                        <div class="col-md-3">
                             <div class="card">
-                            <div class="form-group">
+                                <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="Perro" value="1">
                                         <label class="form-check-label">Perro</label>
@@ -1679,7 +1678,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </row>
                     <div class="row">
                         <div class="col text-center">
                             <button id="guardar-paso-10" type="button" class="btn btn-outline-success">Guardar</button>
