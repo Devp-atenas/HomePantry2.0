@@ -261,6 +261,27 @@ class Principal extends CI_Controller {
     public function SmartTVCantidad(){
         $this->load->view('NSE/SmartTVCantidad');
     }
+    public function Gastos(){
+        $this->load->view('NSE/Gastos');
+    }
+    public function Ingresos(){
+        $this->load->view('NSE/Ingresos');
+    }
+    public function TipoInternet(){
+        $this->load->view('NSE/TipoInternet');
+    }
+    public function Seguro(){
+        $this->load->view('NSE/Seguro');
+    }
+    public function TipoGas(){
+        $this->load->view('NSE/TipoGas');
+    }
+    public function PlanVacacional(){
+        $this->load->view('NSE/PlanVacacional');
+    }
+    public function ViajeVacacional(){
+        $this->load->view('NSE/ViajeVacacional');
+    }
     //----------- Operaciones ------------
     public function ValidacionProducto(){
         $this->load->view('Operaciones/ValidacionProducto');

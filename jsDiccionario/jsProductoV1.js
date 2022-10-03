@@ -1455,6 +1455,34 @@ function cargarTabla(Id){
                 className: "text-center"
             },
             {
+                mData: 'Atributo1',
+                className: "text-center"
+            },
+            {
+                mData: 'Atributo2',
+                className: "text-center"
+            },
+            {
+                mData: 'Atributo3',
+                className: "text-center"
+            },
+            {
+                mData: 'Atributo4',
+                className: "text-center"
+            },
+            {
+                mData: 'Atributo5',
+                className: "text-center"
+            },
+            {
+                mData: 'Atributo6',
+                className: "text-center"
+            },
+            {
+                mData: 'Atributo7',
+                className: "text-center"
+            },
+            {
                 mData: 'Fec_Alta',
                 className: "text-center"
             },
@@ -1469,7 +1497,7 @@ function cargarTabla(Id){
             
         ],
         "columnDefs": [{
-            "targets": 12,
+            "targets": 19,
             "orderable": true,
             "data": 'Id_Producto',
             "className": "text-center",
