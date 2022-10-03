@@ -116,6 +116,11 @@
                 </li>
                 <li>
                     <a href="#step-11">
+                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Gastos"><img class="animation__shake" src="<?php echo base_url('dist/img/MASCOTAS.png')?>"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#step-12">
                         <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Información General"><img class="animation__shake" src="<?php echo base_url('dist/img/INFORMACION.png')?>"></span>
                     </a>
                 </li>
@@ -1098,6 +1103,38 @@
                     </div>
                     
                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">¿Posee Plan Vacacional?:</div>
+                                <select class="custom-select form-control-border" id="selectPlanVacacional" name="selectPlanVacacional">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Viaje Vacacional:</div>
+                                <select class="custom-select form-control-border" id="selectViajeVacacional" name="selectViajeVacacional">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="inputText font-weight-bold">¿Posee Vivienda Vacacional?:</div>
+                            <div class="card">
+                                <div class="form-group">
+                                    <div class="form-check d-inline">
+                                        <input class="form-check-input" type="radio" id="ViviendaVacacional" name="ViviendaVacacional" value="0">
+                                        <label class="form-check-label">No</label>
+                                    </div>
+                                    <div class="form-check d-inline">
+                                        <input class="form-check-input" type="radio" id="ViviendaVacacional" name="ViviendaVacacional" value="1">
+                                        <label class="form-check-label">Si</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
                         <div class="col text-center">
                             <button id="guardar-paso-5" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
@@ -1179,7 +1216,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="inputText font-weight-bold">Almacenamiento Agua: </div>
+                            <div class="inputText font-weight-bold">¿Posee Almacenamiento de Agua? </div>
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check d-inline">
@@ -1215,9 +1252,7 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
-                    
                     <div class="row">
                         <div class="col text-center">
                             <button id="guardar-paso-6" type="button" class="btn btn-outline-success">Guardar</button>
@@ -1233,72 +1268,6 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">Doméstica fija</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="domesticaFija" name="domesticaFija" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="domesticaFija" name="domesticaFija" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Personal para labores específicas</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="laboresFijas" name="laboresFijas" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="laboresFijas" name="laboresFijas" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Doméstica por días</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="domesticaXDia" name="domesticaXDia" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline ">
-                                        <input class="form-check-input" type="radio" id="domesticaXDia" name="domesticaXDia" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="inputText font-weight-bold">Conexión a internet vía telefonía fija por discado / dial-up</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetTlf" name="conexionInternetTlf" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetTlf" name="conexionInternetTlf" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Conexión a internet vía telefonía móvil / celular</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetMovil" name="conexionInternetMovil" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetMovil" name="conexionInternetMovil" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Conexión a internet vía telefonía fija banda ancha o vía cable</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetBandaAncha" name="conexionInternetBandaAncha" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="conexionInternetBandaAncha" name="conexionInternetBandaAncha" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="form-group">
                                     <div class="inputText font-weight-bold">Teléfono Celular del Jefe de familia y/o pareja</div>
                                     <div class="form-check d-inline">
                                         <input class="form-check-input" type="radio" id="celularJefeFamilia" name="celularJefeFamilia" value="0">
@@ -1308,38 +1277,12 @@
                                         <input class="form-check-input" type="radio" id="celularJefeFamilia" name="celularJefeFamilia" value="1">
                                         <label class="form-check-label">Si</label>
                                     </div>
-                                    <div class="inputText font-weight-bold">Seguro HCM particular del Jefe de familia y/o pareja y/o hijos</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroHcmJefeFamilia" name="seguroHcmJefeFamilia" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroHcmJefeFamilia" name="seguroHcmJefeFamilia" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Seguro HCM colectivo de la empresa para Jefe y/o Pareja ocupados</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroHcmEmpresaJefeFamilia" name="seguroHcmEmpresaJefeFamilia" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroHcmEmpresaJefeFamilia" name="seguroHcmEmpresaJefeFamilia" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Seguro Social Obligatorio para Jefe de Familia o Pareja</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroSocialJefeFamilia" name="seguroSocialJefeFamilia" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="seguroSocialJefeFamilia" name="seguroSocialJefeFamilia" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
                                 </div>
                             </div>
+                            <div class="inputText font-weight-bold">Tipo de Conexion a Internet:</div>
+                            <select id="selectTipoInternet" name="selectTipoInternet" class="form-control">
+                            </select>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="form-group">
@@ -1394,84 +1337,6 @@
                                         <input class="form-check-input" type="radio" id="computadorLaptop" name="computadorLaptop" value="1">
                                         <label class="form-check-label">Si</label>
                                     </div>
-                                    <div class="inputText font-weight-bold">DVD y/o Blu-Ray</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="DVD" name="DVD" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="DVD" name="DVD" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Home Theater/Teatro en casa</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="homeTeatro" name="homeTeatro" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="homeTeatro" name="homeTeatro" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Juegos de video</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="juegosVideo" name="juegosVideo" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="juegosVideo" name="juegosVideo" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="inputText font-weight-bold">Horno microondas</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="hornoMicroOnda" name="hornoMicroOnda" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="hornoMicroOnda" name="hornoMicroOnda" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Cocina eléctrica</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaElectrica" name="cocinaElectrica" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaElectrica" name="cocinaElectrica" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Cocina a gas de bombona</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaGasBombona" name="cocinaGasBombona" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaGasBombona" name="cocinaGasBombona" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Cocina por gas directo</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaGasDirecto" name="cocinaGasDirecto" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaGasDirecto" name="cocinaGasDirecto" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                    <div class="inputText font-weight-bold">Cocina a kerosene / leña,…</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaKerosene" name="cocinaKerosene" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="cocinaKerosene" name="cocinaKerosene" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1507,20 +1372,13 @@
                                         <input class="form-check-input" type="radio" id="lavadoraSemiAutomatica" name="lavadoraSemiAutomatica" value="1">
                                         <label class="form-check-label">Si</label>
                                     </div>
-                                    <div class="inputText font-weight-bold">Lavadora de ropa de rodillo</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="lavadoraRodillo" name="lavadoraRodillo" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="lavadoraRodillo" name="lavadoraRodillo" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="inputText font-weight-bold">Tipo de Gas:</div>
+                            <select id="selectTipoGas" name="selectTipoGas" class="form-control">
+                            </select><div class="card">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Nevera</div>
                                     <div class="form-check d-inline">
@@ -1540,15 +1398,16 @@
                                         <input class="form-check-input" type="radio" id="freezer" name="freezer" value="1">
                                         <label class="form-check-label">Si</label>
                                     </div>
-                                    <div class="inputText font-weight-bold">Lavaplatos eléctrico</div>
+                                    <div class="inputText font-weight-bold">Horno microondas</div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="lavaplatos" name="lavaplatos" value="0">
+                                        <input class="form-check-input" type="radio" id="hornoMicroOnda" name="hornoMicroOnda" value="0">
                                         <label class="form-check-label">No</label>
                                     </div>
                                     <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="lavaplatos" name="lavaplatos" value="1">
+                                        <input class="form-check-input" type="radio" id="hornoMicroOnda" name="hornoMicroOnda" value="1">
                                         <label class="form-check-label">Si</label>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -1924,6 +1783,97 @@
                 </form>
             </div>
             <div id="step-11">
+                <form id="formGastos" action="" method="post">
+                    <h2 class="text-center">Gastos</h2>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Alimento:</div>
+                                <select class="custom-select form-control-border" id="selectGastoAlimento" name="selectGastoAlimento">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Medicinas:</div>
+                                <select class="custom-select form-control-border" id="selectGastoMedicinas" name="selectGastoMedicinas">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Educación:</div>
+                                <select class="custom-select form-control-border" id="selectGastoEducacion" name="selectGastoEducacion">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Transporte:</div>
+                                <select class="custom-select form-control-border" id="selectGastoTransporte" name="selectGastoTransporte">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Cuidado Personal:</div>
+                                <select class="custom-select form-control-border" id="selectGastoCuidadoPersonal" name="selectGastoCuidadoPersonal">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Ropa y Calzado:</div>
+                                <select class="custom-select form-control-border" id="selectGastoRopaCalzado" name="selectGastoRopaCalzado">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Entretenimiento:</div>
+                                <select class="custom-select form-control-border" id="selectGastoEntretenimiento" name="selectGastoEntretenimiento">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Hogar:</div>
+                                <select class="custom-select form-control-border" id="selectGastoHogar" name="selectGastoHogar">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Servicios:</div>
+                                <select class="custom-select form-control-border" id="selectGastoServicios" name="selectGastoServicios">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Reparaciones:</div>
+                                <select class="custom-select form-control-border" id="selectGastoReparaciones" name="selectGastoReparaciones">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Ahorro:</div>
+                                <select class="custom-select form-control-border" id="selectGastoAhorro" name="selectGastoAhorro">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!--/step 11-->
+                </form>
+            </div>
+            <div id="step-12">
                 <form id="formInformacionGeneral" action="" method="post">
                     <h2 class="text-center">Información General</h2>
                     <div class="row">
@@ -1950,6 +1900,7 @@
                     <!--/step 11-->
                 </form>
             </div>
+            
         </div>
     </div>
 </section>
