@@ -36,7 +36,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-layers-half"></i>&nbsp;Mantenimiento ViajeVacacional</h1>
+                <h1><i class="bi bi-tsunami"></i>&nbsp;Mantenimiento ViajeVacacional</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->

@@ -36,7 +36,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-file-earmark-image"></i>&nbsp;Mantenimiento PlanVacacional</h1>
+                <h1><i class="bi bi-hdd-network"></i>&nbsp;Mantenimiento Internet</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -47,7 +47,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">PlanVacacional</h3>
+                    <h3 class="card-title">Internet</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -59,7 +59,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">PlanVacacional:</div>
+                                    <div class="inputText font-weight-bold">Internet:</div>
                                     <input type="text" name="inputNombreAdd" id="inputNombreAdd" class="form-control input-sm"placeholder="Ingrese nombre del item ...">
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listado PlanVacacional</h3>
+                    <h3 class="card-title">Listado Internet</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -124,7 +124,7 @@
                             <table id="TableVNSE" class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
-                                        <th>PlanVacacional</th>
+                                        <th>Internet</th>
                                         <th>Peso</th>
                                         <th>Estatus</th>
                                         <th></th>
@@ -152,7 +152,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">PlanVacacional</h3>
+                            <h3 class="card-title">Internet</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -164,7 +164,7 @@
                                 <div class="row">
                                    <div class="col-md-5">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">PlanVacacional:</div>
+                                            <div class="inputText font-weight-bold">Internet:</div>
                                             <input type="text" name="inputNombreEdit" id="inputNombreEdit" class="form-control">
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">PlanVacacional</h3>
+                            <h3 class="card-title">Internet</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -243,7 +243,7 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <div class="inputText font-weight-bold">PlanVacacional:</div>
+                                        <div class="inputText font-weight-bold">Internet:</div>
                                         <input type="text" name="inputNombreVer" id="inputNombreVer" class="form-control" readonly>
                                     </div>
                                 </div>
@@ -276,7 +276,7 @@
 </div>
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsVNSE/jsPlanVacacional.js') ?>"></script>
+<script src="<?php echo base_url('jsVNSE/jsInternet.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 
 

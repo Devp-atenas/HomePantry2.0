@@ -36,7 +36,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-layers-half"></i>&nbsp;Mantenimiento TipoInternet</h1>
+                <h1><i class="bi bi-router"></i>&nbsp;Mantenimiento Tipo Internet</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -59,7 +59,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <div class="inputText font-weight-bold">TipoInternet:</div>
+                                    <div class="inputText font-weight-bold">Tipo Internet:</div>
                                     <input type="text" name="inputNombreAdd" id="inputNombreAdd" class="form-control input-sm"placeholder="Ingrese nombre del item ...">
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listado TipoInternet</h3>
+                    <h3 class="card-title">Listado Tipo Internet</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -124,7 +124,7 @@
                             <table id="TableVNSE" class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
-                                        <th>TipoInternet</th>
+                                        <th>Tipo Internet</th>
                                         <th>Peso</th>
                                         <th>Estatus</th>
                                         <th></th>
@@ -164,7 +164,7 @@
                                 <div class="row">
                                    <div class="col-md-5">
                                         <div class="form-group">
-                                            <div class="inputText font-weight-bold">TipoInternet:</div>
+                                            <div class="inputText font-weight-bold">Tipo Internet:</div>
                                             <input type="text" name="inputNombreEdit" id="inputNombreEdit" class="form-control">
                                         </div>
                                     </div>

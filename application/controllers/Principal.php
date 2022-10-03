@@ -282,6 +282,12 @@ class Principal extends CI_Controller {
     public function ViajeVacacional(){
         $this->load->view('NSE/ViajeVacacional');
     }
+    public function Internet(){
+        $this->load->view('NSE/Internet');
+    }
+    public function Ocupacion(){
+        $this->load->view('NSE/Ocupacion');
+    }
     //----------- Operaciones ------------
     public function ValidacionProducto(){
         $this->load->view('Operaciones/ValidacionProducto');
