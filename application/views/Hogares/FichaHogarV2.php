@@ -1788,6 +1788,22 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
+                                <div class="inputText font-weight-bold">Rango Ingreso:</div>
+                                <select class="custom-select form-control-border" id="selectRangoIngreso" name="selectRangoIngreso">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="inputText font-weight-bold">Gasto Mensual:</div>
+                                <select class="custom-select form-control-border" id="selectMensual" name="selectMensual">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Alimento:</div>
                                 <select class="custom-select form-control-border" id="selectGastoAlimento" name="selectGastoAlimento">
                                 </select>
