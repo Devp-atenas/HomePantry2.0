@@ -1614,4 +1614,3 @@ function cargarTipoVivienda____(identificador,idS) {
         }
     })
 }
-

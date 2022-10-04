@@ -1528,9 +1528,7 @@
                         </div>
                     </div>
                 </section>
-
-
-
+                
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
@@ -1773,12 +1771,6 @@
                             <button id="guardar-paso-10" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
-                    <HR/>
-                    <div class="row">
-                        <div class="col text-center">
-                            <button id="finalizar-calcularNSE" type="button" class="btn btn-block btn-success">Finalizar y Calcular NSE</button>
-                        </div>
-                    </div>
                     <!--/step 10-->
                 </form>
             </div>
@@ -1884,8 +1876,17 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+                    <div class="row">
+                        <div class="col text-center">
+                            <button id="guardar-paso-10" type="button" class="btn btn-outline-success">Guardar</button>
+                        </div>
+                    </div>
+                    <HR/>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button id="finalizar-calcularNSE" type="button" class="btn btn-block btn-success">Finalizar y Calcular NSE</button>
+                        </div>
+                    </div>
                     <!--/step 11-->
                 </form>
             </div>

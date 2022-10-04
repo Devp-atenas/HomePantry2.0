@@ -1158,5 +1158,3 @@ function desactivarAlerta(idHogar) {
         }
     })
 }
-
-
