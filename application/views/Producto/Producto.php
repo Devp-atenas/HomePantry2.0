@@ -818,6 +818,7 @@ $("#selectCategoria").change(function() {
         var id_fabricante = $("#selectFabricante").val();
         let selectMarca = $("#selectMarca");
         selectMarca.find("option").remove();
+        $('#selectMarca').select2();
         cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
     }
     let selectSegmento = $("#selectSegmento");
@@ -874,6 +875,7 @@ $("#selectCategoriaEdit").change(function() {
         var id_fabricante = $("#selectFabricanteEdit").val();
         let selectMarca = $("#selectMarcaEdit");
         selectMarca.find("option").remove();
+        $('#selectMarcaEdit').select2();
         cargarMarca("#selectMarcaEdit",id_categoria,id_fabricante,0);
     }
     let selectSegmento = $("#selectSegmentoEdit");
@@ -924,6 +926,7 @@ $("#selectFabricante").change(function() {
     var id_fabricante = $("#selectFabricante").val();
     let selectMarca = $("#selectMarca");
     selectMarca.find("option").remove();
+    $('#selectMarca').select2();
     cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
 });
 

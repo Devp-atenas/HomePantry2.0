@@ -26,9 +26,9 @@ $(document).ready(function() {
         });
     });
 
-    //$('#inputCategoria').select2();
     $('#TableProducto').hide();
     cargarCategoria("#selectCategoria",-1);
+    cargarCategoria("#selectCategoriaTabla",-1);
     $('#FormProductoEdit').validate({
         rules: {
             selectCategoriaEdit: {
@@ -204,8 +204,6 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
-    document.getElementById('FormProducto').reset();
-    cargarCategoria("#selectCategoriaTabla",-1);
 });
 
 function cargarNombreAtributos(id_categoria) {
@@ -1156,6 +1154,8 @@ function VisualizarAction(data) {
 }
 
 function ejecutarAgregarProductoNuevo(){
+    var idCategoria = $("#selectCategoria").val();
+    
     if ($("#FormProducto").valid()) {
         var urlApi = localStorage.getItem("urlApi");
         var settings = {
@@ -1192,6 +1192,15 @@ function ejecutarAgregarProductoNuevo(){
         $.ajax(settings).done(function(response) {
             $('#CodigoBarraExistenteModal').modal('hide');
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se agrego producto (IdCategoria): "+$("#inputProducto").val() + " - " +$("#inputCodigoBarra").val(),$("#selectCategoria").val(),"C");
+            
+            document.getElementById('FormProducto').reset();
+            
+            
+            cargarCategoria("#selectCategoria",idCategoria);
+            cargarFabricante("#selectFabricante",idCategoria,0);
+            let select = $('#selectMarca');
+            select.find("option").remove();
+            
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -1208,11 +1217,7 @@ function ejecutarAgregarProductoNuevo(){
                 title: response.message,
                 confirmButtonText: `Ok`,
             })
-            $('#CodigoBarraExistenteModal').modal('hide');
-            var form = document.querySelector('form');
-            form.reset();
-            let select = $('#selectFabricante');
-            select.find("option").remove();
+            
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({
@@ -1252,14 +1257,12 @@ function existeCodigoBarra(CodigoBarras) {
     }
     $.ajax(settings).done(function(response) {
         if (response.data[0].Cantidad != 0){
-            // 
             var idCategoria = $('#selectCategoria').val();
             cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria);
             $('#htmlCodigoBarras').html(CodigoBarras);
             $('#CodigoBarraExistenteModal').modal('show');
         }else{
             ejecutarAgregarProductoNuevo();
-            // BIT
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

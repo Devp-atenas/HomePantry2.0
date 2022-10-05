@@ -116,7 +116,7 @@
                 </li>
                 <li>
                     <a href="#step-11">
-                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Gastos"><img class="animation__shake" src="<?php echo base_url('dist/img/MASCOTAS.png')?>"></span>
+                        <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Gastos"><img class="animation__shake" src="<?php echo base_url('dist/img/GASTOS.png')?>"></span>
                     </a>
                 </li>
                 <li>
@@ -1528,7 +1528,7 @@
                         </div>
                     </div>
                 </section>
-                
+
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
