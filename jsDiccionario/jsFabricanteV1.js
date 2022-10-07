@@ -69,7 +69,7 @@ function ejecutarAgregarFabricante(Fabricante) {
             }
         }
         $.ajax(settings).done(function(response) {
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Fabricante (IdCategoria): "+$("#inputFabricante").val(),$("#selectCategoria").val(),"C");
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Nuevo Fabricante (IdCategoria): "+$("#inputFabricante").val().replace("'","''"),$("#selectCategoria").val(),"C");
             $('#DiccionarioExistenteModal').modal('hide');
             const Toast = Swal.mixin({
                 toast: true,
