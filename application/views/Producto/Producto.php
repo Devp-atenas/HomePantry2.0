@@ -275,6 +275,9 @@ select:focus {
                                         <th>Tamaño Rango</th>
                                         <th>Tamano</th>
                                         <th>Unidad Medida</th>
+                                        <th>Fecha Alta</th>
+                                        <th>Activo?</th>
+                                        <th>Pendiente?  </th>
                                         <th>Atributo 1</th>
                                         <th>Atributo 2</th>
                                         <th>Atributo 3</th>
@@ -282,10 +285,7 @@ select:focus {
                                         <th>Atributo 5</th>
                                         <th>Atributo 6</th>
                                         <th>Atributo 7</th>
-                                        <th>Fecha Alta</th>
-                                        <th>Activo?</th>
-                                        <th>Pendiente?  </th>
-                                        
+                                       
                                         <th></th>
                                     </tr>
                                 </thead>

@@ -7,6 +7,18 @@ $("#botonenviar").click(function() {
 
 $(document).ready(function() {
 
+
+
+    $('#TableProducto tbody').on('click', 'tr', function () {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        } else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
+
+
     
     $(function($) {
         $('#inputFragmentacion').autoNumeric('init', {
@@ -343,7 +355,7 @@ function cargarFabricante(etiqueta,idCat,idS) {
 function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'getAllMarca_x_CategoriaV1/' + id_categoria,
+        "url": urlApi+'getAllMarca_x_Categoria_x_FabricanteV1/' + id_categoria+'/'+id_fabricante,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -1193,6 +1205,12 @@ function ejecutarAgregarProductoNuevo(){
             $('#CodigoBarraExistenteModal').modal('hide');
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se agrego producto (IdCategoria): "+$("#inputProducto").val() + " - " +$("#inputCodigoBarra").val(),$("#selectCategoria").val(),"C");
             
+
+            var id_categoriaT = $("#selectCategoriaTabla").val();
+            cargarTabla(id_categoriaT);
+
+
+
             document.getElementById('FormProducto').reset();
             
             
@@ -1368,11 +1386,12 @@ function cargarTabla(Id){
             [ -1],
             ["All"]
         ],
-        "bDestroy": true,
+        //"bDestroy": true,
+        "select": true,
         "autoWidth": true,
         "searching": true,
         "bPaginate": false,
-        "dom": 'Bfrtip',
+        //"dom": 'Bfrtip',
         "responsive": false,
         "buttons": [
             {
@@ -1380,10 +1399,10 @@ function cargarTabla(Id){
                 title: 'Reporte de Hogar Registro por Consumo'
             }
         ],
-        "fixedHeader":    true,
+        //"fixedHeader":    true,
         "scrollX":        true,
         "scrollY":        400,
-        "deferRender":    true,
+        //"deferRender":    true,
         "scroller":       true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
@@ -1458,6 +1477,18 @@ function cargarTabla(Id){
                 className: "text-center"
             },
             {
+                mData: 'Fec_Alta',
+                className: "text-center"
+            },
+            {
+                mData: 'Ind_Activo',
+                className: "text-center"
+            },
+            {
+                mData: 'Ind_Pendiente',
+                className: "text-center"
+            },
+            {
                 mData: 'Atributo1',
                 className: "text-center"
             },
@@ -1484,19 +1515,7 @@ function cargarTabla(Id){
             {
                 mData: 'Atributo7',
                 className: "text-center"
-            },
-            {
-                mData: 'Fec_Alta',
-                className: "text-center"
-            },
-            {
-                mData: 'Ind_Activo',
-                className: "text-center"
-            },
-            {
-                mData: 'Ind_Pendiente',
-                className: "text-center"
-            },
+            }
             
         ],
         "columnDefs": [{
