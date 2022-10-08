@@ -802,7 +802,6 @@ $("#inputProducto_").keyup(function () {
 
 $("#selectCategoriaTabla").change(function() {
     var id_categoriaT = $("#selectCategoriaTabla").val();
-    console.log(id_categoriaT);
     cargarTabla(id_categoriaT);
     $('#TableProducto').show();
 });

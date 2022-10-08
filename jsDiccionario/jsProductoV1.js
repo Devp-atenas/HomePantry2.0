@@ -261,7 +261,7 @@ function cargarNombreAtributos(id_categoria) {
 
 function cargarCategoria(etiqueta,idS) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllCategoriaV1',
+        "url": localStorage.getItem("urlApi")+'getAllCategoriasV1',
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -275,12 +275,12 @@ function cargarCategoria(etiqueta,idS) {
             select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         }
         for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id_Categoria === idS){
-            select.append("<option value=" + response.data[i].id_Categoria + " selected>" + response
-                .data[i].Categoria + " - "+ response.data[i].id_Categoria + "</option>");
+            if (response.data[i].id == idS){
+            select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
             }else{
-                select.append("<option value=" + response.data[i].id_Categoria + ">" + response
-                .data[i].Categoria + " - "+ response.data[i].id_Categoria + "</option>");
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
             }
         }
     }).fail(function(jqXHR, textStatus) {
@@ -1204,20 +1204,19 @@ function ejecutarAgregarProductoNuevo(){
         $.ajax(settings).done(function(response) {
             $('#CodigoBarraExistenteModal').modal('hide');
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se agrego producto (IdCategoria): "+$("#inputProducto").val() + " - " +$("#inputCodigoBarra").val(),$("#selectCategoria").val(),"C");
-            
-
+            var id_categoria = $("#selectCategoria").val();
             var id_categoriaT = $("#selectCategoriaTabla").val();
-            cargarTabla(id_categoriaT);
-
-
-
             document.getElementById('FormProducto').reset();
-            
-            
-            cargarCategoria("#selectCategoria",idCategoria);
-            cargarFabricante("#selectFabricante",idCategoria,0);
+            cargarCategoria("#selectCategoria",id_categoria);
+            cargarFabricante("#selectFabricante",id_categoria,0);
             let select = $('#selectMarca');
             select.find("option").remove();
+            
+            if ($("#selectCategoriaTabla").val() != ""){
+
+                let xtable = $('#TableProducto').DataTable();
+                xtable.ajax.reload(null, false);
+            }
             
             const Toast = Swal.mixin({
                 toast: true,
@@ -1386,7 +1385,7 @@ function cargarTabla(Id){
             [ -1],
             ["All"]
         ],
-        //"bDestroy": true,
+        "bDestroy": true,
         "select": true,
         "autoWidth": true,
         "searching": true,
@@ -1534,5 +1533,16 @@ function cargarTabla(Id){
                         '</div>';
             }
         }],
+        "createdRow": function( row, data, dataIndex){
+            if(data['Fabricante'] != data['Fabricante_Marca']){
+                $('td', row).eq(4).css('background', '#FFC059');
+                $('td', row).eq(4).css('color', '#FF0000');
+                $('td', row).eq(4).css('font-weigh', 'bold');
+            }/*else if (Number(consDet_1[1])-Number(consDet_1[0]) < 5){
+                $('td', row).eq(8).css('background', '#FFC059');
+                $('td', row).eq(8).css('color', '#FFFFFF');
+                $('td', row).eq(8).css('font-weigh', 'bold');
+            }*/
+        },
     });
 }
