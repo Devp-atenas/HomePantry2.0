@@ -322,7 +322,7 @@ function cargarFabricante(etiqueta,idCat,idS) {
             select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         }
         for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id === idS){
+            if (response.data[i].id == idS){
             select.append("<option value=" + response.data[i].id + " selected>" + response
                 .data[i].nombre + " - "+ response.data[i].id + "</option>");
             }else{
@@ -1063,7 +1063,15 @@ function EditAction(data) {
         $('#inputIdEditProducto').val(response.data[0].Id_Producto);
         cargarCategoria("#selectCategoriaEdit",response.data[0].id_Categoria);
         cargarSegmento("#selectSegmentoEdit",response.data[0].id_Categoria,response.data[0].id_Segmento);
+        
+        
+        
+        alert(response.data[0].id_Fabricante)
         cargarFabricante("#selectFabricanteEdit",response.data[0].id_Categoria,response.data[0].id_Fabricante);
+        
+        
+        
+        
         cargarTamanoRango("#selectTamanoRangoEdit",response.data[0].id_Categoria,response.data[0].Id_RangoTamano);
         cargarTamano("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano,response.data[0].Id_RangoTamano);
         
