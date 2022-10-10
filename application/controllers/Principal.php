@@ -420,21 +420,15 @@ class Principal extends CI_Controller {
     public function SessionLock(){
         $this->load->view('SessionLock');
     }
-    
-    
     public function user_view(){
-
         $this->load->helper('url');
-
         // Check form submit or not
-        
         if($this->input->post('upload') != NULL ){
             $data = array();
             echo '<script>';
             echo 'alert(999999);';
             echo '</script>';
             if(!empty($_FILES['file']['name'])){
-
                 // Set preference
                 $config['upload_path'] = 'uploads/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
@@ -459,9 +453,6 @@ class Principal extends CI_Controller {
         }else{
             // load view
             $this->load->view('user_view');
-        }
-        
-    }
-    
-    
+        }   
+    }   
 }
