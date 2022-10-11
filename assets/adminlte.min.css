@@ -13027,7 +13027,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 	font-size: 0.875rem;
 }
 .nav-sidebar .nav-item > .nav-link {
-	margin-bottom: 0.2rem;
+	margin-bottom: 0rem; /* 0.2rem */
 }
 .nav-sidebar .nav-item > .nav-link .right {
 	transition: -webkit-transform ease-in-out 0.3s;
