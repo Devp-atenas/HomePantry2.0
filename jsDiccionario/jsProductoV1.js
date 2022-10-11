@@ -1398,7 +1398,7 @@ function cargarTabla(Id){
         "autoWidth": true,
         "searching": true,
         "bPaginate": false,
-        //"dom": 'Bfrtip',
+        "dom": 'Bfrtip',
         "responsive": false,
         "buttons": [
             {
