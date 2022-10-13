@@ -1064,20 +1064,11 @@ function EditAction(data) {
         cargarCategoria("#selectCategoriaEdit",response.data[0].id_Categoria);
         cargarSegmento("#selectSegmentoEdit",response.data[0].id_Categoria,response.data[0].id_Segmento);
         
-        
-        
-        alert(response.data[0].id_Fabricante)
+        //alert(response.data[0].id_Fabricante)
         cargarFabricante("#selectFabricanteEdit",response.data[0].id_Categoria,response.data[0].id_Fabricante);
-        
-        
-        
         
         cargarTamanoRango("#selectTamanoRangoEdit",response.data[0].id_Categoria,response.data[0].Id_RangoTamano);
         cargarTamano("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano,response.data[0].Id_RangoTamano);
-        
-        
-        
-        
         
         cargarUnidadMedida("#selectUnidadMedidaEdit",response.data[0].id_Categoria,response.data[0].id_UnidadMedida);
         cargarAtributo1("#selectAtributo1Edit",response.data[0].id_Categoria,response.data[0].id_Atributo1);
@@ -1091,10 +1082,14 @@ function EditAction(data) {
         $('#inputFragmentacionEdit').val(SeparadorMiles(response.data[0].Fragmentacion));
         $('#inputCodigoBarraEdit').val(response.data[0].CodigoBarra);
         $('#inputProductoEdit').val(response.data[0].Producto);
-        var oblig = $("input:radio[name='activoEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        var oblig = $("input:radio[name='pendienteEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoEdit']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
+        
+        //var oblig = $("input:radio[name='pendienteEdit']");
+        //oblig.filter("[value='"+response.data[0].Ind_Pendiente+"']").attr('checked', true);
+        $("input[name=pendienteEdit][value='"+response.data[0].Ind_Pendiente+"']").prop("checked",true);
+        
         $('#actualizarProductoModal').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -1148,8 +1143,12 @@ function VisualizarAction(data) {
         $('#inputAtributo7Ver').val(response.data[0].Atributo7);
         var oblig = $("input:radio[name='activoVer']");
         oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        var oblig = $("input:radio[name='pendienteVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoVer][value='"+response.data[0].status+"']").prop("checked",true);
+        
+        //var oblig = $("input:radio[name='pendienteVer']");
+        //oblig.filter("[value='"+response.data[0].Ind_Pendiente+"']").attr('checked', true);
+        $("input[name=pendienteVer][value='"+response.data[0].Ind_Pendiente+"']").prop("checked",true);
+        
         $('#visualizarProductoModal').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

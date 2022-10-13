@@ -435,6 +435,8 @@ function VisualizarAction(data) {
         $('#CategoriaView').val(response.data[0].Categoria);
         var oblig = $("input:radio[name='medicinaView']");
         oblig.filter("[value='"+response.data[0].ind_Medicina+"']").attr('checked', true);
+        $("input[name=medicinaView][value='"+response.data[0].ind_Medicina+"']").prop("checked",true);
+        
         $('#inputFactorView').val(response.data[0].Factor);
         $('#inputminimoView').val(response.data[0].Min_Por_Val);
         $('#inputmaximoView').val(response.data[0].Max_Por_Val);
@@ -478,10 +480,14 @@ function EditAction(data) {
 
         $('#idCategoriaEdit').val(response.data[0].Id_Categoria);
         $('#CategoriaEdit').val(response.data[0].Categoria);
-        var oblig = $("input:radio[name='medicinaEdit']");
-        oblig.filter("[value='"+response.data[0].ind_Medicina+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='medicinaEdit']");
+        //oblig.filter("[value='"+response.data[0].ind_Medicina+"']").attr('checked', true);
+        $("input[name=medicinaEdit][value='"+response.data[0].ind_Medicina+"']").prop("checked",true);
+        
         var oblig = $("input:radio[name='activoEdit']");
         oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
+        
         $('#inputFactorEdit').val(response.data[0].Factor);
         $('#inputminimoEdit').val(response.data[0].Min_Por_Val);
         $('#inputmaximoEdit').val(response.data[0].Max_Por_Val);

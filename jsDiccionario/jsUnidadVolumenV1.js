@@ -488,8 +488,10 @@ function EditAction(data) {
         $('#inputIdEditUndMedida').val(response.data[0].Id_UnidadMedida);
         cargarCategoria("#selectCategoriaEdit",response.data[0].Id_Categoria);
         $('#inputUndMedidaEdit').val(response.data[0].UnidadMedida);
-        var oblig = $("input:radio[name='activoEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoEdit']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
+        
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta UnidadVolumen (IdUnidadVolumen)",data,"R");
         $('#modal-UndMedidaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
@@ -527,9 +529,9 @@ function VisualizarAction(data) {
         $('#inputCodigoVer').val(response.data[0].Id_UnidadMedida);
         $('#selectCategoriaVer').val(response.data[0].Categoria);
         $('#inputUndMedidaVer').val(response.data[0].UnidadMedida);
-        var oblig = $("input:radio[name='activoVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        
+        //var oblig = $("input:radio[name='activoVer']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoVer][value='"+response.data[0].status+"']").prop("checked",true);
         
         $('#modal-UndMedidaVisualizar').modal('show');
     }).fail(function(jqXHR, textStatus) {

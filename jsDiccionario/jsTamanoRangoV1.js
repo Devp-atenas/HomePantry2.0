@@ -482,8 +482,10 @@ function EditAction(data) {
         $('#inputIdEditTamRango').val(response.data[0].Id_TamanoRango);
         cargarCategoria("#selectCategoriaEdit",response.data[0].Id_Categoria);
         $('#inputTamRangoEdit').val(response.data[0].TamanoRango);
-        var oblig = $("input:radio[name='activoEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoEdit']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
+        
         $('#inputIdEditSegmento').val(response.data[0].Id_Segmento);
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño Rango (IdTamanoRango)",data,"R");
         $('#modal-TamRangoEditar').modal('show');
@@ -523,8 +525,10 @@ function VisualizarAction(data) {
         $('#selectCategoriaVer').val(response.data[0].Categoria);
         $('#inputTamanoRango').val(response.data[0].TamanoRango);
         $('#inputAbreviaturaVer').val(response.data[0].Abreviatura);
-        var oblig = $("input:radio[name='activoVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoVer']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoVer][value='"+response.data[0].status+"']").prop("checked",true);
+        
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño Rango (IdTamanoRango)",data,"R");
         $('#modal-TamRangoVisualizar').modal('show');
     }).fail(function(jqXHR, textStatus) {

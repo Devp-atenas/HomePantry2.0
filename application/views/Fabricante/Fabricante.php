@@ -247,8 +247,8 @@
                                     <div class="col-md-2">
                                         <div class="inputText font-weight-bold">Activo:</div>
                                         <div class="card">
-                                            <div class="form-group">
-                                            <div class="form-check d-inline">
+                                            <div class="form-group" id='radiobuttonset'>
+                                                <div class="form-check d-inline">
                                                     <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'>
                                                     <label class="form-check-label">No</label>
                                                 </div>

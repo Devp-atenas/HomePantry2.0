@@ -493,8 +493,10 @@ function EditAction(data) {
         $('#inputIdEditTamano').val(response.data[0].Id_Tamano);
         cargarCategoria("#selectCategoriaEdit",response.data[0].Id_Categoria);
         $('#inputTamEdit').val(new Intl.NumberFormat("de-DE").format(response.data[0].Tamano));
-        var oblig = $("input:radio[name='activoEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoEdit']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
+        
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño (IdTamano)",data,"R");
         $('#modal-TamanoEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
@@ -532,8 +534,10 @@ function VisualizarAction(data) {
         $('#inputCodigoVer').val(response.data[0].Id_Tamano);
         $('#selectCategoriaVer').val(response.data[0].Categoria);
         $('#inputTamanoVer').val(new Intl.NumberFormat("de-DE").format(response.data[0].Tamano));
-        var oblig = $("input:radio[name='activoVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoVer']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoVer][value='"+response.data[0].status+"']").prop("checked",true);
+        
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño (IdTamaño)",data,"R");
         $('#modal-TamanoVisualizar').modal('show');
     }).fail(function(jqXHR, textStatus) {

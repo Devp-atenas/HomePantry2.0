@@ -475,8 +475,10 @@ function EditAction(data) {
         $('#inputIdEditAtributo').val(response.data[0].Id_Atributo);
         cargarCategoria("#selectCategoriaEdit",response.data[0].Id_Categoria);
         $('#inputAtributoEdit').val(response.data[0].Atributo);
-        var oblig = $("input:radio[name='activoEdit']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoEdit']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
+        
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Atributo6 (IdAtributo6)",data,"R");
         $('#modal-AtributoEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
@@ -514,8 +516,10 @@ function VisualizarAction(data) {
         $('#inputCodigoVer').val(response.data[0].Id_Atributo);
         $('#selectCategoriaVer').val(response.data[0].Categoria);
         $('#inputAtributoVer').val(response.data[0].Atributo);
-        var oblig = $("input:radio[name='activoVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoVer']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoVer][value='"+response.data[0].status+"']").prop("checked",true);
+        
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Atributo6 (IdAtributo6)",data,"R");
         $('#modal-AtributoVisualizar').modal('show');
     }).fail(function(jqXHR, textStatus) {

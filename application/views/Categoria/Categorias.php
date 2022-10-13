@@ -343,8 +343,11 @@ function EditAction(data) {
     $.ajax(settings).done(function(response) {
         $('#idCategoriaEdit').val(response.data[0].Id_Categoria);
         $('#CategoriaEdit').val(response.data[0].Categoria);
-        var oblig = $("input:radio[name='medicinaEdit']");
-        oblig.filter("[value='"+response.data[0].ind_Medicina+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='medicinaEdit']");
+        //oblig.filter("[value='"+response.data[0].ind_Medicina+"']").attr('checked', true);
+        
+        $("input[name=marcaEdit][value='"+response.data[0].ind_Medicina+"']").prop("checked",true);
+        
         $('#inputminimoEdit').val(response.data[0].Min_Por_Val);
         $('#inputmaximoEdit').val(response.data[0].Max_Por_Val);
         $('#modal-CategoriaEditar').modal('show');
@@ -381,8 +384,12 @@ function VisualizarAction(data) {
     }
     $.ajax(settings).done(function(response) {
         $('#CategoriaView').val(response.data[0].Categoria);
-        var oblig = $("input:radio[name='medicinaView']");
-        oblig.filter("[value='"+response.data[0].ind_Medicina+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='medicinaView']");
+        //oblig.filter("[value='"+response.data[0].ind_Medicina+"']").attr('checked', true);
+        
+        $("input[name=marcaEdit][value='"+response.data[0].ind_Medicina+"']").prop("checked",true);
+        
+        
         $('#inputminimoView').val(response.data[0].Min_Por_Val);
         $('#inputmaximoView').val(response.data[0].Max_Por_Val);
         

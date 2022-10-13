@@ -504,14 +504,19 @@ function EditAction(data) {
         $('#inputIdEditMarca').val(response.data[0].Id_Marca);
         $('#inputMarcaEdit').val($.trim(response.data[0].Marca));
         $("#inputCategoriaEdit option[value='"+ response.data[0].Id_Categoria +"']").attr("selected",true);
-        //$("#inputFabricanteEdit option[value='"+ response.data[0].id +"']").attr("selected",true);
-        var oblig = $("input:radio[name='activoEdit']");
-            oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        var oblig = $("input:radio[name='medicinaEdit']");
-            oblig.filter("[value='"+response.data[0].Ind_Medicina+"']").attr('checked', true);
-        var oblig = $("input:radio[name='marcaEdit']");
-            oblig.filter("[value='"+response.data[0].Ind_MarcaPropia+"']").attr('checked', true);
-
+        //var oblig = $("input:radio[name='activoEdit']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
+        
+        //var oblig = $("input:radio[name='medicinaEdit']");
+        //oblig.filter("[value='"+response.data[0].Ind_Medicina+"']").attr('checked', true);
+        $("input[name=medicinaEdit][value='"+response.data[0].Ind_Medicina+"']").prop("checked",true);
+    
+        //var oblig = $("input:radio[name='marcaEdit']");
+        //oblig.filter("[value='"+response.data[0].Ind_MarcaPropia+"']").attr('checked', true);
+        $("input[name=marcaEdit][value='"+response.data[0].Ind_MarcaPropia+"']").prop("checked",true);
+    
+        
         $('#modal-MarcaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -553,12 +558,18 @@ function VisualizarAction(data) {
         $('#inputFabricanteVer').val(response.data[0].Fabricante);
         
 
-        var oblig = $("input:radio[name='activoVer']");
-        oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
-        var oblig = $("input:radio[name='medicinaVer']");
-        oblig.filter("[value='"+response.data[0].Ind_Medicina+"']").attr('checked', true);
-        var oblig = $("input:radio[name='marcaVer']");
-        oblig.filter("[value='"+response.data[0].Ind_MarcaPropia+"']").attr('checked', true);
+        //var oblig = $("input:radio[name='activoVer']");
+        //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
+        $("input[name=activoVer][value='"+response.data[0].status+"']").prop("checked",true);
+        
+        //var oblig = $("input:radio[name='medicinaVer']");
+        //oblig.filter("[value='"+response.data[0].Ind_Medicina+"']").attr('checked', true);
+        $("input[name=medicinaVer][value='"+response.data[0].Ind_Medicina+"']").prop("checked",true);
+        
+        //var oblig = $("input:radio[name='marcaVer']");
+        //oblig.filter("[value='"+response.data[0].Ind_MarcaPropia+"']").attr('checked', true);
+        $("input[name=marcaVer][value='"+response.data[0].Ind_MarcaPropia+"']").prop("checked",true);
+        
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Marca (IdCategoria)",data,"R");
         $('#modal-MarcaVisualizar').modal('show');
     }).fail(function(jqXHR, textStatus) {
