@@ -182,7 +182,7 @@
                                         <input class="form-check-input" type="radio" id="calle" name="calle" value="5">
                                         <label class="form-check-label">Otro</label>
                                     </div>
-                                    <div class="inputText font-weight-bold">Nombre:</div>
+                                    <div class="inputText font-weight-bold">Especifique:</div>
                                     <input type="text" class="form-control input-sm" id="nombreCalle" name="nombreCalle" placeholder="Nombre de la quinta ...">
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                                 <select class="custom-select form-control-border" id="selectZona" name="selectZona">
                                 </select>
                                 <br/>
-                                <div class="inputText font-weight-bold">Nombre:</div>
+                                <div class="inputText font-weight-bold">Otra Zona:</div>
                                 <input type="text" class="form-control input-sm" id="nombreTipoZona" name="nombreTipoZona" placeholder="Nombre de zona ...">
                             </div>
                         </div>
@@ -1278,10 +1278,21 @@
                                         <label class="form-check-label">Si</label>
                                     </div>
                                 </div>
+
+
+                                <div class="inputText font-weight-bold">Conexion a Internet:</div>
+                                <select id="selectConexionInternet" name="selectConexionInternet" class="form-control">
+                                </select>
+                                <div class="inputText font-weight-bold">Tipo de Conexion a Internet:</div>
+                                <select id="selectTipoInternet" name="selectTipoInternet" class="form-control">
+                                </select>
+
+
+
+
                             </div>
-                            <div class="inputText font-weight-bold">Tipo de Conexion a Internet:</div>
-                            <select id="selectTipoInternet" name="selectTipoInternet" class="form-control">
-                            </select>
+                            
+                            
                         </div>
                         <div class="col-md-4">
                             <div class="card">
@@ -1376,9 +1387,18 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="inputText font-weight-bold">Tipo de Gas:</div>
-                            <select id="selectTipoGas" name="selectTipoGas" class="form-control">
-                            </select><div class="card">
+                            
+                            <div class="card">
+
+                                <div class="inputText font-weight-bold">Tipo de Gas:</div>
+                                <select id="selectTipoGas" name="selectTipoGas" class="form-control">
+                                </select>
+                                
+                                <div class="inputText font-weight-bold">Frecuencia Gas:</div>
+                                <select id="selectFrecuenciaGas" name="selectFrecuenciaGas" class="form-control">
+                                </select>
+
+
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Nevera</div>
                                     <div class="form-check d-inline">
