@@ -4,6 +4,51 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>| Home Pantry 2.0 |</title>
+
+
+        <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
+        <script src="<?php echo base_url('jsHP/jsAlertas.js') ?>"></script>
+        <script>
+
+
+
+            $(document).ready(function() {
+
+                if (localStorage.getItem("nombreUsuario") !== null){
+
+                    ListaAlertas(localStorage.getItem("IdUsuario"));
+                    $("#nombreUsuario").html(localStorage.getItem("nombreUsuario"));
+                    $("#nombreUsuario2").html(localStorage.getItem("nombreUsuario"));
+
+                    img = document.createElement('img');
+                    //img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
+                    img.setAttribute("src", `<?php echo base_url('dist/img/Usuarios/')?>${localStorage.getItem("Avatar")}`);
+                    img.setAttribute("alt", `User Image`);
+                    img.setAttribute("class", `img-circle elevation-2`);
+                    document.getElementById('lockscreen-image').appendChild(img);
+
+                    img = document.createElement('img');
+                    //img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
+                    img.setAttribute("src", `<?php echo base_url('dist/img/Usuarios/')?>${localStorage.getItem("Avatar")}`);
+                    img.setAttribute("alt", `User Image`);
+                    img.setAttribute("class", `img-circle elevation-2`);
+                    document.getElementById('lockscreen-image2').appendChild(img);
+
+                }else{
+                    window.location = '/homepantry20/index.php';
+                }
+            });
+
+            function LogOut(){
+                sessionStorage.clear();
+                localStorage.clear();
+                window.location = '/homepantry20/index.php';
+            }
+
+        </script>
+
+
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/black-tie/jquery-ui.min.css" integrity="sha512-+Z63RrG0zPf5kR9rHp9NlTMM29nxf02r1tkbfwTRGaHir2Bsh4u8A79PiUKkJq5V5QdugkL+KPfISvl67adC+Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -89,7 +134,7 @@
                             <!--<a class="dropdown-item" href="<?php echo base_url('Principal/SessionLock')?>">
                                 <i class="bi bi-lock-fill"></i>&nbsp;Bloquear
                             </a>-->
-                            <a class="dropdown-item" href="<?php echo base_url('Principal/logout')?>">
+                            <a class="dropdown-item" onclick="LogOut()" href="<?php echo base_url('Principal/logout')?>">
                                 <i class="bi bi-arrow-right-circle"></i>&nbsp;Salir
                             </a>
                             
@@ -155,28 +200,17 @@
             <!-- Main content -->
             <div class="content">
         <!-- jQuery -->
-        <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js')?>"></script>
-        <script src="<?php echo base_url('jsHP/jsAlertas.js') ?>"></script>
-        <script>
-            $(document).ready(function() {
-                ListaAlertas(localStorage.getItem("IdUsuario"));
-                $("#nombreUsuario").html(localStorage.getItem("nombreUsuario"));
-                $("#nombreUsuario2").html(localStorage.getItem("nombreUsuario"));
+        
 
-                img = document.createElement('img');
-                //img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
-                img.setAttribute("src", `<?php echo base_url('dist/img/Usuarios/')?>${localStorage.getItem("Avatar")}`);
-                img.setAttribute("alt", `User Image`);
-                img.setAttribute("class", `img-circle elevation-2`);
-                document.getElementById('lockscreen-image').appendChild(img);
+        
 
-                img = document.createElement('img');
-                //img.setAttribute("src", `../dist/img/Usuarios/${localStorage.getItem("Avatar")}`);
-                img.setAttribute("src", `<?php echo base_url('dist/img/Usuarios/')?>${localStorage.getItem("Avatar")}`);
-                img.setAttribute("alt", `User Image`);
-                img.setAttribute("class", `img-circle elevation-2`);
-                document.getElementById('lockscreen-image2').appendChild(img);
-            });
-        </script>
+
+
+
+
+
+
+
+
     </body>
 </html>

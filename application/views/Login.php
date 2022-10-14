@@ -318,7 +318,7 @@ if(!isset($_SESSION)){
                         icon: 'success',
                         title: 'Ingresando a Home Pantry'
                     })
-                    window.location.href = "Principal/dashboard";
+                    window.location.href = "../Principal/dashboard";
                 }else{
                     let selected = $(identificador);
                     selected.find("option").remove();

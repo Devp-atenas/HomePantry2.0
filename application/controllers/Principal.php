@@ -411,7 +411,7 @@ class Principal extends CI_Controller {
         echo '<script>';
         echo 'sessionStorage.clear();';
         echo 'localStorage.clear();';
-        //echo 'alert(999)';
+        echo 'alert(999)';
         echo '</script>';
         $this->session->sess_destroy();
         //$this->load->view('SessionLock');
@@ -456,3 +456,6 @@ class Principal extends CI_Controller {
         }   
     }   
 }
+
+?>
+

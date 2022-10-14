@@ -1808,6 +1808,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Mensual:</div>
+                                <input type="email" class="form-control input-sm" id="inputGastoMensual" name="correoAlternoResponsable" placeholder="Ingrese Correo alterno ...">
                                 <select class="custom-select form-control-border" id="selectMensual" name="selectMensual">
                                 </select>
                             </div>
