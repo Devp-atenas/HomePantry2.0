@@ -4,7 +4,6 @@ $("#botonenviar").click(function() {
     }
 });
 
-
 function existeAtributo7(Atributo) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
@@ -117,7 +116,6 @@ function ejecutarAgregarAtributo7() {
     }
 }
 
-
 function cargarTablaDiccionarioExistente(Item,idCategoria){
     var msg = "Si de desea agregar el item presione en agregar";
     $("#idBotonAgregarAtributo7").prop('disabled', false);
@@ -186,7 +184,6 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
                 mData: 'status',
                 className: "text-center"
             }
-            
         ],
         "createdRow": function( row, data, dataIndex){
             if (data['Id_Categoria'] == idCategoria){
@@ -201,7 +198,6 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
         }
     });
 }
-
 
 function deleteAction(data) {
     var msg;
@@ -248,8 +244,6 @@ function deleteAction(data) {
         }
     })
 }
-
-
 
 $(document).ready(function() {
     cargarCategoria("#selectCategoria",-1);
@@ -394,7 +388,7 @@ function deleteAtributo7(data) {
         }
     })
 }
-// 333333
+
 function ActualizarRegistro() {
     if ($("#FormAtributoEdit").valid()) {
         var settings = {
@@ -503,7 +497,7 @@ function EditAction(data) {
         }
     })
 }
-//6666666666666666
+
 function VisualizarAction(data) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAtributo7IdV1/' + data,
@@ -544,7 +538,6 @@ function VisualizarAction(data) {
         }
     })
 }
-
 
 function cargarCategoria(etiqueta,idS) {
     var settings = {
@@ -591,7 +584,6 @@ function cargarCategoria(etiqueta,idS) {
         }
     })
 }
-
 
 function cargarTabla(Id){
     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tabla Atributo7 (IdCategoria)",Id,"R");
