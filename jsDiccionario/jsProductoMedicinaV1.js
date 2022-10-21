@@ -39,8 +39,8 @@ $(document).ready(function() {
     });
 
     $('#TableProducto').hide();
-    cargarCategoriaNOMedicina("#selectCategoria",-1);
-    cargarCategoriaNOMedicina("#selectCategoriaTabla",-1);
+    cargarCategoriaMedicina("#selectCategoria",-1);
+    cargarCategoriaMedicina("#selectCategoriaTabla",-1);
     $('#FormProductoEdit').validate({
         rules: {
             selectCategoriaEdit: {
@@ -259,7 +259,7 @@ function cargarNombreAtributos(id_categoria) {
     })
 }
 
-function cargarCategoriaNOMedicina(etiqueta,idS) {
+function cargarCategoriaMedicina(etiqueta,idS) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAllCategoriasV1',
         "method": "get",
@@ -305,9 +305,9 @@ function cargarCategoriaNOMedicina(etiqueta,idS) {
     })
 }
 
-function cargarCategoriaNOMedicina(etiqueta,idS) {
+function cargarCategoriaMedicina(etiqueta,idS) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllCategoriasNOMedicinaV1',
+        "url": localStorage.getItem("urlApi")+'getAllCategoriasMedicinaV1',
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -354,7 +354,7 @@ function cargarCategoriaNOMedicina(etiqueta,idS) {
 function cargarFabricante(etiqueta,idCat,idS) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'getAllFabricantes_x_CategoriaV1/'+idCat,
+        "url": urlApi+'getAllFabricantes_x_CategoriaV1/0',
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -401,7 +401,7 @@ function cargarFabricante(etiqueta,idCat,idS) {
 function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'getAllMarca_x_Categoria_x_FabricanteV1/' + id_categoria+'/'+id_fabricante,
+        "url": urlApi+'getAllMarca_x_Categoria_x_FabricanteV1/0/'+id_fabricante,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -1107,7 +1107,7 @@ function EditAction(data) {
     }
     $.ajax(settings).done(function(response) {
         $('#inputIdEditProducto').val(response.data[0].Id_Producto);
-        cargarCategoriaNOMedicina("#selectCategoriaEdit",response.data[0].id_Categoria);
+        cargarCategoriaMedicina("#selectCategoriaEdit",response.data[0].id_Categoria);
         cargarSegmento("#selectSegmentoEdit",response.data[0].id_Categoria,response.data[0].id_Segmento);
         
         //alert(response.data[0].id_Fabricante)
@@ -1260,7 +1260,7 @@ function ejecutarAgregarProductoNuevo(){
             var id_categoria = $("#selectCategoria").val();
             var id_categoriaT = $("#selectCategoriaTabla").val();
             document.getElementById('FormProducto').reset();
-            cargarCategoriaNOMedicina("#selectCategoria",id_categoria);
+            cargarCategoriaMedicina("#selectCategoria",id_categoria);
             cargarFabricante("#selectFabricante",id_categoria,0);
             let select = $('#selectMarca');
             select.find("option").remove();

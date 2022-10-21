@@ -128,6 +128,9 @@ class Principal extends CI_Controller {
     public function Producto(){
         $this->load->view('Producto/Producto');
     }
+    public function ProductoMedicina(){
+        $this->load->view('Producto/ProductoMedicina');
+    }
     public function Fabricante(){
         $this->load->view('Fabricante/Fabricante');
 	}

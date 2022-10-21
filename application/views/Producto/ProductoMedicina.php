@@ -37,7 +37,7 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="bi bi-upc-scan"></i>&nbsp;Mantenimiento Producto</h1>
+                <h1><i class="bi bi-heart-pulse"></i>&nbsp;Mantenimiento Producto Medicina</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -48,7 +48,7 @@ select:focus {
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Producto</h3>
+                    <h3 class="card-title">Producto Medicina</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -240,7 +240,7 @@ select:focus {
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listados de Producto</h3>
+                    <h3 class="card-title">Listados de Producto Medicina</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -285,6 +285,7 @@ select:focus {
                                         <th>Atributo 5</th>
                                         <th>Atributo 6</th>
                                         <th>Atributo 7</th>
+                                       
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -757,12 +758,10 @@ select:focus {
 <!-- /.modal Masivo precios -->
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsProductoV1.js') ?>"></script>
+<script src="<?php echo base_url('jsDiccionario/jsProductoMedicinaV1.js') ?>"></script>
 
 <script>
-
-
-$("#inputProducto_").keyup(function () {
+    $("#inputProducto_").keyup(function () {
         var idCategoria = $("#selectCategoria").val();
         var valorBuscar = $("#inputProducto").val();
         
@@ -794,142 +793,131 @@ $("#inputProducto_").keyup(function () {
         });
     });
 
+    $("#selectCategoriaTabla").change(function() {
+        var id_categoriaT = $("#selectCategoriaTabla").val();
+        cargarTabla(id_categoriaT);
+        $('#TableProducto').show();
+    });
 
+    $("#selectCategoria").change(function() {
+        var id_categoria = $("#selectCategoria").val();
+        cargarNombreAtributos(id_categoria);
+        $("#idBotonAgregarPoducto").prop('disabled', false);
+        $('#selectFabricante').select2();
+        cargarFabricante("#selectFabricante",id_categoria,0);
 
+        if ($.trim($('#selectFabricante').val()) !== '') {
+            var id_fabricante = $("#selectFabricante").val();
+            let selectMarca = $("#selectMarca");
+            selectMarca.find("option").remove();
+            $('#selectMarca').select2();
+            cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
+        }
+        let selectSegmento = $("#selectSegmento");
+        selectSegmento.find("option").remove();
+        let selectTamano = $("#selectTamano");
+        selectTamano.find("option").remove();
+        let selectTamanoRango = $("#selectTamanoRango");
+        selectTamanoRango.find("option").remove();
+        let selectUnidadMedida = $("#selectUnidadMedida");
+        selectUnidadMedida.find("option").remove();
+        let selectAtributo1 = $("#selectAtributo1");
+        selectAtributo1.find("option").remove();
+        let selectAtributo2 = $("#selectAtributo2");
+        selectAtributo2.find("option").remove();
+        let selectAtributo3 = $("#selectAtributo3");
+        selectAtributo3.find("option").remove();
+        let selectAtributo4 = $("#selectAtributo4");
+        selectAtributo4.find("option").remove();
+        let selectAtributo5 = $("#selectAtributo5");
+        selectAtributo5.find("option").remove();
+        let selectAtributo6 = $("#selectAtributo6");
+        selectAtributo6.find("option").remove();
+        let selectAtributo7 = $("#selectAtributo7");
+        selectAtributo7.find("option").remove();
+        cargarSegmento("#selectSegmento",id_categoria,0);
+        cargarTamanoRango("#selectTamanoRango",id_categoria,0);
+        //cargarTamano("#selectTamano",id_categoria,0);
+        cargarUnidadMedida("#selectUnidadMedida",id_categoria,0);
+        cargarAtributo1("#selectAtributo1",id_categoria,0);
+        cargarAtributo2("#selectAtributo2",id_categoria,0);
+        cargarAtributo3("#selectAtributo3",id_categoria,0);
+        cargarAtributo4("#selectAtributo4",id_categoria,0);
+        cargarAtributo5("#selectAtributo5",id_categoria,0);
+        cargarAtributo6("#selectAtributo6",id_categoria,0);
+        cargarAtributo7("#selectAtributo7",id_categoria,0);
+    });
 
+    $("#selectTamanoRango").change(function() {
+        var idTamanoRango = $("#selectTamanoRango").val();
+        var id_categoria = $("#selectCategoria").val();
+        cargarTamano("#selectTamano",id_categoria,0,idTamanoRango);
+    });
 
+    $("#selectCategoriaEdit").change(function() {
+        var id_categoria = $("#selectCategoria").val();
 
-$("#selectCategoriaTabla").change(function() {
-    var id_categoriaT = $("#selectCategoriaTabla").val();
-    cargarTabla(id_categoriaT);
-    $('#TableProducto').show();
-});
+        $("#idBotonAgregarPoducto").prop('disabled', false);
+        $('#selectFabricanteEdit').select2();
+        cargarFabricante("#selectFabricanteEdit",id_categoria,0);
 
-$("#selectCategoria").change(function() {
-    var id_categoria = $("#selectCategoria").val();
-    cargarNombreAtributos(id_categoria);
-    $("#idBotonAgregarPoducto").prop('disabled', false);
-    $('#selectFabricante').select2();
-    cargarFabricante("#selectFabricante",id_categoria,0);
+        if ($.trim($('#selectFabricanteEdit').val()) !== '') {
+            var id_fabricante = $("#selectFabricanteEdit").val();
+            let selectMarca = $("#selectMarcaEdit");
+            selectMarca.find("option").remove();
+            $('#selectMarcaEdit').select2();
+            cargarMarca("#selectMarcaEdit",id_categoria,id_fabricante,0);
+        }
+        let selectSegmento = $("#selectSegmentoEdit");
+        selectSegmento.find("option").remove();
+        let selectTamano = $("#selectTamano");
+        selectTamano.find("option").remove();
+        let selectTamanoRango = $("#selectTamanoRangoEdit");
+        selectTamanoRango.find("option").remove();
+        let selectUnidadMedida = $("#selectUnidadMedidaEdit");
+        selectUnidadMedida.find("option").remove();
+        let selectAtributo1 = $("#selectAtributo1Edit");
+        selectAtributo1.find("option").remove();
+        let selectAtributo2 = $("#selectAtributo2Edit");
+        selectAtributo2.find("option").remove();
+        let selectAtributo3 = $("#selectAtributo3Edit");
+        selectAtributo3.find("option").remove();
+        let selectAtributo4 = $("#selectAtributo4Edit");
+        selectAtributo4.find("option").remove();
+        let selectAtributo5 = $("#selectAtributo5Edit");
+        selectAtributo5.find("option").remove();
+        let selectAtributo6 = $("#selectAtributo6Edit");
+        selectAtributo6.find("option").remove();
+        let selectAtributo7 = $("#selectAtributo7Edit");
+        selectAtributo7.find("option").remove();
+        cargarSegmento("#selectSegmentoEdit",id_categoria,0);
+        cargarTamanoRango("#selectTamanoRangoEdit",id_categoria,0);
+        cargarUnidadMedida("#selectUnidadMedidaEdit",id_categoria,0);
+        cargarAtributo1("#selectAtributo1Edit",id_categoria,0);
+        cargarAtributo2("#selectAtributo2Edit",id_categoria,0);
+        cargarAtributo3("#selectAtributo3Edit",id_categoria,0);
+        cargarAtributo4("#selectAtributo4Edit",id_categoria,0);
+        cargarAtributo5("#selectAtributo5Edit",id_categoria,0);
+        cargarAtributo6("#selectAtributo6Edit",id_categoria,0);
+        cargarAtributo7("#selectAtributo7Edit",id_categoria,0);
+    });
 
-    if ($.trim($('#selectFabricante').val()) !== '') {
+    //999999999
+    $("#selectTamanoRangoEdit").change(function() { 
+        var id_categoria = $("#selectCategoriaEdit").val();
+        var idTamanoRango = $("#selectTamanoRangoEdit").val();
+        cargarTamano("#selectTamanoEdit",id_categoria,0,idTamanoRango);
+        
+    });
+
+    $("#selectFabricante").change(function() {
+        var id_categoria = $("#selectCategoria").val();
         var id_fabricante = $("#selectFabricante").val();
         let selectMarca = $("#selectMarca");
         selectMarca.find("option").remove();
         $('#selectMarca').select2();
         cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
-    }
-    let selectSegmento = $("#selectSegmento");
-    selectSegmento.find("option").remove();
-    let selectTamano = $("#selectTamano");
-    selectTamano.find("option").remove();
-    let selectTamanoRango = $("#selectTamanoRango");
-    selectTamanoRango.find("option").remove();
-    let selectUnidadMedida = $("#selectUnidadMedida");
-    selectUnidadMedida.find("option").remove();
-    let selectAtributo1 = $("#selectAtributo1");
-    selectAtributo1.find("option").remove();
-    let selectAtributo2 = $("#selectAtributo2");
-    selectAtributo2.find("option").remove();
-    let selectAtributo3 = $("#selectAtributo3");
-    selectAtributo3.find("option").remove();
-    let selectAtributo4 = $("#selectAtributo4");
-    selectAtributo4.find("option").remove();
-    let selectAtributo5 = $("#selectAtributo5");
-    selectAtributo5.find("option").remove();
-    let selectAtributo6 = $("#selectAtributo6");
-    selectAtributo6.find("option").remove();
-    let selectAtributo7 = $("#selectAtributo7");
-    selectAtributo7.find("option").remove();
-    cargarSegmento("#selectSegmento",id_categoria,0);
-    cargarTamanoRango("#selectTamanoRango",id_categoria,0);
-    //cargarTamano("#selectTamano",id_categoria,0);
-    cargarUnidadMedida("#selectUnidadMedida",id_categoria,0);
-    cargarAtributo1("#selectAtributo1",id_categoria,0);
-    cargarAtributo2("#selectAtributo2",id_categoria,0);
-    cargarAtributo3("#selectAtributo3",id_categoria,0);
-    cargarAtributo4("#selectAtributo4",id_categoria,0);
-    cargarAtributo5("#selectAtributo5",id_categoria,0);
-    cargarAtributo6("#selectAtributo6",id_categoria,0);
-    cargarAtributo7("#selectAtributo7",id_categoria,0);
-});
-
-$("#selectTamanoRango").change(function() {
-    var idTamanoRango = $("#selectTamanoRango").val();
-    var id_categoria = $("#selectCategoria").val();
-    cargarTamano("#selectTamano",id_categoria,0,idTamanoRango);
-});
-
-
-
-$("#selectCategoriaEdit").change(function() {
-    var id_categoria = $("#selectCategoria").val();
-
-    $("#idBotonAgregarPoducto").prop('disabled', false);
-    $('#selectFabricanteEdit').select2();
-    cargarFabricante("#selectFabricanteEdit",id_categoria,0);
-
-    if ($.trim($('#selectFabricanteEdit').val()) !== '') {
-        var id_fabricante = $("#selectFabricanteEdit").val();
-        let selectMarca = $("#selectMarcaEdit");
-        selectMarca.find("option").remove();
-        $('#selectMarcaEdit').select2();
-        cargarMarca("#selectMarcaEdit",id_categoria,id_fabricante,0);
-    }
-    let selectSegmento = $("#selectSegmentoEdit");
-    selectSegmento.find("option").remove();
-    let selectTamano = $("#selectTamano");
-    selectTamano.find("option").remove();
-    let selectTamanoRango = $("#selectTamanoRangoEdit");
-    selectTamanoRango.find("option").remove();
-    let selectUnidadMedida = $("#selectUnidadMedidaEdit");
-    selectUnidadMedida.find("option").remove();
-    let selectAtributo1 = $("#selectAtributo1Edit");
-    selectAtributo1.find("option").remove();
-    let selectAtributo2 = $("#selectAtributo2Edit");
-    selectAtributo2.find("option").remove();
-    let selectAtributo3 = $("#selectAtributo3Edit");
-    selectAtributo3.find("option").remove();
-    let selectAtributo4 = $("#selectAtributo4Edit");
-    selectAtributo4.find("option").remove();
-    let selectAtributo5 = $("#selectAtributo5Edit");
-    selectAtributo5.find("option").remove();
-    let selectAtributo6 = $("#selectAtributo6Edit");
-    selectAtributo6.find("option").remove();
-    let selectAtributo7 = $("#selectAtributo7Edit");
-    selectAtributo7.find("option").remove();
-    cargarSegmento("#selectSegmentoEdit",id_categoria,0);
-    cargarTamanoRango("#selectTamanoRangoEdit",id_categoria,0);
-    cargarUnidadMedida("#selectUnidadMedidaEdit",id_categoria,0);
-    cargarAtributo1("#selectAtributo1Edit",id_categoria,0);
-    cargarAtributo2("#selectAtributo2Edit",id_categoria,0);
-    cargarAtributo3("#selectAtributo3Edit",id_categoria,0);
-    cargarAtributo4("#selectAtributo4Edit",id_categoria,0);
-    cargarAtributo5("#selectAtributo5Edit",id_categoria,0);
-    cargarAtributo6("#selectAtributo6Edit",id_categoria,0);
-    cargarAtributo7("#selectAtributo7Edit",id_categoria,0);
-});
-
-//999999999
-$("#selectTamanoRangoEdit").change(function() { 
-    var id_categoria = $("#selectCategoriaEdit").val();
-    var idTamanoRango = $("#selectTamanoRangoEdit").val();
-    cargarTamano("#selectTamanoEdit",id_categoria,0,idTamanoRango);
-    
-});
-
-
-$("#selectFabricante").change(function() {
-    var id_categoria = $("#selectCategoria").val();
-    var id_fabricante = $("#selectFabricante").val();
-    let selectMarca = $("#selectMarca");
-    selectMarca.find("option").remove();
-    $('#selectMarca').select2();
-    cargarMarca("#selectMarca",id_categoria,id_fabricante,0);
-});
-
-
-
+    });
 </script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
