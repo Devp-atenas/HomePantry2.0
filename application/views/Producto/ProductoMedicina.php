@@ -269,7 +269,7 @@ select:focus {
                                         <th>#</th>
                                         <th>Producto</th>
                                         <th>Codigo de Barra</th>
-                                        <th>Fabricanta</th>
+                                        <th>Fabricante</th>
                                         <th>Marca</th>
                                         <th>Segmento</th>
                                         <th>Tamaño Rango</th>
