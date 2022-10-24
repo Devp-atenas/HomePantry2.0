@@ -259,7 +259,7 @@ function cargarNombreAtributos(id_categoria) {
     })
 }
 
-function cargarCategoriaMedicina(etiqueta,idS) {
+function cargarCategoriaMedicina_(etiqueta,idS) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAllCategoriasV1',
         "method": "get",

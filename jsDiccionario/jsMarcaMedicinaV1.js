@@ -60,7 +60,7 @@ function ejecutarAgregarMarca(){
                 "Authorization": "Bearer " + localStorage.getItem('Token')
             },
             "data": {
-                "Id_Categoria": $("#selectCategoria").val(),
+                "Id_Categoria": 0,//$("#selectCategoria").val(),
                 "Id_Fabricante": $("#selectFabricante").val(),
                 "Marca": $("#inputMarca").val().toUpperCase(),
                 "Ind_Medicina":  $('input:radio[name=medicinaAdd]:checked').val(),
@@ -204,8 +204,13 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
 }
 
 $(document).ready(function() {
-    cargarCategoriaNOMedicina("#selectCategoria",-1);
-    cargarCategoriaNOMedicina("#selectCategoriaTabla",-1);
+    cargarCategoriaMedicina("#selectCategoria",-1);
+    cargarCategoriaMedicina("#selectCategoriaTabla",-1);
+
+    cargarTabla(0);
+    $('#TableMarca').show();
+
+
 
     $('#FormMarcaEdit').validate({
         rules: {
@@ -499,7 +504,7 @@ function EditAction(data) {
         }
     }
     $.ajax(settings).done(function(response) {
-        cargarCategoriaNOMedicina("#selectCategoriaEdit",response.data[0].Id_Categoria);
+        cargarCategoriaMedicina("#selectCategoriaEdit",response.data[0].Id_Categoria);
         cargarFabricante('#selectFabricanteEdit',response.data[0].Id_Categoria,response.data[0].Id_Fabricante);
         $('#inputIdEditMarca').val(response.data[0].Id_Marca);
         $('#inputMarcaEdit').val($.trim(response.data[0].Marca));
@@ -594,9 +599,9 @@ function VisualizarAction(data) {
     })
 }
 // 9999
-function cargarCategoriaNOMedicina(etiqueta,idS) {
+function cargarCategoriaMedicina(etiqueta,idS) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllCategoriasNOMedicinaV1',
+        "url": localStorage.getItem("urlApi")+'getAllCategoriasMedicinaV1',
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -636,53 +641,6 @@ function cargarCategoriaNOMedicina(etiqueta,idS) {
                 confirmButtonText: `Ok`,
             })
             window.location = '/homepantry20/index.php';
-        }
-    })
-}
-
-
-function cargarCategoria_(etiqueta,idS) {
-    var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllCategoriaV1',
-        "method": "get",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Bearer " + localStorage.getItem('Token')
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        let select = $(etiqueta);
-        select.find("option").remove();
-        if (idS == -1){
-            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
-        }
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id_Categoria === idS){
-            select.append("<option value=" + response.data[i].id_Categoria + " selected>" + response
-                .data[i].Categoria + " - "+ response.data[i].id_Categoria + "</option>");
-            }else{
-                select.append("<option value=" + response.data[i].id_Categoria + ">" + response
-                .data[i].Categoria + " - "+ response.data[i].id_Categoria + "</option>");
-            }
-        }
-    }).fail(function(jqXHR, textStatus) {
-        if (jqXHR.status == 400) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-            Toast.fire({
-                title: 'Su Session ha Expirado',
-                confirmButtonText: `Ok`,
-            })
-            window.location = '/homepantry20/index.php/index.php/index.php';
         }
     })
 }

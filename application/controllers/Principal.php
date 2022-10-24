@@ -134,6 +134,9 @@ class Principal extends CI_Controller {
     public function Fabricante(){
         $this->load->view('Fabricante/Fabricante');
 	}
+    public function FabricanteMedicina(){
+        $this->load->view('Fabricante/FabricanteMedicina');
+	}
     public function Segmento(){
         $this->load->view('Segmento/Segmento');
 	}
@@ -145,6 +148,9 @@ class Principal extends CI_Controller {
 	}
     public function Marca(){
         $this->load->view('Marca/Marca');
+	}
+    public function MarcaMedicina(){
+        $this->load->view('Marca/MarcaMedicina');
 	}
     public function UnidadVolumen(){
         $this->load->view('UnidadVolumen/UnidadVolumen');

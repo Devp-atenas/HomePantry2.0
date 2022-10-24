@@ -35,7 +35,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fas fa-industry"></i>&nbsp;Mantenimiento de Fabricantes</h1>
+                <h1><i class="bi bi-activity"></i>&nbsp;Mantenimiento de Fabricantes Medicina</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -46,7 +46,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Fabricante</h3>
+                    <h3 class="card-title">Fabricante Medicina</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -139,7 +139,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listados de Fabricantes</h3>
+                    <h3 class="card-title">Listados de Fabricantes Medicina</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -153,15 +153,6 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="inputText font-weight-bold">Categoria:</div>
-                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
                             <div id="TableFabricante_">
                                 <table id="TableFabricante" class="table table-bordered table-striped" style="display:none;">
                                     <thead>
@@ -483,9 +474,9 @@
 
 
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsFabricanteV1.js') ?>"></script>
+<script src="<?php echo base_url('jsDiccionario/jsFabricanteMedicinaV1.js') ?>"></script>
 <script>
-    $("#inputFabricante").keyup(function () {
+    $("#inputFabricante_").keyup(function () {
         var idCategoria = $("#selectCategoria").val();
         var valorBuscar = $("#inputFabricante").val();
         
@@ -516,11 +507,11 @@
         });
     });
 
-    $("#selectCategoriaTabla").change(function() {
+    /*$("#selectCategoriaTabla").change(function() {
         var id_categoriaT = $("#selectCategoriaTabla").val();
         cargarTabla(id_categoriaT);
         $('#TableFabricante').show();
-    });
+    });*/
 </script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>

@@ -35,18 +35,18 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fas fa-industry"></i>&nbsp;Mantenimiento de Fabricantes</h1>
+                <h1><i class="bi bi-bandaid"></i>&nbsp;Mantenimiento de Marca Medicina</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<!-- Main content Agregar Fabricante 111111 -->
+<!-- Main content Agregar Marca 11111111111111111111  -->
 <section class="content">
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Fabricante</h3>
+                    <h3 class="card-title">Marca</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fa fa-plus"></i>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="card-body" style="display: none;">
-                    <form id="FormFabricante">
+                    <form id="FormMarca">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -66,21 +66,28 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fabricante:</div>
-                                    <input type="text" name="inputFabricante" id="inputFabricante" class="form-control" required>
+                                    <select id="selectFabricante" name="selectFabricante" class="form-control">
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Marca:</div>
+                                    <input type="text" name="inputMarca" id="inputMarca" class="form-control">
+                                </div>
+                            </div>
                             <div class="col-md-2">
                                 <div class="inputText font-weight-bold">Medicina:</div>
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" required id="medicinaAdd" name="medicinaAdd" value="0">
+                                            <input class="form-check-input" type="radio" id="medicinaAdd" name="medicinaAdd" value="0">
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" required id="medicinaAdd" name="medicinaAdd" value="1">
+                                            <input class="form-check-input" type="radio" id="medicinaAdd" name="medicinaAdd" value="1">
                                             <label class="form-check-label">Si</label>
                                         </div>
                                     </div>
@@ -91,11 +98,11 @@
                                 <div class="card">
                                     <div class="form-group">
                                     <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" required id="marcaAdd" name="marcaAdd" value="0">
+                                            <input class="form-check-input" type="radio" id="marcaAdd" name="marcaAdd" value="0">
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" required id="marcaAdd" name="marcaAdd" value="1">
+                                            <input class="form-check-input" type="radio" id="marcaAdd" name="marcaAdd" value="1">
                                             <label class="form-check-label">Si</label>
                                         </div>
                                     </div>
@@ -133,13 +140,13 @@
         </div>
     </div>
 </section>
-<!-- /Windows datatables Fabricante-->
+<!-- /Windows datatables Marca-->
 <section class="content">
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Listados de Fabricantes</h3>
+                    <h3 class="card-title">Listado de Marca Medicina</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -153,29 +160,20 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="inputText font-weight-bold">Categoria:</div>
-                                        <select id="selectCategoriaTabla" name="selectCategoriaTabla" class="form-control">
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="TableFabricante_">
-                                <table id="TableFabricante" class="table table-bordered table-striped" style="display:none;">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Fabricante</th>
-                                            <th>¿Medicina?</th>
-                                            <th>¿Marca Propia?</th>
-                                            <th>¿Activo?</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
+                            <table id="TableMarca" class="table table-bordered table-striped table-sm" style="display:none;">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Categoria</th>
+                                        <th>Fabricante</th>
+                                        <th>Marca</th>
+                                        <th>Medicina</th>
+                                        <th>Marca Propia</th>
+                                        <th>Activo?</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -184,8 +182,8 @@
         </div>
     </div>
 </section>
-<!-- Windows Modal Editar Registros 2222-->
-<div class="modal fade" id="modal-FabricanteEditar">
+<!-- Windows Modal Editar Registros-->
+<div class="modal fade" id="modal-MarcaEditar">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -197,7 +195,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Fabricantes</h3>
+                            <h3 class="card-title">Marca</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -205,12 +203,28 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="FormFabricanteEdit">
+                            <form id="FormMarcaEdit">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <div class="inputText font-weight-bold">Categoria:</div>
+                                            <select id="selectCategoriaEdit" name="selectCategoriaEdit" class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <div class="inputText font-weight-bold">Fabricante:</div>
-                                            <input type="text" name="inputFabricanteEdit" id="inputFabricanteEdit" class="form-control">
+                                            <select id="selectFabricanteEdit" name="selectFabricanteEdit" class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Marca:</div>
+                                            <input type="text" name="inputMarcaEdit" id="inputMarcaEdit" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -246,8 +260,8 @@
                                     <div class="col-md-2">
                                         <div class="inputText font-weight-bold">Activo:</div>
                                         <div class="card">
-                                            <div class="form-group" id='radiobuttonset'>
-                                                <div class="form-check d-inline">
+                                            <div class="form-group">
+                                            <div class="form-check d-inline">
                                                     <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'>
                                                     <label class="form-check-label">No</label>
                                                 </div>
@@ -261,13 +275,15 @@
                                 </div>
                                 <div class="row" style="visibility:hidden;">
                                     <div class="col-md-6">
+                                
                                         <div class="form-group">
-                                            <label for="inputIdEditFabricante">id:</label>
-                                            <input type="text" name="inputIdEditFabricante" id="inputIdEditFabricante"
+                                            <label for="inputIdEditMarca">id:</label>
+                                            <input type="text" name="inputIdEditMarca" id="inputIdEditMarca"
                                                 class="form-control">
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-12">
@@ -278,9 +294,7 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -291,8 +305,8 @@
     <!-- /.modal-dialog -->
 </div>
 
-<!-- Windows Modal Visualizar Registros 444444-->
-<div class="modal fade" id="modal-FabricanteVisualizar">
+<!-- Windows Modal Visualizar Registros-->
+<div class="modal fade" id="modal-MarcaVisualizar">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -304,7 +318,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Fabricante</h3>
+                            <h3 class="card-title">Marca</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -313,13 +327,28 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="inputText font-weight-bold">Fabricante:</div>
-                                        <input type="text" name="inputFabricanteVer" id="inputFabricanteVer" class="form-control" readonly>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Categoria:</div>
+                                            <input type="text" name="inputCategoriaVer" id="inputCategoriaVer" class="form-control"
+                                    readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Fabricante:</div>
+                                            <input type="text" name="inputFabricanteVer" id="inputFabricanteVer" class="form-control" readonly>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Marca:</div>
+                                            <input type="text" name="inputMarcaVer" id="inputMarcaVer" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
                                     <div class="inputText font-weight-bold">Medicina:</div>
                                     <div class="card">
                                         <div class="form-group">
@@ -378,6 +407,7 @@
 </div>
 <!-- /Windows Modal Visualizar Registros-->
 
+
 <!-- Windows Modal DiccionarioExistenteModal -->
 <div class="modal fade" id="DiccionarioExistenteModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
@@ -392,7 +422,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Fabricante Existente</h3>
+                            <h3 class="card-title">Marcas Existente</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -401,7 +431,7 @@
                         </div>
                         <div class="card-body">
                             <form id="FormDatosEdit">
-                                <h5 class="text-center">Duplicados para: <span class="label label-danger" id="htmlItem"></span>
+                                <h5 class="text-center">Duplicado para: <span class="label label-danger" id="htmlItem"></span>
                                 </h5>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -409,7 +439,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Categoria</th>
-                                                    <th>Fabricante</th>
+                                                    <th>Marca</th>
                                                     <th>Activo?</th>
                                                 </tr>
                                             </thead>
@@ -431,7 +461,7 @@
                 <div class="row">
                     <div class="col-12">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button id="idBotonAgregarFabricante"type="button" class="btn btn-success" onclick="ejecutarAgregarFabricante()">Agregar</button>
+                        <button id="idBotonAgregarMarca"type="button" class="btn btn-success" onclick="ejecutarAgregarMarca()">Agregar</button>
                     </div>
                 </div>
             </div>
@@ -481,18 +511,38 @@
     <!-- /.modal-dialog -->
 </div>
 
-
 <?php $this->load->view('Plantillas/Footer');?>
-<script src="<?php echo base_url('jsDiccionario/jsFabricanteV1.js') ?>"></script>
+<script src="<?php echo base_url('jsDiccionario/jsMarcaMedicinaV1.js') ?>"></script>
+
 <script>
-    $("#inputFabricante").keyup(function () {
+    $("#selectCategoria").change(function() {
+        var id_categoria = $("#selectCategoria").val();
+        //cargarFabricante("#selectFabricante",id_categoria,0);
+        cargarFabricante("#selectFabricante",0,0);
+        
+    });
+
+    $("#selectCategoriaEdit").change(function() {
+        var id_categoria = $("#selectCategoriaEdit").val();
+        //cargarFabricante("#selectFabricanteEdit",id_categoria,0);
+        cargarFabricante("#selectFabricante",0,0);
+        
+    });
+
+    $("#selectCategoriaTabla").change(function() {
+        var id_categoriaT = $("#selectCategoriaTabla").val();
+        cargarTabla(id_categoriaT);
+        $('#TableMarca').show();
+    });
+
+    $("#inputMarca_").keyup(function () {
         var idCategoria = $("#selectCategoria").val();
-        var valorBuscar = $("#inputFabricante").val();
+        var marca = $("#inputMarca").val();
         
         $.ajax({
             type: "POST",
-            url: localStorage.getItem("urlApi")+'getAllFabricante4CategoriaV1_Autocompletar',
-            data: JSON.stringify({ "valorBuscar": valorBuscar,"idCategoria":idCategoria }),
+            url: localStorage.getItem("urlApi")+'getMarca4CategoriaV1_Autocompletar',
+            data: JSON.stringify({ "marca": marca,"idCategoria":idCategoria }),
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('Token')
             },
@@ -500,26 +550,21 @@
             dataType: "json",
             success: function (data) {
                 var arrayElemento = jQuery.map(data, function(value, index) {
-                        return (value.Fabricante);
+                        return (value.Marca);
                 });
 
-                $('#inputFabricante').autocomplete({
+                $('#inputMarca').autocomplete({
                     clearButton: true,
                     source: arrayElemento,
                     selectFirst: true,
                     minLength: 2
                 });
+        
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log('Error: ' + xhr.responseText);
             }
         });
-    });
-
-    $("#selectCategoriaTabla").change(function() {
-        var id_categoriaT = $("#selectCategoriaTabla").val();
-        cargarTabla(id_categoriaT);
-        $('#TableFabricante').show();
     });
 </script>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
