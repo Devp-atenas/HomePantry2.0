@@ -396,6 +396,12 @@ class Principal extends CI_Controller {
     public function RevisarInvestigaciones(){
         $this->load->view('Reportes/RevisarInvestigaciones');
     }
+    public function ReporteHogarVSHogar(){
+        $this->load->view('Reportes/ReporteHogarVSHogar');
+    }
+    public function ReporteHogarVSReferido(){
+        $this->load->view('Reportes/ReporteHogarVSReferido');
+    }
     //----------- Mantenimiento ------------
     public function MantenimientoSemana(){
         $this->load->view('Mantenimiento/MantenimientoSemana');
