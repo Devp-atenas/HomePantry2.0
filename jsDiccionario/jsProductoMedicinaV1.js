@@ -163,7 +163,7 @@ $(document).ready(function() {
             inputProducto: {
                 required: true,
                 minlength: 2,
-                maxlength: 50
+                maxlength: 100
             },
             activoAdd: {
                 required: true
@@ -200,7 +200,7 @@ $(document).ready(function() {
             inputProducto: {
                 required: "Por favor ingrese el Producto",
                 minlength: "Longitud Minima 2",
-                maxlength: "Longitud Maxima 50",
+                maxlength: "Longitud Maxima 100",
                 
             }
         },
@@ -1118,7 +1118,7 @@ function EditAction(data) {
         
         cargarUnidadMedida("#selectUnidadMedidaEdit",response.data[0].id_Categoria,response.data[0].id_UnidadMedida);
         cargarAtributo1("#selectAtributo1Edit",response.data[0].id_Categoria,response.data[0].id_Atributo1);
-        cargarAtributo2("#selectAtributo2Edit",response.data[0].id_Categoria,response.data[0].Id_Atributo2);
+        cargarAtributo2("#selectAtributo2Edit",response.data[0].id_Categoria,response.data[0].id_Atributo2);
         cargarAtributo3("#selectAtributo3Edit",response.data[0].id_Categoria,response.data[0].id_Atributo3);
         cargarAtributo4("#selectAtributo4Edit",response.data[0].id_Categoria,response.data[0].id_Atributo4);
         cargarAtributo5("#selectAtributo5Edit",response.data[0].id_Categoria,response.data[0].id_Atributo5);

@@ -5,12 +5,15 @@ $(document).ready(function() {
 $("#selectPeriodo").change(function() {
     cargarHogares('#selectHogar1');
     $('#selectHogar1').select2();
-    //$("#showTableReporteHogarRegistroXConsumo").hide();
+    $('#selectHogar1').empty();
+    $('#selectHogar2').empty();
+    $("#showTableReporteHogarRegistroXConsumo").hide();
 });
 
 $("#selectHogar1").change(function() {
     cargarHogares('#selectHogar2');
     $('#selectHogar2').select2();
+    $("#showTableReporteHogarRegistroXConsumo").hide();
 });
 
 
@@ -19,7 +22,6 @@ $("#selectHogar2").change(function() {
     var idHogar1 = $('#selectHogar1').val();
     var idHogar2 = $('#selectHogar2').val();
     callCargarTabla(idPeriodo,idHogar1,idHogar2);
-    //$("#showTableReporteHogarRegistroXConsumo").show();
 });
 
 

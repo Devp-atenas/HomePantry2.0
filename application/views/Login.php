@@ -362,7 +362,7 @@ if(!isset($_SESSION)){
             })
         }
         
-        function generarMenu_(user){
+        /*function generarMenu_(user){
             var settings = {
                 "url": '<?php echo urlApi; ?>getOpcionesMenu/'+user,
                 "method": "get",
@@ -415,6 +415,6 @@ if(!isset($_SESSION)){
                     window.location = '/homepantry20/index.php';
                 }
             })
-        }
+        }*/
     </script>
 </html>

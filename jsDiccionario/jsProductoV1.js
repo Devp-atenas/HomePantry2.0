@@ -163,7 +163,7 @@ $(document).ready(function() {
             inputProducto: {
                 required: true,
                 minlength: 2,
-                maxlength: 50
+                maxlength: 100
             },
             activoAdd: {
                 required: true
@@ -200,7 +200,7 @@ $(document).ready(function() {
             inputProducto: {
                 required: "Por favor ingrese el Producto",
                 minlength: "Longitud Minima 2",
-                maxlength: "Longitud Maxima 50",
+                maxlength: "Longitud Maxima 100Fa",
                 
             }
         },
@@ -677,6 +677,7 @@ function cargarAtributo3(etiqueta,id_categoria,idS) {
         }
     })
 }
+
 function cargarAtributo2(etiqueta,id_categoria,idS) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
@@ -723,6 +724,60 @@ function cargarAtributo2(etiqueta,id_categoria,idS) {
         }
     })
 }
+
+
+
+
+
+
+
+function cargarAtributo2_(etiqueta,id_categoria,idS) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'getAllAtributo2_x_CategoriaV1/' + id_categoria,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
 function cargarAtributo1(etiqueta,id_categoria,idS) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
@@ -1001,6 +1056,7 @@ function ActualizarRegistro() {
             }
         }
         $.ajax(settings).done(function(response) {
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Modifico producto (IdCategoria): "+$("#inputIdEditProducto").val(),$("#selectCategoria").val(),"C");
             let xtable = $('#TableProducto').DataTable();
             xtable.ajax.reload(null, false);
             const Toast = Swal.mixin({
@@ -1073,7 +1129,7 @@ function EditAction(data) {
         
         cargarUnidadMedida("#selectUnidadMedidaEdit",response.data[0].id_Categoria,response.data[0].id_UnidadMedida);
         cargarAtributo1("#selectAtributo1Edit",response.data[0].id_Categoria,response.data[0].id_Atributo1);
-        cargarAtributo2("#selectAtributo2Edit",response.data[0].id_Categoria,response.data[0].Id_Atributo2);
+        cargarAtributo2("#selectAtributo2Edit",response.data[0].id_Categoria,response.data[0].id_Atributo2);
         cargarAtributo3("#selectAtributo3Edit",response.data[0].id_Categoria,response.data[0].id_Atributo3);
         cargarAtributo4("#selectAtributo4Edit",response.data[0].id_Categoria,response.data[0].id_Atributo4);
         cargarAtributo5("#selectAtributo5Edit",response.data[0].id_Categoria,response.data[0].id_Atributo5);
