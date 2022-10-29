@@ -76,6 +76,35 @@ select:focus {
                     
                     
                 </div>
+                <div class="form-group row mb-0 mt-0">
+                    <div class="col-md-3">
+                        <div class="inputText font-weight-bold">Semana:</div>
+                        <select id="selectSemanaTabla" name="selectSemanaTabla" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="inputText font-weight-bold">Hogar 1:</div>
+                        <select id="selectHogarTabla" name="selectHogarTabla" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="inputText font-weight-bold">Hogar 2:</div>
+                        <select id="selectHogarTabla" name="selectHogarTabla" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="inputText font-weight-bold">Dia Semana:</div>
+                        <select id="selectDiaSemanaTabla" name="selectDiaSemanaTabla" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="inputText font-weight-bold">Fecha:</div>
+                        <select id="selectFechaTabla" name="selectFechaTabla" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    
+                </div>
+                
             </div>
         </div>
         <div id="showTableReporteHogarRegistroXConsumo" style="display: none">

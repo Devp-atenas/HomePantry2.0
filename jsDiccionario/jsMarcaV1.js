@@ -194,8 +194,8 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
                 $('td', row).eq(0).css('color', '#EE0000');
                 $('td', row).eq(1).css('color', '#EE0000');
                 $('td', row).eq(2).css('color', '#EE0000');
-                $("#idBotonAgregarMarca").prop('disabled', true);
-                msg = "El Item ya pertenece a la categoria: "+data['Categoria']+"; no podra ser agregado";
+                //$("#idBotonAgregarMarca").prop('disabled', true);
+                msg = "El Item ya pertenece a la categoria: "+data['Categoria']+";";
                 $('#htmlMensajeModal').html(msg);
             }
             $('#htmlMensajeModal').html(msg);

@@ -919,6 +919,15 @@ $("#selectTamanoRangoEdit").change(function() {
 });
 
 
+$("#selectFabricanteEdit").change(function() {
+    var id_categoria = $("#selectCategoriaEdit").val();
+    var id_fabricante = $("#selectFabricanteEdit").val();
+    let selectMarca = $("#selectMarcaEdit");
+    selectMarca.find("option").remove();
+    $('#selectMarcaEdit').select2();
+    cargarMarca("#selectMarcaEdit",id_categoria,id_fabricante,0);
+});
+
 $("#selectFabricante").change(function() {
     var id_categoria = $("#selectCategoria").val();
     var id_fabricante = $("#selectFabricante").val();
