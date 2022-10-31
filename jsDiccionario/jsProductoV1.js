@@ -1093,7 +1093,7 @@ function ActualizarRegistro() {
             }
         }
         $.ajax(settings).done(function(response) {
-            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Modifico producto (IdCategoria): "+$("#inputIdEditProducto").val(),$("#selectCategoria").val(),"C");
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Modifico producto (IdCategoria): "+$("#inputIdEditProducto").val(),$("#selectCategoriaEdit").val(),"U");
             let xtable = $('#TableProducto').DataTable();
             xtable.ajax.reload(null, false);
             const Toast = Swal.mixin({
