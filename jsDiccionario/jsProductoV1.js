@@ -5,10 +5,14 @@ $("#botonenviar").click(function() {
     }
 });
 
+$("#botonBuscarProducto").click(function() {
+    if ($("#FormBuscarProducto").valid()) {
+        var CodigoBarras = $('#inputCodigoBarraBuscar').val();
+        BuscarCodigoBarra(CodigoBarras);
+    }
+});
+
 $(document).ready(function() {
-
-
-
     $('#TableProducto tbody').on('click', 'tr', function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
@@ -17,8 +21,6 @@ $(document).ready(function() {
             $(this).addClass('selected');
         }
     });
-
-
     
     $(function($) {
         $('#inputFragmentacion').autoNumeric('init', {
@@ -39,6 +41,7 @@ $(document).ready(function() {
     });
 
     $('#TableProducto').hide();
+    cargarCategoriaNOMedicina("#selectCategoriaBuscar",-1);
     cargarCategoriaNOMedicina("#selectCategoria",-1);
     cargarCategoriaNOMedicina("#selectCategoriaTabla",-1);
     $('#FormProductoEdit').validate({
@@ -201,6 +204,40 @@ $(document).ready(function() {
                 required: "Por favor ingrese el Producto",
                 minlength: "Longitud Minima 2",
                 maxlength: "Longitud Maxima 100Fa",
+                
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+    $('#FormBuscarProducto').validate({
+        rules: {
+            selectCategoriaBuscar: {
+                required: true,
+            },
+            inputCodigoBarraBuscar: {
+                required: true,
+                minlength: 8,
+                maxlength: 20
+            },
+        },
+        messages: {
+            selectCategoriaBuscar: {
+                required: "Por favor ingrese la categoria"
+            },
+            inputCodigoBarraBuscar: {
+                required: "Por favor ingrese el Codigo de Barra",
+                minlength: "Longitud Minima 8",
+                required: "Longitud Maxima 20",
                 
             }
         },
@@ -1276,8 +1313,7 @@ function ejecutarAgregarProductoNuevo(){
             let select = $('#selectMarca');
             select.find("option").remove();
             
-            if ($("#selectCategoriaTabla").val() != ""){
-
+            if ($("#selectCategoriaTabla").val() != ''){
                 let xtable = $('#TableProducto').DataTable();
                 xtable.ajax.reload(null, false);
             }
@@ -1367,12 +1403,120 @@ function existeCodigoBarra(CodigoBarras) {
     })
 }
 
+function BuscarCodigoBarra(CodigoBarras) {
+    var urlApi = localStorage.getItem("urlApi");
+    //alert('jjjjjjj');
+    var settings = {
+        "url": urlApi+'CantidadProductoXCodigoBarraV1/' + CodigoBarras,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Cantidad != 0){
+            var idCategoriaB = $('#selectCategoriaBuscar').val();
+            cargarTablaCodigoBarrasExistenteVerificar(CodigoBarras,idCategoriaB);
+            $('#htmlCodigoBarrasVerificar').html(CodigoBarras);
+            $('#CodigoBarraExistenteVerificarModal').modal('show');
+        }else{
+            alert(CodigoBarras);
+    
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarTablaCodigoBarrasExistenteVerificar(CodigoBarras,idCategoria){
+    var msg = "Si de desea agregar el producto presione en agregar";
+    var flag = false;
+    $('#TableCodigoBarraExistenteVerificar').dataTable({
+        "bDestroy": true,
+        "autoWidth": false,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": true,
+        "searching": false,
+        "bPaginate": false,
+        "ordering": false,
+        "info":     false,
+        "ajax": {
+            "url": localStorage.getItem("urlApi")+'getProductoXCodigoBarraV1/' + CodigoBarras,
+            "type": "GET",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/homepantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [{
+                mData: 'Categoria',
+                className: "text-center"
+            },
+            {
+                mData: 'Producto',
+                className: "text-center"
+            }
+        ],
+        "createdRow": function( row, data, dataIndex){
+            if (data['Id_Categoria'] == idCategoria){
+                $('td', row).eq(0).css('color', '#EE0000');
+                $('td', row).eq(1).css('color', '#EE0000');
+                $("#idBotonAgregarPoducto").prop('disabled', true);
+                msg = "El codigo de barra ya pertenece a una categoria!!!";
+                $('#htmlMensajeModal').html(msg);
+            }
+            
+            $('#htmlMensajeModal').html(msg);
+        }
+    });
+}
+
 function cargarTablaCodigoBarrasExistente(CodigoBarras,idCategoria){
     var msg = "Si de desea agregar el producto presione en agregar";
     var flag = false;
     $('#TableCodigoBarraExistente').dataTable({
         "bDestroy": true,
-        "autoWidth": true,
+        "autoWidth": false,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive": true,
         "searching": false,

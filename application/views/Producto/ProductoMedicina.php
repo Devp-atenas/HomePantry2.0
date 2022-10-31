@@ -42,6 +42,53 @@ select:focus {
         </div>
     </div><!-- /.container-fluid -->
 </section>
+<!-- Main content Buscar Producto 11111-->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Buscar Producto</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body" style="display:none;">
+                    <form id="FormBuscarProducto">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Categoria:</div>
+                                    <select id="selectCategoriaBuscar" name="selectCategoriaBuscar" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="inputText font-weight-bold">Codigo de Barra:</div>
+                                    <input type="text" name="inputCodigoBarraBuscar" id="inputCodigoBarraBuscar" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-12">
+                                    <input type="button" id="botonBuscarProducto" value="Buscar Producto"
+                                        class="btn btn-success float-right">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</section>
 <!-- Main content Agregar Producto 11111-->
 <section class="content">
     <div class="row">
@@ -756,6 +803,67 @@ select:focus {
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal Masivo precios -->
+<!-- Windows Modal CodigoBarraExistenteVerificarModal -->
+<div class="modal fade" id="CodigoBarraExistenteVerificarModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fa-light fa-barcode-scan"></i>&nbsp;Productos con el mismos codigo de barra B</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Codigos de Barras Existente</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="FormDatosEdit">
+                                <h5 class="text-center">Productos con el codigo de barras <span class="label label-danger" id="htmlCodigoBarrasVerificar"></span>
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="TableCodigoBarraExistenteVerificar" class="table table-bordered table-striped table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Categoria</th>
+                                                    <th>Producto</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-center"><span class="bg-info text-white" id="htmlMensajeModal"></span></h5>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal Masivo precios -->
+
 <!-- /Windows Modal Visualizar Registros-->
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsDiccionario/jsProductoMedicinaV1.js') ?>"></script>

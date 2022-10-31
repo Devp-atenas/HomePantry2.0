@@ -33,6 +33,180 @@ $("#selectHogar2").change(function() {
 
 
 
+
+
+
+        cargarSemana('#selectSemanaTabla',idSemana);
+        cargarDiaSemana('#selectDiaSemanaTabla',fechaCreacion,idSemana,idPanelHogar,idTipoConsumo,2);
+        cargarFecha('#selectFechaTabla',idConsumo,idSemana,idPanelHogar,idTipoConsumo,fechaCreacion,/*idMostrar*/2);
+        
+
+
+        function cargarFecha(etiqueta,idEditar,idSemana,idHogar,idTipoConsumo,Fecha,idMostrar) {
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": '<?php echo urlApi; ?>getBuscarDiaSemanaxHogarTipoConsumoFecha',
+                "method": "post",
+                "headers": {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            "Authorization": "Bearer " + localStorage.getItem('Token')
+                        },
+                "data": {
+                    "idSemana": idSemana,
+                    "idHogar": idHogar,
+                    "idTipoConsumo": idTipoConsumo,
+                    "Fecha": Fecha,
+                    "idMostrar": idMostrar
+                }
+            }
+            $.ajax(settings).done(function(response) {
+                let selected = $(etiqueta);
+                selected.find("option").remove();
+                if (idEditar == 0){
+                    selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+                }
+                for (var i = 0; i < response.data.length; i++) {
+                    if (response.data[i].Id_Consumo == idEditar) {
+                        selected.append("<option value=" + response.data[i].Id_Consumo + " selected>" +
+                            response.data[i].Item + " - " + response.data[i].DIA + " - " + response.data[i].FECHA +"</option>");
+                    } else {
+                        selected.append("<option value=" + response.data[i].Id_Consumo + ">" +
+                            response.data[i].Item + " - " + response.data[i].DIA + " - " + response.data[i].FECHA +"</option>");
+                    }
+                }
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+        
+        
+
+
+
+        function cargarDiaSemana(etiqueta,idEditar,idSemana,idHogar,idTipoConsumo,idMostrar) {
+            var settings = {
+                "url": '<?php echo urlApi; ?>getBuscarTotalDiaSemanaxSemanaHogarTipoConsumo/'+idSemana+'/'+idHogar+'/'+idTipoConsumo+'/'+idMostrar,
+                "method": "get",
+                "headers": {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            "Authorization": "Bearer " + localStorage.getItem('Token')
+                        }
+            }
+            $.ajax(settings).done(function(response) {
+                let selected = $(etiqueta);
+                selected.find("option").remove();
+                if (idEditar == 0){
+                    selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+                }
+                for (var i = 0; i < response.data.length; i++) {
+                    if (response.data[i].FECHA == idEditar) {
+                        selected.append("<option value=" + response.data[i].FECHA + " selected>" +
+                            response.data[i].DIA + " - " + response.data[i].FECHA + " (" + response.data[i].TOTAL_ROWS +")" +"</option>");
+                    } else {
+                        selected.append("<option value=" + response.data[i].FECHA + ">" +
+                            response.data[i].DIA + " - " + response.data[i].FECHA + "(" + response.data[i].TOTAL_ROWS +")" +"</option>");
+                    }
+                }
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+        
+        
+
+        function cargarSemana(identificador,idEditar) {
+            var settings = {
+                "url": '<?php echo urlApi; ?>getAllSemana/',
+                "method": "get",
+                "headers": {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            "Authorization": "Bearer " + localStorage.getItem('Token')
+                        }
+            }
+            $.ajax(settings).done(function(response) {
+                let selected = $(identificador);
+                selected.find("option").remove();
+                if (idEditar == 0){
+                    selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+                }
+                for (var i = 0; i < response.data.length; i++) {
+                    if (response.data[i].IdSemana == idEditar) {
+                        selected.append("<option value=" + response.data[i].IdSemana + " selected>" +
+                            response.data[i].Semana + "</option>");
+                    } else {
+                        selected.append("<option value=" + response.data[i].IdSemana + ">" + response.data[i].Semana + "</option>");
+                    }
+                }
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
 $("#selecTipoConsumo").change(function() {
     cargarMostrar('#selecMostrar');
     $("#showTableReporteHogarRegistroXConsumo").hide();
