@@ -515,8 +515,10 @@ function EditAction(data) {
         //var oblig = $("input:radio[name='marcaEdit']");
         //oblig.filter("[value='"+response.data[0].Ind_MarcaPropia+"']").attr('checked', true);
         $("input[name=marcaEdit][value='"+response.data[0].Ind_MarcaPropia+"']").prop("checked",true);
-    
         
+        if (response.data[0].status == 0){
+            $("input[name=activoEdit]").attr( 'disabled', false); 
+        }
         $('#modal-MarcaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

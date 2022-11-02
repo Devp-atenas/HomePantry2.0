@@ -89,10 +89,8 @@ function ejecutarAgregarFabricante(Fabricante) {
             })
             var form = document.querySelector('#FormFabricante');
             form.reset();
-            if ($.trim($('#selectCategoriaTabla').val()) != '') {
-                let xtable = $('#TableFabricante').DataTable();
-                xtable.ajax.reload(null, false);
-            }
+            let xtable = $('#TableFabricante').DataTable();
+            xtable.ajax.reload(null, false); 
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({

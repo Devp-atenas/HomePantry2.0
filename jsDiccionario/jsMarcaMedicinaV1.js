@@ -89,10 +89,8 @@ function ejecutarAgregarMarca(){
             })
             var form = document.querySelector('#FormMarca');
             form.reset();
-            if ($.trim($('#selectCategoriaTabla').val()) != '') {
-                let xtable = $('#TableMarca').DataTable();
-                xtable.ajax.reload(null, false);
-            }
+            let xtable = $('#TableMarca').DataTable();
+            xtable.ajax.reload(null, false);
         }).fail(function(jqXHR, textStatus) {
             if (jqXHR.status == 400) {
                 const Toast = Swal.mixin({
@@ -435,7 +433,7 @@ function ActualizarRegistro() {
                 },
             "data": {
                 "Id_Marca": $("#inputIdEditMarca").val(),
-                "Id_Categoria": $("#selectCategoriaEdit").val(),
+                "Id_Categoria": 0,//$("#selectCategoriaEdit").val(),
                 "Id_Fabricante": $("#selectFabricanteEdit").val(),
                 "Marca": $("#inputMarcaEdit").val().toUpperCase(),
                 "activo":  $('input:radio[name=activoEdit]:checked').val(),
@@ -520,8 +518,9 @@ function EditAction(data) {
         //var oblig = $("input:radio[name='marcaEdit']");
         //oblig.filter("[value='"+response.data[0].Ind_MarcaPropia+"']").attr('checked', true);
         $("input[name=marcaEdit][value='"+response.data[0].Ind_MarcaPropia+"']").prop("checked",true);
-    
-        
+        if (response.data[0].status == 0){
+            $("input[name=activoEdit]").attr( 'disabled', false); 
+        }
         $('#modal-MarcaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
