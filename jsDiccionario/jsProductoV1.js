@@ -1745,20 +1745,14 @@ function cargarTabla(Id){
             }
         }],
         "createdRow": function( row, data, dataIndex){
-            
             if (data['TamanoRango'].indexOf("-") != -1){
                 var TamanoRangoArray = data['TamanoRango'].split("-");
-
                 if (data['Tamano'] < TamanoRangoArray[0] || data['Tamano'] > TamanoRangoArray[1]){
                     $('td', row).eq(7).css('background', '#FFC059');
                     $('td', row).eq(7).css('color', '#FF0000');
                     $('td', row).eq(7).css('font-weigh', 'bold');
 
                 }
-
-
-
-
             }
             
             if(data['Fabricante'] != data['Fabricante_Marca']){
@@ -1766,10 +1760,6 @@ function cargarTabla(Id){
                 $('td', row).eq(4).css('color', '#FF0000');
                 $('td', row).eq(4).css('font-weigh', 'bold');
             }
-
-
-
-
         },
     });
 }
