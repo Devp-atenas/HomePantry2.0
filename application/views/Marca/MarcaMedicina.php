@@ -56,6 +56,7 @@
                 <div class="card-body" style="display: none;">
                     <form id="FormMarca">
                         <div class="row">
+                            <!--
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Categoria:</div>
@@ -63,6 +64,7 @@
                                     </select>
                                 </div>
                             </div>
+                            -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Fabricante:</div>
@@ -70,14 +72,15 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Marca:</div>
                                     <input type="text" name="inputMarca" id="inputMarca" class="form-control">
                                 </div>
                             </div>
+                            
+                        </div>
+                        <div class="row">
                             <div class="col-md-2">
                                 <div class="inputText font-weight-bold">Medicina:</div>
                                 <div class="card">

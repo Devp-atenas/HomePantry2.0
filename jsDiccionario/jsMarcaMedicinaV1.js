@@ -8,7 +8,7 @@ function existeMarca(Marca) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
         "url": urlApi+'CantidadMarcaV1/',
-        "method": "post",
+        "method": "POST",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
@@ -265,9 +265,9 @@ $(document).ready(function() {
     
     $('#FormMarca').validate({
         rules: {
-            selectCategoria: {
+            /*selectCategoria: {
                 required: true,
-            },
+            },*/
             selectFabricante: {
                 required: true,
             },
@@ -284,9 +284,9 @@ $(document).ready(function() {
             }
         },
         messages: {
-            selectCategoria: {
+            /*selectCategoria: {
                 required: "Por favor ingrese la categoria"
-            },
+            },*/
             selectFabricante: {
                 required: "Por favor ingrese el fabricante"
             },
@@ -318,7 +318,7 @@ $(document).ready(function() {
 });
 
 function deleteAction(data) {
-    var idCategoria = $('#selectCategoriaTabla').val();
+    //var idCategoria = $('#selectCategoriaTabla').val();
     var msg;
     var settings = {
         "url": localStorage.getItem("urlApi")+'getCantidadProducto4IdMarcaV1/'+data,
@@ -426,7 +426,7 @@ function ActualizarRegistro() {
             "async": true,
             "crossDomain": true,
             "url": localStorage.getItem("urlApi")+'updateMarcaV1',
-            "method": "post",
+            "method": "POST",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Authorization": "Bearer " + localStorage.getItem('Token')
