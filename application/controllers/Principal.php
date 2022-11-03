@@ -182,6 +182,9 @@ class Principal extends CI_Controller {
     public function Atributo7(){
         $this->load->view('Atributo7/Atributo7');
     }
+    public function AtributosNombre(){
+        $this->load->view('AtributosNombre/AtributosNombre');
+    }
     //----------- NSE ------------
     public function PuntajeSino(){
         $this->load->view('PuntajeSino/PuntajeSino');

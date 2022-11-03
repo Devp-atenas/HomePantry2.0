@@ -254,6 +254,10 @@ function deleteAction(data) {
 
 
 $(document).ready(function() {
+    
+    cargarTabla();
+         
+    
     cargarCategoria("#selectCategoria",-1);
     cargarCategoria("#selectCategoriaTabla",-1);
     $.validator.addMethod('decimal', function(value, element) {
@@ -595,22 +599,21 @@ function cargarCategoria(etiqueta,idS) {
 }
 
 
-function cargarTabla(Id){
-    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tabla Atributo3 (IdCategoria)",Id,"R");
-    $('#TableAtributo').dataTable({
+function cargarTabla(){
+    //Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tabla Atributo3 (IdCategoria)",Id,"R");
+    $('#TableAtributosNombre').dataTable({
         "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
+            [ -1],
+            ["All"]
         ],
         "bDestroy": true,
         "autoWidth": false,
-        "searching": true,
         "dom": '<"wrapper"flitp><"center"B>',
         "responsive": false,
         "buttons": [
             {
                 extend: 'excelHtml5',
-                title: 'Diccionario Atributo 1 - '+$('select[name="selectCategoriaTabla"] option:selected').text()
+                title: 'Nombre Atributos'
             }
         ],
         "bPaginate":    false,
@@ -618,7 +621,7 @@ function cargarTabla(Id){
         "fixedHeader":  true,
         "deferRender":  true,
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getAtributo14CategoriaV1/'+Id,
+            "url": localStorage.getItem("urlApi")+'getAllAtributosNombreV1/',
             "type": "GET",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -649,7 +652,7 @@ function cargarTabla(Id){
         },
         "aoColumns": [
             {
-                mData: 'Id_Atributo',
+                mData: 'Id',
                 className: "text-center"
             },
             {
@@ -657,18 +660,39 @@ function cargarTabla(Id){
                 className: "text-center"
             },
             {
-                mData: 'Atributo',
+                mData: 'NomAtr01',
                 className: "text-center"
             },
             {
-                mData: 'status',
+                mData: 'NomAtr02',
                 className: "text-center"
             },
+            {
+                mData: 'NomAtr03',
+                className: "text-center"
+            },
+            {
+                mData: 'NomAtr04',
+                className: "text-center"
+            },
+            {
+                mData: 'NomAtr05',
+                className: "text-center"
+            },
+            {
+                mData: 'NomAtr06',
+                className: "text-center"
+            },
+            {
+                mData: 'NomAtr07',
+                className: "text-center"
+            },
+            
         ],
         "columnDefs": [{
-            "targets": 4,
+            "targets": 9,
             "orderable": true,
-            "data": 'Id_Atributo',
+            "data": 'Id',
             "className": "text-center",
             "render": function(data, type, row, meta) {
                 return  '<div class="text-wrap width-200">'+
