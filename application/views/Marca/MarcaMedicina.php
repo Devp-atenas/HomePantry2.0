@@ -208,13 +208,14 @@
                         <div class="card-body">
                             <form id="FormMarcaEdit">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <!--
+                                        <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Categoria:</div>
                                             <select id="selectCategoriaEdit" name="selectCategoriaEdit" class="form-control">
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Fabricante:</div>
@@ -222,14 +223,14 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Marca:</div>
                                             <input type="text" name="inputMarcaEdit" id="inputMarcaEdit" class="form-control">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-2">
                                         <div class="inputText font-weight-bold">Medicina:</div>
                                         <div class="card">
@@ -521,15 +522,13 @@
     $("#selectCategoria").change(function() {
         var id_categoria = $("#selectCategoria").val();
         //cargarFabricante("#selectFabricante",id_categoria,0);
-        cargarFabricante("#selectFabricante",0,0);
-        
+        cargarFabricante("#selectFabricante",0,0);  
     });
 
     $("#selectCategoriaEdit").change(function() {
         var id_categoria = $("#selectCategoriaEdit").val();
         //cargarFabricante("#selectFabricanteEdit",id_categoria,0);
-        cargarFabricante("#selectFabricante",0,0);
-        
+        cargarFabricante("#selectFabricanteEdit",0,0); 
     });
 
     $("#selectCategoriaTabla").change(function() {
@@ -562,7 +561,6 @@
                     selectFirst: true,
                     minLength: 2
                 });
-        
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log('Error: ' + xhr.responseText);

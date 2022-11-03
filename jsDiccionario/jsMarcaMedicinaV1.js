@@ -202,19 +202,18 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
 }
 
 $(document).ready(function() {
-    cargarCategoriaMedicina("#selectCategoria",-1);
-    cargarCategoriaMedicina("#selectCategoriaTabla",-1);
-
+    //cargarCategoriaMedicina("#selectCategoria",-1);
+    //cargarCategoriaMedicina("#selectCategoriaTabla",-1);
+    cargarFabricante("#selectFabricante",0,0);
+    cargarFabricante("#selectFabricanteEdit",0,0); 
     cargarTabla(0);
     $('#TableMarca').show();
 
-
-
     $('#FormMarcaEdit').validate({
         rules: {
-            selectCategoriaEdit: {
+            /*selectCategoriaEdit: {
                 required: true,
-            },
+            },*/
             selectFabricanteEdit: {
                 required: true
             },
@@ -231,9 +230,9 @@ $(document).ready(function() {
             }
         },
         messages: {
-            selectCategoriaEdit: {
+            /*selectCategoriaEdit: {
                 required: "Por favor ingrese la categoria"
-            },
+            },*/
             selectFabricanteEdit: {
                 required: "Por favor ingrese el Fabricante"
             },
@@ -492,7 +491,6 @@ function ActualizarRegistro() {
 
 
 function EditAction(data) {
-    document.getElementById('FormMarcaEdit').reset();
     var settings = {
         "url": localStorage.getItem("urlApi")+'getMarcaIdV1/' + data,
         "method": "get",

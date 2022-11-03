@@ -226,6 +226,41 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
+
+    $('#FormBuscarProducto').validate({
+        rules: {
+            /*selectCategoriaBuscar: {
+                required: true,
+            },*/
+            inputCodigoBarraBuscar: {
+                required: true,
+                minlength: 5,
+                maxlength: 20
+            },
+        },
+        messages: {
+            /*selectCategoriaBuscar: {
+                required: "Por favor ingrese la categoria"
+            },*/
+            inputCodigoBarraBuscar: {
+                required: "Por favor ingrese el Codigo de Barra",
+                minlength: "Longitud Minima 5",
+                required: "Longitud Maxima 20",
+                
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
 });
 
 function cargarNombreAtributos(id_categoria) {

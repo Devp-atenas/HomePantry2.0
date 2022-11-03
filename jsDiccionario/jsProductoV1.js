@@ -219,24 +219,25 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
+    
     $('#FormBuscarProducto').validate({
         rules: {
-            selectCategoriaBuscar: {
+            /*selectCategoriaBuscar: {
                 required: true,
-            },
+            },*/
             inputCodigoBarraBuscar: {
                 required: true,
-                minlength: 8,
+                minlength: 5,
                 maxlength: 20
             },
         },
         messages: {
-            selectCategoriaBuscar: {
+            /*selectCategoriaBuscar: {
                 required: "Por favor ingrese la categoria"
-            },
+            },*/
             inputCodigoBarraBuscar: {
                 required: "Por favor ingrese el Codigo de Barra",
-                minlength: "Longitud Minima 8",
+                minlength: "Longitud Minima 5",
                 required: "Longitud Maxima 20",
                 
             }
@@ -1751,7 +1752,6 @@ function cargarTabla(Id){
                     $('td', row).eq(7).css('background', '#FFC059');
                     $('td', row).eq(7).css('color', '#FF0000');
                     $('td', row).eq(7).css('font-weigh', 'bold');
-
                 }
             }
             

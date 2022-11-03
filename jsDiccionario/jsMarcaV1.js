@@ -187,7 +187,6 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
                 mData: 'status',
                 className: "text-center"
             }
-            
         ],
         "createdRow": function( row, data, dataIndex){
             if (data['Id_Categoria'] == idCategoria){

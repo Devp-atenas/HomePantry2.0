@@ -58,13 +58,14 @@ select:focus {
                 <div class="card-body" style="display:none;">
                     <form id="FormBuscarProducto">
                         <div class="row">
-                            <div class="col-md-4">
+                             <!--
+                                <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Categoria:</div>
                                     <select id="selectCategoriaBuscar" name="selectCategoriaBuscar" class="form-control">
                                     </select>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Codigo de Barra:</div>
