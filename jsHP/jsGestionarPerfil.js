@@ -3,6 +3,7 @@ $(document).ready(function() {
     cargarPerfil('#selectPerfil',0);
     document.getElementById("bMostrarOpcionesPerfil").addEventListener("click", function(){
         cargarOpcionesPerfil(localStorage.getItem('idPerfilOpcionesEdit'));
+        document.getElementById("idActualizarOpcionesPerfil").disabled = false;
     });
 });
 
@@ -146,6 +147,7 @@ function cargarTablaFunciones(idDivTabla){
         columns:[
             {formatter:"rowSelection", titleFormatter:"rowSelection", align:"center", headerSort:false},
             {title:"id", field:"id", sorter:"number"},
+            //{title:"Padre", field:"Padre", sorter:"number"},
             {title:"Opciones", field:"Opcion", sorter:"number"}
             /**/
             //{title:"TTTTTTT", field:"BDBDBDBD", sorter:"number", headerFilter:"input"},
@@ -159,11 +161,24 @@ function cargarTablaFunciones(idDivTabla){
         arrayID = jQuery.map(selectedData, function(value, index) {
             return (value.id);
         });
-        AsociarPerfilOpciones(arrayID);
+        var idPefil = $("#selectPerfil").val()
+        AsociarPerfilOpciones(arrayID,idPefil);
     });
+
+    document.getElementById("idActualizarOpcionesPerfil").addEventListener("click", function(){
+        var selectedData = table.getSelectedData();
+        var arrayID;
+        arrayID = jQuery.map(selectedData, function(value, index) {
+            return (value.id);
+        });
+        var idPefil = localStorage.getItem("idPerfil");
+        //alert(idPefil);
+        AsociarPerfilOpciones(arrayID,idPefil);
+    });
+
 }
 
-function AsociarPerfilOpciones(arrayID){
+function AsociarPerfilOpciones(arrayID,idPerfil){
     var urlApi = localStorage.getItem("urlApi");
 
     const swalWithBootstrapButtons = Swal.mixin({
@@ -191,7 +206,7 @@ function AsociarPerfilOpciones(arrayID){
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
                 "data": {
-                    "Id_Perfil":$("#selectPerfil").val(),
+                    "Id_Perfil":idPerfil,
                     "arrayID":arrayID
                 }
             }
@@ -346,7 +361,6 @@ function EditAction(id) {
         }
     }
     $.ajax(settings).done(function(response) {
-        //cargarTablaItems('#PerfilOpcionesEditar');
         cargarTablaFunciones('#PerfilOpcionesEditar');
         $('#inputIdEdit').val(response.data[0].Id);
         $('#inputPerfilEdit').val(response.data[0].Perfil);
@@ -355,7 +369,8 @@ function EditAction(id) {
         radios.filter("[value='"+response.data[0].ind_activo+"']").attr('checked', true);
         localStorage.setItem('idPerfilOpcionesEdit',response.data[0].Id);
         cargarOpcionesPerfil(response.data[0].Id);
-        
+        document.getElementById("idActualizarOpcionesPerfil").disabled = true;
+        localStorage.setItem("idPerfil",response.data[0].Id)
         $('#modal-PerfilOpcionesEditar').modal('show'); 
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

@@ -193,39 +193,63 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <form id="FormAtributoEdit">
+                        <div class="card-body">                            
+                            <form id="FormAtributo">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="inputText font-weight-bold">Categoria:</div>
-                                            <select id="selectCategoriaEdit" name="selectCategoriaEdit" class="form-control">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <div class="inputText font-weight-bold">Atributo:</div>
-                                            <input type="text" name="inputAtributoEdit" id="inputAtributoEdit" class="form-control">
+                                            <select id="selectCategoria" name="selectCategoria" class="form-control">
+                                            </select>   
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                    <div class="inputText font-weight-bold">Activo:</div>
-                                        <div class="card">
-                                            <div class="form-group">
-                                            <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="0" disabled='disabled'>
-                                                    <label class="form-check-label">No</label>
-                                                </div>
-                                                <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="activoEdit" name="activoEdit" value="1" disabled='disabled'>
-                                                    <label class="form-check-label">Si</label>
-                                                </div>
-                                            </div>
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Atributo 1:</div>
+                                            <input type="text" name="inputAtributo1" id="inputAtributo1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Atributo 2:</div>
+                                            <input type="text" name="inputAtributo2" id="inputAtributo2" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Atributo 3:</div>
+                                            <input type="text" name="inputAtributo3" id="inputAtributo3" class="form-control">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="visibility:hidden;">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Atributo 4:</div>
+                                            <input type="text" name="inputAtributo4" id="inputAtributo4" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Atributo 5:</div>
+                                            <input type="text" name="inputAtributo5" id="inputAtributo5" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Atributo 6:</div>
+                                            <input type="text" name="inputAtributo6" id="inputAtributo6" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Atributo 7:</div>
+                                            <input type="text" name="inputAtributo7" id="inputAtributo7" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>                               
+
+                               <div class="row" style="visibility:hidden;">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="inputIdEditAtributo">id:</label>
@@ -234,20 +258,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <input type="button" onclick="ActualizarRegistro()" id="editUsuario"
-                                                value="Guardar" class="btn btn-success float-right">
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer justify-content-between">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <i class="bi bi-x-square"></i> Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" id="idBTNAtributosNombre" onclick="ActualizarRegistro()">
+                    <i class="bi bi-save"></i> Actualizar
+                </button>
             </div>
         </div>
         <!-- /.modal-content -->

@@ -1002,6 +1002,53 @@ function cargarTamano(etiqueta,id_categoria,idS,idTamanoRango) {
     })
 }
 
+function cargarTamanoALL(etiqueta,id_categoria,idS,idTamanoRango) { 
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'getAllTamano_x_Categoria_ALLV1/' + id_categoria+"/"+idTamanoRango,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
 function deleteAction(data) {
     Swal.fire({
         title: '¿Estas seguro?',
@@ -1163,7 +1210,7 @@ function EditAction(data) {
         cargarFabricante("#selectFabricanteEdit",response.data[0].id_Categoria,response.data[0].id_Fabricante);
         
         cargarTamanoRango("#selectTamanoRangoEdit",response.data[0].id_Categoria,response.data[0].Id_RangoTamano);
-        cargarTamano("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano,response.data[0].Id_RangoTamano);
+        cargarTamanoALL("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano,response.data[0].Id_RangoTamano);
         
         cargarUnidadMedida("#selectUnidadMedidaEdit",response.data[0].id_Categoria,response.data[0].id_UnidadMedida);
         cargarAtributo1("#selectAtributo1Edit",response.data[0].id_Categoria,response.data[0].id_Atributo1);

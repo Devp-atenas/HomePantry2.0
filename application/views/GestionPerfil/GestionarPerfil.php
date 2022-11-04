@@ -265,7 +265,7 @@ select:focus {
                 <div class="col-md-12">
                     <div id="myCard" class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Actualizar Items de la Actividad</h3>
+                            <h3 class="card-title">Opciones del Perfil</h3>
                             <div class="card-tools">
                                 <button id="idItemsActividad" type="button" class="btn btn-tool" aria-expanded="false" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -277,7 +277,7 @@ select:focus {
                                 <div class="col-md-12">
                                     <div class="text-center">
                                         <button id="bMostrarOpcionesPerfil" class="btn btn-info" type="button">
-                                            <i class="bi bi-eye">Mostrar</i>
+                                            <i class="bi bi-eye">&nbsp;Cargar Opciones</i>
                                         </button>
                                     </div>
                                 </div>
@@ -295,7 +295,7 @@ select:focus {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="bi bi-x-square"></i> Cancelar</button>
-                <button id="guardarActividad" type="button" class="btn btn-primary">
+                <button id="idActualizarOpcionesPerfil" type="button" class="btn btn-primary" disabled="disabled">
                     <i class="bi bi-save"></i> Guardar
                 </button>
 
