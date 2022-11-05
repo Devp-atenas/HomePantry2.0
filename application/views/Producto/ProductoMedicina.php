@@ -827,7 +827,7 @@ select:focus {
                         </div>
                         <div class="card-body">
                             <form id="FormDatosEdit">
-                                <h5 class="text-center">Productos con el codigo de barras <span class="label label-danger" id="htmlCodigoBarrasVerificar"></span>
+                                <h5 class="text-center"><span class="label label-danger" id="htmlCodigoBarrasVerificar"></span>
                                 </h5>
                                 <div class="row">
                                     <div class="col-md-12">

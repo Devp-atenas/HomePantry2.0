@@ -1414,15 +1414,14 @@ function BuscarCodigoBarra(CodigoBarras) {
         }
     }
     $.ajax(settings).done(function(response) {
+        var idCategoriaB = $('#selectCategoriaBuscar').val();
+        cargarTablaCodigoBarrasExistenteVerificar(CodigoBarras,idCategoriaB);         
         if (response.data[0].Cantidad != 0){
-            var idCategoriaB = $('#selectCategoriaBuscar').val();
-            cargarTablaCodigoBarrasExistenteVerificar(CodigoBarras,idCategoriaB);
-            $('#htmlCodigoBarrasVerificar').html(CodigoBarras);
-            $('#CodigoBarraExistenteVerificarModal').modal('show');
+            $('#htmlCodigoBarrasVerificar').html("Productos con el codigo de barra: "+CodigoBarras);
         }else{
-            alert(CodigoBarras);
-    
+            $('#htmlCodigoBarrasVerificar').html("No se encontraron productos con codigo de barra: "+CodigoBarras);
         }
+        $('#CodigoBarraExistenteVerificarModal').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({

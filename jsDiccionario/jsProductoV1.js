@@ -1205,7 +1205,7 @@ function EditAction(data) {
         $('#inputIdEditProducto').val(response.data[0].Id_Producto);
         cargarCategoriaNOMedicina("#selectCategoriaEdit",response.data[0].id_Categoria);
         cargarSegmento("#selectSegmentoEdit",response.data[0].id_Categoria,response.data[0].id_Segmento);
-        
+
         //alert(response.data[0].id_Fabricante)
         cargarFabricante("#selectFabricanteEdit",response.data[0].id_Categoria,response.data[0].id_Fabricante);
         
@@ -1453,7 +1453,6 @@ function existeCodigoBarra(CodigoBarras) {
 
 function BuscarCodigoBarra(CodigoBarras) {
     var urlApi = localStorage.getItem("urlApi");
-    //alert('jjjjjjj');
     var settings = {
         "url": urlApi+'CantidadProductoXCodigoBarraV1/' + CodigoBarras,
         "method": "get",
@@ -1463,15 +1462,14 @@ function BuscarCodigoBarra(CodigoBarras) {
         }
     }
     $.ajax(settings).done(function(response) {
+        var idCategoriaB = $('#selectCategoriaBuscar').val();
+        cargarTablaCodigoBarrasExistenteVerificar(CodigoBarras,idCategoriaB);         
         if (response.data[0].Cantidad != 0){
-            var idCategoriaB = $('#selectCategoriaBuscar').val();
-            cargarTablaCodigoBarrasExistenteVerificar(CodigoBarras,idCategoriaB);
-            $('#htmlCodigoBarrasVerificar').html(CodigoBarras);
-            $('#CodigoBarraExistenteVerificarModal').modal('show');
+            $('#htmlCodigoBarrasVerificar').html("Productos con el codigo de barra: "+CodigoBarras);
         }else{
-            alert(CodigoBarras);
-    
+            $('#htmlCodigoBarrasVerificar').html("No se encontraron productos con codigo de barra: "+CodigoBarras);
         }
+        $('#CodigoBarraExistenteVerificarModal').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
