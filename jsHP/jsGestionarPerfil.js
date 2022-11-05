@@ -229,6 +229,7 @@ function AsociarPerfilOpciones(arrayID,idPerfil){
                 })
                 cargarTablaPerfiles();
                 cargarPerfil('#selectPerfil',0);
+                $('#modal-PerfilOpcionesEditar').modal('hide');
                 var form = document.querySelector('#FormPerfil');
                 form.reset();
             }).fail(function(jqXHR, textStatus) {

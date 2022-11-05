@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function() { 
     cargarUsuarios('#selectUsuario',0);
     cargarTablaUsuriosPerfil();
     

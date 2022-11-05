@@ -2,7 +2,7 @@ function cargarPerfilesUsuario(identificador,idS) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url":localStorage.getItem("urlApi")+'getAllEstado/',
+        "url":localStorage.getItem("urlApi")+'------/',
         "method": "get",
         "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
