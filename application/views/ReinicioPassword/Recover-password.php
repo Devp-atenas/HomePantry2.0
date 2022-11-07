@@ -47,16 +47,20 @@ if(!isset($_SESSION)){
                     <img src="<?php echo base_url('assets/img/HomePantry.png')?>" width="128px" heightalt="100px" class="img-size-60">
                 </div>
                 <div class="card-body">
-                    <p class="login-box-msg pb-0 text-info">Está a solo un paso de su nueva contraseña, recupere su contraseña ahora.</p>
+                    <p class="login-box-msg pb-0 text-info">Recuperacion de Contraseña.</p>
                     <form id="quickForm">
                         <div class="card-body">
-                        <div class="form-group">
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Password:</label>
-                                <input type="text" id="inputCorreo" class="form-control form-control-sm" placeholder="Introduzca su password">
+                                <input type="password" id="inputPassword" class="form-control form-control-sm" placeholder="Introduzca su password">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Confirme Password:</label>
-                                <input type="text" id="inputCorreo" class="form-control form-control-sm" placeholder="Confirme su password">
+                                <input type="password" id="inputRePassword" class="form-control form-control-sm" placeholder="Confirme su password">
+                            </div>
+                            <div class="form-group">
+                                <input style="margin-left:20px;" type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña"/>
+                                Mostrar Contraseña
                             </div>
                             <div class="card-footer">
                                 <button type="button" id="recuperarContrasena" name="submitForm" class="btn btn-sm btn-block btn-primary">R e c u p e r a r</button>
@@ -139,6 +143,22 @@ if(!isset($_SESSION)){
                 var IP2 = data.ip;
                 localStorage.setItem("IPHP20",data.ip);
         });
+
+
+
+        $(document).ready(function () {
+            $('#mostrar_contrasena').click(function () {
+                if ($('#mostrar_contrasena').is(':checked')) {
+                    $('#inputPassword').attr('type', 'text');
+                    $('#inputRePassword').attr('type', 'text');
+                    
+                } else {
+                    $('#inputPassword').attr('type', 'password');
+                    $('#inputRePassword').attr('type', 'password');
+                    
+                }
+            });
+            });
 
 
         $("#recuperarContrasena").click(function() {
