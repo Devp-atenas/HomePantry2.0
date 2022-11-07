@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var flag = false;
     cargarTablaEstudiosCargar();
+    cargarEstudios("#selectEstudio",0);
 });
 
 $("#btSubirArchivo").click(function() {
@@ -33,31 +34,45 @@ function cargarTablaEstudiosCargar(){
         ],
     });
 
+    table.on("rowSelectionChanged", function(data, rows){
+        var I0;
+        if (data.length != 0){
+            $('#btSubirArchivo').prop('disabled', false);
+        }else{
+            $('#btSubirArchivo').prop('disabled', true);
+        }
+
+
+
+    });
+
+
+
+
     document.getElementById("btSubirArchivo").addEventListener("click", function(){
         jQuery('#btSubirArchivo').prop('disabled', true);
         //alert(row.select());
         var selectedData = table.getSelectedData();
         var idEstudio;
         var cantidadHogares;
-        var flagHogaresCArgados = false;
+        var flagHogaresCargados = false;
         
         idEstudio = jQuery.map(selectedData, function(value, index) {
             if (value.Ind_HogaresCargados){
-                flagHogaresCArgados = true;
+                flagHogaresCargados = true;
             }
             return (value.Id_Estudio);
         });
 
         cantidadHogares = jQuery.map(selectedData, function(value, index) {
-            
             return (value.Cantidad_Hogares);
         });
 
-        if (flagHogaresCArgados){
+        if (flagHogaresCargados){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Ya exsiten Hogares cargados, si quiere cargar nuevos hogares ingrese en:',
+                text: 'Ya exsiten Hogares cargados, si quiere cargar nuevos hogares a este estudio ingrese en:',
                 footer: '<a href="CrearEstudio">Crear Estudios</a>'
             })
         }else{
@@ -192,6 +207,56 @@ function upLoadFile(file,fileName,idEstudio,cantidadHogares){
         }
     })
 }
+
+function cargarEstudios(etiqueta,idS) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAllEstudiosData/0',
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == -1){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].Id_Estudio === idS){
+            select.append("<option value=" + response.data[i].Id_Estudio + " selected>" + response
+                .data[i].Estudio + " - "+ response.data[i].Id_Estudio + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].Id_Estudio + ">" + response
+                .data[i].Estudio + " - "+ response.data[i].Id_Estudio + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
 
 function readExcell(fileName,idEstudio,cantidadHogares) {
     var urlApi = localStorage.getItem("urlApi");

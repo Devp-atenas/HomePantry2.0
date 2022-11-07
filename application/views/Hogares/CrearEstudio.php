@@ -29,7 +29,7 @@
                         <div class="row">
                             <div class="col-md-12"> <!-- bg-danger bg-gradient -->
                                 <div class="form-group row mb-0 mt-0">
-                                <div class="col-md-3">
+                                    <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="forEstudio" class="inputText font-weight-bold">Nombre del Estudio:</label>
                                         <input type="text" name="inputEstudio" id="inputEstudio" class="form-control">
@@ -56,7 +56,7 @@
                                             <input type="number" name="inputCantidad" id="inputCantidad" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-2">
                                         <div class="inputText font-weight-bold">Activo:</div>
                                         <div class="card">
                                             <div class="form-group">

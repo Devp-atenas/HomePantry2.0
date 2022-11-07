@@ -1,8 +1,10 @@
 function callUpLoadFile(){
     var file = $("#file").val();
     var nameFile = file.split('\\').pop();
-    alert("Ruta: "+file);
-    alert("Archivo: "+nameFile);
+    var idEstudio = $("#file").val(); 
+
+    //alert("Ruta: "+file);
+    //alert("Archivo: "+nameFile);
     upLoadFile(file,nameFile);
 }
 
@@ -17,7 +19,7 @@ function upLoadFile_(file,idHogar) {
         "crossDomain": true,
         "contentType": false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
         "processData": false, // NEEDED, DON'T OMIT THIS
-        "url":urlApi+'fileUploadEstudio',
+        "url":urlApi+'fileUploadEstudio',//
         "method": "post",
         "headers": {
             //"Content-Type": "application/x-www-form-urlencoded",

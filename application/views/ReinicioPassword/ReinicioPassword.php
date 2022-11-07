@@ -48,12 +48,11 @@ if(!isset($_SESSION)){
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg pb-0 text-info">Ingrese correo para recuperar contraseña</p>
-                    <form id="quickForm" method="post">
+                    <form id="quickForm">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Correo electrónico:</label>
-                                <input type="text" id="user" class="form-control form-control-sm"
-                                    id="exampleInputEmail1" placeholder="Introduzca su correo electrónico">
+                                <input type="text" id="inputCorreo" class="form-control form-control-sm" placeholder="Introduzca su correo electrónico">
                             </div>
                             <div class="card-footer">
                                 <button type="button" id="recuperarContrasena" name="submitForm" class="btn btn-sm btn-block btn-primary">R e c u p e r a r</button>
@@ -136,9 +135,76 @@ if(!isset($_SESSION)){
                 var IP2 = data.ip;
                 localStorage.setItem("IPHP20",data.ip);
         });
+
+
+        $("#recuperarContrasena").click(function() {
+            if ($("#quickForm").valid()) {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": '<?php echo urlApi; ?>recuperarContrasena',
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Authorization": "Bearer " + localStorage.getItem('Token')
+                    },
+                    "data": {
+                        "usuario": $("#inputCorreo").val()
+                    }
+                }
+                $.ajax(settings).done(function(response) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.message,
+                        confirmButtonText: `Ok`,
+                    })
+                    
+                }).fail(function(jqXHR, textStatus) {
+                    if (jqXHR.status == 400) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'info',
+                            title: 'Su Session ha Expirado',
+                            confirmButtonText: `Ok`,
+                        })
+                        var form = document.querySelector('#FormMaestroMenu');
+                        form.reset();
+                        window.location = '/homepantry20/index.php';
+                    }
+                })
+            }
+        });
+
+
+
+
+
+
+
         
-        $('#recuperarContrasena').click(function(){
-            var emailRecuperacion = $("#user").val();
+        $('#recuperarContrasena__').click(function(){
+            alert($("#inputCorreo").val())
             
             var settings = {
                 "url": localStorage.getItem("urlApi")+'recuperarContrasena/',
@@ -148,17 +214,19 @@ if(!isset($_SESSION)){
                     "Authorization": "Bearer " + localStorage.getItem('Token')
                 },
                 "data": {
-                    "usuario": $("#user").val()
+                    "usuario": $("#inputCorreo").val()
                 }
+            }
+            
             $.ajax(settings).done(function(response) {
-                var idCategoriaB = $('#selectCategoriaBuscar').val();
+                /*var idCategoriaB = $('#selectCategoriaBuscar').val();
                 cargarTablaCodigoBarrasExistenteVerificar(CodigoBarras,idCategoriaB);         
                 if (response.data[0].Cantidad != 0){
                     $('#htmlCodigoBarrasVerificar').html("Productos con el codigo de barra: "+CodigoBarras);
                 }else{
                     $('#htmlCodigoBarrasVerificar').html("No se encontraron productos con codigo de barra: "+CodigoBarras);
                 }
-                $('#CodigoBarraExistenteVerificarModal').modal('show');
+                $('#CodigoBarraExistenteVerificarModal').modal('show');*/
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {
                     const Toast = Swal.mixin({
@@ -178,60 +246,20 @@ if(!isset($_SESSION)){
                     })
                     window.location = '/homepantry20/index.php';
                 }
-            })
-
-
-
-
-
-
-
-
-
-            /*const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 5000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal
-                        .stopTimer)
-                    toast.addEventListener('mouseleave', Swal
-                        .resumeTimer)
-                }
-            })
-            Toast.fire({
-                icon: 'success',
-                title: 'Ingresando a Home Pantry'
-            })*/
-            
+            })   
         });
 
         $('#quickForm').validate({
             rules: {
-                email: {
-                    required: true,
-                    email: true,
-                },
-                password: {
-                    required: true,
-                    minlength: 5
-                },
-                terms: {
+                inputCorreo: {
                     required: true
-                },
+                }
             },
             messages: {
-                email: {
+                inputCorreo: {
                     required: "Ingrese una dirección de correo electrónico",
                     email: "Ingrese una dirección de correo electrónico válida"
-                },
-                password: {
-                    required: "Por favor ingrese una contraseña",
-                    minlength: "Su contraseña debe tener al menos 5 caracteres"
-                },
-                terms: "Acepta nuestros términos"
+                }
             },
             errorElement: 'span',
             errorPlacement: function(error, element) {
@@ -247,76 +275,6 @@ if(!isset($_SESSION)){
         });
        
 
-       function cargarPerfilesUsuario(identificador,idS,idUsuario) {
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url":localStorage.getItem("urlApi")+'getPerfilesUsuario/'+idUsuario,
-                "method": "get",
-                "headers": {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                        "Authorization": "Bearer " + localStorage.getItem('Token')
-                    }
-            }
-            $.ajax(settings).done(function(response) {
-                if (response.data.length == 1){
-                    localStorage.setItem("idPerfil",response.data[0].id);
-                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 5000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal
-                                .stopTimer)
-                            toast.addEventListener('mouseleave', Swal
-                                .resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Ingresando a Home Pantry'
-                    })
-                    window.location.href = "../Principal/dashboard";
-                }else{
-                    let selected = $(identificador);
-                    selected.find("option").remove();
-                    if (idS == 0){
-                        selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
-                    }
-                    for (var i = 0; i < response.data.length; i++) {
-                        if (response.data[i].id === idS){
-                            selected.append("<option value='" + response.data[i].id + "' selected>" + response
-                            .data[i].Perfil + "</option>");
-                        }else{
-                            selected.append("<option value='" + response.data[i].id + "'>" + response
-                            .data[i].Perfil + "</option>");
-                        }
-                    }
-                    $('#myModal').modal('show');
-                }
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
+       
     </script>
 </html>

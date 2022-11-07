@@ -122,6 +122,8 @@ $("#btCrearEstudio").click(function() {
             }
         }
         $.ajax(settings).done(function(response) {
+            cargarTablaEstudios();
+    
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',

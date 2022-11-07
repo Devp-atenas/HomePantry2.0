@@ -24,6 +24,7 @@
                 <HR/>
                 <div class="form-group row mb-0 mt-0">
                     <form action="formEstudio" method="post" enctype="multipart/form-data">
+                        
                         <div class="col-md-9">
                             <input type="file" id="file" name="file" accept=".xls, .xlsx"/>
                         </div>
