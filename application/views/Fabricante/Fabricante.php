@@ -485,7 +485,7 @@
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsDiccionario/jsFabricanteV1.js') ?>"></script>
 <script>
-    $("#inputFabricante").keyup(function () {
+    $("#inputFabricante_").keyup(function () {
         var idCategoria = $("#selectCategoria").val();
         var valorBuscar = $("#inputFabricante").val();
         

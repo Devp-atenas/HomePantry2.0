@@ -491,6 +491,9 @@ function EditAction(data) {
         //var oblig = $("input:radio[name='activoEdit']");
         //oblig.filter("[value='"+response.data[0].status+"']").attr('checked', true);
         $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
+        if (response.data[0].status == 0){
+            $("input[name=activoEdit]").attr( 'disabled', false); 
+        }
         
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta UnidadVolumen (IdUnidadVolumen)",data,"R");
         $('#modal-UndMedidaEditar').modal('show');

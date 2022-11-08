@@ -488,6 +488,9 @@ function EditAction(data) {
         
         $('#inputIdEditSegmento').val(response.data[0].Id_Segmento);
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Tamaño Rango (IdTamanoRango)",data,"R");
+        if (response.data[0].status == 0){
+            $("input[name=activoEdit]").attr( 'disabled', false); 
+        }
         $('#modal-TamRangoEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

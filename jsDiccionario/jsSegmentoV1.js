@@ -562,6 +562,10 @@ function EditAction(data) {
         $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
         
         $('#inputIdEditSegmento').val(response.data[0].Id_Segmento);
+        if (response.data[0].status == 0){
+            $("input[name=activoEdit]").attr( 'disabled', false); 
+        }
+        
         $('#modal-SegmentoEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

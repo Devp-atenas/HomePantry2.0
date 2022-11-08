@@ -61,7 +61,7 @@ if(!isset($_SESSION)){
                     </form>
                     <p class="mb-1">
                         <small>
-                            <a href="<?php echo base_url('Principal/ReinicioPassword')?>">Olvidé mi contraseña</a>
+                            <a href="<?php echo base_url('/')?>">Regresar</a>
                         </small>
                     </p>
                 </div>

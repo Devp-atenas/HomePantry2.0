@@ -491,6 +491,10 @@ function EditAction(data) {
         $('#inputFactorEdit').val(response.data[0].Factor);
         $('#inputminimoEdit').val(response.data[0].Min_Por_Val);
         $('#inputmaximoEdit').val(response.data[0].Max_Por_Val);
+        if (response.data[0].status == 0){
+            $("input[name=activoEdit]").attr( 'disabled', false); 
+        }
+        
         $('#modal-CategoriaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {

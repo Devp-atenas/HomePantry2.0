@@ -1181,6 +1181,9 @@ function EditAction(data) {
         //var oblig = $("input:radio[name='pendienteEdit']");
         //oblig.filter("[value='"+response.data[0].Ind_Pendiente+"']").attr('checked', true);
         $("input[name=pendienteEdit][value='"+response.data[0].Ind_Pendiente+"']").prop("checked",true);
+        if (response.data[0].status == 0){
+            $("input[name=activoEdit]").attr( 'disabled', false); 
+        }
         
         $('#actualizarProductoModal').modal('show');
     }).fail(function(jqXHR, textStatus) {
