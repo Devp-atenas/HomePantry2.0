@@ -234,28 +234,28 @@ if(!isset($_SESSION)){
 				var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
 				var enoughRegex = new RegExp("(?=.{6,}).*", "g");
 				var p;
+				
+				
+				
+				//$("#passstrength").remove();
 				p = document.createElement('p');
 				p.setAttribute("id", `passstrength`);
 				
 
-				
-				p.removeAttribute("id");	
+				p.setAttribute("class", `text-warning bg-dark`);
 					
 				
 				if (false == enoughRegex.test($(this).val())) {
-					p.removeAttribute("class");	
-					p.setAttribute("class", `text-info`);	
+					p.setAttribute("class", `text-warning bg-dark`);	
 					$('#passstrength').html('Más caracteres.');
 				} else if (strongRegex.test($(this).val())) {
-					p.removeAttribute("class");	
-					p.setAttribute("class", `text-danger`);	
+					p.setAttribute("class", `text-success`);	
 					$('#passstrength').html('Fuerte!');
 				} else if (mediumRegex.test($(this).val())) {
 					p.removeAttribute("class");	
 					p.setAttribute("class", `text-primary`);	
 					$('#passstrength').html('Media!');
 				} else {
-					p.removeAttribute("class");	
 					p.setAttribute("class", `text-danger`);	
 					$('#passstrength').html('Débil!');
 				}
