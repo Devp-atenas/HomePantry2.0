@@ -564,6 +564,8 @@ function EditAction(data) {
         $('#inputIdEditSegmento').val(response.data[0].Id_Segmento);
         if (response.data[0].status == 0){
             $("input[name=activoEdit]").attr( 'disabled', false); 
+        }else{
+            $("input[name=activoEdit]").attr( 'disabled', true); 
         }
         
         $('#modal-SegmentoEditar').modal('show');

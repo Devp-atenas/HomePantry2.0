@@ -493,6 +493,8 @@ function EditAction(data) {
         $('#inputmaximoEdit').val(response.data[0].Max_Por_Val);
         if (response.data[0].status == 0){
             $("input[name=activoEdit]").attr( 'disabled', false); 
+        }else{
+            $("input[name=activoEdit]").attr( 'disabled', true); 
         }
         
         $('#modal-CategoriaEditar').modal('show');

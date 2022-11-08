@@ -1183,6 +1183,8 @@ function EditAction(data) {
         $("input[name=pendienteEdit][value='"+response.data[0].Ind_Pendiente+"']").prop("checked",true);
         if (response.data[0].status == 0){
             $("input[name=activoEdit]").attr( 'disabled', false); 
+        }else{
+            $("input[name=activoEdit]").attr( 'disabled', true); 
         }
         
         $('#actualizarProductoModal').modal('show');

@@ -507,6 +507,8 @@ function EditAction(data) {
         $("input[name=marcaEdit][value='"+response.data[0].Ind_MarcaPropia+"']").prop("checked",true);
         if (response.data[0].status == 0){
             $("input[name=activoEdit]").attr( 'disabled', false); 
+        }else{
+            $("input[name=activoEdit]").attr( 'disabled', true); 
         }
         
         $('#modal-FabricanteEditar').modal('show');

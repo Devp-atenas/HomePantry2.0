@@ -482,6 +482,8 @@ function EditAction(data) {
         $("input[name=activoEdit][value='"+response.data[0].status+"']").prop("checked",true);
         if (response.data[0].status == 0){
             $("input[name=activoEdit]").attr( 'disabled', false); 
+        }else{
+            $("input[name=activoEdit]").attr( 'disabled', true); 
         }
         
         Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Consulta Atributo4 (IdAtributo4)",data,"R");

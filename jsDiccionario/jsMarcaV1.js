@@ -517,6 +517,8 @@ function EditAction(data) {
         
         if (response.data[0].status == 0){
             $("input[name=activoEdit]").attr( 'disabled', false); 
+        }else{
+            $("input[name=activoEdit]").attr( 'disabled', true); 
         }
         $('#modal-MarcaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
