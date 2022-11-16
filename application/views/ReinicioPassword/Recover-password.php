@@ -235,8 +235,6 @@ if(!isset($_SESSION)){
 				var enoughRegex = new RegExp("(?=.{6,}).*", "g");
 				var p;
 				
-				
-				
 				//$("#passstrength").remove();
 				p = document.createElement('p');
 				p.setAttribute("id", `passstrength`);

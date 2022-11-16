@@ -126,7 +126,7 @@
                 </li>
             </ul>
             <div id="step-1">
-                <form id="formUbicacionHogar" action="" method="post">
+                <form id="formUbicacionHogar">
                     <h2 class="text-center">Ubicacion del hogar</h2>
                     <div class="row">
                         <div class="col-md-3">
@@ -1800,17 +1800,16 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <div class="inputText font-weight-bold">Rango Ingreso:</div>
-                                <select class="custom-select form-control-border" id="selectRangoIngreso" name="selectRangoIngreso">
-                                </select>
+                                <div class="inputText font-weight-bold">Ingreso Mensual:</div>
+                                <input type="number" class="form-control input-sm" id="inputIngresoMensual" name="inputIngresoMensual" placeholder="Introduzca Ingreso Mensual ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Mensual:</div>
-                                <input type="email" class="form-control input-sm" id="inputGastoMensual" name="correoAlternoResponsable" placeholder="Ingrese Correo alterno ...">
-                                <select class="custom-select form-control-border" id="selectMensual" name="selectMensual">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoMensual" name="inputGastoMensual" placeholder="Introduzca Gasto Mensual ...">
+                                
                             </div>
                         </div>
                     </div>
@@ -1818,29 +1817,29 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Alimento:</div>
-                                <select class="custom-select form-control-border" id="selectGastoAlimento" name="selectGastoAlimento">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoAlimento" name="inputGastoAlimento" placeholder="IngreseGasto Alimento ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Medicinas:</div>
-                                <select class="custom-select form-control-border" id="selectGastoMedicinas" name="selectGastoMedicinas">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoMedicinas" name="inputGastoMedicinas" placeholder="Ingrese Gasto Medicinas ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Educación:</div>
-                                <select class="custom-select form-control-border" id="selectGastoEducacion" name="selectGastoEducacion">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoEducacion" name="inputGastoEducacion" placeholder="Ingrese Gasto Educación ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Transporte:</div>
-                                <select class="custom-select form-control-border" id="selectGastoTransporte" name="selectGastoTransporte">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoTransporte" name="inputGastoTransporte" placeholder="Ingrese Gasto Transporte ...">
+                                
                             </div>
                         </div>
                     </div>
@@ -1848,29 +1847,29 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Cuidado Personal:</div>
-                                <select class="custom-select form-control-border" id="selectGastoCuidadoPersonal" name="selectGastoCuidadoPersonal">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoCuidadoPersonal" name="inputGastoCuidadoPersonal" placeholder="Ingrese Gasto Cuidado Personal ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Ropa y Calzado:</div>
-                                <select class="custom-select form-control-border" id="selectGastoRopaCalzado" name="selectGastoRopaCalzado">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoRopaCalzado" name="inputGastoRopaCalzado" placeholder="Ingrese Gasto Ropa y Calzado ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Entretenimiento:</div>
-                                <select class="custom-select form-control-border" id="selectGastoEntretenimiento" name="selectGastoEntretenimiento">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoEntretenimiento" name="inputGastoEntretenimiento" placeholder="Ingrese Gasto Entretenimiento ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Hogar:</div>
-                                <select class="custom-select form-control-border" id="selectGastoHogar" name="selectGastoHogar">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoHogar" name="inputGastoHogar" placeholder="Ingrese Gasto Hogar ...">
+                                
                             </div>
                         </div>
                     </div>
@@ -1878,28 +1877,28 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Servicios:</div>
-                                <select class="custom-select form-control-border" id="selectGastoServicios" name="selectGastoServicios">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoServicios" name="inputGastoServicios" placeholder="Ingrese Gasto Servicios ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Reparaciones:</div>
-                                <select class="custom-select form-control-border" id="selectGastoReparaciones" name="selectGastoReparaciones">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoReparaciones" name="inputGastoReparaciones" placeholder="Ingrese Gasto Reparaciones ...">
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Gasto Ahorro:</div>
-                                <select class="custom-select form-control-border" id="selectGastoAhorro" name="selectGastoAhorro">
-                                </select>
+                                <input type="number" class="form-control input-sm" id="inputGastoAhorro" name="inputGastoAhorro" placeholder="Ingrese Gasto Ahorro ...">
+                                
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button id="guardar-paso-10" type="button" class="btn btn-outline-success">Guardar</button>
+                            <button id="guardar-paso-11" type="button" class="btn btn-outline-success">Guardar</button>
                         </div>
                     </div>
                     <HR/>
@@ -2437,8 +2436,10 @@
 <script src="<?php echo base_url('vendor/js/jquery.smartWizardV2.js') ?>"></script>
 <script src="<?php echo base_url('vendor/js/nprogress.js') ?>"></script>
 
+<script src="<?php echo base_url('jsHP/jsValidarFichaHogar.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosCombos.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosFuncionesV2.js') ?>"></script>
+
 
 <script type="text/javascript">
     fechaNacimientoResponsable.max = new Date().toISOString().split("T")[0];
@@ -2453,10 +2454,10 @@
         localStorage.setItem('flagActividad',1);
         localStorage.removeItem('idHogarEditar');
         
-            cargarEducacion('#educacionComposicion',0);
-            cargarEstadoCivil('#estadoCivilComposicion',0);
-            cargarParentesco('#parentescoJefeComposicion',0);
-            cargarTipoIngreso('#tipoIngresoComposicion',0);
+        cargarEducacion('#educacionComposicion',0);
+        cargarEstadoCivil('#estadoCivilComposicion',0);
+        cargarParentesco('#parentescoJefeComposicion',0);
+        cargarTipoIngreso('#tipoIngresoComposicion',0);
         
 
         /*
@@ -2515,163 +2516,9 @@
         
     }
     
-    
-    // Ubicacion del hogar PASO 1
-    $("#guardar-paso-1").click(function() {
-        var idHogar2 = $("#identificacion2Hogar").val();
-        var camposVacios = "";
-        if ($.trim($('#estadoHogar').val()) === '') {
-            camposVacios += "Seleccione estado <br>";
-        }
-        if ($.trim($('#ciudadHogar').val()) === '') {
-            camposVacios += "Seleccione ciudad <br>";
-        }
-        if ($.trim($('#municipioHogar').val()) === '') {
-            camposVacios += "Seleccione municip <br>";
-        }
-        if ($.trim($('#parroquiaHogar').val()) === '') {
-            camposVacios += "Seleccione parroquia <br>";
-        }
-        if (!$("input[name='calle']:radio").is(':checked')) {
-            camposVacios += "Seleccione el tipo de calle<br>";
-        }
-        if ($("#nombreCalle").val() == "") {
-            camposVacios += "Nombre de calle<br>";
-        }
-        if (!$("input[name='tipoZona']:radio").is(':checked')) {
-            camposVacios += "Seleccione el tipo de zona<br>";
-        }
-        if ($("#nombreTipoZona").val() == "") {
-            camposVacios += "Nombre tipo de zona<br>";
-        }
-        if (!$("input[name='vivienda']:radio").is(':checked')) {
-            camposVacios += "Seleccione el tipo de vivienda<br>";
-        }
-        if ($('input:radio[name=vivienda]:checked').val() == 'vivienda') {
-            $("#nombreEdificio").val('');
-            $("#pisoHogar").val('');
-            $("#apartamentoEdificio").val('');
-            if ($("#nombreCasa").val() == "") {
-                camposVacios += "Nombre de la casa<br>";
-            }
-            if ($("#escaleraCasa").val() == "") {
-                camposVacios += "Escalera<br>";
-            }
-        }
-        if ($('input:radio[name=vivienda]:checked').val() == 'edificio') {
-            $("#nombreCasa").val('');
-            $("#escaleraCasa").val('');
-            if ($("#nombreEdificio").val() == "") {
-                camposVacios += "Nombre del edificio<br>";
-            }
-            if ($("#pisoHogar").val() == "") {
-                camposVacios += "Piso del Edificio<br>";
-            }
-            if ($("#apartamentoEdificio").val() == "") {
-                camposVacios += "Numero de apartamento<br>";
-            }
-        }
-        if ($("#telefonoHogar").val() == "") {
-            camposVacios += "Telefono del Hogar<br>";
-        }
-        if (camposVacios != "") {
-            $(function() {
-                $('#modal-body').html(camposVacios);
-            });
-            $('#myModal').modal('show');
-        } else {
-            const fecha = new Date();
-            const YYYY = fecha.getFullYear();
-            const YY = YYYY%100;
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": '<?php echo urlApi; ?>addNewHogar/',
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
-                "data": { // ****
-                    "identificacion1Hogar": $("#identificacion1Hogar").val(),
-                    "Id_Hogar": $("#identificacion2Hogar").val(),
-                    "idUsuario": localStorage.getItem("IdUsuario"),
-                    "YY": YY,
-                    "Id_estadoHogar": $("#estadoHogar").val(),
-                    "Id_ciudadHogar": $("#ciudadHogar").val(),
-                    "Id_municipioHogar": $("#municipioHogar").val(),
-                    "Id_parroquiaHogar": $("#parroquiaHogar").val(),
-                    "Ind_CalleAvenidad": $('input:radio[name=calle]:checked').val(),
-                    "Ind_BarrioUrbanizacion": $('input:radio[name=tipoZona]:checked').val(),
-                    "calle":$("#nombreCalle").val(),
-                    "nombreEdificio": $("#nombreEdificio").val(), // 2
-                    "nombreCasa": $("#nombreCasa").val(), // 1
-                    "escaleraCasa": $("#escaleraCasa").val(), // 1
-                    "pisoHogar": $("#pisoHogar").val(), // 2
-                    "apartamentoEdificio": $("#apartamentoEdificio").val(), // 2
-                    "tipoZona": $("#nombreTipoZona").val(),
-                    "referenciaHogar": $("#referenciaHogar").val(),
-                    "telefonoHogar": $("#telefonoHogar").val(),
-                    "viviendaCasa": $("#viviendaCasa").val(),
-                    "Id_Usuario": localStorage.getItem("IdUsuario"),
-                    "tipoCasa": $("#tipoCasa").val()
-                }
-            }
-            $.ajax(settings).done(function(response) {
-                $("#identificacion1Hogar").val(response.Codi_Hogar);
-                $("#identificacion2Hogar").val(response.maxIDPanelHogar);
-                
-                if (idHogar2 == ""){
-                    AlertaFichaIncompleta(response.maxIDPanelHogar);
-                }
-                
-                if (localStorage.getItem('flagActividad') !== null){
-                    var idHogar = $("#identificacion2Hogar").val();
-                    guardarCamposPorActividad(idHogar,1);
-                }
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'success',
-                    title: response.message,
-                    confirmButtonText: `Ok`,
-                })
-                Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Paso 1 (idPanelHogar)",$("#identificacion2Hogar").val(),"C");
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'info',
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    var form = document.querySelector('#FormPaisEdit');
-                    form.reset();
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
-    });
-    // Responsable del panel PASO 2
+    // 9999999999999999
+
+    // Responsable del panel (PASO 2)
     $("#guardar-paso-2").click(function() {
         var camposVacios = "";
         //var camposVaciosX = "";
@@ -3159,61 +3006,61 @@
             })
         }
     });
-    $(document).ready(function() {
+
 
         
 
-        //8888888
+    //8888888
 
-        $('#parentescoJefeResponsable').change(function(e) {
+    $('#parentescoJefeResponsable').change(function(e) {
 
-            var idParentesco = $('#parentescoJefeResponsable').val();
-            document.getElementById("responsableJefeNO").disabled=true;
-            document.getElementById("responsableJefeSI").disabled=true;
-                    
-            if (idParentesco == 1){
-                document.getElementById("divResponsableJefe").style.visibility = "hidden";
-                var oblig = $("input:radio[name='jefeResponsableIO']");
-                oblig.filter("[value='0']").attr('checked', true);
-            }else{
-                document.getElementById("divResponsableJefe").style.visibility = "visible";
-                var oblig = $("input:radio[name='jefeResponsableIO']");
-                oblig.filter("[value='0']").attr('checked', true);
-            }
-        })
-        
-        $('#fechaNacimientoResponsable').change(function(e) {
-            calcularEdad($("#fechaNacimientoResponsable").val(),'#edadResponsable');
-        })
-        
-        $('#fechaNacimientoJefe').change(function(e) {
-            calcularEdad($("#fechaNacimientoJefe").val(),'#edadJefe');
-        })
-        
-        $('#fechaNacimientoComposicion').change(function(e) {
-            calcularEdad($("#fechaNacimientoComposicion").val(),'#edadComposicion');
-        })
-        
-        $('#tipoVivienda').change(function(e) {
-            if ($(this).val() != "12") {
-                $("#especifiqueTipoVivienda").val('');
-                $('#especifiqueTipoVivienda').prop("disabled", true);
-            } else {
-                $('#especifiqueTipoVivienda').prop("disabled", false);
+        var idParentesco = $('#parentescoJefeResponsable').val();
+        document.getElementById("responsableJefeNO").disabled=true;
+        document.getElementById("responsableJefeSI").disabled=true;
+                
+        if (idParentesco == 1){
+            document.getElementById("divResponsableJefe").style.visibility = "hidden";
+            var oblig = $("input:radio[name='jefeResponsableIO']");
+            oblig.filter("[value='0']").attr('checked', true);
+        }else{
+            document.getElementById("divResponsableJefe").style.visibility = "visible";
+            var oblig = $("input:radio[name='jefeResponsableIO']");
+            oblig.filter("[value='0']").attr('checked', true);
+        }
+    })
+    
+    $('#fechaNacimientoResponsable').change(function(e) {
+        calcularEdad($("#fechaNacimientoResponsable").val(),'#edadResponsable');
+    })
+    
+    $('#fechaNacimientoJefe').change(function(e) {
+        calcularEdad($("#fechaNacimientoJefe").val(),'#edadJefe');
+    })
+    
+    $('#fechaNacimientoComposicion').change(function(e) {
+        calcularEdad($("#fechaNacimientoComposicion").val(),'#edadComposicion');
+    })
+    
+    $('#tipoVivienda').change(function(e) {
+        if ($(this).val() != "12") {
+            $("#especifiqueTipoVivienda").val('');
+            $('#especifiqueTipoVivienda').prop("disabled", true);
+        } else {
+            $('#especifiqueTipoVivienda').prop("disabled", false);
 
-            }
-        })
-        
-        $('#ocupacionVivienda').change(function(e) {
-            if ($(this).val() != "6") {
-                $("#especifiqueOcupacionVivienda").val('');
-                $('#especifiqueOcupacionVivienda').prop("disabled", true);
-            } else {
-                $('#especifiqueOcupacionVivienda').prop("disabled", false);
+        }
+    })
+    
+    $('#ocupacionVivienda').change(function(e) {
+        if ($(this).val() != "6") {
+            $("#especifiqueOcupacionVivienda").val('');
+            $('#especifiqueOcupacionVivienda').prop("disabled", true);
+        } else {
+            $('#especifiqueOcupacionVivienda').prop("disabled", false);
 
-            }
-        })
-    });
+        }
+    })
+
 
     // Características y tenencia de la vivienda PASO 5
     $("#guardar-paso-5").click(function() {
@@ -4356,6 +4203,9 @@ function cargarTablaComposicion(idHogar){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js')?>"></script>
+
+
+
 <!--
 <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
 -->

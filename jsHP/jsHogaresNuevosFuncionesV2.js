@@ -1,14 +1,4 @@
-$('.buttonNext').click(function() {
-    alert('Hola');
-});
 
-
-$(document).ready(function() {
-    /*let button = document.querySelector(".buttonNext");
-    button.disabled = true;*/
-    $('.buttonNext').prop('disabled', true);
-    //$("#formUbicacionHogar :input").prop("disabled", true);
-});
 
 $(function(){
     $("#fechaNacimientoResponsable").datepicker({
@@ -21,8 +11,6 @@ $(function(){
         'Julio', 'Agosto', 'Septiembre',
         'Octubre', 'Noviembre', 'Diciembre'],
         dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
-
-
     });
 });
 

@@ -303,7 +303,8 @@ if(!isset($_SESSION)){
                     }
             }
             $.ajax(settings).done(function(response) {
-                if (response.data.length == 1){
+                if (response.data.length == 1){//
+                    // Para Cuando el usuario tiene un solo un perfil
                     localStorage.setItem("idPerfil",response.data[0].id);
                     Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Autenticar (IdUsuario)",localStorage.getItem("IdUsuario"),"R");
                     const Toast = Swal.mixin({
@@ -325,6 +326,7 @@ if(!isset($_SESSION)){
                     })
                     window.location.href = "../Principal/dashboard";
                 }else{
+                    // Para Cuando el usuario tiene mas de un un perfil
                     let selected = $(identificador);
                     selected.find("option").remove();
                     if (idS == 0){
@@ -341,9 +343,6 @@ if(!isset($_SESSION)){
                     }
                     $('#myModal').modal('show');
                 }
-
-
-
 
             }).fail(function(jqXHR, textStatus) {
                 if (jqXHR.status == 400) {

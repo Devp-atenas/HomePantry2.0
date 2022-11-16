@@ -871,36 +871,36 @@ select:focus {
 
 
 $("#inputProducto_").keyup(function () {
-        var idCategoria = $("#selectCategoria").val();
-        var valorBuscar = $("#inputProducto").val();
-        
-        $.ajax({
-            type: "POST",
-            url: localStorage.getItem("urlApi")+'getAllProductos_x_categoriaV1_Autocompletar',
-            data: JSON.stringify({ "valorBuscar": valorBuscar,"idCategoria":idCategoria }),
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                var arrayElemento = jQuery.map(data, function(value, index) {
-                        return (value.Producto);
-                });
+    var idCategoria = $("#selectCategoria").val();
+    var valorBuscar = $("#inputProducto").val();
+    
+    $.ajax({
+        type: "POST",
+        url: localStorage.getItem("urlApi")+'getAllProductos_x_categoriaV1_Autocompletar',
+        data: JSON.stringify({ "valorBuscar": valorBuscar,"idCategoria":idCategoria }),
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var arrayElemento = jQuery.map(data, function(value, index) {
+                    return (value.Producto);
+            });
 
-                $('#inputProducto').autocomplete({
-                    clearButton: true,
-                    source: arrayElemento,
-                    selectFirst: true,
-                    minLength: 2
-                });
-        
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log('Error: ' + xhr.responseText);
-            }
-        });
+            $('#inputProducto').autocomplete({
+                clearButton: true,
+                source: arrayElemento,
+                selectFirst: true,
+                minLength: 2
+            });
+    
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log('Error: ' + xhr.responseText);
+        }
     });
+});
 
 
 
