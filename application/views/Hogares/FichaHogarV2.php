@@ -132,28 +132,28 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Estado:</div>
-                                <select class="custom-select form-control-border" id="estadoHogar">
+                                <select class="custom-select form-control-border" id="estadoHogar" name="estadoHogar">
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Ciudad:</div>
-                                <select class="custom-select form-control-border" id="ciudadHogar">
+                                <select class="custom-select form-control-border" id="ciudadHogar" name="ciudadHogar">
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Municipio:</div>
-                                <select class="custom-select form-control-border" id="municipioHogar">
+                                <select class="custom-select form-control-border" id="municipioHogar" name="municipioHogar">
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Parroquia:</div>
-                                <select class="custom-select form-control-border" id="parroquiaHogar">
+                                <select class="custom-select form-control-border" id="parroquiaHogar" name="parroquiaHogar">
                                 </select>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                                             <div class="inputText font-weight-bold">Numero o nombre de la casa:</div>
                                             <input type="text" maxlength="30" class="form-control input-sm" id="nombreCasa" name="nombreCasa" placeholder="Nombre de la quinta ...">
                                             <div class="inputText font-weight-bold">Escalera:</div>
-                                            <input type="text" maxlength="10" class="form-control" id="escaleraCasa" placeholder="Escalera ...">
+                                            <input type="text" maxlength="10" class="form-control" id="escaleraCasa" name="escaleraCasa" placeholder="Escalera ...">
                                         </div>
                                     </div>
                                     <div class="form-check">
@@ -222,9 +222,9 @@
                                             <div class="inputText font-weight-bold">Nombre del edificio:</div>
                                             <input type="text" maxlength="30" class="form-control input-sm" id="nombreEdificio" name="nombreEdificio" placeholder="Nombre del edificio ...">
                                             <div class="inputText font-weight-bold">Piso:</div>
-                                            <input type="text" maxlength="10" class="form-control" id="pisoHogar" placeholder="Piso ...">
+                                            <input type="text" maxlength="10" class="form-control" id="pisoHogar" name="pisoHogar" placeholder="Piso ...">
                                             <div class="inputText font-weight-bold">Apartamento:</div>
-                                            <input type="text" maxlength="10" class="form-control" id="apartamentoEdificio" placeholder="Apartamento ...">
+                                            <input type="text" maxlength="10" class="form-control" id="apartamentoEdificio" name="apartamentoEdificio" placeholder="Apartamento ...">
                                         </div>
                                     </div>
                                 </div>
@@ -2435,6 +2435,8 @@
 <script src="<?php echo base_url('vendor/js/fastclick.js') ?>"></script>
 <script src="<?php echo base_url('vendor/js/jquery.smartWizardV2.js') ?>"></script>
 <script src="<?php echo base_url('vendor/js/nprogress.js') ?>"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 <script src="<?php echo base_url('jsHP/jsValidarFichaHogar.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosCombos.js') ?>"></script>
@@ -4203,7 +4205,8 @@ function cargarTablaComposicion(idHogar){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.html5.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js')?>"></script>
-
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 
 <!--

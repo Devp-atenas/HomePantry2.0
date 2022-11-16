@@ -3,12 +3,74 @@ $(document).ready(function() {
         rules: {
             estadoHogar: {
                 required: true
-            }
+            },
+            ciudadHogar: {
+                required: true
+            },
+            municipioHogar: {
+                required: true
+            },
+            parroquiaHogar: {
+                required: true
+            },
+            calle: {
+                required: true
+            },
+            selectZona: {
+                required: true
+            },
+            vivienda: {
+                required: true
+            },
+            telefonoHogar: {
+                required: true
+            },
+            referenciaHogar: {
+                required: true
+            },
+            coordenadaX: {
+                required: true
+            },
+            coordenadaY : {
+                required: true
+            },
+            
         },
         messages: {
             estadoHogar: {
-                required: "Por favor ingrese estado"
-            }
+                required: "Ingrese estado"
+            },
+            ciudadHogar: {
+                required: "Ingrese ciudad"
+            },
+            municipioHogar: {
+                required: "Ingrese municipio"
+            },
+            parroquiaHogar: {
+                required: "Ingrese parroquia"
+            },
+            calle: {
+                required: "Ingrese calle"
+            },
+            selectZona: {
+                required: "Ingrese zona"
+            },
+            vivienda: {
+                required: "Ingrese tipo vivienda"
+            },
+            telefonoHogar: {
+                required: "Ingrese telefono local"
+            },
+            referenciaHogar: {
+                required: "Ingrese referencia"
+            },
+            coordenadaX: {
+                required: "Ingrese coordenada X"
+            },
+            coordenadaY : {
+                required: "Ingrese coordenada Y"
+            },
+            
         },
         errorElement: 'span',
         errorPlacement: function(error, element) {
@@ -22,10 +84,12 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
+
 });
 
 // Ubicacion del hogar (PASO 1)
 $("#guardar-paso-1").click(function() {
+    
     if ($("#formUbicacionHogar").valid()) {
         alert(111);
         var idHogar2 = $("#identificacion2Hogar").val();
