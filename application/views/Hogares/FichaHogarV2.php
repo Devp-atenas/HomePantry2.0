@@ -202,7 +202,7 @@
                             <div class="card">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" class="vivienda" id="viviendaCasa" name="vivienda" value="vivienda">
+                                        <input class="form-check-input" type="radio" class="vivienda" id="viviendaCasa" name="vivienda" value="1">
                                         <label class="form-check-label">Vivienda</label>
                                     </div>
                                     <div id="divVivienda" style="display:none;">
@@ -214,7 +214,7 @@
                                         </div>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" class="vivienda" id="viviendaEdificio" name="vivienda" value="edificio">
+                                        <input class="form-check-input" type="radio" class="vivienda" id="viviendaEdificio" name="vivienda" value="0">
                                         <label class="form-check-label">Edificio</label>
                                     </div>
                                     <div id="divEdificio" style="display:none;">

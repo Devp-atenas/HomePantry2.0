@@ -34,7 +34,6 @@ $(document).ready(function() {
             coordenadaY : {
                 required: true
             },
-            
         },
         messages: {
             estadoHogar: {
@@ -108,26 +107,38 @@ $("#guardar-paso-1").click(function() {
             "data": { // ****
                 "identificacion1Hogar": $("#identificacion1Hogar").val(),
                 "Id_Hogar": $("#identificacion2Hogar").val(),
-                "idUsuario": localStorage.getItem("IdUsuario"),
                 "YY": YY,
-                "Id_estadoHogar": $("#estadoHogar").val(),
-                "Id_ciudadHogar": $("#ciudadHogar").val(),
-                "Id_municipioHogar": $("#municipioHogar").val(),
-                "Id_parroquiaHogar": $("#parroquiaHogar").val(),
-                "Ind_CalleAvenidad": $('input:radio[name=calle]:checked').val(),
-                "Ind_BarrioUrbanizacion": $('input:radio[name=tipoZona]:checked').val(),
-                "calle":$("#nombreCalle").val(),
-                "nombreEdificio": $("#nombreEdificio").val(), // 2
-                "nombreCasa": $("#nombreCasa").val(), // 1
-                "escaleraCasa": $("#escaleraCasa").val(), // 1
-                "pisoHogar": $("#pisoHogar").val(), // 2
-                "apartamentoEdificio": $("#apartamentoEdificio").val(), // 2
-                "tipoZona": $("#nombreTipoZona").val(),
-                "referenciaHogar": $("#referenciaHogar").val(),
+                
+                "idEstadoHogar": $("#estadoHogar").val(),
+                "idCiudadHogar": $("#ciudadHogar").val(),
+                "idMunicipioHogar": $("#municipioHogar").val(),
+                "idParroquiaHogar": $("#parroquiaHogar").val(),
+                "indCalleAvenidad": $('input:radio[name=calle]:checked').val(),
+                "nombreCalle":$("#nombreCalle").val(),
+                "idZona":$("#selectZona").val(),
+                "otraZona":$("#nombreTipoZona").val(),
+                "indVivienda": $("#viviendaCasa").val(),
+                
+                "nombreCasa": $("#nombreCasa").val(),
+                "escaleraCasa": $("#escaleraCasa").val(),
+                
+                "nombreEdificio": $("#nombreEdificio").val(),
+                "pisoHogar": $("#pisoHogar").val(),
+                "apartamentoEdificio": $("#apartamentoEdificio").val(),
                 "telefonoHogar": $("#telefonoHogar").val(),
-                "viviendaCasa": $("#viviendaCasa").val(),
+                "referenciaHogar": $("#referenciaHogar").val(),
+                "coordenadaX": $("#coordenadaX").val(),
+                "coordenadaY": $("#coordenadaY").val(),
+                
+
+                
+                
+
+
                 "Id_Usuario": localStorage.getItem("IdUsuario"),
-                "tipoCasa": $("#tipoCasa").val()
+                "tipoCasa": $("#tipoCasa").val(),
+                "idUsuario": localStorage.getItem("IdUsuario"),
+                
             }
         }
         $.ajax(settings).done(function(response) {
