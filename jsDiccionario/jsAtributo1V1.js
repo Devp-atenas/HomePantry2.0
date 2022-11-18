@@ -299,6 +299,7 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
+    
     $('#FormAtributo').validate({
         rules: {
             selectCategoria: {

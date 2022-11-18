@@ -1,37 +1,34 @@
 <!-- Content Header (Page header) -->
 <?php $this->load->view('Plantillas/Header');?>
 <style>
-.table.dataTable {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 10px;
-}
+    .table.dataTable {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+    }
+    .table.dataTable thead {
+        background: linear-gradient(to right, #D69232, #B6a232, #D69232);
+        color: white;
+        /*font-bold: weight;*/
+        /*font-weight: bold;*/
+        font-weight: 900;
+    }
 
-.table.dataTable thead {
-    background: linear-gradient(to right, #D69232, #B6a232, #D69232);
-    color: white;
-    /*font-bold: weight;*/
-    /*font-weight: bold;*/
-    font-weight: 900;
-    
-}
+    table.dataTable thead .sorting_asc,
+    .sorting_desc,
+    .sorting {
+        background-image: none !important;
+    }
 
-table.dataTable thead .sorting_asc,
-.sorting_desc,
-.sorting {
-    background-image: none !important;
-}
+    select:focus {
+        width: auto;
+    }
 
-select:focus {
-    width: auto;
-}
-
-.text-wrap{
-    white-space:normal;
-}
-.width-200{
-    width:120px;
-}
-
+    .text-wrap{
+        white-space:normal;
+    }
+    .width-200{
+        width:120px;
+    }
 </style>
 <section class="content-header">
     <div class="container-fluid">
@@ -57,7 +54,7 @@ select:focus {
                     </div>
                 </div>
                 <div class="card-body" style="display: none;">
-                    <form id="FormPerfil">
+                    <form id="FormSemana">
                         <div class="form-group row mb-0 mt-0">
                             <div class="col-md-2">
                                 <label class="inputText font-weight-bold">Codigo Semana:</label>
@@ -65,7 +62,7 @@ select:focus {
                             </div>
                             <div class="col-md-3">
                                 <label class="inputText font-weight-bold">Periodo:</label>
-                                <select id="inputPeriodo" name="inputPeriodo" class="form-control">
+                                <select name="inputPeriodo" id="inputPeriodo" class="form-control">
                                 </select>
                             </div>
                             <div class="col-md-1">
@@ -84,7 +81,6 @@ select:focus {
                                 <label class="inputText font-weight-bold">Hasta:</label>
                                 <input type="date" name="fechaHasta" id="fechaHasta" class="form-control">
                             </div>
-                            
                         </div>
                         
                         <div class="form-group row mb-0 mt-0">
@@ -116,7 +112,7 @@ select:focus {
                                 <input type="text" name="inputEuro" id="inputEuro" class="form-control">
                             </div>
                             <div class="col-md-1">
-                                <label class="inputText font-weight-bold">Petro:</label>
+                                <div class="inputText font-weight-bold">Petro:</div>
                                 <input type="text" name="inputPetro" id="inputPetro" class="form-control">
                             </div>
                             <div class="col-md-1">
@@ -129,7 +125,7 @@ select:focus {
                             </div>
                             <div class="col-md-1">
                                 <label class="inputText font-weight-bold">Guardar:</label>
-                                <button id="idCrearPerfil"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
+                                <button id="idGuardarSemana"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
                                 <i class="fas fa-save fa-2x"></i>
                                 </button>
                             </div>
@@ -157,7 +153,8 @@ select:focus {
                     </div>
                 </div>
                 <div class="card-body" style="display: none;">
-                    <table id="TableSemana" class="table table-bordered table-striped">
+                   
+                    <table id="TableSemana" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Codigo Semana</th>
@@ -237,11 +234,12 @@ select:focus {
                                     </div>
                                     <div class="col-md-3">
                                         <label class="inputText font-weight-bold">Desde:</label>
-                                        <input type="date" name="fechaDesdeEdit" id="fechaDesdeEdit" class="form-control">
+                                        <input type="text" name="fechaDesdeEdit" id="fechaDesdeEdit" class="form-control">
                                     </div>
+                                    
                                     <div class="col-md-3">
                                         <label class="inputText font-weight-bold">Hasta:</label>
-                                        <input type="date" name="fechaHastaEdit" id="fechaHastaEdit" class="form-control">
+                                        <input type="text" name="fechaHastaEdit" id="fechaHastaEdit" class="form-control">
                                     </div>
                                     
                                 </div>
@@ -299,152 +297,10 @@ select:focus {
 
 <?php $this->load->view('Plantillas/Footer');?>
 
-<script>
-$(document).ready(function() {
-    var urlApi = '<?php echo urlApi; ?>';
-    sessionStorage.setItem("urlApi",urlApi);
-    //cargarTablaFunciones('#TablaFunciones');
-    cargarTabla();
-    //$('#showButton').hide();
-});
 
-function cargarTabla(){
-    $('#TableSemana').DataTable({
-        lengthMenu: [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
-        Destroy:     true,
-        autoWidth:    true,
-        searching:    false,
-        bPaginate:    false,
-        dom: '<"wrapper"flitp><"center"B>',
-        responsive:   true,
-        buttons: [
-            {
-                extend: 'excelHtml5',
-                title: 'Reporte NSE'
-            }
-        ],
-        scrollY:      300,
-        scrollX:      true,
-        fixedColumns: true,
-        scrollCollapse: true,
-        /*
-        columnDefs: [
-            {width    : "auto", targets: [13]},
-        ],*/
-        deferRender:    true,
-        ajax: {
-            "url": '<?php echo urlApi; ?>getAllSemana',
-            "type": "GET",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Authorization": "Bearer " + localStorage.getItem('Token')
-            },
-            "error": function(xhr, error, thrown) {
-                if (xhr.status === 403) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '300px',
-                        height: '100px'
-                    })
-                }
-                if (xhr.status === 400) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '250px',
-                        height: '25px'
-                    })
-                    window.location.href = '/homepantry20/Principal/logout';
-                }
-            }
-        },
-        language: {
-            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-        },
-        aoColumns: [{
-                mData: 'IdSemana',
-                className: "text-center"
-            },
-            {
-                mData: 'Id_Periodo',
-                className: "text-center"
-            },
-            {
-                mData: 'IdAno',
-                className: "text-center"
-            },
-            {
-                mData: 'IdMes',
-                className: "text-center"
-            },
-            {
-                mData: 'Fec_Inicio',
-                className: "text-center",
-            },
-            {
-                mData: 'Fec_Fin',
-                className: "text-center"
-            },
-            {
-                mData: 'Ind_Ult',
-                className: "text-center"
-            },
-            {
-                mData: 'Semana',
-                className: "text-center"
-            },
-            {
-                mData: 'Dolar',
-                className: "text-center",
-                render: $.fn.dataTable.render.number( '.', ',', 5 )
-            },
-            {
-                mData: 'Euro',
-                className: "text-center",
-                render: $.fn.dataTable.render.number( '.', ',', 5 )
-            },
-            {
-                mData: 'Petro',
-                className: "text-center",
-                render: $.fn.dataTable.render.number( '.', ',', 5 )
-            },
-            {
-                mData: 'Peso',
-                className: "text-center",
-                render: $.fn.dataTable.render.number( '.', ',', 5 )
-            },
-            {
-                mData: 'SemanaCorta',
-                className: "text-center"
-            },
-        ],
-        columnDefs: [{
-            "targets": 13,
-            "width": "50%",
-            "orderable": true,
-            "data": 'IdSemana',
-            "className": "text-center",
-            "render": function(data, type, row, meta) {
-                return  '<div class="text-wrap width-200">'+
-                            '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
-                                data +');"><i class="bi bi-trash3"></i></button>'+
-                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
-                                data +');"><i class="bi bi-pencil-square"></i></button>'+
-                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
-                                data +');"><i class="bi bi-zoom-in"></i></button>'+
-                        '</div>';
-            }
-        }],
-    });
-}
-</script>
 
-<script src="<?php echo base_url('jsHP/jsMantenimientoSemana.js') ?>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<script src="<?php echo base_url('jsHP/jsAllCombosV1.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsMantenimientoSemanaV1.js') ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
@@ -462,6 +318,5 @@ function cargarTabla(){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
 <script src="https://cdn.datatables.net/select/1.3.4/js/dataTables.select.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>

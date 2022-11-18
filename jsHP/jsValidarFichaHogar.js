@@ -135,8 +135,6 @@ $("#guardar-paso-1").click(function() {
                 
 
 
-                "Id_Usuario": localStorage.getItem("IdUsuario"),
-                "tipoCasa": $("#tipoCasa").val(),
                 "idUsuario": localStorage.getItem("IdUsuario"),
                 
             }
