@@ -25,7 +25,7 @@ $(document).ready(function() {
             fechaHasta: {
                 required: true,
             },
-            UltSemAdd: {
+            UltSemMes: {
                 required: true,
             },
             inputDescripcion: {
@@ -33,6 +33,7 @@ $(document).ready(function() {
             },
             inputDolar: {
                 required: true,
+                //pattern: "^[1-9]\d*(\.\d+)?$",
             },
             inputEuro: {
                 required: true,
@@ -56,37 +57,38 @@ $(document).ready(function() {
                 required: "Por favor ingrese periodo"
             },
             inputAno: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese año"
             },
             inputMes: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese mes"
             },
             fechaDesde: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese fecha desde"
             },
             fechaHasta: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese fecha hasta"
             },
-            UltSemAdd: {
-                required: "Por favor ingrese la categoria"
+            UltSemMes: {
+                required: "Por favor ingrese si es ultima semana de mes"
             },
             inputDescripcion: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese descripcion"
             },
             inputDolar: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese dolar",
+                pattern: "Formato invalido"
             },
             inputEuro: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese euro"
             },
             inputPetro: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese petro"
             },
             inputPeso: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese peso"
             },
             inputSemanaCorta: {
-                required: "Por favor ingrese la categoria"
+                required: "Por favor ingrese semana corta"
             },
         },
         errorElement: 'span',
@@ -101,27 +103,162 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
-    
 
-
-
+    $('#FormSemanaEdit').validate({
+        rules: {
+            inputCodSemanaEdit: {
+                required: true,
+            },
+            inputPeriodoEdit: {
+                required: true,
+            },
+            inputAnoEdit: {
+                required: true,
+            },
+            inputMesEdit: {
+                required: true,
+            },
+            fechaDesdeEdit: {
+                required: true,
+            },
+            fechaHastaEdit: {
+                required: true,
+            },
+            UltSemMesEdit: {
+                required: true,
+            },
+            inputDescripcionEdit: {
+                required: true,
+            },
+            inputDolarEdit: {
+                required: true,
+                //pattern: "^[1-9]\d*(\.\d+)?$",
+            },
+            inputEuroEdit: {
+                required: true,
+            },
+            inputPetroEdit: {
+                required: true,
+            },
+            inputPesoEdit: {
+                required: true,
+            },
+            inputSemanaCortaEdit: {
+                required: true,
+            },
+            
+        },
+        messages: {
+            inputCodSemanaEdit: {
+                required: "Por favor ingrese la codigo semana"
+            },
+            inputPeriodoEdit: {
+                required: "Por favor ingrese periodo"
+            },
+            inputAnoEdit: {
+                required: "Por favor ingrese año"
+            },
+            inputMesEdit: {
+                required: "Por favor ingrese mes"
+            },
+            fechaDesdeEdit: {
+                required: "Por favor ingrese fecha desde"
+            },
+            fechaHastaEdit: {
+                required: "Por favor ingrese fecha hasta"
+            },
+            UltSemMesEdit: {
+                required: "Por favor ingrese si es ultima semana de mes"
+            },
+            inputDescripcionEdit: {
+                required: "Por favor ingrese descripcion"
+            },
+            inputDolarEdit: {
+                required: "Por favor ingrese dolar",
+                pattern: "Formato invalido"
+            },
+            inputEuroEdit: {
+                required: "Por favor ingrese euro"
+            },
+            inputPetroEdit: {
+                required: "Por favor ingrese petro"
+            },
+            inputPesoEdit: {
+                required: "Por favor ingrese peso"
+            },
+            inputSemanaCortaEdit: {
+                required: "Por favor ingrese semana corta"
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
 });
 
+
+$("#fechaDesdeEdit").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    minDate: -30*12*70, 
+    maxDate: "0D",
+    monthNames: ['Enero', 'Febreo', 'Marzo',
+    'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre',
+    'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
+});
+
+$("#fechaHastaEdit").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    minDate: -30*12*70, 
+    maxDate: "0D",
+    monthNames: ['Enero', 'Febreo', 'Marzo',
+    'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre',
+    'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
+});
+
+
+
+
+
 $("#idGuardarSemana").click(function() {
+            
     if ($("#FormSemana").valid()) {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": localStorage.getItem("urlApi")+'addNewAtributo1V1____',
+            "url": localStorage.getItem("urlApi")+'addNewSemanaV1',
             "method": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + localStorage.getItem('Token')
             },
             "data": {
-                "Id_Categoria": $("#selectCategoria").val(),
-                "Atributo": $("#inputAtributo").val().toUpperCase(),
-                "activo":  $('input:radio[name=activoAdd]:checked').val()
+                "idSemana": $("#inputCodSemana").val(),
+                "idPeriodo": $("#inputPeriodo").val(),
+                "idAno": $("#inputAno").val(),
+                "idMes": $("#inputMes").val(),
+                "fechaInicio": $("#fechaDesde").val(),
+                "fechaFin": $("#fechaHasta").val(),
+                "ultMes":  $('input:radio[name=UltSemMes]:checked').val(),
+                "descripcion": $("#inputDescripcion").val(),
+                "dolar": $("#inputDolar").val(),
+                "euro": $("#inputEuro").val(),
+                "petro": $("#inputPetro").val(),
+                "peso": $("#inputPeso").val(),
+                "semanaCorta": $("#inputSemanaCorta").val()
             }
         }
         $.ajax(settings).done(function(response) {
@@ -275,8 +412,11 @@ function EditAction(id) {
         }
     }
     $.ajax(settings).done(function(response) {
-        fechaDesdeEdit.max = new Date().toISOString().split("T")[0];
-        fechaHastaEdit.max = new Date().toISOString().split("T")[0];
+        //fechaDesdeEdit.max = new Date().toISOString().split("T")[0];
+        //fechaHastaEdit.max = new Date().toISOString().split("T")[0];
+        
+        $('#inputIdEditSemana').val(response.data[0].IdSemana);
+        
         $('#inputCodSemanaEdit').val(response.data[0].IdSemana);
         cargarPeriodo('#inputPeriodoEdit',response.data[0].Id_Periodo);
         $('#inputAnoEdit').val(response.data[0].IdAno);
@@ -296,7 +436,7 @@ function EditAction(id) {
         $('#inputSemanaCortaEdit').val(response.data[0].SemanaCorta);
         //var radios  = $("input:radio[name='UltSemEdit']");
         //radios.filter("[value='"+response.data[0].Ind_Ult+"']").attr('checked', true);
-        $("input[name=UltSemEdit][value='"+response.data[0].Ind_Ult+"']").prop("checked",true);
+        $("input[name=UltSemMesEdit][value='"+response.data[0].Ind_Ult+"']").prop("checked",true);
         $('#modal-SemanaEditar').modal('show');
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -321,11 +461,11 @@ function EditAction(id) {
 }
 
 function ActualizarRegistro() {
-    if ($("#FormAtributoEdit").valid()) {
+    if ($("#FormSemanaEdit").valid()) {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": '<?php echo urlApi; ?>updateAtributo3___',
+            "url": localStorage.getItem("urlApi")+'updateSemanaV1',
             "method": "post",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -334,17 +474,17 @@ function ActualizarRegistro() {
             "data": {
                 "idSemana": $("#inputCodSemanaEdit").val(),
                 "idPeriodo": $("#inputPeriodoEdit").val(),
-                "Semana": $("#inputDescripcionEdit").val(),
                 "idAno": $("#inputAnoEdit").val(),
                 "idMes": $("#inputMesEdit").val(),
-                "SemanaCorta": $("#inputSemanaCortaEdit").val(),
                 "FecInicio": $("#fechaDesdeEdit").val(),
                 "FecFin": $("#fechaHastaEdit").val(),
-                "UltSem": $('input:radio[name=UltSemEdit]:checked').val(),
+                "UltSem": $('input:radio[name=UltSemMesEdit]:checked').val(),
+                "Semana": $("#inputDescripcionEdit").val(),
                 "Dolar": $("#inputDolarEdit").val(),
                 "Euro": $("#inputEuroEdit").val(),
                 "Petro": $("#inputPetroEdit").val(),
-                "Peso": $("#inputPesoEdit").val()
+                "Peso": $("#inputPesoEdit").val(),
+                "SemanaCorta": $("#inputSemanaCortaEdit").val(),
             }
         }
         $.ajax(settings).done(function(response) {

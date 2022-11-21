@@ -55,80 +55,112 @@
                 </div>
                 <div class="card-body" style="display: none;">
                     <form id="FormSemana">
-                        <div class="form-group row mb-0 mt-0">
+                        <div class="row">
                             <div class="col-md-2">
-                                <label class="inputText font-weight-bold">Codigo Semana:</label>
-                                <input type="text" name="inputCodSemana" id="inputCodSemana" class="form-control">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Codigo Semana:</label>
+                                    <input type="text" name="inputCodSemana" id="inputCodSemana" class="form-control">
+                                </div>
                             </div>
                             <div class="col-md-3">
-                                <label class="inputText font-weight-bold">Periodo:</label>
-                                <select name="inputPeriodo" id="inputPeriodo" class="form-control">
-                                </select>
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Periodo:</label>
+                                    <select name="inputPeriodo" id="inputPeriodo" class="form-control">
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-1">
-                                <label class="inputText font-weight-bold">Año:</label>
-                                <input type="text" name="inputAno" id="inputAno" class="form-control">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Año:</label>
+                                    <input type="text" name="inputAno" id="inputAno" class="form-control">
+                                </div>
                             </div>
                             <div class="col-md-1">
-                                <label class="inputText font-weight-bold">Mes:</label>
-                                <input type="text" name="inputMes" id="inputMes" class="form-control">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Mes:</label>
+                                    <input type="text" name="inputMes" id="inputMes" class="form-control">
+                                </div>
                             </div>
                             <div class="col-md-2">
-                                <label class="inputText font-weight-bold">Desde:</label>
-                                <input type="date" name="fechaDesde" id="fechaDesde" class="form-control">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Desde:</label>
+                                    <input type="date" name="fechaDesde" id="fechaDesde" class="form-control">
+                                </div>
                             </div>
                             <div class="col-md-2">
-                                <label class="inputText font-weight-bold">Hasta:</label>
-                                <input type="date" name="fechaHasta" id="fechaHasta" class="form-control">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Hasta:</label>
+                                    <input type="date" name="fechaHasta" id="fechaHasta" class="form-control">
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="form-group row mb-0 mt-0">
+                        <div class="row">
                             <div class="col-md-2">
-                                <label class="inputText font-weight-bold">Ult Sem Mes?</label>
-                                <div class="card">
-                                    <div class="form-group">
-                                    <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="UltSemAdd" name="UltSemAdd" value="0">
-                                            <label class="form-check-label">No</label>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Ult Sem Mes?</label>
+                                    <div class="card">
+                                        <div class="form-group">
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" id="UltSemAdd" name="UltSemAdd" value="1">
-                                            <label class="form-check-label">Si</label>
+                                                <input class="form-check-input" type="radio" id="UltSemMes" name="UltSemMes" value="0">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" id="UltSemMes" name="UltSemMes" value="1">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Descripcion:</label>
+                                    <input type="text" name="inputDescripcion" id="inputDescripcion" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Dolar:</label>
+                                    <input type="number" step=0.00001 name="inputDolar" id="inputDolar" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Euro:</label>
+                                    <input type="number" step=0.00001 name="inputEuro" id="inputEuro" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Petro:</label>
+                                    <input type="number" step=0.00001 name="inputPetro" id="inputPetro" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Peso:</label>
+                                    <input type="number" step=0.00001 name="inputPeso" id="inputPeso" class="form-control">
+                                </div>
+                            </div>
                             <div class="col-md-3">
-                                <label class="inputText font-weight-bold">Descripcion:</label>
-                                <input type="text" name="inputDescripcion" id="inputDescripcion" class="form-control">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Semana Corta</label>
+                                    <input type="text" name="inputSemanaCorta" id="inputSemanaCorta" class="form-control">
+                                </div>
                             </div>
+                        </div>
+                        <div class="row"> 
                             <div class="col-md-1">
-                                <label class="inputText font-weight-bold">Dolar:</label>
-                                <input type="text" name="inputDolar" id="inputDolar" class="form-control">
+                                <div class="form-group">
+                                    <label class="inputText font-weight-bold">Guardar:</label>
+                                    <button id="idGuardarSemana"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
+                                        <i class="fas fa-save fa-2x"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-md-1">
-                                <label class="inputText font-weight-bold">Euro:</label>
-                                <input type="text" name="inputEuro" id="inputEuro" class="form-control">
-                            </div>
-                            <div class="col-md-1">
-                                <div class="inputText font-weight-bold">Petro:</div>
-                                <input type="text" name="inputPetro" id="inputPetro" class="form-control">
-                            </div>
-                            <div class="col-md-1">
-                                <label class="inputText font-weight-bold">Peso:</label>
-                                <input type="text" name="inputPeso" id="inputPeso" class="form-control">
-                            </div>
-                            <div class="col-md-3">
-                                <label class="inputText font-weight-bold">Semana Corta</label>
-                                <input type="text" name="inputSemanaCorta" id="inputSemanaCorta" class="form-control">
-                            </div>
-                            <div class="col-md-1">
-                                <label class="inputText font-weight-bold">Guardar:</label>
-                                <button id="idGuardarSemana"type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
-                                <i class="fas fa-save fa-2x"></i>
-                                </button>
-                            </div>
+                            
                         </div>
                     </form>
                 </div>
@@ -181,9 +213,11 @@
         </div>
     </div>
 </section>
-<!-- Windows Modal Editar 222222 -->
-<div class="modal fade" id="modal-SemanaEditar"" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+
+
+<!-- Windows Modal Editar Registros 222222 -->
+<div class="modal fade" id="modal-SemanaEditar">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -203,85 +237,121 @@
                         </div>
                         <div class="card-body">
                             <form id="FormSemanaEdit">
-                                <div class="form-group row mb-0 mt-0">
+                                <div class="row">
                                     <div class="col-md-2">
-                                        <label class="inputText font-weight-bold">Cod Semana:</label>
-                                        <input type="text" name="inputCodSemanaEdit" id="inputCodSemanaEdit" class="form-control">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Cod Semana:</label>
+                                            <input type="text" name="inputCodSemanaEdit" id="inputCodSemanaEdit" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="inputText font-weight-bold">Periodo:</label>
-                                        <select id="inputPeriodoEdit" name="inputPeriodoEdit" class="form-control">
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="inputText font-weight-bold">Descripcion:</label>
-                                        <input type="text" name="inputDescripcionEdit" id="inputDescripcionEdit" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="inputText font-weight-bold">Año:</label>
-                                        <input type="text" name="inputAnoEdit" id="inputAnoEdit" class="form-control">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Periodo:</label>
+                                            <select name="inputPeriodoEdit" id="inputPeriodoEdit" class="form-control">
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-md-1">
-                                        <label class="inputText font-weight-bold">Mes:</label>
-                                        <input type="text" name="inputMesEdit" id="inputMesEdit" class="form-control">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Año:</label>
+                                            <input type="text" name="inputAnoEdit" id="inputAnoEdit" class="form-control">
+                                        </div>
                                     </div>
-                                </div>
-                            
-                                <div class="form-group row mb-0 mt-0">
-                                    <div class="col-md-5">
-                                        <label class="inputText font-weight-bold">Semana Corta:</label>
-                                        <input type="text" name="inputSemanaCortaEdit" id="inputSemanaCortaEdit" class="form-control">
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Mes:</label>
+                                            <input type="text" name="inputMesEdit" id="inputMesEdit" class="form-control">
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label class="inputText font-weight-bold">Desde:</label>
-                                        <input type="text" name="fechaDesdeEdit" id="fechaDesdeEdit" class="form-control">
-                                    </div>
-                                    
-                                    <div class="col-md-3">
-                                        <label class="inputText font-weight-bold">Hasta:</label>
-                                        <input type="text" name="fechaHastaEdit" id="fechaHastaEdit" class="form-control">
-                                    </div>
-                                    
-                                </div>
-                                <div class="form-group row mb-0 mt-0">
                                     <div class="col-md-2">
-                                        <label class="inputText font-weight-bold">Ult Sem Mes?</label>
-                                        <div class="card">
-                                            <div class="form-group">
-                                            <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="UltSem_Edit0" name="UltSemEdit" value="0">
-                                                    <label class="form-check-label">No</label>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Desde:</label>
+                                            <input type="text" name="fechaDesdeEdit" id="fechaDesdeEdit" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Hasta:</label>
+                                            <input type="text" name="fechaHastaEdit" id="fechaHastaEdit" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Ult Sem Mes?</label>
+                                            <div class="card">
+                                                <div class="form-group">
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="UltSem_Edit1" name="UltSemEdit" value="1">
-                                                    <label class="form-check-label">Si</label>
+                                                        <input class="form-check-input" type="radio" id="UltSemMesEdit" name="UltSemMesEdit" value="0">
+                                                        <label class="form-check-label">No</label>
+                                                    </div>
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" id="UltSemMesEdit" name="UltSemMesEdit" value="1">
+                                                        <label class="form-check-label">Si</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <label class="inputText font-weight-bold">Dolar:</label>
-                                        <input type="text" name="inputDolarEdit" id="inputDolarEdit" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="inputText font-weight-bold">Euro:</label>
-                                        <input type="text" name="inputEuroEdit" id="inputEuroEdit" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="inputText font-weight-bold">Petro:</label>
-                                        <input type="text" name="inputPetroEdit" id="inputPetroEdit" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="inputText font-weight-bold">Peso:</label>
-                                        <input type="text" name="inputPesoEdit" id="inputPesoEdit" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="inputText font-weight-bold">Guardar:</label>
-                                        <button id="idEditarSemana" type="button" class="btn btn-block btn-xs btn-primary">
-                                            <i class="fas fa-save fa-2x"></i>
-                                        </button>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Descripcion:</label>
+                                            <input type="text" name="inputDescripcionEdit" id="inputDescripcionEdit" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Dolar:</label>
+                                            <input type="number" step=0.00001 name="inputDolarEdit" id="inputDolarEdit" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Euro:</label>
+                                            <input type="number" step=0.00001 name="inputEuroEdit" id="inputEuroEdit" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Petro:</label>
+                                            <input type="number" step=0.00001 name="inputPetroEdit" id="inputPetroEdit" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Peso:</label>
+                                            <input type="number" step=0.00001 name="inputPesoEdit" id="inputPesoEdit" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Semana Corta</label>
+                                            <input type="text" name="inputSemanaCortaEdit" id="inputSemanaCortaEdit" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Guardar:</label>
+                                            <button id="idGuardarSemanaEdit" onclick="ActualizarRegistro()" type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#guardarCambioFacturaModal">
+                                                <i class="fas fa-save fa-2x"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="visibility:hidden;">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputIdEditSemana">id:</label>
+                                            <input type="text" name="inputIdEditSemana" id="inputIdEditSemana"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>                                
                             </form>
                         </div>
                     </div>
@@ -294,6 +364,11 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
+
+
+
 
 <?php $this->load->view('Plantillas/Footer');?>
 
