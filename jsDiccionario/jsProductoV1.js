@@ -1651,14 +1651,7 @@ function cargarTabla(Id){
         "bPaginate": false,
         "dom": 'Bfrtip',
         "responsive": false,
-        "buttons": [
-            {
-                extend: 'excelHtml5',
-                title: 'Producto'
-            },
-            'colvis'
-        ],
-        //"fixedHeader":    true,
+       //"fixedHeader":    true,
         "scrollX":        true,
         "scrollY":        400,
         //"deferRender":    true,
@@ -1668,6 +1661,13 @@ function cargarTabla(Id){
             "decimal": ",",
             "thousands": "."
         },        
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                title: 'Producto'
+            },
+            'colvis'
+        ],
         "ajax": {
             "url": localStorage.getItem("urlApi")+'getAllProductos_x_categoriaV1/' + Id,
             "type": "GET",

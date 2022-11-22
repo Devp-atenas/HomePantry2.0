@@ -65,10 +65,17 @@ select:focus {
                     </div>
                     <div class="col-md-2">
                         <div class="inputText font-weight-bold">&nbsp;</div>
-                        <button id="idGenerarReporteFinal" type="button" class="btn btn-primary" disabled="disabled">
+                        <button id="idBotonGenerarReporteFinal" type="button" class="btn btn-primary" disabled="disabled">
                             Generar
                         </button>
                     </div>
+                    <div class="col-md-2">
+                        <div class="inputText font-weight-bold">&nbsp;</div>
+                        <button id="idBotonCerrarValidacion" type="button" class="btn btn-primary" disabled="disabled">
+                            Cerrar Validacion
+                        </button>
+                    </div>
+                    
 
 
 
@@ -124,31 +131,7 @@ select:focus {
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsAllCombosV1.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsReporteFinalValidacion.js') ?>"></script>
-
-
-<script>
-    function callReporteConsumoHogar(idSemana,idArea,idEstado,idHogar){
-        var idTipoConsumo = $('#selecTipoConsumo').val();
-        localStorage.setItem("idSemana", idSemana);
-        localStorage.setItem("idArea", idArea);
-        localStorage.setItem("idEstado", idEstado);
-        localStorage.setItem("idPanelHogar", idHogar);
-        localStorage.setItem("flagHogarRegCon", 1);
-        localStorage.setItem("idTipoConsumo",idTipoConsumo);
-            
-        var win = window.open("<?php echo base_url('Principal/ReporteConsumoPorHogar')?>", '_blank');
-        win.focus();
-        
-    }
-
-
-
-
-</script>
-
-
-
+<script src="<?php echo base_url('jsReportes/jsReporteFinalValidacion.js') ?>"></script>
 
 
 
