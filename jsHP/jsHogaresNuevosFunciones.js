@@ -187,7 +187,6 @@ function guardarCamposPorActividad(idHogar,step) {
                 valor = $('input[name='+response.data[i].Id_campohtml+']:checked').val();
                 //alert(response.data[i].Id_campohtml+' radio: '+valor);
             }
-
             guardarValorNuevo(idHogar,idItemsHogar,valor);
         }
     }).fail(function(jqXHR, textStatus) {

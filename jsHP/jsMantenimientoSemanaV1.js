@@ -4,7 +4,6 @@ $(document).ready(function() {
     fechaHasta.max = new Date().toISOString().split("T")[0];
     cargarPeriodo('#inputPeriodo',0);
 
-
     $('#FormSemana').validate({
         rules: {
             inputCodSemana: {
@@ -228,10 +227,6 @@ $("#fechaHastaEdit").datepicker({
     'Octubre', 'Noviembre', 'Diciembre'],
     dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
 });
-
-
-
-
 
 $("#idGuardarSemana").click(function() {
             

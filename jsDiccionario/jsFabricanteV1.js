@@ -315,8 +315,8 @@ function deleteFabricante(data) {
 
 $(document).ready(function() {
     document.getElementById('FormFabricante').reset();
-    cargarCategoriaNOMedicina("#selectCategoria",0);
-    cargarCategoriaNOMedicina("#selectCategoriaTabla",0);
+    cargarCategoriaNOMedicina("#selectCategoria",-1);
+    cargarCategoriaNOMedicina("#selectCategoriaTabla",-1);
 
     $('#FormFabricante').validate({
         rules: {

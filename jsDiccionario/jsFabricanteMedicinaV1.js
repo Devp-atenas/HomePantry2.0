@@ -313,8 +313,8 @@ function deleteFabricante(data) {
 
 $(document).ready(function() {
     document.getElementById('FormFabricante').reset();
-    cargarCategoriaMedicina("#selectCategoria",0);
-    cargarCategoriaMedicina("#selectCategoriaTabla",0);
+    cargarCategoriaMedicina("#selectCategoria",-1);
+    cargarCategoriaMedicina("#selectCategoriaTabla",-1);
 
     cargarTabla(0);
     $('#TableFabricante').show();
