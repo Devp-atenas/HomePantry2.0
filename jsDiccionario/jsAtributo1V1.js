@@ -3,7 +3,6 @@ $("#botonenviar").click(function() {
         existeAtributo1($("#inputAtributo").val());
     }
 });
-
 function existeAtributo1(Atributo) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
