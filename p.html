@@ -1,0 +1,2714 @@
+
+<!-- Colocar Include Header y Menu 27jul21 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>| Home Pantry 2.0 |</title>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    
+    <link rel="stylesheet" href="http://localhost/homepantry20/vendor/css/custom.min.css">
+    <link rel="stylesheet" href="http://localhost/homepantry20/vendor/css/nprogress.css">
+    
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="http://localhost/homepantry20/assets/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="http://localhost/homepantry20/assets/adminlte.min.css">
+    <link rel="stylesheet" href="http://localhost/homepantry20/assets/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+    href="http://localhost/homepantry20/assets/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="http://localhost/homepantry20/assets/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <!-- Include the Bootstrap Table  CSS for the table -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    <!-- favicon -->
+    <!--<link rel="icon" type="image/png" sizes="48x48" href="http://localhost/homepantry20/favicon.ico">-->
+    <link rel="icon"
+    href="https://atenasconsultores.com/wp-content/uploads/2020/12/cropped-emblemaAtenasColor-32x32.png"
+    sizes="32x32" />
+    <!-- Selectpicker -->
+    <link rel="stylesheet" href="http://localhost/homepantry20/assets/selectpicker/css/bootstrap-select.css">
+    <!-- Include tabulator the table -->
+    <link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/homepantry20/dist/css/tabulator_modern.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="http://localhost/homepantry20/dist/img/HomePantry.png"
+            alt="Home Pantry" height="100" width="128">
+        </div>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../../index3.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>
+    </ul><!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
+                <!-- Messages Dropdown Menu -->
+                <!-- Notifications Dropdown Menu -->
+
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <!-- Colocar Include Menu -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="http://localhost/homepantry20/Principal/dashboard" class="brand-link">
+                <img src="http://localhost/homepantry20/dist/img/cropped-emblemaAtenasColor-32x32.png" alt="Atenas"
+                class="brand-image img-thumbnail elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Home Pantry</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="http://localhost/homepantry20/dist/img/usuario1.png" class="img-circle elevation-2"
+                        alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block"><p id="usuario"></p></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <i class="fas fa-list"></i>
+                            <p>MENU PRINCIPAL</p>
+                        </a>
+                    </li>
+               
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- jQuery -->
+<script src="http://localhost/homepantry20/assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="http://localhost/homepantry20/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="http://localhost/homepantry20/assets/adminlte.min.js"></script>
+<!-- jquery-validation -->
+<script src="http://localhost/homepantry20/assets/jquery-validation/jquery.validate.min.js"></script>
+<script src="http://localhost/homepantry20/assets/jquery-validation/additional-methods.min.js"></script>
+<script src="http://localhost/homepantry20/assets/demo.js"></script>
+<script src="http://localhost/homepantry20/assets/sweetalert2/sweetalert2.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="http://localhost/homepantry20/assets/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="https://raw.githack.com/anhr/cookieNodeJS/master/build/cookie.js"></script>
+<script>
+    $('#usuario').html(localStorage.getItem("NombresUsuarios")+"-"+localStorage.getItem("ApellidosUsuarios"));
+</script>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><i class="fa fa-plus-square aria-hidden="true""></i>&nbsp;Registro del hogar   </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="http://localhost/homepantry20/Principal/dashboard">Inicio</a></li>
+                        <li class="breadcrumb-item active"><a href="http://localhost/homepantry20/Principal/logout">Salir</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+
+    </section> <!-- / section class="content header"> -->
+</div>
+
+    <!-- Content Wrapper. Contains page content -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div id="wizard" class="form_wizard wizard_horizontal">
+                    <ul class="wizard_steps">
+                        <li>
+                            <a href="#step-1">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Datos del hogar"><i class="fa fa-home"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-2">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Responsable del hogar"><i class="fa fa-user-circle"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-3">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Jefe del Hogar"><i class="fa fa-user"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-4">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Composición del Hogar"><i class="fa fa-users"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-5">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Características y tenencia de la vivienda"><i class="fa fa-university"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-6">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Servicios Públicos"><i class="fa fa-bath"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-7">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Servicios y equipamientos del hogar"><i class="fa fa-plug"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-8">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Medios"><i class="fa fa-desktop"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-9">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Vehículos"><i class="fa fa-car"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-10">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Mascotas"><i class="fa fa-linux"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-11">
+                                <span class="step_no" data-toggle="tooltip" data-placement="bottom" title="Información General"><i class="fa fa-check"></i></span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div id="step-1">
+                        <div class="row justify-content-center">
+                            <div class="col-md-4">
+                                <div class="form-group d-inline">
+                                    <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group d-inline">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group d-inline">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr/>
+
+
+                        <h2 class="text-center">Datos del hogar</h2>
+                        <form id="FormUsuariosHogar">
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Estado:</div>
+                                        <select class="custom-select form-control-border" id="estadoHogar">
+                                            <option>Elija Opcion ...</option>
+                                            <option value="1">Amazonas</option>
+                                            <option value="2">Anzoategui</option>
+                                            <option value="3">Apure</option>
+                                            <option value="4">Aragua</option>
+                                            <option value="5">Barinas</option>
+                                            <option value="6">Bolivar</option>
+                                            <option value="7">Carabobo</option>
+                                            <option value="8">Cojedes</option>
+                                            <option value="9">Delta Amacuro</option>
+                                            <option value="10">Distrito Capital</option>
+                                            <option value="11">Falcon</option>
+                                            <option value="12">Guarico</option>
+                                            <option value="13">La Guaira</option>
+                                            <option value="14">Lara</option>
+                                            <option value="15">Merida</option>
+                                            <option value="16">Miranda</option>
+                                            <option value="17">Monagas</option>
+                                            <option value="18">Nueva Esparta</option>
+                                            <option value="19">Portuguesa</option>
+                                            <option value="20">Sucre</option>
+                                            <option value="21">Tachira</option>
+                                            <option value="22">Trujillo</option>
+                                            <option value="23">Yaracuy</option>
+                                            <option value="24">Zulia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Ciudad:</div>
+                                        <select class="custom-select form-control-border" id="ciudadHogar">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Municipio:</div>
+                                        <select class="custom-select form-control-border" id="municipioHogar">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Parroquia:</div>
+                                        <select class="custom-select form-control-border" id="parroquiaHogar">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="calle" value="Calle">
+                                                <label class="form-check-label">Calle</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="calle" value="Callejon">
+                                                <label class="form-check-label">Callejon</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="calle" value="Avenida">
+                                                <label class="form-check-label">Avenida</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="calle" value="Carrera">
+                                                <label class="form-check-label">Carrera</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="calle" value="Otro">
+                                                <label class="form-check-label">Otro</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="tipoZona" value="Barrio">
+                                                <label class="form-check-label">Barrio</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="tipoZona" value="Urnanizacion">
+                                                <label class="form-check-label">Urnanizacion</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="tipoZona" value="Zona">
+                                                <label class="form-check-label">Zona</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="tipoZona" value="Otro">
+                                                <label class="form-check-label">Otro</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="tipoCAsa">
+                                                <label class="form-check-label">Casa</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radio2">
+                                                <label class="form-check-label">Casa</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radio2">
+                                                <label class="form-check-label">Quinta</label>
+
+                                                <div class="inputText font-weight-bold">Nombre:</div>
+                                                <input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="Nombre de la quinta ...">
+                                                <div class="inputText font-weight-bold">Escalera:</div>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Escalera ...">
+
+
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="tipoCAsa">
+                                                <label class="form-check-label">Edificio</label>
+
+                                                <div class="inputText font-weight-bold">Nombre:</div>
+                                                <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Nombre del edificio ...">
+                                                <div class="inputText font-weight-bold">Piso:</div>
+                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Piso ...">
+                                                <div class="inputText font-weight-bold">Apartamento:</div>
+                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Apartamento ...">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Telefono:</div>
+                                        <input type="text" class="form-control input-sm" id="telefonoHogar name="telefonoHogar" placeholder="Ingrese Telefono ...">
+                                        <div class="inputText font-weight-bold">Referencia:</div>
+                                        <input type="text" class="form-control" id="referenciaHogar name="referenciaHogar" placeholder="Referencia ...">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- </form> -->
+                        </div>
+
+                        <div id="step-2">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <h2 class="text-center">Responsable del hogar</h2>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Primer nombre:</div>
+                                        <input type="text" class="form-control input-sm" id="primerNombreResponsable" name="primerNombreResponsable" placeholder="Ingrese Primer nombre ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                        <input type="text" class="form-control input-sm" id="segundoNombreResponsable" name="primerNombreResponsable" placeholder="Ingrese Segundo nombre ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Primer apellido:</div>
+                                        <input type="text" class="form-control input-sm" id="primerApellidoResponsable" name="primerApellidoResponsable" placeholder="Ingrese Primer apellido ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                        <input type="text" class="form-control input-sm" id="segundoApellidoResponsable" name="segundoApellidoResponsable" placeholder="Ingrese Segundo apellido ...">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Nacionalidad</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nacionalidad">
+                                                <label class="form-check-label">Venezolano</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nacionalidad">
+                                                <label class="form-check-label">Extranjero</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Cedula:</div>
+                                        <input type="number " class="form-control input-sm" id="cedulaResponsable" name="cedulaResponsable" placeholder="Ingrese Cedula ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Sexo:</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexo">
+                                                <label class="form-check-label">Femenico</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexo">
+                                                <label class="form-check-label">Masculino</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Estado civil:</div>
+                                        <select class="custom-select form-control-border" id="estadoCivilResponsable">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                        <select class="custom-select form-control-border" id="parentescoJefeResponsable">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Educacion:</div>
+                                        <select class="custom-select form-control-border" id="educacionResponsable">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                        <input type="date" class="form-control input-sm" id="fechaNacimientoResponsable" name="fechaNacimientoResponsable" placeholder="">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Edad:</div>
+                                        <input type="number" class="form-control input-sm" id="edadResponsable" name="edadResponsable" placeholder="(Valor Calculado) ...">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Celular:</div>
+                                        <input type="number" maxlength="11" pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}" class="form-control input-sm" id="celularResponsable" name="celularResponsable" placeholder="Ingrese Celular...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Celular adicional:</div>
+                                        <input type="number" class="form-control input-sm" id="celularAdicionalResponsable" name="celularAdicionalResponsable" placeholder="Ingrese Celular adicional ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Numero cortesía:</div>
+                                        <input type="number" class="form-control input-sm" id="numeroCortesiaResponsable" name="numeroCortesiaResponsable" placeholder="Ingrese Numero cortesía ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Correo:</div>
+                                        <input type="email" class="form-control input-sm" id="correoResponsable" name="correoResponsable" placeholder="Ingrese correo ...">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Correo alterno:</div>
+                                        <input type="email" class="form-control input-sm" id="correoAlternoResponsable" name="correoAlternoResponsable" placeholder="Ingrese Correo alterno ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                        <select class="custom-select form-control-border" id="tipoIngresoResponsable">
+                                            <option value='' selected disabled> -- Seleccione -- </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Personas del hogar:</div>
+                                        <select class="custom-select form-control-border" id="exampleSelectBorder">
+                                            <option>Elija Opcion ...</option>
+                                            <option>1 Persona</option>
+                                            <option>2 Persona</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Frecuencia de compra:</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="frecuenciaCompra">
+                                                <label class="form-check-label">Diario</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="frecuenciaCompra">
+                                                <label class="form-check-label">Cada dos días</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="frecuenciaCompra">
+                                                <label class="form-check-label">Semanal</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="frecuenciaCompra">
+                                                <label class="form-check-label">Una vez cada 15 días</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="frecuenciaCompra">
+                                                <label class="form-check-label">Mensual</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Días de compra:</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Lunes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Martes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Miercoles</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Jueves</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Viernes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Sabado</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Domingo</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <hr/>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 class="text-center">Datos de transferencia</h2>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Titular:</div>
+                                        <input type="text" class="form-control input-sm" id="titularTransferenciaResponsable" name="titularTransferenciaResponsable" placeholder="Ingrese Titular ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Nacionalidad:</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nacionalidadTransferenciaResponsable">
+                                                <label class="form-check-label">Venezolano</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nacionalidadTransferenciaResponsable">
+                                                <label class="form-check-label">Extranjero</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Cedula:</div>
+                                        <input type="number" maxlength="11" class="form-control input-sm" id="cedulaTransferenciaResponsable" name="cedulaTransferenciaResponsable" placeholder="Ingrese Cedula ...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Banco:</div>
+                                        <select class="custom-select form-control-border" id="bancoTransferenciaResponsable">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Numero de cuenta:</div>
+                                        <input type="number" maxlength="20" class="form-control input-sm" id="numeroCuentaResponsable" name="numeroCuentaResponsable" placeholder="Ingrese Numero de cuenta ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Pago rapido:</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="pagoRapidoTrasferencia">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="pagoRapidoTrasferencia">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- </form> -->
+                        </div>
+                        <div id="step-3">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+
+                            <h2 class="text-center">Jefe del Hogar</h2>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Primer nombre:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Primer nombre ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Segundo nombre ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Primer apellido:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Primer apellido ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Segundo apellido ...">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Nacionalidad</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nacionalidad">
+                                                <label class="form-check-label">Venezolano</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nacionalidad">
+                                                <label class="form-check-label">Extranjero</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Cedula:</div>
+                                        <input type="number " class="form-control input-sm" id="cedulaJefe" placeholder="Ingrese Cedula ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Sexo:</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexoJefe">
+                                                <label class="form-check-label">Femenico</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexoJefe">
+                                                <label class="form-check-label">Masculino</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Estado civil:</div>
+                                        <select class="custom-select form-control-border" id="estadoCivilJefe">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                        <select class="custom-select form-control-border" id="parentescoJefeJefe">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Educacion:</div>
+                                        <select class="custom-select form-control-border" id="educacionJefe">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                        <input type="date" class="form-control input-sm" id="exampleInputEmail1" placeholder="">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Edad:</div>
+                                        <input type="number" class="form-control input-sm" id="exampleInputEmail1" placeholder="(Valor Calculado) ...">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Celular:</div>
+                                        <input type="number" maxlength="11" pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Celular...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Celular adicional:</div>
+                                        <input type="number" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Celular adicional ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Correo:</div>
+                                        <input type="email" class="form-control input-sm" id="correoJefe" placeholder="Ingrese correo ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                        <select class="custom-select form-control-border" id="tipoIngresoJefe">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- </form> -->
+
+                            <!--/step 3-->
+                        </div>
+                        <div id="step-4">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <h2 class="text-center">Composición del Hogar</h2>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Primer nombre:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Primer nombre ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Segundo nombre:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Segundo nombre ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Primer apellido:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Primer apellido ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Segundo apellido:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Segundo apellido ...">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Nacionalidad</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nacionalidad">
+                                                <label class="form-check-label">Venezolano</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="nacionalidad">
+                                                <label class="form-check-label">Extranjero</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Cedula:</div>
+                                        <input type="number " class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Cedula ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Sexo:</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexo">
+                                                <label class="form-check-label">Femenico</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexo">
+                                                <label class="form-check-label">Masculino</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Estado civil:</div>
+                                        <select class="custom-select form-control-border" id="estadoCivilComposicion">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Parentesco con el jefe del hogar:</div>
+                                        <select class="custom-select form-control-border" id="parentescoJefeComposicion">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Educacion:</div>
+                                        <select class="custom-select form-control-border" id="educacionComposicion">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Fecha de nacimiento:</div>
+                                        <input type="date" class="form-control input-sm" id="exampleInputEmail1" placeholder="">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Edad:</div>
+                                        <input type="number" class="form-control input-sm" id="exampleInputEmail1" placeholder="(Valor Calculado) ...">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Celular:</div>
+                                        <input type="number" maxlength="11" pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Celular...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Celular adicional:</div>
+                                        <input type="number" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Celular adicional ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Correo:</div>
+                                        <input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese correo ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Tipo de ingreso:</div>
+                                        <select class="custom-select form-control-border" id="tipoIngresoComposicion">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- </form> -->
+
+                            <!--/step 4-->
+                        </div>
+                        <div id="step-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <h2 class="text-center">Características y tenencia de la vivienda</h2>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Tipo de vivienda:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Especifique:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Especifique ...">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Metros Cuadrados:</div>
+                                        <select class="custom-select form-control-border" id="metrosVivienda">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Numero total de ambientes:</div>
+                                        <input type="number" class="form-control input-sm" id="exampleInputEmail1"placeholder="Introduzca Numero total de Ambientes ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Numero total de baños:</div>
+                                        <input type="number" class="form-control input-sm" id="exampleInputEmail1" placeholder="Introduzca Numero total de baños ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Numero total de puntos de luz:</div>
+                                        <select class="custom-select form-control-border" id="puntosLuz">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Ocupación actual de la vivienda:</div>
+                                        <select class="custom-select form-control-border" id="ocupacionVivienda">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Especifique:</div>
+                                        <input type="number" class="form-control input-sm" id="exampleInputEmail1" placeholder="Especifique ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Monto de alquiler o hipoteca:</div>
+                                        <select class="custom-select form-control-border" id="montoVivienda">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- </form> -->
+
+                            <!--/step 5-->
+                        </div>
+                        <div id="step-6">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <h2 class="text-center">Servicios Públicos</h2>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Aguas blancas:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>Acueducto</option>
+                                            <option>Cisterna</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Aguas negras:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>Cloaca</option>
+                                            <option>Pozo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Aseo Urbano:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>Recoleccion por aseo</option>
+                                            <option>No hay ningun servicio</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">Servicio de electricidad: </div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="servicioElectricidad">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="servicioElectricidad">
+                                                <label class="form-check-label">Si</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Servicio telefonico: </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="servicioTelefonico">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="servicioTelefonico">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- </form> -->
+
+                            <!--/step 6-->
+                        </div>
+                        <div id="step-7">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <h2 class="text-center">Servicios y equipamientos del hogar</h2>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Doméstica fija</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="domesticaFija">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="domesticaFija">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Personal para labores específicas</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="laboresFijas">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="laboresFijas">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Doméstica por días</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="domesticaXDia">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline ">
+                                                <input class="form-check-input" type="radio" name="domesticaXDia">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Conexión a internet vía telefonía fija por discado / dial-up</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="conexionInternetTlf">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="conexionInternetTlf">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Conexión a internet vía telefonía móvil / celular</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="conexionInternetMovil">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="conexionInternetMovil">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Conexión a internet vía telefonía fija banda ancha o vía cable</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="conexionInternetBandaAncha">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="conexionInternetBandaAncha">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Teléfono Celular del Jefe de familia y/o pareja</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="celularJefeFamilia">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="celularJefeFamilia">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Seguro HCM particular del Jefe de familia y/o pareja y/o hijos</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="seguroHcmJefeFamilia">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="seguroHcmJefeFamilia">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Seguro HCM colectivo de la empresa para Jefe y/o Pareja ocupados</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="seguroHcmEmpresaJefeFamilia">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="seguroHcmEmpresaJefeFamilia">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Seguro Social Obligatorio para Jefe de Familia o Pareja</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="seguroSocialJefeFamilia">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="seguroSocialJefeFamilia">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Aire acondicionado</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="aireAcondicionado">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="aireAcondicionado">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Calentador de agua eléctrico no tipo ducha corona</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="calentadorAguaElectrico">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="calentadorAguaElectrico">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Calentador de agua a gas</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="calentadorAguaGas">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="calentadorAguaGas">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Computador personal (PC)</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="computadorPersonal">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="computadorPersonal">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Computador Laptop</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="computadorLaptop">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="computadorLaptop">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">DVD y/o Blu-Ray</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="DVD">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="DVD">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Home Theater/Teatro en casa</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="homeTeatro">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="homeTeatro">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Juegos de video</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="juegosVideo">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="juegosVideo">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Horno microondas</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="hornoMicroOnda">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="hornoMicroOnda">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Cocina eléctrica</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cocinaElectrica">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cocinaElectrica">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Cocina a gas de bombona</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cocinaGasBombona">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cocinaGasBombona">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Cocina por gas directo</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cocinaGasDirecto">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cocinaGasDirecto">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Cocina a kerosene / leña,…</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cocinaKerosene">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cocinaKerosene">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Secadora de ropa</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="secadoraRopa">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="secadoraRopa">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Lavadora de ropa automática</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="lavadoraAutomatica">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="lavadoraAutomatica">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Lavadora semiautomática</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="lavadoraSemiAutomatica">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="lavadoraSemiAutomatica">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Lavadora de ropa de rodillo</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="lavadoraRodillo">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="lavadoraRodillo">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">Nevera</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="nevera">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="nevera">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Freezer/Congelador (*)</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="freezer">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="freezer">
+                                                <label class="form-check-label">Si</label>
+                                            </div>                                                    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="inputText font-weight-bold">CANTV Acometida</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cantvAcometida">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cantvAcometida">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">CANTV Fijo</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cantvFijo">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="cantvFijo">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Movistar</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="movistar">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="movistar">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+                                            <div class="inputText font-weight-bold">Digitel</div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="digitel">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="digitel">
+                                                <label class="form-check-label">Si</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- </form> -->
+
+                            <!--/step 7-->
+                        </div>
+
+                        <div id="step-8">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <h2 class="text-center">Medios</h2>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">¿Cuantos Televisores hay en su Hogar?</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>5 o Mas</option>
+                                            <option>2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Tipo de TV</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>Blanco y negro</option>
+                                            <option>convensional a color</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Señal:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>Aire</option>
+                                            <option>Cable</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Cableras #1:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>DirecTV</option>
+                                            <option>Super Cable</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Cableras #2:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>DirecTV</option>
+                                            <option>Super Cable</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">TV Online #1:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>Netflix</option>
+                                            <option>Amazon</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">TV Online #1:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>Netflix</option>
+                                            <option>Amazon</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- </form> -->
+
+                            <!--/step 8-->
+                        </div>
+
+                        <div id="step-9">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <h2 class="text-center">Vehículos</h2>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Total Autos Propios:</div>
+                                        <select class="custom-select form-control-border" id="tipoVivienda">
+                                            <option>Elija Opcion ...</option>
+                                            <option>Mas de 3</option>
+                                            <option>2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">¿Posee Moto?</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="moto">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="moto">
+                                                <label class="form-check-label">Si</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="inputText font-weight-bold">¿Cuenta al menos uno de ellos con Seguro de Casco?</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="casco">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-check d-inline">
+                                                <input class="form-check-input" type="radio" name="casco">
+                                                <label class="form-check-label">Si</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                            <!-- </form> -->
+
+                            <!--/step 9-->
+                        </div>
+                        <div id="step-10">
+                            <div class="row justify-content-center">
+                                <div class="col-md-3">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+
+                            <h2 class="text-center">Mascotas</h2>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="inputText font-weight-bold">¿Posee Mascota?</div>
+                                    <div class="card">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="mascota">
+                                                <label class="form-check-label">Perro</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Gato</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Pez</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Ave</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Roedor</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="diasCompra">
+                                                <label class="form-check-label">Otro</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- </form> -->
+
+
+
+                            <!--/step 10-->
+                        </div>
+                        <div id="step-11">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="form-group d-inline">
+                                        <label for="exampleInputEmail1">Numero de identificacion del hogar:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group d-inline">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <h2 class="text-center">Información General</h2>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Gasto Mensual:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Primer nombre ...">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Clase Social:</div>
+                                        <input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Segundo nombre ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="inputText font-weight-bold">Fecha Registro/ Tiempo en el panel:</div>
+                                        <input type="date" class="form-control input-sm" id="exampleInputEmail1" placeholder="Ingrese Primer apellido ...">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </form>
+
+                        <!--/step 11-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+    <!-- Windows Modal Visualizar Registros-->
+</div> <!-- / class="content-wrapper"> -->
+
+</div> <!-- / class="wrapper"> -->
+
+<footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+        <b>Versión</b> 1.0.0
+    </div>
+    <strong>Copyright &copy; 2021 </strong> ATENAS GRUPO CONSULTOR, C.A. Todos los derechos reservados..
+</footer>
+<aside class="control-sidebar control-sidebar-dark">
+</aside>
+
+<script src="http://localhost/homepantry20/assets/jquery/jquery.min.js"></script>
+<script src="http://localhost/homepantry20/assets/jquery-validation/jquery.validate.min.js"></script>
+<script src="http://localhost/homepantry20/assets/jquery-validation/additional-methods.min.js"></script>
+<script src="http://localhost/homepantry20/assets/adminlte.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+<script src="http://localhost/homepantry20/dist/js/tabulator.min.js"></script>
+<!-- -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="http://localhost/homepantry20/dist/js/demo.js"></script>
+<!-- Include the JavaScript file for Bootstrap table -->
+<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/tableExport.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF/jspdf.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js">
+</script>
+<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js">
+</script>
+<script src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+<script src="http://localhost/homepantry20/assets/selectpicker/js/bootstrap-select.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-es_ES.js"></script>    
+
+<script src="http://localhost/homepantry20/vendor/js/custom.min.js"></script>
+<script src="http://localhost/homepantry20/vendor/js/fastclick.js"></script>
+<script src="http://localhost/homepantry20/vendor/js/jquery.smartWizard.js"></script>
+<script src="http://localhost/homepantry20/vendor/js/nprogress.js"></script>
+
+
+<!--Table Export -->
+<script src="http://localhost/homepantry20/assets/tableExport/js-xlsx/xlsx.core.min.js"></script>
+<script src="http://localhost/homepantry20/assets/tableExport/FileSaver/FileSaver.min.js"></script>
+<script src="http://localhost/homepantry20/assets/tableExport/tableExport.js"></script>
+<!--Tabulator -->
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+<!--Tabulator Excel -->
+<script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+<!--Tabulator PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.0.5/jspdf.plugin.autotable.js"></script>
+
+</body>
+
+</html><script>
+// Jefe del Hogar
+cargarEstadoCivil('#estadoCivilResponsable');
+cargarParentesco('#parentescoJefeResponsable');
+cargarEducacion('#educacionResponsable');
+cargarTipoIngreso('#tipoIngresoResponsable');
+cargarBanco('#bancoTransferenciaResponsable');
+// Jefe del Hogar
+cargarEstadoCivil('#estadoCivilJefe');
+cargarParentesco('#parentescoJefeJefe');
+cargarEducacion('#educacionJefe');
+cargarTipoIngreso('#tipoIngresoJefe');
+// Composicion del Hogar
+cargarEstadoCivil('#estadoCivilComposicion');
+cargarParentesco('#parentescoJefeComposicion');
+cargarEducacion('#educacionComposicion');
+cargarTipoIngreso('#tipoIngresoComposicion');
+// Características y tenencia de la vivienda
+cargarTipoVivienda('#tipoVivienda');
+cargarMetrosVivienda('#metrosVivienda');
+cargarOcupacionVivienda('#ocupacionVivienda');
+cargarPuntosLuz('#puntosLuz');
+cargarMontoVivienda('#montoVivienda');
+
+function cargarMontoVivienda(identificador) {
+    var settings = {
+        "url": 'http://localhost:3000/api/getAllMontoVivienda/',
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .MontoVivienda + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+
+
+
+
+    function cargarPuntosLuz(identificador) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getAllPuntosLuz/',
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .PuntosLuz + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+
+
+    function cargarOcupacionVivienda(identificador) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getAllOcupacionVivienda/',
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .Ocupacion + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    
+
+    function cargarMetrosVivienda(identificador) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getAllMetrosVivienda/',
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .MetrosVivienda + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    
+
+
+
+    function cargarTipoVivienda(identificador) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getAllTipoVivienda/',
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .TipoVivienda + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    
+
+
+
+/*$("#educacionResponsable").focus(function(){
+            //var parametro = $("#estadoCivilResponsable").val();
+           
+            cargarEducacion('#educacionResponsable');
+        })*/
+
+        $("#estadoHogar").change(function(){
+            var parametro = $("#estadoHogar").val();
+            let selectMunicipio = $("#municipioHogar");
+            selectMunicipio.find("option").remove();
+            let selectParroquia = $("#parroquiaHogar");
+            selectParroquia.find("option").remove();
+            
+            cargarCiudad(parametro);
+        })
+
+
+        $("#estadoHogar").change(function(){
+            var parametro = $("#estadoHogar").val();
+            let selectMunicipio = $("#municipioHogar");
+            selectMunicipio.find("option").remove();
+            let selectParroquia = $("#parroquiaHogar");
+            selectParroquia.find("option").remove();
+            
+            cargarCiudad(parametro);
+        })
+
+        $("#ciudadHogar").change(function(){
+            var parametro2 = $("#estadoHogar").val();
+            cargarMunicipio(parametro2);
+        })
+
+        $("#municipioHogar").change(function(){
+            var parametro3 = $("#municipioHogar").val();
+            cargarParroquia(parametro3);
+        })
+
+        function cargarBanco(identificador) {
+            var settings = {
+                "url": 'http://localhost:3000/api/getAllBanco/',
+                "method": "get",
+                "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .banco + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    function cargarEducacion(identificador) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getAllEducacion/',
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .Educacion + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    function cargarTipoIngreso(identificador) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getAllTipoIngreso/',
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .TipoIngreso + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    function cargarParentesco(identificador) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getAllParentesco/',
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selected = $(identificador);
+            selected.find("option").remove();
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selected.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .parentesco + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    function cargarEstadoCivil(identificador) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getAllEstadoCivil/',
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selectestadoCivil = $(identificador);
+            selectestadoCivil.find("option").remove();
+            selectestadoCivil.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selectestadoCivil.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .EstadoCivil + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    function cargarMunicipio(parametro) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getMunicipioId/'+parametro,
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selectMunicipio = $("#municipioHogar");
+            selectMunicipio.find("option").remove();
+            selectMunicipio.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selectMunicipio.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .municipio + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    function cargarCiudad(parametro) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getCiudadId/'+parametro,
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selectCiudad = $("#ciudadHogar");
+            selectCiudad.find("option").remove();
+            selectCiudad.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selectCiudad.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .ciudad + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    function cargarMunicipio(parametro) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getMunicipioId/'+parametro,
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selectMunicipio = $("#municipioHogar");
+            selectMunicipio.find("option").remove();
+            selectMunicipio.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selectMunicipio.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .municipio + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+    
+    function cargarParroquia(parametro) {
+        var settings = {
+            "url": 'http://localhost:3000/api/getParroquiaId/'+parametro,
+            "method": "get",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"/*,
+                "Authorization": "Bearer " + localStorage.getItem('Token')*/
+            }
+        }
+        $.ajax(settings).done(function(response) {
+            let selectParroquia = $("#parroquiaHogar");
+            selectParroquia.find("option").remove();
+            selectParroquia.append("<option value='' selected disabled> -- Seleccione -- </option>");
+            for (var i = 0; i < response.data.length; i++) {
+
+                selectParroquia.append("<option value=" + response.data[i].id + ">" + response
+                    .data[i]
+                    .parroquia + "</option>");
+                
+            }
+        }).fail(function(jqXHR, textStatus) {
+            if (jqXHR.status == 400) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    title: 'Su Session ha Expirado',
+                    confirmButtonText: `Ok`,
+                })
+                window.location = '/retailscannig/index.php';
+            }
+        })
+    }
+
+
+</script>
