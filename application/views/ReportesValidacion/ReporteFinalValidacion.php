@@ -75,10 +75,6 @@ select:focus {
                             Cerrar Validacion
                         </button>
                     </div>
-                    
-
-
-
 
                 </div>
             </div>
@@ -127,6 +123,47 @@ select:focus {
         </div>
     </div>
 </section>
+
+<!-- Windows Modal -->
+<div class="modal fade" id="ValidacionCerradaModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Semana Cerrada</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            Ya la semana se encuentra cerrada
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+
 
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>

@@ -17,15 +17,123 @@ $("#idBotonGenerarReporteFinal").click(function() {
 
 $("#idBotonCerrarValidacion").click(function() {
     var idSemana = $('#selectSemana').val();
-    cerrarValidacion(idSemana);
+    isValidacionCerrada(idSemana);
 });
 
 
 
-
-
+function isValidacionCerrada(idSemana) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'getValidacionCerradaV1/',
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
+        "data": {
+            "idSemana": idSemana
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        if (response.data[0].Ind_CierreValidacion == 1){
+            $('#ValidacionCerradaModal').modal('show');
+        }else{
+            var idSemana = $('#selectSemana').val();
+            cerrarValidacion(idSemana);
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
 
 function cerrarValidacion(idSemana) {
+    Swal.fire({
+        title: '¿Estas seguro de cerrar?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText:  'No, Cancelar',
+        confirmButtonText: '¡Sí, bórralo!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var settings = {
+                "url": localStorage.getItem("urlApi")+'getCerrarValidacionV1/'+idSemana,
+                "method": "get",
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": 'bearer ' + localStorage.getItem('Token')
+                }
+            }
+            $.ajax(settings).done(function(response) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+            }).fail(function(jqXHR, textStatus) {
+                if (jqXHR.status == 400) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        title: 'Su Session ha Expirado',
+                        confirmButtonText: `Ok`,
+                    })
+                    window.location = '/homepantry20/index.php';
+                }
+            })
+        }
+    })
+}
+
+
+
+
+
+
+
+
+function cerrarValidacion_(idSemana) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getCerrarValidacionV1/'+idSemana,
         "method": "get",
@@ -35,7 +143,6 @@ function cerrarValidacion(idSemana) {
         }
     }
     $.ajax(settings).done(function(response) {
-        
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -52,12 +159,6 @@ function cerrarValidacion(idSemana) {
             title: response.message,
             confirmButtonText: `Ok`,
         })
-        
-
-
-
-
-
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
