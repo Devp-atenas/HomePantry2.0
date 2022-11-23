@@ -199,8 +199,6 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
         }
     });
 }
-
-
 function deleteAction(data) {
     var idCategoria = $('#selectCategoriaTabla').val();
     var msg;

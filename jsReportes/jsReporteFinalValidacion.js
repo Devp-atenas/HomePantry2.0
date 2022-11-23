@@ -78,7 +78,7 @@ function cerrarValidacion(idSemana) {
     }).then((result) => {
         if (result.isConfirmed) {
             var settings = {
-                "url": localStorage.getItem("urlApi")+'getCerrarValidacionV1_/'+idSemana,
+                "url": localStorage.getItem("urlApi")+'getCerrarValidacionV1/'+idSemana,
                 "method": "get",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
