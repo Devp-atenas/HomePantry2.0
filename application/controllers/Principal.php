@@ -346,18 +346,24 @@ class Principal extends CI_Controller {
     public function Menu(){
         $this->load->view('MaestroAutenticar/MenuMaestro');
     }
-    //----------- GestionPerfil ------------
+    //----------- GestionPerfil -----------------------------------------
     public function GestionarPerfil(){
         $this->load->view('GestionPerfil/GestionarPerfil');
     }
     public function AsociarPerfil(){
         $this->load->view('GestionPerfil/AsociarPerfil');
     }
-    //----------- Reportes Validacion------------
+    //----------- Reportes Validacion -----------------------------------
     public function ReporteFinalValidacion(){
         $this->load->view('ReportesValidacion/ReporteFinalValidacion');
     }
-    //----------- Reportes ------------
+    public function DataCrudaValidada(){
+        $this->load->view('ReportesValidacion/DataCrudaValidada');
+    }
+    public function DataOtrosConsumos(){
+        $this->load->view('ReportesValidacion/DataOtrosConsumos');
+    }
+    //----------- Reportes ----------------------------------------------
     public function ReporteTotal(){
         $this->load->view('Reportes/ReporteTotal');
     }
