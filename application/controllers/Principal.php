@@ -7,7 +7,6 @@ class Principal extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('url');
     }
-    /* ----------------- !OJO¡ Re-ordenado ---------------------- */
 	public function dashboard(){
         $this->load->view('dashboard');
 	}
