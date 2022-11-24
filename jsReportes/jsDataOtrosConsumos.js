@@ -42,7 +42,7 @@ function cargarTabla(Id){
         "buttons": [
             {
                 extend: 'excelHtml5',
-                title: 'ReporteDataCrudaValidada'
+                title: 'ReporteDataOtrosConsumos'
             }
         ],
         "ajax": {
