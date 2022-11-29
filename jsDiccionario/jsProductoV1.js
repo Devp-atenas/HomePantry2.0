@@ -1649,7 +1649,7 @@ function cargarTabla(Id){
         "autoWidth": true,
         "searching": true,
         "bPaginate": false,
-        "dom": 'Bfrtip',
+        "dom": '<"wrapper"flitp><"center"B>',
         "responsive": false,
        //"fixedHeader":    true,
         "scrollX":        true,

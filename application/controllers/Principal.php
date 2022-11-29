@@ -367,6 +367,10 @@ class Principal extends CI_Controller {
     public function DataOtrosConsumos(){
         $this->load->view('ReportesValidacion/DataOtrosConsumos');
     }
+    //----------- Reportes Validacion -----------------------------------
+    public function CambiosMensuales(){
+        $this->load->view('CambiosMensuales/CambiosMensuales');
+    }
     //----------- Reportes ----------------------------------------------
     public function ReporteTotal(){
         $this->load->view('Reportes/ReporteTotal');

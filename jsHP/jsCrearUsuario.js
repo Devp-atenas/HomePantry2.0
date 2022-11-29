@@ -7,7 +7,7 @@ $(document).ready(function() {
     $('#FormCrearUsuario').validate({
         rules: {
             inputApellido: {
-                required: true,
+                required: true, 
             },
             inputNombre: {
                 required: true,

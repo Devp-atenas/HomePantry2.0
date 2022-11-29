@@ -24,7 +24,8 @@ function existeFabricante(Fabricante) {
             $('#htmlItem').html(Fabricante);
             $('#DiccionarioExistenteModal').modal('show');
         }else{
-            ejecutarAgregarFabricante();
+            alert('ACOMODAR, MOSCA');
+            //ejecutarAgregarFabricante();
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -48,8 +49,7 @@ function existeFabricante(Fabricante) {
     })
 }
 
-
-function ejecutarAgregarFabricante(Fabricante) {
+function ejecutarAgregarFabricante_(Fabricante) {
     if ($("#FormFabricante").valid()) {
         var settings = {
             "async": true,

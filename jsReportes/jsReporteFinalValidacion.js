@@ -73,7 +73,7 @@ function cerrarValidacion(idSemana) {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText:  'No, Cancelar',
-        confirmButtonText: '¡Sí, bórralo!',
+        confirmButtonText: '¡Sí, Cerrar!',
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
@@ -125,13 +125,6 @@ function cerrarValidacion(idSemana) {
         }
     })
 }
-
-
-
-
-
-
-
 
 function cerrarValidacion_(idSemana) {
     var settings = {

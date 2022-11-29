@@ -3,10 +3,7 @@ $("#botonenviar").click(function() {
         existeAtributo1($("#inputAtributo").val());
     }
 });
-<<<<<<< HEAD
 
-=======
->>>>>>> dcfb1d3ca67669867ce5864fe16d92df536bfc3f
 function existeAtributo1(Atributo) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
@@ -203,11 +200,7 @@ function cargarTablaDiccionarioExistente(Item,idCategoria){
         }
     });
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> dcfb1d3ca67669867ce5864fe16d92df536bfc3f
 function deleteAction(data) {
     var idCategoria = $('#selectCategoriaTabla').val();
     var msg;

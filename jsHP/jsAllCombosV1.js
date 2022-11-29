@@ -1,3 +1,141 @@
+function cargarProceso(etiqueta,idS) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAllProcesoV1',
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id == idS){
+            select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarJerarquia(etiqueta,idS) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAllJerarquiaV1',
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id == idS){
+            select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarCategoria(etiqueta,idS) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAllCategoriasV1',
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == -1){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id == idS){
+            select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
 function cargarUltimaSemana(identificador,idEditar) {
     var settings = {
         "url":localStorage.getItem("urlApi")+'getUltimaSemanaV1/',
@@ -88,8 +226,7 @@ function cargarSemana(identificador,idEditar) {
     })
 }
 
-<<<<<<< HEAD
-=======
+
 function cargarPeriodoComa4Asterisco(identificador,idEditar) {
     var settings = {
         "url":localStorage.getItem("urlApi")+'getAllPeriodo4AsteriscosV1/',
@@ -135,7 +272,7 @@ function cargarPeriodoComa4Asterisco(identificador,idEditar) {
     })
 }
 
->>>>>>> dcfb1d3ca67669867ce5864fe16d92df536bfc3f
+
 function cargarPeriodo(etiqueta,idSeleccionado) {
     var settings = {
         "url":localStorage.getItem("urlApi")+'getAllPeriodoV1',

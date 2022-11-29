@@ -47,7 +47,7 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1><i class="bi bi-journal-text"></i>&nbsp;Reporte Final de Validación</h1>
+                <h1><i class="bi bi-calendar3"></i>&nbsp;Cambios Mensuales</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -58,24 +58,29 @@ select:focus {
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row mb-0 mt-0">
-                    <div class="col-md-3">
-                        <label class="inputText font-weight-bold">Semana:</label>
-                        <select id="selectSemana" name="selectSemana" class="form-control form-control-sm">
+                    <div class="col-md-4">
+                        <label class="inputText font-weight-bold">Categoria:</label>
+                        <select id="selectCategoria" name="selectCategoria" class="form-control form-control-sm">
                         </select>
                     </div>
+                    <div class="col-md-4">
+                        <label class="inputText font-weight-bold">Jerarquia:</label>
+                        <select id="selectJerarquia" name="selectJerarquia" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="inputText font-weight-bold">Proceso:</label>
+                        <select id="selectProceso" name="selectProceso" class="form-control form-control-sm">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row mb-0 mt-0">
                     <div class="col-md-2">
                         <div class="inputText font-weight-bold">&nbsp;</div>
-                        <button id="idBotonGenerarReporteFinal" type="button" class="btn btn-primary" disabled="disabled">
+                        <button id="idBotonGenerar" type="button" class="btn btn-primary" disabled="disabled">
                             Generar
                         </button>
                     </div>
-                    <div class="col-md-2">
-                        <div class="inputText font-weight-bold">&nbsp;</div>
-                        <button id="idBotonCerrarValidacion" type="button" class="btn btn-primary" disabled="disabled">
-                            Cerrar Validacion
-                        </button>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -96,18 +101,28 @@ select:focus {
                                         <th>Id_Hogar</th>
                                         <th>ClaseSocial</th>
                                         <th>Id_Consumo</th>
+                                        <th>FechaConsumo</th>
+                                        <th>Medio</th>
+                                        <th>MedioDelivery</th>
+                                        <th>FormaPago</th>
+                                        <th>MonedaConsumo</th>
                                         <th>Canal</th>
+                                        <th>Cadena</th>
                                         <th>CodigoBarra</th>
                                         <th>Producto</th>
-                                        <th>Fabricante</th>
+                                        <th>Segmento</th>
+                                        <th>Fabricante
                                         <th>Marca</th>
                                         <th>Tamano</th>
-                                        <th>Segmento</th>
+                                        <th>RangoTamano</th>
                                         <th>Cantidad</th>
-                                        <th>Precio_producto</th>
-                                        <th>Tasa_de_cambio</th>
-                                        <th>Total_compra</th>
+                                        <th>Precio_Producto</th>
+                                        <th>Tasa_de_Cambio</th>
+                                        <th>Total_Compra</th>
                                         <th>Moneda</th>
+                                        <th>Sexo</th>
+                                        <th>Edad</th>
+                                        <th>RangoEdad</th>
                                         <th>Dolar</th>
                                         <th>Euro</th>
                                         <th>Petro</th>
@@ -123,6 +138,9 @@ select:focus {
         </div>
     </div>
 </section>
+
+
+
 
 <!-- Windows Modal -->
 <div class="modal fade" id="ValidacionCerradaModal">
@@ -168,7 +186,7 @@ select:focus {
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsAllCombosV1.js') ?>"></script>
-<script src="<?php echo base_url('jsReportes/jsReporteFinalValidacion.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsCambiosMensuales.js') ?>"></script>
 
 
 
@@ -187,4 +205,7 @@ select:focus {
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/datetime/1.2.0/js/dataTables.dateTime.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
