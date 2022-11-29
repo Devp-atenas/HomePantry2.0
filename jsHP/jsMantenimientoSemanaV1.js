@@ -307,10 +307,6 @@ $("#idGuardarSemana").click(function() {
     }
 });
 
-
-
-
-
 $("#fechaDesdeEdit").datepicker({   
     changeMonth: true,
     changeYear: true,

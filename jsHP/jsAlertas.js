@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    cargarTiposAlertas('#selectTipoAlertas',localStorage.getItem("IdUsuario"),0);
+    cargarTiposAlertas('#selectTipoAlertas',localStorage.getItem("idPerfil"),0);
 
 });
 
@@ -11,7 +11,6 @@ $('#selectTipoAlertas').change(function(){
         cargarTablaAlertasFicha('#TableAlert');
     }
 
-
     switch(idTipoAlerta) {
         case 1:
         case 4: // CAMBIO NSE
@@ -22,14 +21,8 @@ $('#selectTipoAlertas').change(function(){
           break;
         default:
           // code block
-      }
-
-
-
-    
-    
+      }    
 });
-
 
 $('#idResponderAlerta').click(function(){
     var idAlerta = $("#inputId").val();
@@ -209,10 +202,9 @@ function AlertaCambioNSE(idHogar,NSEAnterior,NSENuevo) {
     })
 }
 
-
-function ListaAlertas(IdUsuario){
+function ListaAlertas(idPerfil){
     var settings = {
-        "url":localStorage.getItem("urlApi")+'getAlertas4Perfil/'+IdUsuario,
+        "url":localStorage.getItem("urlApi")+'getAlertas4Perfil/'+idPerfil,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",

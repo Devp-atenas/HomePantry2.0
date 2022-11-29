@@ -9,9 +9,7 @@ if(!isset($_SESSION)){
 
 <!DOCTYPE html>
 <html lang="es">
-
     <head>
-    
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>| Acceso Home Pantry |</title>
@@ -141,15 +139,7 @@ if(!isset($_SESSION)){
                 var IP2 = data.ip;
                 localStorage.setItem("IPHP20",data.ip);
         });
-        
-        
-
-
-
-
-        
-        
-        
+         
         $('#botonIngresarMP').click(function(){
             $('#myModal').modal('hide');
             var idPerfil = $('#selectPerfil').val();
