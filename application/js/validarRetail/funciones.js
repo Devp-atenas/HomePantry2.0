@@ -98,7 +98,7 @@ function ProcesarVentas_ACV_TiendaxRetails() {
             debugger;
             //
             var tableData = response.data;
-            var table = new Tabulator("#pivotTable", {
+            var table = "#pivotTable", {
                 //set initial table data
                 data: tableData,
                 height: "400px",

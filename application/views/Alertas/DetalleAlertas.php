@@ -77,7 +77,7 @@
                                         <label class="inputText font-weight-bold">Respuesta:</label>
                                         <input type="text" name="inputRespuestaAlerta" id="inputRespuestaAlerta" class="form-control">
                                     </div>
-                                    <div class="row" style="display:none;">
+                                    <div class="row" style="display:none;"> 
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <label for="inputId">id:</label>

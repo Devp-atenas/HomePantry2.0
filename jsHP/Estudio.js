@@ -243,9 +243,6 @@ $("#btActualizarEstudio").click(function() {
 });
 
 
-
-
-
 function callUpdateEstudio(id) {
     document.getElementById('FormEstudioEdit').reset();
     var urlApi = localStorage.getItem("urlApi");

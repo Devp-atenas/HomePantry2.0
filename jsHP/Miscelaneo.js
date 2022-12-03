@@ -1,13 +1,3 @@
-function callUpLoadFile(){
-    var file = $("#file").val();
-    var nameFile = file.split('\\').pop();
-    var idEstudio = $("#file").val(); 
-
-    //alert("Ruta: "+file);
-    //alert("Archivo: "+nameFile);
-    upLoadFile(file,nameFile);
-}
-
 function upLoadFile_(file,idHogar) {
     var urlApi = localStorage.getItem("urlApi"); 
     var formData = new FormData();
