@@ -47,7 +47,7 @@ select:focus {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1><i class="bi bi-calendar3"></i>&nbsp;Cambios Mensuales</h1>
+                <h1><i class="bi bi-bezier2"></i>&nbsp;Depuraciones e Inconsistencias</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -55,15 +55,7 @@ select:focus {
 
 <section class="content">
     <div class="container-fluid">
-        
         <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label class="inputText font-weight-bold">Categoria:</label>
-                    <select id="selectCategoria" name="selectCategoria" class="form-control form-control-sm">
-                    </select>
-                </div>
-            </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label class="inputText font-weight-bold">Jerarquia:</label>
@@ -71,44 +63,31 @@ select:focus {
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div id="zonaCarga">
-                <form method="post" enctype="multipart/form-data">
-                    <div class="col-md-9">
-                        <div class="form-group1">
-                            <input type="file" id="file" name="fileX" accept=".xls, .xlsx"  disabled="disabled"/>
+            <div class="col-md-3">
+                <div class="inputText font-weight-bold">Accion:</div>
+                <div class="card">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="accionDepurar1" name="accionDepurar" value="1" checked>
+                            <label class="form-check-label">Modificar</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="accionDepurar1" name="accionDepurar" value="2"'>
+                            <label class="form-check-label">Mostrar cambios</label>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <button id="SubirArchivo" class="btn btn-primary btn-sm" disabled="disabled">
-                                <i class="bi bi-upload"></i>&nbsp;Cargar
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="inputText font-weight-bold">Proceso:</label>
-                    <select id="selectProceso" name="selectProceso" class="form-control form-control-sm">
-                    </select>
                 </div>
             </div>
+                        
             <div class="col-md-3">
                 <div class="form-group">  
-                    <div class="inputText font-weight-bold">Botton:</div>
-                    <button id="ejecutarActualizacion" class="btn btn-primary btn-sm" disabled="disabled">
-                        <i class="bi bi-cpu"></i>&nbsp;Ejecutar
+                    <button id="siguienteDepuracion" class="btn btn-primary btn-sm" disabled="disabled">
+                        <i class="bi bi-cpu"></i>&nbsp;Siguiente
                     </button>
                 </div>
             </div>
         </div>
-       
+        
         <div id="showReporte" style="display: none">
             <HR/>
             <div class="row">
@@ -126,7 +105,7 @@ select:focus {
 </section>
 
 <!-- Windows Modal -->
-<div class="modal fade" id="ValidacionCerradaModal">
+<div class="modal fade" id="TamanoRangoModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -138,7 +117,7 @@ select:focus {
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Semana Cerrada</h3>
+                            <h3 class="card-title">Tamaño Rango a modificar</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -146,7 +125,30 @@ select:focus {
                             </div>
                         </div>
                         <div class="card-body">
-                            Ya la semana se encuentra cerrada
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">Codigos de Barra:</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">Categoria:</label>
+                                        <select id="selectCategoriaTR" name="selectCategoriaTR" class="form-control form-control-sm">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">Tamaño Rango:</label>
+                                        <select id="selectTamanoRango" name="selectTamanoRango" class="form-control form-control-sm">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,6 +165,6 @@ select:focus {
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsAllCombosV1.js') ?>"></script>
-<script src="<?php echo base_url('jsHP/jsCambiosMensuales.js') ?>"></script>
+<script src="<?php echo base_url('jsHP/jsDepuracionesMensuales.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/Miscelaneo.js') ?>"></script>
 

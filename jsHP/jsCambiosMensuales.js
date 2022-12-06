@@ -3,49 +3,53 @@ $(document).ready(function() {
 });
 
 $('#selectCategoria').change(function(){
-    cargarJerarquia('#selectJerarquia',0);
     $('#selectProceso').empty();
     $('#file').empty();
+    $('#selectProceso').empty();
     $('#showReporte').hide();
-    document.getElementById('idBotonGenerar').disabled = true;
+    //$('#zonaCarga').hide();
+    document.getElementById('file').disabled = true;
+    document.getElementById('SubirArchivo').disabled = true;
+    document.getElementById('ejecutarActualizacion').disabled = true;
+    cargarJerarquia('#selectJerarquia',0);
+    
 });
 
 $('#selectJerarquia').change(function(){
     $('#showReporte').hide();
+    //$('#zonaCarga').show();
     $('#file').empty();
-    document.getElementById('idBotonGenerar').disabled = true;
-    cargarProceso('#selectProceso',0);
+    $('#selectProceso').empty();
+    document.getElementById('file').disabled = false;
+    document.getElementById('SubirArchivo').disabled = true;
+    document.getElementById('ejecutarActualizacion').disabled = true;
+    
 });
 
 $('#selectProceso').change(function(){
-    document.getElementById('idBotonGenerar').disabled = false;
+    document.getElementById('ejecutarActualizacion').disabled = false;
 });
 
 $("#file").change(function() {
-    //jQuery('#SubirArchivo').prop('disabled', false);
-    document.getElementById('SubirArchivo').disabled = false;      
+    $('#selectProceso').empty();
+    $('#showReporte').hide();
+    
+    document.getElementById('SubirArchivo').disabled = false;
+    document.getElementById('ejecutarActualizacion').disabled = true;
 });
-
-
-
-
-$('#ocultarMostrarDetalleFactura').hide();
-        
-
 
 $("#SubirArchivo").click(function(event) {
     event.preventDefault();
     $('#showReporte').hide();
     var urlApi = localStorage.getItem("urlApi"); 
     var file = $("#file").val();
-    var nameFile = file.split('\\').pop();
+    var nameFile = file.split('\\').pop(); 
     var nombreArchivo = nameFile.split('.');   
-    
-
-
     var formData = new FormData();
     formData.append('file', $("#file")[0].files[0]);
-    formData.append('nombreArchivo',nombreArchivo[0]);
+    formData.append('nameFile',nameFile);
+    formData.append('idUsuario',localStorage.getItem("IdUsuario"));
+    
 
     var settings = {
         "async": true,
@@ -58,31 +62,17 @@ $("#SubirArchivo").click(function(event) {
             //"Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
         },
-        "data":formData
+        "data":formData,
         /*"data": {
             "file": formData,
-            "prueba":3333333
+            "temp":3333333
         }*/
     }
     $.ajax(settings).done(function(response) {
-        
+        //excelToBD(idUsuario,nameFile)
         cargarTabla(response);
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 5000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-            Toast.fire({
-            icon: 'success',
-            title: response.message,
-            confirmButtonText: `Ok`,
-        })
+        cargarProceso('#selectProceso',0);
+    
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -104,6 +94,14 @@ $("#SubirArchivo").click(function(event) {
         }
     })
 });
+
+$("#selectProceso").change(function() {
+    jQuery('#ejecutarActualizacion').prop('disabled', false);
+    //document.getElementById('ejecutarActualizacion').disabled = false;      
+});
+
+
+
 
 function cargarTabla(Json){
     $('#showReporte').show();

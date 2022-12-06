@@ -909,6 +909,7 @@ function cargarUnidadMedida(etiqueta,id_categoria,idS) {
         }
     })
 }
+
 function cargarTamanoRango(etiqueta,id_categoria,idS) {
     var urlApi = localStorage.getItem("urlApi");
     var settings = {

@@ -1,3 +1,240 @@
+function cargarTamanoRango(etiqueta,id_categoria,idS) {
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'getAllRango_x_CategoriaV1/' + id_categoria,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+function cargarTamano(etiqueta,id_categoria,idS,idTamanoRango) { 
+    var urlApi = localStorage.getItem("urlApi");
+    var settings = {
+        "url": urlApi+'getAllTamano_x_CategoriaV1/' + id_categoria+"/"+idTamanoRango,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
+
+function cargarSegmento(etiqueta,id_categoria,idS) {
+    var settings = {
+        "url": '<?php echo urlApi; ?>getAllSegmento_x_Categoria/' + id_categoria,
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAllMarca_x_Categoria_x_Fabricante/' + id_categoria+'/'+id_fabricante,
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        let selectMarca = $(etiqueta);
+        selectMarca.find("option").remove();
+        if (idS == 0){
+            selectMarca.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                selectMarca.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].Marca + "</option>");
+            }else{
+                selectMarca.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].Marca + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarFabricante(etiqueta,idS) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getAllFabricante',
+        "method": "get",
+        "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                }
+    }
+    $.ajax(settings).done(function(response) {
+        let select = $(etiqueta);
+        select.find("option").remove();
+        if (idS == 0){
+            select.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id_Fabricante === idS){
+            select.append("<option value=" + response.data[i].id_Fabricante + " selected>" + response
+                .data[i].Fabricante + " - "+ response.data[i].id_Fabricante + "</option>");
+            }else{
+                select.append("<option value=" + response.data[i].id_Fabricante + ">" + response
+                .data[i].Fabricante + " - "+ response.data[i].id_Fabricante + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
 function cargarProceso(etiqueta,idS) {
     var settings = {
         "url": localStorage.getItem("urlApi")+'getAllProcesoV1',
@@ -62,7 +299,7 @@ function cargarJerarquia(etiqueta,idS) {
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id == idS){
             select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre+"</option>");
+                .data[i].nombre+    "</option>");
             }else{
                 select.append("<option value=" + response.data[i].id + ">" + response
                 .data[i].nombre+"</option>");

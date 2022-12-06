@@ -131,15 +131,6 @@ select:focus {
                                 <th>Opciones</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Perfil</th>
-                                <th>Descripcion</th>
-                                <th>Estatus</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.card-body -->
