@@ -41,7 +41,7 @@ $("#file").change(function() {
 $("#SubirArchivo").click(function(event) {
     event.preventDefault();
     $('#showReporte').hide();
-    var urlApi = localStorage.getItem("urlApi"); 
+    //var urlApi = localStorage.getItem("urlApi"); 
     var file = $("#file").val();
     var nameFile = file.split('\\').pop(); 
     var nombreArchivo = nameFile.split('.');   
@@ -56,7 +56,7 @@ $("#SubirArchivo").click(function(event) {
         "crossDomain": true,
         "contentType": false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
         "processData": false, // NEEDED, DON'T OMIT THIS
-        "url":urlApi+'fileUploadExcel',
+        "url":localStorage.getItem("urlApi")+'fileUploadExcel',
         "method": "post",
         "headers": {
             //"Content-Type": "application/x-www-form-urlencoded",

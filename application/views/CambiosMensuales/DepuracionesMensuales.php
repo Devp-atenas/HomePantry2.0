@@ -143,7 +143,7 @@ select:focus {
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="inputText font-weight-bold">Tamaño Rango:</label>
+                                        <label class="inputText font-weight-bold">Tamaño Rango Nuevo:</label>
                                         <select id="selectTamanoRango" name="selectTamanoRango" class="form-control form-control-sm">
                                         </select>
                                     </div>
@@ -154,7 +154,9 @@ select:focus {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button id="Pre-DepurarTR" type="button" class="btn btn-primary">Pre-Depurar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                
             </div>
         </div>
         <!-- /.modal-content -->
