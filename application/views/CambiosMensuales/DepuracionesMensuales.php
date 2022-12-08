@@ -129,7 +129,7 @@ select:focus {
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="inputText font-weight-bold">Codigos de Barra:</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                        <textarea class="form-control" id="CodigosBarraTR" rows="6"></textarea>
                                     </div>
                                 </div>
                             </div>

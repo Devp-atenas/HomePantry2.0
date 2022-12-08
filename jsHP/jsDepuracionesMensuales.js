@@ -33,25 +33,42 @@ $("#Pre-DepurarTR").click(function() {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                var idCategoriaTR = $("#selectCategoriaTR").val();
-                var idTamanoRando = $("#selectTamanoRango").val();
+
+                var idJerarquia = $("#selectJerarquia").val();
+                var Jerarquia = $('select[name="selectJerarquia"] option:selected').text();
+                var idDim = $("#selectTamanoRango").val();
+                var descDim = $('select[name="selectTamanoRango"] option:selected').text();
+                var lineasCB = $('#CodigosBarraTR').val().split(/\n+/);
+                var codigosBarraComa = "";
+                var tam = lineasCB.length;
+                
+                for(var i = 0;i < tam;i++){
+                    if (i+1<tam){
+                        codigosBarraComa+="'"+$.trim(lineasCB[i])+"',";
+                    }else{
+                        codigosBarraComa+="'"+$.trim(lineasCB[i])+"'";
+                    }
+                }
+
+                console.log(codigosBarraComa.replace(",''",""));
                 
                 var settings = {
-                    "url":localStorage.getItem("urlApi")+'XXXXXXXXXXXXXXXXXXXXXX',
+                    "url":localStorage.getItem("urlApi")+'updateTamanoRangoDepuracionV2',
                     "method": "post",
                     "headers": {
                         "Content-Type": "application/x-www-form-urlencoded",
                         "Authorization": "Bearer " + localStorage.getItem('Token')
                     },
                     "data": {
-                        "idCategoriaTR":idCategoriaTR,
-                        "idTamanoRando": idTamanoRando,
-                        "idHogar":idHogar,
-                        "observacion": observacion
+                        "idJerarquia": idJerarquia,
+                        "Jerarquia": Jerarquia,
+                        "idDim": idDim,
+                        "descDim": descDim,
+                        "codigosBarraComa":codigosBarraComa.replace(",''","")
                     }
                 }
                 $.ajax(settings).done(function(response){
-                    $("#investigarConsumoModal").modal("hide");
+                    /*$("#investigarConsumoModal").modal("hide");
                     cargarTablaConsumos(idConsumo);
                     const Toast = Swal.mixin({
                     toast: true,
@@ -63,7 +80,7 @@ $("#Pre-DepurarTR").click(function() {
                         toast.addEventListener('mouseenter', Swal.stopTimer)
                         toast.addEventListener('mouseleave', Swal.resumeTimer)
                     }
-                })
+                })*/
                 Toast.fire({
                     icon: 'success',
                     title: response.message,
@@ -120,6 +137,63 @@ $("#siguienteDepuracion").click(function() {
                 alert('default');
           }
     }else{
-        alert('Llamar cargar tabla');
+
+        $('#selectJerarquia').val()
+        cargarTabla($('#selectJerarquia').val());
     }
 });
+
+
+
+
+
+
+function cargarTabla(idJerarquia){
+    $('#showReporte').show();
+    var arr = [
+        ["Id_Producto","CodigoBarra","Producto","Id_Fabricante","Fabricante","Id_Fabricante_Nuevo","Fabricante_Nuevo"], 
+        ["Id_Producto","CodigoBarra","Producto","Id_Fabricante","Fabricante","Id_Fabricante_Nuevo","Fabricante_Nuevo"], 
+        ["Id_Producto","CodigoBarra","Producto","Id_Fabricante","Fabricante","Id_Fabricante_Nuevo","Fabricante_Nuevo"], 
+        ["Id_Producto","CodigoBarra","Producto","Id_Marca","Marca","Id_Marca_Nuevo","Marca_Nuevo"], 
+        ["Id_Producto","CodigoBarra","Producto","Id_Segmento","Segmento","Id_Segmento_Nuevo","Segmento_Nuevo"], 
+        ["Id_Producto","CodigoBarra","Producto","Id_RangoTamano","RangoTamano","Id_RangoTamano_Nuevo","RangoTamano_Nuevo"], 
+        ["Id_Producto","CodigoBarra","Producto","Id_Tamano","Tamano","Id_Tamano_Nuevo","Tamano_Nuevo"]
+        //["Id_Producto","CodigoBarra","Producto","Id_RangoTamano","TamañoRango","Id_RangoTamano","TamañoRango"], 
+        
+    ];
+    var i = idJerarquia;
+
+    
+
+
+    table = new Tabulator("#TableReporte", {
+        ajaxURL: localStorage.getItem("urlApi")+'getCambiosMensuales4JerarquiaV2/'+idJerarquia,
+        height : "350px" ,
+        ajaxConfig:{
+            method:"GET", //set request type to Position
+            headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+        },
+        layout:"fitDataStretch",//,fitDataStretch,fitDataTable",
+        progressload : "scroll",
+        //paginationSize : 20,
+        placeholder:"Datos no encontrados",
+        //selectable:1,
+        selectablePersistence:true, //make rows selectable
+        
+        //autoColumns:true,
+        
+        columns:[
+            {title:"IdCod", field:"IdCod", sorter:"number"},
+            {title:"CodBar", field:"CodBar", sorter:"string"},
+            {title:"Prod", field:"Prod", sorter:"string"},
+            {title:"ICod1", field:"ICod1", sorter:"number"},
+            {title:"Desc1", field:"Desc1", sorter:"string"},
+            {title:"ICod2", field:"ICod2", sorter:"number"},
+            {title:"Desc2", field:"Desc2", sorter:"string"}
+            
+        ],
+    });
+}
