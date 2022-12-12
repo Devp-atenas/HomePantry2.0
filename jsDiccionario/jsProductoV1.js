@@ -956,6 +956,7 @@ function cargarTamanoRango(etiqueta,id_categoria,idS) {
         }
     })
 }
+
 function cargarTamano(etiqueta,id_categoria,idS,idTamanoRango) { 
     var urlApi = localStorage.getItem("urlApi");
     var settings = {

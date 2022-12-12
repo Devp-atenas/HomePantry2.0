@@ -1,7 +1,6 @@
 function cargarTamanoRango(etiqueta,id_categoria,idS) {
-    var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": urlApi+'getAllRango_x_CategoriaV1/' + id_categoria,
+        "url": localStorage.getItem("urlApi")+'getAllRango_x_CategoriaV1/' + id_categoria,
         "method": "get",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -44,6 +43,7 @@ function cargarTamanoRango(etiqueta,id_categoria,idS) {
         }
     })
 }
+
 function cargarTamano(etiqueta,id_categoria,idS,idTamanoRango) { 
     var urlApi = localStorage.getItem("urlApi");
     var settings = {
@@ -91,18 +91,15 @@ function cargarTamano(etiqueta,id_categoria,idS,idTamanoRango) {
     })
 }
 
-
-
-
-
 function cargarSegmento(etiqueta,id_categoria,idS) {
+    var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": '<?php echo urlApi; ?>getAllSegmento_x_Categoria/' + id_categoria,
+        "url": urlApi+'getAllSegmento_x_CategoriaV1/' + id_categoria,
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         let select = $(etiqueta);
@@ -142,13 +139,14 @@ function cargarSegmento(etiqueta,id_categoria,idS) {
 }
 
 function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
+    var urlApi = localStorage.getItem("urlApi");
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllMarca_x_Categoria_x_Fabricante/' + id_categoria+'/'+id_fabricante,
+        "url": urlApi+'getAllMarca_x_Categoria_x_FabricanteV1/' + id_categoria+'/'+id_fabricante,
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         let selectMarca = $(etiqueta);
@@ -159,10 +157,10 @@ function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
                 selectMarca.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].Marca + "</option>");
+                .data[i].nombre + "</option>");
             }else{
                 selectMarca.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].Marca + "</option>");
+                .data[i].nombre + "</option>");
             }
         }
     }).fail(function(jqXHR, textStatus) {
@@ -187,14 +185,14 @@ function cargarMarca(etiqueta,id_categoria,id_fabricante,idS) {
     })
 }
 
-function cargarFabricante(etiqueta,idS) {
+function cargarFabricante(etiqueta,idCat,idS) {
     var settings = {
-        "url": localStorage.getItem("urlApi")+'getAllFabricante',
+        "url": localStorage.getItem("urlApi")+'getAllFabricantes_x_CategoriaV1/'+idCat,
         "method": "get",
         "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                }
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
     }
     $.ajax(settings).done(function(response) {
         let select = $(etiqueta);
@@ -203,12 +201,12 @@ function cargarFabricante(etiqueta,idS) {
             select.append("<option value='' selected disabled> -- Seleccione -- </option>");
         }
         for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id_Fabricante === idS){
-            select.append("<option value=" + response.data[i].id_Fabricante + " selected>" + response
-                .data[i].Fabricante + " - "+ response.data[i].id_Fabricante + "</option>");
+            if (response.data[i].id == idS){
+            select.append("<option value=" + response.data[i].id + " selected>" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
             }else{
-                select.append("<option value=" + response.data[i].id_Fabricante + ">" + response
-                .data[i].Fabricante + " - "+ response.data[i].id_Fabricante + "</option>");
+                select.append("<option value=" + response.data[i].id + ">" + response
+                .data[i].nombre + " - "+ response.data[i].id + "</option>");
             }
         }
     }).fail(function(jqXHR, textStatus) {
@@ -232,8 +230,6 @@ function cargarFabricante(etiqueta,idS) {
         }
     })
 }
-
-
 
 function cargarProceso(etiqueta,idS) {
     var settings = {

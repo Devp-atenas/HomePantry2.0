@@ -105,7 +105,74 @@ select:focus {
 </section>
 
 <!-- Windows Modal -->
-<div class="modal fade" id="TamanoRangoModal">
+<div class="modal fade" id="ItemModificarDescripcionModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Modificar descripcion producto por depuracion</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">Codigos de Barra:</label>
+                                        <input type="text" name="CodigoBarraDescripcion" id="CodigoBarraDescripcion" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">  
+                                        <button id="continuarDescripcion" class="btn btn-primary btn-sm">
+                                            <i class="bi bi-cpu"></i>&nbsp;Continuar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="showReporte" style="display: none">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Descripcion actual:</label>
+                                            <input type="text" name="DescripcionActual" id="DescripcionActual" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="inputText font-weight-bold">Descripcion a modificar:</label>
+                                            <input type="text" name="DescripcionNueva" id="DescripcionNueva" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button id="Pre-DepurarDescripcion" type="button" class="btn btn-primary">Pre-Depurar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- Windows Modal -->
+<div class="modal fade" id="ItemModificarModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -117,7 +184,7 @@ select:focus {
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Tamaño Rango a modificar</h3>
+                            <h3 class="card-title"><span class="label label-danger" id="TituloModal"></span></h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -143,8 +210,10 @@ select:focus {
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="inputText font-weight-bold">Tamaño Rango Nuevo:</label>
-                                        <select id="selectTamanoRango" name="selectTamanoRango" class="form-control form-control-sm">
+                                        <label class="inputText font-weight-bold">
+                                            <span class="label label-danger" id="TituloCombo"></span>:
+                                        </label>
+                                        <select id="selectItemModificar" name="selectItemModificar" class="form-control form-control-sm">
                                         </select>
                                     </div>
                                 </div>
@@ -154,9 +223,75 @@ select:focus {
                 </div>
             </div>
             <div class="modal-footer">
-            <button id="Pre-DepurarTR" type="button" class="btn btn-primary">Pre-Depurar</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button id="Pre-DepurarTR" type="button" class="btn btn-primary">Pre-Depurar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="ItemModificarMarcaModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="label label-danger" id="TituloMarcaModal"></span></h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">Codigos de Barra:</label>
+                                        <textarea class="form-control" id="CodigosBarraMarca" rows="6"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">Categoria:</label>
+                                        <select id="selectCategoriaMarca" name="selectCategoriaMarca" class="form-control form-control-sm">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">Fabricante:</label>
+                                        <select id="selectFabricante" name="selectFabricante" class="form-control form-control-sm">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">
+                                            <span class="label label-danger" id="TituloMarcaCombo"></span>:
+                                        </label>
+                                        <select id="selectMarcaModificar" name="selectMarcaModificar" class="form-control form-control-sm">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button id="Pre-DepurarMarca" type="button" class="btn btn-primary">Pre-Depurar</button>
             </div>
         </div>
         <!-- /.modal-content -->
