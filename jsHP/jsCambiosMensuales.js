@@ -1,6 +1,119 @@
 $(document).ready(function() {
-    cargarCategoria("#selectCategoria",-1);
+    cargarJerarquia('#selectJerarquia',0);
 });
+
+$('#selectJerarquia').change(function(){
+    cargarProceso('#selectProceso',0);
+});
+
+$('#selectProceso').change(function(){
+    document.getElementById('ejecutarActualizacion').disabled = false;
+});
+
+
+$("#ejecutarActualizacion").click(function() {
+    var Jerarquia = $('select[name="selectJerarquia"] option:selected').text();
+    var Proceso = $('select[name="selectProceso"] option:selected').text();
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: "¿Seguro deseas actualizar para "+ Jerarquia + " "+Proceso +"?",
+            text: "Esta o   peracion no podra ser reversada",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText:  'No, Cancelar',
+            confirmButtonText: 'Si, Actualizar',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var idJerarquia = $('#selectJerarquia').val();
+                var idProceso = $('#selectProceso').val();
+
+                var idUsuario = localStorage.getItem('IdUsuario');
+                var API;
+
+                console.log( typeof idProceso);
+
+                switch(parseInt(idProceso)) {
+                    case 1:
+                    // Solo Diccionario
+                    API = localStorage.getItem("urlApi")+'CambiarProd4JerarquiaSP/'+idJerarquia+"/"+idUsuario;
+                    break;
+                    case 2:
+                    // Solo Data Historica
+                    API = localStorage.getItem("urlApi")+'CambiarDataHistoricaSP';
+                    break;
+                    default:
+                    // Diccionario/Data Historica
+                    API = localStorage.getItem("urlApi")+'CambiarDiccionarioDataHistoricaSP';
+                    break;
+                    
+                }
+                
+                var settings = {                    
+                    "url":API,
+                    "method": "get",
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Authorization": "Bearer " + localStorage.getItem('Token')
+                    }
+                }
+                $.ajax(settings).done(function(response){
+                    $("#ItemModificarDescripcionModal").modal("show");
+                    cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
+                    
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                }).fail(function(jqXHR, textStatus) {
+                    if (jqXHR.status == 400) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'info',
+                            title: 'Su Session ha Expirado',
+                            confirmButtonText: `Ok`,
+                        })
+                    }
+                })
+            }
+        })
+
+
+
+
+
+    
+});  
+
+
 
 $('#selectCategoria').change(function(){
     $('#selectProceso').empty();
@@ -15,7 +128,7 @@ $('#selectCategoria').change(function(){
     
 });
 
-$('#selectJerarquia').change(function(){
+$('#selectJerarquia_').change(function(){
     $('#showReporte').hide();
     //$('#zonaCarga').show();
     $('#file').empty();
@@ -26,9 +139,7 @@ $('#selectJerarquia').change(function(){
     
 });
 
-$('#selectProceso').change(function(){
-    document.getElementById('ejecutarActualizacion').disabled = false;
-});
+
 
 $("#file").change(function() {
     $('#selectProceso').empty();

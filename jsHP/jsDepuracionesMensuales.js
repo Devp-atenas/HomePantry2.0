@@ -12,7 +12,19 @@ $('#selectCategoriaMarca').change(function(){
     var idCategoriaM = $('#selectCategoriaMarca').val();
     $('#selectMarcaModificar').empty();
     cargarFabricante('#selectFabricante',idCategoriaM,0);
-    
+});
+
+$('#selectCategoriaTamano').change(function(){
+    var idCategoriaM = $('#selectCategoriaTamano').val();
+    $('#selectMarcaModificar').empty();
+    cargarTamanoRango('#selectTamanoRangoTR',idCategoriaM,0);
+});
+
+$('#selectTamanoRangoTR').change(function(){//--------------
+    var idCategoriaM = $('#selectCategoriaTamano').val();
+    var idTamanoRango = $('#selectTamanoRangoTR').val();
+    $('#selectMarcaModificar').empty();
+    cargarTamano('#selectItemModificarTamano',idCategoriaM,0,idTamanoRango);
 });
 
 $('#selectFabricante').change(function(){
@@ -45,21 +57,28 @@ $('#selectCategoriaTR').change(function(){
 });
 
 $("#continuarDescripcion").click(function() {
-    var codigoBarra = $('#CodigoBarraDescripcion').val();
+    var CodigoBarra = $('#CodigoBarraDescripcion').val();
     var settings = {                    
-        "url": urlApi+'getAllSegmento_x_CategoriaV1/' + id_categoria,
+        "url":localStorage.getItem("urlApi")+'getProducto4CodigoBarra/',
         "method": "post",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
         },
         "data": {
-            "codigoBarra": codigoBarra
+            "CodigoBarra": CodigoBarra
         }
     }
     $.ajax(settings).done(function(response){
         
-
+        if (response.data.length != 0){
+            $('#inputIdEdit').val(response.data[0].id);
+            
+            $('#DescripcionActual').val(response.data[0].Producto);
+            $('#showDescripciones').show();
+        }else{
+            alert('No existe Producto')
+        }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -84,6 +103,10 @@ $("#continuarDescripcion").click(function() {
 
 
 $("#siguienteDepuracion").click(function() {
+    document.getElementById('formItemModificar').reset();
+    $("#formItemModificar")[0].reset();
+    var form = document.querySelector('#formItemModificar');
+    form.reset();         
     var accion = $('input:radio[name=accionDepurar]:checked').val()
     var TituloCombo;
     var TituloModal;
@@ -129,8 +152,8 @@ $("#siguienteDepuracion").click(function() {
             case 'Tamaño':
                 TituloModal = "Modificar tamaño por depuracion";
                 TituloCombo = "Tamaño";
-                cargarCategoria('#selectCategoriaTR',-1);
-                $('#ItemModificarModal').modal('show');
+                cargarCategoria('#selectCategoriaTamano',-1);
+                $('#ItemModificarTamanoModal').modal('show');
                 break;
             default:
                 alert('default');
@@ -140,9 +163,192 @@ $("#siguienteDepuracion").click(function() {
         $('#TituloCombo').html(TituloCombo);
         
     }else{
-        $('#selectJerarquia').val()
-        cargarTabla($('#selectJerarquia').val());
+        switch($('select[name="selectJerarquia"] option:selected').text()) {
+            case "Descripcion":
+                cargarTablaDescripcion(localStorage.getItem('IdUsuario'));
+                break;
+            default:
+                cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
+        }
     }
+});
+
+$("#Pre-DepurarDescripcion").click(function() {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: "¿Seguro deseas depurar la descripcion del producto?",
+            text: " ",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText:  'No, Cancelar',
+            confirmButtonText: 'Si, Depurar',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var idProducto = $("#inputIdEdit").val();
+                var CodigoBarra = $("#CodigoBarraDescripcion").val();
+                var descripcionActual = $("#DescripcionActual").val();
+                var descripcionNueva = $("#DescripcionNueva").val();
+                
+                var settings = {                    
+                    "url":localStorage.getItem("urlApi")+'updateDescripcionProductoDepuracionV2',
+                    "method": "post",
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Authorization": "Bearer " + localStorage.getItem('Token')
+                    },
+                    "data": {
+                        "idProducto": idProducto,
+                        "CodigoBarra": CodigoBarra,
+                        "descripcionActual": descripcionActual,
+                        "descripcionNueva": descripcionNueva,
+                        "idUsuario":localStorage.getItem('IdUsuario')
+                    }
+                }
+                $.ajax(settings).done(function(response){
+                    $("#ItemModificarDescripcionModal").modal("show");
+                    cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
+                    
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                }).fail(function(jqXHR, textStatus) {
+                    if (jqXHR.status == 400) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'info',
+                            title: 'Su Session ha Expirado',
+                            confirmButtonText: `Ok`,
+                        })
+                    }
+                })
+            }
+        })
+});
+
+$("#Pre-DepurarTamano").click(function() {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: "¿Seguro deseas depurar?",
+            text: " ",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText:  'No, Cancelar',
+            confirmButtonText: 'Si, Depurar',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var idJerarquia = $("#selectJerarquia").val();
+                var Jerarquia = $('select[name="selectJerarquia"] option:selected').text();
+                var idDim = $("#selectItemModificarTamano").val();
+                var descDim = $('select[name="selectItemModificarTamano"] option:selected').text();
+                var lineasCB = $('#CodigosBarraTamano').val().split(/\n+/);
+                var codigosBarraComa = "";
+                var tam = lineasCB.length;
+            
+                for(var i = 0;i < tam;i++){
+                    if (i+1<tam){
+                        codigosBarraComa+="'"+$.trim(lineasCB[i])+"',";
+                    }else{
+                        codigosBarraComa+="'"+$.trim(lineasCB[i])+"'";
+                    }
+                }
+                
+                var settings = {                    
+                    "url":localStorage.getItem("urlApi")+'updateTamanoDepuracionV2',
+                    "method": "post",
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Authorization": "Bearer " + localStorage.getItem('Token')
+                    },
+                    "data": {
+                        "idJerarquia": idJerarquia,
+                        "Jerarquia": Jerarquia,
+                        "idDim": idDim,
+                        "descDim": descDim,
+                        "codigosBarraComa":codigosBarraComa.replace(",''",""),
+                        "idUsuario":localStorage.getItem('IdUsuario'),
+                        "idCategoria":$('#selectCategoriaTamano').val()
+                    }
+                }
+                $.ajax(settings).done(function(response){
+                    $("#ItemModificarTamanoModal").modal("hide");
+                    document.getElementById('formItemModificar').reset();
+                    cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
+                    
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message,
+                    confirmButtonText: `Ok`,
+                })
+                }).fail(function(jqXHR, textStatus) {
+                    if (jqXHR.status == 400) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'info',
+                            title: 'Su Session ha Expirado',
+                            confirmButtonText: `Ok`,
+                        })
+                    }
+                })
+            }
+        })
 });
 
 $("#Pre-DepurarTR").click(function() {
@@ -218,8 +424,9 @@ $("#Pre-DepurarTR").click(function() {
                     }
                 }
                 $.ajax(settings).done(function(response){
-                    $("#TamanoRangoModal").modal("hide");
-                    cargarTabla($('#selectJerarquia').val());
+                    $("#ItemModificarModal").modal("hide");
+                    document.getElementById('formItemModificar').reset();
+                    cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
                     
                     const Toast = Swal.mixin({
                     toast: true,
@@ -313,8 +520,8 @@ $("#Pre-DepurarMarca").click(function() {
                     }
                 }
                 $.ajax(settings).done(function(response){
-                    $("#TamanoRangoModal").modal("hide");
-                    cargarTabla($('#selectJerarquia').val());
+                    $("#ItemModificarModal").modal("hide");
+                    cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
                     
                     const Toast = Swal.mixin({
                     toast: true,
@@ -356,12 +563,39 @@ $("#Pre-DepurarMarca").click(function() {
         })
 });
 
-function cargarTabla(idJerarquia){
+function cargarTablaDescripcion(idUsuario){
     $('#showReporte').show();
     $('#ItemModificarModal').modal('hide');
     
     table = new Tabulator("#TableReporte", {
-        ajaxURL: localStorage.getItem("urlApi")+'getCambiosMensuales4JerarquiaV2/'+idJerarquia,
+        ajaxURL: localStorage.getItem("urlApi")+'getCambiosMensualesDescripcionV2/'+idUsuario,
+        ajaxConfig:{
+            method:"GET", //set request type to Position
+            headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+        },
+        height : "350px" ,
+        layout:"fitDataStretch",//,fitDataStretch,fitDataTable",
+        progressload : "scroll",
+        placeholder:"Datos no encontrados",
+        selectablePersistence:true, //make rows selectable
+        columns:[
+            {title:"Id Producto", field:"Id", sorter:"number"},
+            {title:"Codigo Barra", field:"CodBarra", sorter:"string"},
+            {title:"Descripcion Actual", field:"Prod", sorter:"string"},
+            {title:"Descripcion Nueva", field:"Descr", sorter:"string"}
+        ],
+    });
+}
+
+function cargarTabla(idJerarquia,idUsuario){
+    $('#showReporte').show();
+    $('#ItemModificarModal').modal('hide');
+    
+    table = new Tabulator("#TableReporte", {
+        ajaxURL: localStorage.getItem("urlApi")+'getCambiosMensuales4JerarquiaV2/'+idJerarquia+"/"+idUsuario,
         ajaxConfig:{
             method:"GET", //set request type to Position
             headers: {

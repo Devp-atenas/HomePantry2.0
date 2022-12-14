@@ -24,8 +24,7 @@ function existeFabricante(Fabricante) {
             $('#htmlItem').html(Fabricante);
             $('#DiccionarioExistenteModal').modal('show');
         }else{
-            alert('ACOMODAR, MOSCA');
-            //ejecutarAgregarFabricante();
+            ejecutarAgregarFabricante();
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
@@ -312,7 +311,6 @@ function deleteFabricante(data) {
     })
 }
 
-
 $(document).ready(function() {
     document.getElementById('FormFabricante').reset();
     cargarCategoriaNOMedicina("#selectCategoria",-1);
@@ -364,7 +362,6 @@ $(document).ready(function() {
         }
     });
     
-    
     $('#FormFabricanteEdit').validate({
         rules: {
             inputCategoriaEdit: {
@@ -403,7 +400,6 @@ $(document).ready(function() {
         }
     });
 });
-
 
 // *****
 function ActualizarRegistro() {

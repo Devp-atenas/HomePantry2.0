@@ -249,10 +249,10 @@ function cargarProceso(etiqueta,idS) {
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id == idS){
             select.append("<option value=" + response.data[i].id + " selected>" + response
-                .data[i].nombre + " - "+ response.data[i].id + "</option>");
+                .data[i].nombre + "</option>");
             }else{
                 select.append("<option value=" + response.data[i].id + ">" + response
-                .data[i].nombre + " - "+ response.data[i].id + "</option>");
+                .data[i].nombre + "</option>");
             }
         }
     }).fail(function(jqXHR, textStatus) {

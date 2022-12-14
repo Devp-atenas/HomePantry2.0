@@ -59,39 +59,11 @@ select:focus {
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <label class="inputText font-weight-bold">Categoria:</label>
-                    <select id="selectCategoria" name="selectCategoria" class="form-control form-control-sm">
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
                     <label class="inputText font-weight-bold">Jerarquia:</label>
                     <select id="selectJerarquia" name="selectJerarquia" class="form-control form-control-sm">
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div id="zonaCarga">
-                <form method="post" enctype="multipart/form-data">
-                    <div class="col-md-9">
-                        <div class="form-group1">
-                            <input type="file" id="file" name="fileX" accept=".xls, .xlsx"  disabled="disabled"/>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <button id="SubirArchivo" class="btn btn-primary btn-sm" disabled="disabled">
-                                <i class="bi bi-upload"></i>&nbsp;Cargar
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="inputText font-weight-bold">Proceso:</label>
@@ -108,7 +80,7 @@ select:focus {
                 </div>
             </div>
         </div>
-       
+        
         <div id="showReporte" style="display: none">
             <HR/>
             <div class="row">
