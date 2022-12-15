@@ -972,7 +972,7 @@ $("#selectTamanoRango").change(function() {
 
 $("#selectCategoriaEdit").change(function() {
     var id_categoria = $("#selectCategoria").val();
-
+           
     $("#idBotonAgregarPoducto").prop('disabled', false);
     $('#selectFabricanteEdit').select2();
     cargarFabricante("#selectFabricanteEdit",id_categoria,0);

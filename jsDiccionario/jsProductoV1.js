@@ -1212,8 +1212,7 @@ function EditAction(data) {
         cargarFabricante("#selectFabricanteEdit",response.data[0].id_Categoria,response.data[0].id_Fabricante);
         
         cargarTamanoRango("#selectTamanoRangoEdit",response.data[0].id_Categoria,response.data[0].Id_RangoTamano);
-        cargarTamanoALL("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano,response.data[0].Id_RangoTamano);
-        
+        cargarTamano("#selectTamanoEdit",response.data[0].id_Categoria,response.data[0].Id_Tamano,response.data[0].Id_RangoTamano);
         cargarUnidadMedida("#selectUnidadMedidaEdit",response.data[0].id_Categoria,response.data[0].id_UnidadMedida);
         cargarAtributo1("#selectAtributo1Edit",response.data[0].id_Categoria,response.data[0].id_Atributo1);
         cargarAtributo2("#selectAtributo2Edit",response.data[0].id_Categoria,response.data[0].id_Atributo2);
