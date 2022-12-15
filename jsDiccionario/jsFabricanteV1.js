@@ -48,7 +48,7 @@ function existeFabricante(Fabricante) {
     })
 }
 
-function ejecutarAgregarFabricante_(Fabricante) {
+function ejecutarAgregarFabricante(Fabricante) {
     if ($("#FormFabricante").valid()) {
         var settings = {
             "async": true,
