@@ -10,7 +10,6 @@ $('#selectProceso').change(function(){
     document.getElementById('ejecutarActualizacion').disabled = false;
 });
 
-
 $("#ejecutarActualizacion").click(function() {
     var Jerarquia = $('select[name="selectJerarquia"] option:selected').text();
     var Proceso = $('select[name="selectProceso"] option:selected').text();
