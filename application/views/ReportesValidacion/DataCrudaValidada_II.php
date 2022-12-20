@@ -199,7 +199,7 @@ select:focus {
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsAllCombosV1.js') ?>"></script>
-<script src="<?php echo base_url('jsReportes/jsDataCrudaValidada.js') ?>"></script>
+<script src="<?php echo base_url('jsReportes/jsDataCrudaValidada_II.js') ?>"></script>
 
 
 
