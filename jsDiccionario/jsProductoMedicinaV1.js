@@ -167,7 +167,7 @@ $(document).ready(function() {
             },
             inputCodigoBarra: {
                 required: true,
-                minlength: 8,
+                minlength: 7,
                 maxlength: 20
             },
             inputProducto: {
@@ -203,7 +203,7 @@ $(document).ready(function() {
             },
             inputCodigoBarra: {
                 required: "Por favor ingrese el Codigo de Barra",
-                minlength: "Longitud Minima 8",
+                minlength: "Longitud Minima 7",
                 required: "Longitud Maxima 20",
                 
             },
