@@ -457,7 +457,7 @@ select:focus {
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="inputText font-weight-bold">Pendiente:</div>
+                                        <div class="inputText font-weight-bold">Pendiente:</div> 
                                         <div class="card">
                                             <div class="form-group">
                                                 <div class="form-check d-inline">

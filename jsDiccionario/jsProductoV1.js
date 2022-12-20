@@ -183,7 +183,7 @@ $(document).ready(function() {
                 required: "Por favor ingrese el Marca",
             },
             selectSegmento: {
-                required: "Por favor ingrese el Segmento",
+                required: "Por favor ingrese el Segmento", 
             },
             selectTamanoRango: {
                 required: "Por favor ingrese el Tamaño Rango",

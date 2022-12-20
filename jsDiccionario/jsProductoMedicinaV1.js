@@ -184,7 +184,7 @@ $(document).ready(function() {
                 required: "Por favor ingrese la categoria"
             },
             selectFabricante: {
-                required: "Por favor ingrese Fabricante"
+                required: "Por favor ingrese Fabricante" 
             },
             selectMarca: {
                 required: "Por favor ingrese el Marca",
