@@ -461,7 +461,7 @@ select:focus {
                                         <div class="card">
                                             <div class="form-group">
                                                 <div class="form-check d-inline">
-                                                    <input class="form-check-input" type="radio" id="pendienteEdit" name="pendienteEdit" value="0">
+                                                    <input class="form-check-input" type="radio" id="pendienteEdit" name="pendienteEdit" value="0" checked>
                                                     <label class="form-check-label">No</label>
                                                 </div>
                                                 <div class="form-check d-inline">
