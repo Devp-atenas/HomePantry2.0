@@ -55,31 +55,48 @@ select:focus {
 
 <section class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group row mb-0 mt-0">
-                    <div class="col-md-3">
-                        <label class="inputText font-weight-bold">Periodo:</label>
-                        <select id="selectPeriodo" name="selectPeriodo" class="form-control form-control-sm">
-                        </select>
+        <div id="showGenerarReporte" style="display: none">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row mb-0 mt-0">
+                        <div class="col-md-3">
+                            <label class="inputText font-weight-bold">Periodo:</label>
+                            <select id="selectPeriodo" name="selectPeriodo" class="form-control form-control-sm">
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="inputText font-weight-bold">&nbsp;</div>
+                            <button id="idBotonGenerar" type="button" class="btn btn-primary" disabled="disabled">
+                                Generar
+                            </button>
+                        </div>
+                        <!--
+                        <div class="col-md-2">
+                            <div class="inputText font-weight-bold">&nbsp;</div>
+                            <button id="idBotonCerrarValidacion" type="button" class="btn btn-primary" disabled="disabled">
+                                Cerrar Validacion
+                            </button>
+                        </div>
+                        -->
                     </div>
-                    <div class="col-md-2">
-                        <div class="inputText font-weight-bold">&nbsp;</div>
-                        <button id="idBotonGenerar" type="button" class="btn btn-primary" disabled="disabled">
-                            Generar
-                        </button>
-                    </div>
-                    <!--
-                    <div class="col-md-2">
-                        <div class="inputText font-weight-bold">&nbsp;</div>
-                        <button id="idBotonCerrarValidacion" type="button" class="btn btn-primary" disabled="disabled">
-                            Cerrar Validacion
-                        </button>
-                    </div>
-                    -->
                 </div>
             </div>
         </div>
+        <div id="showReporteEjecutandose" style="display: none">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert">
+                        Ya se mando a ejecutar este reporte
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        
+        
+        
         <div id="showReporte" style="display: none">
             <HR/>
             <div class="row">

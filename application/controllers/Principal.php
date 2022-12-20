@@ -364,6 +364,9 @@ class Principal extends CI_Controller {
     public function DataCrudaValidada(){
         $this->load->view('ReportesValidacion/DataCrudaValidada');
     }
+    public function DataCrudaValidada_II(){
+        $this->load->view('ReportesValidacion/DataCrudaValidada');
+    }
     public function DataOtrosConsumos(){
         $this->load->view('ReportesValidacion/DataOtrosConsumos');
     }
