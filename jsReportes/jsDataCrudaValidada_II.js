@@ -14,9 +14,62 @@ $("#selectPeriodo").change(function() {
 
 $("#idBotonGenerar").click(function() {
     var semanas4Asteriscos= $('#selectPeriodo').val();
-    cargarTabla(semanas4Asteriscos);
-    $('#showReporte').show();
+    alert(10101010);
+    ejecutarProceso(semanas4Asteriscos,'PPPPPP');
+    //cargarTabla(semanas4Asteriscos);
+    //$('#showReporte').show();
 });
+
+
+
+function ejecutarProceso(semanas,nameFile) {
+    var settings = {
+        "url": localStorage.getItem("urlApi")+'getReporteDataCrudaValidadaV1_II/'+semanas+'/'+nameFile,
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: response.message,
+            confirmButtonText: `Ok`,
+        })
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
 
 
 function isReporteEjecutandose(IdReporteEjecutandose){
@@ -69,13 +122,13 @@ function listarArchivos(){
         }
     }
     $.ajax(settings).done(function(response) {
-        if (response.data[0].Ind_Ejecutandose == 0){
+        /*if (response.data[0].Ind_Ejecutandose == 0){
             $('#showGenerarReporte').show();
             $('#showReporteEjecutandose').hide();
         }else{
             $('#showReporteEjecutandose').show();
             $('#showGenerarReporte').hide();
-        }
+        }*/
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -132,7 +185,7 @@ function cargarTabla(Id){
             }
         ],
         "ajax": {
-            "url": localStorage.getItem("urlApi")+'getReporteDataCrudaValidadaV1/'+Id,
+            "url": localStorage.getItem("urlApi")+'getReporteDataCrudaValidadaV1____/'+Id,
             "type": "GET",
             "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",

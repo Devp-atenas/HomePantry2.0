@@ -190,12 +190,6 @@ select:focus {
     <!-- /.modal-dialog -->
 </div>
 
-
-
-
-
-
-
 <?php $this->load->view('Plantillas/Footer');?>
 <script src="<?php echo base_url('jsHP/jsBitacora.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsAllCombosV1.js') ?>"></script>
