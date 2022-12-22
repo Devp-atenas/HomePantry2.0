@@ -191,7 +191,7 @@ select:focus {
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="label label-danger" id="TituloModal"></span></h3>
+                            <h3 class="card-title"><span class="label label-danger" id="TituloModalTamano"></span></h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -226,7 +226,7 @@ select:focus {
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="inputText font-weight-bold">
-                                                <span class="label label-danger" id="TituloCombo"></span>:
+                                                <span class="label label-danger" id="TituloComboTamano"></span>:
                                             </label>
                                             <select id="selectItemModificarTamano" name="selectItemModificarTamano" class="form-control form-control-sm">
                                             </select>
@@ -324,7 +324,7 @@ select:focus {
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="label label-danger" id="TituloMarcaModal"></span></h3>
+                            <h3 class="card-title"><span class="label label-danger" id="TituloModalMarca"></span></h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -358,7 +358,7 @@ select:focus {
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="inputText font-weight-bold">
-                                            <span class="label label-danger" id="TituloMarcaCombo"></span>:
+                                            <span class="label label-danger" id="TituloComboMarca"></span>:
                                         </label>
                                         <select id="selectMarcaModificar" name="selectMarcaModificar" class="form-control form-control-sm">
                                         </select>

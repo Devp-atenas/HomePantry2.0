@@ -56,10 +56,88 @@ $('#selectCategoriaTR').change(function(){
     }
 });
 
+
+$("#siguienteDepuracion").click(function() {
+    document.getElementById('formItemModificar').reset();
+    $("#formItemModificar")[0].reset();
+    var form = document.querySelector('#formItemModificar');
+    form.reset();         
+    var accion = $('input:radio[name=accionDepurar]:checked').val()
+    var TituloCombo;
+    var TituloModal;
+    
+    if (accion == 1){
+        switch($('select[name="selectJerarquia"] option:selected').text()) {
+            case "Descripcion":
+                cargarCategoria('#selectCategoriaTR',-1);
+                $('#ItemModificarDescripcionModal').modal('show');
+                break;
+            case "Fabricante":
+                TituloModal = "Modificar fabricante por depuracion";
+                TituloCombo = "Fabricante";
+                $('#TituloModal').html(TituloModal);
+                $('#TituloCombo').html(TituloCombo);
+                cargarCategoria('#selectCategoriaTR',-1);
+                $('#ItemModificarModal').modal('show');
+                break;
+            case 'Marca':
+                TituloModal = "Modificar marca por depuracion";
+                TituloCombo = "Marca";
+                $('#TituloModalMarca').html(TituloModal);
+                $('#TituloComboMarca').html(TituloCombo);
+                cargarCategoria('#selectCategoriaMarca',-1);
+                $('#ItemModificarMarcaModal').modal('show');
+                break;
+            case 'Segmento':
+                TituloModal = "Modificar segmento por depuracion";
+                TituloCombo = "Segmento";
+                $('#TituloModal').html(TituloModal);
+                $('#TituloCombo').html(TituloCombo);
+                cargarCategoria('#selectCategoriaTR',-1);
+                $('#ItemModificarModal').modal('show');
+                break;
+            case 'Rango Tamaño':
+                TituloModal = "Modificar tamaño rango por depuracion";
+                TituloCombo = "Tamaño Rango";
+                $('#TituloModal').html(TituloModal);
+                $('#TituloCombo').html(TituloCombo);
+                cargarCategoria('#selectCategoriaTR',-1);
+                $('#ItemModificarModal').modal('show');
+                break;
+            case 'Tamaño':
+                TituloModal = "Modificar tamaño por depuracion";
+                TituloCombo = "Tamaño";
+                $('#TituloModalTamano').html(TituloModal);
+                $('#TituloComboTamano').html(TituloCombo);
+                cargarCategoria('#selectCategoriaTamano',-1);
+                $('#ItemModificarTamanoModal').modal('show');
+                break;
+            default:
+                alert('default');
+        }
+        
+        $('#TituloModal').html(TituloModal);
+        $('#TituloCombo').html(TituloCombo);
+        
+    }else{
+        switch($('select[name="selectJerarquia"] option:selected').text()) {
+            case "Descripcion":
+                cargarTablaDescripcion(localStorage.getItem('IdUsuario'));
+                break;
+            default:
+                cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
+        }
+    }
+});
+
+
+
+
+
 $("#continuarDescripcion").click(function() {
     var CodigoBarra = $('#CodigoBarraDescripcion').val();
     var settings = {                    
-        "url":localStorage.getItem("urlApi")+'getProducto4CodigoBarra/',
+        "url":localStorage.getItem("urlApi")+'getProducto4CodigoBarraV1/',
         "method": "post",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -101,77 +179,6 @@ $("#continuarDescripcion").click(function() {
     })
 });
 
-
-$("#siguienteDepuracion").click(function() {
-    document.getElementById('formItemModificar').reset();
-    $("#formItemModificar")[0].reset();
-    var form = document.querySelector('#formItemModificar');
-    form.reset();         
-    var accion = $('input:radio[name=accionDepurar]:checked').val()
-    var TituloCombo;
-    var TituloModal;
-    
-    if (accion == 1){
-        switch($('select[name="selectJerarquia"] option:selected').text()) {
-            case "Descripcion":
-                cargarCategoria('#selectCategoriaTR',-1);
-                $('#ItemModificarDescripcionModal').modal('show');
-                break;
-            case "Fabricante":
-                TituloModal = "Modificar fabricante por depuracion";
-                TituloCombo = "Fabricante";
-                cargarCategoria('#selectCategoriaTR',-1);
-                $('#ItemModificarModal').modal('show');
-                break;
-            case "Fabricante":
-                TituloModal = "Modificar fabricante por depuracion";
-                TituloCombo = "Fabricante";
-                cargarCategoria('#selectCategoriaTR',-1);
-                $('#ItemModificarModal').modal('show');
-                break;
-            case 'Marca':
-                TituloModal = "Modificar marca por depuracion";
-                TituloCombo = "Marca";
-                $('#TituloMarcaModal').html(TituloModal);
-                $('#TituloMarcaCombo').html(TituloCombo);
-                cargarCategoria('#selectCategoriaMarca',-1);
-                $('#ItemModificarMarcaModal').modal('show');
-                break;
-            case 'Segmento':
-                TituloModal = "Modificar segmento por depuracion";
-                TituloCombo = "Segmento";
-                cargarCategoria('#selectCategoriaTR',-1);
-                $('#ItemModificarModal').modal('show');
-                break;
-            case 'Rango Tamaño':
-                TituloModal = "Modificar tamaño rango por depuracion";
-                TituloCombo = "Tamaño Rango";
-                cargarCategoria('#selectCategoriaTR',-1);
-                $('#ItemModificarModal').modal('show');
-                break;
-            case 'Tamaño':
-                TituloModal = "Modificar tamaño por depuracion";
-                TituloCombo = "Tamaño";
-                cargarCategoria('#selectCategoriaTamano',-1);
-                $('#ItemModificarTamanoModal').modal('show');
-                break;
-            default:
-                alert('default');
-        }
-        
-        $('#TituloModal').html(TituloModal);
-        $('#TituloCombo').html(TituloCombo);
-        
-    }else{
-        switch($('select[name="selectJerarquia"] option:selected').text()) {
-            case "Descripcion":
-                cargarTablaDescripcion(localStorage.getItem('IdUsuario'));
-                break;
-            default:
-                cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
-        }
-    }
-});
 
 $("#Pre-DepurarDescripcion").click(function() {
     const swalWithBootstrapButtons = Swal.mixin({
