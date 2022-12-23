@@ -157,6 +157,16 @@ select:focus {
                                     </div>
                                 </div>
                             </div>
+                            <div id="showCodigoBarraErrado" style="display: none">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="alert alert-danger" role="alert">
+                                            No existe producto asociado con el codigo de barra: <span class="label label-danger" id="CodigoBarraErrado"></span>
+                                            intente con otro
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row" style="display: none">
                                 <div class="col-md-6">
                                     <div class="form-group">

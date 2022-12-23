@@ -135,6 +135,8 @@ $("#siguienteDepuracion").click(function() {
 
 
 $("#continuarDescripcion").click(function() {
+    $('#showCodigoBarraErrado').hide();
+    $('#showCodigoBarraErrado').hide();
     var CodigoBarra = $('#CodigoBarraDescripcion').val();
     var settings = {                    
         "url":localStorage.getItem("urlApi")+'getProducto4CodigoBarraV1/',
@@ -148,14 +150,13 @@ $("#continuarDescripcion").click(function() {
         }
     }
     $.ajax(settings).done(function(response){
-        
         if (response.data.length != 0){
             $('#inputIdEdit').val(response.data[0].id);
-            
             $('#DescripcionActual').val(response.data[0].Producto);
             $('#showDescripciones').show();
         }else{
-            alert('No existe Producto')
+            $('#CodigoBarraErrado').html($('#CodigoBarraDescripcion').val());
+            $('#showCodigoBarraErrado').show();
         }
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
