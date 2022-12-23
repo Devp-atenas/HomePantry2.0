@@ -220,9 +220,8 @@ $("#Pre-DepurarDescripcion").click(function() {
                     }
                 }
                 $.ajax(settings).done(function(response){
-                    $("#ItemModificarDescripcionModal").modal("show");
-                    cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
-                    
+                    $("#ItemModificarDescripcionModal").modal("hide");
+                    cargarTablaDescripcion(localStorage.getItem('IdUsuario'));
                     const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -576,7 +575,7 @@ function cargarTablaDescripcion(idUsuario){
     $('#ItemModificarModal').modal('hide');
     
     table = new Tabulator("#TableReporte", {
-        ajaxURL: localStorage.getItem("urlApi")+'getCambiosMensualesDescripcionV2/'+idUsuario,
+        ajaxURL: localStorage.getItem("urlApi")+'getCambiosMensualesDescripcionV1/'+idUsuario,
         ajaxConfig:{
             method:"GET", //set request type to Position
             headers: {
@@ -603,7 +602,7 @@ function cargarTabla(idJerarquia,idUsuario){
     $('#ItemModificarModal').modal('hide');
     
     table = new Tabulator("#TableReporte", {
-        ajaxURL: localStorage.getItem("urlApi")+'getCambiosMensuales4JerarquiaV2/'+idJerarquia+"/"+idUsuario,
+        ajaxURL: localStorage.getItem("urlApi")+'getCambiosMensuales4JerarquiaV1/'+idJerarquia+"/"+idUsuario,
         ajaxConfig:{
             method:"GET", //set request type to Position
             headers: {
