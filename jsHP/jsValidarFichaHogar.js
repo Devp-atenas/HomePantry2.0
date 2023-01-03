@@ -83,7 +83,6 @@ $(document).ready(function() {
             $(element).removeClass('is-invalid');
         }
     });
-
 });
 
 // Ubicacion del hogar (PASO 1)

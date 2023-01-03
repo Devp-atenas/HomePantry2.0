@@ -1,5 +1,3 @@
-
-
 $(function(){
     $("#fechaNacimientoResponsable").datepicker({
         changeMonth: true,
@@ -41,10 +39,6 @@ $(function(){
         changeYear: true
     });
 });
-
-
-
-
 
 function calcularEdad(inputFecha,inputCalculada){ ///calcular edad
     const fechaActual = new Date();
