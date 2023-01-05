@@ -8,6 +8,13 @@ $('#selectJerarquia').change(function(){
     document.getElementById('siguienteDepuracion').disabled = false;
 });
 
+$('#selectCategoriaDescripcion').change(function(){
+    document.getElementById("CodigoBarraDescripcion").disabled = false;
+    $('#showCodigoBarraErrado').hide();
+    $('#showDescripciones').hide();
+    $('#CodigoBarraDescripcion').val('');
+});
+
 $('#selectCategoriaMarca').change(function(){
     var idCategoriaM = $('#selectCategoriaMarca').val();
     $('#selectMarcaModificar').empty();
@@ -69,7 +76,10 @@ $("#siguienteDepuracion").click(function() {
     if (accion == 1){
         switch($('select[name="selectJerarquia"] option:selected').text()) {
             case "Descripcion":
-                cargarCategoria('#selectCategoriaTR',-1);
+                $('#showCodigoBarraErrado').hide();
+                $('#showDescripciones').hide();
+                $('#CodigoBarraDescripcion').val('');
+                cargarCategoria('#selectCategoriaDescripcion',-1);
                 $('#ItemModificarDescripcionModal').modal('show');
                 break;
             case "Fabricante":
@@ -130,13 +140,9 @@ $("#siguienteDepuracion").click(function() {
     }
 });
 
-
-
-
-
 $("#continuarDescripcion").click(function() {
     $('#showCodigoBarraErrado').hide();
-    $('#showCodigoBarraErrado').hide();
+    $('#showDescripciones').hide();
     var CodigoBarra = $('#CodigoBarraDescripcion').val();
     var settings = {                    
         "url":localStorage.getItem("urlApi")+'getProducto4CodigoBarraV1/',
@@ -146,7 +152,8 @@ $("#continuarDescripcion").click(function() {
             "Authorization": "Bearer " + localStorage.getItem('Token')
         },
         "data": {
-            "CodigoBarra": CodigoBarra
+            "CodigoBarra": CodigoBarra,
+            "Categoria": $("#selectCategoriaDescripcion").val()
         }
     }
     $.ajax(settings).done(function(response){
@@ -179,7 +186,6 @@ $("#continuarDescripcion").click(function() {
         }
     })
 });
-
 
 $("#Pre-DepurarDescripcion").click(function() {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -220,7 +226,7 @@ $("#Pre-DepurarDescripcion").click(function() {
                     }
                 }
                 $.ajax(settings).done(function(response){
-                    $("#ItemModificarDescripcionModal").modal("hide");
+                    $("#ItemModificarDescripcionModal").modal("hide                                                         ");
                     cargarTablaDescripcion(localStorage.getItem('IdUsuario'));
                     const Toast = Swal.mixin({
                     toast: true,
@@ -527,7 +533,7 @@ $("#Pre-DepurarMarca").click(function() {
                     }
                 }
                 $.ajax(settings).done(function(response){
-                    $("#ItemModificarModal").modal("hide");
+                    $("#ItemModificarMarcaModal").modal("hide");
                     cargarTabla($('#selectJerarquia').val(),localStorage.getItem('IdUsuario'));
                     
                     const Toast = Swal.mixin({

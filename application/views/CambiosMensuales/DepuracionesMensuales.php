@@ -126,10 +126,17 @@ select:focus {
                         </div>
                         <div class="card-body">
                             <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="inputText font-weight-bold">Categoria:</label>
+                                        <select id="selectCategoriaDescripcion" name="selectCategoriaDescripcion" class="form-control form-control-sm">
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="inputText font-weight-bold">Codigos de Barra:</label>
-                                        <input type="text" name="CodigoBarraDescripcion" id="CodigoBarraDescripcion" class="form-control">
+                                        <input type="text" name="CodigoBarraDescripcion" id="CodigoBarraDescripcion" class="form-control" disabled='disabled'>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -212,7 +219,7 @@ select:focus {
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="inputText font-weight-bold">Codigos de Barra:</label>
+                                        <label class="inputText font-weight-bold">Codigos de Barras:</label>
                                         <textarea class="form-control" id="CodigosBarraTamano" rows="6"></textarea>
                                     </div>
                                 </div>
