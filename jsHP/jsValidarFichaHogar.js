@@ -87,8 +87,22 @@ $(document).ready(function() {
 
 // Ubicacion del hogar (PASO 1)
 $("#guardar-paso-1").click(function() {
+
+
+
     
     if ($("#formUbicacionHogar").valid()) {
+        var Ind_Vivienda;
+        var Ind_Edificio;
+        
+        if ( $('input:radio[name=vivienda]:checked').val() == 1){
+            Ind_Vivienda = 1;
+            Ind_Edificio = 0;
+        }else{
+            Ind_Vivienda = 0;
+            Ind_Edificio = 1;
+
+        }
         alert(111);
         var idHogar2 = $("#identificacion2Hogar").val();
         const fecha = new Date();
@@ -97,7 +111,7 @@ $("#guardar-paso-1").click(function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": '<?php echo urlApi; ?>addNewHogar/',
+            "url": localStorage.getItem("urlApi")+'addNewHogar/',
             "method": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -107,20 +121,18 @@ $("#guardar-paso-1").click(function() {
                 "identificacion1Hogar": $("#identificacion1Hogar").val(),
                 "Id_Hogar": $("#identificacion2Hogar").val(),
                 "YY": YY,
-                
                 "idEstadoHogar": $("#estadoHogar").val(),
                 "idCiudadHogar": $("#ciudadHogar").val(),
                 "idMunicipioHogar": $("#municipioHogar").val(),
                 "idParroquiaHogar": $("#parroquiaHogar").val(),
-                "indCalleAvenidad": $('input:radio[name=calle]:checked').val(),
+                "Ind_CalleAvenidad": $('input:radio[name=calle]:checked').val(),
                 "nombreCalle":$("#nombreCalle").val(),
-                "idZona":$("#selectZona").val(),
-                "otraZona":$("#nombreTipoZona").val(),
-                "indVivienda": $("#viviendaCasa").val(),
-                
+                "Id_Zona":$("#selectZona").val(),
+                "OtraZona":$("#nombreTipoZona").val(),
+                "Ind_Vivienda": Ind_Vivienda,
+                "Ind_Edificio":Ind_Edificio,
                 "nombreCasa": $("#nombreCasa").val(),
                 "escaleraCasa": $("#escaleraCasa").val(),
-                
                 "nombreEdificio": $("#nombreEdificio").val(),
                 "pisoHogar": $("#pisoHogar").val(),
                 "apartamentoEdificio": $("#apartamentoEdificio").val(),
@@ -128,14 +140,7 @@ $("#guardar-paso-1").click(function() {
                 "referenciaHogar": $("#referenciaHogar").val(),
                 "coordenadaX": $("#coordenadaX").val(),
                 "coordenadaY": $("#coordenadaY").val(),
-                
-
-                
-                
-
-
                 "idUsuario": localStorage.getItem("IdUsuario"),
-                
             }
         }
         $.ajax(settings).done(function(response) {

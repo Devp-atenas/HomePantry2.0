@@ -172,14 +172,10 @@
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" id="calle" name="calle" value="3">
-                                        <label class="form-check-label">Avenida</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="calle" name="calle" value="4">
                                         <label class="form-check-label">Carrera</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="calle" name="calle" value="5">
+                                        <input class="form-check-input" type="radio" id="calle" name="calle" value="4">
                                         <label class="form-check-label">Otro</label>
                                     </div>
                                     <div class="inputText font-weight-bold">Especifique:</div>
