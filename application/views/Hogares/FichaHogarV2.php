@@ -1261,9 +1261,6 @@
                                 </div>
 
 
-                                <div class="inputText font-weight-bold">Conexion a Internet:</div>
-                                <select id="selectConexionInternet" name="selectConexionInternet" class="form-control">
-                                </select>
                                 <div class="inputText font-weight-bold">Tipo de Conexion a Internet:</div>
                                 <select id="selectTipoInternet" name="selectTipoInternet" class="form-control">
                                 </select>
@@ -1279,14 +1276,13 @@
                             <div class="card">
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Aire acondicionado</div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="aireAcondicionado" name="aireAcondicionado" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="aireAcondicionado" name="aireAcondicionado" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
+                                    
+                                    <select id="selectAireAcondicionados" name="selectAireAcondicionados" class="form-control">
+                                    </select>
+
+
+                                    
+                                    
                                     <div class="inputText font-weight-bold">Calentador de agua eléctrico no tipo ducha corona</div>
                                     <div class="form-check d-inline">
                                         <input class="form-check-input" type="radio" id="calentadorAguaElectrico" name="calentadorAguaElectrico" value="0">
@@ -2487,6 +2483,11 @@
         cargarFrecuenciaElectricidad('#selectFrecuenciaElectricidad',0);
         cargarFrecuenciaAgua('#selectFrecuenciaAgua',0);
         cargarTipoAlmacenamientoAgua('#selectTipoAlmacAgua',0);
+        //
+        cargarAireAcondicionados('#selectAireAcondicionados',0);
+        cargarTipoInternet('#selectTipoInternet',0);
+        cargarTipoGas('#selectTipoGas',0);
+        cargarFrecuenciaGas('#selectFrecuenciaGas',0);
         
         // TV
         cargarCantidadTV('#cantidadTV',0);
