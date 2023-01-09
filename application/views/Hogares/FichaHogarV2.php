@@ -1462,8 +1462,6 @@
             <div id="step-8">
 
                 <h2 class="text-center">Medios</h2>
-                                        
-
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
@@ -1489,7 +1487,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <div class="inputText font-weight-bold">Cantidad de Televisores</div>
-                                                    <select class="custom-select form-control-border" id="tipoTV" name="tipoTV">
+                                                    <select class="custom-select form-control-border" id="cantidadTV" name="cantidadTV">
                                                     </select>
                                                 </div>
                                             </div>
@@ -1509,7 +1507,6 @@
                                         <table id="TableListadoTV" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Tipo TV</th>
                                                     <th>Cantidad</th>
                                                     <th></th>
@@ -1579,15 +1576,20 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <div class="inputText font-weight-bold">Cableras:</div>
-                                                    <select class="custom-select form-control-border" id="cablera1" name="cablera1">
+                                                    <select id="cablera1" name="cablera1" class="select2" multiple="multiple" data-placeholder="Seleccione estado o escribalos" style="width: 100%;">
                                                     </select>
+                                                    <!--
+                                                    <div class="inputText font-weight-bold">Cableras:</div>
+                                                    <select class="custom-select form-control-border" id="cablera1" name="cablera1">
+                                                    </select>-->
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <div class="inputText font-weight-bold">TV Online:</div>
-                                                    <select class="custom-select form-control-border" id="tvOnline1" name="tvOnline1">
+                                                    <select id="tvOnline1" name="tvOnline1" class="select2" multiple="multiple" data-placeholder="Seleccione estado o escribalos" style="width: 100%;">
                                                     </select>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -2414,6 +2416,7 @@
 <script src="<?php echo base_url('vendor/js/nprogress.js') ?>"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <script src="<?php echo base_url('jsHP/jsValidarFichaHogar.js') ?>"></script>
 <script src="<?php echo base_url('jsHP/jsHogaresNuevosCombos.js') ?>"></script>
@@ -2494,10 +2497,20 @@
         cargarTipoTV('#tipoTV',0);
         cargarSenal('#Senal',0);
         // Medios
-        cargarCablera('#cablera1',0);
-        cargarCablera('#cablera2',0);
-        cargarTvOnline('#tvOnline1',0);
-        cargarTvOnline('#tvOnline2',0);
+        cargarCablera('#cablera1',-2);
+        $('#cablera1').select2({
+            closeOnSelect: true,
+            maximumSelectionLength: 2,
+            language: "es",
+            placeholder: 'Seleccione maximo 2'
+        });
+        cargarTvOnline('#tvOnline1',-1);
+        $('#tvOnline1').select2({
+            closeOnSelect: true,
+            maximumSelectionLength: 2,
+            language: "es",
+            placeholder: 'Seleccione maximo 2'
+        });
         // Vehiculos
         cargarAutos('#totalAutos',0);
         
@@ -3055,7 +3068,7 @@
     
     // Servicios Públicos PASO 6
     // Servicios y equipamiento del hogar PASO 7
-    $("#guardar-paso-7").click(function() {
+    $("#guardar-paso-7___").click(function() {
         var camposVacios = "";
         if (!$("input[name='domesticaFija']:radio").is(':checked')) {
             camposVacios += "Seleccione doméstica fija<br>";
@@ -3274,7 +3287,7 @@
         }
     });
     // Medios PASO 8
-    $("#guardar-paso-8").click(function() {
+    $("#guardar-paso-8___").click(function() {
         var camposVacios = "";
         if ($.trim($('#cantidadTV').val()) === '') {
             camposVacios += "Seleccione  cantidad de televisores<br>";
@@ -3990,6 +4003,7 @@ function cargarTablaComposicion(idHogar){
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.print.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables-buttons/js/buttons.colVis.min.js')?>"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 

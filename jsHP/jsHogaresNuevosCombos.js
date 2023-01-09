@@ -1494,7 +1494,7 @@ function cargarCantidadTV(identificador,idS) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url":localStorage.getItem("urlApi")+'getCantidadTV/',
+        "url":localStorage.getItem("urlApi")+'getAllSmartTVCantidadCombo/',
         "method": "get",
         "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -1509,11 +1509,11 @@ function cargarCantidadTV(identificador,idS) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
-                .data[i].Televisores + "</option>");
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
+                .data[i].nombre + "</option>");
             }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
-                .data[i].Televisores + "</option>");
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
+                .data[i].nombre + "</option>");
             }
         }
     }).fail(function(jqXHR, textStatus) {

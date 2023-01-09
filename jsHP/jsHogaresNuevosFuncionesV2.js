@@ -1,3 +1,10 @@
+$("#agregarTipoTV").click(function() {
+    var idTipoTV = $('#tipoTV').val();
+    var idCantidadTV = $('#cantidadTV').val();
+    var idHogar = $("#identificacion2Hogar").val();
+    
+});
+
 $(function(){
     $("#fechaNacimientoResponsable").datepicker({
         changeMonth: true,
