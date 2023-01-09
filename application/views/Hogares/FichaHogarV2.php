@@ -35,7 +35,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fa fa-plus-square"></i>&nbsp;Registro del hogar V2</h1>
+                <h1><i class="fa fa-plus-square"></i>&nbsp;Registro del hogar V_2</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -1010,7 +1010,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold"># Habitaciones para dormir:</div>
-                                <input type="number" class="form-control input-sm" id="numeroAmbientes" name="numeroAmbientes" placeholder="Introduzca Numero total de Ambientes ...">
+                                <input type="number" class="form-control input-sm" id="numeroHabitaciones" name="numeroHabitaciones" placeholder="Introduzca Numero total de Ambientes ...">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -1052,8 +1052,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <div class="inputText font-weight-bold">Techo:</div>
-                                <select class="custom-select form-control-border" id="selectTecho" name="selectTecho">
+                                <div class="inputText font-weight-bold">Techo_:</div>
+                                <select class="custom-select form-control-border" id="selectTecho1" name="selectTecho1">
                                 </select>
                             </div>
                         </div>
@@ -1211,22 +1211,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="inputText font-weight-bold">¿Posee Almacenamiento de Agua? </div>
-                            <div class="card">
-                                <div class="form-group">
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="AlmacenamientoAgua" name="AlmacenamientoAgua" value="0">
-                                        <label class="form-check-label">No</label>
-                                    </div>
-                                    <div class="form-check d-inline">
-                                        <input class="form-check-input" type="radio" id="AlmacenamientoAgua" name="AlmacenamientoAgua" value="1">
-                                        <label class="form-check-label">Si</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
+                       <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Tipo de Almacenamiento de Agua:</div>
                                 <select class="custom-select form-control-border" id="selectTipoAlmacAgua" name="selectTipoAlmacAgua">
@@ -2488,9 +2473,12 @@
         cargarOcupacionVivienda('#ocupacionVivienda',0);
         cargarPuntosLuz('#puntosLuz',0);
         cargarMontoVivienda('#montoVivienda',0);
-        cargarTecho('#selectTecho',0);
+        cargarTecho('#selectTecho1',0);
         cargarPiso('#selectPiso',0);
         cargarParedes('#selectParedes',0);
+        cargarViajeVacacional('#selectViajeVacacional',0);
+        cargarPlanVacacional('#selectPlanVacacional',0);
+
         cargarPEstacionamiento('#selectPEstacionamiento',0);
         // Servicios Públicos
         cargarAguasBlancas('#aguasBlancas',0);
@@ -3061,104 +3049,10 @@
 
 
     // Características y tenencia de la vivienda PASO 5
-    // Servicios Públicos PASO 6
-    $("#guardar-paso-6").click(function() {
-        var camposVacios = "";
-        if (!$("input[name='servicioElectricidad']:radio").is(':checked')) {
-            camposVacios += "Seleccione servicio de electricidad<br>";
-        }
-        if (!$("input[name='servicioTelefonico']:radio").is(':checked')) {
-            camposVacios += "Seleccione servicio telefonico<br>";
-        }
-        if (!$("input[name='cortesElectricos']:radio").is(':checked')) {
-            camposVacios += "Seleccione cortes ecytrlectricos<br>";
-        }
-        if (camposVacios != "") {
-            $(function() {
-                $('#modal-body').html(camposVacios);
-            });
-            $('#myModal').modal('show');
-        } else {
-            if (localStorage.getItem("flagActividad") !== null){
-                flagNuevoHogar = 0;
-            }else{
-                flagNuevoHogar = 1;
-            }
-
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": '<?php echo urlApi; ?>updateServiciosHogar/',
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
-                "data": {
-                    "Id_Hogar": $("#identificacion2Hogar").val(),
-                    "Id_AguasBlancas": $("#aguasBlancas").val(),
-                    "Id_AguasNegras": $("#aguasNegras").val(),
-                    "Id_AseoUrbano": $("#aseoUrbano").val(),
-                    "Id_ServicioElectricidad": $('input:radio[name=servicioElectricidad]:checked').val(),
-                    "Id_ServicioTelefono": $('input:radio[name=servicioTelefonico]:checked').val(),
-                    "Id_CortesElectricos": $('input:radio[name=cortesElectricos]:checked').val(),
-                    "flagNuevoHogar":flagNuevoHogar
-                }
-            }
-            $.ajax(settings).done(function(response) {
-                var idHogar = $("#identificacion2Hogar").val();
     
-                if (response.isFichaCompleta==1){
-                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Actualizo Servicios Públicos(Paso 6) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
-                    AlertaHogarSinRecalcularNSE($("#identificacion2Hogar").val());
-                }else{
-                    Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Servicios Públicos(Paso 6)",$("#identificacion2Hogar").val(),"C");
-                }
-                
-                if (localStorage.getItem('flagActividad') !== null){
-                    guardarCamposPorActividad(idHogar,6);
-                }
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'success',
-                    title: response.message,
-                    confirmButtonText: `Ok`,
-                })
-            }).fail(function(jqXHR, textStatus) {
-                if (jqXHR.status == 400) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'info',
-                        title: 'Su Session ha Expirado',
-                        confirmButtonText: `Ok`,
-                    })
-                    var form = document.querySelector('#FormPaisEdit');
-                    form.reset();
-                    window.location = '/homepantry20/index.php';
-                }
-            })
-        }
-    });
+    
+    
+    // Servicios Públicos PASO 6
     // Servicios y equipamiento del hogar PASO 7
     $("#guardar-paso-7").click(function() {
         var camposVacios = "";

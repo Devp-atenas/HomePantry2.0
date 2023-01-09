@@ -479,6 +479,110 @@ function cargarEstadoCivil(identificador,idS) {
     })
 }
 //    --------------- Paso 5) Ubicacion Características y tenencia de la vivienda
+function cargarViajeVacacional(identificador,idS) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getAllViajeVacacionalCombo/',
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(identificador);
+        selected.find("option").remove();
+        if (idS == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+function cargarPlanVacacional(identificador,idS) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url":localStorage.getItem("urlApi")+'getAllPlanVacacionalCombo/',
+        "method": "get",
+        "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer " + localStorage.getItem('Token')
+            }
+    }
+    $.ajax(settings).done(function(response) {
+        let selected = $(identificador);
+        selected.find("option").remove();
+        if (idS == 0){
+            selected.append("<option value='' selected disabled> -- Seleccione -- </option>");
+        }
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id === idS){
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
+                .data[i].nombre + "</option>");
+            }else{
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
+                .data[i].nombre + "</option>");
+            }
+        }
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
 function cargarTecho(identificador,idS) {
     var settings = {
         "async": true,
@@ -498,10 +602,10 @@ function cargarTecho(identificador,idS) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
                 .data[i].nombre + "</option>");
             }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
                 .data[i].nombre + "</option>");
             }
         }
@@ -546,10 +650,10 @@ function cargarPiso(identificador,idS) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
                 .data[i].nombre + "</option>");
             }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
                 .data[i].nombre + "</option>");
             }
         }
@@ -594,10 +698,10 @@ function cargarParedes(identificador,idS) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
                 .data[i].nombre + "</option>");
             }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
                 .data[i].nombre + "</option>");
             }
         }
@@ -642,10 +746,10 @@ function cargarPEstacionamiento(identificador,idS) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
                 .data[i].nombre + "</option>");
             }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
                 .data[i].nombre + "</option>");
             }
         }
@@ -929,10 +1033,10 @@ function cargarTipoAlmacenamientoAgua(identificador,idS) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
                 .data[i].nombre + "</option>");
             }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
                 .data[i].nombre + "</option>");
             }
         }
@@ -977,10 +1081,10 @@ function cargarFrecuenciaAgua(identificador,idS) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
                 .data[i].nombre + "</option>");
             }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
                 .data[i].nombre + "</option>");
             }
         }
@@ -1025,10 +1129,10 @@ function cargarFrecuenciaElectricidad(identificador,idS) {
         }
         for (var i = 0; i < response.data.length; i++) {
             if (response.data[i].id === idS){
-                selected.append("<option value='" + response.data[i].id + "' selected>" + response
+                selected.append("<option value='" + response.data[i].Id + "' selected>" + response
                 .data[i].nombre + "</option>");
             }else{
-                selected.append("<option value='" + response.data[i].id + "'>" + response
+                selected.append("<option value='" + response.data[i].Id + "'>" + response
                 .data[i].nombre + "</option>");
             }
         }
