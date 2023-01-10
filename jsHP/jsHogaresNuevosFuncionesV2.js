@@ -1,9 +1,124 @@
 $("#agregarTipoTV").click(function() {
+    var idHogar = 6988;
+    //var idHogar = $("#identificacion2Hogar").val();
     var idTipoTV = $('#tipoTV').val();
     var idCantidadTV = $('#cantidadTV').val();
-    var idHogar = $("#identificacion2Hogar").val();
     
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": localStorage.getItem("urlApi")+'guardarTipoTV/'+idHogar+'/'+idTipoTV+'/'+idCantidadTV+'/',
+        "method": "get",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Bearer " + localStorage.getItem('Token')
+        }
+    }
+    $.ajax(settings).done(function(response) {
+
+
+
+        cargarTablaTV(idHogar)
+       
+    }).fail(function(jqXHR, textStatus) {
+        if (jqXHR.status == 400) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                title: 'Su Session ha Expirado',
+                confirmButtonText: `Ok`,
+            })
+            window.location = '/homepantry20/index.php';
+        }
+    })
 });
+
+
+function cargarTablaTV(Id){
+    $('#TableListadoTV').dataTable({
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "bDestroy": true,
+        "autoWidth": false,
+        "searching": true,
+        "dom": '<"wrapper"flitp><"center"B>',
+        "responsive": false,
+        "bPaginate":    false,
+        "scrollY":      400,
+        "fixedHeader":  true,
+        //"deferRender":  true,
+        "ajax": {
+            "url": localStorage.getItem("urlApi")+'getTipoTVHogar/'+Id,
+            "type": "GET",
+            "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": "Bearer " + localStorage.getItem('Token')
+                },
+            "error": function(xhr, error, thrown) {
+                if (xhr.status === 403) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '300px',
+                        height: '100px'
+                    })
+                }
+                if (xhr.status === 400) {
+                    var err = JSON.parse(xhr.responseText);
+                    Swal.fire({
+                        title: err.message,
+                        width: '250px',
+                        height: '25px'
+                    })
+                    window.location.href = '/HomePantry20/Principal/logout';
+                }
+            }
+        },
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        "aoColumns": [
+            {
+                mData: 'TipoTelevisores',
+                className: "text-center"
+            },
+            {
+                mData: 'CantidadTV',
+                className: "text-center"
+            }
+        ],
+        "columnDefs": [{
+            "targets": 2,
+            "orderable": true,
+            "data": 3,
+            "className": "text-center",
+            "render": function(data, type, row, meta) {
+                return  '<div class="text-wrap width-200">'+
+                            '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
+                                data +');"><i class="bi bi-trash3"></i></button>'+
+                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
+                                data +');"><i class="bi bi-pencil-square"></i></button>'+
+                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
+                                data +');"><i class="bi bi-zoom-in"></i></button>'+
+                        '</div>';
+            }
+        }],
+    });
+}
+
+
+
 
 $(function(){
     $("#fechaNacimientoResponsable").datepicker({

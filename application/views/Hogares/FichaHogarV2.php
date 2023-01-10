@@ -1467,15 +1467,18 @@
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Tipos de Televisores</h3>
+                                    <h3 class="card-title">Detalle de Medio</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="card-body" style="display: none;">
-                                    <form id="FormTelevisores">
+                                <!--<div class="card-body" style="display: none;">-->
+                                <div class="card-body">
+                                    <form id="formMedios" action="" method="post">
+                                        
+                                    
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
@@ -1491,53 +1494,8 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <input type="button" id="agregarTipoTV" value="Agregar"
-                                                        class="btn btn-success float-right">
-                                                </div>
-                                            </div>
-                                            
                                         </div>
-                                    </form>
-
-
-                                    <HR/>
-                                    <div id="listadoTV">
-                                        <table id="TableListadoTV" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Tipo TV</th>
-                                                    <th>Cantidad</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>          
-
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                    </div>
-                </section>
-
-                <section class="content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Detalle de Medio</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!--<div class="card-body" style="display: none;">-->
-                                <div class="card-body">
-                                    <form id="formMedios" action="" method="post">
+                                    
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
@@ -1594,7 +1552,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                        <div class="col-md-3">
+                                            <div class="col-md-3">
                                                 <div class="inputText font-weight-bold">¿Posee Streaming? </div>
                                                 <div class="card">
                                                     <div class="form-group">
@@ -1649,7 +1607,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <div class="inputText font-weight-bold">Total Autos Propios:</div>
-                                <select class="custom-select form-control-border" id="totalAutos">
+                                <select class="custom-select form-control-border" id="totalAutos" name="totalAutos">
                                 </select>
                             </div>
                         </div>
@@ -1660,11 +1618,11 @@
                                 <div class="form-group">
                                     <div class="inputText font-weight-bold">Carros 2005</div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="Perro" value="1">
+                                        <input class="form-check-input" type="checkbox" id="carrorMenorYY" value="1">
                                         <label class="form-check-label">Carros menores al 2005</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="Gato" value="1">
+                                        <input class="form-check-input" type="checkbox" id="carrorMayorYY" value="1">
                                         <label class="form-check-label">Carros mayores o iguales a 2005</label>
                                     </div>
                                 </div>
@@ -1846,8 +1804,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <div class="inputText font-weight-bold">Gasto Hogar:</div>
-                                <input type="number" class="form-control input-sm" id="inputGastoHogar" name="inputGastoHogar" placeholder="Ingrese Gasto Hogar ...">
+                                <div class="inputText font-weight-bold">Gasto Electrodomesticos:</div>
+                                <input type="number" class="form-control input-sm" id="inputGastoElectrodomesticos" name="inputGastoElectrodomesticos" placeholder="Ingrese Gasto Hogar ...">
                                 
                             </div>
                         </div>
@@ -3407,7 +3365,7 @@
         }
     });
     // Vehículos PASO 9
-    $("#guardar-paso-9").click(function() {
+    $("#guardar-paso-9_").click(function() {
         var camposVacios = "";
         if ($.trim($('#totalAutos').val()) === '') {
             camposVacios += "Seleccione  cantidad de televisores<br>";
@@ -3444,7 +3402,7 @@
                     "Id_Hogar": $("#identificacion2Hogar").val(),
                     "Id_Autos": $("#totalAutos").val(),
                     "Id_Moto": $('input:radio[name=moto]:checked').val(),
-                    "Id_SeguroCasco": $('input:radio[name=casco]:checked').val(),
+                    "Ind_SeguroCasco": $('input:radio[name=casco]:checked').val(),
                     "flagNuevoHogar":flagNuevoHogar
                 }
             }
@@ -3503,7 +3461,7 @@
         }
     });
     // Mascotas PASO 10
-    $("#guardar-paso-10").click(function() {
+    $("#guardar-paso-10_").click(function() {
         var camposVacios = "";
         
         if (camposVacios != "") {
