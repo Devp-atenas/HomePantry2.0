@@ -2525,12 +2525,11 @@
         if ($("#celularResponsable").val() == "") {
             camposVacios += "Celular<br>";
         }
-        if ($("#celularAdicionalResponsable").val() == "") {
+        /*if ($("#celularAdicionalResponsable").val() == "") {
             camposVacios += "Celular adicional<br>";
-        }
-        if ($("#numeroCortesiaResponsable").val() == "") {
+        }if ($("#numeroCortesiaResponsable").val() == "") {
             camposVacios += "Numero cortesía<br>";
-        }
+        }*/
         if ($("#correoResponsable").val() == "") {
             camposVacios += "Correo<br>";
         }
@@ -2719,9 +2718,9 @@
         if ($("#celularJefe").val() == "") {
             camposVacios += "Celular<br>";
         }
-        if ($("#celularAdicionalJefe").val() == "") {
+        /*if ($("#celularAdicionalJefe").val() == "") {
             camposVacios += "Celular adicional<br>";
-        }
+        }*/
         if ($("#correoJefe").val() == "") {
             camposVacios += "Correo<br>";
         }
@@ -2860,9 +2859,9 @@
         if ($("#celularComposicion").val() == "") {
             camposVacios += "Celular<br>";
         }
-        if ($("#celularAdicionalComposicion").val() == "") {
+        /*if ($("#celularAdicionalComposicion").val() == "") {
             camposVacios += "Celular adicional<br>";
-        }
+        }*/
         if ($("#correoComposicion").val() == "") {
             camposVacios += "Correo<br>";
         }
@@ -3708,12 +3707,12 @@
             if ( $("#identificacion2Hogar").val() == ""){
                 camposVacios += " Falta completar Ubicacion del hogar<br>";
             }
-            if (response.data[0].Ind_paso2 == 0){
+            /*if (response.data[0].Ind_paso2 == 0){
                 camposVacios += "Responsable del panel<br>";
             }
             if (response.data[0].Ind_paso3 == 0){
                 camposVacios += "Jefe del Hogar<br>";
-            }
+            }*/
 
             /*if (response.data[0].Ind_paso4 == 0){
                 camposVacios += "Composición del hogar<br>";
@@ -3736,6 +3735,10 @@
             if (response.data[0].Ind_paso10 == 0){
                 camposVacios += "Mascotas<br>";
             }
+            if (response.data[0].Ind_paso11 == 0){
+                camposVacios += "Mascotas<br>";
+            }
+            
 
             if (camposVacios != "") {
                 Swal.fire({

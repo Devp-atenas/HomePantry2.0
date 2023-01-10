@@ -1,25 +1,61 @@
 $("#agregarTipoTV").click(function() {
-    var idHogar = 6988;
-    //var idHogar = $("#identificacion2Hogar").val();
     var idTipoTV = $('#tipoTV').val();
     var idCantidadTV = $('#cantidadTV').val();
-    
+    var idHogar = $("#identificacion2Hogar").val();
+
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": localStorage.getItem("urlApi")+'guardarTipoTV/'+idHogar+'/'+idTipoTV+'/'+idCantidadTV+'/',
-        "method": "get",
+        "url": localStorage.getItem("urlApi")+'updateMediosHogar/',
+        "method": "POST",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + localStorage.getItem('Token')
+        },
+        "data": {
+            "Id_Hogar": 6988,
+            //"Id_Hogar": $("#identificacion2Hogar").val(),
+            "Id_Televisores": $("#cantidadTV").val(),
+            "Id_TipoTelevisores": $("#tipoTV").val(),
+            "Id_Senal": $("#Senal").val(),
+            "Id_Cablera1": $("#cablera1").val(),
+            "Id_Cablera2": $("#cablera2").val(),
+            "Id_TelevisionOnline1": $("#tvOnline1").val(),
+            "Id_TelevisionOnline2":$("#tvOnline2").val(),
+            "id_FM": FM,
+            "id_AM": AM,
+            "flagNuevoHogar":flagNuevoHogar
         }
     }
     $.ajax(settings).done(function(response) {
+        var idHogar = $("#identificacion2Hogar").val();
 
-
-
-        cargarTablaTV(idHogar)
-       
+        if (response.isFichaCompleta==1){
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Actualizo Medios(Paso 8) y se Recalculo Puntaje NSE(idPanelHogar)",$("#identificacion2Hogar").val(),"U");
+            AlertaHogarSinRecalcularNSE($("#identificacion2Hogar").val());
+        }else{
+            Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Se Guardo Medios(Paso 8)",$("#identificacion2Hogar").val(),"C");
+        }
+        
+        if (localStorage.getItem('flagActividad') !== null){
+            guardarCamposPorActividad(idHogar,8);
+        }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 10000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: response.message,
+            confirmButtonText: `Ok`,
+        })
     }).fail(function(jqXHR, textStatus) {
         if (jqXHR.status == 400) {
             const Toast = Swal.mixin({
@@ -34,91 +70,17 @@ $("#agregarTipoTV").click(function() {
                 }
             })
             Toast.fire({
+                icon: 'info',
                 title: 'Su Session ha Expirado',
                 confirmButtonText: `Ok`,
             })
+            var form = document.querySelector('#FormPaisEdit');
+            form.reset();
             window.location = '/homepantry20/index.php';
         }
     })
+    
 });
-
-
-function cargarTablaTV(Id){
-    $('#TableListadoTV').dataTable({
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
-        "bDestroy": true,
-        "autoWidth": false,
-        "searching": true,
-        "dom": '<"wrapper"flitp><"center"B>',
-        "responsive": false,
-        "bPaginate":    false,
-        "scrollY":      400,
-        "fixedHeader":  true,
-        //"deferRender":  true,
-        "ajax": {
-            "url": localStorage.getItem("urlApi")+'getTipoTVHogar/'+Id,
-            "type": "GET",
-            "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Bearer " + localStorage.getItem('Token')
-                },
-            "error": function(xhr, error, thrown) {
-                if (xhr.status === 403) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '300px',
-                        height: '100px'
-                    })
-                }
-                if (xhr.status === 400) {
-                    var err = JSON.parse(xhr.responseText);
-                    Swal.fire({
-                        title: err.message,
-                        width: '250px',
-                        height: '25px'
-                    })
-                    window.location.href = '/HomePantry20/Principal/logout';
-                }
-            }
-        },
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-        },
-        "aoColumns": [
-            {
-                mData: 'TipoTelevisores',
-                className: "text-center"
-            },
-            {
-                mData: 'CantidadTV',
-                className: "text-center"
-            }
-        ],
-        "columnDefs": [{
-            "targets": 2,
-            "orderable": true,
-            "data": 3,
-            "className": "text-center",
-            "render": function(data, type, row, meta) {
-                return  '<div class="text-wrap width-200">'+
-                            '<button type="button" class="btn btn-danger btn-sm" onclick="deleteAction(' +
-                                data +');"><i class="bi bi-trash3"></i></button>'+
-                            '<button type="button" class="btn btn-primary btn-sm" onclick="EditAction(' +
-                                data +');"><i class="bi bi-pencil-square"></i></button>'+
-                            '<button type="button" class="btn btn-info btn-sm" onclick="VisualizarAction(' +
-                                data +');"><i class="bi bi-zoom-in"></i></button>'+
-                        '</div>';
-            }
-        }],
-    });
-}
-
-
-
 
 $(function(){
     $("#fechaNacimientoResponsable").datepicker({
@@ -514,14 +476,14 @@ function finalizarFicha(idHogar) {
     $.ajax(settings).done(function(response) {
         // La alerta de desactiva en el controlador
         // 66666666666
-        
+        /*
         if (response.NSECalculado != response.NSEAnterior){
             AlertaCambioNSE(idHogar,response.NSEAnterior,response.NSECalculado);
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Alerta cambio NSE (idPanelHogar)",$("#identificacion2Hogar").val(),"U");
         }else{
             $('#claseSocialInformacion').val(response.NSECalculado);
             Bitacora(localStorage.getItem("IdUsuario"),localStorage.getItem("IP"),"Registro de Hogar",idHogar,"U");
-        }
+        }*/
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',

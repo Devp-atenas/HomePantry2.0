@@ -307,11 +307,11 @@ $(document).ready(function() {
 $("#guardar-paso-5").click(function() {
     var camposVacios = "";
     
-    alert($("#identificacion2Hogar").val());
-    alert($("#montoVivienda").val());
-    alert($("#selectTecho1").val());
-    alert($("#selectViajeVacacional").val());
-    alert($("#selectPlanVacacional").val());
+    //alert($("#identificacion2Hogar").val());
+    //alert($("#montoVivienda").val());
+    //alert($("#selectTecho1").val());
+    //alert($("#selectViajeVacacional").val());
+    //alert($("#selectPlanVacacional").val());
     
 
         if (localStorage.getItem("flagActividad") !== null){
@@ -340,7 +340,6 @@ $("#guardar-paso-5").click(function() {
                 "Id_OcupacionVivienda": $("#ocupacionVivienda").val(),
                 "OtroOcupacionVivienda": $("#especifiqueOcupacionVivienda").val(),
                 "Id_MontoVivienda": $("#montoVivienda").val(),
-                
                 "selectTecho": $("#selectTecho1").val(),
                 "selectPiso": $("#selectPiso").val(),
                 "selectParedes": $("#selectParedes").val(),
@@ -349,8 +348,6 @@ $("#guardar-paso-5").click(function() {
                 "selectPlanVacacional": $("#selectPlanVacacional").val(),
                 "selectViajeVacacional": $("#selectViajeVacacional").val(),
                 "ViviendaVacacional": $('input:radio[name=ViviendaVacacional]:checked').val(),
-                
-
                 "flagNuevoHogar":flagNuevoHogar
             }
         }
@@ -405,7 +402,6 @@ $("#guardar-paso-5").click(function() {
                 window.location = '/homepantry20/index.php';
             }
         })
-   
 });
 
 
