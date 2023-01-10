@@ -307,7 +307,8 @@
                         icon: 'success',
                         title: 'Ingresando a Home Pantry'
                     })
-                    window.location.href = "../Principal/dashboard";
+                    //window.location.href = "../Principal/dashboard";
+                    window.location.href = "Principal/dashboard";
                 }else{
                     // Para Cuando el usuario tiene mas de un un perfil
                     let selected = $(identificador);
